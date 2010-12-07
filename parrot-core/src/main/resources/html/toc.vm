@@ -1,0 +1,76 @@
+<h1 id ="toc">Table of contents</h1>
+<div class="toc">
+<!-- The list of ontologies, classes, properties and rules goes here --> 
+<p>
+#if(!$document.ontologyDetailViews.isEmpty())
+Ontologies: 
+#foreach($element in $document.ontologyDetailViews)
+	#if ($element.Label)
+	<a href="#$element.Anchor">$element.Label</a>, 
+	#else
+	<a href="#$element.Anchor">$element.Uri</a>, 
+	#end
+#end
+#end
+</p>
+
+<p>
+#if(!$document.ontologyClassDetailViews.isEmpty())
+Classes:
+#foreach($element in $document.ontologyClassDetailViews)
+	#if ($element.Label)
+	<a href="#$element.Anchor">$element.Label</a>, 
+	#else
+	<a href="#$element.Anchor">$element.Uri</a>, 
+	#end 
+#end
+#end
+</p>
+<p>
+#if(!$document.ontologyPropertyDetailViews.isEmpty())
+Properties:
+#foreach($element in $document.ontologyPropertyDetailViews)
+	#if ($element.Label)
+	<a href="#$element.Anchor">$element.Label</a>, 
+	#else
+	<a href="#$element.Anchor">$element.Uri</a>, 
+	#end 
+#end
+#end
+</p>
+
+<p>
+#if(!$document.ontologyIndividualDetailViews.isEmpty())
+Individuals:
+#foreach($element in $document.ontologyIndividualDetailViews)
+	#if ($element.Label)
+	<a href="#$element.Anchor">$element.Label</a>, 
+	#else
+	<a href="#$element.Anchor">$element.Uri</a>, 
+	#end 
+#end
+#end
+</p>
+
+<p>
+#if(!$document.ruleDetailViews.isEmpty())
+Rules:
+#foreach($element in $document.ruleDetailViews)
+	#if ($element.Label)
+	<a href="#$element.Anchor">$element.Label</a>, 
+	#else
+	<a href="#$element.Anchor">$element.identifier</a>, 
+	#end
+#end
+#end
+</p>
+
+<p>Appendices 
+<ol id="appendix"> 
+  <li><a href="#references">References</a></li> 
+  <li><a href="#prefixes">Namespace references and prefixes</a></li> 
+  <li><a href="#changes">Changes in this version</a> (Non-Normative)</li> 
+  <li><a href="#acknowledgements">Acknowledgements</a> (Non-Normative)</li> 
+</ol> 
+</p>
+</div>

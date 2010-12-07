@@ -1,0 +1,22 @@
+<div class="term">
+  #if($element.Label)
+    <h3><a id="$element.Anchor"></a>Individual: $element.Label</h3>
+  #else
+    <h3><a id="$element.Anchor"></a>Individual: $element.Uri</h3>
+  #end
+  <dl>
+  #if($element.Uri)
+      <dt>Uri</dt>
+      <dd><a href="$element.Uri">$element.Uri</a></dd>      
+  #end
+
+  #if(!$element.types.isEmpty())
+    <dt>Types</dt>
+    #foreach($type in $element.types)
+      <dd><a href="#$type.LocalName">$type.Identifier</a></dd>
+    #end
+  #end
+  
+  </dl>
+  <p style="float: right; font-size: small;">[<a href="#toc">back to top</a>]</p> 
+</div>   

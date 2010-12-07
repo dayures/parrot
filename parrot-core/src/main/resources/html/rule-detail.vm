@@ -1,0 +1,21 @@
+<div class="term">
+<h3 id="$detailView.Anchor">Rule: $detailView.identifier</h3>
+  <dl>
+
+    #if(!$detailView.ReferencedOntologyProperties.isEmpty())
+   <dt>Referenced ontology properties</dt>
+   #foreach($v in $detailView.ReferencedOntologyProperties)
+      <dd><a href="#$v.LocalName">$v.Identifier</a></dd>
+   #end
+  #end
+
+    #if(!$detailView.DeclaredVars.isEmpty())
+   <dt>Declared variables</dt>
+   #foreach($v in $detailView.DeclaredVars)
+      <dd>$v</dd>
+   #end
+  #end
+  
+  </dl>
+</div>
+  

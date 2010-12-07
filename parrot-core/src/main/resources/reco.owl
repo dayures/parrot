@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+  <!ENTITY reco "http://ontologies.ezweb.morfeo-project.org/reco/ns#">
+  <!ENTITY base "http://ontologies.ezweb.morfeo-project.org/reco/ns">
+  <!ENTITY owl "http://www.w3.org/2002/07/owl#">
+  <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <!ENTITY foaf "http://xmlns.com/foaf/0.1/">
+  <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+  <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+  <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+  <!ENTITY dct "http://purl.org/dc/terms/">
+]>
+<rdf:RDF
+  xmlns:foaf="&foaf;"
+  xmlns:owl="&owl;"
+  xmlns:rdf="&rdf;"
+  xmlns:rdfs="&rdfs;"
+  xmlns:reco="&reco;"
+  xmlns:xsd="&xsd;"
+  xmlns:dct="&dct;"
+  xml:base="&base;"
+>
+
+  <!-- Ontology Information -->
+  <owl:Ontology rdf:about="&reco;">
+    <dct:title xml:lang="en">RECO Ontology</dct:title>
+    <dct:description xml:lang="en">RECommendations Ontology: a vocabulary to formalize preferences in the Semantic Web</dct:description>
+    <rdfs:isDefinedBy rdf:resource="http://ontologies.ezweb.morfeo-project.org/reco/reco.owl"/>
+    <dct:publisher rdf:resource="http://www.fundacionctic.org/"/>
+    <dct:license rdf:resource="http://creativecommons.org/licenses/by-sa/3.0/"/>
+    <dct:creator>Luis Polo</dct:creator>
+    <dct:creator>Ivan Mínguez</dct:creator>
+    <dct:creator>Emilio Rubiera</dct:creator>
+    <dct:contributor>Diego Berrueta</dct:contributor>
+    <dct:contributor>Sergio Fernández</dct:contributor>
+    <dct:date>2008-11-13</dct:date>
+    <dct:modified>2009-12-15</dct:modified>
+    <rdfs:seeAlso rdf:resource="http://ontologies.ezweb.morfeo-project.org/ezcontext/context-ontology.owl"/>
+  </owl:Ontology>
+
+  <!-- Classes -->
+  
+  <owl:Class rdf:about="#Demand">
+    <rdfs:subClassOf rdf:resource="#ModalDescription"/>
+    <rdfs:label xml:lang="en">Demand</rdfs:label>
+    <rdfs:comment xml:lang="en">The willingness to achieve a commodity or a service with certain properties. Basically a demand is a set of preferences: mandatory, positive, negative or excluding.</rdfs:comment> 
+  </owl:Class>
+ 
+  <owl:Class rdf:about="#Preference">
+    <rdfs:label xml:lang="en">Preference</rdfs:label>
+    <rdfs:comment xml:lang="en">A desired property of a commodity or a service.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#ModalDescription"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#CompositePreference">
+    <rdfs:label xml:lang="en">Composite preference</rdfs:label>
+    <rdfs:comment xml:lang="en">A complex representation of a preference to express the union or the intersection of two or more preferences using AND and OR operators. A composite preference uses one and only one operator. Both operators are incompatible.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Preference"/>
+    <rdfs:subClassOf>
+       <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <owl:Class>
+                                <owl:complementOf>
+				   <owl:Restriction>
+                                      <owl:onProperty rdf:resource="#andComposite"/>
+                                      <owl:someValuesFrom rdf:resource="#Preference"/>
+                                   </owl:Restriction>
+				</owl:complementOf>   
+                            </owl:Class>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="#unionComposite"/>
+                                <owl:someValuesFrom rdf:resource="#Preference"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <owl:Class>
+                                <owl:complementOf>
+				   <owl:Restriction>
+                                      <owl:onProperty rdf:resource="#unionComposite"/>
+                                      <owl:someValuesFrom rdf:resource="#Preference"/>
+                                   </owl:Restriction>
+				</owl:complementOf>   
+                            </owl:Class>                            
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="#andComposite"/>
+                                <owl:someValuesFrom rdf:resource="#Preference"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:unionOf>
+       </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#ModalDescription">
+    <rdfs:label xml:lang="en">Modal Description</rdfs:label>
+    <rdfs:comment xml:lang="en">A modal description consists in the specification of a modal target: desire, right, power, duty, etc. From the formal semantic viewpoint, a modal description is the reification of a relation involving a modal logic operator.</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Profile">
+    <rdfs:label xml:lang="en">Profile</rdfs:label>
+    <rdfs:comment xml:lang="en">The user profile of an agent. An agent might have more than one profile: user profiles vary according to their contexts and situations.</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Operator">
+    <rdfs:label xml:lang="en">Operator</rdfs:label>
+    <rdfs:comment xml:lang="en">Elements that define operations on literals in a filter: string comparisons, numerical ranges, etc. Operators are equivalent to their corresponding SPARQL built-ins.</rdfs:comment>
+  </owl:Class>
+
+
+  <owl:Class rdf:about="#Filter">
+    <rdfs:label xml:lang="en">Filter</rdfs:label>
+    <rdfs:comment xml:lang="en">A preferred condition on a datatype property.</rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Pattern">
+    <rdfs:label xml:lang="en">Pattern</rdfs:label>
+    <rdfs:comment xml:lang="en">An individual that satisfies some preferred conditions. These individuals can be interpreted as variables in matchmaking applications.</rdfs:comment>
+  </owl:Class>
+
+  <!-- Object Properties -->
+  
+ <owl:ObjectProperty rdf:about="#refinedBy">
+    <rdfs:comment xml:lang="en">A modal description can be refined by adding new components.</rdfs:comment>
+    <rdfs:label xml:lang="en">Refined By</rdfs:label>
+    <rdfs:domain rdf:resource="#ModalDescription"/>
+    <rdfs:range rdf:resource="#ModalDescription"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#requiredPreference">
+    <rdfs:comment xml:lang="en">This property relates a demand with a preference P in a mandatory way. Individuals that fulfill the condition P are considered valid candidateds for this demand.
+</rdfs:comment>
+    <rdfs:label xml:lang="en">Required Preference</rdfs:label>
+    <rdfs:domain rdf:resource="#Demand"/>
+    <rdfs:range rdf:resource="#Preference"/>
+    <rdfs:subPropertyOf rdf:resource="#refinedBy"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#positivePreference">
+    <rdfs:comment xml:lang="en">This property relates a demand to a preference P in an optional way. Individuals that fulfill the condition P increase their utility value.</rdfs:comment>
+    <rdfs:label xml:lang="en">Positive Optional Preference</rdfs:label>
+    <rdfs:domain rdf:resource="#Demand"/>
+    <rdfs:range rdf:resource="#Preference"/>
+    <rdfs:subPropertyOf rdf:resource="#refinedBy"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#excludedPreference">
+    <rdfs:comment xml:lang="en">This property relates a demand with a particular condition P. Individuals that fulfill this condition P are excluded from the set of valid candidates for this demand.</rdfs:comment>
+    <rdfs:label xml:lang="en">Excluded Preference</rdfs:label>
+    <rdfs:domain rdf:resource="#Demand"/>
+    <rdfs:range rdf:resource="#Preference"/>
+    <rdfs:subPropertyOf rdf:resource="#refinedBy"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#negativePreference">
+    <rdfs:comment xml:lang="en">This property relates a demand with a particular condition P. Individuals that fulfill this condition P decline their utility value.</rdfs:comment>
+    <rdfs:label xml:lang="en">Negative Optional Preference</rdfs:label>
+    <rdfs:domain rdf:resource="#Demand"/>
+    <rdfs:range rdf:resource="#Preference"/>
+    <rdfs:subPropertyOf rdf:resource="#refinedBy"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#internallyRepresents">
+    <rdfs:comment xml:lang="en">A user internally represents (in her mind) a modal description: a desire, a plan, a duty, etc.</rdfs:comment>
+    <rdfs:label xml:lang="en">Internally Represents</rdfs:label>
+    <rdfs:domain>
+      <owl:Class>
+	    <owl:unionOf rdf:parseType="Collection">
+    	        <owl:Class rdf:about="&foaf;Agent" />
+    	        <owl:Class rdf:about="&foaf;Group"/>
+                <owl:Class rdf:about="#Profile"/>
+            </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="#ModalDescription"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#asksFor">
+    <rdfs:comment xml:lang="en">The relationship between a user profile, agent or a group of agents and their demands, which can be mandatory, positive, negative or exclusive.</rdfs:comment>
+    <rdfs:label xml:lang="en">Asks For</rdfs:label>
+    <rdfs:domain>
+      <owl:Class>
+	<owl:unionOf rdf:parseType="Collection">
+    	  <owl:Class rdf:about="&foaf;Agent" />
+    	  <owl:Class rdf:about="&foaf;Group"/>
+          <owl:Class rdf:about="#Profile"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="#Demand"/>
+    <rdfs:subPropertyOf rdf:resource="#internallyRepresents"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#desireTowards">
+    <rdfs:comment xml:lang="en">A modal relation expressing that a user has a strong preference towards something.</rdfs:comment>
+    <rdfs:label xml:lang="en">Desire Towards</rdfs:label>
+    <rdfs:domain>
+      <owl:Class>
+	<owl:unionOf rdf:parseType="Collection">
+    	  <owl:Class rdf:about="&foaf;Agent" />
+    	  <owl:Class rdf:about="&foaf;Group"/>
+          <owl:Class rdf:about="#Profile"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="#Preference"/>
+    <rdfs:subPropertyOf rdf:resource="#internallyRepresents"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#notDesireTowards">
+    <rdfs:comment xml:lang="en">A modal relation expressing the absence of a preference towards something.</rdfs:comment>
+    <rdfs:label xml:lang="en">Not Desire Towards</rdfs:label>
+    <rdfs:domain>
+      <owl:Class>
+	<owl:unionOf rdf:parseType="Collection">
+    	  <owl:Class rdf:about="&foaf;Agent" />
+    	  <owl:Class rdf:about="&foaf;Group"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="#Preference"/>
+    <rdfs:subPropertyOf rdf:resource="#internallyRepresents"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#andComposition">
+    <rdfs:comment xml:lang="en">A property which matches each composite-preference with the set of preferences composing it. Being an and-Composition, all the preferences have to be realised.</rdfs:comment>
+    <rdfs:label xml:lang="en">AND Composition</rdfs:label>
+    <rdfs:domain rdf:resource="#CompositePreference"/>
+    <rdfs:range rdf:resource="#Preference"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#unionComposition">
+    <rdfs:comment xml:lang="en">A property which matches each composite-preference with the set of preferences composing it. Being a union-Composition, at least one of the preferences has to be realised.</rdfs:comment>
+    <rdfs:label xml:lang="en">UNION Composition</rdfs:label>
+    <rdfs:domain rdf:resource="#CompositePreference"/>
+    <rdfs:range rdf:resource="#Preference"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#filter">
+    <rdfs:comment xml:lang="en">A property which develops the pattern restraining the value of a datatype property.</rdfs:comment>
+    <rdfs:label xml:lang="en">Filter</rdfs:label>
+    <rdfs:domain>
+      <owl:Class>
+	<owl:unionOf rdf:parseType="Collection">
+    	  <owl:Class rdf:about="#Preference" />
+    	  <owl:Class rdf:about="#Pattern"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="#Filter"/>
+  </owl:ObjectProperty>
+  
+  <owl:ObjectProperty rdf:about="#operator">
+    <rdfs:label xml:lang="en">Operator</rdfs:label>
+    <rdfs:comment xml:lang="en">A property which matches a pattern to the operator restraining the value of a datatype property.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Filter"/>	
+    <rdfs:range rdf:resource="#Operator"/>
+  </owl:ObjectProperty>
+  
+
+  <!-- Datatype Properties -->
+
+  <owl:DatatypeProperty rdf:about="#utilityValue">
+    <rdfs:comment xml:lang="en">This property represents the utility value of a commodity or a service according to the preferences of the user.</rdfs:comment>
+    <rdfs:label xml:lang="en">Utility Value</rdfs:label>
+    <rdfs:range rdf:resource="&xsd;float"/>
+   </owl:DatatypeProperty>
+
+  <!-- Normative Instances -->
+
+  <reco:Operator rdf:about="#equals">
+    <rdfs:label xml:lang="en">equals</rdfs:label>
+  </reco:Operator>   
+
+  <reco:Operator rdf:about="#greaterThan">
+    <rdfs:label xml:lang="en">greater than</rdfs:label>
+  </reco:Operator>
+
+  <reco:Operator rdf:about="#greaterEquals">
+    <rdfs:label xml:lang="en">greater equals</rdfs:label>
+  </reco:Operator>
+
+  <reco:Operator rdf:about="#lesserThan">
+    <rdfs:label xml:lang="en">lesser than</rdfs:label>
+  </reco:Operator>
+
+  <reco:Operator rdf:about="#lesserEquals">
+    <rdfs:label xml:lang="en">lesser equals</rdfs:label>
+  </reco:Operator>
+
+  <reco:Operator rdf:about="#contains">
+    <rdfs:label xml:lang="en">contains</rdfs:label>
+  </reco:Operator>
+
+</rdf:RDF>
+

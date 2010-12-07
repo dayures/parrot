@@ -1,0 +1,32 @@
+<h1>Details</h1>
+
+<h2>Ontologies</h2>
+#foreach($element in $document.ontologyDetailViews)
+<div class="details ontologies">
+  #parse("html/ontology-detail.vm")
+</div>
+#end
+<h2>Classes</h2>
+#foreach($element in $document.ontologyClassDetailViews)
+<div class="details classes">
+  #parse("html/class-detail.vm")
+</div>
+#end
+<h2>Properties</h2>
+#foreach($element in $document.ontologyPropertyDetailViews)
+<div class="details properties">
+  #parse("html/property-detail.vm")
+</div>
+#end
+<h2>Individuals</h2>
+#foreach($element in $document.ontologyIndividualDetailViews)
+<div class="details individuals">
+  #parse("html/individual-detail.vm")
+</div>
+#end
+<h2>Rules</h2>
+#foreach($detailView in $document.ruleDetailViews)
+<div class="details rules">
+  #parse("html/rule-detail.vm")
+</div>
+#end

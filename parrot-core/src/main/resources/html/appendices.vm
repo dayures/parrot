@@ -1,0 +1,123 @@
+<div class="div1"> 
+<h2 id="references">A References</h2> 
+ 
+ <p><em>This section is a placeholder</em>.</p>
+  
+<dl> 
+ 
+  <dt class="label" id="ref-owl">OWL</dt> 
+  <dd> 
+    Peter F. Patel-Schneider, Patrick Hayes, and Ian Horrocks,
+    <em><a href="http://www.w3.org/TR/2004/REC-owl-semantics-20040210/">OWL Web Ontology Language Semantics and 
+    Abstract Syntax</a></em>, W3C Recommendation, February 2004,
+  </dd> 
+ 
+  <dt class="label" id="ref-rdfs">RDFS</dt> 
+  <dd> 
+    Dan Brickley and R. V. Guha, <em><a href="http://www.w3.org/TR/2004/REC-rdf-schema-20040210/">RDF
+    Vocabulary Description Language 1.0: RDF Schema</a></em>, W3C Recommendation, February 2004.
+  </dd> 
+ 
+  <dt class="label" id="ref-rfc2119">RFC2119</dt> 
+  <dd> 
+    S. Bradner, <em><a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119: 
+    Key words for use in RFCs to Indicate Requirement Levels</a></em>. Internet
+    Engineering Task Force, 1997.
+  </dd> 
+ 
+  <dt class="label" id="ref-rfc2396">RFC2396</dt> 
+  <dd> 
+    T. Berners-Lee et al., <em><a href="http://www.ietf.org/rfc/rfc2396.txt">RFC 2396: 
+    Uniform Resource Identifiers (URI): Generic Syntax</a></em>. Internet
+    Engineering Task Force, 1998.
+  </dd> 
+  <dt id="ref-rdf" class="label">RDF</dt> 
+  <dd> 
+    Graham Klyne, Jeremy Carroll, <em><a href="http://www.w3.org/TR/rdf-concepts/" shape="rect">Resource Description Framework (RDF): Concepts and Abstract Syntax</a></em>, W3C Recommendation 10 Feb 2004. 
+  </dd> 
+</dl> 
+</div> 
+ 
+<div class="div1"> 
+<h2 id="prefixes">B Namespace references and prefixes</h2> 
+
+<p><em>This section is a placeholder</em>.</p>
+
+<p>The following namespaces are referenced by the ontology:</p> 
+    <table cellpadding="5" cellspacing="0"> 
+        <tbody> 
+            <tr> 
+                <th>Prefix</th> 
+                <th>XML Namespace</th> 
+                <th>Specification</th> 
+            </tr> 
+            <tr> 
+                <td>dcterms</td> 
+                <td>http://purl.org/dc/terms/</td> 
+                <td> 
+                    <a href="http://dublincore.org/documents/dcmi-terms/#H2" shape="rect">The Dublin Core Metadata Initiative Metadata Terms</a> 
+                </td> 
+            </tr> 
+            <tr> 
+                <td>foaf</td> 
+                <td>http://xmlns.com/foaf/0.1/</td> 
+                <td> 
+                    <a href="http://xmlns.com/foaf/0.1/" shape="rect">Friend of a Friend (FOAF) Vocabulary</a> 
+                </td> 
+            </tr> 
+            <tr> 
+                <td>owl</td> 
+                <td>http://www.w3.org/2002/07/owl#</td> 
+                <td> 
+                    <a href="http://www.w3.org/2004/OWL/#specs" shape="rect">OWL Web Ontology Language</a> 
+                </td> 
+            </tr> 
+            <tr> 
+                <td>rdf</td> 
+                <td>http://www.w3.org/1999/02/22-rdf-syntax-ns#</td> 
+                <td> 
+                    <a href="http://www.w3.org/TR/rdf-syntax-grammar/" shape="rect">Resource Description Framework (RDF)</a> 
+                </td> 
+            </tr> 
+            <tr> 
+                <td>rdfs</td> 
+                <td>http://www.w3.org/2000/01/rdf-schema#</td> 
+                <td> 
+                    <a href="http://www.w3.org/TR/rdf-schema/" shape="rect">RDF Vocabulary Description Language 1.0: RDF Schema</a> 
+                </td> 
+            </tr> 
+            <tr> 
+                <td>xsd</td> 
+                <td>http://www.w3.org/2001/XMLSchema#</td> 
+                <td> 
+                    <a href="http://www.w3.org/TR/xmlschema-2/" shape="rect">XML Schema (Datatypes)</a> 
+                </td> 
+            </tr> 
+        </tbody> 
+    </table> 
+ 
+</div> 
+ 
+<div class="div1"> 
+<h2 id="changes">C Changes in this version</h2> 
+<p><em>This section is a placeholder</em>.</p>
+<ul> 
+  <li><p>YYYY-MM-DD: Initial version of the ontology specification.</p></li> 
+</ul> 
+</div> 
+ 
+<div class="div1"> 
+  <h2 id="acknowledgments">D Acknowledgements</h2> 
+  <p><em>This section is a placeholder</em>.</p>
+  <p> 
+    This document was produced with the participation of the
+    <a href="#">XXX project</a> 
+    consortium (by alphabetical order):
+  </p> 
+  <ul> 
+    <li> 
+      <a href="http://www.fundacionctic.org"><acronym title="Centro Tecnológico de Información y Comunicación">CTIC</acronym></a> 
+    </li> 
+  </ul> 
+</div> 
+ 

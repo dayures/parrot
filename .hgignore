@@ -1,2 +1,8 @@
 parrot-core/target
 parrot-web/target
+parrot-core/.classpath
+parrot-core/.project
+parrot-core/.settings
+parrot-web/.classpath
+parrot-web/.project
+parrot-web/.settings

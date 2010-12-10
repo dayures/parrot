@@ -4,7 +4,7 @@ import org.apache.log4j.Logger;
 import net.sourceforge.rifle.ast.Document;
 import net.sourceforge.rifle.ast.Group;
 import net.sourceforge.rifle.ast.Rule;
-import net.sourceforge.rifle.visitor.Visitor;
+import net.sourceforge.rifle.ast.visitor.Visitor;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
@@ -28,8 +28,8 @@ public class RifVisitor extends Visitor {
 	@Override
 	public Object visit(Document document) {
 		logger.debug("Visiting RIF document AST node: " + document);
-		for(Group group : document.getGroups()){
-			group.accept(this);
+		if (document.getGroup() != null) {
+			document.getGroup().accept(this);
 		}
 		return null;
 	}

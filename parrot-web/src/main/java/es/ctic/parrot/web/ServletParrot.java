@@ -63,21 +63,27 @@ public class ServletParrot extends HttpServlet {
 
 			// Obtenemos un objeto Print Writer para enviar respuesta
 			res.setContentType("text/html");
-			try {
-				generate(dp);
-			} catch (Exception e) {
-				logger.error("While generating documentation", e);
-				errors.addError("Error parsing the document.");
-//				if (((Input) (dp.getInputs().toArray()[0])).getMimeType().equals("application/rif+xml")){
-//					advices.add("Check the document markup using a <a href=\"http://idi.fundacionctic.org/rifle/\" >RIF validator</a>");			    			    		
-//				}else {
-//					advices.add("Check the document markup using a <a href=\"http://www.w3.org/RDF/Validator/\" >RDF validator</a>");
-//				}
-				forwardToForm(req, res);
-			}
-		} catch (MalformedURLException e) {
-			errors.addError("Malformed URI: " + e.getMessage());
-			forwardToForm(req, res);
+			generate(dp);
+	    } catch (MalformedURLException e) {
+	        logger.error("While generating documentation", e);
+	        errors.addError("Malformed URI: " + e.getMessage());
+	        forwardToForm(req, res);
+		} catch (ReaderException e) {
+		    logger.error("While generating documentation", e);
+		    errors.addError("Unable to read input document: " + e.getMessage());
+		    forwardToForm(req, res);
+		} catch (IOException e) {
+		    logger.error("While generating documentation", e);
+		    errors.addError("I/O Error: " + e.getMessage());
+		    //				if (((Input) (dp.getInputs().toArray()[0])).getMimeType().equals("application/rif+xml")){
+		    //					advices.add("Check the document markup using a <a href=\"http://idi.fundacionctic.org/rifle/\" >RIF validator</a>");			    			    		
+		    //				}else {
+		    //					advices.add("Check the document markup using a <a href=\"http://www.w3.org/RDF/Validator/\" >RDF validator</a>");
+		    //				}
+		    forwardToForm(req, res);
+		} catch (RuntimeException e) {
+		    logger.error("Unexpected error while generating documentation", e);
+		    res.sendError(500);
 		}
 	}
 
@@ -124,7 +130,7 @@ public class ServletParrot extends HttpServlet {
 
 		for( int i=0 ; i<uriInputs.length ; i++) {
 			String uriInput = uriInputs[i];
-			if (checkURI(uriInput)){
+			if (checkURI(uriInput)) {
 				logger.info("Trying to add valid input: " + uriInput);
 				if (i<uriInputMimetypes.length || uriInputMimetypes[i].equals("default")) { // allow content negotiation
 					dp.addInput(new URLInput(new URL(uriInput)));
@@ -134,7 +140,6 @@ public class ServletParrot extends HttpServlet {
 			}
 		}
 	}
-
 
 	private void addDirectInput(DocumentaryProject dp, HttpServletRequest req) {
 		String directInputText = req.getParameter(DOCUMENT_TEXT);

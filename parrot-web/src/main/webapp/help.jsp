@@ -29,18 +29,13 @@ title="go to parrot project home page">PARROT </a></h1>
 <h2>a RIF and OWL documentation service (alpha version)</h2>
 </div>
 
-<p>FIXME: write documentation here.</p>
-
-<p></p>
-
-<p></p>
-
-<p></p>
+<p>This table captures the properties relevant for describing ontologies and
+resources metadata. Notice that not all the properties are currently supported
+by PARROT.</p>
 
 <p></p>
 
 <table border="2" style="width: 100%">
-  <caption></caption>
   <col>
   <col>
   <col>
@@ -59,148 +54,248 @@ title="go to parrot project home page">PARROT </a></h1>
       <td
       style="text-align:center;margin-left:auto;margin-right:auto;font-size: 12pt"><strong>Description</strong></td>
       <td
-      style="text-align:center;margin-left:auto;margin-right:auto;font-size: 12pt"><strong>Example</strong></td>
+      style="text-align:center;margin-left:auto;margin-right:auto;font-size: 12pt"><strong>Namespace</strong></td>
       <td
       style="text-align:center;margin-left:auto;margin-right:auto;font-size: 12pt"><strong>Supported</strong></td>
     </tr>
     <tr>
-      <td>creator</td>
-      <td>Dublin Core</td>
+      <td><em>creator</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms">Dublin
+      Core</a></td>
       <td>Ontology</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>The creator of the ontology: a person or an organization. Recommended
+        best practice is to use a FOAF profile to describe the creator,
+        although a literal is also allowed.</td>
+      <td>http://purl.org/dc/terms/</td>
+      <td style="text-align:left;margin-left:0;margin-right:auto;"><img
+        alt="icon for ok" src="../../../../../../1291980081_camera_test.png"
+        width="31" height="29"><img alt="icon for ok"
+        src="images/1291980081_camera_test.png" width="32" height="32"></td>
     </tr>
     <tr>
-      <td>contributor</td>
-      <td>Dublin Core</td>
+      <td><em>contributor</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms">Dublin
+      Core</a></td>
       <td>Ontology</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>A contributor to the ontology: a person or an organization.
+        Recommended best practice is to use a FOAF profile to describe a
+        contributor, although a literal is also allowed.</td>
+      <td>http://purl.org/dc/terms/</td>
+      <td style="text-align:left;margin-left:0;margin-right:auto;"><img
+        alt="icon for ok" src="../../../../../../1291980081_camera_test.png"
+        width="31" height="29"><img alt="icon for ok"
+        src="images/1291980081_camera_test.png" width="32" height="32"></td>
     </tr>
     <tr>
-      <td>hasVersion</td>
-      <td>Dublin Core</td>
+      <td><em>hasVersion</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms">Dublin
+      Core</a></td>
       <td>Ontology</td>
-      <td>This property relates the ontology with its prior versions.</td>
-      <td></td>
-      <td></td>
+      <td>This property relates the ontology with its prior versions, i.e.
+        other ontologies. Notice that this property shouldn't be used to relate
+        the ontology with knowledge sources it is based on.</td>
+      <td>http://purl.org/dc/terms/</td>
+      <td style="text-align:left;margin-left:0;margin-right:auto;"><object
+        data="images/1291980279_close.png"
+        style="display: block; text-align: center; margin-left: auto; margin-right: auto"
+        height="34" width="39">
+          con for close</object></td>
     </tr>
     <tr>
-      <td>date / issued?</td>
-      <td>Dublin Core</td>
+      <td><em>date</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms">Dublin
+      Core</a></td>
       <td>Ontology</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>Expresses the date of creation or publication of the ontology.
+        Recommended best practice is to use the W3CDTF profile of ISO 8601.</td>
+      <td>http://purl.org/dc/terms/</td>
+      <td style="text-align:left;margin-left:0;margin-right:auto;"><img
+        alt="icon for ok" src="../../../../../../1291980081_camera_test.png"
+        width="31" height="29"><img alt="icon for ok"
+        src="images/1291980081_camera_test.png" width="32" height="32"></td>
     </tr>
     <tr>
-      <td>publisher</td>
-      <td>Dublin Core</td>
+      <td><em></em><em>publisher</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms">Dublin
+      Core</a></td>
       <td>Ontology</td>
-      <td>The entity responsible for making the ontology available.</td>
-      <td></td>
-      <td></td>
+      <td>The entity responsible for making the ontology available. Recommended
+        best practice is to use a FOAF profile to describe the publisher,
+        although a literal is also allowed.</td>
+      <td>http://purl.org/dc/terms/</td>
+      <td style="text-align:left;margin-left:0;margin-right:auto;"><img
+        alt="icon for ok" src="../../../../../../1291980081_camera_test.png"
+        width="31" height="29"><img alt="icon for ok"
+        src="images/1291980081_camera_test.png" width="32" height="32"></td>
     </tr>
     <tr>
-      <td>license</td>
-      <td>Dublin Core</td>
+      <td><em>license</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin
+      Core</a></td>
       <td>Ontology</td>
-      <td>A legal document describing the copyright license of the ontology. It
-        is a best practice to use Creative Commons licenses and to describe
-        them in RDF with the Creative Commons Rights Expression Language (CC
-        REL). </td>
-      <td>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</td>
-      <td></td>
+      <td>A legal document describing the copyright license of the ontology.
+        Recommended best practice is to use Creative Commons licenses and to
+        describe them in RDF with the Creative Commons Rights Expression
+        Language (CC REL). </td>
+      <td>http://purl.org/dc/terms/</td>
+      <td style="text-align:left;margin-left:0;margin-right:auto;"><object
+        data="images/1291980279_close.png"
+        style="display: block; text-align: center; margin-left: auto; margin-right: auto"
+        height="34" width="39">
+          con for close</object></td>
     </tr>
     <tr>
-      <td>subject</td>
-      <td>Dublin Core</td>
+      <td><em>title</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin
+      Core</a></td>
+      <td>Ontology</td>
+      <td>See <em>label</em></td>
+      <td>http://purl.org/dc/terms/</td>
+      <td style="text-align:left;margin-left:0;margin-right:auto;"><object
+        data="images/1291980279_close.png"
+        style="display: block; text-align: center; margin-left: auto; margin-right: auto"
+        height="34" width="39">
+          con for close</object></td>
+    </tr>
+    <tr>
+      <td><em>subject</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin
+      Core</a></td>
       <td>Ontology, Class, Property, Individual</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>The topic of a resource. A recommended best practice is to use a
+        controlled vocabulary encoded in SKOS format.</td>
+      <td>http://purl.org/dc/terms/</td>
+      <td style="text-align:left;margin-left:0;margin-right:auto;"><object
+        data="images/1291980279_close.png"
+        style="display: block; text-align: center; margin-left: auto; margin-right: auto"
+        height="34" width="39">
+          con for close</object></td>
     </tr>
     <tr>
-      <td>label</td>
+      <td><em>description</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin
+      Core</a></td>
+      <td>Ontology</td>
+      <td>See <em>comment</em></td>
+      <td>http://purl.org/dc/terms/</td>
+      <td style="text-align:center;margin-left:auto;margin-right:auto;"><object
+        data="images/1291980279_close.png"
+        style="display: block; text-align: center; margin-left: auto; margin-right: auto"
+        height="34" width="39">
+          con for close</object></td>
+    </tr>
+    <tr>
+      <td><em>label</em></td>
       <td>RDF Schema</td>
       <td>Ontology, Class, Property, Individual</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>The label of the resource. The range is a literal with a language
+      tag.</td>
+      <td>http://www.w3.org/2000/01/rdf-schema#</td>
+      <td style="text-align:left;margin-left:0;margin-right:auto;"><img
+        alt="icon for ok" src="../../../../../../1291980081_camera_test.png"
+        width="31" height="29"><img alt="icon for ok"
+        src="images/1291980081_camera_test.png" width="32" height="32"></td>
     </tr>
     <tr>
-      <td>comment</td>
+      <td><em>comment</em></td>
       <td>RDF Schema</td>
       <td>Ontology, Class, Property, Individual</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>The description of the resource. The range is a literal with a
+        language tag.</td>
+      <td>http://www.w3.org/2000/01/rdf-schema#</td>
+      <td style="text-align:left;margin-left:0;margin-right:auto;"><img
+        alt="icon for ok" src="../../../../../../1291980081_camera_test.png"
+        width="31" height="29"><img alt="icon for ok"
+        src="images/1291980081_camera_test.png" width="32" height="32"></td>
     </tr>
     <tr>
-      <td>prefLabel</td>
+      <td><em>prefLabel</em></td>
       <td>SKOS</td>
       <td>Class, Property, Individual</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>The preferred label of a resource. The range is a literal with a
+        language tag. In some cases, it is assumed that <em>prefLabel</em>
+        assumes the role of the <em>label</em> for presentation purposes.</td>
+      <td>http://www.w3.org/2004/02/skos/core#</td>
+      <td style="text-align:center;margin-left:auto;margin-right:auto;"><object
+        data="images/1291980279_close.png"
+        style="display: block; text-align: center; margin-left: auto; margin-right: auto"
+        height="34" width="39">
+          con for close</object></td>
     </tr>
     <tr>
-      <td>altLabel</td>
+      <td><em>altLabel</em></td>
       <td>SKOS</td>
       <td>Class, Property, Individual</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>An alternative label of a resource. The range is a literal with a
+        language tag.</td>
+      <td>http://www.w3.org/2004/02/skos/core#</td>
+      <td style="text-align:left;margin-left:0;margin-right:auto;"><object
+        data="images/1291980279_close.png"
+        style="display: block; text-align: center; margin-left: auto; margin-right: auto"
+        height="34" width="39">
+          con for close</object></td>
     </tr>
     <tr>
-      <td>prefLabel*</td>
+      <td><em>prefLabel*</em></td>
       <td>SKOS-XL</td>
       <td>Class, Property, Individual</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>The preferred label of a resource. The range of the property is an
+        instance of the class LexicalLabel.</td>
+      <td>http://www.w3.org/2008/05/skos-xl#</td>
+      <td style="text-align:left;margin-left:0;margin-right:auto;"><object
+        data="images/1291980279_close.png"
+        style="display: block; text-align: center; margin-left: auto; margin-right: auto"
+        height="34" width="39">
+          con for close</object></td>
     </tr>
     <tr>
-      <td>altLabel*</td>
+      <td><em>altLabel*</em></td>
       <td>SKOS-XL</td>
       <td>Class, Property, Individual</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>An alternative label of a resource. The range of the property is an
+        instance of the class LexicalLabel.</td>
+      <td>http://www.w3.org/2008/05/skos-xl#</td>
+      <td style="text-align:left;margin-left:0;margin-right:auto;"><object
+        data="images/1291980279_close.png"
+        style="display: block; text-align: center; margin-left: auto; margin-right: auto"
+        height="34" width="39">
+          con for close</object></td>
     </tr>
     <tr>
-      <td>depiction</td>
+      <td><em>depiction</em></td>
       <td>FOAF</td>
       <td>Ontology, Class, Property, Individual</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>An image associated with the resource. </td>
+      <td>http://xmlns.com/foaf/0.1/</td>
+      <td style="text-align:center;margin-left:auto;margin-right:auto;"><object
+        data="images/1291980279_close.png"
+        style="display: block; text-align: center; margin-left: auto; margin-right: auto"
+        height="34" width="39">
+          con for close</object></td>
     </tr>
     <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td><em>preferredNamespacePrefix</em></td>
+      <td>VANN</td>
+      <td>Ontology</td>
+      <td>The preferred namespace prefix when using entities of other
+        ontologies.</td>
+      <td>http://purl.org/vocab/vann/</td>
+      <td style="text-align:left;margin-left:0;margin-right:auto;"><img
+        alt="icon for ok" src="../../../../../../1291980081_camera_test.png"
+        width="31" height="29"><img alt="icon for ok"
+        src="images/1291980081_camera_test.png" width="32" height="32"></td>
     </tr>
     <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td><em>primaryTopic</em></td>
+      <td>FOAF</td>
+      <td>Ontology</td>
+      <td>See <em>subject</em></td>
+      <td>http://xmlns.com/foaf/0.1/</td>
+      <td style="text-align:left;margin-left:0;margin-right:auto;"><object
+        data="images/1291980279_close.png"
+        style="display: block; text-align: center; margin-left: auto; margin-right: auto"
+        height="34" width="39">
+          con for close</object></td>
     </tr>
   </tbody>
 </table>
@@ -239,19 +334,16 @@ src="http://yui.yahooapis.com/2.8.0r4/build/tabview/tabview-min.js">
 </script>
 <script type="text/javascript" src="javascript/scripts.js">
 </script>
-<                c:if test=${not empty paramValues.uris}><script
-type="text/javascript">
+&lt; c:if test=${not empty paramValues.uris}&gt;<script type="text/javascript">
         (function() {
                         var tabView = new YAHOO.widget.TabView('demo');
                         tabView.selectTab(0);
-        })();
-</script>
-</                                              c:if><                c:if
-test=${not empty param.documentText}><script type="text/javascript">
+        })();</script>
+</                                              c:if>&lt; c:if test=${not empty
+param.documentText}&gt;<script type="text/javascript">
                 (function() {
                         var tabView = new YAHOO.widget.TabView('demo');
                         tabView.selectTab(1);
-        })();
-</script>
+        })();</script>
 </                                              c:if></body>
 </html>

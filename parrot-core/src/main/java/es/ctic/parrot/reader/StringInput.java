@@ -28,4 +28,10 @@ public class StringInput implements Input {
         return new StringReader(content);
     }
 
+	@Override
+	public String toString() {
+		return "StringInput [mimeType=" + mimeType + ", content=" + content
+				+ "]";
+	}
+    
 }

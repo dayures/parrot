@@ -22,7 +22,7 @@ import org.apache.log4j.Logger;
 
 public class URLInput implements Input {
 
-    private static final Logger logger = Logger.getLogger(URLInput.class);
+	private static final Logger logger = Logger.getLogger(URLInput.class);
 
     // application/rdf+xml, application/xml : http://www.w3.org/TR/owl-ref/#MIMEType
     // application/rif+xml : http://www.w3.org/TR/rif-core/#Appendix:_RIF_Media_Type_Registration
@@ -125,5 +125,11 @@ public class URLInput implements Input {
     	else
     		return false;
     }
+
+    @Override
+	public String toString() {
+		return "URLInput [mimeType=" + mimeType + ", url=" + url + "]";
+	}
+
 
 }

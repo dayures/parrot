@@ -1,10 +1,8 @@
 package es.ctic.parrot.web;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -24,7 +22,6 @@ import es.ctic.parrot.reader.DocumentReader;
 import es.ctic.parrot.reader.ReaderException;
 import es.ctic.parrot.reader.StringInput;
 import es.ctic.parrot.reader.URLInput;
-import es.ctic.parrot.reader.Input;
 import es.ctic.parrot.reader.jena.JenaOWLReader;
 import es.ctic.parrot.reader.naiverifxml.RifXmlReader;
 import es.ctic.parrot.reader.rifleps.RiflePSReader;

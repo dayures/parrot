@@ -17,14 +17,14 @@ import es.ctic.parrot.transformers.DocumentableObjectVisitor;
 
 public class RuleImpl extends AbstractDocumentableObject implements Rule {
 	
-	private org.fundacionctic.rifle.ast.Rule rule;
+	private net.sourceforge.rifle.ast.Rule rule;
 	private Model iriMeta;
 
     private Identifier identifier;
 	
 	private static final Logger logger = Logger.getLogger(RuleImpl.class);
 
-	public RuleImpl(org.fundacionctic.rifle.ast.Rule rule, Model iriMeta) {
+	public RuleImpl(net.sourceforge.rifle.ast.Rule rule, Model iriMeta) {
 		this.rule = rule;
 		this.iriMeta = iriMeta;
 		if (rule.getId() == null) {

@@ -43,4 +43,9 @@ public class FileInput implements Input {
         return new FileReader(file);
     }
 
+	@Override
+	public String toString() {
+		return "FileInput [mimeType=" + mimeType + ", file=" + file + "]";
+	}
+
 }

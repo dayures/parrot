@@ -25,6 +25,7 @@ import org.xml.sax.SAXException;
 import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.reader.DocumentReader;
 import es.ctic.parrot.reader.Input;
+import es.ctic.parrot.reader.ReaderException;
 import es.ctic.parrot.reader.URLInput;
 
 public class RifXmlReader implements DocumentReader {
@@ -50,7 +51,7 @@ public class RifXmlReader implements DocumentReader {
         }
     }
 
-    public void readDocumentableObjects(Input input, DocumentableObjectRegister register) throws IOException {
+    public void readDocumentableObjects(Input input, DocumentableObjectRegister register) throws IOException, ReaderException {
         Document document = parseDocument(input.openReader());
         XPathFactory factory = XPathFactory.newInstance();
         XPath xpath = factory.newXPath();

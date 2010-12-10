@@ -13,6 +13,7 @@ import es.ctic.parrot.generators.DocumentationGenerator;
 import es.ctic.parrot.generators.HtmlGenerator;
 import es.ctic.parrot.reader.DocumentReader;
 import es.ctic.parrot.reader.Input;
+import es.ctic.parrot.reader.ReaderException;
 import es.ctic.parrot.transformers.DetailsVisitor;
 import es.ctic.parrot.transformers.DocumentableObjectVisitor;
 import es.ctic.parrot.transformers.OntologyInternalReferenceResolver;
@@ -39,8 +40,9 @@ public class ParrotAppServ {
 	 * 
 	 * @param dp
 	 * @throws IOException
+	 * @throws ReaderException 
 	 */
-	public void createDocumentation(DocumentaryProject dp) throws IOException {
+	public void createDocumentation(DocumentaryProject dp) throws IOException, ReaderException {
 	    DocumentableObjectRegister register = new DocumentableObjectRegister();
 		readAndRegisterDocumentableObjects(dp.getInputs(), register);
 		resolveInternalReferences(register);
@@ -61,7 +63,7 @@ public class ParrotAppServ {
     }
 
     private void readAndRegisterDocumentableObjects(Collection<Input> inputs, DocumentableObjectRegister register)
-            throws IOException {
+            throws IOException, ReaderException {
         for (Input input : inputs) {
             DocumentReader wrapper = getDocumentWrapperForInput(input);
             wrapper.readDocumentableObjects(input, register);

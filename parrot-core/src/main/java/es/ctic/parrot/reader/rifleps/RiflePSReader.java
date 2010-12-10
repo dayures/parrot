@@ -15,6 +15,7 @@ import net.sourceforge.rifle.psparser.RIFPRDParser;
 import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.reader.DocumentReader;
 import es.ctic.parrot.reader.Input;
+import es.ctic.parrot.reader.ReaderException;
 import es.ctic.parrot.reader.URLInput;
 
 public class RiflePSReader implements DocumentReader {
@@ -25,7 +26,7 @@ public class RiflePSReader implements DocumentReader {
     private DocumentReader rifXmlReader;
 	
 	public void readDocumentableObjects(Input input,
-			DocumentableObjectRegister register) throws IOException {
+			DocumentableObjectRegister register) throws IOException, ReaderException {
 
 		CharStream stream = new ANTLRReaderStream(input.openReader());
 		RIFPRDLexer lexer = new RIFPRDLexer(stream);
@@ -56,12 +57,11 @@ public class RiflePSReader implements DocumentReader {
 			      document.accept(visitor);
 			} else {
 				// FIXME. This only shows the number of errors, but not the errors.
-			      logger.error("RIF PS document cannot be parsed. There are " + parser.getNumberOfSyntaxErrors() + " syntax errors");
+				throw new ReaderException("RIF PS document " + input + " cannot be parsed. There are " + parser.getNumberOfSyntaxErrors() + " syntax errors");
 			}
 		} catch (RecognitionException e) {
 			// FIXME: use a more specific exception class (maybe org.antlr.runtime.RecognitionException)
-			logger.error("While parsing RIF PS document", e);
-			throw new RuntimeException(e);
+			throw new ReaderException("While parsing RIF PS document", e);
 		}
 		
 

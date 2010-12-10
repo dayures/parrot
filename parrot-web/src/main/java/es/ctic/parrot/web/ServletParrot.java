@@ -61,7 +61,6 @@ public class ServletParrot extends HttpServlet {
 				forwardToForm(req, res);
 			}
 
-			// Obtenemos un objeto Print Writer para enviar respuesta
 			res.setContentType("text/html");
 			generate(dp);
 	    } catch (MalformedURLException e) {
@@ -75,11 +74,6 @@ public class ServletParrot extends HttpServlet {
 		} catch (IOException e) {
 		    logger.error("While generating documentation", e);
 		    errors.addError("I/O Error: " + e.getMessage());
-		    //				if (((Input) (dp.getInputs().toArray()[0])).getMimeType().equals("application/rif+xml")){
-		    //					advices.add("Check the document markup using a <a href=\"http://idi.fundacionctic.org/rifle/\" >RIF validator</a>");			    			    		
-		    //				}else {
-		    //					advices.add("Check the document markup using a <a href=\"http://www.w3.org/RDF/Validator/\" >RDF validator</a>");
-		    //				}
 		    forwardToForm(req, res);
 		} catch (IllegalArgumentException e) {
 		    logger.error("Illegal request: " + req, e);

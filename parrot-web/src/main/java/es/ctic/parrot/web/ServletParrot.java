@@ -81,6 +81,9 @@ public class ServletParrot extends HttpServlet {
 		    //					advices.add("Check the document markup using a <a href=\"http://www.w3.org/RDF/Validator/\" >RDF validator</a>");
 		    //				}
 		    forwardToForm(req, res);
+		} catch (IllegalArgumentException e) {
+		    logger.error("Illegal request: " + req, e);
+		    res.sendError(400);
 		} catch (RuntimeException e) {
 		    logger.error("Unexpected error while generating documentation", e);
 		    res.sendError(500);
@@ -117,6 +120,9 @@ public class ServletParrot extends HttpServlet {
 	
 	private DocumentaryProject createDocumentaryProject(OutputStream out) {
 		InputStream template = Thread.currentThread().getContextClassLoader().getResourceAsStream("html/template.vm");
+		if (template == null) {
+		    throw new RuntimeException("Failed to load resource");
+		}
 		return new DocumentaryProject(template, out, LANG);		
 	}
 	
@@ -146,8 +152,13 @@ public class ServletParrot extends HttpServlet {
 		if (directInputText != null) {
 			directInputText = directInputText.trim();
 		}
-		String directInputMimetype = req.getParameter(MIMETYPE_TEXT);		
-		dp.addInput(new StringInput(directInputText, directInputMimetype)); 
+		if (directInputText != null && directInputText.length() > 0) {
+		    String directInputMimetype = req.getParameter(MIMETYPE_TEXT);
+		    if (directInputMimetype == null) {
+		        throw new IllegalArgumentException("Mimetype specification is required for direct input");
+		    }
+		    dp.addInput(new StringInput(directInputText, directInputMimetype)); 
+		}
 	}
 
 }

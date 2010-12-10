@@ -1,0 +1,207 @@
+body {
+  padding: 2em 8% 4em 8%;
+  margin: 0;
+  font-family: sans-serif;
+  color: black;
+  background: white;
+  background-position: top left;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+:link { color: #00C; background: transparent }
+:visited { color: #609; background: transparent }
+a:active { color: #C00; background: transparent }
+
+a:link img, a:visited img { border-style: none } /* no border on img links */
+
+a img { color: white; }        /* trick to hide the border in Netscape 4 */
+@media all {                   /* hide the next rule from Netscape 4 */
+  a img { color: inherit; }    /* undo the color change above */
+}
+
+th, td { /* ns 4 */
+  font-family: sans-serif;
+}
+h1, h2, h3, h4, h5, h6,.toc { text-align: left; color: Chocolate; }
+
+/* background should be transparent, but WebTV has a bug */
+/* h1, h2, h3 ,.toc { color: #660099; background: white } */
+h1 { font: 170% sans-serif; display: inline; }
+h2, .toc b { font: 140% sans-serif }
+h2 { margin-top: 1em; }
+h3 { font: 120% sans-serif }
+h4 { font: bold 100% sans-serif }
+h5 { font: italic 100% sans-serif }
+h6 { font: small-caps 100% sans-serif }
+
+.hide { display: none }
+
+div.head { margin-bottom: 1em }
+div.constraint, div.issue, div.note, div.notice     { margin-left: 2em; }
+div.exampleInner pre { margin-left: 1em; margin-top: 0em; margin-bottom: 0em}
+div.exampleOuter {border: 4px double gray; margin: 0em; padding: 0em}
+div.exampleInner { background-color: #d5dee3;
+     	           border-top-width: 4px;
+       	           border-top-style: double;
+       	           border-top-color: #d3d3d3;
+       	           border-bottom-width: 4px;
+       	           border-bottom-style: double;
+       	           border-bottom-color: #d3d3d3;
+       	           padding: 4px; margin: 0em }
+div.exampleWrapper { margin: 4px }
+div.exampleHeader { font-weight: bold; margin: 4px}
+div.list { font: 100% sans-serif; color:#000000; font-weight: normal; line-height: 60%} 
+
+.optional {text-decoration: line-through; display: none;}
+
+.copyright,.legalnotice { font-size: small }
+.copyright small { font-size: small }
+
+@media screen {  /* hide from IE3 */
+a[href]:hover { background: #ffa }
+}
+
+pre { margin-left: 2em }
+/*
+p {
+  margin-top: 0.6em;
+  margin-bottom: 0.6em;
+}
+*/
+dt, dd { margin-top: 0; margin-bottom: 0 } /* opera 3.50 */
+dt { font-weight: bold }
+dt.fm {font-weight: normal; margin-top: 5px;}
+
+.ecma-block {   border: 1px solid black;  color: black;  background-color: #dfdfdf; }     
+
+pre, code { font-family: monospace } /* navigator 4 requires this */
+
+ul.toc, ol.toc {
+  list-style: disc;		/* Mac NS has problem with 'none' */
+  list-style: none;
+}
+
+ol#toc, ol#toc ol { counter-reset: item }
+ol#toc li { display: block }
+ol#toc li:before { content: counters(item, ".") ". "; counter-increment: item }
+ol#appendix { list-style-type:upper-alpha; }
+
+ol.enumar      { list-style-type: decimal; }
+ol.enumla      { list-style-type: lower-alpha; }
+ol.enumlr      { list-style-type: lower-roman; }
+ol.enumua      { list-style-type: upper-alpha; }
+ol.enumur      { list-style-type: upper-roman; }
+
+@media aural {  
+  h1, h2, h3 { stress: 20; richness: 90 }
+  .hide { speak: none }
+  p.copyright { volume: x-soft; speech-rate: x-fast }
+  dt { pause-before: 20% }
+  pre { speak-punctuation: code } 
+}
+
+body {
+  background-image: url("../images/wd.png");
+}
+
+.toc dl dt {
+	font-weight: normal;
+}
+
+img#vulcano-logo {
+  float: right;
+  margin-right: 2em;
+}
+
+pre span.xml {
+  font-weight: bold;
+}
+
+pre span.curie {
+  font-weight: bold;
+  color: #84008a;
+}
+
+pre span.uri {
+  color: #4600ff;
+}
+
+div.term {
+  padding-bottom: 1em;
+  border-bottom: 1px solid #3d506f;
+  margin-bottom: 1em;
+}
+
+dl#ontologieslist {
+  margin-left: 2em;
+}
+
+dl#ontologieslist dt {
+  margin-top: 2em;
+}
+
+div#footer {
+  margin-top: 5em;
+  border-top: 1px #3d506f solid;
+  padding-top: 0.5em;
+  font-size: 0.65em;
+}
+
+div#footer img#mitc {
+  float: right;
+  margin-left: 0.5em;
+}
+
+
+table{
+margin-left:auto;
+margin-right:auto;
+border-collapse:collapse;
+}
+
+th, td {
+padding:0.2em 0.5em;
+border-top:1px solid #CCCCCC;
+}
+
+th {
+background-color:AntiqueWhite;
+}
+
+td{
+font-size:0.95em;
+}
+
+div.prefix-glance{
+padding: 1em; 
+border: dotted; 
+background-color: #D8BFD8
+}
+
+.example{
+background-color:#D9E3E9;
+border:1px dotted black;
+padding:5px;
+}
+
+img.centered {
+display: block;
+margin: auto;
+padding-bottom:20px;
+}
+
+div.toc{
+	background-color:#DBEADC;
+	padding: 1em;
+	border: dotted;
+	background-color: #ddd;
+	margin-bottom: 1em;
+}
+
+dt{
+ 	font-weight:bold;
+}
+
+div.term a{
+	font-family: monospace;
+}

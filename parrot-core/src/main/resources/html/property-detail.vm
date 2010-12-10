@@ -1,0 +1,40 @@
+<div class="term">
+  #if($element.Label)
+    <h3><a id="$element.Anchor"></a>Property: $element.Label</h3>
+  #else
+    <h3><a id="$element.Anchor"></a>Property: $element.Uri</h3>
+  #end
+  <dl>
+  #if($element.Uri)
+      <dt>Uri</dt>
+      <dd><a href="$element.Uri">$element.Uri</a></dd>      
+  #end
+  #if($element.Label)
+      <dt>Label</dt>
+      <dd>$element.Label</dd>
+   #end
+   #if($element.Comment)
+      <dt>Comment</dt>
+      <dd>$element.Comment</dd>
+   #end
+   #if($element.Domain)
+      <dt>Domain:</dt>
+      <dd><a href="#$element.Domain.LocalName">$element.Domain.URI</a></dd>
+   #end
+   #if($element.Range)
+      <dt>Range</dt>
+      <dd><a href="#$element.Range.LocalName">$element.Range.URI</a></dd>
+   #end
+   #if(!$element.InverseReferences.isEmpty())
+   <dt>Referenced from</dt>
+   #foreach($reference in $element.InverseReferences)
+      <dd><a href="#$reference.LocalName">$reference.Identifier</a></dd>
+   #end
+   #end
+   #if($element.cardinality != 0)
+   <dt>Cardinality:</dt>
+   <dd>$element.cardinality</dd>
+   #end
+  </dl>
+  <p style="float: right; font-size: small;">[<a href="#toc">back to top</a>]</p> 
+</div>   

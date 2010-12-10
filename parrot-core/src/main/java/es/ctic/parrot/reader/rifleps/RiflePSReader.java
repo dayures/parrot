@@ -32,11 +32,13 @@ public class RiflePSReader implements DocumentReader {
 		RIFPRDLexer lexer = new RIFPRDLexer(stream);
 		CommonTokenStream tokens = new CommonTokenStream(lexer);
 		RIFPRDParser parser = new RIFPRDParser(tokens);
+        ErrorReporterImpl errorReporter = new ErrorReporterImpl();
+        parser.setErrorReporter(errorReporter);
 		try {
 			RIFPRDParser.document_return document_return = parser.document();
 			
 			if (parser.getNumberOfSyntaxErrors() == 0) {
-			      logger.info("RIF PS document successfully parsed");
+			      logger.info("RIF PS document " + input + " successfully parsed");
 //				  for (String locator : parser.importMap.keySet()) {
 //					    logger.info("IMPORT. Locator: " + locator + ", profile: " + parser.importMap.get(locator));
 //		                URL url = new URL(locator);
@@ -56,8 +58,7 @@ public class RiflePSReader implements DocumentReader {
 			      RifVisitor visitor = new RifVisitor(register);
 			      document.accept(visitor);
 			} else {
-				// FIXME. This only shows the number of errors, but not the errors.
-				throw new ReaderException("RIF PS document " + input + " cannot be parsed. There are " + parser.getNumberOfSyntaxErrors() + " syntax errors");
+                throw new ReaderException("RIF PS document " + input + " cannot be parsed. There are " + parser.getNumberOfSyntaxErrors() + " syntax errors. First error is: " + errorReporter.getFirstError());
 			}
 		} catch (RecognitionException e) {
 			// FIXME: use a more specific exception class (maybe org.antlr.runtime.RecognitionException)

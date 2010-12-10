@@ -22,6 +22,27 @@
 		title="go to parrot project home page">PARROT </a></h1>
 	<h2>a RIF and OWL documentation service (alpha version)</h2>
 	</div>
+
+		<c:if test="${ ! empty errorsGeneral}" >    	
+    	<div class="inputData" id="inputDataReport">
+			<h2 class="error">Errors</h2>
+			<div class="inputDataReport">
+		    	<ul class="error">
+					<c:forEach var="line" items="${errorsGeneral}">
+		         		<li class="error"><span>${line}</span></li>
+		      		</c:forEach>
+				</ul> 
+				<c:if test="${ ! empty advices}">
+		    	<ul class="advice">
+					<c:forEach var="line" items="${advices}">
+		         		<li class="advice"><span>${line}</span></li>
+		      		</c:forEach>
+				</ul>
+				</c:if>
+			</div>
+		</div>
+		</c:if>
+
 		<div class="inputData"> 
 		<div id="demo" class="yui-navset"> 
 		    <ul class="yui-nav"> 
@@ -96,26 +117,6 @@
 		    </div> 
 		</div> 
 
-
-		<c:if test="${ ! empty errorsGeneral}" >    	
-    	<div class="inputData" id="inputDataReport">
-			<h2 class="error">Errors</h2>
-			<div class="inputDataReport">
-		    	<ul class="error">
-					<c:forEach var="line" items="${errorsGeneral}">
-		         		<li class="error"><span>${line}</span></li>
-		      		</c:forEach>
-				</ul> 
-				<c:if test="${ ! empty advices}">
-		    	<ul class="advice">
-					<c:forEach var="line" items="${advices}">
-		         		<li class="advice"><span>${line}</span></li>
-		      		</c:forEach>
-				</ul>
-				</c:if>
-			</div>
-		</div>
-		</c:if>
 	</div>    
 
     <div id="footer"> 

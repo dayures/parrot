@@ -8,9 +8,9 @@ import org.antlr.runtime.CharStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
 import org.apache.log4j.Logger;
-import org.fundacionctic.rifle.ast.Document;
-import org.fundacionctic.rifle.psparser.RIFPRDLexer;
-import org.fundacionctic.rifle.psparser.RIFPRDParser;
+import net.sourceforge.rifle.ast.Document;
+import net.sourceforge.rifle.psparser.RIFPRDLexer;
+import net.sourceforge.rifle.psparser.RIFPRDParser;
 
 import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.reader.DocumentReader;

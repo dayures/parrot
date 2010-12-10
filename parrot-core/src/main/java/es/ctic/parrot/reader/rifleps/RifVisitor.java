@@ -1,10 +1,10 @@
 package es.ctic.parrot.reader.rifleps;
 
 import org.apache.log4j.Logger;
-import org.fundacionctic.rifle.ast.Document;
-import org.fundacionctic.rifle.ast.Group;
-import org.fundacionctic.rifle.ast.Rule;
-import org.fundacionctic.rifle.visitor.Visitor;
+import net.sourceforge.rifle.ast.Document;
+import net.sourceforge.rifle.ast.Group;
+import net.sourceforge.rifle.ast.Rule;
+import net.sourceforge.rifle.visitor.Visitor;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;

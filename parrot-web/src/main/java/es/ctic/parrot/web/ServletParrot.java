@@ -7,6 +7,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,6 +19,7 @@ import org.apache.log4j.Logger;
 
 import es.ctic.parrot.DocumentaryProject;
 import es.ctic.parrot.appserv.ParrotAppServ;
+import es.ctic.parrot.generators.HtmlOutputGenerator;
 import es.ctic.parrot.reader.DocumentReader;
 import es.ctic.parrot.reader.ReaderException;
 import es.ctic.parrot.reader.StringInput;
@@ -54,14 +56,17 @@ public class ServletParrot extends HttpServlet {
 		req.setAttribute(ADVICES, advices);
 
 		try {
-			DocumentaryProject dp = createDocumentaryProject(res.getOutputStream());
+			DocumentaryProject dp = new DocumentaryProject(Locale.ENGLISH); // FIXME
 			addUriInputs(dp, req);
 			addDirectInput(dp, req);
 			if (dp.getInputs().isEmpty()) {
 				forwardToForm(req, res);
 			} else {
+			    InputStream template = getTemplateInputStream();
+                HtmlOutputGenerator outputGenerator = new HtmlOutputGenerator(res.getOutputStream(), template);
+                ParrotAppServ parrotAppServ = getParrotAppServ();
 			    res.setContentType("text/html");
-			    generate(dp);
+			    parrotAppServ.createDocumentation(dp, outputGenerator);
 			}
 	    } catch (MalformedURLException e) {
 	        logger.error("While generating documentation", e);
@@ -92,7 +97,6 @@ public class ServletParrot extends HttpServlet {
 		dispatcher.forward(req,res);
 	}
 
-
 	private boolean checkURI(String uri) {
 		if (uri == null || ("".equals(uri)) || ("http://".equals(uri))){
 			return false;
@@ -101,24 +105,24 @@ public class ServletParrot extends HttpServlet {
 		}
 	}
 
-	public void generate(DocumentaryProject dp) throws IOException, ReaderException {
-		ParrotAppServ app = new ParrotAppServ();
+    private ParrotAppServ getParrotAppServ() {
+        ParrotAppServ app = new ParrotAppServ();
 		DocumentReader ontologyWrapper = new JenaOWLReader();
 		DocumentReader ruleWrapper = new RifXmlReader(ontologyWrapper);
 		DocumentReader rifPSWrapper = new RiflePSReader(ontologyWrapper, ruleWrapper);
 		app.setOntologyWrapper(ontologyWrapper);
 		app.setRuleWrapper(ruleWrapper);
 		app.setRifPSWrapper(rifPSWrapper);
-		app.createDocumentation(dp);
-	}
+        return app;
+    }
 	
-	private DocumentaryProject createDocumentaryProject(OutputStream out) {
-		InputStream template = Thread.currentThread().getContextClassLoader().getResourceAsStream("html/template.vm");
+    private InputStream getTemplateInputStream() {
+        InputStream template = Thread.currentThread().getContextClassLoader().getResourceAsStream("html/template.vm");
 		if (template == null) {
 		    throw new RuntimeException("Failed to load resource");
 		}
-		return new DocumentaryProject(template, out, LANG);		
-	}
+        return template;
+    }
 	
 	private void addUriInputs(DocumentaryProject dp, HttpServletRequest req) throws MalformedURLException, IOException {
 		String[] uriInputs = req.getParameterValues(DOCUMENT_URI);

@@ -1,5 +1,6 @@
 package es.ctic.parrot.web;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -63,10 +64,12 @@ public class ServletParrot extends HttpServlet {
 				forwardToForm(req, res);
 			} else {
 			    InputStream template = getTemplateInputStream();
-                HtmlOutputGenerator outputGenerator = new HtmlOutputGenerator(res.getOutputStream(), template);
+			    ByteArrayOutputStream out = new ByteArrayOutputStream();
+                HtmlOutputGenerator outputGenerator = new HtmlOutputGenerator(out, template);
                 ParrotAppServ parrotAppServ = getParrotAppServ();
-			    res.setContentType("text/html");
 			    parrotAppServ.createDocumentation(dp, outputGenerator);
+                res.setContentType("text/html");
+			    res.getOutputStream().write(out.toByteArray());
 			}
 	    } catch (MalformedURLException e) {
 	        logger.error("While generating documentation", e);

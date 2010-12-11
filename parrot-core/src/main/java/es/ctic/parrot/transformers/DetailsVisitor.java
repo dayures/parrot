@@ -1,5 +1,7 @@
 package es.ctic.parrot.transformers;
 
+import java.util.Locale;
+
 import org.apache.log4j.Logger;
 
 import es.ctic.parrot.de.Ontology;
@@ -19,19 +21,19 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
     private static final Logger logger = Logger.getLogger(DetailsVisitor.class);
     
     private Document document;
-    private String lang;
+    private Locale locale;
     
-    public DetailsVisitor(Document document,String lang) {
+    public DetailsVisitor(Document document, Locale locale) {
         this.document = document;
-        this.lang=lang;
+        this.locale = locale;
     }
     
 	public Object visit(OntologyClass object) {
 	    logger.debug("Visiting class " + object);
 		OntologyClassDetailView details=new OntologyClassDetailView(object);
 		details.setUri(object.getURI());
-		details.setLabel(object.getLabel(lang));
-		details.setComment(object.getComment(lang));
+		details.setLabel(object.getLabel(locale));
+		details.setComment(object.getComment(locale));
 		for(OntologyClass ontclass:object.getSuperClasses()){
 			details.addSuperClasses(ontclass);
 		}
@@ -47,8 +49,8 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 	    logger.debug("Visiting property " + object);
 		OntologyPropertyDetailView details = new OntologyPropertyDetailView(object);
 		details.setUri(object.getURI());
-		details.setLabel(object.getLabel(lang));
-		details.setComment(object.getComment(lang));
+		details.setLabel(object.getLabel(locale));
+		details.setComment(object.getComment(locale));
 		details.setDomain(object.getDomain());
 		details.setRange(object.getRange());
 		details.setInverseReferences(object.getInternalReferences());
@@ -61,8 +63,8 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 	    logger.debug("Visiting ontology " + object);
 		OntologyDetailView details=new OntologyDetailView(object);
 		details.setUri(object.getURI());
-		details.setLabel(object.getLabel(lang));
-		details.setComment(object.getComment(lang));
+		details.setLabel(object.getLabel(locale));
+		details.setComment(object.getComment(locale));
 		details.setVersion(object.getVersion());
 		details.setEditors(object.getEditors());
 		details.setContributors(object.getContributors());
@@ -86,7 +88,7 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 	public Object visit(OntologyIndividual object) {
 	    logger.debug("Visiting individual " + object);
 		OntologyIndividualDetailView details = new OntologyIndividualDetailView(object);
-		details.setLabel(object.getLabel(lang));
+		details.setLabel(object.getLabel(locale));
 		details.setUri(object.getURI());
 		details.addAllTypes(object.getTypes());
 		document.addOntologyIndividualDetailView(details);

@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
+import java.util.Locale;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -17,6 +18,8 @@ import org.apache.commons.cli.PosixParser;
 import org.apache.log4j.Logger;
 
 import es.ctic.parrot.appserv.ParrotAppServ;
+import es.ctic.parrot.generators.HtmlOutputGenerator;
+import es.ctic.parrot.generators.OutputGenerator;
 import es.ctic.parrot.reader.DocumentReader;
 import es.ctic.parrot.reader.FileInput;
 import es.ctic.parrot.reader.URLInput;
@@ -59,7 +62,7 @@ public class CommandLineInterface  {
         app.setRuleWrapper(ruleWrapper);
         try {
             InputStream templateInputStream = openTemplateInputStream(template);
-            DocumentaryProject dp = new DocumentaryProject(templateInputStream, out, lang);
+            DocumentaryProject dp = new DocumentaryProject(new Locale(lang));
             for ( String inputFilename : cmd.getArgs() ) {
                 if (inputFilename.startsWith("http:")) {
                     dp.addInput(new URLInput(new URL(inputFilename)));
@@ -67,14 +70,8 @@ public class CommandLineInterface  {
                     dp.addInput(new FileInput(new File(inputFilename)));
                 }
             }
-//            dp.addInput(new URLInput(new URL("http://ontorule-project.eu/resources/steel.owl"), "application/rdf+xml"));
-//            dp.addInput(new URLInput(new URL("http://ontologies.ezweb.morfeo-project.org/reco/reco.owl"), "application/rdf+xml"));
-//            dp.addInput(new URLInput(new URL("http://ontorule-project.eu/resources/rif/steel"), "application/rif+xml"));              
-//            dp.addInput(new URLInput(new URL("http://ontorule-project.eu/resources/rif/steel.rif"), "application/rif+xml"));
-//            dp.addInput(new URLInput(new URL("http://idi.fundacionctic.org/docom/docom.owl"), "application/rdf+xml"));
-//            dp.addInput(new URLInput(new URL("http://www.w3.org/2005/rules/test/repository/tc/OWL_Combination_Vocabulary_Separation_Inconsistency_2/OWL_Combination_Vocabulary_Separation_Inconsistency_2-premise.rif"), "application/rif+xml"));
-//            dp.addInput(new URLInput(new URL("http://localhost/~berrueta/ontorule/sample-rule.rif.xml"), "application/rif+xml"));
-            app.createDocumentation(dp);
+            OutputGenerator outputGenerator = new HtmlOutputGenerator(out, templateInputStream);
+            app.createDocumentation(dp, outputGenerator);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }

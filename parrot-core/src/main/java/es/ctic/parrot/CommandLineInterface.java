@@ -24,7 +24,7 @@ import es.ctic.parrot.reader.DocumentReader;
 import es.ctic.parrot.reader.FileInput;
 import es.ctic.parrot.reader.URLInput;
 import es.ctic.parrot.reader.jena.JenaOWLReader;
-import es.ctic.parrot.reader.naiverifxml.RifXmlReader;
+import es.ctic.parrot.reader.rifle.RifleXmlReader;
 
 public class CommandLineInterface  {
     
@@ -57,7 +57,7 @@ public class CommandLineInterface  {
         }
         ParrotAppServ app = new ParrotAppServ();
         DocumentReader ontologyWrapper = new JenaOWLReader();
-        DocumentReader ruleWrapper = new RifXmlReader(ontologyWrapper);
+        DocumentReader ruleWrapper = new RifleXmlReader(ontologyWrapper);
         app.setOntologyWrapper(ontologyWrapper);
         app.setRuleWrapper(ruleWrapper);
         try {

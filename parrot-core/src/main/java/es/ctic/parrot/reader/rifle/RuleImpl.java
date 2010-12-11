@@ -1,4 +1,4 @@
-package es.ctic.parrot.reader.rifleps;
+package es.ctic.parrot.reader.rifle;
 
 import java.util.Collection;
 import java.util.LinkedList;

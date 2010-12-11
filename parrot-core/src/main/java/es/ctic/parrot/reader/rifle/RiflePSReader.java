@@ -55,7 +55,7 @@ public class RiflePSReader implements DocumentReader {
 //				  }
 			      
 			      Document document = document_return.ret_document;
-			      RifVisitor visitor = new RifVisitor(register);
+			      RifleASTVisitor visitor = new RifleASTVisitor(register);
 			      document.accept(visitor);
 			} else {
                 throw new ReaderException("RIF PS document " + input + " cannot be parsed. There are " + parser.getNumberOfSyntaxErrors() + " syntax errors. First error is: " + errorReporter.getFirstError());

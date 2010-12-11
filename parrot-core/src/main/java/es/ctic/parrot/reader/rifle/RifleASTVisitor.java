@@ -11,15 +11,15 @@ import com.hp.hpl.jena.rdf.model.ModelFactory;
 
 import es.ctic.parrot.de.DocumentableObjectRegister;
 
-public class RifVisitor extends Visitor {
+public class RifleASTVisitor extends Visitor {
     
-    private static final Logger logger = Logger.getLogger(RifVisitor.class);
+    private static final Logger logger = Logger.getLogger(RifleASTVisitor.class);
 	
 	private DocumentableObjectRegister register;
 
     private Model model;
 
-	public RifVisitor(DocumentableObjectRegister register) {
+	public RifleASTVisitor(DocumentableObjectRegister register) {
 		super();
 		this.register = register;
         model = ModelFactory.createDefaultModel();

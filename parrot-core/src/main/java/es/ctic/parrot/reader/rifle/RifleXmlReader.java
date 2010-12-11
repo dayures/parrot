@@ -22,7 +22,7 @@ public class RifleXmlReader implements DocumentReader {
         Source source = new StreamSource(input.openReader());
         try {
             Document document = parser.parse(source);
-            RifVisitor visitor = new RifVisitor(register);
+            RifleASTVisitor visitor = new RifleASTVisitor(register);
             document.accept(visitor);            
         } catch (Exception e) {
             throw new ReaderException(e);

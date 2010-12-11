@@ -10,7 +10,8 @@ import es.ctic.parrot.de.OntologyClass;
 import es.ctic.parrot.transformers.DocumentableObjectVisitor;
 
 public class OntologyClassJenaImpl extends AbstractJenaDocumentableObject implements OntologyClass{
-	private Collection<OntologyClass> superClasses;
+
+    private Collection<OntologyClass> superClasses;
 	private Collection<OntologyClass> subClasses;
 	
 	public OntologyClassJenaImpl(OntClass ontclass){

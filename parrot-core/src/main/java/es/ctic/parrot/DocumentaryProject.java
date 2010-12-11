@@ -5,6 +5,7 @@ import java.io.OutputStream;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
+import java.util.Locale;
 
 import es.ctic.parrot.reader.Input;
 
@@ -17,20 +18,14 @@ import es.ctic.parrot.reader.Input;
  */
 public class DocumentaryProject {
     
-    private Collection<Input> inputs = new LinkedList<Input>();
-    private OutputStream out;
-    private InputStream template;
-    private String lang;
+    private final Collection<Input> inputs = new LinkedList<Input>();
+    private Locale locale;
     
     /**
-     * @param template The template for the output report
-     * @param out Stream where the output will be written
-     * @param lang Report locale, e.g., "en".
+     * @param lang Report locale
      */
-    public DocumentaryProject(InputStream template, OutputStream out, String lang) {
-        this.out = out;
-        this.template = template;
-        this.lang=lang;
+    public DocumentaryProject(Locale locale) {
+        this.setLocale(locale);
     }
 
     public void addInput(Input input) {
@@ -41,16 +36,12 @@ public class DocumentaryProject {
         return Collections.unmodifiableCollection(inputs);
     }
 
-    public OutputStream getOutputStream() {
-        return out;
-    }
-    
-    public InputStream getTemplate() {
-        return template;
+    public void setLocale(Locale locale) {
+        this.locale = locale;
     }
 
-	public String getLang() {
-		return lang;
-	}
+    public Locale getLocale() {
+        return locale;
+    }
 
 }

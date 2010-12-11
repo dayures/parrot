@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntResource;
@@ -31,12 +32,12 @@ public abstract class AbstractJenaDocumentableObject extends
 		this.ontResource = ontResource;
 	}
 	
-	public String getURI(){
+	public String getURI() {
 		return ontResource.getURI();
 	}
 	
-    public String getLabel(String lang) {
-        String label = ontResource.getLabel(lang);
+    public String getLabel(Locale locale) {
+        String label = ontResource.getLabel(locale.toString());
         if (label == null) {
             return ontResource.getLabel(null);
         } else {
@@ -44,8 +45,8 @@ public abstract class AbstractJenaDocumentableObject extends
         }
     }
     
-    public String getComment(String lang) {
-        return ontResource.getComment(lang); 
+    public String getComment(Locale locale) {
+        return ontResource.getComment(locale.toString()); 
     }
 
 	public Identifier getIdentifier() {

@@ -1,16 +1,14 @@
 package es.ctic.parrot.appserv;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.Collection;
+import java.util.Locale;
 
 import es.ctic.parrot.DocumentaryProject;
 import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.docmodel.Document;
-import es.ctic.parrot.generators.DocumentationGenerator;
-import es.ctic.parrot.generators.HtmlGenerator;
+import es.ctic.parrot.generators.OutputGenerator;
 import es.ctic.parrot.reader.DocumentReader;
 import es.ctic.parrot.reader.Input;
 import es.ctic.parrot.reader.ReaderException;
@@ -39,17 +37,18 @@ public class ParrotAppServ {
 	 * Generates the report for a documentary project
 	 * 
 	 * @param dp
+	 * @param outputGenerator
 	 * @throws IOException
 	 * @throws ReaderException 
 	 */
-	public void createDocumentation(DocumentaryProject dp) throws IOException, ReaderException {
+	public void createDocumentation(DocumentaryProject dp, OutputGenerator outputGenerator) throws IOException, ReaderException {
 	    DocumentableObjectRegister register = new DocumentableObjectRegister();
 		readAndRegisterDocumentableObjects(dp.getInputs(), register);
 		resolveInternalReferences(register);
 		resolveCrossReferences(register);
 		Collection<DocumentableObject> documentableObjects = register.getDocumentableObjects();
-		Document document = transformToDocument(documentableObjects, dp.getLang());		
-		generateOutput(dp.getTemplate(), dp.getOutputStream(), document);
+		Document document = transformToDocument(documentableObjects, dp.getLocale());		
+		outputGenerator.generateOutput(document);
 	}
 
     private void resolveInternalReferences(DocumentableObjectRegister register) {
@@ -84,20 +83,14 @@ public class ParrotAppServ {
         }
     }
 
-    private Document transformToDocument(Collection<DocumentableObject> documentableObjects, String lang) {
+    private Document transformToDocument(Collection<DocumentableObject> documentableObjects, Locale locale) {
         Document document = new Document();
-		document.setTitle("Parrot");
-        DetailsVisitor detailVisitor = new DetailsVisitor(document,lang);
+		document.setTitle("Parrot"); // FIXME
+        DetailsVisitor detailVisitor = new DetailsVisitor(document, locale);
 		for (DocumentableObject documentableObject : documentableObjects) {
 			documentableObject.accept(detailVisitor);
 		}
         return document;
-    }
-
-    private void generateOutput(InputStream template, OutputStream out,
-            Document document) {
-        DocumentationGenerator generator = new HtmlGenerator(document);
-        generator.generate(template, out);
     }
 
     public void setOntologyWrapper(DocumentReader ontologyWrapper) {

@@ -26,8 +26,8 @@ import es.ctic.parrot.reader.ReaderException;
 import es.ctic.parrot.reader.StringInput;
 import es.ctic.parrot.reader.URLInput;
 import es.ctic.parrot.reader.jena.JenaOWLReader;
-import es.ctic.parrot.reader.naiverifxml.RifXmlReader;
 import es.ctic.parrot.reader.rifle.RiflePSReader;
+import es.ctic.parrot.reader.rifle.RifleXmlReader;
 import es.ctic.parrot.utils.ErrorBuffer;
 
 
@@ -111,7 +111,7 @@ public class ServletParrot extends HttpServlet {
     private ParrotAppServ getParrotAppServ() {
         ParrotAppServ app = new ParrotAppServ();
 		DocumentReader ontologyWrapper = new JenaOWLReader();
-		DocumentReader ruleWrapper = new RifXmlReader(ontologyWrapper);
+		DocumentReader ruleWrapper = new RifleXmlReader(ontologyWrapper);
 		DocumentReader rifPSWrapper = new RiflePSReader(ontologyWrapper, ruleWrapper);
 		app.setOntologyWrapper(ontologyWrapper);
 		app.setRuleWrapper(ruleWrapper);

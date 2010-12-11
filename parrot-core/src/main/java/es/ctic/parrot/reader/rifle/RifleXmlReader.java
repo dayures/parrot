@@ -15,6 +15,12 @@ import es.ctic.parrot.reader.ReaderException;
 
 public class RifleXmlReader implements DocumentReader {
 
+    private DocumentReader ontologyReader;
+    
+    public RifleXmlReader(DocumentReader ontologyReader) {
+        this.ontologyReader = ontologyReader;
+    }
+    
     public void readDocumentableObjects(Input input,
             DocumentableObjectRegister register) throws IOException,
             ReaderException {

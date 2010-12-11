@@ -27,7 +27,7 @@ import es.ctic.parrot.reader.StringInput;
 import es.ctic.parrot.reader.URLInput;
 import es.ctic.parrot.reader.jena.JenaOWLReader;
 import es.ctic.parrot.reader.naiverifxml.RifXmlReader;
-import es.ctic.parrot.reader.rifleps.RiflePSReader;
+import es.ctic.parrot.reader.rifle.RiflePSReader;
 import es.ctic.parrot.utils.ErrorBuffer;
 
 

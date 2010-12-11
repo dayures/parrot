@@ -1,4 +1,4 @@
-package es.ctic.parrot.reader.rifleps;
+package es.ctic.parrot.reader.rifle;
 
 import java.io.IOException;
 import java.net.URL;

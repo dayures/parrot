@@ -14,6 +14,7 @@ import es.ctic.parrot.de.Identifier;
 import es.ctic.parrot.de.OntologyProperty;
 import es.ctic.parrot.de.Rule;
 import es.ctic.parrot.de.URIIdentifier;
+import es.ctic.parrot.reader.rifle.RIFIdentifier;
 import es.ctic.parrot.transformers.DocumentableObjectVisitor;
 
 public class RuleXmlImpl extends AbstractDocumentableObject implements Rule {

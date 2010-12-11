@@ -1,4 +1,4 @@
-package es.ctic.parrot.reader.naiverifxml;
+package es.ctic.parrot.reader.rifle;
 
 import es.ctic.parrot.de.Identifier;
 

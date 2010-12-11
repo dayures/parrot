@@ -115,6 +115,8 @@
 					</div>
 				</form>
 		    </div> 
+		    
+		    <p>Do you need <a href="help.jsp">help</a>?</p>
 		</div> 
 
 	</div>    

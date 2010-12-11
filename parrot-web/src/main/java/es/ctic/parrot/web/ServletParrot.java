@@ -59,10 +59,10 @@ public class ServletParrot extends HttpServlet {
 			addDirectInput(dp, req);
 			if (dp.getInputs().isEmpty()) {
 				forwardToForm(req, res);
+			} else {
+			    res.setContentType("text/html");
+			    generate(dp);
 			}
-
-			res.setContentType("text/html");
-			generate(dp);
 	    } catch (MalformedURLException e) {
 	        logger.error("While generating documentation", e);
 	        errors.addError("Malformed URI: " + e.getMessage());

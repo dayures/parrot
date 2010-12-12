@@ -13,12 +13,11 @@ import es.ctic.parrot.reader.DocumentReader;
 import es.ctic.parrot.reader.Input;
 import es.ctic.parrot.reader.ReaderException;
 
-public class RifleXmlReader implements DocumentReader {
+public class RifleXmlReader extends ImportResolver implements DocumentReader {
 
-    private DocumentReader ontologyReader;
-    
     public RifleXmlReader(DocumentReader ontologyReader) {
-        this.ontologyReader = ontologyReader;
+        super(ontologyReader);
+        setRifXmlReader(this);
     }
     
     public void readDocumentableObjects(Input input,
@@ -28,8 +27,9 @@ public class RifleXmlReader implements DocumentReader {
         Source source = new StreamSource(input.openReader());
         try {
             Document document = parser.parse(source);
+            resolveImports(document, register);
             RifleASTVisitor visitor = new RifleASTVisitor(register);
-            document.accept(visitor);            
+            document.accept(visitor);
         } catch (Exception e) {
             throw new ReaderException(e);
         }

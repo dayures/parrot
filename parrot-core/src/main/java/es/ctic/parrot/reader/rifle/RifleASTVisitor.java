@@ -1,8 +1,11 @@
 package es.ctic.parrot.reader.rifle;
 
+import java.net.URL;
+
 import org.apache.log4j.Logger;
 import net.sourceforge.rifle.ast.Document;
 import net.sourceforge.rifle.ast.Group;
+import net.sourceforge.rifle.ast.Import;
 import net.sourceforge.rifle.ast.Rule;
 import net.sourceforge.rifle.ast.visitor.Visitor;
 
@@ -10,6 +13,9 @@ import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 
 import es.ctic.parrot.de.DocumentableObjectRegister;
+import es.ctic.parrot.reader.DocumentReader;
+import es.ctic.parrot.reader.Input;
+import es.ctic.parrot.reader.URLInput;
 
 public class RifleASTVisitor extends Visitor {
     
@@ -50,5 +56,11 @@ public class RifleASTVisitor extends Visitor {
 		register.registerDocumentableObject(r);
 		return null;
 	}
+
+    @Override
+    public Object visit(Import imp) {
+        // nothing to do, imports have been resolved before
+        return null;
+    }
 
 }

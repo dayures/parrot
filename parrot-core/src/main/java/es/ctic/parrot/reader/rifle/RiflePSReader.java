@@ -18,13 +18,14 @@ import es.ctic.parrot.reader.Input;
 import es.ctic.parrot.reader.ReaderException;
 import es.ctic.parrot.reader.URLInput;
 
-public class RiflePSReader implements DocumentReader {
+public class RiflePSReader extends ImportResolver implements DocumentReader {
 
     private static final Logger logger = Logger.getLogger(RiflePSReader.class);
     
-    private DocumentReader ontologyWrapper;
-    private DocumentReader rifXmlReader;
-	
+    public RiflePSReader(DocumentReader ontologyWrapper, DocumentReader rifXmlReader) {
+        super(ontologyWrapper, rifXmlReader);
+    }
+    
 	public void readDocumentableObjects(Input input,
 			DocumentableObjectRegister register) throws IOException, ReaderException {
 
@@ -38,23 +39,8 @@ public class RiflePSReader implements DocumentReader {
 			RIFPRDParser.document_return document_return = parser.document();
 			
 			if (parser.getNumberOfSyntaxErrors() == 0) {
-			      logger.info("RIF PS document " + input + " successfully parsed");
-//				  for (String locator : parser.importMap.keySet()) {
-//					    logger.info("IMPORT. Locator: " + locator + ", profile: " + parser.importMap.get(locator));
-//		                URL url = new URL(locator);
-//
-//		                logger.info("locator: "+ parser.importMap.get(locator));
-//
-//		                if(parser.importMap.get(locator) != null){
-//			                Input additionalInput = new URLInput(url, "application/rdf+xml"); // FIXME: hardcoded mime type. Profile is not used yet
-//			                ontologyWrapper.readDocumentableObjects(additionalInput, register);
-//		                }else{
-//		                	Input additionalInput = new URLInput(url, "application/rif+xml"); // FIXME: hardcoded mime type. Profile is not used yet
-//		                	rifXmlReader.readDocumentableObjects(additionalInput, register);
-//		                }
-//				  }
-			      
 			      Document document = document_return.ret_document;
+                  resolveImports(document, register);
 			      RifleASTVisitor visitor = new RifleASTVisitor(register);
 			      document.accept(visitor);
 			} else {
@@ -67,12 +53,5 @@ public class RiflePSReader implements DocumentReader {
 		
 
 	}
-
-	public RiflePSReader(DocumentReader ontologyWrapper, DocumentReader rifXmlReader) {
-		super();
-		this.ontologyWrapper = ontologyWrapper;
-		this.rifXmlReader = rifXmlReader;
-	}
-	
 
 }

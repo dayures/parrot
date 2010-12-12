@@ -7,6 +7,7 @@ import net.sourceforge.rifle.ast.Document;
 import net.sourceforge.rifle.ast.Group;
 import net.sourceforge.rifle.ast.Import;
 import net.sourceforge.rifle.ast.Rule;
+import net.sourceforge.rifle.ast.visitor.ToPSVisitor;
 import net.sourceforge.rifle.ast.visitor.Visitor;
 
 import com.hp.hpl.jena.rdf.model.Model;
@@ -34,6 +35,11 @@ public class RifleASTVisitor extends Visitor {
 	@Override
 	public Object visit(Document document) {
 		logger.debug("Visiting RIF document AST node: " + document);
+		if (logger.isDebugEnabled()) { // because the message is computationally expensive
+		    ToPSVisitor toPSVisitor = new ToPSVisitor();
+		    document.accept(toPSVisitor);
+		    logger.debug("AST: " + toPSVisitor.getPS());
+		}
 		if (document.getGroup() != null) {
 			document.getGroup().accept(this);
 		}

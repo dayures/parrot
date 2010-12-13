@@ -157,6 +157,15 @@ by PARROT.</p>
           </img></td>
     </tr>
     <tr>
+      <td><em>versionInfo</em></td>
+      <td><a href="http://www.w3.org/TR/2004/REC-owl-guide-20040210/#OntologyVersioning">OWL</a></td>
+      <td>Ontology</td>
+      <td>Provides a hook suitable for use by versioning systems.</td>
+      <td>http://www.w3.org/2002/07/owl#</td>
+      <td><img alt="Currently supported"
+        src="images/1291980081_camera_test.png" width="32" height="32"></img></td>          
+    </tr>
+    <tr>
       <td><em>label</em></td>
       <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
       <td>Ontology, Class, Property, Individual</td>

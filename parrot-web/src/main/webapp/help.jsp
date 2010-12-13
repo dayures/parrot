@@ -28,7 +28,7 @@ title="go to parrot project home page">PARROT </a></h1>
 <h2>a RIF and OWL documentation service (alpha version)</h2>
 </div>
 
-<p>This table describes the annotates properties relevant for adding metadata to ontologies. Notice that not all the properties are currently supported
+<p>This table describes the annotates properties relevant for adding metadata to <strong>ontologies</strong>. Notice that not all the properties are currently supported
 by PARROT.</p>
 
 <p></p>
@@ -260,6 +260,115 @@ by PARROT.</p>
       <td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td>
       <td>Ontology</td>
       <td>See <em>subject</em></td>
+      <td>http://xmlns.com/foaf/0.1/</td>
+      <td><img
+        src="images/1291980279_close.png"
+        height="34" width="39" alt="Currently not supported">
+          </img></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>This table describes the annotates properties relevant for adding metadata to <strong>rules</strong>. Notice that not all the properties are currently supported
+by PARROT.</p>
+
+<p></p>
+
+<table>
+  <tbody>
+    <tr>
+      <th>Property</th>
+      <th>Vocabulary</th>
+      <th>Scope</th>
+      <th>Description</th>
+      <th>Namespace</th>
+      <th>Supported?</th>
+    </tr>
+    <tr>
+      <td><em>versionInfo</em></td>
+      <td><a href="http://www.w3.org/TR/2004/REC-owl-guide-20040210/#OntologyVersioning">OWL</a></td>
+      <td>Document, Group, Rule</td>
+      <td>Provides a hook suitable for use by versioning systems.</td>
+      <td>http://www.w3.org/2002/07/owl#</td>
+      <td><img alt="Currently supported"
+        src="images/1291980081_camera_test.png" width="32" height="32"></img></td>          
+    </tr>
+    <tr>
+      <td><em>label</em></td>
+      <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
+      <td>Document, Group, Rule</td>
+      <td>The label of the resource. The range is a literal with a language
+      tag.</td>
+      <td>http://www.w3.org/2000/01/rdf-schema#</td>
+      <td><img alt="icon for ok"
+        src="images/1291980081_camera_test.png" width="32" height="32"></img></td>
+    </tr>
+    <tr>
+      <td><em>comment</em></td>
+      <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
+      <td>Document, Group, Rule</td>
+      <td>The description of the resource. The range is a literal with a
+        language tag.</td>
+      <td>http://www.w3.org/2000/01/rdf-schema#</td>
+      <td><img alt="icon for ok"
+        src="images/1291980081_camera_test.png" width="32" height="32"></img></td>
+    </tr>
+    <tr>
+      <td><em>seeAlso</em></td>
+      <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
+      <td>Document, Group, Rule</td>
+      <td>FIXME</td>
+      <td>http://www.w3.org/2000/01/rdf-schema#</td>
+      <td><img alt="icon for ok"
+        src="images/1291980081_camera_test.png" width="32" height="32"></img></td>
+    </tr>
+    <tr>
+      <td><em>isDefinedBy</em></td>
+      <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
+      <td>Document, Group, Rule</td>
+      <td>FIXME</td>
+      <td>http://www.w3.org/2000/01/rdf-schema#</td>
+      <td><img alt="icon for ok"
+        src="images/1291980081_camera_test.png" width="32" height="32"></img></td>
+    </tr>
+    <tr>
+      <td><em>creator</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin
+      Core</a></td>
+      <td>Document, Group, Rule</td>
+      <td>FIXME</td>
+      <td>http://purl.org/dc/terms/</td>
+      <td><img alt="icon for ok"
+        src="images/1291980081_camera_test.png" width="32" height="32"></img></td>
+    </tr>
+    <tr>
+      <td><em>description</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin
+      Core</a></td>
+      <td>Document, Group, Rule</td>
+      <td>See <em>comment</em></td>
+      <td>http://purl.org/dc/terms/</td>
+      <td><img
+        src="images/1291980279_close.png"
+        height="34" width="39" alt="Currently not supported">
+          </img></td>
+    </tr>
+    <tr>
+      <td><em>date</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin
+      Core</a></td>
+      <td>Document, Group, Rule</td>
+      <td>Expresses the date of creation or publication of the ontology.
+        Recommended best practice is to use the W3CDTF profile of ISO 8601.</td>
+      <td>http://purl.org/dc/terms/</td>
+      <td><img alt="icon for ok"
+        src="images/1291980081_camera_test.png" width="32" height="32"></img></td>
+    </tr>
+    <tr>
+      <td><em>maker</em></td>
+      <td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td>
+      <td>Document, Group, Rule</td>
+      <td>An image associated with the resource. </td>
       <td>http://xmlns.com/foaf/0.1/</td>
       <td><img
         src="images/1291980279_close.png"

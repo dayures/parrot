@@ -158,7 +158,7 @@ by PARROT.</p>
     </tr>
     <tr>
       <td><em>label</em></td>
-      <td>RDF Schema</td>
+      <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
       <td>Ontology, Class, Property, Individual</td>
       <td>The label of the resource. The range is a literal with a language
       tag.</td>
@@ -168,7 +168,7 @@ by PARROT.</p>
     </tr>
     <tr>
       <td><em>comment</em></td>
-      <td>RDF Schema</td>
+      <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
       <td>Ontology, Class, Property, Individual</td>
       <td>The description of the resource. The range is a literal with a
         language tag.</td>
@@ -178,7 +178,7 @@ by PARROT.</p>
     </tr>
     <tr>
       <td><em>prefLabel</em></td>
-      <td>SKOS</td>
+      <td><a href="http://www.w3.org/TR/skos-reference/#overview">SKOS</a></td>
       <td>Class, Property, Individual</td>
       <td>The preferred label of a resource. The range is a literal with a
         language tag. In some cases, it is assumed that <em>prefLabel</em>
@@ -191,7 +191,7 @@ by PARROT.</p>
     </tr>
     <tr>
       <td><em>altLabel</em></td>
-      <td>SKOS</td>
+      <td><a href="http://www.w3.org/TR/skos-reference/#overview">SKOS</a></td>
       <td>Class, Property, Individual</td>
       <td>An alternative label of a resource. The range is a literal with a
         language tag.</td>
@@ -203,7 +203,7 @@ by PARROT.</p>
     </tr>
     <tr>
       <td><em>prefLabel*</em></td>
-      <td>SKOS-XL</td>
+      <td><a href="http://www.w3.org/TR/skos-reference/#xl">SKOS-XL</a></td>
       <td>Class, Property, Individual</td>
       <td>The preferred label of a resource. The range of the property is an
         instance of the class LexicalLabel.</td>
@@ -215,7 +215,7 @@ by PARROT.</p>
     </tr>
     <tr>
       <td><em>altLabel*</em></td>
-      <td>SKOS-XL</td>
+      <td><a href="http://www.w3.org/TR/skos-reference/#xl">SKOS-XL</a></td>
       <td>Class, Property, Individual</td>
       <td>An alternative label of a resource. The range of the property is an
         instance of the class LexicalLabel.</td>
@@ -227,7 +227,7 @@ by PARROT.</p>
     </tr>
     <tr>
       <td><em>depiction</em></td>
-      <td>FOAF</td>
+      <td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td>
       <td>Ontology, Class, Property, Individual</td>
       <td>An image associated with the resource. </td>
       <td>http://xmlns.com/foaf/0.1/</td>
@@ -238,7 +238,7 @@ by PARROT.</p>
     </tr>
     <tr>
       <td><em>preferredNamespacePrefix</em></td>
-      <td>VANN</td>
+      <td><a href="http://vocab.org/vann">VANN</a></td>
       <td>Ontology</td>
       <td>The preferred namespace prefix when using entities of other
         ontologies.</td>
@@ -248,7 +248,7 @@ by PARROT.</p>
     </tr>
     <tr>
       <td><em>primaryTopic</em></td>
-      <td>FOAF</td>
+      <td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td>
       <td>Ontology</td>
       <td>See <em>subject</em></td>
       <td>http://xmlns.com/foaf/0.1/</td>

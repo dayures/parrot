@@ -20,17 +20,17 @@
    #if($element.Domain)
       <dt>Domain:</dt>
       #if($element.Domain.Label)
-      	<dd><a href="#$element.Domain.LocalName">$element.Domain.Label</a></dd>
+      	<dd><span class="parrot-class-ref"><a href="#$element.Domain.LocalName">$element.Domain.Label</a></span></dd>
       #else
-        <dd><a href="#$element.Domain.LocalName">$element.Domain.Identifier</a></dd>
+        <dd><span class="parrot-class-ref"><a href="#$element.Domain.LocalName">$element.Domain.Identifier</a></span></dd>
       #end
    #end
    #if($element.Range)
       <dt>Range</dt>
       #if($element.Range.Label)
-      	<dd><a href="#$element.Range.LocalName">$element.Range.Label</a></dd>
+      	<dd><span class="parrot-class-ref"><a href="#$element.Range.LocalName">$element.Range.Label</a></span></dd>
       #else
-        <dd><a href="#$element.Range.LocalName">$element.Range.Identifier</a></dd>
+        <dd><span class="parrot-class-ref"><a href="#$element.Range.LocalName">$element.Range.Identifier</a></span></dd>
       #end      
    #end
    #if(!$element.InverseReferences.isEmpty())
@@ -53,9 +53,9 @@
    <dt>Referenced rules</dt>
    #foreach($reference in $element.inverseRuleReferences)
       #if($reference.Label)
-      	<dd><a href="#$reference.LocalName">$reference.Label</a></dd>
+      	<dd><span class="parrot-rule-ref"><a href="#$reference.LocalName">$reference.Label</a></span></dd>
       #else
-        <dd><a href="#$reference.LocalName">$reference.Identifier</a></dd>
+        <dd><span class="parrot-rule-ref"><a href="#$reference.LocalName">$reference.Identifier</a></span></dd>
       #end   
    #end
    #end

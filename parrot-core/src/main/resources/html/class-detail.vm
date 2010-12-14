@@ -1,8 +1,8 @@
 <div class="term">
   #if($element.Label)
-    <h3><a id="$element.Anchor"></a>Class: $element.Label</h3>
+    <h3><a id="$element.Anchor"></a>Class: <span class="parrot-class-title">$element.Label</span></h3>
   #else
-    <h3><a id="$element.Anchor"></a>Class: $element.Uri</h3>
+    <h3><a id="$element.Anchor"></a>Class: <span class="parrot-class-title">$element.Uri</span></h3>
   #end
   <dl>
   #if($element.Uri)
@@ -21,9 +21,9 @@
 	<dt>SuperClasses</dt>
     #foreach($superclass in $element.SuperClasses)
       #if($superclass.Label)
-      	<dd><a href="#$superclass.LocalName">$superclass.Label</a></dd>
+      	<dd><span class="parrot-class-ref"><a href="#$superclass.LocalName">$superclass.Label</a></span></dd>
       #else
-        <dd><a href="#$superclass.LocalName">$superclass.Identifier</a></dd>
+        <dd><span class="parrot-class-ref"><a href="#$superclass.LocalName">$superclass.Identifier</a></span></dd>
       #end
     #end
   #end
@@ -31,9 +31,9 @@
     <dt>SubClasses</dt>
     #foreach($subclass in $element.SubClasses)
       #if($subclass.Label)
-      	<dd><a href="#$subclass.LocalName">$subclass.Label</a></dd>
+      	<dd><span class="parrot-class-ref"><a href="#$subclass.LocalName">$subclass.Label</a></span></dd>
       #else
-        <dd><a href="#$subclass.LocalName">$subclass.Identifier</a></dd>
+        <dd><span class="parrot-class-ref"><a href="#$subclass.LocalName">$subclass.Identifier</a></span></dd>
       #end
     #end
   #end
@@ -41,9 +41,9 @@
    <dt>Referenced from (range or domain of...)</dt>
    #foreach($reference in $element.InverseReferences)
       #if($reference.Label)
-      	<dd><a href="#$reference.LocalName">$reference.Label</a></dd>
+      	<dd><span class="parrot-property-ref"><a href="#$reference.LocalName">$reference.Label</a></span></dd>
       #else
-        <dd><a href="#$reference.LocalName">$reference.Identifier</a></dd>
+        <dd><span class="parrot-property-ref"><a href="#$reference.LocalName">$reference.Identifier</a></span></dd>
       #end
    #end
   #end
@@ -52,9 +52,9 @@
    <dt>Referenced rules</dt>
    #foreach($reference in $element.inverseRuleReferences)
       #if($reference.Label)
-      	<dd><a href="#$reference.LocalName">$reference.Label</a></dd>
+      	<dd><span class="parrot-rule-ref"><a href="#$reference.LocalName">$reference.Label</a></span></dd>
       #else
-        <dd><a href="#$reference.LocalName">$reference.Identifier</a></dd>
+        <dd><span class="parrot-rule-ref"><a href="#$reference.LocalName">$reference.Identifier</a></span></dd>
       #end
    #end
   #end

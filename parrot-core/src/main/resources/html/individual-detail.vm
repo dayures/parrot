@@ -1,8 +1,8 @@
 <div class="term">
   #if($element.Label)
-    <h3><a id="$element.Anchor"></a>Individual: $element.Label</h3>
+    <h3><a id="$element.Anchor"></a><span class="parrot-individual-title">$element.Label</span> (Individual)</h3>
   #else
-    <h3><a id="$element.Anchor"></a>Individual: $element.Uri</h3>
+    <h3><a id="$element.Anchor"></a></span class="parrot-individual-title">Individual: $element.Uri</span> (Individual)</h3>
   #end
   <dl>
   #if($element.Uri)

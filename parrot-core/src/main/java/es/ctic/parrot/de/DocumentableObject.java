@@ -12,8 +12,9 @@ public interface DocumentableObject {
 	public String getLocalName();
     public void addReference(DocumentableObject documentableObject);
     public Collection<DocumentableObject> getInternalReferences();
-	public abstract String getURI();
-	public abstract String getLabel(Locale locale);
-	public abstract String getComment(Locale locale);    
+	public String getURI();
+	public String getLabel(Locale locale);
+	public String getLabel();
+	public String getComment(Locale locale);    
 	
 }

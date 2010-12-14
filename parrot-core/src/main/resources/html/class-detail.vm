@@ -20,26 +20,42 @@
   #if(!$element.SuperClasses.isEmpty())
 	<dt>SuperClasses</dt>
     #foreach($superclass in $element.SuperClasses)
-      <dd><a href="#$superclass.LocalName">$superclass.Identifier</a></dd>
+      #if($superclass.Label)
+      	<dd><a href="#$superclass.LocalName">$superclass.Label</a></dd>
+      #else
+        <dd><a href="#$superclass.LocalName">$superclass.Identifier</a></dd>
+      #end
     #end
   #end
   #if(!$element.SubClasses.isEmpty())
     <dt>SubClasses</dt>
     #foreach($subclass in $element.SubClasses)
-      <dd><a href="#$subclass.LocalName">$subclass.Identifier</a></dd>
+      #if($subclass.Label)
+      	<dd><a href="#$subclass.LocalName">$subclass.Label</a></dd>
+      #else
+        <dd><a href="#$subclass.LocalName">$subclass.Identifier</a></dd>
+      #end
     #end
   #end
   #if(!$element.InverseReferences.isEmpty())
    <dt>Referenced from (range or domain of...)</dt>
    #foreach($reference in $element.InverseReferences)
-      <dd><a href="#$reference.LocalName">$reference.Identifier</a></dd>
+      #if($reference.Label)
+      	<dd><a href="#$reference.LocalName">$reference.Label</a></dd>
+      #else
+        <dd><a href="#$reference.LocalName">$reference.Identifier</a></dd>
+      #end
    #end
   #end
   
   #if(!$element.inverseRuleReferences.isEmpty())
    <dt>Referenced rules</dt>
    #foreach($reference in $element.inverseRuleReferences)
-      <dd><a href="#$reference.LocalName">$reference.Identifier</a></dd>
+      #if($reference.Label)
+      	<dd><a href="#$reference.LocalName">$reference.Label</a></dd>
+      #else
+        <dd><a href="#$reference.LocalName">$reference.Identifier</a></dd>
+      #end
    #end
   #end
   

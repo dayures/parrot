@@ -46,7 +46,11 @@
    #if(!$element.referencedOntologicalObjects.isEmpty())
    <dt>Referenced ontological objects</dt>
    #foreach($v in $element.referencedOntologicalObjects)
-      <dd><a href="#$v.LocalName">$v.Identifier</a></dd>
+      #if($v.Label)
+      	<dd><a href="#$v.LocalName">$v.Label</a></dd>
+      #else
+        <dd><a href="#$v.LocalName">$v.Identifier</a></dd>
+      #end
    #end
    #end
   

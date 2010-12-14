@@ -1,8 +1,5 @@
 package es.ctic.parrot.reader.rifle;
 
-import java.net.URL;
-
-import org.apache.log4j.Logger;
 import net.sourceforge.rifle.ast.Document;
 import net.sourceforge.rifle.ast.Group;
 import net.sourceforge.rifle.ast.Import;
@@ -10,13 +7,9 @@ import net.sourceforge.rifle.ast.Rule;
 import net.sourceforge.rifle.ast.visitor.ToPSVisitor;
 import net.sourceforge.rifle.ast.visitor.Visitor;
 
-import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
+import org.apache.log4j.Logger;
 
 import es.ctic.parrot.de.DocumentableObjectRegister;
-import es.ctic.parrot.reader.DocumentReader;
-import es.ctic.parrot.reader.Input;
-import es.ctic.parrot.reader.URLInput;
 
 public class RifleASTVisitor extends Visitor {
     
@@ -24,12 +17,9 @@ public class RifleASTVisitor extends Visitor {
 	
 	private DocumentableObjectRegister register;
 
-    private Model model;
-
 	public RifleASTVisitor(DocumentableObjectRegister register) {
 		super();
 		this.register = register;
-        model = ModelFactory.createDefaultModel();
 	}
 
 	@Override
@@ -58,7 +48,8 @@ public class RifleASTVisitor extends Visitor {
 	@Override
 	public Object visit(Rule rule) {
 		logger.debug("Visiting RIF rule AST node: " + rule);
-		RuleImpl r = new RuleImpl(rule, model);
+		
+		RuleImpl r = new RuleImpl(rule);
 		register.registerDocumentableObject(r);
 		return null;
 	}

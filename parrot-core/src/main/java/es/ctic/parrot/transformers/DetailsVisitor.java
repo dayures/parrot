@@ -77,6 +77,10 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 	    logger.debug("Visiting rule " + object);
 	    RuleDetailView details = new RuleDetailView(object);
 	    details.setIdentifier(object.getIdentifier());
+		details.setUri(object.getURI());
+		details.setLabel(object.getLabel(locale));
+		details.setComment(object.getComment(locale));
+		details.setDate(object.getDate());
 	    document.addRuleDetailView(details);
 	    return details;
 	}

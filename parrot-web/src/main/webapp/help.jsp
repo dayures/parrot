@@ -52,7 +52,7 @@ by PARROT.</p>
         best practice is to use a FOAF profile to describe the creator,
         although a literal is also allowed.</td>
       <td>http://purl.org/dc/terms/</td>
-      <td><img alt="icon for ok"
+      <td><img alt="Currently supported"
         src="images/1291980081_camera_test.png" width="32" height="32"></img></td>
     </tr>
     <tr>
@@ -64,7 +64,7 @@ by PARROT.</p>
         Recommended best practice is to use a FOAF profile to describe a
         contributor, although a literal is also allowed.</td>
       <td>http://purl.org/dc/terms/</td>
-      <td><img alt="icon for ok"
+      <td><img alt="Currently supported"
         src="images/1291980081_camera_test.png" width="32" height="32"></img></td>
     </tr>
     <tr>
@@ -89,7 +89,7 @@ by PARROT.</p>
       <td>Expresses the date of creation or publication of the ontology.
         Recommended best practice is to use the W3CDTF profile of ISO 8601.</td>
       <td>http://purl.org/dc/terms/</td>
-      <td><img alt="icon for ok"
+      <td><img alt="Currently supported"
         src="images/1291980081_camera_test.png" width="32" height="32"></img></td>
     </tr>
     <tr>
@@ -101,7 +101,7 @@ by PARROT.</p>
         best practice is to use a FOAF profile to describe the publisher,
         although a literal is also allowed.</td>
       <td>http://purl.org/dc/terms/</td>
-      <td><img alt="icon for ok"
+      <td><img alt="Currently supported"
         src="images/1291980081_camera_test.png" width="32" height="32"></img></td>
     </tr>
     <tr>
@@ -172,7 +172,7 @@ by PARROT.</p>
       <td>The label of the resource. The range is a literal with a language
       tag.</td>
       <td>http://www.w3.org/2000/01/rdf-schema#</td>
-      <td><img alt="icon for ok"
+      <td><img alt="Currently supported"
         src="images/1291980081_camera_test.png" width="32" height="32"></img></td>
     </tr>
     <tr>
@@ -182,7 +182,7 @@ by PARROT.</p>
       <td>The description of the resource. The range is a literal with a
         language tag.</td>
       <td>http://www.w3.org/2000/01/rdf-schema#</td>
-      <td><img alt="icon for ok"
+      <td><img alt="Currently supported"
         src="images/1291980081_camera_test.png" width="32" height="32"></img></td>
     </tr>
     <tr>
@@ -252,7 +252,7 @@ by PARROT.</p>
       <td>The preferred namespace prefix when using entities of other
         ontologies.</td>
       <td>http://purl.org/vocab/vann/</td>
-      <td><img alt="icon for ok"
+      <td><img alt="Currently supported"
         src="images/1291980081_camera_test.png" width="32" height="32"></img></td>
     </tr>
     <tr>
@@ -285,96 +285,78 @@ by PARROT.</p>
       <th>Supported?</th>
     </tr>
     <tr>
-      <td><em>versionInfo</em></td>
-      <td><a href="http://www.w3.org/TR/2004/REC-owl-guide-20040210/#OntologyVersioning">OWL</a></td>
-      <td>Document, Group, Rule</td>
-      <td>Provides a hook suitable for use by versioning systems.</td>
-      <td>http://www.w3.org/2002/07/owl#</td>
-      <td><img alt="Currently supported"
-        src="images/1291980081_camera_test.png" width="32" height="32"></img></td>          
-    </tr>
-    <tr>
       <td><em>label</em></td>
       <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
-      <td>Document, Group, Rule</td>
+      <td>Rule</td>
       <td>The label of the resource. The range is a literal with a language
       tag.</td>
       <td>http://www.w3.org/2000/01/rdf-schema#</td>
-      <td><img alt="icon for ok"
+      <td><img alt="Currently supported"
         src="images/1291980081_camera_test.png" width="32" height="32"></img></td>
     </tr>
     <tr>
       <td><em>comment</em></td>
       <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
-      <td>Document, Group, Rule</td>
+      <td>Rule</td>
       <td>The description of the resource. The range is a literal with a
         language tag.</td>
       <td>http://www.w3.org/2000/01/rdf-schema#</td>
-      <td><img alt="icon for ok"
-        src="images/1291980081_camera_test.png" width="32" height="32"></img></td>
-    </tr>
-    <tr>
-      <td><em>seeAlso</em></td>
-      <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
-      <td>Document, Group, Rule</td>
-      <td>FIXME</td>
-      <td>http://www.w3.org/2000/01/rdf-schema#</td>
-      <td><img alt="icon for ok"
-        src="images/1291980081_camera_test.png" width="32" height="32"></img></td>
-    </tr>
-    <tr>
-      <td><em>isDefinedBy</em></td>
-      <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
-      <td>Document, Group, Rule</td>
-      <td>FIXME</td>
-      <td>http://www.w3.org/2000/01/rdf-schema#</td>
-      <td><img alt="icon for ok"
+      <td><img alt="Currently supported"
         src="images/1291980081_camera_test.png" width="32" height="32"></img></td>
     </tr>
     <tr>
       <td><em>creator</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin
       Core</a></td>
-      <td>Document, Group, Rule</td>
+      <td>Rule</td>
       <td>FIXME</td>
       <td>http://purl.org/dc/terms/</td>
-      <td><img alt="icon for ok"
+      <td><img alt="Currently supported"
         src="images/1291980081_camera_test.png" width="32" height="32"></img></td>
     </tr>
     <tr>
-      <td><em>description</em></td>
+      <td><em>contributor</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin
       Core</a></td>
-      <td>Document, Group, Rule</td>
-      <td>See <em>comment</em></td>
+      <td>Rule</td>
+      <td>FIXME</td>
       <td>http://purl.org/dc/terms/</td>
-      <td><img
-        src="images/1291980279_close.png"
-        height="34" width="39" alt="Currently not supported">
-          </img></td>
+      <td><img alt="Currently supported"
+        src="images/1291980081_camera_test.png" width="32" height="32"></img></td>
     </tr>
+    <tr>
+      <td><em>publisher</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin
+      Core</a></td>
+      <td>Rule</td>
+      <td>FIXME</td>
+      <td>http://purl.org/dc/terms/</td>
+      <td><img alt="Currently supported"
+        src="images/1291980081_camera_test.png" width="32" height="32"></img></td>
+    </tr>    
     <tr>
       <td><em>date</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin
       Core</a></td>
-      <td>Document, Group, Rule</td>
+      <td>Rule</td>
       <td>Expresses the date of creation or publication of the ontology.
         Recommended best practice is to use the W3CDTF profile of ISO 8601.</td>
       <td>http://purl.org/dc/terms/</td>
-      <td><img alt="icon for ok"
+      <td><img alt="Currently supported"
         src="images/1291980081_camera_test.png" width="32" height="32"></img></td>
     </tr>
     <tr>
-      <td><em>maker</em></td>
-      <td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td>
+      <td><em>versionInfo</em></td>
+      <td><a href="http://www.w3.org/TR/2004/REC-owl-guide-20040210/#OntologyVersioning">OWL</a></td>
       <td>Document, Group, Rule</td>
-      <td>An image associated with the resource. </td>
-      <td>http://xmlns.com/foaf/0.1/</td>
+      <td>Provides a hook suitable for use by versioning systems.</td>
+      <td>http://www.w3.org/2002/07/owl#</td>
       <td><img
         src="images/1291980279_close.png"
         height="34" width="39" alt="Currently not supported">
-          </img></td>
+          </img></td>         
     </tr>
+
   </tbody>
 </table>
 

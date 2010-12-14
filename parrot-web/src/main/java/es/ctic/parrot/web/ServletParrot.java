@@ -127,7 +127,7 @@ public class ServletParrot extends HttpServlet {
         return template;
     }
 	
-	private void addUriInputs(DocumentaryProject dp, HttpServletRequest req) throws MalformedURLException, IOException {
+	private void addUriInputs(DocumentaryProject dp, HttpServletRequest req) throws MalformedURLException, IOException, ReaderException {
 		String[] uriInputs = req.getParameterValues(DOCUMENT_URI);
 		String[] uriInputMimetypes = req.getParameterValues(MIMETYPE);
 

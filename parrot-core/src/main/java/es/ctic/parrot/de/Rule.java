@@ -5,9 +5,9 @@ import java.util.List;
 
 public interface Rule extends DocumentableOntologicalObject {
 
-    public Collection<OntologyProperty> getReferencedOntologyProperties();
+    public Collection<DocumentableOntologicalObject> getReferencedOntologicalObjects();
 
-    public Collection<String> getDeclaredVars();
+    // public Collection<String> getDeclaredVars();
     
 	public String getDate();
 	public List<String> getEditors();

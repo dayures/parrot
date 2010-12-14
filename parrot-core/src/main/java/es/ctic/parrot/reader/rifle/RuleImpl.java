@@ -68,10 +68,13 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
     public String getLabel(Locale locale) {
     	
     	String label = null;
+
+    	if (locale !=null) {
+    		if (iriMeta.getOntResource(getURI()) != null){
+    			label = iriMeta.getOntResource(getURI()).getLabel(locale.toString());
+    		}
+    	}
     	
-    	if (iriMeta.getOntResource(getURI()) != null)
-    		label = iriMeta.getOntResource(getURI()).getLabel(locale.toString());
-        
         if (label == null) {
             return iriMeta.getOntResource(getURI()).getLabel(null);
         } else {
@@ -79,6 +82,10 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
         }
     }
     
+    public String getLabel() {
+        return this.getLabel(null);
+    }    
+        
     public String getComment(Locale locale) {
         String comment = null;
     	
@@ -91,9 +98,8 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
             return comment;
         }
     }
+    
 
-    
-    
 	public Collection<String> getDeclaredVars() {
 		return new LinkedList<String>();//FIXME create proper list	
 	}

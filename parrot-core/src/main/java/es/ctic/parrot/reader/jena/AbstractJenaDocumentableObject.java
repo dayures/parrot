@@ -41,12 +41,20 @@ public abstract class AbstractJenaDocumentableObject extends
 	}
 	
     public String getLabel(Locale locale) {
-        String label = ontResource.getLabel(locale.toString());
+        String label = null;
+        
+        if (locale !=null)
+        	label = ontResource.getLabel(locale.toString());
+        
         if (label == null) {
             return ontResource.getLabel(null);
         } else {
             return label;
         }
+    }
+    
+    public String getLabel() {
+        return this.getLabel(null);
     }
     
     public String getComment(Locale locale) {

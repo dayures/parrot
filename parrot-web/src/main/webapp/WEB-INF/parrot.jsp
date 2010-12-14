@@ -29,13 +29,13 @@
 			<div class="inputDataReport">
 		    	<ul class="error">
 					<c:forEach var="line" items="${errorsGeneral}">
-		         		<li class="error"><span>${line}</span></li>
+		         		<li class="error"><span><c:out value="${line}"/></span></li>
 		      		</c:forEach>
 				</ul> 
 				<c:if test="${ ! empty advices}">
 		    	<ul class="advice">
 					<c:forEach var="line" items="${advices}">
-		         		<li class="advice"><span>${line}</span></li>
+		         		<li class="advice"><span><c:out value="${line}"/></span></li>
 		      		</c:forEach>
 				</ul>
 				</c:if>

@@ -65,12 +65,4 @@ Rules:
 #end
 </p>
 
-<p>Appendices 
-<ol id="appendix"> 
-  <li><a href="#references">References</a></li> 
-  <li><a href="#prefixes">Namespace references and prefixes</a></li> 
-  <li><a href="#changes">Changes in this version</a> (Non-Normative)</li> 
-  <li><a href="#acknowledgements">Acknowledgements</a> (Non-Normative)</li> 
-</ol> 
-</p>
 </div>

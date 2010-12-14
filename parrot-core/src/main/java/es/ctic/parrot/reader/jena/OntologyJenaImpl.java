@@ -8,6 +8,7 @@ import com.hp.hpl.jena.ontology.Ontology;
 import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 
+import es.ctic.parrot.de.Rule;
 import es.ctic.parrot.transformers.DocumentableObjectVisitor;
 
 public class OntologyJenaImpl extends AbstractJenaDocumentableObject implements es.ctic.parrot.de.Ontology {
@@ -53,6 +54,5 @@ public class OntologyJenaImpl extends AbstractJenaDocumentableObject implements 
 		}
 		return contributors;
 	}
-
 
 }

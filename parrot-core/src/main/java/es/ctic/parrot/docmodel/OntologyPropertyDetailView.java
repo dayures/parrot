@@ -7,11 +7,8 @@ import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.Identifier;
 import es.ctic.parrot.de.OntologyProperty;
 
-public class OntologyPropertyDetailView implements DetailView{
+public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailView  implements DetailView{
 	private OntologyProperty ontologyProperty;
-	private String uri;
-	private String label;
-	private String comment;
 	private DocumentableObject domain;
 	private DocumentableObject range;
     private Collection<DocumentableObject> inverseReferences;
@@ -21,32 +18,8 @@ public class OntologyPropertyDetailView implements DetailView{
 		this.ontologyProperty=ontologyProperty;
 	}
 	
-	public String getUri(){
-		return uri;
-	}
-	
-	public void setUri(String uri){
-		this.uri=uri;
-	}
-
-	public String getLabel() {
-		return this.label;
-	}
-
-	public void setLabel(String label) {
-		this.label = label;
-	}
-	
 	public Identifier getIdentifier(){
 		return ontologyProperty.getIdentifier();
-	}
-
-	public String getComment() {
-		return this.comment;
-	}
-
-	public void setComment(String comment) {
-		this.comment = comment;
 	}
 
 	public DocumentableObject getDomain() {

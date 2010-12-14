@@ -14,6 +14,7 @@ import com.hp.hpl.jena.ontology.OntResource;
 import com.hp.hpl.jena.ontology.Ontology;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.shared.JenaException;
+import com.hp.hpl.jena.vocabulary.OWL;
 import com.hp.hpl.jena.vocabulary.RDF;
 import com.hp.hpl.jena.vocabulary.RDFS;
 
@@ -100,7 +101,8 @@ public class JenaOWLReader implements DocumentReader {
 	}
 	
 	private static boolean isDomainSpecific(OntResource ontResource) {
-        return !ontResource.getURI().startsWith(RDFS.getURI()) && !ontResource.getURI().startsWith(RDF.getURI());
+        String uri = ontResource.getURI();
+        return !uri.startsWith(RDFS.getURI()) && !uri.startsWith(RDF.getURI()) && !uri.startsWith(OWL.getURI());
     }
 
 }

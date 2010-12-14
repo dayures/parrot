@@ -19,6 +19,9 @@ public class RuleDetailView implements DetailView{
 	private String label;
 	private String comment;
 	private String date;
+	private Collection<String> creators;
+	private Collection<String> contributors;
+	private Collection<String> publishers;
 	private Collection<DocumentableOntologicalObject> referencedOntologicalObjects;
     
     /**
@@ -83,6 +86,30 @@ public class RuleDetailView implements DetailView{
 
 	public String getDate() {
 		return date;
+	}
+
+	public void setPublishers(Collection<String> publishers) {
+		this.publishers = publishers;
+	}
+
+	public Collection<String> getPublishers() {
+		return Collections.unmodifiableCollection(publishers);
+	}
+
+	public void setCreators(Collection<String> creators) {
+		this.creators = creators;
+	}
+
+	public Collection<String> getCreators() {
+		return Collections.unmodifiableCollection(creators);
+	}
+
+	public void setContributors(Collection<String> contributors) {
+		this.contributors = contributors;
+	}
+
+	public Collection<String> getContributors() {
+		return Collections.unmodifiableCollection(contributors);
 	}
     
 }

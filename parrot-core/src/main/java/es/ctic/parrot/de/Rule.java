@@ -10,7 +10,7 @@ public interface Rule extends DocumentableObject {
     // public Collection<String> getDeclaredVars();
     
 	public String getDate();
-	public List<String> getEditors();
+	public List<String> getCreators();
 	public List<String> getContributors();
 	public List<String> getPublishers();
     

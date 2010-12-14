@@ -1,5 +1,6 @@
 package es.ctic.parrot.reader.rifle;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -16,6 +17,8 @@ import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.RDFNode;
+import com.hp.hpl.jena.rdf.model.ResourceFactory;
+import com.hp.hpl.jena.rdf.model.StmtIterator;
 
 import es.ctic.parrot.de.AbstractDocumentableObject;
 import es.ctic.parrot.de.AnonymousIdentifier;
@@ -103,9 +106,8 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
         String date = null;
     	
     	if (iriMeta.getOntResource(getURI()) != null){
-    		Property dateProp = iriMeta.getProperty(DC_DATE);
 
-    		RDFNode propertyValue = iriMeta.getOntResource(getURI()).getPropertyValue(dateProp);
+    		RDFNode propertyValue = iriMeta.getOntResource(getURI()).getPropertyValue(ResourceFactory.createProperty(DC_DATE));
 			
     		if (propertyValue != null && propertyValue.isLiteral()){
 				date = propertyValue.asLiteral().getString();
@@ -115,24 +117,34 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
         return date;
 	}
 
-	public List<String> getEditors() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
+	public List<String> getCreators() {
+		
+		ArrayList<String> creators = new ArrayList<String>();
+		StmtIterator it = iriMeta.getOntResource(getURI()).listProperties(ResourceFactory.createProperty("http://purl.org/dc/terms/creator"));
+		while(it.hasNext()){
+			creators.add(it.nextStatement().getLiteral().getString());
+		}
+		return creators;
 	}
 
 	public List<String> getContributors() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
+		ArrayList<String> contributors = new ArrayList<String>();
+		StmtIterator it = iriMeta.getOntResource(getURI()).listProperties(ResourceFactory.createProperty("http://purl.org/dc/terms/contributor"));
+		while(it.hasNext()){
+			contributors.add(it.nextStatement().getLiteral().getString());
+		}
+		return contributors;
 	}
 
 	public List<String> getPublishers() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
+		ArrayList<String> publishers = new ArrayList<String>();
+		StmtIterator it = iriMeta.getOntResource(getURI()).listProperties(ResourceFactory.createProperty("http://purl.org/dc/terms/publisher"));
+		while(it.hasNext()){
+			publishers.add(it.nextStatement().getLiteral().getString());
+		}
+		return publishers;
 	}
-
+	
 	public Collection<DocumentableOntologicalObject> getReferencedOntologicalObjects() {
 		
 		Set<DocumentableOntologicalObject> referencedOntologicalObjects = new HashSet<DocumentableOntologicalObject>();

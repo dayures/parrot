@@ -215,11 +215,25 @@ p.back-to-top {
 	padding-left: 18px;
 }
 
+.parrot-class-title {
+	background-image: url("images/icon-class-24.png");
+	background-repeat: no-repeat;
+	background-position: 0 50%;
+	padding-left: 26px;
+}
+
 .parrot-property-ref {
 	background-image: url("images/icon-property-16.png");
 	background-repeat: no-repeat;
 	background-position: 0 50%;
 	padding-left: 18px;
+}
+
+.parrot-property-title {
+	background-image: url("images/icon-property-24.png");
+	background-repeat: no-repeat;
+	background-position: 0 50%;
+	padding-left: 26px;
 }
 
 .parrot-individual-ref {
@@ -229,9 +243,24 @@ p.back-to-top {
 	padding-left: 18px;
 }
 
+.parrot-individual-title {
+	background-image: url("images/icon-individual-24.png");
+	background-repeat: no-repeat;
+	background-position: 0 50%;
+	padding-left: 26px;
+}
+
 .parrot-rule-ref {
 	background-image: url("images/icon-rule-16.png");
 	background-repeat: no-repeat;
 	background-position: 0 50%;
 	padding-left: 18px;
 }
+
+.parrot-rule-title {
+	background-image: url("images/icon-rule-24.png");
+	background-repeat: no-repeat;
+	background-position: 0 50%;
+	padding-left: 26px;
+}
+

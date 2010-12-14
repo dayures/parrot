@@ -17,6 +17,13 @@
     #end
   #end
   
+  #if(!$element.inverseRuleReferences.isEmpty())
+   <dt>Referenced rules</dt>
+   #foreach($reference in $element.inverseRuleReferences)
+      <dd><a href="#$reference.LocalName">$reference.Identifier</a></dd>
+   #end
+  #end
+  
   </dl>
   <p style="float: right; font-size: small;">[<a href="#toc">back to top</a>]</p> 
 </div>   

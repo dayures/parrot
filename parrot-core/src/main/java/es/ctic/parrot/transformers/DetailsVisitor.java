@@ -40,6 +40,7 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 		for(OntologyClass ontclass:object.getSubClasses()){
 			details.addSubClasses(ontclass);
 		}
+		details.setInverseRuleReferences(object.getInverseRuleReferences());
 		details.setInverseReferences(object.getInternalReferences());
         document.addOntologyClassDetailView(details);     
 		return details;
@@ -53,6 +54,7 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 		details.setComment(object.getComment(locale));
 		details.setDomain(object.getDomain());
 		details.setRange(object.getRange());
+		details.setInverseRuleReferences(object.getInverseRuleReferences());
 		details.setInverseReferences(object.getInternalReferences());
 		details.setCardinality(object.getCardinality());
         document.addOntologyPropertyDetailView(details);     
@@ -96,6 +98,7 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 		details.setLabel(object.getLabel(locale));
 		details.setUri(object.getURI());
 		details.addAllTypes(object.getTypes());
+		details.setInverseRuleReferences(object.getInverseRuleReferences());
 		document.addOntologyIndividualDetailView(details);
 		return details;
 	}

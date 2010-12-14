@@ -3,7 +3,7 @@ package es.ctic.parrot.de;
 import java.util.Collection;
 import java.util.List;
 
-public interface Rule extends DocumentableOntologicalObject {
+public interface Rule extends DocumentableObject {
 
     public Collection<DocumentableOntologicalObject> getReferencedOntologicalObjects();
 

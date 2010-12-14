@@ -1,11 +1,11 @@
 package es.ctic.parrot.de;
 
-import java.util.Locale;
+import java.util.Collection;
 
 public interface DocumentableOntologicalObject extends DocumentableObject,Comparable<DocumentableOntologicalObject>{
 
-	public abstract String getURI();
-	public abstract String getLabel(Locale locale);
-	public abstract String getComment(Locale locale);
+
+	public abstract void addInverseRuleReference(Rule rule);
+	public abstract Collection<Rule> getInverseRuleReferences();
 	
 }

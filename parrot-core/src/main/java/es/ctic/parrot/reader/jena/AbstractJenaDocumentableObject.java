@@ -1,6 +1,8 @@
 package es.ctic.parrot.reader.jena;
 
 import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -13,12 +15,14 @@ import es.ctic.parrot.de.AbstractDocumentableObject;
 import es.ctic.parrot.de.DocumentableOntologicalObject;
 import es.ctic.parrot.de.Identifier;
 import es.ctic.parrot.de.OntologyClass;
+import es.ctic.parrot.de.Rule;
 import es.ctic.parrot.de.URIIdentifier;
 
 public abstract class AbstractJenaDocumentableObject extends
 		AbstractDocumentableObject {
 	
 	private OntResource ontResource;
+	private Collection<Rule> inverseRuleReferences = new HashSet<Rule>();
 
 	/**
 	 * @return the ontResource
@@ -81,5 +85,15 @@ public abstract class AbstractJenaDocumentableObject extends
 		}
 		return ontologyClassList;
 	}
+	
+	public void addInverseRuleReference(Rule rule) {
+		inverseRuleReferences.add(rule);
+	}
+	
+	public Collection<Rule> getInverseRuleReferences(){
+		return Collections.unmodifiableCollection(inverseRuleReferences);
+	}
+	
+	
 
 }

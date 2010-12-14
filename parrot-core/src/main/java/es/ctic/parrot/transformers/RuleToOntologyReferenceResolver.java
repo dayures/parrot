@@ -16,8 +16,7 @@ public class RuleToOntologyReferenceResolver extends AbstractDocumentableObjectV
     public Object visit(Rule rule) {
         Collection<DocumentableOntologicalObject> referencedOntologicalObjects = rule.getReferencedOntologicalObjects();
         for ( DocumentableOntologicalObject obj : referencedOntologicalObjects ) {
-            //logger.debug("Adding reference from rule " + rule + " to ontology property " + ontologyProperty);
-            //ontologyProperty.addReference(rule);
+        	obj.addInverseRuleReference(rule);
         }
         return null;
     }

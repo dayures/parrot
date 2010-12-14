@@ -9,11 +9,8 @@ import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.Identifier;
 import es.ctic.parrot.de.OntologyClass;
 
-public class OntologyClassDetailView implements DetailView{
+public class OntologyClassDetailView extends AbstractOntologicalObjectDetailView implements DetailView{
 	private OntologyClass ontologyClass;
-	private String uri;
-	private String label;
-	private String comment;
 	private List<OntologyClass> superClasses;
 	private List<OntologyClass> subClasses;
 	private Collection<DocumentableObject> inverseReferences;
@@ -23,22 +20,6 @@ public class OntologyClassDetailView implements DetailView{
 		this.superClasses=new LinkedList<OntologyClass>();
 		this.subClasses=new LinkedList<OntologyClass>();
 		this.inverseReferences=new LinkedList<DocumentableObject>();
-	}
-	
-	public String getUri(){
-		return uri;
-	}
-	
-	public void setUri(String uri){
-		this.uri=uri;
-	}
-
-	public String getLabel() {
-		return this.label;
-	}
-
-	public void setLabel(String label) {
-		this.label = label;
 	}
 	
 	public Identifier getIdentifier(){
@@ -59,14 +40,6 @@ public class OntologyClassDetailView implements DetailView{
 
 	public void addSubClasses(OntologyClass subClasses) {
 		this.subClasses.add(subClasses);
-	}
-
-	public String getComment() {
-		return this.comment;
-	}
-
-	public void setComment(String comment) {
-		this.comment = comment;
 	}
 
 	public void setInverseReferences(Collection<DocumentableObject> inverseReferences) {

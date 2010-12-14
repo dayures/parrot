@@ -1,9 +1,11 @@
 package es.ctic.parrot.docmodel;
 
 import java.util.Collection;
+import java.util.Collections;
 
 import org.apache.log4j.Logger;
 
+import es.ctic.parrot.de.DocumentableOntologicalObject;
 import es.ctic.parrot.de.Identifier;
 import es.ctic.parrot.de.OntologyProperty;
 import es.ctic.parrot.de.Rule;
@@ -17,8 +19,24 @@ public class RuleDetailView implements DetailView{
 	private String label;
 	private String comment;
 	private String date;
+	private Collection<DocumentableOntologicalObject> referencedOntologicalObjects;
     
-    public RuleDetailView(Rule rule) {
+    /**
+	 * @return the referencedOntologicalObjects
+	 */
+	public Collection<DocumentableOntologicalObject> getReferencedOntologicalObjects() {
+		return Collections.unmodifiableCollection(referencedOntologicalObjects);
+	}
+
+	/**
+	 * @param referencedOntologicalObjects the referencedOntologicalObjects to set
+	 */
+	public void setReferencedOntologicalObjects(
+			Collection<DocumentableOntologicalObject> referencedOntologicalObjects) {
+		this.referencedOntologicalObjects = referencedOntologicalObjects;
+	}
+
+	public RuleDetailView(Rule rule) {
         this.rule=rule;
         logger.debug("Created " + this.getClass());
     }
@@ -33,14 +51,6 @@ public class RuleDetailView implements DetailView{
 
 	public String getAnchor() {
 		return rule.getLocalName();
-	}
-	
-	public Collection<String> getDeclaredVars() {
-	    return rule.getDeclaredVars();
-	}
-	
-	public Collection<OntologyProperty> getReferencedOntologyProperties() {
-	    return rule.getReferencedOntologyProperties();
 	}
 	
 	public String getUri(){

@@ -49,7 +49,7 @@ public class RifleASTVisitor extends Visitor {
 	public Object visit(Rule rule) {
 		logger.debug("Visiting RIF rule AST node: " + rule);
 		
-		RuleImpl r = new RuleImpl(rule);
+		RuleImpl r = new RuleImpl(rule, register);
 		register.registerDocumentableObject(r);
 		return null;
 	}

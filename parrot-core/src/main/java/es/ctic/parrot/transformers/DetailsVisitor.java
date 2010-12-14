@@ -81,6 +81,7 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 		details.setLabel(object.getLabel(locale));
 		details.setComment(object.getComment(locale));
 		details.setDate(object.getDate());
+		details.setReferencedOntologicalObjects(object.getReferencedOntologicalObjects());
 	    document.addRuleDetailView(details);
 	    return details;
 	}

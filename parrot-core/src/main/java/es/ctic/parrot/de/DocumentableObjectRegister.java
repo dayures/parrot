@@ -15,7 +15,12 @@ public class DocumentableObjectRegister {
         logger.debug("Registering documentable object [" +documentableObject.getClass().getSimpleName() + "] " + documentableObject);
         documentableObjects.put(documentableObject.getIdentifier(), documentableObject);
     }
+
     
+    /**
+     * @param identifier Identifier of the documentable object
+     * @return Returns the value or null if the register contains no mapping for this identifier.  
+     */
     public DocumentableObject findDocumentableObject(Identifier identifier) {
         return documentableObjects.get(identifier);
     }

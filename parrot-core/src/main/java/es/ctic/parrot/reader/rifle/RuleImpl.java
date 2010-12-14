@@ -1,9 +1,11 @@
 package es.ctic.parrot.reader.rifle;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 import javax.servlet.jsp.tagext.TryCatchFinally;
 
@@ -17,6 +19,7 @@ import com.hp.hpl.jena.rdf.model.RDFNode;
 
 import es.ctic.parrot.de.AbstractDocumentableObject;
 import es.ctic.parrot.de.AnonymousIdentifier;
+import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.de.DocumentableOntologicalObject;
 import es.ctic.parrot.de.Identifier;
 import es.ctic.parrot.de.OntologyProperty;
@@ -28,24 +31,23 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 	
 	private static final String DC_DATE = "http://purl.org/dc/terms/date";
 	private net.sourceforge.rifle.ast.Rule rule;
-	private OntModel iriMeta;
+	private OntModel iriMeta = ModelFactory.createOntologyModel();
 
     private Identifier identifier;
 	
 	private static final Logger logger = Logger.getLogger(RuleImpl.class);
+	private DocumentableObjectRegister register;
 
-	public RuleImpl(net.sourceforge.rifle.ast.Rule rule) {
+	public RuleImpl(net.sourceforge.rifle.ast.Rule rule, DocumentableObjectRegister register) {
 		this.rule = rule;
+		this.register = register;
 		if (rule.getId() == null) {
 		    this.identifier = new AnonymousIdentifier();
 		} else {
 		    this.identifier = new URIIdentifier(rule.getId());
 		}
 		
-		OntModel ontModel = ModelFactory.createOntologyModel();
-    	ontModel.add(iriMeta);
-    	
-    	this.iriMeta = ontModel;
+    	iriMeta.add(rule.getIriMeta());
 	}
 
 	public Object accept(DocumentableObjectVisitor visitor) {
@@ -87,10 +89,8 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
         }
     }
 
-	public Collection<OntologyProperty> getReferencedOntologyProperties() {
-		return new LinkedList<OntologyProperty>();//FIXME create proper list
-	}
-
+    
+    
 	public Collection<String> getDeclaredVars() {
 		return new LinkedList<String>();//FIXME create proper list	
 	}
@@ -131,6 +131,27 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
 		//return null;
+	}
+
+	public Collection<DocumentableOntologicalObject> getReferencedOntologicalObjects() {
+		
+		Set<DocumentableOntologicalObject> referencedOntologicalObjects = new HashSet<DocumentableOntologicalObject>();
+		
+		for(String uriConst : rule.getUriConsts()){
+			URIIdentifier uriIdentifier = new URIIdentifier(uriConst);
+			try {
+				DocumentableOntologicalObject documentableOntologicalObject = (DocumentableOntologicalObject) register.findDocumentableObject(uriIdentifier);
+				if (documentableOntologicalObject != null){ 
+					referencedOntologicalObjects.add(documentableOntologicalObject);
+				}
+			} catch (ClassCastException e){
+				// Ignore references to not Ontological objects 
+			}
+						
+		}
+		
+		return referencedOntologicalObjects;
+		
 	}
 
 

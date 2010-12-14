@@ -21,19 +21,12 @@
       <dt>Date</dt>
       <dd>$element.Date</dd>
    #end
-    #if(!$element.ReferencedOntologyProperties.isEmpty())
-   <dt>Referenced ontology properties</dt>
-   #foreach($v in $element.ReferencedOntologyProperties)
+   #if(!$element.referencedOntologicalObjects.isEmpty())
+   <dt>Referenced ontological objects</dt>
+   #foreach($v in $element.referencedOntologicalObjects)
       <dd><a href="#$v.LocalName">$v.Identifier</a></dd>
    #end
-  #end
-
-    #if(!$element.DeclaredVars.isEmpty())
-   <dt>Declared variables</dt>
-   #foreach($v in $element.DeclaredVars)
-      <dd>$v</dd>
    #end
-  #end
   
   </dl>
 </div>

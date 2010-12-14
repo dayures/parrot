@@ -46,7 +46,12 @@ public abstract class AbstractJenaDocumentableObject extends
     }
     
     public String getComment(Locale locale) {
-        return ontResource.getComment(locale.toString()); 
+        String comment = ontResource.getComment(locale.toString());
+        if (comment == null) {
+            return ontResource.getComment(null);
+        } else {
+            return comment;
+        }
     }
 
 	public Identifier getIdentifier() {

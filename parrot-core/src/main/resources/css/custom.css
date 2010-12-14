@@ -101,16 +101,10 @@ ol.enumur      { list-style-type: upper-roman; }
 }
 
 body {
-  background-image: url("../images/wd.png");
 }
 
 .toc dl dt {
 	font-weight: normal;
-}
-
-img#vulcano-logo {
-  float: right;
-  margin-right: 2em;
 }
 
 pre span.xml {
@@ -204,4 +198,32 @@ dt{
 
 div.term a{
 	font-family: monospace;
+}
+
+.parrot-class-ref {
+	background-image: url("images/icon-class-16.png");
+	background-repeat: no-repeat;
+	background-position: 0 50%;
+	padding-left: 18px;
+}
+
+.parrot-property-ref {
+	background-image: url("images/icon-property-16.png");
+	background-repeat: no-repeat;
+	background-position: 0 50%;
+	padding-left: 18px;
+}
+
+.parrot-individual-ref {
+	background-image: url("images/icon-individual-16.png");
+	background-repeat: no-repeat;
+	background-position: 0 50%;
+	padding-left: 18px;
+}
+
+.parrot-rule-ref {
+	background-image: url("images/icon-rule-16.png");
+	background-repeat: no-repeat;
+	background-position: 0 50%;
+	padding-left: 18px;
 }

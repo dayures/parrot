@@ -14,9 +14,9 @@
     <dt>Types</dt>
     #foreach($type in $element.types)
       #if($type.Label)
-      	<dd><a href="#$type.LocalName">$type.Label</a></dd>
+      	<dd><span class="parrot-class-ref"><a href="#$type.LocalName">$type.Label</a></span></dd>
       #else
-        <dd><a href="#$type.LocalName">$type.Identifier</a></dd>
+        <dd><span class="parrot-rule-ref"><a href="#$type.LocalName">$type.Identifier</a></span></dd>
       #end      
     #end
   #end
@@ -25,9 +25,9 @@
    <dt>Referenced rules</dt>
    #foreach($reference in $element.inverseRuleReferences)
       #if($reference.Label)
-      	<dd><a href="#$reference.LocalName">$reference.Label</a></dd>
+      	<dd><span class="parrot-rule-ref"><a href="#$reference.LocalName">$reference.Label</a></span></dd>
       #else
-        <dd><a href="#$reference.LocalName">$reference.Identifier</a></dd>
+        <dd><span class="parrot-rule-ref"><a href="#$reference.LocalName">$reference.Identifier</a></span></dd>
       #end
       
    #end

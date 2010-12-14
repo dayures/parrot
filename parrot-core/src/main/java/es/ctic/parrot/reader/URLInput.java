@@ -37,7 +37,7 @@ public class URLInput implements Input {
     private URL url;
     private String mimeType;
 
-    public URLInput(URL url, String mimeType) {
+    public URLInput(URL url, String mimeType) throws IOException, ReaderException {
         this.url = url;
         this.mimeType = mimeType;
         checkUrl();
@@ -45,8 +45,10 @@ public class URLInput implements Input {
 
     /**
      * Checks if the URL is available and establish content negotiation 
+     * @throws IOException 
+     * @throws ReaderException 
      */
-    private void checkUrl() {
+    private void checkUrl() throws IOException, ReaderException {
         try {
             logger.debug("Detecting content type for URL " + this.url);
             HttpURLConnection connection = (HttpURLConnection) this.url.openConnection();
@@ -80,22 +82,14 @@ public class URLInput implements Input {
                     throw new RuntimeException("mimeType not valid: " + this.mimeType);
                 }
             }
-        } catch (ClassCastException e) {
-            throw new RuntimeException("Cannot open HttpURLConnection, probably " + this.url + " is not an HTTP URL", e);
-        } catch (UnknownHostException e) {
-            logger.error("Probably " + this.url + " is not an HTTP URL");
-            throw new RuntimeException("Probably " + this.url + " is not an HTTP URL");
-        } catch (java.net.MalformedURLException e){
-            logger.error("Probably " + this.url + " is a malformed URL");
-            throw new RuntimeException("Probably the URL is malformed");
         } catch (IOException e) {
-            logger.error("IOException in " + this.url);
-            throw new RuntimeException("Error in the connection to the URL");
+            throw new ReaderException("I/O Error, cannot read from " + this.url);
+        } catch (ClassCastException e) {
+            throw new ReaderException("Cannot open HTTP connection, probably " + this.url + " is not an HTTP URL", e);
         }
-
     }
 
-    public URLInput(URL url) throws IOException {
+    public URLInput(URL url) throws IOException, ReaderException {
         this.url = url;
         checkUrl();
     }

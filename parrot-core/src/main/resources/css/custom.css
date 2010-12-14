@@ -22,7 +22,7 @@ a img { color: white; }        /* trick to hide the border in Netscape 4 */
 th, td { /* ns 4 */
   font-family: sans-serif;
 }
-h1, h2, h3, h4, h5, h6,.toc { text-align: left; color: Chocolate; }
+h1, h2, h3, h4, h5, h6,.toc { text-align: left; color: #5674BC; }
 
 /* background should be transparent, but WebTV has a bug */
 /* h1, h2, h3 ,.toc { color: #660099; background: white } */
@@ -185,9 +185,8 @@ padding-bottom:20px;
 }
 
 div.toc{
-	background-color:#DBEADC;
 	padding: 1em;
-	border: dotted;
+	border: dotted #5674BC;
 	background-color: #ddd;
 	margin-bottom: 1em;
 }

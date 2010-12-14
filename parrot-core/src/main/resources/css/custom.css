@@ -199,6 +199,15 @@ div.term a{
 	font-family: monospace;
 }
 
+p.back-to-top {
+	background-image: url("images/1292359916_stock_top.png");
+	background-repeat: no-repeat;
+	background-position:0 0;
+	padding-left: 18px;
+    float: right;
+    font-size: small;
+}
+
 .parrot-class-ref {
 	background-image: url("images/icon-class-16.png");
 	background-repeat: no-repeat;

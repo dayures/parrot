@@ -1,22 +1,21 @@
 package es.ctic.parrot.reader.rifle;
 
 import java.io.IOException;
-import java.net.URL;
+
+import net.sourceforge.rifle.ast.Document;
+import net.sourceforge.rifle.psparser.RIFPRDLexer;
+import net.sourceforge.rifle.psparser.RIFPRDParser;
 
 import org.antlr.runtime.ANTLRReaderStream;
 import org.antlr.runtime.CharStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
 import org.apache.log4j.Logger;
-import net.sourceforge.rifle.ast.Document;
-import net.sourceforge.rifle.psparser.RIFPRDLexer;
-import net.sourceforge.rifle.psparser.RIFPRDParser;
 
 import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.reader.DocumentReader;
 import es.ctic.parrot.reader.Input;
 import es.ctic.parrot.reader.ReaderException;
-import es.ctic.parrot.reader.URLInput;
 
 public class RiflePSReader extends ImportResolver implements DocumentReader {
 

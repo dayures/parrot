@@ -1,7 +1,5 @@
 package es.ctic.parrot;
 
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;

@@ -3,7 +3,6 @@ package es.ctic.parrot.web;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -40,7 +39,6 @@ public class ServletParrot extends HttpServlet {
 	private static final String MIMETYPE = "mimetype";
 	private static final String MIMETYPE_TEXT = "mimetypeText";
 	private static final String ADVICES = "advices";
-	private static final String LANG = "EN"; // FIXME. Now it is fixed to be in English
 
 	private static final org.apache.log4j.Logger logger = Logger.getLogger(ServletParrot.class);
 

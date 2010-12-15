@@ -1,5 +1,6 @@
 package es.ctic.parrot.reader;
 
+@SuppressWarnings("serial")
 public class ReaderException extends Exception {
 
 	public ReaderException(Throwable e) {

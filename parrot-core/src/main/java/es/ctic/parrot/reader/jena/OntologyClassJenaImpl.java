@@ -1,18 +1,25 @@
 package es.ctic.parrot.reader.jena;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
+import com.hp.hpl.jena.ontology.OntResource;
+import com.hp.hpl.jena.util.iterator.ExtendedIterator;
 
 import es.ctic.parrot.de.OntologyClass;
+import es.ctic.parrot.de.OntologyIndividual;
 import es.ctic.parrot.transformers.DocumentableObjectVisitor;
 
 public class OntologyClassJenaImpl extends AbstractJenaDocumentableObject implements OntologyClass{
 
     private Collection<OntologyClass> superClasses;
 	private Collection<OntologyClass> subClasses;
+	
+	private Collection<OntologyIndividual> individuals;
 	
 	public OntologyClassJenaImpl(OntClass ontclass){
 		super(ontclass);
@@ -73,6 +80,14 @@ public class OntologyClassJenaImpl extends AbstractJenaDocumentableObject implem
 
 	public void setSuperClasses(List<OntologyClass> classes) {
 		this.superClasses=classes;
+	}
+
+	public Collection<OntologyIndividual> getIndividuals() {
+		if(individuals==null){
+			ExtendedIterator<Individual> it = (ExtendedIterator<Individual>) getOntClass().listInstances(true);
+			individuals = ontResourceIteratorToOntologyInstanceList(it);
+		}
+		return individuals;
 	}
 	
 }

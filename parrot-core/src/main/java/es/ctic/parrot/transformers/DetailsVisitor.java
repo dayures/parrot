@@ -42,6 +42,7 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 		}
 		details.setInverseRuleReferences(object.getInverseRuleReferences());
 		details.setInverseReferences(object.getInternalReferences());
+		details.setIndividuals(object.getIndividuals());
         document.addOntologyClassDetailView(details);     
 		return details;
 	}

@@ -95,8 +95,10 @@ public class JenaOWLReader implements DocumentReader {
 	    Iterator<Individual> it = model.listIndividuals();
 	    while (it.hasNext()) {
 	    	Individual individual = it.next();
-            OntologyIndividualJenaImpl docObject = new OntologyIndividualJenaImpl(individual);
-            register.registerDocumentableObject(docObject);	        
+	        if (isDomainSpecific(individual)) {
+	        	OntologyIndividualJenaImpl docObject = new OntologyIndividualJenaImpl(individual);
+	        	register.registerDocumentableObject(docObject);
+	        }
 	    }
 	}
 	

@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 
+import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntResource;
 
@@ -15,6 +16,7 @@ import es.ctic.parrot.de.AbstractDocumentableObject;
 import es.ctic.parrot.de.DocumentableOntologicalObject;
 import es.ctic.parrot.de.Identifier;
 import es.ctic.parrot.de.OntologyClass;
+import es.ctic.parrot.de.OntologyIndividual;
 import es.ctic.parrot.de.Rule;
 import es.ctic.parrot.de.URIIdentifier;
 
@@ -96,6 +98,18 @@ public abstract class AbstractJenaDocumentableObject extends
 			}
 		}
 		return ontologyClassList;
+	}
+	
+	protected Collection<OntologyIndividual> ontResourceIteratorToOntologyInstanceList(Iterator<Individual> it) {
+		List<OntologyIndividual> ontologyIndividualList = new LinkedList<OntologyIndividual>();
+		while(it.hasNext()){
+			Individual individual=it.next();
+			if(individual.getURI()!=null){
+				OntologyIndividual _individual = new OntologyIndividualJenaImpl(individual);
+				ontologyIndividualList.add(_individual);
+			}
+		}
+		return ontologyIndividualList;
 	}
 	
 	public void addInverseRuleReference(Rule rule) {

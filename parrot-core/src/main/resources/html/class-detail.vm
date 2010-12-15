@@ -34,6 +34,14 @@
       <dd><span class="parrot-rule-ref"><a href="#$reference.LocalName">$reference.Label</a></span></dd>
    #end
   #end
+  #if(!$element.individuals.isEmpty())
+   <dt>Individuals of this class</dt>
+   #foreach($individual in $element.individuals)
+      <dd><span class="parrot-individual-ref"><a href="#$individual.LocalName">$individual.Label</a></span></dd>
+   #end
+  #end
+  
+  
   
   </dl>
   <p class="back-to-top">[<a href="#toc">back to top</a>]</p> 

@@ -8,13 +8,15 @@ import java.util.List;
 import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.Identifier;
 import es.ctic.parrot.de.OntologyClass;
+import es.ctic.parrot.de.OntologyIndividual;
 
 public class OntologyClassDetailView extends AbstractOntologicalObjectDetailView implements DetailView{
 	private OntologyClass ontologyClass;
 	private List<OntologyClass> superClasses;
 	private List<OntologyClass> subClasses;
 	private Collection<DocumentableObject> inverseReferences;
-	
+	private Collection<OntologyIndividual> individuals;
+
 	public OntologyClassDetailView(OntologyClass ontologyClass){
 		this.ontologyClass=ontologyClass;
 		this.superClasses=new LinkedList<OntologyClass>();
@@ -52,6 +54,14 @@ public class OntologyClassDetailView extends AbstractOntologicalObjectDetailView
 
 	public String getAnchor() {
 		return ontologyClass.getLocalName();
+	}
+
+	public void setIndividuals(Collection<OntologyIndividual> individuals) {
+		this.individuals = individuals;
+	}
+
+	public Collection<OntologyIndividual> getIndividuals() {
+		return Collections.unmodifiableCollection(individuals);
 	}
 	
 	

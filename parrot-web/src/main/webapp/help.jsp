@@ -309,7 +309,7 @@ by PARROT.</p>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin
       Core</a></td>
       <td>Rule</td>
-      <td>The creator of the rule: a person or an organization. Recommended
+      <td>The creator of the rulehg : a person or an organization. Recommended
         best practice is to use a FOAF profile to describe the creator,
         although a literal is also allowed.</td>
       <td>http://purl.org/dc/terms/</td>
@@ -343,7 +343,7 @@ by PARROT.</p>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin
       Core</a></td>
       <td>Rule</td>
-      <td>Expresses the date of creation or publication of the ontology.
+      <td>Expresses the date of creation or publication of the rule.
         Recommended best practice is to use the W3CDTF profile of ISO 8601.</td>
       <td>http://purl.org/dc/terms/</td>
       <td><img alt="Currently supported"

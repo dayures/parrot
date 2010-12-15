@@ -11,6 +11,7 @@ import java.util.Set;
 import org.apache.log4j.Logger;
 
 import com.hp.hpl.jena.ontology.OntModel;
+import com.hp.hpl.jena.ontology.OntResource;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.ResourceFactory;
@@ -32,7 +33,7 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 	private static final String DC_CREATOR = "http://purl.org/dc/terms/creator";
 	private static final String DC_DATE = "http://purl.org/dc/terms/date";
 	private net.sourceforge.rifle.ast.Rule rule;
-	private OntModel iriMeta = ModelFactory.createOntologyModel();
+	private OntResource ontResource;
 
     private Identifier identifier;
 	
@@ -40,7 +41,7 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 	private DocumentableObjectRegister register;
 
 	public RuleImpl(net.sourceforge.rifle.ast.Rule rule, DocumentableObjectRegister register) {
-		this.rule = rule;
+hg st		this.rule = rule;
 		this.register = register;
 		if (rule.getId() == null) {
 		    this.identifier = new AnonymousIdentifier();
@@ -48,7 +49,9 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 		    this.identifier = new URIIdentifier(rule.getId());
 		}
 		
+		OntModel iriMeta = ModelFactory.createOntologyModel();
     	iriMeta.add(rule.getIriMeta());
+    	this.ontResource = iriMeta.getOntResource(getURI());
 	}
 
 	public Object accept(DocumentableObjectVisitor visitor) {
@@ -64,20 +67,27 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 	}
 	
     public String getLabel(Locale locale) {
-    	
-    	String label = null;
 
-    	if (locale !=null) {
-    		if (iriMeta.getOntResource(getURI()) != null){
-    			label = iriMeta.getOntResource(getURI()).getLabel(locale.toString());
-    		}
+    	if (ontResource == null){
+    		return ""; // FIXME what to do?
     	}
-    	
-        if (label == null) {
-            return iriMeta.getOntResource(getURI()).getLabel(null);
-        } else {
+    	else{
+        	String label = null;
+        	
+    		if (locale !=null)
+            	label = ontResource.getLabel(locale.toString());
+            
+            if (label == null) {
+                label = ontResource.getLabel(null);
+            } 
+            
+            if (label == null) {
+                label = ontResource.getURI();
+            } 
+
             return label;
-        }
+    	}
+
     }
     
     public String getLabel() {
@@ -85,16 +95,23 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
     }    
         
     public String getComment(Locale locale) {
-        String comment = null;
     	
-    	if (iriMeta.getOntResource(getURI()) != null)
-    		comment = iriMeta.getOntResource(getURI()).getComment(locale.toString());
-        
-        if (comment == null) {
-            return iriMeta.getOntResource(getURI()).getComment(null);
-        } else {
+    	if (ontResource == null){
+    		return ""; // FIXME what to do?
+    	}
+    	else{
+        	String comment = null;
+        	
+    		if (locale !=null)
+    			comment = ontResource.getComment(locale.toString());
+            
+            if (comment == null) {
+            	comment = ontResource.getComment(null);
+            } 
+
             return comment;
-        }
+    	}
+
     }
     
 
@@ -108,15 +125,12 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 
 	public String getDate() {
         String date = null;
-    	
-    	if (iriMeta.getOntResource(getURI()) != null){
 
-    		RDFNode propertyValue = iriMeta.getOntResource(getURI()).getPropertyValue(ResourceFactory.createProperty(DC_DATE));
-			
-    		if (propertyValue != null && propertyValue.isLiteral()){
-				date = propertyValue.asLiteral().getString();
-			}
-    	}
+		RDFNode propertyValue = ontResource.getPropertyValue(ResourceFactory.createProperty(DC_DATE));
+		
+		if (propertyValue != null && propertyValue.isLiteral()){
+			date = propertyValue.asLiteral().getString();
+		}
     	
         return date;
 	}
@@ -124,7 +138,7 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 	public List<String> getCreators() {
 		
 		ArrayList<String> creators = new ArrayList<String>();
-		StmtIterator it = iriMeta.getOntResource(getURI()).listProperties(ResourceFactory.createProperty(DC_CREATOR));
+		StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(DC_CREATOR));
 		while(it.hasNext()){
 			creators.add(it.nextStatement().getLiteral().getString());
 		}
@@ -133,7 +147,7 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 
 	public List<String> getContributors() {
 		ArrayList<String> contributors = new ArrayList<String>();
-		StmtIterator it = iriMeta.getOntResource(getURI()).listProperties(ResourceFactory.createProperty(DC_CONTRIBUTOR));
+		StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(DC_CONTRIBUTOR));
 		while(it.hasNext()){
 			contributors.add(it.nextStatement().getLiteral().getString());
 		}
@@ -142,7 +156,7 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 
 	public List<String> getPublishers() {
 		ArrayList<String> publishers = new ArrayList<String>();
-		StmtIterator it = iriMeta.getOntResource(getURI()).listProperties(ResourceFactory.createProperty(DC_PUBLISHER));
+		StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(DC_PUBLISHER));
 		while(it.hasNext()){
 			publishers.add(it.nextStatement().getLiteral().getString());
 		}

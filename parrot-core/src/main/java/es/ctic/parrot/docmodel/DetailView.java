@@ -6,5 +6,6 @@ public interface DetailView {
 
 	public abstract Identifier getIdentifier();
 	public abstract String getAnchor();
+	public abstract String getLabel();
 	
 }

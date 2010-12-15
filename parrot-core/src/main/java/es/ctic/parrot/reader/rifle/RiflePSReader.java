@@ -46,7 +46,6 @@ public class RiflePSReader extends ImportResolver implements DocumentReader {
                 throw new ReaderException("RIF PS document " + input + " cannot be parsed. There are " + parser.getNumberOfSyntaxErrors() + " syntax errors. First error is: " + errorReporter.getFirstError());
 			}
 		} catch (RecognitionException e) {
-			// FIXME: use a more specific exception class (maybe org.antlr.runtime.RecognitionException)
 			throw new ReaderException("While parsing RIF PS document", e);
 		}
 		

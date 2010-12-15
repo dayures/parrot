@@ -32,7 +32,6 @@ import es.ctic.parrot.utils.ErrorBuffer;
 
 public class ServletParrot extends HttpServlet {
 
-	private static final String ERRORS_URI = "errorsUri";
 	private static final String ERRORS_GENERAL = "errorsGeneral";
 	private static final String DOCUMENT_URI = "documentUri";
 	private static final String DOCUMENT_TEXT = "documentText";

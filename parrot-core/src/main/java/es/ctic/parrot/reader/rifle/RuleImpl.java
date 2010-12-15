@@ -41,7 +41,7 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 	private DocumentableObjectRegister register;
 
 	public RuleImpl(net.sourceforge.rifle.ast.Rule rule, DocumentableObjectRegister register) {
-hg st		this.rule = rule;
+		this.rule = rule;
 		this.register = register;
 		if (rule.getId() == null) {
 		    this.identifier = new AnonymousIdentifier();

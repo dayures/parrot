@@ -27,6 +27,9 @@ import es.ctic.parrot.transformers.DocumentableObjectVisitor;
 
 public class RuleImpl extends AbstractDocumentableObject implements Rule {
 	
+	private static final String DC_PUBLISHER = "http://purl.org/dc/terms/publisher";
+	private static final String DC_CONTRIBUTOR = "http://purl.org/dc/terms/contributor";
+	private static final String DC_CREATOR = "http://purl.org/dc/terms/creator";
 	private static final String DC_DATE = "http://purl.org/dc/terms/date";
 	private net.sourceforge.rifle.ast.Rule rule;
 	private OntModel iriMeta = ModelFactory.createOntologyModel();
@@ -121,7 +124,7 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 	public List<String> getCreators() {
 		
 		ArrayList<String> creators = new ArrayList<String>();
-		StmtIterator it = iriMeta.getOntResource(getURI()).listProperties(ResourceFactory.createProperty("http://purl.org/dc/terms/creator"));
+		StmtIterator it = iriMeta.getOntResource(getURI()).listProperties(ResourceFactory.createProperty(DC_CREATOR));
 		while(it.hasNext()){
 			creators.add(it.nextStatement().getLiteral().getString());
 		}
@@ -130,7 +133,7 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 
 	public List<String> getContributors() {
 		ArrayList<String> contributors = new ArrayList<String>();
-		StmtIterator it = iriMeta.getOntResource(getURI()).listProperties(ResourceFactory.createProperty("http://purl.org/dc/terms/contributor"));
+		StmtIterator it = iriMeta.getOntResource(getURI()).listProperties(ResourceFactory.createProperty(DC_CONTRIBUTOR));
 		while(it.hasNext()){
 			contributors.add(it.nextStatement().getLiteral().getString());
 		}
@@ -139,7 +142,7 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 
 	public List<String> getPublishers() {
 		ArrayList<String> publishers = new ArrayList<String>();
-		StmtIterator it = iriMeta.getOntResource(getURI()).listProperties(ResourceFactory.createProperty("http://purl.org/dc/terms/publisher"));
+		StmtIterator it = iriMeta.getOntResource(getURI()).listProperties(ResourceFactory.createProperty(DC_PUBLISHER));
 		while(it.hasNext()){
 			publishers.add(it.nextStatement().getLiteral().getString());
 		}

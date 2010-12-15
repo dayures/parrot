@@ -1,14 +1,10 @@
 <div class="term">
-  #if($element.Label)
-    <h3><a id="$element.Anchor"></a><span class="parrot-rule-title">$element.Label</span> (Rule)</h3>
-  #else
-    <h3><a id="$element.Anchor"></a><span class="parrot-rule-title">$element.Uri</span> (Rule)</h3>
-  #end
+  <h3><a id="$element.Anchor"></a><span class="parrot-rule-title">$element.Label</span> (Rule)</h3>
   <dl>
-  #if($element.Uri)
+   #if($element.Uri)
       <dt>Uri</dt>
       <dd><a href="$element.Uri">$element.Uri</a></dd>      
-  #end
+   #end
    #if($element.Comment)
       <dt>Description</dt>
       <dd>$element.Comment</dd>
@@ -42,11 +38,7 @@
    #if(!$element.referencedOntologicalObjects.isEmpty())
    <dt>Referenced model objects</dt>
    #foreach($v in $element.referencedOntologicalObjects)
-      #if($v.Label)
-      	<dd><a href="#$v.LocalName">$v.Label</a></dd>
-      #else
-        <dd><a href="#$v.LocalName">$v.Identifier</a></dd>
-      #end
+	 <dd><a href="#$v.LocalName">$v.Label</a></dd>
    #end
    #end
   

@@ -5,11 +5,7 @@
 #if(!$document.ontologyDetailViews.isEmpty())
 Ontologies: 
 #foreach($element in $document.ontologyDetailViews)
-	#if ($element.Label)
 	<a href="#$element.Anchor">$element.Label</a>, 
-	#else
-	<a href="#$element.Anchor">$element.Uri</a>, 
-	#end
 #end
 #end
 </p>
@@ -18,11 +14,7 @@ Ontologies:
 #if(!$document.ontologyClassDetailViews.isEmpty())
 Classes:
 #foreach($element in $document.ontologyClassDetailViews)
-	#if ($element.Label)
 	<span class="parrot-class-ref"><a href="#$element.Anchor">$element.Label</a></span>, 
-	#else
-	<span class="parrot-class-ref"><a href="#$element.Anchor">$element.Uri</a></span>, 
-	#end 
 #end
 #end
 </p>
@@ -30,11 +22,7 @@ Classes:
 #if(!$document.ontologyPropertyDetailViews.isEmpty())
 Properties:
 #foreach($element in $document.ontologyPropertyDetailViews)
-	#if ($element.Label)
 	<span class="parrot-property-ref"><a href="#$element.Anchor">$element.Label</a></span>, 
-	#else
-	<span class="parrot-property-ref"><a href="#$element.Anchor">$element.Uri</a></span>, 
-	#end 
 #end
 #end
 </p>
@@ -43,11 +31,7 @@ Properties:
 #if(!$document.ontologyIndividualDetailViews.isEmpty())
 Individuals:
 #foreach($element in $document.ontologyIndividualDetailViews)
-	#if ($element.Label)
 	<span class="parrot-individual-ref"><a href="#$element.Anchor">$element.Label</a></span>, 
-	#else
-	<span class="parrot-individual-ref"><a href="#$element.Anchor">$element.Uri</a></span>, 
-	#end 
 #end
 #end
 </p>
@@ -56,11 +40,7 @@ Individuals:
 #if(!$document.ruleDetailViews.isEmpty())
 Rules:
 #foreach($element in $document.ruleDetailViews)
-	#if ($element.Label)
 	<span class="parrot-rule-ref"><a href="#$element.Anchor">$element.Label</a></span>, 
-	#else
-	<span class="parrot-rule-ref"><a href="#$element.Anchor">$element.identifier</a></span>, 
-	#end
 #end
 #end
 </p>

@@ -1,9 +1,5 @@
 <div class="term">
-  #if($element.Label)
-    <h3><a id="$element.Anchor"></a><span class="parrot-class-title">$element.Label</span> (Class)</h3>
-  #else
-    <h3><a id="$element.Anchor"></a><span class="parrot-class-title">$element.Uri</span> (Class)</h3>
-  #end
+  <h3><a id="$element.Anchor"></a><span class="parrot-class-title">$element.Label</span> (Class)</h3>
   <dl>
   #if($element.Uri)
       <dt>Uri</dt>
@@ -16,42 +12,26 @@
   #if(!$element.SuperClasses.isEmpty())
 	<dt>SuperClasses</dt>
     #foreach($superclass in $element.SuperClasses)
-      #if($superclass.Label)
-      	<dd><span class="parrot-class-ref"><a href="#$superclass.LocalName">$superclass.Label</a></span></dd>
-      #else
-        <dd><span class="parrot-class-ref"><a href="#$superclass.LocalName">$superclass.Identifier</a></span></dd>
-      #end
+      <dd><span class="parrot-class-ref"><a href="#$superclass.LocalName">$superclass.Label</a></span></dd>
     #end
   #end
   #if(!$element.SubClasses.isEmpty())
     <dt>SubClasses</dt>
     #foreach($subclass in $element.SubClasses)
-      #if($subclass.Label)
-      	<dd><span class="parrot-class-ref"><a href="#$subclass.LocalName">$subclass.Label</a></span></dd>
-      #else
-        <dd><span class="parrot-class-ref"><a href="#$subclass.LocalName">$subclass.Identifier</a></span></dd>
-      #end
+      <dd><span class="parrot-class-ref"><a href="#$subclass.LocalName">$subclass.Label</a></span></dd>
     #end
   #end
   #if(!$element.InverseReferences.isEmpty())
    <dt>Referenced from (range or domain of...)</dt>
    #foreach($reference in $element.InverseReferences)
-      #if($reference.Label)
-      	<dd><span class="parrot-property-ref"><a href="#$reference.LocalName">$reference.Label</a></span></dd>
-      #else
-        <dd><span class="parrot-property-ref"><a href="#$reference.LocalName">$reference.Identifier</a></span></dd>
-      #end
+      <dd><span class="parrot-property-ref"><a href="#$reference.LocalName">$reference.Label</a></span></dd>
    #end
   #end
   
   #if(!$element.inverseRuleReferences.isEmpty())
    <dt>Referenced rules</dt>
    #foreach($reference in $element.inverseRuleReferences)
-      #if($reference.Label)
-      	<dd><span class="parrot-rule-ref"><a href="#$reference.LocalName">$reference.Label</a></span></dd>
-      #else
-        <dd><span class="parrot-rule-ref"><a href="#$reference.LocalName">$reference.Identifier</a></span></dd>
-      #end
+      <dd><span class="parrot-rule-ref"><a href="#$reference.LocalName">$reference.Label</a></span></dd>
    #end
   #end
   

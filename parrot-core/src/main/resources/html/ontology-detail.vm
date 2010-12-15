@@ -1,9 +1,5 @@
 <div class="term">
-  #if($element.Label)
-    <h3><a id="$element.Anchor"></a>Ontology: $element.Label</h3>
-  #else
-    <h3><a id="$element.Anchor"></a>Ontology: $element.Uri</h3>
-  #end
+  <h3><a id="$element.Anchor"></a>Ontology: $element.Label</h3>
   <dl>
   #if($element.Uri)
       <dt>Uri</dt>

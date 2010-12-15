@@ -1,9 +1,5 @@
 <div class="term">
-  #if($element.Label)
-    <h3><a id="$element.Anchor"></a><span class="parrot-individual-title">$element.Label</span> (Individual)</h3>
-  #else
-    <h3><a id="$element.Anchor"></a></span class="parrot-individual-title">Individual: $element.Uri</span> (Individual)</h3>
-  #end
+  <h3><a id="$element.Anchor"></a><span class="parrot-individual-title">$element.Label</span> (Individual)</h3>
   <dl>
   #if($element.Uri)
       <dt>Uri</dt>
@@ -13,23 +9,14 @@
   #if(!$element.types.isEmpty())
     <dt>Types</dt>
     #foreach($type in $element.types)
-      #if($type.Label)
-      	<dd><span class="parrot-class-ref"><a href="#$type.LocalName">$type.Label</a></span></dd>
-      #else
-        <dd><span class="parrot-rule-ref"><a href="#$type.LocalName">$type.Identifier</a></span></dd>
-      #end      
+     <dd><span class="parrot-class-ref"><a href="#$type.LocalName">$type.Label</a></span></dd>
     #end
   #end
   
   #if(!$element.inverseRuleReferences.isEmpty())
    <dt>Referenced rules</dt>
    #foreach($reference in $element.inverseRuleReferences)
-      #if($reference.Label)
-      	<dd><span class="parrot-rule-ref"><a href="#$reference.LocalName">$reference.Label</a></span></dd>
-      #else
-        <dd><span class="parrot-rule-ref"><a href="#$reference.LocalName">$reference.Identifier</a></span></dd>
-      #end
-      
+	 <dd><span class="parrot-rule-ref"><a href="#$reference.LocalName">$reference.Label</a></span></dd>
    #end
   #end
   

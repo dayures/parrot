@@ -1,9 +1,5 @@
 <div class="term">
-  #if($element.Label)
-    <h3><a id="$element.Anchor"></a><span class="parrot-property-title">$element.Label</span> (Property)</h3>
-  #else
-    <h3><a id="$element.Anchor"></a><span class="parrot-property-title">Property: $element.Uri</span> (Property)</h3>
-  #end
+  <h3><a id="$element.Anchor"></a><span class="parrot-property-title">$element.Label</span> (Property)</h3>
   <dl>
   #if($element.Uri)
       <dt>Uri</dt>
@@ -15,29 +11,16 @@
    #end
    #if($element.Domain)
       <dt>Domain:</dt>
-      #if($element.Domain.Label)
-      	<dd><span class="parrot-class-ref"><a href="#$element.Domain.LocalName">$element.Domain.Label</a></span></dd>
-      #else
-        <dd><span class="parrot-class-ref"><a href="#$element.Domain.LocalName">$element.Domain.Identifier</a></span></dd>
-      #end
+   	  <dd><span class="parrot-class-ref"><a href="#$element.Domain.LocalName">$element.Domain.Label</a></span></dd>
    #end
    #if($element.Range)
       <dt>Range</dt>
-      #if($element.Range.Label)
-      	<dd><span class="parrot-class-ref"><a href="#$element.Range.LocalName">$element.Range.Label</a></span></dd>
-      #else
-        <dd><span class="parrot-class-ref"><a href="#$element.Range.LocalName">$element.Range.Identifier</a></span></dd>
-      #end      
+      <dd><span class="parrot-class-ref"><a href="#$element.Range.LocalName">$element.Range.Label</a></span></dd>
    #end
    #if(!$element.InverseReferences.isEmpty())
    <dt>Referenced from</dt>
    #foreach($reference in $element.InverseReferences)
-      #if($reference.Label)
-      	<dd><a href="#$reference.LocalName">$reference.Label</a></dd>
-      #else
-        <dd><a href="#$reference.LocalName">$reference.Identifier</a></dd>
-      #end      
-      
+     <dd><a href="#$reference.LocalName">$reference.Label</a></dd>
    #end
    #end
    #if($element.cardinality != 0)
@@ -48,11 +31,7 @@
    #if(!$element.inverseRuleReferences.isEmpty())
    <dt>Referenced rules</dt>
    #foreach($reference in $element.inverseRuleReferences)
-      #if($reference.Label)
-      	<dd><span class="parrot-rule-ref"><a href="#$reference.LocalName">$reference.Label</a></span></dd>
-      #else
-        <dd><span class="parrot-rule-ref"><a href="#$reference.LocalName">$reference.Identifier</a></span></dd>
-      #end   
+     <dd><span class="parrot-rule-ref"><a href="#$reference.LocalName">$reference.Label</a></span></dd>
    #end
    #end
    

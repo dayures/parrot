@@ -8,14 +8,10 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
-import javax.servlet.jsp.tagext.TryCatchFinally;
-
 import org.apache.log4j.Logger;
 
 import com.hp.hpl.jena.ontology.OntModel;
-import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
@@ -25,7 +21,6 @@ import es.ctic.parrot.de.AnonymousIdentifier;
 import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.de.DocumentableOntologicalObject;
 import es.ctic.parrot.de.Identifier;
-import es.ctic.parrot.de.OntologyProperty;
 import es.ctic.parrot.de.Rule;
 import es.ctic.parrot.de.URIIdentifier;
 import es.ctic.parrot.transformers.DocumentableObjectVisitor;

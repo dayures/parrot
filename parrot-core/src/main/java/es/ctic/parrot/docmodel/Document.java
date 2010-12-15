@@ -4,8 +4,6 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
-
 public class Document {
 	private String title;
 	private List<OntologyDetailView> ontologyDetailViews = new LinkedList<OntologyDetailView>();

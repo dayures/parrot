@@ -7,7 +7,6 @@ import org.apache.log4j.Logger;
 
 import es.ctic.parrot.de.DocumentableOntologicalObject;
 import es.ctic.parrot.de.Identifier;
-import es.ctic.parrot.de.OntologyProperty;
 import es.ctic.parrot.de.Rule;
 
 public class RuleDetailView implements DetailView{

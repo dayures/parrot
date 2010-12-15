@@ -47,10 +47,14 @@ public abstract class AbstractJenaDocumentableObject extends
         	label = ontResource.getLabel(locale.toString());
         
         if (label == null) {
-            return ontResource.getLabel(null);
-        } else {
-            return label;
-        }
+            label = ontResource.getLabel(null);
+        } 
+        
+        if (label == null) {
+            label = ontResource.getURI();
+        } 
+
+        return label;
     }
     
     public String getLabel() {

@@ -93,7 +93,7 @@ by PARROT.</p>
         src="images/1291980081_camera_test.png" width="32" height="32"></img></td>
     </tr>
     <tr>
-      <td><em></em><em>publisher</em></td>
+      <td><em>publisher</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin
       Core</a></td>
       <td>Ontology</td>
@@ -309,7 +309,9 @@ by PARROT.</p>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin
       Core</a></td>
       <td>Rule</td>
-      <td>FIXME</td>
+      <td>The creator of the rule: a person or an organization. Recommended
+        best practice is to use a FOAF profile to describe the creator,
+        although a literal is also allowed.</td>
       <td>http://purl.org/dc/terms/</td>
       <td><img alt="Currently supported"
         src="images/1291980081_camera_test.png" width="32" height="32"></img></td>
@@ -319,7 +321,7 @@ by PARROT.</p>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin
       Core</a></td>
       <td>Rule</td>
-      <td>FIXME</td>
+      <td>A contributor to the rule: a person or an organization. Recommended best practice is to use a FOAF profile to describe a contributor, although a literal is also allowed.</td>
       <td>http://purl.org/dc/terms/</td>
       <td><img alt="Currently supported"
         src="images/1291980081_camera_test.png" width="32" height="32"></img></td>
@@ -329,7 +331,9 @@ by PARROT.</p>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin
       Core</a></td>
       <td>Rule</td>
-      <td>FIXME</td>
+      <td>The entity responsible for making the rule available. Recommended
+        best practice is to use a FOAF profile to describe the publisher,
+        although a literal is also allowed.</td>
       <td>http://purl.org/dc/terms/</td>
       <td><img alt="Currently supported"
         src="images/1291980081_camera_test.png" width="32" height="32"></img></td>

@@ -13,7 +13,9 @@ import com.hp.hpl.jena.ontology.OntProperty;
 import com.hp.hpl.jena.ontology.OntResource;
 import com.hp.hpl.jena.ontology.Ontology;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.shared.JenaException;
+import com.hp.hpl.jena.util.iterator.ExtendedIterator;
 import com.hp.hpl.jena.vocabulary.OWL;
 import com.hp.hpl.jena.vocabulary.RDF;
 import com.hp.hpl.jena.vocabulary.RDFS;
@@ -95,7 +97,7 @@ public class JenaOWLReader implements DocumentReader {
 	    Iterator<Individual> it = model.listIndividuals();
 	    while (it.hasNext()) {
 	    	Individual individual = it.next();
-	        if (isDomainSpecific(individual)) {
+	    	if (isDomainSpecific(individual) && isClassDomainSpecific(individual)) {
 	        	OntologyIndividualJenaImpl docObject = new OntologyIndividualJenaImpl(individual);
 	        	register.registerDocumentableObject(docObject);
 	        }
@@ -105,6 +107,15 @@ public class JenaOWLReader implements DocumentReader {
 	private static boolean isDomainSpecific(OntResource ontResource) {
         String uri = ontResource.getURI();
         return !uri.startsWith(RDFS.getURI()) && !uri.startsWith(RDF.getURI()) && !uri.startsWith(OWL.getURI());
+    }
+
+	private static boolean isClassDomainSpecific(Individual individual) {
+    	for(OntClass ontClass : individual.listOntClasses(true).toList()){
+   			if (isDomainSpecific(ontClass)){
+   				return true;
+    		}
+    	}
+        return false;
     }
 
 }

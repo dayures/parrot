@@ -69,7 +69,7 @@ public class URLInput implements Input {
 
             if (isValidResponseCode(connection.getResponseCode()) == false ){
                 logger.error("URI " + this.url + " not accesible. HTTP Status code: " + connection.getResponseCode());
-                throw new RuntimeException("URI not accesible. HTTP Status code: " + connection.getResponseCode());
+                throw new ReaderException("URI not accesible. HTTP Status code: " + connection.getResponseCode());
             } 
 
             if (this.mimeType == null){
@@ -78,7 +78,7 @@ public class URLInput implements Input {
                     logger.info("Found content-type: " + this.mimeType + " for URL " + this.url);
                 } else{
                     logger.error("mimeType not valid: " + this.mimeType + " for URL " + this.url);
-                    throw new RuntimeException("mimeType not valid: " + this.mimeType);
+                    throw new ReaderException("mimeType not valid: " + this.mimeType);
                 }
             }
         } catch (IOException e) {

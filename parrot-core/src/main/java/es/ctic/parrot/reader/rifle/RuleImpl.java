@@ -51,7 +51,7 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 		
 		OntModel iriMeta = ModelFactory.createOntologyModel();
     	iriMeta.add(rule.getIriMeta());
-    	this.ontResource = iriMeta.getOntResource(getURI());
+    	this.setOntResource(iriMeta.getOntResource(getURI()));
 	}
 
 	public Object accept(DocumentableObjectVisitor visitor) {
@@ -68,21 +68,21 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 	
     public String getLabel(Locale locale) {
 
-    	if (ontResource == null){
-    		return ""; // FIXME what to do?
+    	if (getOntResource() == null){
+    		return null;
     	}
     	else{
         	String label = null;
         	
     		if (locale !=null)
-            	label = ontResource.getLabel(locale.toString());
+            	label = getOntResource().getLabel(locale.toString());
             
             if (label == null) {
-                label = ontResource.getLabel(null);
+                label = getOntResource().getLabel(null);
             } 
             
             if (label == null) {
-                label = ontResource.getURI();
+                label = getOntResource().getURI();
             } 
 
             return label;
@@ -96,17 +96,17 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
         
     public String getComment(Locale locale) {
     	
-    	if (ontResource == null){
-    		return ""; // FIXME what to do?
+    	if (getOntResource() == null){
+    		return null;
     	}
     	else{
         	String comment = null;
         	
     		if (locale !=null)
-    			comment = ontResource.getComment(locale.toString());
+    			comment = getOntResource().getComment(locale.toString());
             
             if (comment == null) {
-            	comment = ontResource.getComment(null);
+            	comment = getOntResource().getComment(null);
             } 
 
             return comment;
@@ -124,43 +124,63 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 	}
 
 	public String getDate() {
-        String date = null;
-
-		RDFNode propertyValue = ontResource.getPropertyValue(ResourceFactory.createProperty(DC_DATE));
-		
-		if (propertyValue != null && propertyValue.isLiteral()){
-			date = propertyValue.asLiteral().getString();
-		}
-    	
-        return date;
+    	if (getOntResource() == null){
+    		return null;
+    	}
+    	else{
+    		
+            String date = null;
+			RDFNode propertyValue = getOntResource().getPropertyValue(ResourceFactory.createProperty(DC_DATE));
+	
+			
+			if (propertyValue != null && propertyValue.isLiteral()){
+				date = propertyValue.asLiteral().getString();
+			}
+	    	
+	        return date;
+    	}
 	}
 
 	public List<String> getCreators() {
-		
-		ArrayList<String> creators = new ArrayList<String>();
-		StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(DC_CREATOR));
-		while(it.hasNext()){
-			creators.add(it.nextStatement().getLiteral().getString());
-		}
-		return creators;
+    	if (getOntResource() == null){
+    		return new ArrayList();
+    	}
+    	else {
+			ArrayList<String> creators = new ArrayList<String>();
+			StmtIterator it = getOntResource().listProperties(ResourceFactory.createProperty(DC_CREATOR));
+			while(it.hasNext()){
+				creators.add(it.nextStatement().getLiteral().getString());
+			}
+			return creators;
+    	}
 	}
 
 	public List<String> getContributors() {
-		ArrayList<String> contributors = new ArrayList<String>();
-		StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(DC_CONTRIBUTOR));
-		while(it.hasNext()){
-			contributors.add(it.nextStatement().getLiteral().getString());
-		}
-		return contributors;
+    	if (getOntResource() == null){
+    		return new ArrayList();
+    	}
+    	else {
+			ArrayList<String> contributors = new ArrayList<String>();
+			StmtIterator it = getOntResource().listProperties(ResourceFactory.createProperty(DC_CONTRIBUTOR));
+			while(it.hasNext()){
+				contributors.add(it.nextStatement().getLiteral().getString());
+			}
+			return contributors;
+    	}
 	}
 
 	public List<String> getPublishers() {
-		ArrayList<String> publishers = new ArrayList<String>();
-		StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(DC_PUBLISHER));
-		while(it.hasNext()){
-			publishers.add(it.nextStatement().getLiteral().getString());
-		}
-		return publishers;
+    	if (getOntResource() == null){
+    		return new ArrayList();
+    	}
+    	else {
+			ArrayList<String> publishers = new ArrayList<String>();
+			StmtIterator it = getOntResource().listProperties(ResourceFactory.createProperty(DC_PUBLISHER));
+			while(it.hasNext()){
+				publishers.add(it.nextStatement().getLiteral().getString());
+			}
+			return publishers;
+    	}
 	}
 	
 	public Collection<DocumentableOntologicalObject> getReferencedOntologicalObjects() {
@@ -184,5 +204,18 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 		
 	}
 
+	/**
+	 * @param ontResource the ontResource to set
+	 */
+	public void setOntResource(OntResource ontResource) {
+		this.ontResource = ontResource;
+	}
+
+	/**
+	 * @return the ontResource
+	 */
+	public OntResource getOntResource() {
+		return ontResource;
+	}
 
 }

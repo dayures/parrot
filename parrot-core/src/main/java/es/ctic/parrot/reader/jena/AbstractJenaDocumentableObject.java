@@ -9,10 +9,14 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 
+import org.apache.log4j.Logger;
+
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntResource;
 import com.hp.hpl.jena.rdf.model.ResourceFactory;
+import com.hp.hpl.jena.rdf.model.ResourceRequiredException;
+import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 
 import es.ctic.parrot.de.AbstractDocumentableObject;
@@ -25,6 +29,8 @@ import es.ctic.parrot.de.URIIdentifier;
 
 public abstract class AbstractJenaDocumentableObject extends
 		AbstractDocumentableObject {
+	
+	private static final Logger logger = Logger.getLogger(AbstractJenaDocumentableObject.class);
 	
 	private OntResource ontResource;
 	private Collection<Rule> inverseRuleReferences = new HashSet<Rule>();
@@ -130,7 +136,12 @@ public abstract class AbstractJenaDocumentableObject extends
 		ArrayList<String> depictions = new ArrayList<String>();
 		StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(FOAF_DEPICTION));
 		while(it.hasNext()){
-			depictions.add(it.nextStatement().getLiteral().getString());
+			Statement statement = it.nextStatement();
+			try {
+				depictions.add(statement.getResource().getURI());
+			} catch (ResourceRequiredException e)  {
+				logger.warn("Ignore triple "+ statement +" because it is not a Object property");
+			}
 		}
 		return depictions;
 	}

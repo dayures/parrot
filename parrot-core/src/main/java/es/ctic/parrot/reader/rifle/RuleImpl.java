@@ -32,6 +32,8 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 	private static final String DC_CONTRIBUTOR = "http://purl.org/dc/terms/contributor";
 	private static final String DC_CREATOR = "http://purl.org/dc/terms/creator";
 	private static final String DC_DATE = "http://purl.org/dc/terms/date";
+	private static final String FOAF_DEPICTION = "http://xmlns.com/foaf/0.1/depiction";
+	
 	private net.sourceforge.rifle.ast.Rule rule;
 	private OntResource ontResource;
 
@@ -216,6 +218,16 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 	 */
 	public OntResource getOntResource() {
 		return ontResource;
+	}
+	
+	public List<String> getDepictions() {
+		
+		ArrayList<String> depictions = new ArrayList<String>();
+		StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(FOAF_DEPICTION));
+		while(it.hasNext()){
+			depictions.add(it.nextStatement().getLiteral().getString());
+		}
+		return depictions;
 	}
 
 }

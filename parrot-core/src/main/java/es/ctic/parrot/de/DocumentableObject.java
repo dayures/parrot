@@ -1,6 +1,7 @@
 package es.ctic.parrot.de;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Locale;
 
 import es.ctic.parrot.transformers.DocumentableObjectVisitor;
@@ -16,5 +17,6 @@ public interface DocumentableObject {
 	public String getLabel(Locale locale);
 	public String getLabel();
 	public String getComment(Locale locale);    
-	
+	public List<String> getDepictions();
+
 }

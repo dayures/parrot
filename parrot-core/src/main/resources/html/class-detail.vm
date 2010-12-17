@@ -5,10 +5,19 @@
       <dt>Uri</dt>
       <dd><a href="$element.Uri">$element.Uri</a></dd>      
   #end
+  
   #if($element.Comment)
       <dt>Description</dt>
       <dd>$element.Comment</dd>
   #end
+  
+  #if(!$element.depictions.isEmpty())
+   <dt>Multimedia</dt>
+   #foreach($depiction in $element.depictions)
+     <dd><img src="$depiction" alt="" /></dd>
+   #end
+  #end
+   
   #if(!$element.SuperClasses.isEmpty())
 	<dt>SuperClasses</dt>
     #foreach($superclass in $element.SuperClasses)

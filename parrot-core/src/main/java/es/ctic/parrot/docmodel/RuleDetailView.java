@@ -21,6 +21,7 @@ public class RuleDetailView implements DetailView{
 	private Collection<String> creators;
 	private Collection<String> contributors;
 	private Collection<String> publishers;
+	private Collection<String> depictions;
 	private Collection<DocumentableOntologicalObject> referencedOntologicalObjects;
     
     /**
@@ -109,6 +110,14 @@ public class RuleDetailView implements DetailView{
 
 	public Collection<String> getContributors() {
 		return Collections.unmodifiableCollection(contributors);
+	}
+
+	public void setDepictions(Collection<String> depictions) {
+		this.depictions = depictions;
+	}
+
+	public Collection<String> getDepictions() {
+		return Collections.unmodifiableCollection(depictions);
 	}
     
 }

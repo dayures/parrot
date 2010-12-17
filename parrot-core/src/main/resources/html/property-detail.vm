@@ -1,31 +1,43 @@
 <div class="term">
   <h3><a id="$element.Anchor"></a><span class="parrot-property-title">$element.Label</span> (Property)</h3>
   <dl>
-  #if($element.Uri)
+   #if($element.Uri)
       <dt>Uri</dt>
       <dd><a href="$element.Uri">$element.Uri</a></dd>      
-  #end
+   #end
+   
    #if($element.Comment)
       <dt>Description</dt>
       <dd>$element.Comment</dd>
    #end
+
    #if($element.Domain)
       <dt>Domain:</dt>
    	  <dd><span class="parrot-class-ref"><a href="#$element.Domain.LocalName">$element.Domain.Label</a></span></dd>
    #end
+
    #if($element.Range)
       <dt>Range</dt>
       <dd><span class="parrot-class-ref"><a href="#$element.Range.LocalName">$element.Range.Label</a></span></dd>
    #end
+
    #if(!$element.InverseReferences.isEmpty())
    <dt>Referenced from</dt>
    #foreach($reference in $element.InverseReferences)
      <dd><a href="#$reference.LocalName">$reference.Label</a></dd>
    #end
    #end
+
    #if($element.cardinality != 0)
    <dt>Cardinality:</dt>
    <dd>$element.cardinality</dd>
+   #end
+   
+   #if(!$element.depictions.isEmpty())
+   <dt>Multimedia</dt>
+   #foreach($depiction in $element.depictions)
+     <dd><img src="$depiction" alt="" /></dd>
+   #end
    #end
    
    #if(!$element.inverseRuleReferences.isEmpty())

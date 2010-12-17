@@ -67,7 +67,7 @@ class DetailViewComparator implements Comparator<DetailView> {
 
 	public int compare(DetailView arg0, DetailView arg1) {
 		if (arg0.getLabel() != null && arg1.getLabel() != null) {
-			return arg0.getLabel().compareTo(arg1.getLabel());
+			return arg0.getLabel().toLowerCase().compareTo(arg1.getLabel().toLowerCase());
 		} else {
 			return 0; // FIXME change comparable method
 		}

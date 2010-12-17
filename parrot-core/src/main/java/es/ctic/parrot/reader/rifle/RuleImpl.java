@@ -2,11 +2,12 @@ package es.ctic.parrot.reader.rifle;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+import java.util.TreeSet;
 
 import org.apache.log4j.Logger;
 
@@ -19,6 +20,7 @@ import com.hp.hpl.jena.rdf.model.StmtIterator;
 
 import es.ctic.parrot.de.AbstractDocumentableObject;
 import es.ctic.parrot.de.AnonymousIdentifier;
+import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.de.DocumentableOntologicalObject;
 import es.ctic.parrot.de.Identifier;
@@ -188,7 +190,7 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 	
 	public Collection<DocumentableOntologicalObject> getReferencedOntologicalObjects() {
 		
-		Set<DocumentableOntologicalObject> referencedOntologicalObjects = new HashSet<DocumentableOntologicalObject>();
+		Set<DocumentableOntologicalObject> referencedOntologicalObjects = new TreeSet<DocumentableOntologicalObject>(new DocumentableObjectComparator());
 		
 		for(String uriConst : rule.getUriConsts()){
 			URIIdentifier uriIdentifier = new URIIdentifier(uriConst);
@@ -241,4 +243,15 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 		return videos;
 	}
 
+}
+
+class DocumentableObjectComparator implements Comparator<DocumentableObject> {
+
+	public int compare(DocumentableObject arg0, DocumentableObject arg1) {
+		if (arg0.getLabel() != null && arg1.getLabel() != null) {
+			return arg0.getLabel().toLowerCase().compareTo(arg1.getLabel().toLowerCase());
+		} else {
+			return 0; // FIXME change comparable method
+		}
+	}
 }

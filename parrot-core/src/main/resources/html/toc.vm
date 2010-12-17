@@ -1,0 +1,48 @@
+<h1 id ="toc">Table of contents</h1>
+<div class="toc">
+<!-- The list of ontologies, classes, properties and rules goes here --> 
+<p>
+#if(!$document.ontologyDetailViews.isEmpty())
+Ontologies: 
+#foreach($element in $document.ontologyDetailViews)
+	<a href="#$element.Anchor">$element.Label</a>, 
+#end
+#end
+</p>
+
+<p>
+#if(!$document.ontologyClassDetailViews.isEmpty())
+Classes:
+#foreach($element in $document.ontologyClassDetailViews)
+	<span class="parrot-class-ref"><a href="#$element.Anchor">$element.Label</a></span>, 
+#end
+#end
+</p>
+<p>
+#if(!$document.ontologyPropertyDetailViews.isEmpty())
+Properties:
+#foreach($element in $document.ontologyPropertyDetailViews)
+	<span class="parrot-property-ref"><a href="#$element.Anchor">$element.Label</a></span>, 
+#end
+#end
+</p>
+
+<p>
+#if(!$document.ontologyIndividualDetailViews.isEmpty())
+Individuals:
+#foreach($element in $document.ontologyIndividualDetailViews)
+	<span class="parrot-individual-ref"><a href="#$element.Anchor">$element.Label</a></span>, 
+#end
+#end
+</p>
+
+<p>
+#if(!$document.ruleDetailViews.isEmpty())
+Rules:
+#foreach($element in $document.ruleDetailViews)
+	<span class="parrot-rule-ref"><a href="#$element.Anchor">$element.Label</a></span>, 
+#end
+#end
+</p>
+
+</div>

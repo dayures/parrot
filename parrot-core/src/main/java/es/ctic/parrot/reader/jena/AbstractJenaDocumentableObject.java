@@ -29,6 +29,7 @@ public abstract class AbstractJenaDocumentableObject extends
 	private OntResource ontResource;
 	private Collection<Rule> inverseRuleReferences = new HashSet<Rule>();
 	private static final String FOAF_DEPICTION = "http://xmlns.com/foaf/0.1/depiction";
+	private static final String OG_VIDEO = "http://ogp.me/ns#video";
 
 	/**
 	 * @return the ontResource
@@ -134,6 +135,15 @@ public abstract class AbstractJenaDocumentableObject extends
 		return depictions;
 	}
 	
+	public List<String> getVideos() {
+		
+		ArrayList<String> videos = new ArrayList<String>();
+		StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(OG_VIDEO));
+		while(it.hasNext()){
+			videos.add(it.nextStatement().getLiteral().getString());
+		}
+		return videos;
+	}
 	
 
 }

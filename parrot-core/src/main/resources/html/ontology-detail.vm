@@ -35,12 +35,26 @@
    #end
    #end
     
-   #if(!$element.depictions.isEmpty())
+   #if(!$element.depictions.isEmpty() || !$element.videos.isEmpty())
    <dt>Multimedia</dt>
+   #end
+   
+   #if(!$element.depictions.isEmpty())
    #foreach($depiction in $element.depictions)
      <dd><img src="$depiction" alt="" /></dd>
    #end
    #end
+   
+   #if(!$element.videos.isEmpty())
+   #foreach($video in $element.videos)
+     <dd>
+     <object data="$video">
+		<param name="movie" value="$video" />
+	</object>
+	</dd>
+   #end
+   #end
+   
   </dl>
   <p class="back-to-top">[<a href="#toc">back to top</a>]</p> 
 </div> 

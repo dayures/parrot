@@ -18,5 +18,6 @@ public interface DocumentableObject {
 	public String getLabel();
 	public String getComment(Locale locale);    
 	public List<String> getDepictions();
+	public List<String> getVideos();
 
 }

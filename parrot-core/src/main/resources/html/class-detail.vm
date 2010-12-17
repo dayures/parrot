@@ -11,13 +11,26 @@
       <dd>$element.Comment</dd>
   #end
   
-  #if(!$element.depictions.isEmpty())
-   <dt>Multimedia</dt>
-   #foreach($depiction in $element.depictions)
-     <dd><img src="$depiction" alt="" /></dd>
-   #end
+  #if(!$element.depictions.isEmpty() || !$element.videos.isEmpty())
+  	<dt>Multimedia</dt>
   #end
    
+  #if(!$element.depictions.isEmpty())
+  #foreach($depiction in $element.depictions)
+    <dd><img src="$depiction" alt="" /></dd>
+  #end
+  #end
+   
+  #if(!$element.videos.isEmpty())
+  #foreach($video in $element.videos)
+     <dd>
+     <object data="$video">
+		<param name="movie" value="$video" />
+	</object>
+	</dd>
+  #end
+  #end
+      
   #if(!$element.SuperClasses.isEmpty())
 	<dt>SuperClasses</dt>
     #foreach($superclass in $element.SuperClasses)
@@ -49,8 +62,6 @@
       <dd><span class="parrot-individual-ref"><a href="#$individual.LocalName">$individual.Label</a></span></dd>
    #end
   #end
-  
-  
   
   </dl>
   <p class="back-to-top">[<a href="#toc">back to top</a>]</p> 

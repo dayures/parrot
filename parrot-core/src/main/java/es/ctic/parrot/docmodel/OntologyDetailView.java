@@ -5,11 +5,8 @@ import java.util.List;
 import es.ctic.parrot.de.Identifier;
 import es.ctic.parrot.de.Ontology;
 
-public class OntologyDetailView implements DetailView{
+public class OntologyDetailView extends AbstractOntologicalObjectDetailView implements DetailView{
 	private Ontology ontology;
-	private String uri;
-	private String label;
-	private String comment;
 	private String version;
 	private List<String> editors;
 	private List<String> contributors;
@@ -19,30 +16,6 @@ public class OntologyDetailView implements DetailView{
 		this.ontology=ontology;
 	}
 	
-	public String getUri(){
-		return uri;
-	}
-	
-	public void setUri(String uri){
-		this.uri=uri;
-	}
-
-	public String getLabel() {
-		return this.label;
-	}
-
-	public void setLabel(String label) {
-		this.label = label;
-	}
-	
-	public String getComment() {
-		return this.comment;
-	}
-
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
-
 	public Identifier getIdentifier(){
 		return ontology.getIdentifier();
 	}

@@ -12,6 +12,7 @@ public abstract class AbstractOntologicalObjectDetailView implements DetailView 
 	private String uri;
 	private String label;
 	private String comment;
+	private Collection<String> depictions;
 	private Collection<Rule> inverseRuleReferences = new HashSet<Rule>();
 
 	public String getUri() {
@@ -44,6 +45,14 @@ public abstract class AbstractOntologicalObjectDetailView implements DetailView 
 
 	public Collection<Rule> getInverseRuleReferences() {
 		return Collections.unmodifiableCollection(inverseRuleReferences);
+	}
+
+	public void setDepictions(Collection<String> depictions) {
+		this.depictions = depictions;
+	}
+
+	public Collection<String> getDepictions() {
+		return Collections.unmodifiableCollection(depictions);
 	}
 	
 

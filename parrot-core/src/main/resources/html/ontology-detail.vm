@@ -5,14 +5,17 @@
       <dt>Uri</dt>
       <dd><a href="$element.Uri">$element.Uri</a></dd>      
   #end
+  
   #if($element.Comment)
       <dt>Description</dt>
       <dd>$element.Comment</dd>
   #end
+  
   #if($element.PreferredPrefix)
       <dt>Preferred Prefix</dt>
       <dd>$element.PreferredPrefix</dd>
   #end
+  
   #if($element.Version)
   <dt>Version</dt>
   <dd>$element.Version</dd>
@@ -29,6 +32,13 @@
    <dt>Contributors:</dt>
    #foreach($contributor in $element.contributors)
      <dd>$contributor</dd>
+   #end
+   #end
+    
+   #if(!$element.depictions.isEmpty())
+   <dt>Multimedia</dt>
+   #foreach($depiction in $element.depictions)
+     <dd><img src="$depiction" alt="" /></dd>
    #end
    #end
   </dl>

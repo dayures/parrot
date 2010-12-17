@@ -12,6 +12,10 @@ import es.ctic.parrot.transformers.DocumentableObjectVisitor;
 
 public class OntologyJenaImpl extends AbstractJenaDocumentableObject implements es.ctic.parrot.de.Ontology {
 	
+	private static final String VANN_PREFERRED_PREFIX = "http://purl.org/vocab/vann/preferredNamespacePrefix";
+	private static final String DC_CREATOR = "http://purl.org/dc/terms/creator";
+	private static final String DC_CONTRIBUTOR = "http://purl.org/dc/terms/contributor";
+
 	public OntologyJenaImpl(OntResource ontResource) {
 		super(ontResource);
 	}
@@ -25,8 +29,8 @@ public class OntologyJenaImpl extends AbstractJenaDocumentableObject implements 
 	}
 
 	public String getPreferredPrefix() {
-		if (getOntology().hasProperty(ResourceFactory.createProperty("http://purl.org/vocab/vann/preferredNamespacePrefix")))
-			return getOntology().getProperty(ResourceFactory.createProperty("http://purl.org/vocab/vann/preferredNamespacePrefix")).getLiteral().getString();
+		if (getOntology().hasProperty(ResourceFactory.createProperty(VANN_PREFERRED_PREFIX)))
+			return getOntology().getProperty(ResourceFactory.createProperty(VANN_PREFERRED_PREFIX)).getLiteral().getString();
 		else
 			return null;
 	}
@@ -38,7 +42,7 @@ public class OntologyJenaImpl extends AbstractJenaDocumentableObject implements 
 	public List<String> getEditors() {
 		
 		ArrayList<String> editors = new ArrayList<String>();
-		StmtIterator it = getOntology().listProperties(ResourceFactory.createProperty("http://purl.org/dc/terms/creator"));
+		StmtIterator it = getOntology().listProperties(ResourceFactory.createProperty(DC_CREATOR));
 		while(it.hasNext()){
 			editors.add(it.nextStatement().getLiteral().getString());
 		}
@@ -47,7 +51,7 @@ public class OntologyJenaImpl extends AbstractJenaDocumentableObject implements 
 
 	public List<String> getContributors() {
 		ArrayList<String> contributors = new ArrayList<String>();
-		StmtIterator it = getOntology().listProperties(ResourceFactory.createProperty("http://purl.org/dc/terms/contributor"));
+		StmtIterator it = getOntology().listProperties(ResourceFactory.createProperty(DC_CONTRIBUTOR));
 		while(it.hasNext()){
 			contributors.add(it.nextStatement().getLiteral().getString());
 		}

@@ -1,5 +1,6 @@
 package es.ctic.parrot.reader.jena;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -11,6 +12,8 @@ import java.util.Locale;
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntResource;
+import com.hp.hpl.jena.rdf.model.ResourceFactory;
+import com.hp.hpl.jena.rdf.model.StmtIterator;
 
 import es.ctic.parrot.de.AbstractDocumentableObject;
 import es.ctic.parrot.de.DocumentableOntologicalObject;
@@ -25,6 +28,7 @@ public abstract class AbstractJenaDocumentableObject extends
 	
 	private OntResource ontResource;
 	private Collection<Rule> inverseRuleReferences = new HashSet<Rule>();
+	private static final String FOAF_DEPICTION = "http://xmlns.com/foaf/0.1/depiction";
 
 	/**
 	 * @return the ontResource
@@ -118,6 +122,16 @@ public abstract class AbstractJenaDocumentableObject extends
 	
 	public Collection<Rule> getInverseRuleReferences(){
 		return Collections.unmodifiableCollection(inverseRuleReferences);
+	}
+	
+	public List<String> getDepictions() {
+		
+		ArrayList<String> depictions = new ArrayList<String>();
+		StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(FOAF_DEPICTION));
+		while(it.hasNext()){
+			depictions.add(it.nextStatement().getLiteral().getString());
+		}
+		return depictions;
 	}
 	
 	

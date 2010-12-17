@@ -2,12 +2,8 @@ package es.ctic.parrot.docmodel;
 
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
-
-import org.apache.commons.collections.comparators.ComparatorChain;
 
 public class Document {
 	private String title;

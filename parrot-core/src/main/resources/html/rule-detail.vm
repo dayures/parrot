@@ -35,6 +35,15 @@
       <dt>Date</dt>
       <dd>$element.Date</dd>
    #end
+   
+   #if(!$element.depictions.isEmpty())
+   <dt>Multimedia</dt>
+   #foreach($depiction in $element.depictions)
+     <dd><img src="$depiction" alt="" /></dd>
+   #end
+   #end
+   
+   
    #if(!$element.referencedOntologicalObjects.isEmpty())
    <dt>Referenced model objects</dt>
    #foreach($v in $element.referencedOntologicalObjects)

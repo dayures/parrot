@@ -55,8 +55,12 @@ public class ServletParrot extends HttpServlet {
 
 		try {
 			DocumentaryProject dp = new DocumentaryProject(Locale.ENGLISH); // FIXME
-			addUriInputs(dp, req);
 			addDirectInput(dp, req);
+			
+			if (dp.getInputs().isEmpty()){
+				addUriInputs(dp, req);
+			}
+			
 			if (dp.getInputs().isEmpty()) {
 				forwardToForm(req, res);
 			} else {

@@ -131,7 +131,7 @@ public class ServletParrot extends HttpServlet {
 	private void addUriInputs(DocumentaryProject dp, HttpServletRequest req) throws MalformedURLException, IOException, ReaderException {
 		String[] uriInputs = req.getParameterValues(DOCUMENT_URI);
 		String[] uriInputMimetypes = req.getParameterValues(MIMETYPE);
-
+		
 		if (uriInputs == null) {
 			uriInputs = new String[0];
 		}
@@ -140,7 +140,7 @@ public class ServletParrot extends HttpServlet {
 			String uriInput = uriInputs[i];
 			if (checkURI(uriInput)) {
 				logger.info("Trying to add valid input: " + uriInput);
-				if (i<uriInputMimetypes.length || uriInputMimetypes[i].equals("default")) { // allow content negotiation
+				if (uriInputMimetypes[i].equals("default")) { // allow content negotiation
 					dp.addInput(new URLInput(new URL(uriInput)));
 				} else {
 					dp.addInput(new URLInput(new URL(uriInput), uriInputMimetypes[i]));

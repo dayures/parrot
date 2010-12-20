@@ -63,7 +63,8 @@
 							<select name="mimetype">
 								<option value="default" <c:if test="${paramValues.mimetype[uriStatus.index] eq 'default'}">selected="selected"</c:if>>Allow content negotiation</option>
 								<option value="application/owl+xml" <c:if test="${paramValues.mimetype[uriStatus.index] eq 'application/owl+xml'}">selected="selected"</c:if>>It is a OWL ontology</option>
-								<option value="application/rif+xml" <c:if test="${paramValues.mimetype[uriStatus.index] eq 'application/rif+xml'}">selected="selected"</c:if>>It is a RIF document</option>
+								<option value="application/rif+xml" <c:if test="${paramValues.mimetype[uriStatus.index] eq 'application/rif+xml'}">selected="selected"</c:if>>It is a RIF XML document</option>
+								<option value="text/x-rif-ps" <c:if test="${paramValues.mimetype[uriStatus.index] eq 'text/x-rif-ps'}">selected="selected"</c:if>>It is a RIF PS document</option>
 							</select>							 
 							<br /> 
 							<c:if test='${uriStatus.first}'>
@@ -84,7 +85,6 @@
 								<option value="application/owl+xml">It is a OWL ontology</option>
 								<option value="application/rif+xml">It is a RIF XML document</option>
 								<option value="text/x-rif-ps">It is a RIF PS document</option>
-
 							</select>	 
 							<span class="uriHint">(for example: <tt id="example">http://ontorule-project.eu/resources/steel.owl</tt>)</span>
 							</p>

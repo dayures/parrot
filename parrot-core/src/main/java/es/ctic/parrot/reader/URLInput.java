@@ -27,7 +27,7 @@ public class URLInput implements Input {
     // application/rif+xml : http://www.w3.org/TR/rif-core/#Appendix:_RIF_Media_Type_Registration
     // application/owl+xml : http://www.w3.org/TR/2009/REC-owl2-xml-serialization-20091027/#Appendix:_Internet_Media_Type.2C_File_Extension.2C_and_Macintosh_File_Type
 
-    private static final String ACCEPT_HEADER_VALUES = "application/rdf+xml;application/xml;application/rif+xml;application/owl+xml;text/x-rif-ps"; // FIXME: add other mimetypes
+    private static final String ACCEPT_HEADER_VALUES = "application/rdf+xml;application/xml;application/rif+xml;application/owl+xml;text/x-rif-ps;*/*"; // FIXME: add other mimetypes
     private static final Set<String> STRICT_MIMETYPES = new HashSet<String>(Arrays.asList("application/rdf+xml","application/xml","application/rif+xml","application/owl+xml","text/x-rif-ps"));
 
     //private static final Set<String> NOT_STRICT_MIMETYPES = new HashSet<String>(Arrays.asList("text/x-rif-ps"));
@@ -49,19 +49,11 @@ public class URLInput implements Input {
      */
     private void checkUrl() throws IOException, ReaderException {
         try {
-            logger.debug("Detecting content type for URL " + this.url);
+            logger.debug("Detecting content type for URL " + this.url + " with mimetype " + this.mimeType);
             HttpURLConnection connection = (HttpURLConnection) this.url.openConnection();
             connection.setRequestMethod("HEAD"); 
 
-            if (this.mimeType == null){
-                logger.debug("Accepting: " + ACCEPT_HEADER_VALUES);
-                connection.addRequestProperty("Accept", ACCEPT_HEADER_VALUES);
-            } else
-                if (STRICT_MIMETYPES.contains(this.mimeType)) {
-                    connection.addRequestProperty("Accept", this.mimeType);
-                } else {
-                    // Pass
-                }
+            connection.addRequestProperty("Accept", ACCEPT_HEADER_VALUES);
 
             connection.connect();
 
@@ -72,6 +64,7 @@ public class URLInput implements Input {
                 throw new ReaderException("URI not accesible. HTTP Status code: " + connection.getResponseCode());
             } 
 
+            // For content negotiation, set mimetype
             if (this.mimeType == null){
                 this.mimeType = getCleanMimeType(connection.getContentType());
                 if (STRICT_MIMETYPES.contains(this.mimeType)){ 

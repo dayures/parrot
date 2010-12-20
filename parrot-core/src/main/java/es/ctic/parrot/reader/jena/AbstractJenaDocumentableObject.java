@@ -151,7 +151,12 @@ public abstract class AbstractJenaDocumentableObject extends
 		ArrayList<String> videos = new ArrayList<String>();
 		StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(OG_VIDEO));
 		while(it.hasNext()){
-			videos.add(it.nextStatement().getLiteral().getString());
+			Statement statement = it.nextStatement();
+			try{
+				videos.add(it.nextStatement().getLiteral().getString());
+			} catch (ResourceRequiredException e)  {
+				logger.warn("Ignore triple "+ statement +" because it is not a Object property");
+			}
 		}
 		return videos;
 	}

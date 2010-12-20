@@ -16,6 +16,8 @@ import com.hp.hpl.jena.ontology.OntResource;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.ResourceFactory;
+import com.hp.hpl.jena.rdf.model.ResourceRequiredException;
+import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 
 import es.ctic.parrot.de.AbstractDocumentableObject;
@@ -228,7 +230,12 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 		ArrayList<String> depictions = new ArrayList<String>();
 		StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(FOAF_DEPICTION));
 		while(it.hasNext()){
-			depictions.add(it.nextStatement().getLiteral().getString());
+			Statement statement = it.nextStatement();
+			try{
+				depictions.add(statement.getResource().getURI());
+			} catch (ResourceRequiredException e)  {
+				logger.warn("Ignore triple "+ statement +" because it is not a Object property");
+			}
 		}
 		return depictions;
 	}
@@ -238,7 +245,12 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 		ArrayList<String> videos = new ArrayList<String>();
 		StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(OG_VIDEO));
 		while(it.hasNext()){
-			videos.add(it.nextStatement().getLiteral().getString());
+			Statement statement = it.nextStatement();
+			try{
+				videos.add(statement.getResource().getURI());
+			} catch (ResourceRequiredException e)  {
+				logger.warn("Ignore triple "+ statement +" because it is not a Object property");
+			}
 		}
 		return videos;
 	}

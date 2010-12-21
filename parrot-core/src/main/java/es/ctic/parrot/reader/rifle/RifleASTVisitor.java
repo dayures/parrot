@@ -39,6 +39,10 @@ public class RifleASTVisitor extends Visitor {
 	@Override
 	public Object visit(Group group) {
 		logger.debug("Visiting RIF group AST node: " + group);
+		
+		RuleSetImpl ruleset = new RuleSetImpl(group, register);
+		register.registerDocumentableObject(ruleset);
+
 		for(Rule rule : group.getRules()){
 			rule.accept(this);
 		}

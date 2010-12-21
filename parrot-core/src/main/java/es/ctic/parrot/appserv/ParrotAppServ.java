@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.Locale;
 
+import org.apache.log4j.Logger;
+
 import es.ctic.parrot.DocumentaryProject;
 import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.DocumentableObjectRegister;
@@ -29,6 +31,9 @@ public class ParrotAppServ {
     private DocumentReader ruleWrapper;
     private DocumentReader rifPSWrapper;
     
+    private static final Logger logger = Logger.getLogger(ParrotAppServ.class);
+
+    
     public ParrotAppServ() {
         // FIXME: initialize wrappers
     }
@@ -47,7 +52,7 @@ public class ParrotAppServ {
 		resolveInternalReferences(register);
 		resolveCrossReferences(register);
 		Collection<DocumentableObject> documentableObjects = register.getDocumentableObjects();
-		Document document = transformToDocument(documentableObjects, dp.getLocale());		
+		Document document = transformToDocument(documentableObjects, dp.getLocale());
 		outputGenerator.generateOutput(document);
 	}
 

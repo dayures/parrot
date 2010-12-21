@@ -37,6 +37,15 @@ Individuals:
 </p>
 
 <p>
+#if(!$document.ruleSetDetailViews.isEmpty())
+RuleSets:
+#foreach($element in $document.ruleSetDetailViews)
+	<span class="parrot-ruleset-ref"><a href="#$element.Anchor">$element.Label</a></span>, 
+#end
+#end
+</p>
+
+<p>
 #if(!$document.ruleDetailViews.isEmpty())
 Rules:
 #foreach($element in $document.ruleDetailViews)

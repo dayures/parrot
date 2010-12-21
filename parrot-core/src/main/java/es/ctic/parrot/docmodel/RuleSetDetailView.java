@@ -19,6 +19,8 @@ public class RuleSetDetailView implements DetailView{
 	private String label;
 	private String comment;
 	private String date;
+	private String strategy;
+	private Integer priority;
 	private Collection<String> creators;
 	private Collection<String> contributors;
 	private Collection<String> publishers;
@@ -144,6 +146,34 @@ public class RuleSetDetailView implements DetailView{
 	 */
 	public Collection<Rule> getRules() {
 		return Collections.unmodifiableCollection(rules);
+	}
+
+	/**
+	 * @param strategy the strategy to set
+	 */
+	public void setStrategy(String strategy) {
+		this.strategy = strategy;
+	}
+
+	/**
+	 * @return the strategy
+	 */
+	public String getStrategy() {
+		return strategy;
+	}
+
+	/**
+	 * @param priority the priority to set
+	 */
+	public void setPriority(Integer priority) {
+		this.priority = priority;
+	}
+
+	/**
+	 * @return the priority
+	 */
+	public Integer getPriority() {
+		return priority;
 	}
     
 }

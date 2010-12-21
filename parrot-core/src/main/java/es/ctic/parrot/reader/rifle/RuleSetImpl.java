@@ -262,6 +262,15 @@ public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
 		}
 		return ruleList;
 	}
+
+	public String getStrategy() {
+		return ruleSet.getStrategy();
+
+	}
+
+	public Integer getPriority() {
+		return ruleSet.getPriority();
+	}
 	
 
 }

@@ -76,7 +76,7 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
     public String getLabel(Locale locale) {
 
     	if (getOntResource() == null){
-    		return null;
+    		return getURI();
     	}
     	else{
         	String label = null;

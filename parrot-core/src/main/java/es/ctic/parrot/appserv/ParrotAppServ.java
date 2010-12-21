@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.Locale;
 
-import org.apache.log4j.Logger;
-
 import es.ctic.parrot.DocumentaryProject;
 import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.DocumentableObjectRegister;
@@ -30,9 +28,6 @@ public class ParrotAppServ {
     private DocumentReader ontologyWrapper;
     private DocumentReader ruleWrapper;
     private DocumentReader rifPSWrapper;
-    
-    private static final Logger logger = Logger.getLogger(ParrotAppServ.class);
-
     
     public ParrotAppServ() {
         // FIXME: initialize wrappers

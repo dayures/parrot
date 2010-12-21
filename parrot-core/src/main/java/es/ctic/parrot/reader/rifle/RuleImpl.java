@@ -29,6 +29,7 @@ import es.ctic.parrot.de.Identifier;
 import es.ctic.parrot.de.Rule;
 import es.ctic.parrot.de.URIIdentifier;
 import es.ctic.parrot.transformers.DocumentableObjectVisitor;
+import es.ctic.parrot.utils.URIUtils;
 
 public class RuleImpl extends AbstractDocumentableObject implements Rule {
 	
@@ -76,7 +77,7 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
     public String getLabel(Locale locale) {
 
     	if (getOntResource() == null){
-    		return getURI();
+    		return URIUtils.getReference(getURI());
     	}
     	else{
         	String label = null;
@@ -89,7 +90,7 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
             } 
             
             if (label == null) {
-                label = getOntResource().getURI();
+                label = URIUtils.getReference(ontResource.getURI());
             } 
 
             return label;

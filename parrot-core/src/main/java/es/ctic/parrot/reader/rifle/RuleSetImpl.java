@@ -77,7 +77,7 @@ public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
     public String getLabel(Locale locale) {
 
     	if (getOntResource() == null){
-    		return null;
+    		return getURI();
     	}
     	else{
         	String label = null;
@@ -251,15 +251,19 @@ public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
 	}
 
 	public Collection<Rule> getRules() {
-		return Collections.unmodifiableCollection(astRuleCollectionRuleCollection(ruleSet.getRules()));
+		return Collections.unmodifiableCollection(astRuleCollectionToRuleCollection(ruleSet.getRules()));
 	}
 	
-	protected Collection<es.ctic.parrot.de.Rule> astRuleCollectionRuleCollection(Collection<net.sourceforge.rifle.ast.Rule> astRules) {
+	protected Collection<es.ctic.parrot.de.Rule> astRuleCollectionToRuleCollection(Collection<net.sourceforge.rifle.ast.Rule> astRules) {
 		Collection<es.ctic.parrot.de.Rule> ruleList = new LinkedList<es.ctic.parrot.de.Rule>();
 		
 		for(net.sourceforge.rifle.ast.Rule astRule : astRules){
-			ruleList.add((Rule) register.findDocumentableObject(new URIIdentifier(astRule.getId())));
+			Rule rule = (Rule) register.findDocumentableObject(new URIIdentifier(astRule.getId()));
+			if (rule != null){
+				ruleList.add(rule);
+			}
 		}
+		logger.debug(ruleList);
 		return ruleList;
 	}
 

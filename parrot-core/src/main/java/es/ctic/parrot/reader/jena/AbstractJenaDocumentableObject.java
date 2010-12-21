@@ -26,6 +26,7 @@ import es.ctic.parrot.de.OntologyClass;
 import es.ctic.parrot.de.OntologyIndividual;
 import es.ctic.parrot.de.Rule;
 import es.ctic.parrot.de.URIIdentifier;
+import es.ctic.parrot.utils.URIUtils;
 
 public abstract class AbstractJenaDocumentableObject extends
 		AbstractDocumentableObject {
@@ -55,19 +56,23 @@ public abstract class AbstractJenaDocumentableObject extends
 	
     public String getLabel(Locale locale) {
         String label = null;
-        
-        if (locale !=null)
-        	label = ontResource.getLabel(locale.toString());
-        
-        if (label == null) {
-            label = ontResource.getLabel(null);
-        } 
-        
-        if (label == null) {
-            label = ontResource.getURI();
-        } 
-
-        return label;
+    	if (getOntResource() == null){
+    		return URIUtils.getReference(getURI());
+    	}
+    	else{
+	        if (locale !=null)
+	        	label = ontResource.getLabel(locale.toString());
+	        
+	        if (label == null) {
+	            label = ontResource.getLabel(null);
+	        } 
+	        
+	        if (label == null) {
+	            label = URIUtils.getReference(ontResource.getURI());
+	        } 
+	
+	        return label;
+    	}
     }
     
     public String getLabel() {

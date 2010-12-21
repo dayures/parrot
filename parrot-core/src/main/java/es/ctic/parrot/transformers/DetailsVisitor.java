@@ -117,6 +117,8 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 		details.setVideos(object.getVideos());		
 		details.setReferencedOntologicalObjects(object.getReferencedOntologicalObjects());
 		details.setRules(object.getRules());
+		details.setPriority(object.getPriority());
+		details.setStrategy(object.getStrategy());
 	    document.addRuleSetDetailView(details);
 	    return details;
 	}

@@ -5,11 +5,22 @@
       <dt>Uri</dt>
       <dd><a href="$element.Uri">$element.Uri</a></dd>      
    #end
+
    #if($element.Comment)
       <dt>Description</dt>
       <dd>$element.Comment</dd>
    #end
-   
+
+   #if($element.Strategy)
+      <dt>Strategy</dt>
+      <dd>$element.Strategy</dd>
+   #end
+
+   #if($element.Priority)
+      <dt>Priority</dt>
+      <dd>$element.Priority</dd>
+   #end
+
    #if(!$element.creators.isEmpty())
    <dt>Creators:</dt>
    #foreach($creator in $element.creators)

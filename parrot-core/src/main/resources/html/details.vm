@@ -36,6 +36,16 @@
 	#end
 #end
 
+#if(!$document.ruleSetDetailViews.isEmpty())
+	<h2>RuleSets</h2>
+	#foreach($element in $document.ruleSetDetailViews)
+	<div class="details rulesets">
+	  #parse("html/ruleset-detail.vm")
+	</div>
+	#end
+#end
+
+
 #if(!$document.ruleDetailViews.isEmpty())
 	<h2>Rules</h2>
 	#foreach($element in $document.ruleDetailViews)

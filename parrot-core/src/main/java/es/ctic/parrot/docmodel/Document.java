@@ -11,7 +11,8 @@ public class Document {
 	private SortedSet<OntologyClassDetailView> ontologyClassDetailViews = new TreeSet<OntologyClassDetailView>(new DetailViewComparator());
 	private SortedSet<OntologyPropertyDetailView> ontologyPropertyDetailViews = new TreeSet<OntologyPropertyDetailView>(new DetailViewComparator());
     private SortedSet<RuleDetailView> ruleDetailViews = new TreeSet<RuleDetailView>(new DetailViewComparator());
-	private SortedSet<OntologyIndividualDetailView> ontologyIndividualDetailViews = new TreeSet<OntologyIndividualDetailView>(new DetailViewComparator());
+    private SortedSet<RuleSetDetailView> ruleSetDetailViews = new TreeSet<RuleSetDetailView>(new DetailViewComparator());
+    private SortedSet<OntologyIndividualDetailView> ontologyIndividualDetailViews = new TreeSet<OntologyIndividualDetailView>(new DetailViewComparator());
 	
 	public String getTitle() {
 		return this.title;
@@ -37,12 +38,19 @@ public class Document {
         return Collections.unmodifiableSortedSet(ruleDetailViews);
     }
     
+    public SortedSet<RuleSetDetailView> getRuleSetDetailViews() {
+        return Collections.unmodifiableSortedSet(ruleSetDetailViews);
+    }
+    
     public SortedSet<OntologyIndividualDetailView> getOntologyIndividualDetailViews() {
     	return Collections.unmodifiableSortedSet(ontologyIndividualDetailViews);
     }
 
-    public void addRuleDetailView(RuleDetailView detail) {
-        this.ruleDetailViews.add(detail);
+    public void addRuleDetailView(RuleDetailView details) {
+        this.ruleDetailViews.add(details);
+    }
+    public void addRuleSetDetailView(RuleSetDetailView details) {
+        this.ruleSetDetailViews.add(details);
     }
 
     public void addOntologyClassDetailView(OntologyClassDetailView details) {

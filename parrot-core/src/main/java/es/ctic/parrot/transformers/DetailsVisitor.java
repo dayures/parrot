@@ -9,12 +9,14 @@ import es.ctic.parrot.de.OntologyClass;
 import es.ctic.parrot.de.OntologyIndividual;
 import es.ctic.parrot.de.OntologyProperty;
 import es.ctic.parrot.de.Rule;
+import es.ctic.parrot.de.RuleSet;
 import es.ctic.parrot.docmodel.Document;
 import es.ctic.parrot.docmodel.OntologyClassDetailView;
 import es.ctic.parrot.docmodel.OntologyDetailView;
 import es.ctic.parrot.docmodel.OntologyIndividualDetailView;
 import es.ctic.parrot.docmodel.OntologyPropertyDetailView;
 import es.ctic.parrot.docmodel.RuleDetailView;
+import es.ctic.parrot.docmodel.RuleSetDetailView;
 
 public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
     
@@ -97,6 +99,25 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 		details.setVideos(object.getVideos());		
 		details.setReferencedOntologicalObjects(object.getReferencedOntologicalObjects());
 	    document.addRuleDetailView(details);
+	    return details;
+	}
+	
+	public Object visit(RuleSet object) {
+	    logger.debug("Visiting ruleset " + object);
+	    RuleSetDetailView details = new RuleSetDetailView(object);
+	    details.setIdentifier(object.getIdentifier());
+		details.setUri(object.getURI());
+		details.setLabel(object.getLabel(locale));
+		details.setComment(object.getComment(locale));
+		details.setDate(object.getDate());
+		details.setCreators(object.getCreators());
+		details.setContributors(object.getContributors());
+		details.setPublishers(object.getPublishers());
+		details.setDepictions(object.getDepictions());
+		details.setVideos(object.getVideos());		
+		details.setReferencedOntologicalObjects(object.getReferencedOntologicalObjects());
+		details.setRules(object.getRules());
+	    document.addRuleSetDetailView(details);
 	    return details;
 	}
 

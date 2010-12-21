@@ -7,6 +7,7 @@ import es.ctic.parrot.de.OntologyClass;
 import es.ctic.parrot.de.OntologyIndividual;
 import es.ctic.parrot.de.OntologyProperty;
 import es.ctic.parrot.de.Rule;
+import es.ctic.parrot.de.RuleSet;
 
 public class AbstractDocumentableObjectVisitor implements
         DocumentableObjectVisitor {
@@ -44,4 +45,9 @@ public class AbstractDocumentableObjectVisitor implements
 		return null;
 	}
 
+	public Object visit(RuleSet ruleSet) {
+        // default implementation: do nothing
+		return null;
+	}
+	
 }

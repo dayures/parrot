@@ -151,7 +151,7 @@ public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
 
 	public List<String> getCreators() {
     	if (getOntResource() == null){
-    		return new ArrayList();
+    		return new ArrayList<String>();
     	}
     	else {
 			ArrayList<String> creators = new ArrayList<String>();
@@ -165,7 +165,7 @@ public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
 
 	public List<String> getContributors() {
     	if (getOntResource() == null){
-    		return new ArrayList();
+    		return new ArrayList<String>();
     	}
     	else {
 			ArrayList<String> contributors = new ArrayList<String>();
@@ -179,7 +179,7 @@ public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
 
 	public List<String> getPublishers() {
     	if (getOntResource() == null){
-    		return new ArrayList();
+    		return new ArrayList<String>();
     	}
     	else {
 			ArrayList<String> publishers = new ArrayList<String>();
@@ -207,33 +207,40 @@ public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
 	}
 	
 	public List<String> getDepictions() {
-		
-		ArrayList<String> depictions = new ArrayList<String>();
-		StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(FOAF_DEPICTION));
-		while(it.hasNext()){
-			Statement statement = it.nextStatement();
-			try{
-				depictions.add(statement.getResource().getURI());
-			} catch (ResourceRequiredException e)  {
-				logger.warn("Ignore triple "+ statement +" because it is not a Object property");
+    	if (getOntResource() == null){
+    		return new ArrayList<String>();
+    	} else {
+			ArrayList<String> depictions = new ArrayList<String>();
+			StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(FOAF_DEPICTION));
+			while(it.hasNext()){
+				Statement statement = it.nextStatement();
+				try{
+					depictions.add(statement.getResource().getURI());
+				} catch (ResourceRequiredException e)  {
+					logger.warn("Ignore triple "+ statement +" because it is not a Object property");
+				}
 			}
+			return depictions;
 		}
-		return depictions;
+    	
 	}
 	
 	public List<String> getVideos() {
-		
-		ArrayList<String> videos = new ArrayList<String>();
-		StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(OG_VIDEO));
-		while(it.hasNext()){
-			Statement statement = it.nextStatement();
-			try{
-				videos.add(statement.getResource().getURI());
-			} catch (ResourceRequiredException e)  {
-				logger.warn("Ignore triple "+ statement +" because it is not a Object property");
+    	if (getOntResource() == null){
+    		return new ArrayList<String>();
+    	} else {
+			ArrayList<String> videos = new ArrayList<String>();
+			StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(OG_VIDEO));
+			while(it.hasNext()){
+				Statement statement = it.nextStatement();
+				try{
+					videos.add(statement.getResource().getURI());
+				} catch (ResourceRequiredException e)  {
+					logger.warn("Ignore triple "+ statement +" because it is not a Object property");
+				}
 			}
-		}
-		return videos;
+			return videos;
+    	}
 	}
 
 	public Collection<DocumentableOntologicalObject> getReferencedOntologicalObjects() {

@@ -8,6 +8,8 @@ import com.hp.hpl.jena.util.iterator.ExtendedIterator;
 import com.hp.hpl.jena.util.iterator.Filter;
 import com.hp.hpl.jena.vocabulary.OWL;
 
+import es.ctic.parrot.de.DocumentableObjectRegister;
+import es.ctic.parrot.de.Identifier;
 import es.ctic.parrot.de.OntologyClass;
 import es.ctic.parrot.de.OntologyIndividual;
 import es.ctic.parrot.transformers.DocumentableObjectVisitor;
@@ -15,8 +17,8 @@ import es.ctic.parrot.transformers.DocumentableObjectVisitor;
 public class OntologyIndividualJenaImpl extends AbstractJenaDocumentableObject
 		implements OntologyIndividual {
 
-	public OntologyIndividualJenaImpl(Individual individual) {
-		super(individual);
+	public OntologyIndividualJenaImpl(Individual individual, DocumentableObjectRegister register) {
+		super(individual, register);
 	}
 
 	public Object accept(DocumentableObjectVisitor visitor) {

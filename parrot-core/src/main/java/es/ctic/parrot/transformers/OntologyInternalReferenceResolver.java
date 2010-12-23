@@ -4,6 +4,8 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.de.OntologyClass;
@@ -12,6 +14,8 @@ import es.ctic.parrot.de.OntologyProperty;
 public class OntologyInternalReferenceResolver extends
 		AbstractDocumentableObjectVisitor {
 	private final DocumentableObjectRegister register;
+	
+	private static final Logger logger = Logger.getLogger(OntologyInternalReferenceResolver.class);
 
 	public OntologyInternalReferenceResolver(DocumentableObjectRegister register){
 		this.register=register;
@@ -32,7 +36,9 @@ public class OntologyInternalReferenceResolver extends
 	}
     
 	public Object visit(OntologyClass clazz){
-	    Collection<OntologyClass> subClasses = clazz.getSubClasses();
+    	logger.debug("Resolving internal references of class "+clazz);
+		
+    	Collection<OntologyClass> subClasses = clazz.getSubClasses();
 	    List<OntologyClass> registersSubClasses = new LinkedList<OntologyClass>();
 	    for(OntologyClass subclass:subClasses){
 	        OntologyClass registerClass=(OntologyClass)register.findDocumentableObject(subclass.getIdentifier());
@@ -41,6 +47,7 @@ public class OntologyInternalReferenceResolver extends
 	        }
 	    }
 	    clazz.setSubClasses(registersSubClasses);
+
 	    Collection<OntologyClass> superClasses = clazz.getSuperClasses();
 	    List<OntologyClass> registersSuperClasses = new LinkedList<OntologyClass>();
 	    for(OntologyClass superclass:superClasses){
@@ -50,6 +57,7 @@ public class OntologyInternalReferenceResolver extends
 	        }
 	    }
 	    clazz.setSuperClasses(registersSuperClasses);
+	    
 	    return null;
 	}
 

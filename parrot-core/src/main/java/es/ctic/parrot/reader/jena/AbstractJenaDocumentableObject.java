@@ -20,6 +20,7 @@ import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 
 import es.ctic.parrot.de.AbstractDocumentableObject;
+import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.de.DocumentableOntologicalObject;
 import es.ctic.parrot.de.Identifier;
 import es.ctic.parrot.de.OntologyClass;
@@ -45,9 +46,10 @@ public abstract class AbstractJenaDocumentableObject extends
 		return ontResource;
 	}
 
-	public AbstractJenaDocumentableObject(OntResource ontResource) {
+	public AbstractJenaDocumentableObject(OntResource ontResource, DocumentableObjectRegister register) {
 		super();
 		this.ontResource = ontResource;
+		this.setRegister(register);
 	}
 	
 	public String getURI() {
@@ -89,7 +91,11 @@ public abstract class AbstractJenaDocumentableObject extends
     }
 
 	public Identifier getIdentifier() {
-		return new URIIdentifier(ontResource.getURI());
+		if (ontResource.isAnon() == true){
+			return new JenaAnonymousIdentifier(ontResource.getModel(),ontResource.getId());
+		} else{
+			return new URIIdentifier(ontResource.getURI());
+		}
 	}
 
 	public String getURIAbbrev(){
@@ -106,10 +112,20 @@ public abstract class AbstractJenaDocumentableObject extends
 
 	protected Collection<OntologyClass> ontClassIteratorToOntologyClassList(Iterator<OntClass> it) {
 		List<OntologyClass> ontologyClassList = new LinkedList<OntologyClass>();
+		
 		while(it.hasNext()){
-			OntClass superClass=it.next();
-			if(superClass.getURI()!=null){
-				OntologyClass _class=new OntologyClassJenaImpl(superClass);
+			OntClass clazz=it.next();
+			
+			Identifier identifier = null;
+			
+			if (clazz.isAnon() == false){
+				identifier = new URIIdentifier(clazz.getURI());
+			} else {
+				identifier = new JenaAnonymousIdentifier(clazz.getModel(), clazz.getId());
+			}
+
+			OntologyClass _class = (OntologyClass) this.getRegister().findDocumentableObject(identifier); 
+			if (_class != null) { // do not add null elements in the list 
 				ontologyClassList.add(_class);
 			}
 		}
@@ -121,7 +137,7 @@ public abstract class AbstractJenaDocumentableObject extends
 		while(it.hasNext()){
 			Individual individual=it.next();
 			if(individual.getURI()!=null){
-				OntologyIndividual _individual = new OntologyIndividualJenaImpl(individual);
+				OntologyIndividual _individual = new OntologyIndividualJenaImpl(individual, this.getRegister());
 				ontologyIndividualList.add(_individual);
 			}
 		}

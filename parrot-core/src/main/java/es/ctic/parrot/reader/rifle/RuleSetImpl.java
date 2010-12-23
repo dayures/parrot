@@ -45,13 +45,11 @@ public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
 
     private Identifier identifier;
 	
-	private DocumentableObjectRegister register;
-
 	private static final Logger logger = Logger.getLogger(RuleSetImpl.class);
 	
 	public RuleSetImpl(net.sourceforge.rifle.ast.Group group, DocumentableObjectRegister register) {
 		this.ruleSet = group;
-		this.register = register;
+		this.setRegister(register);
 		if (ruleSet.getId() == null) {
 		    this.identifier = new AnonymousIdentifier();
 		} else {
@@ -259,7 +257,7 @@ public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
 		Collection<es.ctic.parrot.de.Rule> ruleList = new LinkedList<es.ctic.parrot.de.Rule>();
 		
 		for(net.sourceforge.rifle.ast.Rule astRule : astRules){
-			Rule rule = (Rule) register.findDocumentableObject(new URIIdentifier(astRule.getId()));
+			Rule rule = (Rule) this.getRegister().findDocumentableObject(new URIIdentifier(astRule.getId()));
 			if (rule != null){
 				ruleList.add(rule);
 			}

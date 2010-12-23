@@ -8,6 +8,7 @@ import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.util.iterator.ExtendedIterator;
 
+import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.de.OntologyClass;
 import es.ctic.parrot.de.OntologyIndividual;
 import es.ctic.parrot.transformers.DocumentableObjectVisitor;
@@ -19,8 +20,8 @@ public class OntologyClassJenaImpl extends AbstractJenaDocumentableObject implem
 	
 	private Collection<OntologyIndividual> individuals;
 	
-	public OntologyClassJenaImpl(OntClass ontclass){
-		super(ontclass);
+	public OntologyClassJenaImpl(OntClass ontclass, DocumentableObjectRegister register){
+		super(ontclass, register);
 	}
 	
 	public Object accept(DocumentableObjectVisitor visitor) {

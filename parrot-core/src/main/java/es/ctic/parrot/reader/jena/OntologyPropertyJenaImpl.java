@@ -5,6 +5,7 @@ import com.hp.hpl.jena.ontology.OntResource;
 import com.hp.hpl.jena.rdf.model.RDFNode;
 
 import es.ctic.parrot.de.DocumentableObject;
+import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.de.OntologyProperty;
 import es.ctic.parrot.transformers.DocumentableObjectVisitor;
 
@@ -16,14 +17,14 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 		return (OntProperty) getOntResource();
 	}
     
-    public OntologyPropertyJenaImpl(OntProperty ontProperty) {
-    	super(ontProperty);
+    public OntologyPropertyJenaImpl(OntProperty ontProperty, DocumentableObjectRegister register) {
+    	super(ontProperty, register);
         OntResource domain=ontProperty.getDomain();
 		if(domain!=null && domain.isClass() && domain.getURI()!=null)
-			this.domain=new OntologyClassJenaImpl(domain.asClass());
+			this.domain=new OntologyClassJenaImpl(domain.asClass(), register);
 		OntResource range=ontProperty.getRange();
 		if(range !=null && range.isClass() && range.getURI()!=null)
-			this.range=new OntologyClassJenaImpl(range.asClass());	
+			this.range=new OntologyClassJenaImpl(range.asClass(), register);	
     }
     
     public Object accept(DocumentableObjectVisitor visitor) {

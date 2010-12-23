@@ -46,11 +46,10 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
     private Identifier identifier;
 	
 	private static final Logger logger = Logger.getLogger(RuleImpl.class);
-	private DocumentableObjectRegister register;
 
 	public RuleImpl(net.sourceforge.rifle.ast.Rule rule, DocumentableObjectRegister register) {
 		this.rule = rule;
-		this.register = register;
+		this.setRegister(register);
 		if (rule.getId() == null) {
 		    this.identifier = new AnonymousIdentifier();
 		} else {
@@ -198,7 +197,7 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 		for(String uriConst : rule.getUriConsts()){
 			URIIdentifier uriIdentifier = new URIIdentifier(uriConst);
 			try {
-				DocumentableOntologicalObject documentableOntologicalObject = (DocumentableOntologicalObject) register.findDocumentableObject(uriIdentifier);
+				DocumentableOntologicalObject documentableOntologicalObject = (DocumentableOntologicalObject) this.getRegister().findDocumentableObject(uriIdentifier);
 				if (documentableOntologicalObject != null){ 
 					referencedOntologicalObjects.add(documentableOntologicalObject);
 				}

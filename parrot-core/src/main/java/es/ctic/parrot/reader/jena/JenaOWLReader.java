@@ -65,8 +65,8 @@ public class JenaOWLReader implements DocumentReader {
 		while(it.hasNext()){
 			OntClass ontclass=it.next();
 			if (isDomainSpecific(ontclass)) {
-			    AbstractJenaDocumentableObject oce=new OntologyClassJenaImpl(ontclass);
-			    register.registerDocumentableObject(oce);
+			    AbstractJenaDocumentableObject docObject=new OntologyClassJenaImpl(ontclass, register);
+			    register.registerDocumentableObject(docObject);
 			}
 		}
 	}
@@ -76,7 +76,7 @@ public class JenaOWLReader implements DocumentReader {
 	    while (it.hasNext()) {
 	        OntProperty ontProperty = it.next();
 	        if (isDomainSpecific(ontProperty)) {
-	            OntologyPropertyJenaImpl docObject = new OntologyPropertyJenaImpl(ontProperty);
+	            OntologyPropertyJenaImpl docObject = new OntologyPropertyJenaImpl(ontProperty, register);
 	            register.registerDocumentableObject(docObject);	        
 	        }
 	    }
@@ -86,7 +86,7 @@ public class JenaOWLReader implements DocumentReader {
 	    Iterator<Ontology> it = model.listOntologies();
 	    while (it.hasNext()) {
 	    	Ontology ontology = it.next();
-            OntologyJenaImpl docObject = new OntologyJenaImpl(ontology);
+            OntologyJenaImpl docObject = new OntologyJenaImpl(ontology, register);
             register.registerDocumentableObject(docObject);	        
 	    }
 	}
@@ -95,16 +95,28 @@ public class JenaOWLReader implements DocumentReader {
 	    Iterator<Individual> it = model.listIndividuals();
 	    while (it.hasNext()) {
 	    	Individual individual = it.next();
-	    	if (isDomainSpecific(individual) && isClassDomainSpecific(individual)) {
-	        	OntologyIndividualJenaImpl docObject = new OntologyIndividualJenaImpl(individual);
+	    	if (individual.isAnon()){
+        		logger.debug("Included anonymous individual: " + individual.getId().toString());
+        		OntologyIndividualJenaImpl docObject = new OntologyIndividualJenaImpl(individual, register);
 	        	register.registerDocumentableObject(docObject);
+	    	}
+	    	else {
+		    	if (isDomainSpecific(individual) && isClassDomainSpecific(individual)) {
+		        	OntologyIndividualJenaImpl docObject = new OntologyIndividualJenaImpl(individual, register);
+		        	register.registerDocumentableObject(docObject);
+		        } else {
+	        		logger.debug("Not included individual: " + individual.getURI() +" because is not domain specific.");
+	        	}
 	        }
 	    }
 	}
 	
 	private static boolean isDomainSpecific(OntResource ontResource) {
-        String uri = ontResource.getURI();
-        return !uri.startsWith(RDFS.getURI()) && !uri.startsWith(RDF.getURI()) && !uri.startsWith(OWL.getURI());
+        
+       	assert ! ontResource.isAnon() : "Tried to check a domain specific for a blank node";//"this check should be done before"
+
+       	String uri = ontResource.getURI();
+       	return !uri.startsWith(RDFS.getURI()) && !uri.startsWith(RDF.getURI()) && !uri.startsWith(OWL.getURI());
     }
 
 	private static boolean isClassDomainSpecific(Individual individual) {

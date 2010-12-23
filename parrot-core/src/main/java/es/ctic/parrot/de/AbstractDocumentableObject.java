@@ -7,6 +7,7 @@ import java.util.HashSet;
 public abstract class AbstractDocumentableObject implements DocumentableObject {
 
     private Collection<DocumentableObject> references = new HashSet<DocumentableObject>();
+    private DocumentableObjectRegister register;
     
     public void addReference(DocumentableObject documentableObject) {
         references.add(documentableObject);
@@ -24,5 +25,20 @@ public abstract class AbstractDocumentableObject implements DocumentableObject {
 	public String getLocalName() {
 		return "anchor"+getIdentifier().hashCode();
 	}
+
+	/**
+	 * @param register the register to set
+	 */
+	public void setRegister(DocumentableObjectRegister register) {
+		this.register = register;
+	}
+
+	/**
+	 * @return the register
+	 */
+	public DocumentableObjectRegister getRegister() {
+		return register;
+	}
+	
 
 }

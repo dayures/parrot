@@ -136,8 +136,18 @@ public abstract class AbstractJenaDocumentableObject extends
 		List<OntologyIndividual> ontologyIndividualList = new LinkedList<OntologyIndividual>();
 		while(it.hasNext()){
 			Individual individual=it.next();
-			if(individual.getURI()!=null){
-				OntologyIndividual _individual = new OntologyIndividualJenaImpl(individual, this.getRegister());
+			
+			Identifier identifier = null;
+			
+			if (individual.isAnon() == false){
+				identifier = new URIIdentifier(individual.getURI());
+			} else {
+				identifier = new JenaAnonymousIdentifier(individual.getModel(), individual.getId());
+			}
+
+			OntologyIndividual _individual = (OntologyIndividual) this.getRegister().findDocumentableObject(identifier);
+
+			if (_individual != null) { // do not add null elements in the list 
 				ontologyIndividualList.add(_individual);
 			}
 		}

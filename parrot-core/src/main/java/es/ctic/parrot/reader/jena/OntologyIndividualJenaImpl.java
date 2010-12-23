@@ -9,7 +9,6 @@ import com.hp.hpl.jena.util.iterator.Filter;
 import com.hp.hpl.jena.vocabulary.OWL;
 
 import es.ctic.parrot.de.DocumentableObjectRegister;
-import es.ctic.parrot.de.Identifier;
 import es.ctic.parrot.de.OntologyClass;
 import es.ctic.parrot.de.OntologyIndividual;
 import es.ctic.parrot.transformers.DocumentableObjectVisitor;
@@ -25,8 +24,6 @@ public class OntologyIndividualJenaImpl extends AbstractJenaDocumentableObject
 		return visitor.visit(this);
 	}
 	
-	
-
 	public Collection<OntologyClass> getTypes() {
 		ExtendedIterator<OntClass> it = ((Individual) getOntResource()).listOntClasses(true);
 		Filter<OntClass> f = new FilterByNamespace(OWL.NS);

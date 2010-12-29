@@ -4,69 +4,68 @@
    #if($element.Uri)
       <dt>Uri</dt>
       <dd><a href="$element.Uri">$element.Uri</a></dd>      
-   #end
 
-   #if($element.Comment)
-      <dt>Description</dt>
-      <dd>$element.Comment</dd>
-   #end
-
-   #if($element.Strategy)
-      <dt>Strategy</dt>
-      <dd>$element.Strategy</dd>
-   #end
-
-   #if($element.Priority)
-      <dt>Priority</dt>
-      <dd>$element.Priority</dd>
-   #end
-
-   #if(!$element.creators.isEmpty())
-   <dt>Creators:</dt>
-   #foreach($creator in $element.creators)
-     <dd>$creator</dd>
-   #end
-   #end
-   
-   #if(!$element.contributors.isEmpty())
-   <dt>Contributors:</dt>
-   #foreach($contributor in $element.contributors)
-     <dd>$contributor</dd>
-   #end
-   #end
-   
-   #if(!$element.publishers.isEmpty())
-   <dt>Publishers:</dt>
-   #foreach($publisher in $element.publishers)
-     <dd>$publisher</dd>
-   #end
-   #end
-   
-   #if($element.Date)
-      <dt>Date</dt>
-      <dd>$element.Date</dd>
-   #end
-   
-   #if(!$element.depictions.isEmpty() || !$element.videos.isEmpty())
-   <dt>Multimedia</dt>
-   #end
-   
-   #if(!$element.depictions.isEmpty())
-   #foreach($depiction in $element.depictions)
-     <dd><img src="$depiction" alt="" /></dd>
-   #end
-   #end
-   
-   #if(!$element.videos.isEmpty())
-   #foreach($video in $element.videos)
-     <dd>
-     <object data="$video">
-		<param name="movie" value="$video" />
-	</object>
-	</dd>
-   #end
-   #end
-   
+	   #if($element.Comment)
+	      <dt>Description</dt>
+	      <dd>$element.Comment</dd>
+	   #end
+	
+	   #if($element.Strategy)
+	      <dt>Strategy</dt>
+	      <dd>$element.Strategy</dd>
+	   #end
+	
+	   #if($element.Priority)
+	      <dt>Priority</dt>
+	      <dd>$element.Priority</dd>
+	   #end
+	
+	   #if(!$element.creators.isEmpty())
+	   <dt>Creators:</dt>
+	   #foreach($creator in $element.creators)
+	     <dd>$creator</dd>
+	   #end
+	   #end
+	   
+	   #if(!$element.contributors.isEmpty())
+	   <dt>Contributors:</dt>
+	   #foreach($contributor in $element.contributors)
+	     <dd>$contributor</dd>
+	   #end
+	   #end
+	   
+	   #if(!$element.publishers.isEmpty())
+	   <dt>Publishers:</dt>
+	   #foreach($publisher in $element.publishers)
+	     <dd>$publisher</dd>
+	   #end
+	   #end
+	   
+	   #if($element.Date)
+	      <dt>Date</dt>
+	      <dd>$element.Date</dd>
+	   #end
+	   
+	   #if(!$element.depictions.isEmpty() || !$element.videos.isEmpty())
+	   <dt>Multimedia</dt>
+	   #end
+	   
+	   #if(!$element.depictions.isEmpty())
+	   #foreach($depiction in $element.depictions)
+	     <dd><img src="$depiction" alt="" /></dd>
+	   #end
+	   #end
+	   
+	   #if(!$element.videos.isEmpty())
+	   #foreach($video in $element.videos)
+	     <dd>
+	     <object data="$video">
+			<param name="movie" value="$video" />
+		</object>
+		</dd>
+	   #end
+	   #end
+   #end   
    
    #if(!$element.referencedOntologicalObjects.isEmpty())
    <dt>Referenced model objects</dt>

@@ -39,6 +39,7 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 	private static final String DC_DATE = "http://purl.org/dc/terms/date";
 	private static final String FOAF_DEPICTION = "http://xmlns.com/foaf/0.1/depiction";
 	private static final String OG_VIDEO = "http://ogp.me/ns#video";
+	private static final String RULE_DEFAULT_LABEL = "Rule-";
 	
 	private net.sourceforge.rifle.ast.Rule rule;
 	private OntResource ontResource;
@@ -51,9 +52,11 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 		this.rule = rule;
 		this.setRegister(register);
 		if (rule.getId() == null) {
-		    this.identifier = new AnonymousIdentifier();
+			// Rule without identifier
+		    this.identifier = new RifleAnonymousIdentifier(Integer.toString(rule.getLocalId()));
 		} else {
-		    this.identifier = new URIIdentifier(rule.getId());
+			// Rule with identifier
+			this.identifier = new URIIdentifier(rule.getId());
 		}
 		
 		OntModel iriMeta = ModelFactory.createOntologyModel();
@@ -70,10 +73,20 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 	}
 	
 	public String getURI() {
-		return getIdentifier().toString();
+		if (rule.getId() == null) {
+		    return null;
+		} else {
+			return getIdentifier().toString();
+		}	
 	}
 	
     public String getLabel(Locale locale) {
+    	
+    	// Anonymous rule
+    	if (getURI() == null){
+    		return RULE_DEFAULT_LABEL + getIdentifier().toString();
+    	}
+
 
     	if (getOntResource() == null){
     		return URIUtils.getReference(getURI());

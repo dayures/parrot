@@ -39,6 +39,7 @@ public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
 	private static final String DC_DATE = "http://purl.org/dc/terms/date";
 	private static final String FOAF_DEPICTION = "http://xmlns.com/foaf/0.1/depiction";
 	private static final String OG_VIDEO = "http://ogp.me/ns#video";
+	private static final String RULESET_DEFAULT_LABEL = "Ruleset-";
 	
 	private net.sourceforge.rifle.ast.Group ruleSet;
 	private OntResource ontResource;
@@ -50,10 +51,13 @@ public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
 	public RuleSetImpl(net.sourceforge.rifle.ast.Group group, DocumentableObjectRegister register) {
 		this.ruleSet = group;
 		this.setRegister(register);
+		
 		if (ruleSet.getId() == null) {
-		    this.identifier = new AnonymousIdentifier();
+			// Rule without identifier
+		    this.identifier = new RifleAnonymousIdentifier(Integer.toString(ruleSet.getLocalId()));
 		} else {
-		    this.identifier = new URIIdentifier(ruleSet.getId());
+			// Rule with identifier
+			this.identifier = new URIIdentifier(ruleSet.getId());
 		}
 		
 		OntModel iriMeta = ModelFactory.createOntologyModel();
@@ -69,11 +73,29 @@ public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
 		return identifier;
 	}
 	
+	/** (non-Javadoc)
+	 * @see es.ctic.parrot.de.DocumentableObject#getURI()
+	 * 
+	 * @return the uri (id) of the ruleset or null if the ruleset has not id
+	 */
 	public String getURI() {
-		return getIdentifier().toString();
+		if (ruleSet.getId() == null) {
+		    return null;
+		} else {
+			return getIdentifier().toString();
+		}	
 	}
 	
+    /** (non-Javadoc)
+     * @see es.ctic.parrot.de.DocumentableObject#getLabel(java.util.Locale)
+     * @return the label (if exists) or an unique identifier for the ruleset
+     */
     public String getLabel(Locale locale) {
+    	
+    	// Anonymous ruleset
+    	if (getURI() == null){
+    		return RULESET_DEFAULT_LABEL + getIdentifier().toString();
+    	}
 
     	if (getOntResource() == null){
     		return URIUtils.getReference(getURI());
@@ -255,14 +277,21 @@ public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
 	
 	protected Collection<es.ctic.parrot.de.Rule> astRuleCollectionToRuleCollection(Collection<net.sourceforge.rifle.ast.Rule> astRules) {
 		Collection<es.ctic.parrot.de.Rule> ruleList = new LinkedList<es.ctic.parrot.de.Rule>();
-		
+
 		for(net.sourceforge.rifle.ast.Rule astRule : astRules){
 			Rule rule = (Rule) this.getRegister().findDocumentableObject(new URIIdentifier(astRule.getId()));
 			if (rule != null){
 				ruleList.add(rule);
+			}else{
+				// anonymous rule
+				rule = (Rule) this.getRegister().findDocumentableObject(new RifleAnonymousIdentifier(Integer.toString(astRule.getLocalId())));
+				if (rule != null){ 
+					ruleList.add(rule);
+				} else {
+					logger.debug("Rule not found in register " + astRule.toString());
+				}
 			}
 		}
-		logger.debug(ruleList);
 		return ruleList;
 	}
 

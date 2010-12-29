@@ -5,6 +5,7 @@ import java.io.IOException;
 import net.sourceforge.rifle.ast.Document;
 import net.sourceforge.rifle.psparser.RIFPRDLexer;
 import net.sourceforge.rifle.psparser.RIFPRDParser;
+import net.sourceforge.rifle.psparser.exceptions.UndefinedPrefixException;
 
 import org.antlr.runtime.ANTLRReaderStream;
 import org.antlr.runtime.CharStream;
@@ -45,7 +46,11 @@ public class RiflePSReader extends ImportResolver implements DocumentReader {
 			} else {
                 throw new ReaderException("RIF PS document " + input + " cannot be parsed. There are " + parser.getNumberOfSyntaxErrors() + " syntax errors. First error is: " + errorReporter.getFirstError());
 			}
-		} catch (RecognitionException e) {
+		}
+		catch (UndefinedPrefixException e) {
+			throw new ReaderException(e.getMessage() + " while parsing RIF PS document", e);
+		}
+		catch (RecognitionException e) {
 			throw new ReaderException("While parsing RIF PS document", e);
 		}
 		

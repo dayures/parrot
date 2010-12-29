@@ -18,7 +18,17 @@ public final class URIUtils {
 		}
 	}
 
+	/**
+	 * 
+	 * @param namespace an URI
+	 * @return the namespace of the URI or null if the uri is null
+	 */
 	public static String getReference(String namespace) {
+		
+		if (namespace == null){
+			return null;
+		}
+		
 		String uri = namespace.trim();
 		if (uri.contains("#")) {
 			//hash namespace

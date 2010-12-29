@@ -22,6 +22,11 @@ public abstract class AbstractDocumentableObject implements DocumentableObject {
         return getIdentifier().toString();
     }
     
+    
+	/** (non-Javadoc)
+	 * @see es.ctic.parrot.de.DocumentableObject#getLocalName()
+	 * @return an unique anchor for the element
+	 */
 	public String getLocalName() {
 		return "anchor"+getIdentifier().hashCode();
 	}

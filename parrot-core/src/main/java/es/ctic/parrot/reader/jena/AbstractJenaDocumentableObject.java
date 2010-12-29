@@ -52,6 +52,11 @@ public abstract class AbstractJenaDocumentableObject extends
 		this.setRegister(register);
 	}
 	
+	/** (non-Javadoc)
+	 * @see es.ctic.parrot.de.DocumentableObject#getURI()
+	 * 
+	 * @return the uri of the documentable object or null if it's a blank node
+	 */
 	public String getURI() {
 		return ontResource.getURI();
 	}

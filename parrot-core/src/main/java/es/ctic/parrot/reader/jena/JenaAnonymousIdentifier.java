@@ -5,19 +5,17 @@ import org.apache.log4j.Logger;
 import com.hp.hpl.jena.rdf.model.AnonId;
 import com.hp.hpl.jena.rdf.model.Model;
 
-import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.de.Identifier;
 
 public class JenaAnonymousIdentifier implements Identifier {
 
-    private static final Logger logger = Logger.getLogger(DocumentableObjectRegister.class);
+    private static final Logger logger = Logger.getLogger(JenaAnonymousIdentifier.class);
 
 	
     private final String id;
 
 	public JenaAnonymousIdentifier(Model model, AnonId anonId) {
 		this.id = new Integer (anonId.hashCode()).toString();
-		logger.debug("Create anonymous identifier: " + this.id);
 	}
 	
     @Override

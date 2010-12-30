@@ -80,6 +80,11 @@
 	 <dd><a href="#$v.LocalName">$v.Label</a></dd>
    #end
    #end
+   
+   #if($element.Parent)
+      <dt>is inside of</dt>
+      <dd><a href="#$element.Parent.LocalName">$element.Parent.Label</a></dd>
+   #end
   
   </dl>
   <p class="back-to-top">[<a href="#toc">back to top</a>]</p> 

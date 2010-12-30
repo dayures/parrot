@@ -21,7 +21,7 @@ import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 
 import es.ctic.parrot.de.AbstractDocumentableObject;
-import es.ctic.parrot.de.AnonymousIdentifier;
+import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.de.DocumentableOntologicalObject;
 import es.ctic.parrot.de.Identifier;
@@ -42,6 +42,7 @@ public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
 	private static final String RULESET_DEFAULT_LABEL = "Ruleset-";
 	
 	private net.sourceforge.rifle.ast.Group ruleSet;
+	private DocumentableObject parent;
 	private OntResource ontResource;
 
     private Identifier identifier;
@@ -302,6 +303,17 @@ public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
 
 	public Integer getPriority() {
 		return ruleSet.getPriority();
+	}
+
+	public DocumentableObject getParent() {
+		return this.parent;
+	}
+
+	/**
+	 * @param documentableObject the parentGroup to set
+	 */
+	public void setParent(DocumentableObject parent) {
+		this.parent = parent;
 	}
 	
 

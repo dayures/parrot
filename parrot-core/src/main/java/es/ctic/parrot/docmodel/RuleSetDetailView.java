@@ -5,6 +5,7 @@ import java.util.Collections;
 
 import org.apache.log4j.Logger;
 
+import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.DocumentableOntologicalObject;
 import es.ctic.parrot.de.Identifier;
 import es.ctic.parrot.de.Rule;
@@ -28,6 +29,7 @@ public class RuleSetDetailView implements DetailView{
 	private Collection<String> videos;
 	private Collection<DocumentableOntologicalObject> referencedOntologicalObjects;
 	private Collection<Rule> rules;
+	private DocumentableObject parent;
 
 	
 	public RuleSetDetailView(RuleSet ruleSet) {
@@ -175,5 +177,18 @@ public class RuleSetDetailView implements DetailView{
 	public Integer getPriority() {
 		return priority;
 	}
-    
+
+	/**
+	 * @param parent the parent to set
+	 */
+	public void setParent(DocumentableObject parent) {
+		this.parent = parent;
+	}
+
+	/**
+	 * @return the parent
+	 */
+	public DocumentableObject getParent() {
+		return parent;
+	}
 }

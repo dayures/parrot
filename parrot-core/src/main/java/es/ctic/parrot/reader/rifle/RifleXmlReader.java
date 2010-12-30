@@ -29,7 +29,7 @@ public class RifleXmlReader extends ImportResolver implements DocumentReader {
             Document document = parser.parse(source);
             resolveImports(document, register);
             RifleASTVisitor visitor = new RifleASTVisitor(register);
-            document.accept(visitor);
+            document.accept(visitor, null);
         } catch (Exception e) {
             throw new ReaderException(e);
         }

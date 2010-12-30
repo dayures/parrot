@@ -47,6 +47,7 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 		details.setIndividuals(object.getIndividuals());
 		details.setDepictions(object.getDepictions());
 		details.setVideos(object.getVideos());
+		
         document.addOntologyClassDetailView(details);     
 		return details;
 	}
@@ -64,6 +65,7 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 		details.setCardinality(object.getCardinality());
 		details.setDepictions(object.getDepictions());
 		details.setVideos(object.getVideos());		
+		
         document.addOntologyPropertyDetailView(details);     
 		return details;
 	}
@@ -80,7 +82,8 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 		details.setPreferredPrefix(object.getPreferredPrefix());
 		details.setDepictions(object.getDepictions());
 		details.setVideos(object.getVideos());		
-        document.addOntologyDetailView(details);     
+
+		document.addOntologyDetailView(details);     
 		return details;
 	}
 	
@@ -96,9 +99,11 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 		details.setContributors(object.getContributors());
 		details.setPublishers(object.getPublishers());
 		details.setDepictions(object.getDepictions());
-		details.setVideos(object.getVideos());		
+		details.setVideos(object.getVideos());	
+		details.setParent(object.getParent());
 		details.setReferencedOntologicalObjects(object.getReferencedOntologicalObjects());
-	    document.addRuleDetailView(details);
+
+		document.addRuleDetailView(details);
 	    return details;
 	}
 	
@@ -119,6 +124,8 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 		details.setRules(object.getRules());
 		details.setPriority(object.getPriority());
 		details.setStrategy(object.getStrategy());
+		details.setParent(object.getParent());
+		
 	    document.addRuleSetDetailView(details);
 	    return details;
 	}
@@ -136,6 +143,7 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 		details.setInverseRuleReferences(object.getInverseRuleReferences());
 		details.setDepictions(object.getDepictions());
 		details.setVideos(object.getVideos());		
+		
 		document.addOntologyIndividualDetailView(details);
 		return details;
 	}

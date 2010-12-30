@@ -5,6 +5,7 @@ import java.util.Collections;
 
 import org.apache.log4j.Logger;
 
+import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.DocumentableOntologicalObject;
 import es.ctic.parrot.de.Identifier;
 import es.ctic.parrot.de.Rule;
@@ -24,6 +25,7 @@ public class RuleDetailView implements DetailView{
 	private Collection<String> depictions;
 	private Collection<String> videos;
 	private Collection<DocumentableOntologicalObject> referencedOntologicalObjects;
+	private DocumentableObject parent;
     
     /**
 	 * @return the referencedOntologicalObjects
@@ -127,6 +129,20 @@ public class RuleDetailView implements DetailView{
 
 	public Collection<String> getVideos() {
 		return Collections.unmodifiableCollection(videos);
+	}
+
+	/**
+	 * @param parent the parent to set
+	 */
+	public void setParent(DocumentableObject parent) {
+		this.parent = parent;
+	}
+
+	/**
+	 * @return the parent
+	 */
+	public DocumentableObject getParent() {
+		return parent;
 	}
     
 }

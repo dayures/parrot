@@ -13,5 +13,7 @@ public interface Rule extends DocumentableObject {
 	public List<String> getCreators();
 	public List<String> getContributors();
 	public List<String> getPublishers();
+	
+	public abstract DocumentableObject getParent();
     
 }

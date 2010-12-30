@@ -21,7 +21,6 @@ import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 
 import es.ctic.parrot.de.AbstractDocumentableObject;
-import es.ctic.parrot.de.AnonymousIdentifier;
 import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.de.DocumentableOntologicalObject;
@@ -43,6 +42,8 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 	
 	private net.sourceforge.rifle.ast.Rule rule;
 	private OntResource ontResource;
+	
+	private DocumentableObject parent;
 
     private Identifier identifier;
 	
@@ -272,6 +273,20 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 			}
 			return videos;
     	}
+	}
+
+	/**
+	 * @param parentGroup the parentGroup to set
+	 */
+	public void setParent(DocumentableObject parent) {
+		this.parent = parent;
+	}
+
+	/**
+	 * @return the parentGroup
+	 */
+	public DocumentableObject getParent() {
+		return parent;
 	}
 
 }

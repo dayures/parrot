@@ -81,6 +81,13 @@
    #end
    #end
    
+   #if(!$element.ruleSets.isEmpty())
+   <dt>RuleSets</dt>
+   #foreach($v in $element.ruleSets)
+	 <dd><a href="#$v.LocalName">$v.Label</a></dd>
+   #end
+   #end
+   
    #if($element.Parent)
       <dt>is inside of</dt>
       <dd><a href="#$element.Parent.LocalName">$element.Parent.Label</a></dd>

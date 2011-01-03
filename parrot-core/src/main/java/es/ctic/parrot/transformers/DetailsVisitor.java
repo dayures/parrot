@@ -1,5 +1,6 @@
 package es.ctic.parrot.transformers;
 
+import java.util.Collection;
 import java.util.Locale;
 
 import org.apache.log4j.Logger;
@@ -122,6 +123,7 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 		details.setVideos(object.getVideos());		
 		details.setReferencedOntologicalObjects(object.getReferencedOntologicalObjects());
 		details.setRules(object.getRules());
+		details.setRuleSets(object.getRuleSets());
 		details.setPriority(object.getPriority());
 		details.setStrategy(object.getStrategy());
 		details.setParent(object.getParent());

@@ -29,6 +29,7 @@ public class RuleSetDetailView implements DetailView{
 	private Collection<String> videos;
 	private Collection<DocumentableOntologicalObject> referencedOntologicalObjects;
 	private Collection<Rule> rules;
+	private Collection<RuleSet> ruleSets;
 	private DocumentableObject parent;
 
 	
@@ -190,5 +191,19 @@ public class RuleSetDetailView implements DetailView{
 	 */
 	public DocumentableObject getParent() {
 		return parent;
+	}
+
+	/**
+	 * @param ruleSets the ruleSets to set
+	 */
+	public void setRuleSets(Collection<RuleSet> ruleSets) {
+		this.ruleSets = ruleSets;
+	}
+
+	/**
+	 * @return the ruleSets
+	 */
+	public Collection<RuleSet> getRuleSets() {
+		return Collections.unmodifiableCollection(ruleSets);
 	}
 }

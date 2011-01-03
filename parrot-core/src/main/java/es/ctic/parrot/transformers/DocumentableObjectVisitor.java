@@ -10,12 +10,14 @@ import es.ctic.parrot.de.RuleSet;
 
 public interface DocumentableObjectVisitor {
     
+	public abstract Object visit(Ontology ontology);
 	public abstract Object visit(OntologyClass object);
     public abstract Object visit(OntologyProperty object);
+	public abstract Object visit(OntologyIndividual ontologyIndividual);
+	
 	public abstract Object visit(Rule object);
 	public abstract Object visit(RuleSet object);
+	
 	public abstract Object visit(DocumentableObjectRegister register);
-	public abstract Object visit(Ontology ontology);
-	public abstract Object visit(OntologyIndividual ontologyIndividual);
 
 }

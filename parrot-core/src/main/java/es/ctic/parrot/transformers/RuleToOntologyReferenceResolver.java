@@ -21,6 +21,8 @@ public class RuleToOntologyReferenceResolver extends AbstractDocumentableObjectV
         return null;
     }
 
+    // FIXME Este metodo ... tiene sentido aqui?
+
     public Object visit(OntologyProperty property) {
         DocumentableObject domain = property.getDomain();
         if(domain!=null){

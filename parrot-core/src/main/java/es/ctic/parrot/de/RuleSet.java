@@ -16,6 +16,8 @@ public interface RuleSet extends DocumentableObject {
 	public abstract List<String> getPublishers();
 
 	public abstract Collection<Rule> getRules();
+	public abstract Collection<RuleSet> getRuleSets();
+	
 	public abstract DocumentableObject getParent();
     
 }

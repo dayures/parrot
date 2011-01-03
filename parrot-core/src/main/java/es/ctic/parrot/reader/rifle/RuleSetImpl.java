@@ -9,6 +9,8 @@ import java.util.Locale;
 import java.util.Set;
 import java.util.TreeSet;
 
+import net.sourceforge.rifle.ast.Group;
+
 import org.apache.log4j.Logger;
 
 import com.hp.hpl.jena.ontology.OntModel;
@@ -314,6 +316,32 @@ public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
 	 */
 	public void setParent(DocumentableObject parent) {
 		this.parent = parent;
+	}
+
+	public Collection<RuleSet> getRuleSets() {
+		return Collections.unmodifiableCollection(astGroupCollectionToRuleSetCollection(ruleSet.getGroups()));
+
+	}
+
+	protected Collection<es.ctic.parrot.de.RuleSet> astGroupCollectionToRuleSetCollection(Collection<net.sourceforge.rifle.ast.Group> astGroups) {
+		
+		Collection<es.ctic.parrot.de.RuleSet> ruleSetList = new LinkedList<es.ctic.parrot.de.RuleSet>();
+
+		for(net.sourceforge.rifle.ast.Group group : astGroups){
+			RuleSet ruleSet = (RuleSet) this.getRegister().findDocumentableObject(new URIIdentifier(group.getId()));
+			if (ruleSet != null){
+				ruleSetList.add(ruleSet);
+			}else{
+				// anonymous rule
+				ruleSet = (RuleSet) this.getRegister().findDocumentableObject(new RifleAnonymousIdentifier(Integer.toString(group.getLocalId())));
+				if (ruleSet != null){ 
+					ruleSetList.add(ruleSet);
+				} else {
+					logger.debug("Group not found in register " + group.toString());
+				}
+			}
+		}
+		return ruleSetList;
 	}
 	
 

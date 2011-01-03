@@ -63,18 +63,21 @@ public class RifleASTVisitor extends Visitor {
 	}
 
 	@Override
-	public Object visit(Rule rule, Object parent) {
-		logger.debug("Visiting RIF rule AST node: " + rule);
+	public Object visit(Rule astRule, Object parent) {
+		logger.debug("Visiting RIF rule AST node: " + astRule);
 		
-		RuleImpl r = new RuleImpl(rule, register);
+		RuleImpl rule = new RuleImpl(astRule, register);
 		
 		if (parent != null) {
-			DocumentableObject parentDocumentableObject = register.findDocumentableObject(((RuleSet) parent).getIdentifier());
-			logger.debug("Linking rule " + r.getIdentifier() + " to his parent " + parentDocumentableObject);
-			r.setParent(parentDocumentableObject);
+			DocumentableObject parentDocumentableObject = register.findDocumentableObject(((DocumentableObject) parent).getIdentifier());
+			logger.debug("Linking rule " + rule.getIdentifier() + " to his parent " + parentDocumentableObject);
+			rule.setParent(parentDocumentableObject);
 		}
 		
-		register.registerDocumentableObject(r);
+		register.registerDocumentableObject(rule);
+//		if (astRule.getInnerRule() != null){
+//			astRule.getInnerRule().accept(this, rule);
+//		}
 		
 		
 		return null;

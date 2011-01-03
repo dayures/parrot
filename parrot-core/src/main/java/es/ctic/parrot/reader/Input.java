@@ -16,11 +16,11 @@ public interface Input {
      * @return A reader to read the contents of the input document
      * @throws IOException
      */
-    public Reader openReader() throws IOException;
+    public abstract Reader openReader() throws IOException;
 
     /**
      * @return The MIME type of the input document
      */
-    public String getMimeType();
+    public abstract String getMimeType();
     
 }

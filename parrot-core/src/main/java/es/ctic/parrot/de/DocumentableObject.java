@@ -8,16 +8,16 @@ import es.ctic.parrot.transformers.DocumentableObjectVisitor;
 
 public interface DocumentableObject {
 	
-	public Object accept(DocumentableObjectVisitor visitor);
-	public Identifier getIdentifier();
-	public String getLocalName();
-    public void addReference(DocumentableObject documentableObject);
-    public Collection<DocumentableObject> getInternalReferences();
-	public String getURI();
-	public String getLabel(Locale locale);
-	public String getLabel();
-	public String getComment(Locale locale);    
-	public List<String> getDepictions();
-	public List<String> getVideos();
+	public abstract Object accept(DocumentableObjectVisitor visitor);
+	public abstract Identifier getIdentifier();
+	public abstract String getLocalName();
+    public abstract void addReference(DocumentableObject documentableObject);
+    public abstract Collection<DocumentableObject> getInternalReferences();
+	public abstract String getURI();
+	public abstract String getLabel(Locale locale);
+	public abstract String getLabel();
+	public abstract String getComment(Locale locale);    
+	public abstract List<String> getDepictions();
+	public abstract List<String> getVideos();
 
 }

@@ -14,6 +14,6 @@ public interface OutputGenerator {
      * 
      * @param document
      */
-    public void generateOutput(Document document);
+    public abstract void generateOutput(Document document);
 
 }

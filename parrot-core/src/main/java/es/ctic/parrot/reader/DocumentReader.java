@@ -6,6 +6,6 @@ import es.ctic.parrot.de.DocumentableObjectRegister;
 
 public interface DocumentReader {
     
-	public void readDocumentableObjects(Input input, DocumentableObjectRegister register) throws IOException, ReaderException;
+	public abstract void readDocumentableObjects(Input input, DocumentableObjectRegister register) throws IOException, ReaderException;
 
 }

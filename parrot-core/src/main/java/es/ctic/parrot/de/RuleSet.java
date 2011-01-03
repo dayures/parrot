@@ -5,17 +5,17 @@ import java.util.List;
 
 public interface RuleSet extends DocumentableObject {
 
-    public Collection<DocumentableOntologicalObject> getReferencedOntologicalObjects();
+    public abstract Collection<DocumentableOntologicalObject> getReferencedOntologicalObjects();
     
-	public String getStrategy();
-	public Integer getPriority();
+	public abstract String getStrategy();
+	public abstract Integer getPriority();
 
-	public String getDate();
-	public List<String> getCreators();
-	public List<String> getContributors();
-	public List<String> getPublishers();
+	public abstract String getDate();
+	public abstract List<String> getCreators();
+	public abstract List<String> getContributors();
+	public abstract List<String> getPublishers();
 
-	public Collection<Rule> getRules();
+	public abstract Collection<Rule> getRules();
 	public abstract DocumentableObject getParent();
     
 }

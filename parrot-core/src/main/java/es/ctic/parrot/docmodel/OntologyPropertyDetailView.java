@@ -11,7 +11,8 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
 	private OntologyProperty ontologyProperty;
 	private DocumentableObject domain;
 	private DocumentableObject range;
-    private Collection<DocumentableObject> inverseReferences;
+    private Collection<DocumentableObject> superProperties;
+	private Collection<DocumentableObject> inverseReferences;
     private int cardinality;
 	
 	public OntologyPropertyDetailView(OntologyProperty ontologyProperty){
@@ -56,6 +57,20 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
 
 	public int getCardinality() {
 		return cardinality;
+	}
+
+	/**
+	 * @param superProperties the superProperties to set
+	 */
+	public void setSuperProperties(Collection<DocumentableObject> superProperties) {
+		this.superProperties = superProperties;
+	}
+
+	/**
+	 * @return the superProperties
+	 */
+	public Collection<DocumentableObject> getSuperProperties() {
+		return Collections.unmodifiableCollection(superProperties);
 	}
 	
 }

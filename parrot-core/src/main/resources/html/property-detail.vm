@@ -12,7 +12,7 @@
    #end
 
    #if($element.Domain)
-      <dt>Domain:</dt>
+      <dt>Domain</dt>
    	  <dd><span class="parrot-class-ref"><a href="#$element.Domain.LocalName">$element.Domain.Label</a></span></dd>
    #end
 
@@ -20,6 +20,13 @@
       <dt>Range</dt>
       <dd><span class="parrot-class-ref"><a href="#$element.Range.LocalName">$element.Range.Label</a></span></dd>
    #end
+   
+   #if(!$element.SuperProperties.isEmpty())
+    <dt>SubProperty of</dt>
+    #foreach($superproperty in $element.SuperProperties)
+      <dd><span class="parrot-property-ref"><a href="#$superproperty.LocalName">$superproperty.Label</a></span></dd>
+    #end
+  #end
 
    #if(!$element.InverseReferences.isEmpty())
    <dt>Referenced from</dt>

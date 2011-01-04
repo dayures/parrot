@@ -111,7 +111,7 @@ public class JenaOWLReader implements DocumentReader {
 	    }
 	}
 	
-	private static boolean isDomainSpecific(OntResource ontResource) {
+	protected static boolean isDomainSpecific(OntResource ontResource) {
         
        	assert ! ontResource.isAnon() : "Tried to check a domain specific for a blank node";//"this check should be done before"
 

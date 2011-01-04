@@ -1,6 +1,7 @@
 package es.ctic.parrot.transformers;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -22,16 +23,28 @@ public class OntologyInternalReferenceResolver extends
 	}
 	
 	public Object visit(OntologyProperty property) {
-	    DocumentableObject domain = property.getDomain();
+
+		DocumentableObject domain = property.getDomain();
 	    if(domain!=null){
 	        domain=register.findDocumentableObject(domain.getIdentifier());
 	        property.setDomain(domain);
 	    }
-	    DocumentableObject range= property.getRange();
+	    
+	    DocumentableObject range = property.getRange();
 	    if(range!=null){
 	        range=register.findDocumentableObject(range.getIdentifier());
 	        property.setRange(range);
 	    }
+
+	    HashSet<DocumentableObject> superProperties = new HashSet<DocumentableObject>();
+	    for(DocumentableObject superProperty: property.getSuperProperties()){
+	    	DocumentableObject _superProperty = register.findDocumentableObject(superProperty.getIdentifier());
+	    	if (_superProperty != null){
+	    		superProperties.add(_superProperty);
+	    	}
+	    }
+	    property.setSuperProperties(superProperties);
+	    
 	    return null;
 	}
     

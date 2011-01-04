@@ -1,6 +1,16 @@
 <div class="term">
   <h3><a id="$element.Anchor"></a><span class="parrot-ruleset-title">$element.Label</span> (RuleSet)</h3>
   <dl>
+   #if($element.Strategy)
+      <dt>Strategy</dt>
+      <dd>$element.Strategy</dd>
+   #end
+
+   #if($element.Priority)
+      <dt>Priority</dt>
+      <dd>$element.Priority</dd>
+   #end
+	   
    #if($element.Uri)
       <dt>Uri</dt>
       <dd><a href="$element.Uri">$element.Uri</a></dd>      
@@ -8,16 +18,6 @@
 	   #if($element.Comment)
 	      <dt>Description</dt>
 	      <dd>$element.Comment</dd>
-	   #end
-	
-	   #if($element.Strategy)
-	      <dt>Strategy</dt>
-	      <dd>$element.Strategy</dd>
-	   #end
-	
-	   #if($element.Priority)
-	      <dt>Priority</dt>
-	      <dd>$element.Priority</dd>
 	   #end
 	
 	   #if(!$element.creators.isEmpty())

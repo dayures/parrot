@@ -65,7 +65,7 @@ public class JenaOWLReader implements DocumentReader {
 		while(it.hasNext()){
 			OntClass ontclass=it.next();
 			if (isDomainSpecific(ontclass)) {
-			    AbstractJenaDocumentableObject docObject=new OntologyClassJenaImpl(ontclass, register);
+				OntologyClassJenaImpl docObject=new OntologyClassJenaImpl(ontclass, register);
 			    register.registerDocumentableObject(docObject);
 			}
 		}

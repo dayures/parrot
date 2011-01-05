@@ -16,5 +16,8 @@ public interface OntologyProperty extends DocumentableOntologicalObject {
     public abstract void setSubProperties(Collection<OntologyProperty> subProperties);
     
     public abstract String getType();
+    
+    public abstract DocumentableObject getInverseOf();
+    public abstract DocumentableObject getInverse();
 
 }

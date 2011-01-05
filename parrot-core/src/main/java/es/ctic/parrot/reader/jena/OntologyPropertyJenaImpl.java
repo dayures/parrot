@@ -31,6 +31,14 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
     
     public OntologyPropertyJenaImpl(OntProperty ontProperty, DocumentableObjectRegister register) {
     	super(ontProperty, register);
+
+    	
+    	
+
+    	
+    	logger.debug("ontProperty.getInverseOf() " + ontProperty.getInverseOf()); // I am inverse Of:
+    	logger.debug("ontProperty.getInverse() " + ontProperty.getInverse()); // x is inversed of me
+    	
     }
     
     public Object accept(DocumentableObjectVisitor visitor) {
@@ -107,5 +115,40 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 	 */
 	public void setSubProperties(Collection<OntologyProperty> subProperties) {
 		this.subProperties = subProperties;
+	}
+
+	public String getType() {
+		StringBuffer type = new StringBuffer();
+		
+		if (getOntProperty().isDatatypeProperty()){
+			type.append("Datatype");
+		} 
+
+		if (getOntProperty().isObjectProperty()){
+			type.append("Object");
+		}
+		
+		if (getOntProperty().isAnnotationProperty()){
+			type.append("Annotation");
+		} 
+		
+		if (getOntProperty().isTransitiveProperty()){
+			type.append("is Transitive");
+		}
+		
+		if (getOntProperty().isSymmetricProperty()){
+			type.append("is Symmetric");
+		}
+		
+		if (getOntProperty().isFunctionalProperty()){
+			type.append("is Functional");
+		}
+		
+		if (getOntProperty().isInverseFunctionalProperty()){
+			type.append("is Inverse Functional");
+		}
+		
+		return type.toString();
+		
 	}	
 }

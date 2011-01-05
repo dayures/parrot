@@ -6,6 +6,10 @@
       <dd><a href="$element.Uri">$element.Uri</a></dd>      
    #end
    
+      <dt>Property Type</dt>
+      <dd>$element.Type</dd>
+   
+   
    #if($element.Comment)
       <dt>Description</dt>
       <dd>$element.Comment</dd>

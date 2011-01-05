@@ -9,8 +9,6 @@ import java.util.Locale;
 import java.util.Set;
 import java.util.TreeSet;
 
-import net.sourceforge.rifle.ast.Group;
-
 import org.apache.log4j.Logger;
 
 import com.hp.hpl.jena.ontology.OntModel;

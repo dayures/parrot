@@ -23,6 +23,7 @@ public class OntologyInternalReferenceResolver extends
 	}
 	
 	public Object visit(OntologyProperty property) {
+    	logger.debug("Resolving internal references of property "+property);
 
 		DocumentableObject domain = property.getDomain();
 	    if(domain!=null){
@@ -36,14 +37,28 @@ public class OntologyInternalReferenceResolver extends
 	        property.setRange(range);
 	    }
 
-	    HashSet<DocumentableObject> superProperties = new HashSet<DocumentableObject>();
-	    for(DocumentableObject superProperty: property.getSuperProperties()){
+	    Collection<OntologyProperty> superProperties = property.getSuperProperties();
+	    Collection<OntologyProperty> cleanSuperProperties = new HashSet<OntologyProperty>();
+
+	    for(DocumentableObject superProperty: superProperties){
 	    	DocumentableObject _superProperty = register.findDocumentableObject(superProperty.getIdentifier());
 	    	if (_superProperty != null){
-	    		superProperties.add(_superProperty);
+	    		cleanSuperProperties.add((OntologyProperty) _superProperty);
 	    	}
 	    }
-	    property.setSuperProperties(superProperties);
+	    property.setSuperProperties(cleanSuperProperties);
+	    
+
+	    Collection<OntologyProperty> subProperties = property.getSubProperties();
+	    Collection<OntologyProperty> cleanSubProperties = new HashSet<OntologyProperty>();
+
+	    for(DocumentableObject subProperty: subProperties){
+	    	DocumentableObject _subProperty = register.findDocumentableObject(subProperty.getIdentifier());
+	    	if (_subProperty != null){
+	    		cleanSubProperties.add((OntologyProperty) _subProperty);
+	    	}
+	    }
+	    property.setSubProperties(cleanSubProperties);
 	    
 	    return null;
 	}

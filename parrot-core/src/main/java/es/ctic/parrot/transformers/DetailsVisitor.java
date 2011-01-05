@@ -1,6 +1,5 @@
 package es.ctic.parrot.transformers;
 
-import java.util.Collection;
 import java.util.Locale;
 
 import org.apache.log4j.Logger;
@@ -62,6 +61,7 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 		details.setDomain(object.getDomain());
 		details.setRange(object.getRange());
 		details.setSuperProperties(object.getSuperProperties());
+		details.setSubProperties(object.getSubProperties());
 		details.setInverseRuleReferences(object.getInverseRuleReferences());
 		details.setInverseReferences(object.getInternalReferences());
 		details.setCardinality(object.getCardinality());

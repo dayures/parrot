@@ -15,6 +15,7 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
     private Collection<OntologyProperty> subProperties;
     private Collection<DocumentableObject> inverseReferences;
     private int cardinality;
+    private String type;
 	
 	public OntologyPropertyDetailView(OntologyProperty ontologyProperty){
 		this.ontologyProperty=ontologyProperty;
@@ -86,6 +87,20 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
 	 */
 	public Collection<OntologyProperty> getSubProperties() {
 		return Collections.unmodifiableCollection(subProperties);
+	}
+
+	/**
+	 * @param type the type to set
+	 */
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	/**
+	 * @return the type
+	 */
+	public String getType() {
+		return type;
 	}
 	
 }

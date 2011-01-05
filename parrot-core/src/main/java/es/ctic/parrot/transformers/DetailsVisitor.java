@@ -29,7 +29,23 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
         this.document = document;
         this.locale = locale;
     }
-    
+	public Object visit(Ontology object) {
+	    logger.debug("Visiting ontology " + object);
+		OntologyDetailView details=new OntologyDetailView(object);
+		details.setUri(object.getURI());
+		details.setLabel(object.getLabel(locale));
+		details.setComment(object.getComment(locale));
+		details.setVersion(object.getVersion());
+		details.setEditors(object.getEditors());
+		details.setContributors(object.getContributors());
+		details.setPreferredPrefix(object.getPreferredPrefix());
+		details.setDepictions(object.getDepictions());
+		details.setVideos(object.getVideos());		
+
+		document.addOntologyDetailView(details);     
+		return details;
+	}
+	
 	public Object visit(OntologyClass object) {
 	    logger.debug("Visiting class " + object);
 		OntologyClassDetailView details=new OntologyClassDetailView(object);
@@ -66,48 +82,32 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 		details.setInverseReferences(object.getInternalReferences());
 		details.setCardinality(object.getCardinality());
 		details.setDepictions(object.getDepictions());
-		details.setVideos(object.getVideos());		
+		details.setVideos(object.getVideos());
+		details.setType(object.getType());
 		
         document.addOntologyPropertyDetailView(details);     
 		return details;
 	}
+
 	
-	public Object visit(Ontology object) {
-	    logger.debug("Visiting ontology " + object);
-		OntologyDetailView details=new OntologyDetailView(object);
-		details.setUri(object.getURI());
+	/* (non-Javadoc)
+	 * @see es.ctic.parrot.transformers.AbstractDocumentableObjectVisitor#visit(es.ctic.parrot.de.OntologyIndividual)
+	 */
+	@Override
+	public Object visit(OntologyIndividual object) {
+	    logger.debug("Visiting individual " + object);
+		OntologyIndividualDetailView details = new OntologyIndividualDetailView(object);
 		details.setLabel(object.getLabel(locale));
-		details.setComment(object.getComment(locale));
-		details.setVersion(object.getVersion());
-		details.setEditors(object.getEditors());
-		details.setContributors(object.getContributors());
-		details.setPreferredPrefix(object.getPreferredPrefix());
+		details.setUri(object.getURI());
+		details.addAllTypes(object.getTypes());
+		details.setInverseRuleReferences(object.getInverseRuleReferences());
 		details.setDepictions(object.getDepictions());
 		details.setVideos(object.getVideos());		
-
-		document.addOntologyDetailView(details);     
+		
+		document.addOntologyIndividualDetailView(details);
 		return details;
 	}
 	
-	public Object visit(Rule object) {
-	    logger.debug("Visiting rule " + object);
-	    RuleDetailView details = new RuleDetailView(object);
-	    details.setIdentifier(object.getIdentifier());
-		details.setUri(object.getURI());
-		details.setLabel(object.getLabel(locale));
-		details.setComment(object.getComment(locale));
-		details.setDate(object.getDate());
-		details.setCreators(object.getCreators());
-		details.setContributors(object.getContributors());
-		details.setPublishers(object.getPublishers());
-		details.setDepictions(object.getDepictions());
-		details.setVideos(object.getVideos());	
-		details.setParent(object.getParent());
-		details.setReferencedOntologicalObjects(object.getReferencedOntologicalObjects());
-
-		document.addRuleDetailView(details);
-	    return details;
-	}
 	
 	public Object visit(RuleSet object) {
 	    logger.debug("Visiting ruleset " + object);
@@ -133,23 +133,24 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 	    return details;
 	}
 
-	/* (non-Javadoc)
-	 * @see es.ctic.parrot.transformers.AbstractDocumentableObjectVisitor#visit(es.ctic.parrot.de.OntologyIndividual)
-	 */
-	@Override
-	public Object visit(OntologyIndividual object) {
-	    logger.debug("Visiting individual " + object);
-		OntologyIndividualDetailView details = new OntologyIndividualDetailView(object);
-		details.setLabel(object.getLabel(locale));
+	public Object visit(Rule object) {
+	    logger.debug("Visiting rule " + object);
+	    RuleDetailView details = new RuleDetailView(object);
+	    details.setIdentifier(object.getIdentifier());
 		details.setUri(object.getURI());
-		details.addAllTypes(object.getTypes());
-		details.setInverseRuleReferences(object.getInverseRuleReferences());
+		details.setLabel(object.getLabel(locale));
+		details.setComment(object.getComment(locale));
+		details.setDate(object.getDate());
+		details.setCreators(object.getCreators());
+		details.setContributors(object.getContributors());
+		details.setPublishers(object.getPublishers());
 		details.setDepictions(object.getDepictions());
-		details.setVideos(object.getVideos());		
-		
-		document.addOntologyIndividualDetailView(details);
-		return details;
+		details.setVideos(object.getVideos());	
+		details.setParent(object.getParent());
+		details.setReferencedOntologicalObjects(object.getReferencedOntologicalObjects());
+
+		document.addRuleDetailView(details);
+	    return details;
 	}
-	
 
 }

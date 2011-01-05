@@ -1,10 +1,7 @@
 package es.ctic.parrot.reader.jena;
 
-import es.ctic.parrot.reader.jena.JenaOWLReader;
-
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
 
 import org.apache.log4j.Logger;
 
@@ -25,7 +22,8 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 	private DocumentableObject domain;
     private DocumentableObject range;
     
-	private Collection<DocumentableObject> superProperties = new HashSet<DocumentableObject>();
+	private Collection<OntologyProperty> superProperties;
+	private Collection<OntologyProperty> subProperties;
 
 	public OntProperty getOntProperty(){
 		return (OntProperty) getOntResource();
@@ -33,27 +31,6 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
     
     public OntologyPropertyJenaImpl(OntProperty ontProperty, DocumentableObjectRegister register) {
     	super(ontProperty, register);
-        
-    	OntResource domain=ontProperty.getDomain();
-		if(domain!=null && domain.isClass() && domain.getURI()!=null)
-			this.domain=new OntologyClassJenaImpl(domain.asClass(), register);
-		
-		OntResource range=ontProperty.getRange();
-		if(range !=null && range.isClass() && range.getURI()!=null)
-			this.range=new OntologyClassJenaImpl(range.asClass(), register);
-		
-		ExtendedIterator<? extends OntProperty> listSuperProperties = ontProperty.listSuperProperties(true);
-		while (listSuperProperties.hasNext()){
-		    OntProperty jenaSuperProperty = listSuperProperties.next();
-		    
-		    if (JenaOWLReader.isDomainSpecific(jenaSuperProperty) == true){
-		        OntologyProperty superProperty = new OntologyPropertyJenaImpl(jenaSuperProperty, register);
-		        if (superProperty != null) {
-		        	superProperties.add(superProperty);
-		        }
-		    }
-		}
-		
     }
     
     public Object accept(DocumentableObjectVisitor visitor) {
@@ -61,7 +38,15 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
     }
 
 	public DocumentableObject getDomain() {
-		return domain;
+    	if (domain == null){
+    		OntResource _domain = getOntProperty().getDomain();
+    		if(_domain != null && _domain.isClass() && _domain.getURI() != null){
+    			domain = new OntologyClassJenaImpl(_domain.asClass(), this.getRegister());
+    		}
+    	}
+    	
+    	return domain;
+
 	}
 	
 	public void setDomain(DocumentableObject domain){
@@ -69,7 +54,13 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 	}
 
 	public DocumentableObject getRange() {
-		return range;
+    	if (range == null){
+    		OntResource _range = getOntProperty().getRange();
+    		if(_range != null && _range.isClass() && _range.getURI() != null) {
+    			range = new OntologyClassJenaImpl(_range.asClass(), this.getRegister());
+    		}
+    	}
+    	return range;
 	}
 
 	public void setRange(DocumentableObject range) {
@@ -83,15 +74,38 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 	/**
 	 * @return the subProperties
 	 */
-	public Collection<DocumentableObject> getSuperProperties() {
+	public Collection<OntologyProperty> getSuperProperties() {
+		
+		if(superProperties == null){
+			ExtendedIterator<OntProperty> it = (ExtendedIterator<OntProperty>) getOntProperty().listSuperProperties(true);
+			superProperties = ontPropertyIteratorToOntologyPropertyList(it);
+		}
 		return Collections.unmodifiableCollection(superProperties);
 	}
 
 	/**
 	 * @param subProperties the subProperties to set
 	 */
-	public void setSuperProperties(Collection<DocumentableObject> superProperties) {
+	public void setSuperProperties(Collection<OntologyProperty> superProperties) {
 		this.superProperties = superProperties;
 	}
-	
+
+	/**
+	 * @return the subProperties
+	 */
+	public Collection<OntologyProperty> getSubProperties() {
+		if(subProperties == null){
+			ExtendedIterator<OntProperty> it = (ExtendedIterator<OntProperty>) getOntProperty().listSubProperties(true);
+			subProperties = ontPropertyIteratorToOntologyPropertyList(it);
+		}
+
+		return Collections.unmodifiableCollection(subProperties);	
+	}
+
+	/**
+	 * @param subProperties the subProperties to set
+	 */
+	public void setSubProperties(Collection<OntologyProperty> subProperties) {
+		this.subProperties = subProperties;
+	}	
 }

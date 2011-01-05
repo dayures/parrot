@@ -26,7 +26,14 @@
     #foreach($superproperty in $element.SuperProperties)
       <dd><span class="parrot-property-ref"><a href="#$superproperty.LocalName">$superproperty.Label</a></span></dd>
     #end
-  #end
+   #end
+
+   #if(!$element.SubProperties.isEmpty())
+    <dt>SuperProperty of</dt>
+    #foreach($subproperty in $element.SubProperties)
+      <dd><span class="parrot-property-ref"><a href="#$subproperty.LocalName">$subproperty.Label</a></span></dd>
+    #end
+   #end
 
    #if(!$element.InverseReferences.isEmpty())
    <dt>Referenced from</dt>

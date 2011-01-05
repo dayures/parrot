@@ -9,7 +9,10 @@ public interface OntologyProperty extends DocumentableOntologicalObject {
 	public abstract void setDomain(DocumentableObject domain);
 	public abstract int getCardinality();
 	
-    public abstract Collection<DocumentableObject> getSuperProperties();
-    public abstract void setSuperProperties(Collection<DocumentableObject> superProperties);
+    public abstract Collection<OntologyProperty> getSuperProperties();
+    public abstract void setSuperProperties(Collection<OntologyProperty> superProperties);
+
+    public abstract Collection<OntologyProperty> getSubProperties();
+    public abstract void setSubProperties(Collection<OntologyProperty> subProperties);
 
 }

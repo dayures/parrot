@@ -13,6 +13,7 @@ import org.apache.log4j.Logger;
 
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
+import com.hp.hpl.jena.ontology.OntProperty;
 import com.hp.hpl.jena.ontology.OntResource;
 import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.rdf.model.ResourceRequiredException;
@@ -25,6 +26,7 @@ import es.ctic.parrot.de.DocumentableOntologicalObject;
 import es.ctic.parrot.de.Identifier;
 import es.ctic.parrot.de.OntologyClass;
 import es.ctic.parrot.de.OntologyIndividual;
+import es.ctic.parrot.de.OntologyProperty;
 import es.ctic.parrot.de.Rule;
 import es.ctic.parrot.de.URIIdentifier;
 import es.ctic.parrot.utils.URIUtils;
@@ -50,6 +52,7 @@ public abstract class AbstractJenaDocumentableObject extends
 		super();
 		this.ontResource = ontResource;
 		this.setRegister(register);
+		logger.debug("Created a documentable object for " + ontResource);
 	}
 	
 	/** (non-Javadoc)
@@ -157,6 +160,23 @@ public abstract class AbstractJenaDocumentableObject extends
 			}
 		}
 		return ontologyIndividualList;
+	}
+	
+	protected Collection<OntologyProperty> ontPropertyIteratorToOntologyPropertyList(Iterator<OntProperty> it) {
+		List<OntologyProperty> ontologyPropertyList = new LinkedList<OntologyProperty>();
+		
+		while(it.hasNext()){
+			OntProperty property = it.next();
+			
+			Identifier identifier = new URIIdentifier(property.getURI());
+
+			OntologyProperty _property = (OntologyProperty) this.getRegister().findDocumentableObject(identifier); 
+
+			if (_property != null) { // do not add null elements in the list 
+				ontologyPropertyList.add(_property);
+			}
+		}
+		return ontologyPropertyList;
 	}
 	
 	public void addInverseRuleReference(Rule rule) {

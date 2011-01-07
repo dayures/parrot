@@ -110,42 +110,7 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 	public void setSubProperties(Collection<OntologyProperty> subProperties) {
 		this.subProperties = subProperties;
 	}
-
-	public String getType() {
-		StringBuffer type = new StringBuffer();
-		
-		if (getOntProperty().isDatatypeProperty()){
-			type.append("Datatype");
-		} 
-
-		if (getOntProperty().isObjectProperty()){
-			type.append("Object");
-		}
-		
-		if (getOntProperty().isAnnotationProperty()){
-			type.append("Annotation");
-		} 
-		
-		if (getOntProperty().isTransitiveProperty()){
-			type.append("is Transitive");
-		}
-		
-		if (getOntProperty().isSymmetricProperty()){
-			type.append("is Symmetric");
-		}
-		
-		if (getOntProperty().isFunctionalProperty()){
-			type.append("is Functional");
-		}
-		
-		if (getOntProperty().isInverseFunctionalProperty()){
-			type.append("is Inverse Functional");
-		}
-		
-		return type.toString();
-		
-	}
-
+	
 	public DocumentableObject getInverseOf() {
 
     	if (inverseOf == null){
@@ -165,5 +130,32 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 
 	}
 
+	public boolean isDatatypeProperty() {
+		return getOntProperty().isDatatypeProperty();
+	}
+	
+	public boolean isObjectProperty() {
+		return getOntProperty().isObjectProperty();
+	}
+
+	public boolean isAnnotationProperty() {
+		return getOntProperty().isAnnotationProperty();
+	}
+	
+	public boolean isTransitiveProperty() {
+		return getOntProperty().isTransitiveProperty();
+	}
+
+	public boolean isSymmetricProperty() {
+		return getOntProperty().isSymmetricProperty();
+	}
+
+	public boolean isFunctionalProperty() {
+		return getOntProperty().isFunctionalProperty();
+	}
+	
+	public boolean isInverseFunctionalProperty() {
+		return getOntProperty().isInverseFunctionalProperty();
+	}
 
 }

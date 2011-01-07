@@ -83,7 +83,6 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 		details.setCardinality(object.getCardinality());
 		details.setDepictions(object.getDepictions());
 		details.setVideos(object.getVideos());
-		details.setType(object.getType());
 		details.setInverseOf(object.getInverseOf());
 		
         document.addOntologyPropertyDetailView(details);     

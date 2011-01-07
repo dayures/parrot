@@ -16,7 +16,6 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
     private Collection<DocumentableObject> inverseReferences;
     private int cardinality;
     private String type;
-	private DocumentableObject inverse;
     private DocumentableObject inverseOf;
 	
 	public OntologyPropertyDetailView(OntologyProperty ontologyProperty){
@@ -103,20 +102,6 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
 	 */
 	public String getType() {
 		return type;
-	}
-
-	/**
-	 * @param inverse the inverse to set
-	 */
-	public void setInverse(DocumentableObject inverse) {
-		this.inverse = inverse;
-	}
-
-	/**
-	 * @return the inverse
-	 */
-	public DocumentableObject getInverse() {
-		return inverse;
 	}
 
 	/**

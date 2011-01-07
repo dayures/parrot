@@ -9,11 +9,6 @@
       <dt>Property Type</dt>
       <dd>$element.Type</dd>
    
-   #if($element.Inverse)
-      <dt>My inverse is</dt>
-      <dd><span class="parrot-property-ref"><a href="#$element.Inverse.LocalName">$element.Inverse.Label</a></span></dd>
-   #end
-   
    #if($element.InverseOf)
       <dt>is inverse of</dt>
       <dd><span class="parrot-property-ref"><a href="#$element.InverseOf.LocalName">$element.InverseOf.Label</a></span></dd>

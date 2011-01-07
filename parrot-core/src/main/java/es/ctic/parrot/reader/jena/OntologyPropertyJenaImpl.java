@@ -25,7 +25,6 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 	private Collection<OntologyProperty> superProperties;
 	private Collection<OntologyProperty> subProperties;
 
-	private DocumentableObject inverse;
     private DocumentableObject inverseOf;
 
 	public OntProperty getOntProperty(){
@@ -149,31 +148,22 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 
 	public DocumentableObject getInverseOf() {
 
-		logger.debug("ontProperty.getInverseOf() " + getOntProperty().getInverseOf()); // I am inverse Of:
-		
     	if (inverseOf == null){
+    		
     		OntResource _inverseOf = getOntProperty().getInverseOf();
     		if(_inverseOf != null ){
     			inverseOf = new OntologyPropertyJenaImpl (_inverseOf.asProperty(), this.getRegister());
+    		} else {
+    			_inverseOf = getOntProperty().getInverse();
+        		if(_inverseOf != null ){
+        			inverseOf = new OntologyPropertyJenaImpl (_inverseOf.asProperty(), this.getRegister());
+        		}	
     		}
     	}
-    	
+
     	return inverseOf;
 
 	}
 
-	public DocumentableObject getInverse() {
-		logger.debug("ontProperty.getInverse() " + getOntProperty().getInverse()); // x is inverse of me
-		
-    	if (inverse == null){
-    		OntResource _inverse = getOntProperty().getInverse();
-    		if(_inverse != null ){
-    			inverse = new OntologyPropertyJenaImpl (_inverse.asProperty(), this.getRegister());
-    		}
-    	}
-    	
-    	return inverse;
-
-	}
 
 }

@@ -9,21 +9,28 @@ import es.ctic.parrot.de.OntologyProperty;
 
 public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailView  implements DetailView{
 	private OntologyProperty ontologyProperty;
+
 	private DocumentableObject domain;
 	private DocumentableObject range;
     private Collection<OntologyProperty> superProperties;
     private Collection<OntologyProperty> subProperties;
     private Collection<DocumentableObject> inverseReferences;
     private int cardinality;
-    private String type;
     private DocumentableObject inverseOf;
 	
 	public OntologyPropertyDetailView(OntologyProperty ontologyProperty){
 		this.ontologyProperty=ontologyProperty;
 	}
 	
+	/**
+	 * @return the ontologyProperty
+	 */
+	public OntologyProperty getOntologyProperty() {
+		return ontologyProperty;
+	}
+	
 	public Identifier getIdentifier(){
-		return ontologyProperty.getIdentifier();
+		return getOntologyProperty().getIdentifier();
 	}
 
 	public DocumentableObject getDomain() {
@@ -51,7 +58,7 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
 	}
 
 	public String getAnchor() {
-		return ontologyProperty.getLocalName();
+		return getOntologyProperty().getLocalName();
 	}
 
 	public void setCardinality(int cardinality) {
@@ -91,20 +98,6 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
 	}
 
 	/**
-	 * @param type the type to set
-	 */
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	/**
-	 * @return the type
-	 */
-	public String getType() {
-		return type;
-	}
-
-	/**
 	 * @param inverseOf the inverseOf to set
 	 */
 	public void setInverseOf(DocumentableObject inverseOf) {
@@ -117,5 +110,34 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
 	public DocumentableObject getInverseOf() {
 		return inverseOf;
 	}
+	
+	public boolean isDatatypeProperty(){
+		return getOntologyProperty().isDatatypeProperty();
+	}
+
+	public boolean isObjectProperty(){
+		return getOntologyProperty().isObjectProperty();
+	}
+	
+	public boolean isAnnotationProperty(){
+		return getOntologyProperty().isAnnotationProperty();
+	}
+	
+	public boolean isTransitiveProperty() {
+		return getOntologyProperty().isTransitiveProperty();
+	}
+
+	public boolean isSymmetricProperty() {
+		return getOntologyProperty().isSymmetricProperty();
+	}
+
+	public boolean isFunctionalProperty() {
+		return getOntologyProperty().isFunctionalProperty();
+	}
+	
+	public boolean isInverseFunctionalProperty() {
+		return getOntologyProperty().isInverseFunctionalProperty();
+	}
+
 	
 }

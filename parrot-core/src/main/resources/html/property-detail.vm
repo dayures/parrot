@@ -1,13 +1,36 @@
 <div class="term">
   <h3><a id="$element.Anchor"></a><span class="parrot-property-title">$element.Label</span> (Property)</h3>
   <dl>
+  
+   
    #if($element.Uri)
       <dt>Uri</dt>
       <dd><a href="$element.Uri">$element.Uri</a></dd>      
    #end
    
-      <dt>Property Type</dt>
-      <dd>$element.Type</dd>
+    <dt>Property Type</dt>
+    	#if($element.isDatatypeProperty())
+    	<dd>is Datatype Property</dd>      
+    	#end
+    	#if($element.isObjectProperty())
+    	<dd>is Object Property</dd>      
+    	#end
+    	#if($element.isAnnotationProperty())
+    	<dd>is Annotation Property</dd>      
+    	#end
+    	
+    	#if($element.isTransitiveProperty())
+    	<dd>is Transitive Property</dd>      
+    	#end    	
+    	#if($element.isSymmetricProperty())
+    	<dd>is Symmetric Property</dd>      
+    	#end    	
+    	#if($element.isFunctionalProperty())
+    	<dd>is Functional Property</dd>      
+    	#end    	
+    	#if($element.isInverseFunctionalProperty())
+    	<dd>is Inverse Functional Property</dd>      
+    	#end    	
    
    #if($element.InverseOf)
       <dt>is inverse of</dt>

@@ -15,8 +15,14 @@ public interface OntologyProperty extends DocumentableOntologicalObject {
     public abstract Collection<OntologyProperty> getSubProperties();
     public abstract void setSubProperties(Collection<OntologyProperty> subProperties);
     
-    public abstract String getType();
-    
     public abstract DocumentableObject getInverseOf();
-
+    
+    public abstract boolean isDatatypeProperty();
+    public abstract boolean isObjectProperty();
+    public abstract boolean isAnnotationProperty();
+    
+    public abstract boolean isTransitiveProperty();
+    public abstract boolean isSymmetricProperty();
+    public abstract boolean isFunctionalProperty();
+    public abstract boolean isInverseFunctionalProperty();    
 }

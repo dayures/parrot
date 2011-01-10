@@ -195,7 +195,7 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 	public Collection<OntologyProperty> getEquivalentProperties() {
 		
 		OntModel ontModel = getOntProperty().getOntModel();
-		Collection <OntProperty> equivalent = new HashSet<OntProperty>();
+		Collection <OntProperty> equivalents = new HashSet<OntProperty>();
 
 		// Both equivalent: Datatype and Object properties 
 		
@@ -204,16 +204,16 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 			StmtIterator listStatements = ontModel.listStatements(getOntProperty(), OWL2.equivalentProperty, (RDFNode) null);
 			while (listStatements.hasNext()){
 				Statement statement = listStatements.next();
-				equivalent.add(ontModel.getOntResource(statement.getObject().asResource()).asProperty());
+				equivalents.add(ontModel.getOntResource(statement.getObject().asResource()).asProperty());
 			}
 			
 			listStatements = ontModel.listStatements(null, OWL2.equivalentProperty, getOntProperty());
 			while (listStatements.hasNext()){
 				Statement statement = listStatements.next();
-				equivalent.add(ontModel.getOntResource(statement.getSubject()).asProperty());
+				equivalents.add(ontModel.getOntResource(statement.getSubject()).asProperty());
 			}
 			
-			equivalentProperties = ontPropertyIteratorToOntologyPropertyList(equivalent.iterator());
+			equivalentProperties = ontPropertyIteratorToOntologyPropertyList(equivalents.iterator());
 		}
 		return Collections.unmodifiableCollection(equivalentProperties);
 	}
@@ -224,7 +224,7 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 	public Collection<OntologyProperty> getDisjointProperties() {
 		
 		OntModel ontModel = getOntProperty().getOntModel();
-		Collection <OntProperty> disjoint = new HashSet<OntProperty>();
+		Collection <OntProperty> disjoints = new HashSet<OntProperty>();
 
 		// Both disjoint: Datatype and Object properties
 		
@@ -233,16 +233,16 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 			StmtIterator listStatements = ontModel.listStatements(getOntProperty(), OWL2.propertyDisjointWith, (RDFNode) null);
 			while (listStatements.hasNext()){
 				Statement statement = listStatements.next();
-				disjoint.add(ontModel.getOntResource(statement.getObject().asResource()).asProperty());
+				disjoints.add(ontModel.getOntResource(statement.getObject().asResource()).asProperty());
 			}
 			
 			listStatements = ontModel.listStatements(null, OWL2.propertyDisjointWith, getOntProperty());
 			while (listStatements.hasNext()){
 				Statement statement = listStatements.next();
-				disjoint.add(ontModel.getOntResource(statement.getSubject()).asProperty());
+				disjoints.add(ontModel.getOntResource(statement.getSubject()).asProperty());
 			}
 			
-			disjointProperties = ontPropertyIteratorToOntologyPropertyList(disjoint.iterator());
+			disjointProperties = ontPropertyIteratorToOntologyPropertyList(disjoints.iterator());
 		}
 		return Collections.unmodifiableCollection(disjointProperties);
 	}

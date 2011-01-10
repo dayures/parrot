@@ -15,6 +15,8 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
     private Collection<OntologyProperty> superProperties;
     private Collection<OntologyProperty> subProperties;
     private Collection<DocumentableObject> inverseReferences;
+	private Collection<OntologyProperty> equivalentProperties;
+	private Collection<OntologyProperty> disjointProperties;
     private int cardinality;
     private DocumentableObject inverseOf;
 	
@@ -139,5 +141,46 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
 		return getOntologyProperty().isInverseFunctionalProperty();
 	}
 
+	public boolean isReflexiveProperty() {
+		return getOntologyProperty().isReflexiveProperty();
+	}
 	
+	public boolean isIrreflexiveProperty() {
+		return getOntologyProperty().isIrreflexiveProperty();
+	}
+
+	public boolean isAsymmetricProperty() {
+		return getOntologyProperty().isAsymmetricProperty();
+	}
+
+	/**
+	 * @param equivalentProperties the equivalentProperties to set
+	 */
+	public void setEquivalentProperties(Collection<OntologyProperty> equivalentProperties) {
+		this.equivalentProperties = equivalentProperties;
+	}
+
+	/**
+	 * @return the equivalentProperties
+	 */
+	public Collection<OntologyProperty> getEquivalentProperties() {
+		return Collections.unmodifiableCollection(equivalentProperties);
+	}
+
+	/**
+	 * @param disjointProperties the disjointProperties to set
+	 */
+	public void setDisjointProperties(Collection<OntologyProperty> disjointProperties) {
+		this.disjointProperties = disjointProperties;
+	}
+
+	/**
+	 * @return the disjointProperties
+	 */
+	public Collection<OntologyProperty> getDisjointProperties() {
+		return Collections.unmodifiableCollection(disjointProperties);
+	}
+
+
+	 
 }

@@ -2,13 +2,20 @@ package es.ctic.parrot.reader.jena;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 
 import org.apache.log4j.Logger;
 
+import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.ontology.OntProperty;
 import com.hp.hpl.jena.ontology.OntResource;
 import com.hp.hpl.jena.rdf.model.RDFNode;
+import com.hp.hpl.jena.rdf.model.ResourceFactory;
+import com.hp.hpl.jena.rdf.model.Statement;
+import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.util.iterator.ExtendedIterator;
+import com.hp.hpl.jena.vocabulary.OWL2;
+import com.hp.hpl.jena.vocabulary.RDF;
 
 import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.DocumentableObjectRegister;
@@ -24,8 +31,10 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
     
 	private Collection<OntologyProperty> superProperties;
 	private Collection<OntologyProperty> subProperties;
+	private Collection<OntologyProperty> equivalentProperties;
+	private Collection<OntologyProperty> disjointProperties;
 
-    private DocumentableObject inverseOf;
+	private DocumentableObject inverseOf;
 
 	public OntProperty getOntProperty(){
 		return (OntProperty) getOntResource();
@@ -158,4 +167,91 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 		return getOntProperty().isInverseFunctionalProperty();
 	}
 
+	public boolean isReflexiveProperty() {
+		Statement statement = ResourceFactory.createStatement(getOntProperty(), RDF.type, OWL2.ReflexiveProperty );
+		return getOntProperty().getOntModel().contains(statement);
+	}
+	
+	public boolean isIrreflexiveProperty() {
+		Statement statement = ResourceFactory.createStatement(getOntProperty(), RDF.type, OWL2.IrreflexiveProperty );
+		return getOntProperty().getOntModel().contains(statement);
+	}
+	
+	public boolean isAsymmetricProperty(){
+		Statement statement = ResourceFactory.createStatement(getOntProperty(), RDF.type, OWL2.AsymmetricProperty );
+		return getOntProperty().getOntModel().contains(statement);
+	}
+
+	/**
+	 * @param equivalentProperties the equivalentProperties to set
+	 */
+	public void setEquivalentProperties(Collection<OntologyProperty> equivalentProperties) {
+		this.equivalentProperties = equivalentProperties;
+	}
+
+	/**
+	 * @return the equivalentProperties
+	 */
+	public Collection<OntologyProperty> getEquivalentProperties() {
+		
+		OntModel ontModel = getOntProperty().getOntModel();
+		Collection <OntProperty> equivalent = new HashSet<OntProperty>();
+
+		// Both equivalent: Datatype and Object properties 
+		
+		if(equivalentProperties == null){
+			
+			StmtIterator listStatements = ontModel.listStatements(getOntProperty(), OWL2.equivalentProperty, (RDFNode) null);
+			while (listStatements.hasNext()){
+				Statement statement = listStatements.next();
+				equivalent.add(ontModel.getOntResource(statement.getObject().asResource()).asProperty());
+			}
+			
+			listStatements = ontModel.listStatements(null, OWL2.equivalentProperty, getOntProperty());
+			while (listStatements.hasNext()){
+				Statement statement = listStatements.next();
+				equivalent.add(ontModel.getOntResource(statement.getSubject()).asProperty());
+			}
+			
+			equivalentProperties = ontPropertyIteratorToOntologyPropertyList(equivalent.iterator());
+		}
+		return Collections.unmodifiableCollection(equivalentProperties);
+	}
+
+    /**
+	 * @return the disjointProperties
+	 */
+	public Collection<OntologyProperty> getDisjointProperties() {
+		
+		OntModel ontModel = getOntProperty().getOntModel();
+		Collection <OntProperty> disjoint = new HashSet<OntProperty>();
+
+		// Both disjoint: Datatype and Object properties
+		
+		if(disjointProperties == null){
+			
+			StmtIterator listStatements = ontModel.listStatements(getOntProperty(), OWL2.propertyDisjointWith, (RDFNode) null);
+			while (listStatements.hasNext()){
+				Statement statement = listStatements.next();
+				disjoint.add(ontModel.getOntResource(statement.getObject().asResource()).asProperty());
+			}
+			
+			listStatements = ontModel.listStatements(null, OWL2.propertyDisjointWith, getOntProperty());
+			while (listStatements.hasNext()){
+				Statement statement = listStatements.next();
+				disjoint.add(ontModel.getOntResource(statement.getSubject()).asProperty());
+			}
+			
+			disjointProperties = ontPropertyIteratorToOntologyPropertyList(disjoint.iterator());
+		}
+		return Collections.unmodifiableCollection(disjointProperties);
+	}
+
+	/**
+	 * @param disjointProperties the disjointProperties to set
+	 */
+	public void setDisjointProperties(
+			Collection<OntologyProperty> disjointProperties) {
+		this.disjointProperties = disjointProperties;
+	}
 }

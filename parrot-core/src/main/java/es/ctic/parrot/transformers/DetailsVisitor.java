@@ -78,6 +78,8 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 		details.setRange(object.getRange());
 		details.setSuperProperties(object.getSuperProperties());
 		details.setSubProperties(object.getSubProperties());
+		details.setEquivalentProperties(object.getEquivalentProperties());
+		details.setDisjointProperties(object.getDisjointProperties());
 		details.setInverseRuleReferences(object.getInverseRuleReferences());
 		details.setInverseReferences(object.getInternalReferences());
 		details.setCardinality(object.getCardinality());

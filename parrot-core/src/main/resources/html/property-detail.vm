@@ -31,7 +31,17 @@
     	#if($element.isInverseFunctionalProperty())
     	<dd>is Inverse Functional Property</dd>      
     	#end    	
-   
+    	
+    	#if($element.isReflexiveProperty())
+    	<dd>is Reflexive Property</dd>      
+    	#end    	
+    	#if($element.isIrreflexiveProperty())
+    	<dd>is Irreflexive Property</dd>      
+    	#end        	
+    	#if($element.isAsymmetricProperty())
+    	<dd>is Asymmetric Property</dd>      
+    	#end
+    	
    #if($element.InverseOf)
       <dt>is inverse of</dt>
       <dd><span class="parrot-property-ref"><a href="#$element.InverseOf.LocalName">$element.InverseOf.Label</a></span></dd>
@@ -65,7 +75,21 @@
       <dd><span class="parrot-property-ref"><a href="#$subproperty.LocalName">$subproperty.Label</a></span></dd>
     #end
    #end
+   
+   #if(!$element.EquivalentProperties.isEmpty())
+    <dt>Equivalent Property of</dt>
+    #foreach($equivalentProperty in $element.EquivalentProperties)
+      <dd><span class="parrot-property-ref"><a href="#$equivalentProperty.LocalName">$equivalentProperty.Label</a></span></dd>
+    #end
+   #end
 
+   #if(!$element.disjointProperties.isEmpty())
+    <dt>Disjoint Properties</dt>
+    #foreach($property in $element.disjointProperties)
+      <dd><span class="parrot-property-ref"><a href="#$property.LocalName">$property.Label</a></span></dd>
+    #end
+   #end
+   
    #if(!$element.InverseReferences.isEmpty())
    <dt>Referenced from</dt>
    #foreach($reference in $element.InverseReferences)

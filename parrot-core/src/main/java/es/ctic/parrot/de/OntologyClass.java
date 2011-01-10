@@ -11,5 +11,10 @@ public interface OntologyClass extends DocumentableOntologicalObject {
     public abstract void setSubClasses(List<OntologyClass> classes); 
 	public abstract Collection<OntologyIndividual> getIndividuals();
 
-    
+	public abstract Collection<OntologyClass> getEquivalentClasses();
+	public abstract void setEquivalentClasses(Collection<OntologyClass> equivalentClasses);
+	
+	public abstract Collection<OntologyClass> getDisjointClasses();
+	public abstract void setDisjointClasses(Collection<OntologyClass> disjointClasses);
+
 }

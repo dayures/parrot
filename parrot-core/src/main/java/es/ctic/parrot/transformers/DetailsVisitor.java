@@ -58,6 +58,8 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 		for(OntologyClass ontclass:object.getSubClasses()){
 			details.addSubClasses(ontclass);
 		}
+		details.setEquivalentClasses(object.getEquivalentClasses());
+		details.setDisjointClasses(object.getDisjointClasses());
 		details.setInverseRuleReferences(object.getInverseRuleReferences());
 		details.setInverseReferences(object.getInternalReferences());
 		details.setIndividuals(object.getIndividuals());

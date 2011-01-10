@@ -9,11 +9,14 @@ import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.Identifier;
 import es.ctic.parrot.de.OntologyClass;
 import es.ctic.parrot.de.OntologyIndividual;
+import es.ctic.parrot.de.OntologyProperty;
 
 public class OntologyClassDetailView extends AbstractOntologicalObjectDetailView implements DetailView{
 	private OntologyClass ontologyClass;
 	private List<OntologyClass> superClasses;
 	private List<OntologyClass> subClasses;
+	private Collection<OntologyClass> equivalentClasses;
+	private Collection<OntologyClass> disjointClasses;
 	private Collection<DocumentableObject> inverseReferences;
 	private Collection<OntologyIndividual> individuals;
 
@@ -62,6 +65,34 @@ public class OntologyClassDetailView extends AbstractOntologicalObjectDetailView
 
 	public Collection<OntologyIndividual> getIndividuals() {
 		return Collections.unmodifiableCollection(individuals);
+	}
+
+	/**
+	 * @param equivalentClasses the equivalentClasses to set
+	 */
+	public void setEquivalentClasses(Collection<OntologyClass> equivalentClasses) {
+		this.equivalentClasses = equivalentClasses;
+	}
+
+	/**
+	 * @return the equivalentClasses
+	 */
+	public Collection<OntologyClass> getEquivalentClasses() {
+		return Collections.unmodifiableCollection(equivalentClasses);
+	}
+
+	/**
+	 * @param disjointClasses the disjointClasses to set
+	 */
+	public void setDisjointClasses(Collection<OntologyClass> disjointClasses) {
+		this.disjointClasses = disjointClasses;
+	}
+
+	/**
+	 * @return the disjointClasses
+	 */
+	public Collection<OntologyClass> getDisjointClasses() {
+		return Collections.unmodifiableCollection(disjointClasses);
 	}
 	
 	

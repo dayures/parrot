@@ -33,10 +33,10 @@ import es.ctic.parrot.utils.URIUtils;
 
 public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
 	
-	private static final String DC_PUBLISHER = "http://purl.org/dc/terms/publisher";
-	private static final String DC_CONTRIBUTOR = "http://purl.org/dc/terms/contributor";
-	private static final String DC_CREATOR = "http://purl.org/dc/terms/creator";
-	private static final String DC_DATE = "http://purl.org/dc/terms/date";
+	private static final String DC_PUBLISHER = "http://purl.org/dc/elements/1.1/publisher";
+	private static final String DC_CONTRIBUTOR = "http://purl.org/dc/elements/1.1/contributor";
+	private static final String DC_CREATOR = "http://purl.org/dc/elements/1.1/creator";
+	private static final String DC_DATE = "http://purl.org/dc/elements/1.1/date";
 	private static final String FOAF_DEPICTION = "http://xmlns.com/foaf/0.1/depiction";
 	private static final String OG_VIDEO = "http://ogp.me/ns#video";
 	private static final String RULESET_DEFAULT_LABEL = "Ruleset-";

@@ -69,7 +69,7 @@
 							<br /> 
 							<c:if test='${uriStatus.first}'>
 								<%-- Only for the first input --%>
-								<span class="uriHint">(for example: <tt id="example">http://ontorule-project.eu/resources/steel.owl</tt>)</span>
+								<span class="uriHint">(for example: <tt id="example">http://ontorule-project.eu/resources/steel-30.owl</tt>)</span>
 							</c:if>
 							<c:if test="${fn:contains(errorsUri,uri)}">
 								<span class="error">${fn:getMessage(errorsUri, uri)}</span>
@@ -86,7 +86,7 @@
 								<option value="application/rif+xml">It is a RIF XML document</option>
 								<option value="text/x-rif-ps">It is a RIF PS document</option>
 							</select>	 
-							<span class="uriHint">(for example: <tt id="example">http://ontorule-project.eu/resources/steel.owl</tt>)</span>
+							<span class="uriHint">(for example: <tt id="example">http://ontorule-project.eu/resources/steel-30.owl</tt>)</span>
 							</p>
 						</c:otherwise>
 					</c:choose>

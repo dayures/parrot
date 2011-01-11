@@ -3,12 +3,14 @@ package es.ctic.parrot.reader.jena;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Set;
 
 import org.apache.log4j.Logger;
 
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.ontology.OntProperty;
 import com.hp.hpl.jena.ontology.OntResource;
+import com.hp.hpl.jena.rdf.model.RDFList;
 import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.rdf.model.Statement;
@@ -240,6 +242,22 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 			while (listStatements.hasNext()){
 				Statement statement = listStatements.next();
 				disjoints.add(ontModel.getOntResource(statement.getSubject()).asProperty());
+			}
+			
+			listStatements = ontModel.listStatements(null, RDF.type, OWL2.AllDisjointProperties);
+			while (listStatements.hasNext()){
+				Statement statement = listStatements.next();
+				RDFList listDisjointProperties = statement.getSubject().getPropertyResourceValue(OWL2.members).as(RDFList.class);
+				if (listDisjointProperties.contains(getOntProperty())){
+					Set<RDFNode> rdfNodeSet = listDisjointProperties.iterator().toSet();
+					Set<OntProperty> ontPropertySet = new HashSet<OntProperty>();
+					for(RDFNode node : rdfNodeSet){
+						ontPropertySet.add(node.as(OntProperty.class));
+					}
+					ontPropertySet.remove(getOntProperty());
+					disjoints.addAll(ontPropertySet);
+				}
+				
 			}
 			
 			disjointProperties = ontPropertyIteratorToOntologyPropertyList(disjoints.iterator());

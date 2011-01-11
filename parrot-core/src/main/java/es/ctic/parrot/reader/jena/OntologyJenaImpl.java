@@ -14,8 +14,8 @@ import es.ctic.parrot.transformers.DocumentableObjectVisitor;
 public class OntologyJenaImpl extends AbstractJenaDocumentableObject implements es.ctic.parrot.de.Ontology {
 	
 	private static final String VANN_PREFERRED_PREFIX = "http://purl.org/vocab/vann/preferredNamespacePrefix";
-	private static final String DC_CREATOR = "http://purl.org/dc/terms/creator";
-	private static final String DC_CONTRIBUTOR = "http://purl.org/dc/terms/contributor";
+	private static final String DC_CREATOR = "http://purl.org/dc/elements/1.1/creator";
+	private static final String DC_CONTRIBUTOR = "http://purl.org/dc/elements/1.1/contributor";
 
 	public OntologyJenaImpl(OntResource ontResource, DocumentableObjectRegister register) {
 		super(ontResource, register);

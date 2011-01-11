@@ -5,33 +5,37 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
+
+import org.apache.log4j.Logger;
 
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
-import com.hp.hpl.jena.ontology.OntProperty;
+import com.hp.hpl.jena.rdf.model.RDFList;
 import com.hp.hpl.jena.rdf.model.RDFNode;
+import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.rdf.model.Seq;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.util.iterator.ExtendedIterator;
-import com.hp.hpl.jena.vocabulary.OWL;
 import com.hp.hpl.jena.vocabulary.OWL2;
+import com.hp.hpl.jena.vocabulary.RDF;
 
 import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.de.OntologyClass;
 import es.ctic.parrot.de.OntologyIndividual;
-import es.ctic.parrot.de.OntologyProperty;
 import es.ctic.parrot.transformers.DocumentableObjectVisitor;
 
 public class OntologyClassJenaImpl extends AbstractJenaDocumentableObject implements OntologyClass{
 
+	private static final Logger logger = Logger.getLogger(OntologyClassJenaImpl.class);
+
+	
     private Collection<OntologyClass> superClasses;
 	private Collection<OntologyClass> subClasses;
-
 	private Collection<OntologyClass> equivalentClasses;
-
 	private Collection<OntologyClass> disjointClasses;
-	
 	private Collection<OntologyIndividual> individuals;
 	
 	public OntologyClassJenaImpl(OntClass ontclass, DocumentableObjectRegister register){
@@ -136,7 +140,7 @@ public class OntologyClassJenaImpl extends AbstractJenaDocumentableObject implem
 
 		if(disjointClasses == null){
 			
-			StmtIterator listStatements = ontModel.listStatements(getOntClass(), OWL.disjointWith, (RDFNode) null);
+			StmtIterator listStatements = ontModel.listStatements(getOntClass(), OWL2.disjointWith, (RDFNode) null);
 			while (listStatements.hasNext()){
 				Statement statement = listStatements.next();
 				disjoints.add(ontModel.getOntResource(statement.getObject().asResource()).asClass());
@@ -146,6 +150,24 @@ public class OntologyClassJenaImpl extends AbstractJenaDocumentableObject implem
 			while (listStatements.hasNext()){
 				Statement statement = listStatements.next();
 				disjoints.add(ontModel.getOntResource(statement.getSubject()).asClass());
+			}
+			
+			
+			listStatements = ontModel.listStatements(null, RDF.type, OWL2.AllDisjointClasses);
+			while (listStatements.hasNext()){
+				Statement statement = listStatements.next();
+				RDFList listDisjointClasses = statement.getSubject().getPropertyResourceValue(OWL2.members).as(RDFList.class);
+				
+				if (listDisjointClasses.contains(getOntClass())){
+					Set<RDFNode> rdfNodeSet = listDisjointClasses.iterator().toSet();
+					Set<OntClass> ontClassSet = new HashSet<OntClass>();
+					for(RDFNode node : rdfNodeSet){
+						ontClassSet.add(node.as(OntClass.class));
+					}
+					ontClassSet.remove(getOntClass());
+					disjoints.addAll(ontClassSet);
+				}
+				
 			}
 			
 			disjointClasses = ontClassIteratorToOntologyClassList(disjoints.iterator());

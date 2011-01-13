@@ -54,9 +54,9 @@ public class JenaOWLReader implements DocumentReader {
             loadOntIndividuals(model, register);
         } catch (JenaException e) {
             if (e.getCause() != null && e.getCause() instanceof SAXParseException) {
-                throw new ReaderException("OWL parse error: " + e.getCause().getMessage(), e);
+                throw new ReaderException(input.getMimeType() + " parse error: " + e.getCause().getMessage(), e);
             } else {
-                throw new ReaderException("While reading OWL file", e);
+                throw new ReaderException("While reading " + input.getMimeType() + " file", e);
             }
         } catch (ClassNotFoundException e) { // When RDFa Reader is not available
              throw new ReaderException("RDFa not supported", e);
@@ -71,6 +71,8 @@ public class JenaOWLReader implements DocumentReader {
 	        return "RDF/XML";
 	    } else if ("text/turtle".equals(input.getMimeType())) {
 	        return "TURTLE";
+	    } else if ("text/n3".equals(input.getMimeType())) {
+	        return "N3";
 	    } else if ("application/xhtml+xml".equals(input.getMimeType())) {
 	        return XHTML;
 	    } else {

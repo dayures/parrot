@@ -41,10 +41,11 @@ public class JenaOWLReader implements DocumentReader {
 			Class.forName("net.rootdev.javardfa.jena.RDFaReader");
 
 	        String base = input.getBase();
-	        
+
         	if (getJenaFormat(input).equals(XHTML)) {
             	model.read(input.openReader(), base == null ? "http://example.org/base#" : base, getJenaFormat(input)); // FIXME fix this adhoc url
             } else {
+
             	model.read(input.openReader(), base, getJenaFormat(input));	
             }
             
@@ -71,7 +72,7 @@ public class JenaOWLReader implements DocumentReader {
 	        return "RDF/XML";
 	    } else if ("text/turtle".equals(input.getMimeType())) {
 	        return "TURTLE";
-	    } else if ("text/n3".equals(input.getMimeType())) {
+	    } else if ("text/n3".equals(input.getMimeType()) || "text/rdf+n3".equals(input.getMimeType())) {
 	        return "N3";
 	    } else if ("application/xhtml+xml".equals(input.getMimeType())) {
 	        return XHTML;

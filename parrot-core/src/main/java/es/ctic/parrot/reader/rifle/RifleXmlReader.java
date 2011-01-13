@@ -7,7 +7,6 @@ import javax.xml.transform.stream.StreamSource;
 
 import net.sourceforge.rifle.ast.Document;
 import net.sourceforge.rifle.prd.xml.Parser;
-
 import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.reader.DocumentReader;
 import es.ctic.parrot.reader.Input;

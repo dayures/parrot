@@ -26,7 +26,8 @@ import es.ctic.parrot.reader.ReaderException;
 public class JenaOWLReader implements DocumentReader {
     
     private static final String XHTML = "XHTML";
-	private static final Logger logger = Logger.getLogger(JenaOWLReader.class);
+    private static final String HTML = "HTML";
+    private static final Logger logger = Logger.getLogger(JenaOWLReader.class);
 	
 	/* (non-Javadoc)
 	 * @see es.ctic.parrot.reader.DocumentReader#readDocumentableObjects(es.ctic.parrot.reader.Input, es.ctic.parrot.de.DocumentableObjectRegister)
@@ -42,7 +43,7 @@ public class JenaOWLReader implements DocumentReader {
 
 	        String base = input.getBase();
 
-        	if (getJenaFormat(input).equals(XHTML)) {
+        	if (getJenaFormat(input).equals(XHTML) || getJenaFormat(input).equals(HTML)) {
             	model.read(input.openReader(), base == null ? "http://example.org/base#" : base, getJenaFormat(input)); // FIXME fix this adhoc url
             } else {
 
@@ -76,6 +77,8 @@ public class JenaOWLReader implements DocumentReader {
 	        return "N3";
 	    } else if ("application/xhtml+xml".equals(input.getMimeType())) {
 	        return XHTML;
+	    } else if ("text/html".equals(input.getMimeType())) {
+	        return HTML;
 	    } else {
 	        return "RDF/XML"; // default
 	    }

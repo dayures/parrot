@@ -65,6 +65,7 @@
 								<option value="application/owl+xml" <c:if test="${paramValues.mimetype[uriStatus.index] eq 'application/owl+xml'}">selected="selected"</c:if>>It is a OWL ontology</option>
 								<option value="text/n3" <c:if test="${paramValues.mimetype[uriStatus.index] eq 'text/n3'}">selected="selected"</c:if>>It is a N3 ontology</option>
 								<option value="application/xhtml+xml" <c:if test="${paramValues.mimetype[uriStatus.index] eq 'application/xhtml+xml'}">selected="selected"</c:if>>It is a XHTML+RDFa document</option>
+								<option value="text/html" <c:if test="${paramValues.mimetype[uriStatus.index] eq 'text/html'}">selected="selected"</c:if>>It is a HTML+RDFa document</option>
 								<option value="application/rif+xml" <c:if test="${paramValues.mimetype[uriStatus.index] eq 'application/rif+xml'}">selected="selected"</c:if>>It is a RIF XML document</option>
 								<option value="text/x-rif-ps" <c:if test="${paramValues.mimetype[uriStatus.index] eq 'text/x-rif-ps'}">selected="selected"</c:if>>It is a RIF PS document</option>
 							</select>							 
@@ -87,6 +88,7 @@
 								<option value="application/owl+xml">It is a OWL ontology</option>
 								<option value="text/n3">It is a N3 ontology</option>
 								<option value="application/xhtml+xml">It is a XHTML+RDFa document</option>
+								<option value="text/html">It is a HTML+RDFa document</option>
 								<option value="application/rif+xml">It is a RIF XML document</option>
 								<option value="text/x-rif-ps">It is a RIF PS document</option>
 							</select>	 
@@ -110,7 +112,8 @@
 						  <select name="mimetypeText">
 					        <option value="application/owl+xml" <c:if test="${param.mimetypeText eq 'application/owl+xml'}">selected="selected"</c:if>>OWL ontology</option>
 					        <option value="text/n3" <c:if test="${param.mimetypeText eq 'text/n3'}">selected="selected"</c:if>>N3 ontology</option>
-					        <option value="application/xhtml+xml" <c:if test="${param.mimetypeText eq 'application/xhtml+xml'}">selected="selected"</c:if>>It is a XHTML+RDFa document</option>
+					        <option value="application/xhtml+xml" <c:if test="${param.mimetypeText eq 'application/xhtml+xml'}">selected="selected"</c:if>>XHTML+RDFa document</option>
+					        <option value="text/html" <c:if test="${param.mimetypeText eq 'text/html'}">selected="selected"</c:if>>HTML+RDFa document</option>
 					        <option value="application/rif+xml" <c:if test="${param.mimetypeText eq 'application/rif+xml'}">selected="selected"</c:if>>RIF XML document</option>
 					        <option value="text/x-rif-ps" <c:if test="${param.mimetypeText eq 'text/x-rif-ps'}">selected="selected"</c:if>>RIF PS document</option>
 					      </select>

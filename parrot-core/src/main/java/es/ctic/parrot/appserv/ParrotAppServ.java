@@ -74,6 +74,7 @@ public class ParrotAppServ {
         	|| "application/xml".equals(input.getMimeType())
         	|| "application/owl+xml".equals(input.getMimeType())
         	|| "application/xhtml+xml".equals(input.getMimeType())
+        	|| "text/html".equals(input.getMimeType())
         	|| "text/n3".equals(input.getMimeType())
         	|| "text/rdf+n3".equals(input.getMimeType())) {
             return getOntologyWrapper();

@@ -143,6 +143,11 @@
 			<version>0.4.2-RC2</version>
 		</dependency>
 		<dependency>
+			<groupId>net.rootdev</groupId>
+    		<artifactId>java-rdfa-htmlparser</artifactId>
+    		<version>0.4.2-RC2</version>
+    	</dependency>
+		<dependency>
 			<groupId>org.apache.velocity</groupId>
 			<artifactId>velocity</artifactId>
 			<version>1.7</version>

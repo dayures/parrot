@@ -3,6 +3,7 @@ package es.ctic.parrot.reader.jena;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
@@ -12,6 +13,7 @@ import com.hp.hpl.jena.ontology.OntProperty;
 import com.hp.hpl.jena.ontology.OntResource;
 import com.hp.hpl.jena.rdf.model.RDFList;
 import com.hp.hpl.jena.rdf.model.RDFNode;
+import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
@@ -47,8 +49,8 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
     public OntologyPropertyJenaImpl(OntProperty ontProperty, DocumentableObjectRegister register) {
     	super(ontProperty, register);
     }
-    
-    public Object accept(DocumentableObjectVisitor visitor) throws TransformerException {
+
+	public Object accept(DocumentableObjectVisitor visitor) throws TransformerException {
         try{
         	return visitor.visit(this);
         }catch (JenaException e) {
@@ -96,8 +98,8 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 	public Collection<OntologyProperty> getSuperProperties() {
 		
 		if(superProperties == null){
-			ExtendedIterator<OntProperty> it = (ExtendedIterator<OntProperty>) getOntProperty().listSuperProperties(true);
-			superProperties = ontPropertyIteratorToOntologyPropertyList(it);
+			Iterator it = getOntProperty().listSuperProperties(true);
+			superProperties = new HashSet(resourceIteratorToDocumentableObjectList(it));
 		}
 		return Collections.unmodifiableCollection(superProperties);
 	}
@@ -114,8 +116,8 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 	 */
 	public Collection<OntologyProperty> getSubProperties() {
 		if(subProperties == null){
-			ExtendedIterator<OntProperty> it = (ExtendedIterator<OntProperty>) getOntProperty().listSubProperties(true);
-			subProperties = ontPropertyIteratorToOntologyPropertyList(it);
+			ExtendedIterator<Resource> it = (ExtendedIterator<Resource>) getOntProperty().listSubProperties(true);
+			subProperties = new HashSet(resourceIteratorToDocumentableObjectList(it));
 		}
 
 		return Collections.unmodifiableCollection(subProperties);	
@@ -203,7 +205,7 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 	public Collection<OntologyProperty> getEquivalentProperties() {
 		
 		OntModel ontModel = getOntProperty().getOntModel();
-		Collection <OntProperty> equivalents = new HashSet<OntProperty>();
+		Collection <Resource> equivalents = new HashSet<Resource>();
 
 		// Both equivalent: Datatype and Object properties 
 		
@@ -212,16 +214,16 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 			StmtIterator listStatements = ontModel.listStatements(getOntProperty(), OWL2.equivalentProperty, (RDFNode) null);
 			while (listStatements.hasNext()){
 				Statement statement = listStatements.next();
-				equivalents.add(ontModel.getOntResource(statement.getObject().asResource()).asProperty());
+				equivalents.add(ontModel.getOntResource(statement.getObject().asResource()));
 			}
 			
 			listStatements = ontModel.listStatements(null, OWL2.equivalentProperty, getOntProperty());
 			while (listStatements.hasNext()){
 				Statement statement = listStatements.next();
-				equivalents.add(ontModel.getOntResource(statement.getSubject()).asProperty());
+				equivalents.add(ontModel.getOntResource(statement.getSubject().asResource()));
 			}
 			
-			equivalentProperties = ontPropertyIteratorToOntologyPropertyList(equivalents.iterator());
+			equivalentProperties = new HashSet(resourceIteratorToDocumentableObjectList(equivalents.iterator()));
 		}
 		return Collections.unmodifiableCollection(equivalentProperties);
 	}
@@ -232,7 +234,7 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 	public Collection<OntologyProperty> getDisjointProperties() {
 		
 		OntModel ontModel = getOntProperty().getOntModel();
-		Collection <OntProperty> disjoints = new HashSet<OntProperty>();
+		Collection <Resource> disjoints = new HashSet<Resource>();
 
 		// Both disjoint: Datatype and Object properties
 		
@@ -241,13 +243,13 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 			StmtIterator listStatements = ontModel.listStatements(getOntProperty(), OWL2.propertyDisjointWith, (RDFNode) null);
 			while (listStatements.hasNext()){
 				Statement statement = listStatements.next();
-				disjoints.add(ontModel.getOntResource(statement.getObject().asResource()).asProperty());
+				disjoints.add(ontModel.getOntResource(statement.getObject().asResource()));
 			}
 			
 			listStatements = ontModel.listStatements(null, OWL2.propertyDisjointWith, getOntProperty());
 			while (listStatements.hasNext()){
 				Statement statement = listStatements.next();
-				disjoints.add(ontModel.getOntResource(statement.getSubject()).asProperty());
+				disjoints.add(ontModel.getOntResource(statement.getSubject()));
 			}
 			
 			listStatements = ontModel.listStatements(null, RDF.type, OWL2.AllDisjointProperties);
@@ -256,9 +258,9 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 				RDFList listDisjointProperties = statement.getSubject().getPropertyResourceValue(OWL2.members).as(RDFList.class);
 				if (listDisjointProperties.contains(getOntProperty())){
 					Set<RDFNode> rdfNodeSet = listDisjointProperties.iterator().toSet();
-					Set<OntProperty> ontPropertySet = new HashSet<OntProperty>();
+					Set<Resource> ontPropertySet = new HashSet<Resource>();
 					for(RDFNode node : rdfNodeSet){
-						ontPropertySet.add(node.as(OntProperty.class));
+						ontPropertySet.add(node.asResource());
 					}
 					ontPropertySet.remove(getOntProperty());
 					disjoints.addAll(ontPropertySet);
@@ -266,7 +268,7 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 				
 			}
 			
-			disjointProperties = ontPropertyIteratorToOntologyPropertyList(disjoints.iterator());
+			disjointProperties =new HashSet(resourceIteratorToDocumentableObjectList(disjoints.iterator()));
 		}
 		return Collections.unmodifiableCollection(disjointProperties);
 	}

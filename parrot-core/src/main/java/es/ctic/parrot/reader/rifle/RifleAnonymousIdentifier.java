@@ -1,6 +1,7 @@
 package es.ctic.parrot.reader.rifle;
 
 import org.apache.log4j.Logger;
+
 import es.ctic.parrot.de.Identifier;
 
 public class RifleAnonymousIdentifier implements Identifier {

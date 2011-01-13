@@ -11,22 +11,20 @@ import java.util.Locale;
 
 import org.apache.log4j.Logger;
 
-import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
-import com.hp.hpl.jena.ontology.OntProperty;
 import com.hp.hpl.jena.ontology.OntResource;
+import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.rdf.model.ResourceRequiredException;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 
 import es.ctic.parrot.de.AbstractDocumentableObject;
+import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.de.DocumentableOntologicalObject;
 import es.ctic.parrot.de.Identifier;
 import es.ctic.parrot.de.OntologyClass;
-import es.ctic.parrot.de.OntologyIndividual;
-import es.ctic.parrot.de.OntologyProperty;
 import es.ctic.parrot.de.Rule;
 import es.ctic.parrot.de.URIIdentifier;
 import es.ctic.parrot.utils.URIUtils;
@@ -140,43 +138,69 @@ public abstract class AbstractJenaDocumentableObject extends
 		return ontologyClassList;
 	}
 	
-	protected Collection<OntologyIndividual> ontResourceIteratorToOntologyInstanceList(Iterator<Individual> it) {
-		List<OntologyIndividual> ontologyIndividualList = new LinkedList<OntologyIndividual>();
+//	protected Collection<OntologyIndividual> ontResourceIteratorToOntologyInstanceList(Iterator<Individual> it) {
+//		List<OntologyIndividual> ontologyIndividualList = new LinkedList<OntologyIndividual>();
+//		while(it.hasNext()){
+//			Individual individual=it.next();
+//			
+//			Identifier identifier = null;
+//			
+//			if (individual.isAnon() == false){
+//				identifier = new URIIdentifier(individual.getURI());
+//			} else {
+//				identifier = new JenaAnonymousIdentifier(individual.getModel(), individual.getId());
+//			}
+//
+//			OntologyIndividual _individual = (OntologyIndividual) this.getRegister().findDocumentableObject(identifier);
+//
+//			if (_individual != null) { // do not add null elements in the list 
+//				ontologyIndividualList.add(_individual);
+//			}
+//		}
+//		return ontologyIndividualList;
+//	}
+	
+//	protected Collection<OntologyProperty> ontPropertyIteratorToOntologyPropertyList(Iterator<OntProperty> it) {
+//		List<OntologyProperty> ontologyPropertyList = new LinkedList<OntologyProperty>();
+//		
+//		while(it.hasNext()){
+//			OntProperty property = it.next();
+//			
+//			Identifier identifier = new URIIdentifier(property.getURI());
+//
+//			OntologyProperty _property = (OntologyProperty) this.getRegister().findDocumentableObject(identifier); 
+//
+//			if (_property != null) { // do not add null elements in the list 
+//				ontologyPropertyList.add(_property);
+//			}
+//		}
+//		return ontologyPropertyList;
+//	}
+	
+	protected Collection<DocumentableObject> resourceIteratorToDocumentableObjectList(Iterator<Resource> it) {
+		
+		List<DocumentableObject> documentableObjectList = new LinkedList<DocumentableObject>();
+		
 		while(it.hasNext()){
-			Individual individual=it.next();
+			Resource resource = it.next();
 			
 			Identifier identifier = null;
 			
-			if (individual.isAnon() == false){
-				identifier = new URIIdentifier(individual.getURI());
+			if (resource.isAnon() == false){
+				identifier = new URIIdentifier(resource.getURI());
 			} else {
-				identifier = new JenaAnonymousIdentifier(individual.getModel(), individual.getId());
+				identifier = new JenaAnonymousIdentifier(resource.getModel(), resource.getId());
 			}
-
-			OntologyIndividual _individual = (OntologyIndividual) this.getRegister().findDocumentableObject(identifier);
-
-			if (_individual != null) { // do not add null elements in the list 
-				ontologyIndividualList.add(_individual);
-			}
-		}
-		return ontologyIndividualList;
-	}
-	
-	protected Collection<OntologyProperty> ontPropertyIteratorToOntologyPropertyList(Iterator<OntProperty> it) {
-		List<OntologyProperty> ontologyPropertyList = new LinkedList<OntologyProperty>();
-		
-		while(it.hasNext()){
-			OntProperty property = it.next();
 			
-			Identifier identifier = new URIIdentifier(property.getURI());
+			DocumentableObject _resource = this.getRegister().findDocumentableObject(identifier); 
 
-			OntologyProperty _property = (OntologyProperty) this.getRegister().findDocumentableObject(identifier); 
-
-			if (_property != null) { // do not add null elements in the list 
-				ontologyPropertyList.add(_property);
+			if (_resource != null) { // do not add null elements in the list 
+				documentableObjectList.add(_resource);
+			} else {
+				logger.debug("Not found in register: " + identifier);
 			}
 		}
-		return ontologyPropertyList;
+		return documentableObjectList;
 	}
 	
 	public void addInverseRuleReference(Rule rule) {

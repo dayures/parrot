@@ -9,15 +9,14 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
-import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.RDFList;
 import com.hp.hpl.jena.rdf.model.RDFNode;
+import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.shared.JenaException;
-import com.hp.hpl.jena.util.iterator.ExtendedIterator;
 import com.hp.hpl.jena.vocabulary.OWL2;
 import com.hp.hpl.jena.vocabulary.RDF;
 
@@ -56,16 +55,16 @@ public class OntologyClassJenaImpl extends AbstractJenaDocumentableObject implem
 
 	public Collection<OntologyClass> getSuperClasses(){
 		if(superClasses==null){
-			Iterator<OntClass> it=getOntClass().listSuperClasses();
-			superClasses = ontClassIteratorToOntologyClassList(it);
+			Iterator it = getOntClass().listSuperClasses();
+			superClasses = new HashSet(resourceIteratorToDocumentableObjectList(it));
 		}
 		return superClasses;
 	}
 
 	public Collection<OntologyClass> getSubClasses() {
 		if(subClasses==null){
-			Iterator<OntClass> it=getOntClass().listSubClasses();
-			subClasses= ontClassIteratorToOntologyClassList(it);
+			Iterator it = getOntClass().listSubClasses();
+			subClasses = new HashSet(resourceIteratorToDocumentableObjectList(it));
 		}
 		return subClasses;
 	}
@@ -105,31 +104,31 @@ public class OntologyClassJenaImpl extends AbstractJenaDocumentableObject implem
 
 	public Collection<OntologyIndividual> getIndividuals() {
 		if(individuals==null){
-			ExtendedIterator<Individual> it = (ExtendedIterator<Individual>) getOntClass().listInstances(true);
-			individuals = ontResourceIteratorToOntologyInstanceList(it);
+			Iterator it = getOntClass().listInstances(true);
+			individuals = new HashSet(resourceIteratorToDocumentableObjectList(it));
 		}
 		return individuals;
 	}
 
 	public Collection<OntologyClass> getEquivalentClasses() {
 		OntModel ontModel = getOntClass().getOntModel();
-		Collection <OntClass> equivalents = new HashSet<OntClass>();
+		Collection <Resource> equivalents = new HashSet<Resource>();
 
 		if(equivalentClasses == null){
 			
 			StmtIterator listStatements = ontModel.listStatements(getOntClass(), OWL2.equivalentClass, (RDFNode) null);
 			while (listStatements.hasNext()){
 				Statement statement = listStatements.next();
-				equivalents.add(ontModel.getOntResource(statement.getObject().asResource()).asClass());
+				equivalents.add(ontModel.getOntResource(statement.getObject().asResource()));
 			}
 			
 			listStatements = ontModel.listStatements(null, OWL2.equivalentClass, getOntClass());
 			while (listStatements.hasNext()){
 				Statement statement = listStatements.next();
-				equivalents.add(ontModel.getOntResource(statement.getSubject()).asClass());
+				equivalents.add(ontModel.getOntResource(statement.getSubject().asResource()));
 			}
 			
-			equivalentClasses = ontClassIteratorToOntologyClassList(equivalents.iterator());
+			equivalentClasses = new HashSet(resourceIteratorToDocumentableObjectList(equivalents.iterator()));
 		}
 		return Collections.unmodifiableCollection(equivalentClasses);
 	}
@@ -140,20 +139,20 @@ public class OntologyClassJenaImpl extends AbstractJenaDocumentableObject implem
 
 	public Collection<OntologyClass> getDisjointClasses() {
 		OntModel ontModel = getOntClass().getOntModel();
-		Collection <OntClass> disjoints = new HashSet<OntClass>();
+		Collection <Resource> disjoints = new HashSet<Resource>();
 
 		if(disjointClasses == null){
 			
 			StmtIterator listStatements = ontModel.listStatements(getOntClass(), OWL2.disjointWith, (RDFNode) null);
 			while (listStatements.hasNext()){
 				Statement statement = listStatements.next();
-				disjoints.add(ontModel.getOntResource(statement.getObject().asResource()).asClass());
+				disjoints.add(ontModel.getOntResource(statement.getObject().asResource()));
 			}
 			
 			listStatements = ontModel.listStatements(null, OWL2.disjointWith, getOntClass());
 			while (listStatements.hasNext()){
 				Statement statement = listStatements.next();
-				disjoints.add(ontModel.getOntResource(statement.getSubject()).asClass());
+				disjoints.add(ontModel.getOntResource(statement.getSubject().asResource()));
 			}
 			
 			
@@ -164,9 +163,9 @@ public class OntologyClassJenaImpl extends AbstractJenaDocumentableObject implem
 				
 				if (listDisjointClasses.contains(getOntClass())){
 					Set<RDFNode> rdfNodeSet = listDisjointClasses.iterator().toSet();
-					Set<OntClass> ontClassSet = new HashSet<OntClass>();
+					Set<Resource> ontClassSet = new HashSet<Resource>();
 					for(RDFNode node : rdfNodeSet){
-						ontClassSet.add(node.as(OntClass.class));
+						ontClassSet.add(node.asResource());
 					}
 					ontClassSet.remove(getOntClass());
 					disjoints.addAll(ontClassSet);
@@ -174,7 +173,7 @@ public class OntologyClassJenaImpl extends AbstractJenaDocumentableObject implem
 				
 			}
 			
-			disjointClasses = ontClassIteratorToOntologyClassList(disjoints.iterator());
+			disjointClasses = new HashSet(resourceIteratorToDocumentableObjectList(disjoints.iterator()));
 		}
 		return Collections.unmodifiableCollection(disjointClasses);
 	}

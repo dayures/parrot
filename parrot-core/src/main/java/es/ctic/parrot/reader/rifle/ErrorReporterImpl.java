@@ -1,8 +1,8 @@
 package es.ctic.parrot.reader.rifle;
 
-import org.apache.log4j.Logger;
-
 import net.sourceforge.rifle.psparser.ErrorReporter;
+
+import org.apache.log4j.Logger;
 
 public class ErrorReporterImpl implements ErrorReporter {
 

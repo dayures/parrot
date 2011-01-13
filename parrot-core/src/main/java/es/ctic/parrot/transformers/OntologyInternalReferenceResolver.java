@@ -22,7 +22,7 @@ public class OntologyInternalReferenceResolver extends
 		this.register=register;
 	}
 	
-	public Object visit(OntologyProperty property) {
+	public Object visit(OntologyProperty property) throws TransformerException {
     	logger.debug("Resolving internal references of property "+property);
 
 		DocumentableObject domain = property.getDomain();
@@ -63,7 +63,7 @@ public class OntologyInternalReferenceResolver extends
 	    return null;
 	}
     
-	public Object visit(OntologyClass clazz){
+	public Object visit(OntologyClass clazz) throws TransformerException {
     	logger.debug("Resolving internal references of class "+clazz);
 		
     	Collection<OntologyClass> subClasses = clazz.getSubClasses();

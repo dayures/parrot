@@ -27,6 +27,7 @@ import es.ctic.parrot.reader.URLInput;
 import es.ctic.parrot.reader.jena.JenaOWLReader;
 import es.ctic.parrot.reader.rifle.RiflePSReader;
 import es.ctic.parrot.reader.rifle.RifleXmlReader;
+import es.ctic.parrot.transformers.TransformerException;
 import es.ctic.parrot.utils.ErrorBuffer;
 
 
@@ -80,7 +81,12 @@ public class ServletParrot extends HttpServlet {
 		    logger.error("While generating documentation", e);
 		    errors.addError("Unable to read input document: " + e.getMessage());
 		    forwardToForm(req, res);
-		} catch (IOException e) {
+		} catch (TransformerException e){
+		    logger.error("While processing documentation", e);
+		    errors.addError("Error while processing documentation: " + e.getMessage());
+		    forwardToForm(req, res);
+		}		
+		catch (IOException e) {
 		    logger.error("While generating documentation", e);
 		    errors.addError("I/O Error: " + e.getMessage());
 		    forwardToForm(req, res);

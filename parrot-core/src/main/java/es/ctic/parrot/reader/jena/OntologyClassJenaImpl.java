@@ -14,10 +14,9 @@ import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.RDFList;
 import com.hp.hpl.jena.rdf.model.RDFNode;
-import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.rdf.model.Seq;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
+import com.hp.hpl.jena.shared.JenaException;
 import com.hp.hpl.jena.util.iterator.ExtendedIterator;
 import com.hp.hpl.jena.vocabulary.OWL2;
 import com.hp.hpl.jena.vocabulary.RDF;
@@ -26,6 +25,7 @@ import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.de.OntologyClass;
 import es.ctic.parrot.de.OntologyIndividual;
 import es.ctic.parrot.transformers.DocumentableObjectVisitor;
+import es.ctic.parrot.transformers.TransformerException;
 
 public class OntologyClassJenaImpl extends AbstractJenaDocumentableObject implements OntologyClass{
 
@@ -42,8 +42,12 @@ public class OntologyClassJenaImpl extends AbstractJenaDocumentableObject implem
 		super(ontclass, register);
 	}
 	
-	public Object accept(DocumentableObjectVisitor visitor) {
-		return visitor.visit(this);
+	public Object accept(DocumentableObjectVisitor visitor) throws TransformerException {
+        try {
+        	return visitor.visit(this);
+        } catch (JenaException e) {
+        	throw new TransformerException(e);
+        }
 	}
 	
 	public OntClass getOntClass(){

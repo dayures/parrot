@@ -5,10 +5,11 @@ import java.util.List;
 import java.util.Locale;
 
 import es.ctic.parrot.transformers.DocumentableObjectVisitor;
+import es.ctic.parrot.transformers.TransformerException;
 
 public interface DocumentableObject {
 	
-	public abstract Object accept(DocumentableObjectVisitor visitor);
+	public abstract Object accept(DocumentableObjectVisitor visitor) throws TransformerException;
 	public abstract Identifier getIdentifier();
 	public abstract String getLocalName();
     public abstract void addReference(DocumentableObject documentableObject);

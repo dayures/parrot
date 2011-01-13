@@ -10,6 +10,7 @@ import com.hp.hpl.jena.rdf.model.StmtIterator;
 
 import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.transformers.DocumentableObjectVisitor;
+import es.ctic.parrot.transformers.TransformerException;
 
 public class OntologyJenaImpl extends AbstractJenaDocumentableObject implements es.ctic.parrot.de.Ontology {
 	
@@ -25,7 +26,7 @@ public class OntologyJenaImpl extends AbstractJenaDocumentableObject implements 
 		return (Ontology) getOntResource();
 	}
 
-	public Object accept(DocumentableObjectVisitor visitor) {
+	public Object accept(DocumentableObjectVisitor visitor) throws TransformerException {
 		return visitor.visit(this);
 	}
 

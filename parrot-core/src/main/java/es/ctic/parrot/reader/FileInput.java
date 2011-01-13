@@ -48,4 +48,8 @@ public class FileInput implements Input {
 		return "FileInput [mimeType=" + mimeType + ", file=" + file + "]";
 	}
 
+	public String getBase() {
+		return null;
+	}
+
 }

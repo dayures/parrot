@@ -50,6 +50,13 @@ public class ParrotAppServ {
 		Document document = transformToDocument(documentableObjects, dp.getLocale());
 		outputGenerator.generateOutput(document);
 	}
+	
+    private void readAndRegisterDocumentableObjects(Collection<Input> inputs, DocumentableObjectRegister register) throws IOException, ReaderException {
+		for (Input input : inputs) {
+		    DocumentReader wrapper = getDocumentWrapperForInput(input);
+		    wrapper.readDocumentableObjects(input, register);
+		} 
+    }	
 
     private void resolveInternalReferences(DocumentableObjectRegister register) {
 		DocumentableObjectVisitor ontologyInternalReferenceResolver = new OntologyInternalReferenceResolver(register);
@@ -61,18 +68,11 @@ public class ParrotAppServ {
         ruleToOntologyReferenceResolver.visit(register);
     }
 
-    private void readAndRegisterDocumentableObjects(Collection<Input> inputs, DocumentableObjectRegister register)
-            throws IOException, ReaderException {
-        for (Input input : inputs) {
-            DocumentReader wrapper = getDocumentWrapperForInput(input);
-            wrapper.readDocumentableObjects(input, register);
-        } 
-    }
-
     private DocumentReader getDocumentWrapperForInput(Input input) throws IOException  {
-        if ("application/rdf+xml".equals(input.getMimeType())
+        if (   "application/rdf+xml".equals(input.getMimeType())
         	|| "application/xml".equals(input.getMimeType())
-        	|| "application/owl+xml".equals(input.getMimeType())) {
+        	|| "application/owl+xml".equals(input.getMimeType())
+        	|| "application/xhtml+xml".equals(input.getMimeType())) {
             return getOntologyWrapper();
         } else if ("application/rif+xml".equals(input.getMimeType())){
             return getRuleWrapper();

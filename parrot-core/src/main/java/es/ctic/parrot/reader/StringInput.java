@@ -33,5 +33,9 @@ public class StringInput implements Input {
 		return "StringInput [mimeType=" + mimeType + ", content=" + content
 				+ "]";
 	}
+
+	public String getBase() {
+		return null;
+	}
     
 }

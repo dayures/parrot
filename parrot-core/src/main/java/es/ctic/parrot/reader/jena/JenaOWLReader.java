@@ -25,18 +25,29 @@ import es.ctic.parrot.reader.ReaderException;
 
 public class JenaOWLReader implements DocumentReader {
     
-    private static final Logger logger = Logger.getLogger(JenaOWLReader.class);
+    private static final String XHTML = "XHTML";
+	private static final Logger logger = Logger.getLogger(JenaOWLReader.class);
 	
 	/* (non-Javadoc)
 	 * @see es.ctic.parrot.reader.DocumentReader#readDocumentableObjects(es.ctic.parrot.reader.Input, es.ctic.parrot.de.DocumentableObjectRegister)
 	 */
 	public void readDocumentableObjects(Input input, DocumentableObjectRegister register) throws IOException, ReaderException {
         OntModel model = ModelFactory.createOntologyModel();
-        String base = null;
         
         try {
-            logger.debug("Parsing OWL file");
-            model.read(input.openReader(), base, getJenaFormat(input));
+        	logger.debug("Parsing " + getJenaFormat(input) + "  file");
+        	
+        	// Init java-rdfa in jena
+			Class.forName("net.rootdev.javardfa.jena.RDFaReader");
+
+	        String base = input.getBase();
+	        
+        	if (getJenaFormat(input).equals(XHTML)) {
+            	model.read(input.openReader(), base == null ? "http://example.org/base#" : base, getJenaFormat(input)); // FIXME fix this adhoc url
+            } else {
+            	model.read(input.openReader(), base, getJenaFormat(input));	
+            }
+            
             loadOntology(model, register);
             loadOntClasses(model, register);
             loadOntProperties(model, register);
@@ -47,7 +58,12 @@ public class JenaOWLReader implements DocumentReader {
             } else {
                 throw new ReaderException("While reading OWL file", e);
             }
+        } catch (ClassNotFoundException e) { // When RDFa Reader is not available
+             throw new ReaderException("RDFa not supported", e);
+        } catch (RuntimeException e) { // RDFaReader throws a RuntimException when a SAXException is catched
+             throw new ReaderException("While reading RDFa file", e);
         }
+        
 	}
 
 	private static String getJenaFormat(Input input) {
@@ -55,6 +71,8 @@ public class JenaOWLReader implements DocumentReader {
 	        return "RDF/XML";
 	    } else if ("text/turtle".equals(input.getMimeType())) {
 	        return "TURTLE";
+	    } else if ("application/xhtml+xml".equals(input.getMimeType())) {
+	        return XHTML;
 	    } else {
 	        return "RDF/XML"; // default
 	    }

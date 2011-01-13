@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
+import com.hp.hpl.jena.shared.JenaException;
 import com.hp.hpl.jena.util.iterator.ExtendedIterator;
 import com.hp.hpl.jena.util.iterator.Filter;
 import com.hp.hpl.jena.vocabulary.OWL;
@@ -12,6 +13,7 @@ import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.de.OntologyClass;
 import es.ctic.parrot.de.OntologyIndividual;
 import es.ctic.parrot.transformers.DocumentableObjectVisitor;
+import es.ctic.parrot.transformers.TransformerException;
 
 public class OntologyIndividualJenaImpl extends AbstractJenaDocumentableObject
 		implements OntologyIndividual {
@@ -20,8 +22,12 @@ public class OntologyIndividualJenaImpl extends AbstractJenaDocumentableObject
 		super(individual, register);
 	}
 
-	public Object accept(DocumentableObjectVisitor visitor) {
-		return visitor.visit(this);
+	public Object accept(DocumentableObjectVisitor visitor) throws TransformerException {
+        try {
+        	return visitor.visit(this);
+        } catch (JenaException e) {
+        	throw new TransformerException(e);
+        }
 	}
 	
 	public Collection<OntologyClass> getTypes() {

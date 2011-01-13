@@ -15,6 +15,7 @@ import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
+import com.hp.hpl.jena.shared.JenaException;
 import com.hp.hpl.jena.util.iterator.ExtendedIterator;
 import com.hp.hpl.jena.vocabulary.OWL2;
 import com.hp.hpl.jena.vocabulary.RDF;
@@ -23,6 +24,7 @@ import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.de.OntologyProperty;
 import es.ctic.parrot.transformers.DocumentableObjectVisitor;
+import es.ctic.parrot.transformers.TransformerException;
 
 public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject implements OntologyProperty {
     
@@ -46,8 +48,12 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
     	super(ontProperty, register);
     }
     
-    public Object accept(DocumentableObjectVisitor visitor) {
-        return visitor.visit(this);
+    public Object accept(DocumentableObjectVisitor visitor) throws TransformerException {
+        try{
+        	return visitor.visit(this);
+        }catch (JenaException e) {
+        	throw new TransformerException(e);
+        }
     }
 
 	public DocumentableObject getDomain() {

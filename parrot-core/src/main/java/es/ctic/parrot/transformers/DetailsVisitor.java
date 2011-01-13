@@ -29,7 +29,8 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
         this.document = document;
         this.locale = locale;
     }
-	public Object visit(Ontology object) {
+    
+	public Object visit(Ontology object) throws TransformerException {
 	    logger.debug("Visiting ontology " + object);
 		OntologyDetailView details=new OntologyDetailView(object);
 		details.setUri(object.getURI());
@@ -46,7 +47,7 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 		return details;
 	}
 	
-	public Object visit(OntologyClass object) {
+	public Object visit(OntologyClass object) throws TransformerException {
 	    logger.debug("Visiting class " + object);
 		OntologyClassDetailView details=new OntologyClassDetailView(object);
 		details.setUri(object.getURI());
@@ -70,7 +71,7 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 		return details;
 	}
 	
-	public Object visit(OntologyProperty object) {
+	public Object visit(OntologyProperty object) throws TransformerException {
 	    logger.debug("Visiting property " + object);
 		OntologyPropertyDetailView details = new OntologyPropertyDetailView(object);
 		details.setUri(object.getURI());
@@ -98,7 +99,7 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 	 * @see es.ctic.parrot.transformers.AbstractDocumentableObjectVisitor#visit(es.ctic.parrot.de.OntologyIndividual)
 	 */
 	@Override
-	public Object visit(OntologyIndividual object) {
+	public Object visit(OntologyIndividual object) throws TransformerException {
 	    logger.debug("Visiting individual " + object);
 		OntologyIndividualDetailView details = new OntologyIndividualDetailView(object);
 		details.setLabel(object.getLabel(locale));
@@ -113,7 +114,7 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 	}
 	
 	
-	public Object visit(RuleSet object) {
+	public Object visit(RuleSet object) throws TransformerException {
 	    logger.debug("Visiting ruleset " + object);
 	    RuleSetDetailView details = new RuleSetDetailView(object);
 	    details.setIdentifier(object.getIdentifier());
@@ -137,7 +138,7 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 	    return details;
 	}
 
-	public Object visit(Rule object) {
+	public Object visit(Rule object) throws TransformerException {
 	    logger.debug("Visiting rule " + object);
 	    RuleDetailView details = new RuleDetailView(object);
 	    details.setIdentifier(object.getIdentifier());

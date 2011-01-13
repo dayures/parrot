@@ -13,7 +13,7 @@ public class RuleToOntologyReferenceResolver extends AbstractDocumentableObjectV
     
     private static final Logger logger = Logger.getLogger(RuleToOntologyReferenceResolver.class);
 
-    public Object visit(Rule rule) {
+    public Object visit(Rule rule) throws TransformerException {
         Collection<DocumentableOntologicalObject> referencedOntologicalObjects = rule.getReferencedOntologicalObjects();
         for ( DocumentableOntologicalObject obj : referencedOntologicalObjects ) {
         	obj.addInverseRuleReference(rule);
@@ -23,7 +23,7 @@ public class RuleToOntologyReferenceResolver extends AbstractDocumentableObjectV
 
     // FIXME Este metodo ... tiene sentido aqui?
 
-    public Object visit(OntologyProperty property) {
+    public Object visit(OntologyProperty property) throws TransformerException {
         DocumentableObject domain = property.getDomain();
         if(domain!=null){
             logger.debug("Adding reference from property " + property + " to ontology class " + domain);

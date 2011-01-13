@@ -16,6 +16,7 @@ import es.ctic.parrot.transformers.DetailsVisitor;
 import es.ctic.parrot.transformers.DocumentableObjectVisitor;
 import es.ctic.parrot.transformers.OntologyInternalReferenceResolver;
 import es.ctic.parrot.transformers.RuleToOntologyReferenceResolver;
+import es.ctic.parrot.transformers.TransformerException;
 
 /**
  * Main entry point for Parrot users.
@@ -41,7 +42,7 @@ public class ParrotAppServ {
 	 * @throws IOException
 	 * @throws ReaderException 
 	 */
-	public void createDocumentation(DocumentaryProject dp, OutputGenerator outputGenerator) throws IOException, ReaderException {
+	public void createDocumentation(DocumentaryProject dp, OutputGenerator outputGenerator) throws IOException, ReaderException, TransformerException {
 	    DocumentableObjectRegister register = new DocumentableObjectRegister();
 		readAndRegisterDocumentableObjects(dp.getInputs(), register);
 		resolveInternalReferences(register);
@@ -58,12 +59,12 @@ public class ParrotAppServ {
 		} 
     }	
 
-    private void resolveInternalReferences(DocumentableObjectRegister register) {
+    private void resolveInternalReferences(DocumentableObjectRegister register) throws TransformerException {
 		DocumentableObjectVisitor ontologyInternalReferenceResolver = new OntologyInternalReferenceResolver(register);
 		ontologyInternalReferenceResolver.visit(register);
 	}
 
-	private void resolveCrossReferences(DocumentableObjectRegister register) {
+	private void resolveCrossReferences(DocumentableObjectRegister register) throws TransformerException {
         DocumentableObjectVisitor ruleToOntologyReferenceResolver = new RuleToOntologyReferenceResolver();
         ruleToOntologyReferenceResolver.visit(register);
     }
@@ -84,7 +85,7 @@ public class ParrotAppServ {
         }
     }
 
-    private Document transformToDocument(Collection<DocumentableObject> documentableObjects, Locale locale) {
+    private Document transformToDocument(Collection<DocumentableObject> documentableObjects, Locale locale) throws TransformerException {
         Document document = new Document();
 		document.setTitle("Parrot"); // FIXME
         DetailsVisitor detailVisitor = new DetailsVisitor(document, locale);

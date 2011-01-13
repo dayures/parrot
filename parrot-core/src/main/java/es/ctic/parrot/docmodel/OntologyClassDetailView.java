@@ -9,7 +9,6 @@ import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.Identifier;
 import es.ctic.parrot.de.OntologyClass;
 import es.ctic.parrot.de.OntologyIndividual;
-import es.ctic.parrot.de.OntologyProperty;
 
 public class OntologyClassDetailView extends AbstractOntologicalObjectDetailView implements DetailView{
 	private OntologyClass ontologyClass;

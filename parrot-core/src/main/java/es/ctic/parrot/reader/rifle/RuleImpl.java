@@ -28,6 +28,7 @@ import es.ctic.parrot.de.Identifier;
 import es.ctic.parrot.de.Rule;
 import es.ctic.parrot.de.URIIdentifier;
 import es.ctic.parrot.transformers.DocumentableObjectVisitor;
+import es.ctic.parrot.transformers.TransformerException;
 import es.ctic.parrot.utils.URIUtils;
 
 public class RuleImpl extends AbstractDocumentableObject implements Rule {
@@ -65,7 +66,7 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
     	this.setOntResource(iriMeta.getOntResource(getURI()));
 	}
 
-	public Object accept(DocumentableObjectVisitor visitor) {
+	public Object accept(DocumentableObjectVisitor visitor) throws TransformerException {
 		return visitor.visit(this);
 	}
 

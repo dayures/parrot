@@ -22,5 +22,10 @@ public interface Input {
      * @return The MIME type of the input document
      */
     public abstract String getMimeType();
-    
+
+    /**
+     * @return The Base
+     */
+    public abstract String getBase();
+
 }

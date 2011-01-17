@@ -177,9 +177,9 @@ public abstract class AbstractJenaDocumentableObject extends
 //		return ontologyPropertyList;
 //	}
 	
-	protected Collection<DocumentableObject> resourceIteratorToDocumentableObjectList(Iterator<Resource> it) {
+	protected <TR extends DocumentableObject, TJ extends Resource> Collection<TR> resourceIteratorToDocumentableObjectList(Iterator<TJ> it) {
 		
-		List<DocumentableObject> documentableObjectList = new LinkedList<DocumentableObject>();
+		List<TR> documentableObjectList = new LinkedList<TR>();
 		
 		while(it.hasNext()){
 			Resource resource = it.next();
@@ -192,7 +192,8 @@ public abstract class AbstractJenaDocumentableObject extends
 				identifier = new JenaAnonymousIdentifier(resource.getModel(), resource.getId());
 			}
 			
-			DocumentableObject _resource = this.getRegister().findDocumentableObject(identifier); 
+			@SuppressWarnings("unchecked")
+			TR _resource = (TR) this.getRegister().findDocumentableObject(identifier); 
 
 			if (_resource != null) { // do not add null elements in the list 
 				documentableObjectList.add(_resource);

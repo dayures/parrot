@@ -3,7 +3,6 @@ package es.ctic.parrot.reader.jena;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -55,16 +54,14 @@ public class OntologyClassJenaImpl extends AbstractJenaDocumentableObject implem
 
 	public Collection<OntologyClass> getSuperClasses(){
 		if(superClasses==null){
-			Iterator it = getOntClass().listSuperClasses();
-			superClasses = new HashSet(resourceIteratorToDocumentableObjectList(it));
+			superClasses = resourceIteratorToDocumentableObjectList(getOntClass().listSuperClasses());
 		}
 		return superClasses;
 	}
 
 	public Collection<OntologyClass> getSubClasses() {
 		if(subClasses==null){
-			Iterator it = getOntClass().listSubClasses();
-			subClasses = new HashSet(resourceIteratorToDocumentableObjectList(it));
+			subClasses = resourceIteratorToDocumentableObjectList(getOntClass().listSubClasses());
 		}
 		return subClasses;
 	}
@@ -104,8 +101,7 @@ public class OntologyClassJenaImpl extends AbstractJenaDocumentableObject implem
 
 	public Collection<OntologyIndividual> getIndividuals() {
 		if(individuals==null){
-			Iterator it = getOntClass().listInstances(true);
-			individuals = new HashSet(resourceIteratorToDocumentableObjectList(it));
+			individuals = resourceIteratorToDocumentableObjectList(getOntClass().listInstances(true));
 		}
 		return individuals;
 	}
@@ -128,7 +124,7 @@ public class OntologyClassJenaImpl extends AbstractJenaDocumentableObject implem
 				equivalents.add(ontModel.getOntResource(statement.getSubject().asResource()));
 			}
 			
-			equivalentClasses = new HashSet(resourceIteratorToDocumentableObjectList(equivalents.iterator()));
+			equivalentClasses = resourceIteratorToDocumentableObjectList(equivalents.iterator());
 		}
 		return Collections.unmodifiableCollection(equivalentClasses);
 	}
@@ -173,7 +169,7 @@ public class OntologyClassJenaImpl extends AbstractJenaDocumentableObject implem
 				
 			}
 			
-			disjointClasses = new HashSet(resourceIteratorToDocumentableObjectList(disjoints.iterator()));
+			disjointClasses = resourceIteratorToDocumentableObjectList(disjoints.iterator());
 		}
 		return Collections.unmodifiableCollection(disjointClasses);
 	}

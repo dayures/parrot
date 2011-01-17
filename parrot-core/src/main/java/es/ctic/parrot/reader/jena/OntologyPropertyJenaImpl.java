@@ -3,7 +3,6 @@ package es.ctic.parrot.reader.jena;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
@@ -97,8 +96,7 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 	public Collection<OntologyProperty> getSuperProperties() {
 		
 		if(superProperties == null){
-			Iterator it = getOntProperty().listSuperProperties(true);
-			superProperties = new HashSet(resourceIteratorToDocumentableObjectList(it));
+			superProperties = resourceIteratorToDocumentableObjectList(getOntProperty().listSuperProperties(true));
 		}
 		return Collections.unmodifiableCollection(superProperties);
 	}
@@ -115,8 +113,7 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 	 */
 	public Collection<OntologyProperty> getSubProperties() {
 		if(subProperties == null){
-			Iterator<Resource> it = (Iterator<Resource>) getOntProperty().listSubProperties(true);
-			subProperties = new HashSet(resourceIteratorToDocumentableObjectList(it));
+			subProperties = resourceIteratorToDocumentableObjectList(getOntProperty().listSubProperties(true));
 		}
 
 		return Collections.unmodifiableCollection(subProperties);	
@@ -222,7 +219,7 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 				equivalents.add(ontModel.getOntResource(statement.getSubject().asResource()));
 			}
 			
-			equivalentProperties = new HashSet(resourceIteratorToDocumentableObjectList(equivalents.iterator()));
+			equivalentProperties = resourceIteratorToDocumentableObjectList(equivalents.iterator());
 		}
 		return Collections.unmodifiableCollection(equivalentProperties);
 	}
@@ -267,7 +264,7 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 				
 			}
 			
-			disjointProperties =new HashSet(resourceIteratorToDocumentableObjectList(disjoints.iterator()));
+			disjointProperties = resourceIteratorToDocumentableObjectList(disjoints.iterator());
 		}
 		return Collections.unmodifiableCollection(disjointProperties);
 	}

@@ -18,7 +18,6 @@ import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.shared.JenaException;
-import com.hp.hpl.jena.util.iterator.ExtendedIterator;
 import com.hp.hpl.jena.vocabulary.OWL2;
 import com.hp.hpl.jena.vocabulary.RDF;
 
@@ -116,7 +115,7 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 	 */
 	public Collection<OntologyProperty> getSubProperties() {
 		if(subProperties == null){
-			ExtendedIterator<Resource> it = (ExtendedIterator<Resource>) getOntProperty().listSubProperties(true);
+			Iterator<Resource> it = (Iterator<Resource>) getOntProperty().listSubProperties(true);
 			subProperties = new HashSet(resourceIteratorToDocumentableObjectList(it));
 		}
 

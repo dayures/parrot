@@ -72,11 +72,35 @@ function moreURIs() {
 		oOption.setAttribute("value", "application/owl+xml");
 		oOption.appendChild(t1);
 		oSelect.appendChild(oOption);
+	
+		oOption = document.createElement("option");
+		var t2 = document.createTextNode("It is a N3 ontology");
+		oOption.setAttribute("value", "text/n3");
+		oOption.appendChild(t2);
+		oSelect.appendChild(oOption);
 
 		oOption = document.createElement("option");
-		var t2 = document.createTextNode("It is a RIF document");
+		var t3 = document.createTextNode("It is a XHTML+RDFa document");
+		oOption.setAttribute("value", "application/xhtml+xml");
+		oOption.appendChild(t3);
+		oSelect.appendChild(oOption);
+
+		oOption = document.createElement("option");
+		var t4 = document.createTextNode("It is a HTML+RDFa document");
+		oOption.setAttribute("value", "text/html");
+		oOption.appendChild(t4);
+		oSelect.appendChild(oOption);
+		
+		oOption = document.createElement("option");
+		var t5 = document.createTextNode("It is a RIF XML document");
 		oOption.setAttribute("value", "application/rif+xml");
-		oOption.appendChild(t2);
+		oOption.appendChild(t5);
+		oSelect.appendChild(oOption);
+		
+		oOption = document.createElement("option");
+		var t6 = document.createTextNode("It is a RIF PS document");
+		oOption.setAttribute("value", "text/x-rif-ps");
+		oOption.appendChild(t6);
 		oSelect.appendChild(oOption);
 		
 		p.appendChild(oSelect);

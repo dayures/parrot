@@ -12,6 +12,9 @@ import es.ctic.parrot.generators.OutputGenerator;
 import es.ctic.parrot.reader.DocumentReader;
 import es.ctic.parrot.reader.Input;
 import es.ctic.parrot.reader.ReaderException;
+import es.ctic.parrot.reader.jena.JenaOWLReader;
+import es.ctic.parrot.reader.rifle.RiflePSReader;
+import es.ctic.parrot.reader.rifle.RifleXmlReader;
 import es.ctic.parrot.transformers.DetailsVisitor;
 import es.ctic.parrot.transformers.DocumentableObjectVisitor;
 import es.ctic.parrot.transformers.OntologyInternalReferenceResolver;
@@ -31,7 +34,9 @@ public class ParrotAppServ {
     private DocumentReader rifPSWrapper;
     
     public ParrotAppServ() {
-        // FIXME: initialize wrappers
+		setOntologyWrapper(new JenaOWLReader());
+		setRuleWrapper(new RifleXmlReader(getOntologyWrapper()));
+		setRifPSWrapper(new RiflePSReader(getOntologyWrapper(), getRuleWrapper()));
     }
 
 	/**

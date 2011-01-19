@@ -20,13 +20,9 @@ import org.apache.log4j.Logger;
 import es.ctic.parrot.DocumentaryProject;
 import es.ctic.parrot.appserv.ParrotAppServ;
 import es.ctic.parrot.generators.HtmlOutputGenerator;
-import es.ctic.parrot.reader.DocumentReader;
 import es.ctic.parrot.reader.ReaderException;
 import es.ctic.parrot.reader.StringInput;
 import es.ctic.parrot.reader.URLInput;
-import es.ctic.parrot.reader.jena.JenaOWLReader;
-import es.ctic.parrot.reader.rifle.RiflePSReader;
-import es.ctic.parrot.reader.rifle.RifleXmlReader;
 import es.ctic.parrot.transformers.TransformerException;
 import es.ctic.parrot.utils.ErrorBuffer;
 
@@ -116,14 +112,7 @@ public class ServletParrot extends HttpServlet {
 	}
 
     private ParrotAppServ getParrotAppServ() {
-        ParrotAppServ app = new ParrotAppServ();
-		DocumentReader ontologyWrapper = new JenaOWLReader();
-		DocumentReader ruleWrapper = new RifleXmlReader(ontologyWrapper);
-		DocumentReader rifPSWrapper = new RiflePSReader(ontologyWrapper, ruleWrapper);
-		app.setOntologyWrapper(ontologyWrapper);
-		app.setRuleWrapper(ruleWrapper);
-		app.setRifPSWrapper(rifPSWrapper);
-        return app;
+        return new ParrotAppServ();
     }
 	
     private InputStream getTemplateInputStream() {

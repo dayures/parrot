@@ -7,9 +7,13 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.collections.set.CompositeSet.SetMutator;
 import org.apache.log4j.Logger;
 
 /**
@@ -30,9 +34,23 @@ public class URLInput implements Input {
     private static final String ACCEPT_HEADER_VALUES = "application/rdf+xml;application/xml;application/rif+xml;application/owl+xml;text/x-rif-ps;application/xhtml+xml;text/n3;text/rdf+n3;text/html;*/*"; // FIXME: add other mimetypes
     private static final Set<String> STRICT_MIMETYPES = new HashSet<String>(Arrays.asList("application/rdf+xml","application/xml","application/rif+xml","application/owl+xml","text/x-rif-ps", "application/xhtml+xml", "text/n3", "text/rdf+n3", "text/html"));
 
+    private static final Map<String,String> MAP_EXTENSION_MIMETYPE = createMapExtensionMimeytpe();
+    private static Map<String, String> createMapExtensionMimeytpe() {
+        Map<String, String> result = new HashMap<String, String>();
+        result.put("rdf","application/rdf+xml");
+        result.put("xml", "application/xml");
+        result.put("rif", "application/rif+xml");
+        result.put("owl", "application/owl+xml");
+        result.put("rifps", "text/x-rif-ps");
+        result.put("xhtml", "application/xhtml+xml");
+        result.put("n3", "text/n3");
+        result.put("html", "text/html");
+        return Collections.unmodifiableMap(result);
+    }
     //private static final Set<String> NOT_STRICT_MIMETYPES = new HashSet<String>(Arrays.asList("text/x-rif-ps"));
 
-
+    public static final char extensionSeparator = '.';
+    
     private URL url;
     private String mimeType;
 
@@ -52,12 +70,13 @@ public class URLInput implements Input {
             logger.debug("Detecting content type for URL " + this.url + " with mimetype " + this.mimeType);
             HttpURLConnection connection = (HttpURLConnection) this.url.openConnection();
             connection.setRequestMethod("HEAD"); 
-
             connection.addRequestProperty("Accept", ACCEPT_HEADER_VALUES);
 
             connection.connect();
 
             logger.debug("HTTP Status Response code: " + connection.getResponseCode() + " for URL " + this.url);
+
+            String extension = url.getPath().substring(url.getPath().lastIndexOf(extensionSeparator) + 1);
 
             if (isValidResponseCode(connection.getResponseCode()) == false ){
                 logger.error("URI " + this.url + " not accesible. HTTP Status code: " + connection.getResponseCode());
@@ -69,7 +88,10 @@ public class URLInput implements Input {
                 this.mimeType = getCleanMimeType(connection.getContentType());
                 if (STRICT_MIMETYPES.contains(this.mimeType)){ 
                     logger.info("Found content-type: " + this.mimeType + " for URL " + this.url);
-                } else{
+                } else if (MAP_EXTENSION_MIMETYPE.get(extension) != null){
+                    this.mimeType = MAP_EXTENSION_MIMETYPE.get(extension);
+                	logger.info("Use extension "+ extension + " to fix content-type: " + this.mimeType + " for URL " + this.url);
+                }else {
                     logger.error("mimeType not valid: " + this.mimeType + " for URL " + this.url);
                     throw new ReaderException("mimeType not valid: " + this.mimeType);
                 }

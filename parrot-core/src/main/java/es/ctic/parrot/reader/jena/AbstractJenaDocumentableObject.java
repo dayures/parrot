@@ -12,7 +12,9 @@ import java.util.Locale;
 import org.apache.log4j.Logger;
 
 import com.hp.hpl.jena.ontology.OntClass;
+import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.ontology.OntResource;
+import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.rdf.model.ResourceRequiredException;
@@ -28,6 +30,7 @@ import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.de.DocumentableOntologicalObject;
 import es.ctic.parrot.de.Identifier;
 import es.ctic.parrot.de.OntologyClass;
+import es.ctic.parrot.de.RelatedDocument;
 import es.ctic.parrot.de.Rule;
 import es.ctic.parrot.de.URIIdentifier;
 import es.ctic.parrot.de.UndefinedOntologyDocumentableObject;
@@ -42,6 +45,10 @@ public abstract class AbstractJenaDocumentableObject extends
 	private Collection<Rule> inverseRuleReferences = new HashSet<Rule>();
 	private static final String FOAF_DEPICTION = "http://xmlns.com/foaf/0.1/depiction";
 	private static final String OG_VIDEO = "http://ogp.me/ns#video";
+	private static final String LINGKNOW_VALUE = "http://idi.fundacionctic.org/lingknow/value";
+	private static final String LINGKNOW_OCCURS = "http://idi.fundacionctic.org/lingknow/occurs";
+	private static final String TELIX_REALIZES = "http://ontorule-project.eu/telix#realizes";
+	private static final String SKOS_XL_PREF_LABEL = "http://www.w3.org/2008/05/skos-xl#prefLabel";
 
 	/**
 	 * @return the ontResource
@@ -204,6 +211,7 @@ public abstract class AbstractJenaDocumentableObject extends
 				documentableObjectList.add(_resource);
 			} else {
 				logger.debug("Not found in register: " + identifier);
+				logger.debug("resource.getURI() "+ resource.getURI());
 				if (isDomainSpecific(resource.getURI())) {
 					_resource = (TR) new UndefinedOntologyDocumentableObject(resource.getURI());
 					documentableObjectList.add(_resource);
@@ -268,5 +276,125 @@ public abstract class AbstractJenaDocumentableObject extends
 	public static boolean isDomainSpecific(String uri) {
        	return !uri.startsWith(RDFS.getURI()) && !uri.startsWith(RDF.getURI()) && !uri.startsWith(OWL.getURI());
     }
+	
+	/**
+	 * @return the URI of the prefLabel or null if not exists
+	 */
+	public String getPrefLabel() {
+		OntModel ontModel = getOntResource().getOntModel();
+		String prefLabel = null;
+		StmtIterator listStatements = ontModel.listStatements(getOntResource(), ResourceFactory.createProperty(SKOS_XL_PREF_LABEL), (RDFNode) null);
+		while (listStatements.hasNext()){
+			Statement statement = listStatements.next();
+			prefLabel = ontModel.getOntResource(statement.getObject().asResource()).getURI();
+		}
+		
+		logger.debug("preLabel " + prefLabel + " for resource " + getOntResource());
+		
+		return prefLabel;
+	}
+	
+	/**
+	 * @return the source text of a skosXL:prefLabel
+	 */
+	public Collection<String> getSourceTexts(String label) {
+		OntModel ontModel = getOntResource().getOntModel();
+		Collection<String> sourceTexts = new ArrayList<String>();
+		
+		Collection<OntResource> labelOccurrences = new HashSet<OntResource>();
+		Collection<OntResource> sentences = new HashSet<OntResource>();
+		
+		StmtIterator listStatements = ontModel.listStatements((Resource) null, ResourceFactory.createProperty(TELIX_REALIZES), ResourceFactory.createResource(label));
+		
+		while (listStatements.hasNext()){
+			Statement statement = listStatements.next();
+			labelOccurrences.add(ontModel.getOntResource(statement.getSubject()));
+		}
+		
+		if (labelOccurrences.isEmpty()){
+			return sourceTexts;
+		}
+		
+		for (OntResource labelOcurrence :labelOccurrences){
+			listStatements = ontModel.listStatements(labelOcurrence, ResourceFactory.createProperty(LINGKNOW_OCCURS), (RDFNode) null );
+			while (listStatements.hasNext()){
+				Statement statement = listStatements.next();
+				sentences.add(ontModel.getOntResource(statement.getObject().asResource()));
+			}
+		}
+
+		if (sentences.isEmpty()){
+			return sourceTexts;
+		}
+		
+		for (OntResource sentence :sentences){
+			listStatements = ontModel.listStatements(sentence, ResourceFactory.createProperty(LINGKNOW_VALUE), (RDFNode) null );
+			while (listStatements.hasNext()){
+				Statement statement = listStatements.next();
+				sourceTexts.add(statement.getLiteral().getLexicalForm());
+			}
+		}
+		
+		return sourceTexts;
+	}
+	
+	
+	public Collection<RelatedDocument> getRelatedDocuments() {
+		
+		OntModel ontModel = getOntResource().getOntModel();
+		String label = null;
+		Collection<RelatedDocument> relatedDocuments = new HashSet<RelatedDocument>();
+
+		StmtIterator listStatements = ontModel.listStatements(getOntResource(), ResourceFactory.createProperty(SKOS_XL_PREF_LABEL), (RDFNode) null);
+		while (listStatements.hasNext()){
+			Statement statement = listStatements.next();
+			label = ontModel.getOntResource(statement.getObject().asResource()).getURI();
+		}
+		
+		if (label == null){
+			return relatedDocuments;
+		}
+
+		
+		Collection<OntResource> labelOccurrences = new HashSet<OntResource>();
+		Collection<OntResource> sentences = new HashSet<OntResource>();
+		
+		listStatements = ontModel.listStatements((Resource) null, ResourceFactory.createProperty(TELIX_REALIZES), ResourceFactory.createResource(label));
+		
+		while (listStatements.hasNext()){
+			Statement statement = listStatements.next();
+			labelOccurrences.add(ontModel.getOntResource(statement.getSubject()));
+		}
+		
+		if (labelOccurrences.isEmpty()){
+			return relatedDocuments;
+		}
+		
+		for (OntResource labelOcurrence :labelOccurrences){
+			listStatements = ontModel.listStatements(labelOcurrence, ResourceFactory.createProperty(LINGKNOW_OCCURS), (RDFNode) null );
+			while (listStatements.hasNext()){
+				Statement statement = listStatements.next();
+				sentences.add(ontModel.getOntResource(statement.getObject().asResource()));
+			}
+		}
+
+		if (sentences.isEmpty()){
+			return relatedDocuments;
+		}
+		
+		for (OntResource sentence :sentences){
+			listStatements = ontModel.listStatements(sentence, ResourceFactory.createProperty(LINGKNOW_VALUE), (RDFNode) null );
+			while (listStatements.hasNext()){
+				Statement statement = listStatements.next();
+				RelatedDocument relatedDocument = new RelatedDocument();
+				relatedDocument.setUri(sentence.getURI());
+				relatedDocument.setSourceText(statement.getLiteral().getLexicalForm());
+				relatedDocuments.add(relatedDocument);
+			}
+		}
+		
+		return relatedDocuments;
+	}
+
 
 }

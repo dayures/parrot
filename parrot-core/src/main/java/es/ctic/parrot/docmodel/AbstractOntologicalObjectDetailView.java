@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 
+import es.ctic.parrot.de.RelatedDocument;
 import es.ctic.parrot.de.Rule;
 
 
@@ -15,6 +16,7 @@ public abstract class AbstractOntologicalObjectDetailView implements DetailView 
 	private Collection<String> depictions;
 	private Collection<String> videos;
 	private Collection<Rule> inverseRuleReferences = new HashSet<Rule>();
+	private Collection<RelatedDocument> relatedDocuments;
 
 	public String getUri() {
 		return uri;
@@ -63,7 +65,20 @@ public abstract class AbstractOntologicalObjectDetailView implements DetailView 
 	public Collection<String> getVideos() {
 		return Collections.unmodifiableCollection(videos);
 	}
-	
+
+	/**
+	 * @param relatedDocuments the relatedDocuments to set
+	 */
+	public void setRelatedDocuments(Collection<RelatedDocument> relatedDocuments) {
+		this.relatedDocuments = relatedDocuments;
+	}
+
+	/**
+	 * @return the relatedDocuments
+	 */
+	public Collection<RelatedDocument> getRelatedDocuments() {
+		return relatedDocuments;
+	}
 
 
 }

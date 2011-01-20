@@ -10,7 +10,6 @@ import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.ontology.OntProperty;
-import com.hp.hpl.jena.ontology.OntResource;
 import com.hp.hpl.jena.ontology.Ontology;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.shared.JenaException;
@@ -28,12 +27,12 @@ public class JenaOWLReader implements DocumentReader {
     private static final String XHTML = "XHTML";
     private static final String HTML = "HTML";
     private static final Logger logger = Logger.getLogger(JenaOWLReader.class);
+    private OntModel model = ModelFactory.createOntologyModel();
 	
 	/* (non-Javadoc)
 	 * @see es.ctic.parrot.reader.DocumentReader#readDocumentableObjects(es.ctic.parrot.reader.Input, es.ctic.parrot.de.DocumentableObjectRegister)
 	 */
 	public void readDocumentableObjects(Input input, DocumentableObjectRegister register) throws IOException, ReaderException {
-        OntModel model = ModelFactory.createOntologyModel();
         
         try {
         	logger.debug("Parsing " + getJenaFormat(input) + "  file");
@@ -49,6 +48,8 @@ public class JenaOWLReader implements DocumentReader {
 
             	model.read(input.openReader(), base, getJenaFormat(input));	
             }
+        	
+        	//model.write(System.out);
             
             loadOntology(model, register);
             loadOntClasses(model, register);
@@ -88,7 +89,7 @@ public class JenaOWLReader implements DocumentReader {
 		Iterator<OntClass> it= model.listNamedClasses();
 		while(it.hasNext()){
 			OntClass ontclass=it.next();
-			if (isDomainSpecific(ontclass)) {
+			if (isDomainSpecific(ontclass.getURI())) {
 				OntologyClassJenaImpl docObject=new OntologyClassJenaImpl(ontclass, register);
 			    register.registerDocumentableObject(docObject);
 			}
@@ -99,7 +100,7 @@ public class JenaOWLReader implements DocumentReader {
 	    Iterator<OntProperty> it = model.listAllOntProperties();
 	    while (it.hasNext()) {
 	        OntProperty ontProperty = it.next();
-	        if (isDomainSpecific(ontProperty)) {
+	        if (isDomainSpecific(ontProperty.getURI())) {
 	            OntologyPropertyJenaImpl docObject = new OntologyPropertyJenaImpl(ontProperty, register);
 	            register.registerDocumentableObject(docObject);	        
 	        }
@@ -125,7 +126,7 @@ public class JenaOWLReader implements DocumentReader {
 	        	register.registerDocumentableObject(docObject);
 	    	}
 	    	else {
-		    	if (isDomainSpecific(individual) && isClassDomainSpecific(individual)) {
+		    	if (isDomainSpecific(individual.getURI()) && isClassDomainSpecific(individual)) {
 		        	OntologyIndividualJenaImpl docObject = new OntologyIndividualJenaImpl(individual, register);
 		        	register.registerDocumentableObject(docObject);
 		        } else {
@@ -135,17 +136,21 @@ public class JenaOWLReader implements DocumentReader {
 	    }
 	}
 	
-	protected static boolean isDomainSpecific(OntResource ontResource) {
-        
-       	assert ! ontResource.isAnon() : "Tried to check a domain specific for a blank node";//"this check should be done before"
-
-       	String uri = ontResource.getURI();
-       	return !uri.startsWith(RDFS.getURI()) && !uri.startsWith(RDF.getURI()) && !uri.startsWith(OWL.getURI());
+	/**
+	 * 
+	 * @param uri The URI to check
+	 * @return true if the URI is domain specific, false if not. if the uri is null, it returns false
+	 */
+	public static boolean isDomainSpecific(String uri) {
+		if (uri != null){
+			return !uri.startsWith(RDFS.getURI()) && !uri.startsWith(RDF.getURI()) && !uri.startsWith(OWL.getURI());
+		} else 
+			return false;
     }
-
+	
 	private static boolean isClassDomainSpecific(Individual individual) {
     	for(OntClass ontClass : individual.listOntClasses(true).toList()){
-   			if (isDomainSpecific(ontClass)){
+   			if (isDomainSpecific(ontClass.getURI())){
    				return true;
     		}
     	}

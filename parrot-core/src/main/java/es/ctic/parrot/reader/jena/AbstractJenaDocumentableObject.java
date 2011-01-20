@@ -18,6 +18,9 @@ import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.rdf.model.ResourceRequiredException;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
+import com.hp.hpl.jena.vocabulary.OWL;
+import com.hp.hpl.jena.vocabulary.RDF;
+import com.hp.hpl.jena.vocabulary.RDFS;
 
 import es.ctic.parrot.de.AbstractDocumentableObject;
 import es.ctic.parrot.de.DocumentableObject;
@@ -27,6 +30,7 @@ import es.ctic.parrot.de.Identifier;
 import es.ctic.parrot.de.OntologyClass;
 import es.ctic.parrot.de.Rule;
 import es.ctic.parrot.de.URIIdentifier;
+import es.ctic.parrot.de.UndefinedOntologyDocumentableObject;
 import es.ctic.parrot.utils.URIUtils;
 
 public abstract class AbstractJenaDocumentableObject extends
@@ -177,6 +181,7 @@ public abstract class AbstractJenaDocumentableObject extends
 //		return ontologyPropertyList;
 //	}
 	
+	@SuppressWarnings("unchecked")
 	protected <TR extends DocumentableObject, TJ extends Resource> Collection<TR> resourceIteratorToDocumentableObjectList(Iterator<TJ> it) {
 		
 		List<TR> documentableObjectList = new LinkedList<TR>();
@@ -192,13 +197,20 @@ public abstract class AbstractJenaDocumentableObject extends
 				identifier = new JenaAnonymousIdentifier(resource.getModel(), resource.getId());
 			}
 			
-			@SuppressWarnings("unchecked")
 			TR _resource = (TR) this.getRegister().findDocumentableObject(identifier); 
 
 			if (_resource != null) { // do not add null elements in the list 
+				logger.debug("Added (not null) " + _resource);
 				documentableObjectList.add(_resource);
 			} else {
 				logger.debug("Not found in register: " + identifier);
+				if (isDomainSpecific(resource.getURI())) {
+					_resource = (TR) new UndefinedOntologyDocumentableObject(resource.getURI());
+					documentableObjectList.add(_resource);
+				} else {
+					logger.debug("Not added " + identifier + " (not domain specific)");
+				}
+
 			}
 		}
 		return documentableObjectList;
@@ -248,5 +260,13 @@ public abstract class AbstractJenaDocumentableObject extends
     	}
 	}
 	
+	/**
+	 * 
+	 * @param uri The URI to check
+	 * @return true if the URI is domain specific, false if not
+	 */
+	public static boolean isDomainSpecific(String uri) {
+       	return !uri.startsWith(RDFS.getURI()) && !uri.startsWith(RDF.getURI()) && !uri.startsWith(OWL.getURI());
+    }
 
 }

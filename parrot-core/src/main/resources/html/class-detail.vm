@@ -79,6 +79,17 @@
    #end
   #end
   
+  #if(!$element.relatedDocuments.isEmpty())
+  <dt>Related Documents</dt> 
+  <dd>
+  <div class="toggle_container" style="display: block;"> 
+   #foreach($element in $element.relatedDocuments)
+      	  #parse("html/relatedDocument-detail.vm")
+   #end
+   </div>
+   </dd>
+  #end
+  
   </dl>
   <p class="back-to-top">[<a href="#toc">back to top</a>]</p> 
 </div> 

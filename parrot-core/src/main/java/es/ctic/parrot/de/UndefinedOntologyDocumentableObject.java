@@ -287,5 +287,11 @@ public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObj
 		//return false;
 	}
 
+	public Collection<RelatedDocument> getRelatedDocuments() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Method not implemented yet.");
+		//return null;
+	}
+
 
 }

@@ -20,5 +20,6 @@ public interface DocumentableObject {
 	public abstract String getComment(Locale locale);    
 	public abstract List<String> getDepictions();
 	public abstract List<String> getVideos();
+	public abstract Collection<RelatedDocument> getRelatedDocuments();
 
 }

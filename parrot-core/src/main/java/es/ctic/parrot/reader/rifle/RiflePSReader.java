@@ -22,8 +22,8 @@ public class RiflePSReader extends ImportResolver implements DocumentReader {
 
     private static final Logger logger = Logger.getLogger(RiflePSReader.class);
     
-    public RiflePSReader(DocumentReader ontologyWrapper, DocumentReader rifXmlReader) {
-        super(ontologyWrapper, rifXmlReader);
+    public RiflePSReader(DocumentReader ontologyReader, DocumentReader rifXmlReader) {
+        super(ontologyReader, rifXmlReader);
     }
     
 	public void readDocumentableObjects(Input input,

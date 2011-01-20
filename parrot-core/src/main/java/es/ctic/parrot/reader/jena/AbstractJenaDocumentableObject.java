@@ -102,7 +102,7 @@ public abstract class AbstractJenaDocumentableObject extends
 
 	public Identifier getIdentifier() {
 		if (ontResource.isAnon() == true){
-			return new JenaAnonymousIdentifier(ontResource.getModel(),ontResource.getId());
+			return new JenaAnonymousIdentifier(ontResource.getId());
 		} else{
 			return new URIIdentifier(ontResource.getURI());
 		}
@@ -131,7 +131,7 @@ public abstract class AbstractJenaDocumentableObject extends
 			if (clazz.isAnon() == false){
 				identifier = new URIIdentifier(clazz.getURI());
 			} else {
-				identifier = new JenaAnonymousIdentifier(clazz.getModel(), clazz.getId());
+				identifier = new JenaAnonymousIdentifier(clazz.getId());
 			}
 
 			OntologyClass _class = (OntologyClass) this.getRegister().findDocumentableObject(identifier); 
@@ -194,7 +194,7 @@ public abstract class AbstractJenaDocumentableObject extends
 			if (resource.isAnon() == false){
 				identifier = new URIIdentifier(resource.getURI());
 			} else {
-				identifier = new JenaAnonymousIdentifier(resource.getModel(), resource.getId());
+				identifier = new JenaAnonymousIdentifier(resource.getId());
 			}
 			
 			TR _resource = (TR) this.getRegister().findDocumentableObject(identifier); 

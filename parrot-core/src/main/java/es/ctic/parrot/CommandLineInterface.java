@@ -20,12 +20,8 @@ import org.apache.log4j.Logger;
 import es.ctic.parrot.appserv.ParrotAppServ;
 import es.ctic.parrot.generators.HtmlOutputGenerator;
 import es.ctic.parrot.generators.OutputGenerator;
-import es.ctic.parrot.reader.DocumentReader;
 import es.ctic.parrot.reader.FileInput;
 import es.ctic.parrot.reader.URLInput;
-import es.ctic.parrot.reader.jena.JenaOWLReader;
-import es.ctic.parrot.reader.rifle.RiflePSReader;
-import es.ctic.parrot.reader.rifle.RifleXmlReader;
 
 public class CommandLineInterface  {
     

@@ -56,14 +56,9 @@ public class CommandLineInterface  {
         if (cmd.hasOption("t")) {
             template = cmd.getOptionValue("t");
         }
-        ParrotAppServ app = new ParrotAppServ();
-        DocumentReader ontologyWrapper = new JenaOWLReader();
-        DocumentReader ruleWrapper = new RifleXmlReader(ontologyWrapper);
-        DocumentReader rifPSWrapper = new RiflePSReader(ontologyWrapper, ruleWrapper);
 
-        app.setOntologyWrapper(ontologyWrapper);
-        app.setRuleWrapper(ruleWrapper);
-        app.setRifPSWrapper(rifPSWrapper);
+        ParrotAppServ app = new ParrotAppServ();
+
         try {
             InputStream templateInputStream = openTemplateInputStream(template);
             DocumentaryProject dp = new DocumentaryProject(new Locale(lang));

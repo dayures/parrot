@@ -29,14 +29,14 @@ import es.ctic.parrot.transformers.TransformerException;
  */
 public class ParrotAppServ {
     
-    private DocumentReader ontologyWrapper;
-    private DocumentReader ruleWrapper;
-    private DocumentReader rifPSWrapper;
+    private DocumentReader ontologyReader;
+    private DocumentReader ruleXmlReader;
+    private DocumentReader rifPSReader;
     
     public ParrotAppServ() {
-		setOntologyWrapper(new JenaOWLReader());
-		setRuleWrapper(new RifleXmlReader(getOntologyWrapper()));
-		setRifPSWrapper(new RiflePSReader(getOntologyWrapper(), getRuleWrapper()));
+		setOntologyReader(new JenaOWLReader());
+		setRuleXmlReader(new RifleXmlReader(getOntologyReader()));
+		setRifPSReader(new RiflePSReader(getOntologyReader(), getRuleXmlReader()));
     }
 
 	/**
@@ -59,8 +59,8 @@ public class ParrotAppServ {
 	
     private void readAndRegisterDocumentableObjects(Collection<Input> inputs, DocumentableObjectRegister register) throws IOException, ReaderException {
 		for (Input input : inputs) {
-		    DocumentReader wrapper = getDocumentWrapperForInput(input);
-		    wrapper.readDocumentableObjects(input, register);
+		    DocumentReader reader = getDocumentReaderForInput(input);
+		    reader.readDocumentableObjects(input, register);
 		} 
     }	
 
@@ -74,7 +74,7 @@ public class ParrotAppServ {
         ruleToOntologyReferenceResolver.visit(register);
     }
 
-    private DocumentReader getDocumentWrapperForInput(Input input) throws IOException  {
+    private DocumentReader getDocumentReaderForInput(Input input) throws IOException  {
         if (   "application/rdf+xml".equals(input.getMimeType())
         	|| "application/xml".equals(input.getMimeType())
         	|| "application/owl+xml".equals(input.getMimeType())
@@ -82,11 +82,11 @@ public class ParrotAppServ {
         	|| "text/html".equals(input.getMimeType())
         	|| "text/n3".equals(input.getMimeType())
         	|| "text/rdf+n3".equals(input.getMimeType())) {
-            return getOntologyWrapper();
+            return getOntologyReader();
         } else if ("application/rif+xml".equals(input.getMimeType())){
-            return getRuleWrapper();
+            return getRuleXmlReader();
         } else if ("text/x-rif-ps".equals(input.getMimeType())){
-            return getRifPSWrapper();
+            return getRifPSReader();
         } else {
             throw new RuntimeException("Unable to open mimetype " + input.getMimeType());
         }
@@ -102,28 +102,47 @@ public class ParrotAppServ {
         return document;
     }
 
-    public void setOntologyWrapper(DocumentReader ontologyWrapper) {
-        this.ontologyWrapper = ontologyWrapper;
-    }
-
-    public DocumentReader getOntologyWrapper() {
-        return ontologyWrapper;
-    }
-
-    public void setRuleWrapper(DocumentReader ruleWrapper) {
-        this.ruleWrapper = ruleWrapper;
-    }
-
-    public DocumentReader getRuleWrapper() {
-        return ruleWrapper;
-    }
-
-	public void setRifPSWrapper(DocumentReader rifPSWrapper) {
-		this.rifPSWrapper = rifPSWrapper;
+	/**
+	 * @param ontologyReader the ontologyReader to set
+	 */
+	public void setOntologyReader(DocumentReader ontologyReader) {
+		this.ontologyReader = ontologyReader;
 	}
 
-	public DocumentReader getRifPSWrapper() {
-		return rifPSWrapper;
+	/**
+	 * @return the ontologyReader
+	 */
+	public DocumentReader getOntologyReader() {
+		return ontologyReader;
 	}
+
+	/**
+	 * @param ruleXmlReader the ruleXmlReader to set
+	 */
+	public void setRuleXmlReader(DocumentReader ruleXmlReader) {
+		this.ruleXmlReader = ruleXmlReader;
+	}
+
+	/**
+	 * @return the ruleXmlReader
+	 */
+	public DocumentReader getRuleXmlReader() {
+		return ruleXmlReader;
+	}
+
+	/**
+	 * @param rifPSReader the rifPSReader to set
+	 */
+	public void setRifPSReader(DocumentReader rifPSReader) {
+		this.rifPSReader = rifPSReader;
+	}
+
+	/**
+	 * @return the rifPSReader
+	 */
+	public DocumentReader getRifPSReader() {
+		return rifPSReader;
+	}
+
 
 }

@@ -288,7 +288,7 @@ public abstract class AbstractJenaDocumentableObject extends
 	/**
 	 * @return a collection of labels for the skosXL uri
 	 */
-	public Collection<Label> getSkosxlLabels(String uri) {
+	public Collection<Label> getSkosxlLabels(String uri, Locale locale) {
 
 		Collection<Label> skosxlLabels = new HashSet<Label>();
 		OntModel ontModel = getOntResource().getOntModel();
@@ -310,21 +310,31 @@ public abstract class AbstractJenaDocumentableObject extends
 					skosxlLabel.setLocale(new Locale(language));
 				}
 
+				if (locale != null) {
+					//compare locales
+					if (locale.equals(skosxlLabel.getLocale())) {
+						logger.debug(skosxlLabel + " is " + uri + " for resource " + getOntResource());
+						skosxlLabels.add(skosxlLabel);
+					} else{
+						logger.debug("Not add label  " + skosxlLabel + " for resource " + getOntResource() + " because its locale " + skosxlLabel.getLocale() + " does not match with required locale " + locale);
+					}
+				} else {
+					logger.debug(skosxlLabel + " is " + uri + " for resource " + getOntResource());
+					skosxlLabels.add(skosxlLabel);
+				}
 			}
-			logger.debug(skosxlLabel + " is " + uri + " for resource " + getOntResource());
-			skosxlLabels.add(skosxlLabel);
 		}
-		
-		
 		
 		return skosxlLabels;
 	}
 
+	
+	
 	/**
 	 * @param the uri of the property used to annotate
 	 * @return a collection of literal labels for the uri
 	 */
-	public Collection<Label> getLiteralLabels(String uri) {
+	public Collection<Label> getLiteralLabels(String uri, Locale locale) {
 		
 		Collection<Label> literalLabels = new HashSet<Label>();
 
@@ -339,12 +349,22 @@ public abstract class AbstractJenaDocumentableObject extends
 			literalLabel.setText(statement.getObject().asLiteral().getString());
 			String LanguageTag = statement.getObject().asLiteral().getLanguage(); 
 			if (LanguageTag.equals("") == false){
-				String language = LanguageTag.split("-")[0];
-				literalLabel.setLocale(new Locale(language));
+				String language = LanguageTag.split("-")[0]; 
+				literalLabel.setLocale(new Locale(language)); // FIXME do it more specified using Locale(String language, String country, String variant)
 			}
-
-			logger.debug(literalLabel + " is " + uri + " for resource " + getOntResource());
-			literalLabels.add(literalLabel);
+			
+			if (locale != null) {
+				//compare locales
+				if (locale.equals(literalLabel.getLocale())) {
+					logger.debug(literalLabel + " is " + uri + " for resource " + getOntResource());
+					literalLabels.add(literalLabel);
+				} else{
+					logger.debug("Not add label  " + literalLabel + " for resource " + getOntResource() + " because its locale " + literalLabel.getLocale() + " does not match with required locale " + locale);
+				}
+			} else {
+				logger.debug(literalLabel + " is " + uri + " for resource " + getOntResource());
+				literalLabels.add(literalLabel);
+			}
 
 		}
 		
@@ -455,39 +475,36 @@ public abstract class AbstractJenaDocumentableObject extends
 		return relatedDocuments;
 	}
 	
-	public Collection<Label> getLabels(Locale locale){
-		Collection<Label> labels = new HashSet<Label>();
-		
-		return labels;
-		
-	}
-	
 	public Collection<Label> getLabels(){
+   		return getLabels(null);
+   	}
+	
+	public Collection<Label> getLabels(Locale locale){
 		
 		Collection<Label> labels = new HashSet<Label>();
 
-		Collection<Label> skosXLPrefLabels = getSkosxlLabels(SKOS_XL_PREF_LABEL);
+		Collection<Label> skosXLPrefLabels = getSkosxlLabels(SKOS_XL_PREF_LABEL, locale);
 		if (skosXLPrefLabels.isEmpty() == false){
 			labels.addAll(skosXLPrefLabels);
 		}
 
-		Collection<Label> skosXLAltLabels = getSkosxlLabels(SKOS_XL_ALT_LABEL);
+		Collection<Label> skosXLAltLabels = getSkosxlLabels(SKOS_XL_ALT_LABEL, locale);
 		if (skosXLAltLabels.isEmpty() == false){
 			labels.addAll(skosXLAltLabels);
 		}
 
-		Collection<Label> skosPrefLabels = getLiteralLabels(SKOS_CORE_PREF_LABEL);
+		Collection<Label> skosPrefLabels = getLiteralLabels(SKOS_CORE_PREF_LABEL, locale);
 		if (skosPrefLabels.isEmpty() == false){
 			labels.addAll(skosPrefLabels);
 		}
 
 		
-		Collection<Label> skosAltLabels = getLiteralLabels(SKOS_CORE_ALT_LABEL);
+		Collection<Label> skosAltLabels = getLiteralLabels(SKOS_CORE_ALT_LABEL, locale);
 		if (skosAltLabels.isEmpty() == false){
 			labels.addAll(skosAltLabels);
 		}
 
-		Collection<Label> rdfsLabels = getLiteralLabels(RDF_SCHEMA_LABEL);
+		Collection<Label> rdfsLabels = getLiteralLabels(RDF_SCHEMA_LABEL, locale);
 		if (rdfsLabels.isEmpty() == false){
 			labels.addAll(rdfsLabels);
 		}

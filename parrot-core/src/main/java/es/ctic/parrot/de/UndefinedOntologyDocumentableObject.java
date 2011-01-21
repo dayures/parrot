@@ -293,5 +293,17 @@ public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObj
 		//return null;
 	}
 
+	public Collection<Label> getLabels(Locale locale) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Method not implemented yet.");
+		//return null;
+	}
+
+	public Collection<Label> getLabels() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Method not implemented yet.");
+		//return null;
+	}
+
 
 }

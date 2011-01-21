@@ -1,5 +1,5 @@
 <div class="term">
-  <h3><a id="$element.Anchor"></a><span class="parrot-property-title">$element.Label</span> (Property)</h3>
+  <h3><a id="$element.Anchor"></a><span class="parrot-element-title parrot-property-title">$element.Label</span> (Property)</h3>
   <dl>
   
    
@@ -44,7 +44,7 @@
     	
    #if($element.InverseOf)
       <dt>is inverse of</dt>
-      <dd><span class="parrot-property-ref"><a href="#$element.InverseOf.LocalName">$element.InverseOf.Label</a></span></dd>
+      <dd><span class="parrot-element-ref parrot-property-ref"><a href="#$element.InverseOf.LocalName">$element.InverseOf.Label</a></span></dd>
    #end
 
    #if($element.Comment)
@@ -54,46 +54,46 @@
 
    #if($element.Domain)
       <dt>Domain</dt>
-   	  <dd><span class="parrot-class-ref"><a href="#$element.Domain.LocalName">$element.Domain.Label</a></span></dd>
+   	  <dd><span class="parrot-element-ref parrot-class-ref"><a href="#$element.Domain.LocalName">$element.Domain.Label</a></span></dd>
    #end
 
    #if($element.Range)
       <dt>Range</dt>
-      <dd><span class="parrot-class-ref"><a href="#$element.Range.LocalName">$element.Range.Label</a></span></dd>
+      <dd><span class="parrot-element-ref parrot-class-ref"><a href="#$element.Range.LocalName">$element.Range.Label</a></span></dd>
    #end
    
    #if(!$element.SuperProperties.isEmpty())
     <dt>SubProperty of</dt>
     #foreach($superproperty in $element.SuperProperties)
-      <dd><span class="parrot-property-ref"><a href="#$superproperty.LocalName">$superproperty.Label</a></span></dd>
+      <dd><span class="parrot-element-ref parrot-property-ref"><a href="#$superproperty.LocalName">$superproperty.Label</a></span></dd>
     #end
    #end
 
    #if(!$element.SubProperties.isEmpty())
     <dt>SuperProperty of</dt>
     #foreach($subproperty in $element.SubProperties)
-      <dd><span class="parrot-property-ref"><a href="#$subproperty.LocalName">$subproperty.Label</a></span></dd>
+      <dd><span class="parrot-element-ref parrot-property-ref"><a href="#$subproperty.LocalName">$subproperty.Label</a></span></dd>
     #end
    #end
    
    #if(!$element.EquivalentProperties.isEmpty())
     <dt>Equivalent Property of</dt>
     #foreach($equivalentProperty in $element.EquivalentProperties)
-      <dd><span class="parrot-property-ref"><a href="#$equivalentProperty.LocalName">$equivalentProperty.Label</a></span></dd>
+      <dd><span class="parrot-element-ref parrot-property-ref"><a href="#$equivalentProperty.LocalName">$equivalentProperty.Label</a></span></dd>
     #end
    #end
 
    #if(!$element.disjointProperties.isEmpty())
     <dt>Disjoint Properties</dt>
     #foreach($property in $element.disjointProperties)
-      <dd><span class="parrot-property-ref"><a href="#$property.LocalName">$property.Label</a></span></dd>
+      <dd><span class="parrot-element-ref parrot-property-ref"><a href="#$property.LocalName">$property.Label</a></span></dd>
     #end
    #end
    
    #if(!$element.InverseReferences.isEmpty())
    <dt>Referenced from</dt>
    #foreach($reference in $element.InverseReferences)
-     <dd><a href="#$reference.LocalName">$reference.Label</a></dd>
+     <dd><span class="parrot-element-ref><a href="#$reference.LocalName">$reference.Label</a></span></dd>
    #end
    #end
 
@@ -125,7 +125,7 @@
    #if(!$element.inverseRuleReferences.isEmpty())
    <dt>Referenced rules</dt>
    #foreach($reference in $element.inverseRuleReferences)
-     <dd><span class="parrot-rule-ref"><a href="#$reference.LocalName">$reference.Label</a></span></dd>
+     <dd><span class="parrot-element-ref parrot-rule-ref"><a href="#$reference.LocalName">$reference.Label</a></span></dd>
    #end
    #end
    

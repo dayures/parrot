@@ -1,5 +1,5 @@
 <div class="term">
-  <h3><a id="$element.Anchor"></a><span class="parrot-rule-title">$element.Label</span> (Rule)</h3>
+  <h3><a id="$element.Anchor"></a><span class="parrot-element-title parrot-rule-title">$element.Label</span> (Rule)</h3>
   <dl>
    #if($element.Uri)
       <dt>Uri</dt>

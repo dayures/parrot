@@ -1,5 +1,5 @@
 <div class="term">
-  <h3><a id="$element.Anchor"></a><span class="parrot-ruleset-title">$element.Label</span> (RuleSet)</h3>
+  <h3><a id="$element.Anchor"></a><span class="parrot-element-title parrot-ruleset-title">$element.Label</span> (RuleSet)</h3>
   <dl>
    #if($element.Strategy)
       <dt>Strategy</dt>

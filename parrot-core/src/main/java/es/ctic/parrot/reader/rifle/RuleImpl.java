@@ -25,6 +25,7 @@ import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.de.DocumentableOntologicalObject;
 import es.ctic.parrot.de.Identifier;
+import es.ctic.parrot.de.Label;
 import es.ctic.parrot.de.RelatedDocument;
 import es.ctic.parrot.de.Rule;
 import es.ctic.parrot.de.URIIdentifier;
@@ -292,6 +293,18 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 	}
 
 	public Collection<RelatedDocument> getRelatedDocuments() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Method not implemented yet.");
+		//return null;
+	}
+
+	public Collection<Label> getLabels(Locale locale) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Method not implemented yet.");
+		//return null;
+	}
+
+	public Collection<Label> getLabels() {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
 		//return null;

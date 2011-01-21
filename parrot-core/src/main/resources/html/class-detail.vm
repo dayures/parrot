@@ -90,6 +90,15 @@
    </dd>
   #end
   
+  #if(!$element.labels.isEmpty())
+  <dt>Labels</dt> 
+   #foreach($element in $element.labels)
+     <dd>
+     #parse("html/label.vm")
+     </dd>
+   #end
+  #end
+  
   </dl>
   <p class="back-to-top">[<a href="#toc">back to top</a>]</p> 
 </div> 

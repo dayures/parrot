@@ -21,5 +21,7 @@ public interface DocumentableObject {
 	public abstract List<String> getDepictions();
 	public abstract List<String> getVideos();
 	public abstract Collection<RelatedDocument> getRelatedDocuments();
+	public abstract Collection<Label> getLabels(Locale locale);
+	public abstract Collection<Label> getLabels();
 
 }

@@ -46,25 +46,6 @@
 	      <dd>$element.Date</dd>
 	   #end
 	   
-	   #if(!$element.depictions.isEmpty() || !$element.videos.isEmpty())
-	   <dt>Multimedia</dt>
-	   #end
-	   
-	   #if(!$element.depictions.isEmpty())
-	   #foreach($depiction in $element.depictions)
-	     <dd><img src="$depiction" alt="" /></dd>
-	   #end
-	   #end
-	   
-	   #if(!$element.videos.isEmpty())
-	   #foreach($video in $element.videos)
-	     <dd>
-	     <object data="$video">
-			<param name="movie" value="$video" />
-		</object>
-		</dd>
-	   #end
-	   #end
    #end   
    
    #if(!$element.referencedOntologicalObjects.isEmpty())
@@ -91,6 +72,15 @@
    #if($element.Parent)
       <dt>is inside of</dt>
       <dd><a href="#$element.Parent.LocalName">$element.Parent.Label</a></dd>
+   #end
+   
+   #if(!$element.relatedDocuments.isEmpty())
+   <dt>Related Documents</dt> 
+   <dd>
+     #foreach($element in $element.relatedDocuments)
+       #parse("html/relatedDocument-detail.vm")
+     #end
+   </dd>
    #end
   
   </dl>

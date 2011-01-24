@@ -11,9 +11,21 @@
      #if($element.type == "application/vnd.ms-powerpoint")
        <img src="images/ppt-icon.png" alt="ppt icon" />
      #end
-     </a>  
+     </a> 
+
+     #if($element.type == "video/mpeg")
+     <object data="$element.uri">
+		<param name="movie" value="$element.uri" />
+	 </object>
+	 #end
+
+     #if($element.type == "image/png")
+	<img src="$element.uri" alt=""/>
+	 #end
+     
      #if($element.sourceText)
      <p>$element.sourceText</p>      
      #end
   </div>
 </div>
+

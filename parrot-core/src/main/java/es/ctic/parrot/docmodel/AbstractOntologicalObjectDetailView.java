@@ -14,8 +14,6 @@ public abstract class AbstractOntologicalObjectDetailView implements DetailView 
 	private String uri;
 	private String label;
 	private String comment;
-	private Collection<String> depictions;
-	private Collection<String> videos;
 	private Collection<Rule> inverseRuleReferences = new HashSet<Rule>();
 	private Collection<RelatedDocument> relatedDocuments;
 	private Collection<Label> labels;
@@ -50,22 +48,6 @@ public abstract class AbstractOntologicalObjectDetailView implements DetailView 
 
 	public Collection<Rule> getInverseRuleReferences() {
 		return Collections.unmodifiableCollection(inverseRuleReferences);
-	}
-
-	public void setDepictions(Collection<String> depictions) {
-		this.depictions = depictions;
-	}
-
-	public Collection<String> getDepictions() {
-		return Collections.unmodifiableCollection(depictions);
-	}
-
-	public void setVideos(Collection<String> videos) {
-		this.videos = videos;
-	}
-
-	public Collection<String> getVideos() {
-		return Collections.unmodifiableCollection(videos);
 	}
 
 	/**

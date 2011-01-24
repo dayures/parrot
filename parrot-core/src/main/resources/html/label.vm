@@ -1,6 +1,1 @@
-<p>
-<span>Qualifier: $element.qualifier</span><br />
-<span>text: $element.text</span><br />
-<span>Uri: $element.Uri</span><br />
-<span>Locale: $element.locale</span><br />   
-</p>
+<span>$element.text</span>,

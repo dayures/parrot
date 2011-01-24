@@ -14,6 +14,7 @@ import org.apache.log4j.Logger;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.ontology.OntResource;
+import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.ResourceFactory;
@@ -40,6 +41,8 @@ import es.ctic.parrot.utils.URIUtils;
 public abstract class AbstractJenaDocumentableObject extends
 		AbstractDocumentableObject {
 	
+	private static final String DC_TERMS_IS_PART_OF = "http://purl.org/dc/terms/isPartOf";
+	private static final String DC_DCMITYPE_TEXT = "http://purl.org/dc/dcmitype/Text";
 	private static final String RDF_SCHEMA_LABEL = "http://www.w3.org/2000/01/rdf-schema#label";
 	private static final String FOAF_DEPICTION = "http://xmlns.com/foaf/0.1/depiction";
 	private static final String OG_VIDEO = "http://ogp.me/ns#video";
@@ -53,6 +56,7 @@ public abstract class AbstractJenaDocumentableObject extends
 	private static final String SKOS_CORE_ALT_LABEL = "http://www.w3.org/2004/02/skos/core#altLabel";
 	
 	private static final Logger logger = Logger.getLogger(AbstractJenaDocumentableObject.class);
+	private static final String TYPE_TEXT = "text/plain";
 	
 	private OntResource ontResource;
 	private Collection<Rule> inverseRuleReferences = new HashSet<Rule>();
@@ -81,24 +85,54 @@ public abstract class AbstractJenaDocumentableObject extends
 	}
 	
     public String getLabel(Locale locale) {
-        String label = null;
-    	if (getOntResource() == null){
-    		return URIUtils.getReference(getURI());
-    	}
-    	else{
-	        if (locale !=null)
-	        	label = ontResource.getLabel(locale.toString());
-	        
-	        if (label == null) {
-	            label = ontResource.getLabel(null);
-	        } 
-	        
-	        if (label == null) {
-	            label = URIUtils.getReference(ontResource.getURI());
-	        } 
-	
-	        return label;
-    	}
+        
+        Collection<Label> labels = getLabels(locale);
+        
+        if (labels.isEmpty()){
+        	return URIUtils.getReference(getURI());
+        }
+        
+        /* Preferred order:
+         * 
+         * http://www.w3.org/2008/05/skos-xl#prefLabel
+         * http://www.w3.org/2008/05/skos-xl#altLabel
+         * http://www.w3.org/2004/02/skos/core#prefLabel
+         * http://www.w3.org/2004/02/skos/core#altLabel
+         * http://www.w3.org/2000/01/rdf-schema#label
+         * 
+         */
+        
+        for (Label label : labels){
+        	if (label.getQualifier().equals(SKOS_XL_PREF_LABEL)) {
+        		return label.getText();
+        	}
+        }
+
+        for (Label label : labels){
+        	if (label.getQualifier().equals(SKOS_XL_ALT_LABEL)) {
+        		return label.getText();
+        	}
+        }
+
+        for (Label label : labels){
+        	if (label.getQualifier().equals(SKOS_CORE_PREF_LABEL)) {
+        		return label.getText();
+        	}
+        }
+        
+        for (Label label : labels){
+        	if (label.getQualifier().equals(SKOS_CORE_ALT_LABEL)) {
+        		return label.getText();
+        	}
+        }
+
+        for (Label label : labels){
+        	if (label.getQualifier().equals(RDF_SCHEMA_LABEL)) {
+        		return label.getText();
+        	}
+        }
+
+        return URIUtils.getReference(getURI());
     }
     
     public String getLabel() {
@@ -267,7 +301,7 @@ public abstract class AbstractJenaDocumentableObject extends
 			while(it.hasNext()){
 				Statement statement = it.nextStatement();
 				try{
-					videos.add(it.nextStatement().getLiteral().getString());
+					videos.add(statement.getObject().asResource().getURI());
 				} catch (ResourceRequiredException e)  {
 					logger.warn("Ignore triple "+ statement +" because it is not a Object property");
 				}
@@ -460,14 +494,37 @@ public abstract class AbstractJenaDocumentableObject extends
 				while (listStatements.hasNext()){
 					Statement statement = listStatements.next();
 					RelatedDocument relatedDocument = new RelatedDocument();
-					relatedDocument.setUri(sentence.getURI());
+					relatedDocument.setUri(getSourceDocumentUri(ontModel, sentence.getURI())); // FIXME
 					relatedDocument.setSourceText(statement.getLiteral().getLexicalForm());
+					relatedDocument.setType(TYPE_TEXT); // FIXME now it's fixed to plain/text
 					relatedDocuments.add(relatedDocument);
 				}
 			}
 		}
 		
 		return relatedDocuments;
+	}
+
+	/**
+	 * 
+	 * @param model The ontological model
+	 * @param uri the uri to search for
+	 * @return the uri of the source document
+	 */
+	public String getSourceDocumentUri(OntModel model, String uri){
+		if (model.contains(ResourceFactory.createResource(uri), RDF.type, ResourceFactory.createResource(DC_DCMITYPE_TEXT))){
+			return uri;
+		} else {
+			StmtIterator listStatements = model.listStatements(ResourceFactory.createResource(uri), ResourceFactory.createProperty(DC_TERMS_IS_PART_OF), (RDFNode) null );
+			if (listStatements.hasNext()){ // only one iteration
+				Statement statement = listStatements.next();
+				return getSourceDocumentUri(model, statement.getObject().asResource().getURI());
+			} else {
+				return null;
+			}
+
+		}
+		
 	}
 
 }

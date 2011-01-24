@@ -10,40 +10,40 @@
    
     <dt>Property Type</dt>
     	#if($element.isDatatypeProperty())
-    	<dd>is Datatype Property</dd>      
+    	<dd>Datatype Property</dd>      
     	#end
     	#if($element.isObjectProperty())
-    	<dd>is Object Property</dd>      
+    	<dd>Object Property</dd>      
     	#end
     	#if($element.isAnnotationProperty())
-    	<dd>is Annotation Property</dd>      
+    	<dd>Annotation Property</dd>      
     	#end
     	
     	#if($element.isTransitiveProperty())
-    	<dd>is Transitive Property</dd>      
+    	<dd>Transitive Property</dd>      
     	#end    	
     	#if($element.isSymmetricProperty())
-    	<dd>is Symmetric Property</dd>      
+    	<dd>Symmetric Property</dd>      
     	#end    	
     	#if($element.isFunctionalProperty())
-    	<dd>is Functional Property</dd>      
+    	<dd>Functional Property</dd>      
     	#end    	
     	#if($element.isInverseFunctionalProperty())
-    	<dd>is Inverse Functional Property</dd>      
+    	<dd>Inverse Functional Property</dd>      
     	#end    	
     	
     	#if($element.isReflexiveProperty())
-    	<dd>is Reflexive Property</dd>      
+    	<dd>Reflexive Property</dd>      
     	#end    	
     	#if($element.isIrreflexiveProperty())
-    	<dd>is Irreflexive Property</dd>      
+    	<dd>Irreflexive Property</dd>      
     	#end        	
     	#if($element.isAsymmetricProperty())
-    	<dd>is Asymmetric Property</dd>      
+    	<dd>Asymmetric Property</dd>      
     	#end
     	
    #if($element.InverseOf)
-      <dt>is inverse of</dt>
+      <dt>inverse of</dt>
       <dd><span class="parrot-element-ref parrot-property-ref"><a href="#$element.InverseOf.LocalName">$element.InverseOf.Label</a></span></dd>
    #end
 
@@ -102,24 +102,13 @@
    <dd>$element.cardinality</dd>
    #end
    
-   #if(!$element.depictions.isEmpty() || !$element.videos.isEmpty())
-   <dt>Multimedia</dt>
-   #end
-   
-   #if(!$element.depictions.isEmpty())
-   #foreach($depiction in $element.depictions)
-     <dd><img src="$depiction" alt="" /></dd>
-   #end
-   #end
-   
-   #if(!$element.videos.isEmpty())
-   #foreach($video in $element.videos)
-     <dd>
-     <object data="$video">
-		<param name="movie" value="$video" />
-	</object>
-	</dd>
-   #end
+   #if(!$element.relatedDocuments.isEmpty())
+   <dt>Related Documents</dt> 
+   <dd>
+     #foreach($element in $element.relatedDocuments)
+       #parse("html/relatedDocument-detail.vm")
+     #end
+   </dd>
    #end
    
    #if(!$element.inverseRuleReferences.isEmpty())

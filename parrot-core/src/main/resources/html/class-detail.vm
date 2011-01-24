@@ -62,51 +62,21 @@
   #if(!$element.labels.isEmpty())
   <dt>Labels</dt>
    <dd>
-    <p>
-    #foreach($element in $element.labels)
+     #foreach($element in $element.labels)
       #parse("html/label.vm")
     #end
-    </p>
    </dd>
   #end
   
   #if(!$element.relatedDocuments.isEmpty())
   <dt>Related Documents</dt> 
   <dd>
-   #foreach($element in $element.relatedDocuments)
-      	  #parse("html/relatedDocument-detail.vm")
-   #end
+    #foreach($element in $element.relatedDocuments)
+      #parse("html/relatedDocument-detail.vm")
+    #end
   </dd>
   #end
    
-   #if(!$element.depictions.isEmpty())
-   #foreach($depiction in $element.depictions)
-    <dd>
-    <h4>Document related</h4>
-	<div class="toggle_container" style="display: block;"> 
-	  <div class="block">
-	     <img src="$depiction" alt="" />
-	  </div>
-	</div>
-    </dd>
-   #end
-   #end
-   
-   #if(!$element.videos.isEmpty())
-   #foreach($video in $element.videos)
-     <dd>
-     <h4>Document related</h4>
-	 <div class="toggle_container" style="display: block;"> 
-	  <div class="block">
-        <object data="$video">
-			<param name="movie" value="$video" />
-		</object>
-	  </div>
-	 </div>
-	 </dd>
-   #end
-   #end   
-
   </dl>
   <p class="back-to-top">[<a href="#toc">back to top</a>]</p> 
 </div> 

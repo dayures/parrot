@@ -69,18 +69,6 @@ public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObj
 		//return null;
 	}
 
-	public List<String> getDepictions() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
-	}
-
-	public List<String> getVideos() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
-	}
-
 	public Collection<RelatedDocument> getRelatedDocuments(Locale locale) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
@@ -99,7 +87,7 @@ public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObj
 		//return null;
 	}
 
-	public int compareTo(DocumentableOntologicalObject arg0) {
+	public int compareTo(DocumentableOntologicalObject o) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
 		//return 0;
@@ -304,6 +292,5 @@ public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObj
 		throw new UnsupportedOperationException("Method not implemented yet.");
 		//return false;
 	}
-
 
 }

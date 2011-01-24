@@ -49,7 +49,7 @@ public class JenaOWLReader implements DocumentReader {
             	model.read(input.openReader(), base, getJenaFormat(input));	
             }
         	
-        	//model.write(System.out);
+        	model.write(System.out);
             
             loadOntology(model, register);
             loadOntClasses(model, register);

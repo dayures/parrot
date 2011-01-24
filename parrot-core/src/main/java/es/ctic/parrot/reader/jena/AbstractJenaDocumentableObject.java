@@ -14,7 +14,6 @@ import org.apache.log4j.Logger;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.ontology.OntResource;
-import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.ResourceFactory;
@@ -57,6 +56,8 @@ public abstract class AbstractJenaDocumentableObject extends
 	
 	private static final Logger logger = Logger.getLogger(AbstractJenaDocumentableObject.class);
 	private static final String TYPE_TEXT = "text/plain";
+	private static final String TYPE_VIDEO = "video/mpeg";
+	private static final String TYPE_IMAGE = "image/png";
 	
 	private OntResource ontResource;
 	private Collection<Rule> inverseRuleReferences = new HashSet<Rule>();
@@ -274,39 +275,47 @@ public abstract class AbstractJenaDocumentableObject extends
 		return Collections.unmodifiableCollection(inverseRuleReferences);
 	}
 	
-	public List<String> getDepictions() {
+	public Collection<RelatedDocument> getVideosRelated() {
+		Collection<RelatedDocument> videos = new ArrayList<RelatedDocument>();
     	if (getOntResource() == null){
-    		return new ArrayList<String>();
-    	} else {
-			ArrayList<String> depictions = new ArrayList<String>();
-			StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(FOAF_DEPICTION));
-			while(it.hasNext()){
-				Statement statement = it.nextStatement();
-				try {
-					depictions.add(statement.getResource().getURI());
-				} catch (ResourceRequiredException e)  {
-					logger.warn("Ignore triple "+ statement +" because it is not a Object property");
-				}
-			}
-			return depictions;
-    	}
-	}
-	
-	public List<String> getVideos() {
-    	if (getOntResource() == null){
-    		return new ArrayList<String>();
+    		return videos;
     	} else {		
-			ArrayList<String> videos = new ArrayList<String>();
+
 			StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(OG_VIDEO));
 			while(it.hasNext()){
 				Statement statement = it.nextStatement();
 				try{
-					videos.add(statement.getObject().asResource().getURI());
+					RelatedDocument video = new RelatedDocument();
+					video.setUri(statement.getObject().asResource().getURI());
+					video.setType(TYPE_VIDEO);
+					videos.add(video);
 				} catch (ResourceRequiredException e)  {
 					logger.warn("Ignore triple "+ statement +" because it is not a Object property");
 				}
 			}
 			return videos;
+    	}
+	}
+	
+	public Collection<RelatedDocument> getImagesRelated() {
+		Collection<RelatedDocument> images = new ArrayList<RelatedDocument>();
+    	if (getOntResource() == null){
+    		return images;
+    	} else {		
+
+			StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(FOAF_DEPICTION));
+			while(it.hasNext()){
+				Statement statement = it.nextStatement();
+				try{
+					RelatedDocument image = new RelatedDocument();
+					image.setUri(statement.getObject().asResource().getURI());
+					image.setType(TYPE_IMAGE);
+					images.add(image);
+				} catch (ResourceRequiredException e)  {
+					logger.warn("Ignore triple "+ statement +" because it is not a Object property");
+				}
+			}
+			return images;
     	}
 	}
 	
@@ -494,7 +503,7 @@ public abstract class AbstractJenaDocumentableObject extends
 				while (listStatements.hasNext()){
 					Statement statement = listStatements.next();
 					RelatedDocument relatedDocument = new RelatedDocument();
-					relatedDocument.setUri(getSourceDocumentUri(ontModel, sentence.getURI())); // FIXME
+					relatedDocument.setUri(getSourceDocumentUri(ontModel, sentence.getURI()));
 					relatedDocument.setSourceText(statement.getLiteral().getLexicalForm());
 					relatedDocument.setType(TYPE_TEXT); // FIXME now it's fixed to plain/text
 					relatedDocuments.add(relatedDocument);
@@ -502,6 +511,11 @@ public abstract class AbstractJenaDocumentableObject extends
 			}
 		}
 		
+		//add videos
+		relatedDocuments.addAll(getVideosRelated());
+		
+		//add images
+		relatedDocuments.addAll(getImagesRelated());
 		return relatedDocuments;
 	}
 

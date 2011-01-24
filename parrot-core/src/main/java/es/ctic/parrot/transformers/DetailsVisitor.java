@@ -40,8 +40,7 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 		details.setEditors(object.getEditors());
 		details.setContributors(object.getContributors());
 		details.setPreferredPrefix(object.getPreferredPrefix());
-		details.setDepictions(object.getDepictions());
-		details.setVideos(object.getVideos());		
+		details.setRelatedDocuments(object.getRelatedDocuments(locale));
 
 		document.addOntologyDetailView(details);     
 		return details;
@@ -64,8 +63,6 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 		details.setInverseRuleReferences(object.getInverseRuleReferences());
 		details.setInverseReferences(object.getInternalReferences());
 		details.setIndividuals(object.getIndividuals());
-		details.setDepictions(object.getDepictions());
-		details.setVideos(object.getVideos());
 		
 		details.setRelatedDocuments(object.getRelatedDocuments(locale));
 		details.setLabels(object.getLabels(locale));
@@ -89,9 +86,8 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 		details.setInverseRuleReferences(object.getInverseRuleReferences());
 		details.setInverseReferences(object.getInternalReferences());
 		details.setCardinality(object.getCardinality());
-		details.setDepictions(object.getDepictions());
-		details.setVideos(object.getVideos());
 		details.setInverseOf(object.getInverseOf());
+		details.setRelatedDocuments(object.getRelatedDocuments(locale));
 		
         document.addOntologyPropertyDetailView(details);     
 		return details;
@@ -109,8 +105,7 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 		details.setUri(object.getURI());
 		details.addAllTypes(object.getTypes());
 		details.setInverseRuleReferences(object.getInverseRuleReferences());
-		details.setDepictions(object.getDepictions());
-		details.setVideos(object.getVideos());		
+		details.setRelatedDocuments(object.getRelatedDocuments(locale));
 		
 		document.addOntologyIndividualDetailView(details);
 		return details;
@@ -128,14 +123,13 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 		details.setCreators(object.getCreators());
 		details.setContributors(object.getContributors());
 		details.setPublishers(object.getPublishers());
-		details.setDepictions(object.getDepictions());
-		details.setVideos(object.getVideos());		
 		details.setReferencedOntologicalObjects(object.getReferencedOntologicalObjects());
 		details.setRules(object.getRules());
 		details.setRuleSets(object.getRuleSets());
 		details.setPriority(object.getPriority());
 		details.setStrategy(object.getStrategy());
 		details.setParent(object.getParent());
+		details.setRelatedDocuments(object.getRelatedDocuments(locale));
 		
 	    document.addRuleSetDetailView(details);
 	    return details;
@@ -152,10 +146,9 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 		details.setCreators(object.getCreators());
 		details.setContributors(object.getContributors());
 		details.setPublishers(object.getPublishers());
-		details.setDepictions(object.getDepictions());
-		details.setVideos(object.getVideos());	
 		details.setParent(object.getParent());
 		details.setReferencedOntologicalObjects(object.getReferencedOntologicalObjects());
+		details.setRelatedDocuments(object.getRelatedDocuments(locale));
 
 		document.addRuleDetailView(details);
 	    return details;

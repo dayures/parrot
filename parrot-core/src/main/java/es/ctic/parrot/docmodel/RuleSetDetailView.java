@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.DocumentableOntologicalObject;
 import es.ctic.parrot.de.Identifier;
+import es.ctic.parrot.de.RelatedDocument;
 import es.ctic.parrot.de.Rule;
 import es.ctic.parrot.de.RuleSet;
 
@@ -25,9 +26,8 @@ public class RuleSetDetailView implements DetailView{
 	private Collection<String> creators;
 	private Collection<String> contributors;
 	private Collection<String> publishers;
-	private Collection<String> depictions;
-	private Collection<String> videos;
 	private Collection<DocumentableOntologicalObject> referencedOntologicalObjects;
+	private Collection<RelatedDocument> relatedDocuments;
 	private Collection<Rule> rules;
 	private Collection<RuleSet> ruleSets;
 	private DocumentableObject parent;
@@ -121,22 +121,6 @@ public class RuleSetDetailView implements DetailView{
 		return Collections.unmodifiableCollection(contributors);
 	}
 
-	public void setDepictions(Collection<String> depictions) {
-		this.depictions = depictions;
-	}
-
-	public Collection<String> getDepictions() {
-		return Collections.unmodifiableCollection(depictions);
-	}
-
-	public void setVideos(Collection<String> videos) {
-		this.videos = videos;
-	}
-
-	public Collection<String> getVideos() {
-		return Collections.unmodifiableCollection(videos);
-	}
-
 	/**
 	 * @param rules the rules to set
 	 */
@@ -205,5 +189,19 @@ public class RuleSetDetailView implements DetailView{
 	 */
 	public Collection<RuleSet> getRuleSets() {
 		return Collections.unmodifiableCollection(ruleSets);
+	}
+	
+	/**
+	 * @param relatedDocuments the relatedDocuments to set
+	 */
+	public void setRelatedDocuments(Collection<RelatedDocument> relatedDocuments) {
+		this.relatedDocuments = relatedDocuments;
+	}
+
+	/**
+	 * @return the relatedDocuments
+	 */
+	public Collection<RelatedDocument> getRelatedDocuments() {
+		return relatedDocuments;
 	}
 }

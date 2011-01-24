@@ -292,7 +292,7 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 		return parent;
 	}
 
-	public Collection<RelatedDocument> getRelatedDocuments() {
+	public Collection<RelatedDocument> getRelatedDocuments(Locale locale) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
 		//return null;

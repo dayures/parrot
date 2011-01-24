@@ -345,7 +345,7 @@ public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
 		return ruleSetList;
 	}
 
-	public Collection<RelatedDocument> getRelatedDocuments() {
+	public Collection<RelatedDocument> getRelatedDocuments(Locale locale) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
 		//return null;
@@ -362,7 +362,6 @@ public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
 		throw new UnsupportedOperationException("Method not implemented yet.");
 		//return null;
 	}
-	
 
 }
 

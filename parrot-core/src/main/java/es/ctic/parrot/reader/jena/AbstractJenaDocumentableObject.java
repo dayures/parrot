@@ -1,7 +1,6 @@
 package es.ctic.parrot.reader.jena;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -52,6 +51,7 @@ public abstract class AbstractJenaDocumentableObject extends
 	private static final String SKOS_XL_LITERAL_FORM = "http://www.w3.org/2008/05/skos-xl#literalForm";
 	private static final String SKOS_CORE_PREF_LABEL = "http://www.w3.org/2004/02/skos/core#prefLabel";
 	private static final String SKOS_CORE_ALT_LABEL = "http://www.w3.org/2004/02/skos/core#altLabel";
+	
 	private static final Logger logger = Logger.getLogger(AbstractJenaDocumentableObject.class);
 	
 	private OntResource ontResource;
@@ -285,6 +285,86 @@ public abstract class AbstractJenaDocumentableObject extends
        	return !uri.startsWith(RDFS.getURI()) && !uri.startsWith(RDF.getURI()) && !uri.startsWith(OWL.getURI());
     }
 	
+	public Collection<Label> getLabels(){
+   		return getLabels(null);
+   	}
+	
+	public Collection<Label> getLabels(Locale locale){
+		
+		Collection<Label> labels = new HashSet<Label>();
+
+		Collection<Label> skosXLPrefLabels = getSkosxlLabels(SKOS_XL_PREF_LABEL, locale);
+		if (skosXLPrefLabels.isEmpty() == false){
+			labels.addAll(skosXLPrefLabels);
+		}
+
+		Collection<Label> skosXLAltLabels = getSkosxlLabels(SKOS_XL_ALT_LABEL, locale);
+		if (skosXLAltLabels.isEmpty() == false){
+			labels.addAll(skosXLAltLabels);
+		}
+
+		Collection<Label> skosPrefLabels = getLiteralLabels(SKOS_CORE_PREF_LABEL, locale);
+		if (skosPrefLabels.isEmpty() == false){
+			labels.addAll(skosPrefLabels);
+		}
+
+		
+		Collection<Label> skosAltLabels = getLiteralLabels(SKOS_CORE_ALT_LABEL, locale);
+		if (skosAltLabels.isEmpty() == false){
+			labels.addAll(skosAltLabels);
+		}
+
+		Collection<Label> rdfsLabels = getLiteralLabels(RDF_SCHEMA_LABEL, locale);
+		if (rdfsLabels.isEmpty() == false){
+			labels.addAll(rdfsLabels);
+		}
+		
+		return labels;
+	}	
+
+	
+	/**
+	 * @param the uri of the property used to annotate
+	 * @return a collection of literal labels for the uri
+	 */
+	public Collection<Label> getLiteralLabels(String uri, Locale locale) {
+		
+		Collection<Label> literalLabels = new HashSet<Label>();
+
+		OntModel ontModel = getOntResource().getOntModel();
+		StmtIterator listStatements = ontModel.listStatements(getOntResource(), ResourceFactory.createProperty(uri), (RDFNode) null);
+		
+		while (listStatements.hasNext()){
+			Statement statement = listStatements.next();
+			Label literalLabel = new Label();
+			literalLabel.setQualifier(uri);
+			//It cannot applied skosLabel.setUri()
+			literalLabel.setText(statement.getObject().asLiteral().getString());
+			String LanguageTag = statement.getObject().asLiteral().getLanguage(); 
+			if (LanguageTag.equals("") == false){
+				String language = LanguageTag.split("-")[0]; 
+				literalLabel.setLocale(new Locale(language)); // FIXME do it more specified using Locale(String language, String country, String variant)
+			}
+			
+			if (locale != null) {
+				//compare locales
+				if (locale.equals(literalLabel.getLocale())) {
+					logger.debug(literalLabel + " is " + uri + " for resource " + getOntResource());
+					literalLabels.add(literalLabel);
+				} else{
+					logger.debug("Not add label  " + literalLabel + " for resource " + getOntResource() + " because its locale " + literalLabel.getLocale() + " does not match with required locale " + locale);
+				}
+			} else {
+				logger.debug(literalLabel + " is " + uri + " for resource " + getOntResource());
+				literalLabels.add(literalLabel);
+			}
+
+		}
+		
+		return literalLabels;
+	}
+
+	
 	/**
 	 * @return a collection of labels for the skosXL uri
 	 */
@@ -327,189 +407,67 @@ public abstract class AbstractJenaDocumentableObject extends
 		
 		return skosxlLabels;
 	}
+	
 
-	
-	
 	/**
-	 * @param the uri of the property used to annotate
-	 * @return a collection of literal labels for the uri
+	 * 
+	 * @param locale
+	 * @return a collection of related documents for this documentable object
 	 */
-	public Collection<Label> getLiteralLabels(String uri, Locale locale) {
-		
-		Collection<Label> literalLabels = new HashSet<Label>();
+	public Collection<RelatedDocument> getRelatedDocuments(Locale locale) {
 
 		OntModel ontModel = getOntResource().getOntModel();
-		StmtIterator listStatements = ontModel.listStatements(getOntResource(), ResourceFactory.createProperty(uri), (RDFNode) null);
+		Collection<RelatedDocument> relatedDocuments = new HashSet<RelatedDocument>();
 		
-		while (listStatements.hasNext()){
-			Statement statement = listStatements.next();
-			Label literalLabel = new Label();
-			literalLabel.setQualifier(uri);
-			//It cannot applied skosLabel.setUri()
-			literalLabel.setText(statement.getObject().asLiteral().getString());
-			String LanguageTag = statement.getObject().asLiteral().getLanguage(); 
-			if (LanguageTag.equals("") == false){
-				String language = LanguageTag.split("-")[0]; 
-				literalLabel.setLocale(new Locale(language)); // FIXME do it more specified using Locale(String language, String country, String variant)
+		// Only labels that are resource labels 
+		Collection<Label> labels = new HashSet<Label>();
+		for(Label label: getLabels(locale)){
+			if (label.getUri() != null){
+				labels.add(label);
+			}
+		}
+
+		for(Label label: labels){
+			
+			Collection<OntResource> labelOccurrences = new HashSet<OntResource>();
+			Collection<OntResource> sentences = new HashSet<OntResource>();
+			
+			StmtIterator listStatements = ontModel.listStatements((Resource) null, ResourceFactory.createProperty(TELIX_REALIZES), ResourceFactory.createResource(label.getUri()));
+			
+			while (listStatements.hasNext()){
+				Statement statement = listStatements.next();
+				labelOccurrences.add(ontModel.getOntResource(statement.getSubject()));
 			}
 			
-			if (locale != null) {
-				//compare locales
-				if (locale.equals(literalLabel.getLocale())) {
-					logger.debug(literalLabel + " is " + uri + " for resource " + getOntResource());
-					literalLabels.add(literalLabel);
-				} else{
-					logger.debug("Not add label  " + literalLabel + " for resource " + getOntResource() + " because its locale " + literalLabel.getLocale() + " does not match with required locale " + locale);
+			if (labelOccurrences.isEmpty()){
+				return relatedDocuments;
+			}
+			
+			for (OntResource labelOcurrence :labelOccurrences){
+				listStatements = ontModel.listStatements(labelOcurrence, ResourceFactory.createProperty(LINGKNOW_OCCURS), (RDFNode) null );
+				while (listStatements.hasNext()){
+					Statement statement = listStatements.next();
+					sentences.add(ontModel.getOntResource(statement.getObject().asResource()));
 				}
-			} else {
-				logger.debug(literalLabel + " is " + uri + " for resource " + getOntResource());
-				literalLabels.add(literalLabel);
 			}
-
-		}
-		
-		
-		return literalLabels;
-	}
-
 	
-	/**
-	 * @return the source text of a skosXL:prefLabel
-	 */
-	public Collection<String> getSourceTexts(String label) {
-		OntModel ontModel = getOntResource().getOntModel();
-		Collection<String> sourceTexts = new ArrayList<String>();
-		
-		Collection<OntResource> labelOccurrences = new HashSet<OntResource>();
-		Collection<OntResource> sentences = new HashSet<OntResource>();
-		
-		StmtIterator listStatements = ontModel.listStatements((Resource) null, ResourceFactory.createProperty(TELIX_REALIZES), ResourceFactory.createResource(label));
-		
-		while (listStatements.hasNext()){
-			Statement statement = listStatements.next();
-			labelOccurrences.add(ontModel.getOntResource(statement.getSubject()));
-		}
-		
-		if (labelOccurrences.isEmpty()){
-			return sourceTexts;
-		}
-		
-		for (OntResource labelOcurrence :labelOccurrences){
-			listStatements = ontModel.listStatements(labelOcurrence, ResourceFactory.createProperty(LINGKNOW_OCCURS), (RDFNode) null );
-			while (listStatements.hasNext()){
-				Statement statement = listStatements.next();
-				sentences.add(ontModel.getOntResource(statement.getObject().asResource()));
+			if (sentences.isEmpty()){
+				return relatedDocuments;
 			}
-		}
-
-		if (sentences.isEmpty()){
-			return sourceTexts;
-		}
-		
-		for (OntResource sentence :sentences){
-			listStatements = ontModel.listStatements(sentence, ResourceFactory.createProperty(LINGKNOW_VALUE), (RDFNode) null );
-			while (listStatements.hasNext()){
-				Statement statement = listStatements.next();
-				sourceTexts.add(statement.getLiteral().getLexicalForm());
-			}
-		}
-		
-		return sourceTexts;
-	}
-	
-	
-	public Collection<RelatedDocument> getRelatedDocuments() {
-		
-		OntModel ontModel = getOntResource().getOntModel();
-		String label = null;
-		Collection<RelatedDocument> relatedDocuments = new HashSet<RelatedDocument>();
-
-		StmtIterator listStatements = ontModel.listStatements(getOntResource(), ResourceFactory.createProperty(SKOS_XL_PREF_LABEL), (RDFNode) null);
-		while (listStatements.hasNext()){
-			Statement statement = listStatements.next();
-			label = ontModel.getOntResource(statement.getObject().asResource()).getURI();
-		}
-		
-		if (label == null){
-			return relatedDocuments;
-		}
-
-		
-		Collection<OntResource> labelOccurrences = new HashSet<OntResource>();
-		Collection<OntResource> sentences = new HashSet<OntResource>();
-		
-		listStatements = ontModel.listStatements((Resource) null, ResourceFactory.createProperty(TELIX_REALIZES), ResourceFactory.createResource(label));
-		
-		while (listStatements.hasNext()){
-			Statement statement = listStatements.next();
-			labelOccurrences.add(ontModel.getOntResource(statement.getSubject()));
-		}
-		
-		if (labelOccurrences.isEmpty()){
-			return relatedDocuments;
-		}
-		
-		for (OntResource labelOcurrence :labelOccurrences){
-			listStatements = ontModel.listStatements(labelOcurrence, ResourceFactory.createProperty(LINGKNOW_OCCURS), (RDFNode) null );
-			while (listStatements.hasNext()){
-				Statement statement = listStatements.next();
-				sentences.add(ontModel.getOntResource(statement.getObject().asResource()));
-			}
-		}
-
-		if (sentences.isEmpty()){
-			return relatedDocuments;
-		}
-		
-		for (OntResource sentence :sentences){
-			listStatements = ontModel.listStatements(sentence, ResourceFactory.createProperty(LINGKNOW_VALUE), (RDFNode) null );
-			while (listStatements.hasNext()){
-				Statement statement = listStatements.next();
-				RelatedDocument relatedDocument = new RelatedDocument();
-				relatedDocument.setUri(sentence.getURI());
-				relatedDocument.setSourceText(statement.getLiteral().getLexicalForm());
-				relatedDocuments.add(relatedDocument);
+			
+			for (OntResource sentence :sentences){
+				listStatements = ontModel.listStatements(sentence, ResourceFactory.createProperty(LINGKNOW_VALUE), (RDFNode) null );
+				while (listStatements.hasNext()){
+					Statement statement = listStatements.next();
+					RelatedDocument relatedDocument = new RelatedDocument();
+					relatedDocument.setUri(sentence.getURI());
+					relatedDocument.setSourceText(statement.getLiteral().getLexicalForm());
+					relatedDocuments.add(relatedDocument);
+				}
 			}
 		}
 		
 		return relatedDocuments;
 	}
-	
-	public Collection<Label> getLabels(){
-   		return getLabels(null);
-   	}
-	
-	public Collection<Label> getLabels(Locale locale){
-		
-		Collection<Label> labels = new HashSet<Label>();
-
-		Collection<Label> skosXLPrefLabels = getSkosxlLabels(SKOS_XL_PREF_LABEL, locale);
-		if (skosXLPrefLabels.isEmpty() == false){
-			labels.addAll(skosXLPrefLabels);
-		}
-
-		Collection<Label> skosXLAltLabels = getSkosxlLabels(SKOS_XL_ALT_LABEL, locale);
-		if (skosXLAltLabels.isEmpty() == false){
-			labels.addAll(skosXLAltLabels);
-		}
-
-		Collection<Label> skosPrefLabels = getLiteralLabels(SKOS_CORE_PREF_LABEL, locale);
-		if (skosPrefLabels.isEmpty() == false){
-			labels.addAll(skosPrefLabels);
-		}
-
-		
-		Collection<Label> skosAltLabels = getLiteralLabels(SKOS_CORE_ALT_LABEL, locale);
-		if (skosAltLabels.isEmpty() == false){
-			labels.addAll(skosAltLabels);
-		}
-
-		Collection<Label> rdfsLabels = getLiteralLabels(RDF_SCHEMA_LABEL, locale);
-		if (rdfsLabels.isEmpty() == false){
-			labels.addAll(rdfsLabels);
-		}
-		
-		return labels;
-	}	
 
 }

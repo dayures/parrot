@@ -44,6 +44,18 @@ public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObj
 		return "anchor"+getIdentifier().hashCode();
 	}
 
+	public void addInverseRuleReference(Rule rule) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Method not implemented yet.");
+		//
+	}
+
+	public Collection<Rule> getInverseRuleReferences() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Method not implemented yet.");
+		//return null;
+	}
+
 	public Object accept(DocumentableObjectVisitor visitor)
 			throws TransformerException {
 		// TODO Auto-generated method stub
@@ -69,19 +81,25 @@ public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObj
 		//return null;
 	}
 
-	public void addInverseRuleReference(Rule rule) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Method not implemented yet.");
-		//
-	}
-
-	public Collection<Rule> getInverseRuleReferences() {
+	public Collection<RelatedDocument> getRelatedDocuments(Locale locale) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
 		//return null;
 	}
 
-	public int compareTo(DocumentableOntologicalObject o) {
+	public Collection<Label> getLabels(Locale locale) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Method not implemented yet.");
+		//return null;
+	}
+
+	public Collection<Label> getLabels() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Method not implemented yet.");
+		//return null;
+	}
+
+	public int compareTo(DocumentableOntologicalObject arg0) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
 		//return 0;
@@ -285,24 +303,6 @@ public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObj
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
 		//return false;
-	}
-
-	public Collection<RelatedDocument> getRelatedDocuments() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
-	}
-
-	public Collection<Label> getLabels(Locale locale) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
-	}
-
-	public Collection<Label> getLabels() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
 	}
 
 

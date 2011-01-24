@@ -67,7 +67,7 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 		details.setDepictions(object.getDepictions());
 		details.setVideos(object.getVideos());
 		
-		details.setRelatedDocuments(object.getRelatedDocuments());
+		details.setRelatedDocuments(object.getRelatedDocuments(locale));
 		details.setLabels(object.getLabels(locale));
 
         document.addOntologyClassDetailView(details);     

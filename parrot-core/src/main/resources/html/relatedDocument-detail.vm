@@ -1,6 +1,19 @@
-<div class="block"> 
-  <h4>Document related: <a href="$element.Uri">$element.Uri</a></h4>
-   #if($element.sourceText)
-   <p>$element.sourceText</p>      
-   #end
+<h4>Document related: <a href="$element.Uri">$element.Uri</a></h4>
+<div class="toggle_container" style="display: block;"> 
+  <div class="block">
+     <a href="$element.Uri">
+     #if($element.type == "application/pdf")
+       <img src="images/pdf-icon.png" alt="pdf icon" />
+     #end
+     #if($element.type == "text/plain")
+       <img src="images/text-icon.png" alt="text icon" />
+     #end
+     #if($element.type == "application/vnd.ms-powerpoint")
+       <img src="images/ppt-icon.png" alt="ppt icon" />
+     #end
+     </a>  
+     #if($element.sourceText)
+     <p>$element.sourceText</p>      
+     #end
+  </div>
 </div>

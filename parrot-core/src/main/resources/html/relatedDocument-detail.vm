@@ -27,7 +27,7 @@
      
      #if($element.sourceText)
      <p>$element.sourceText ...</p>      
-     <p class="relatedDocumentUrl"><a href="$element.Uri">$element.Uri</a><p>
+     <p class="relatedDocumentUrl"><a href="$element.Uri">$element.Uri</a></p>
      #end
 
   </div>

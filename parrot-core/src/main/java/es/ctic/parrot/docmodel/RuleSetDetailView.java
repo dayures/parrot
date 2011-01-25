@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.DocumentableOntologicalObject;
 import es.ctic.parrot.de.Identifier;
+import es.ctic.parrot.de.Label;
 import es.ctic.parrot.de.RelatedDocument;
 import es.ctic.parrot.de.Rule;
 import es.ctic.parrot.de.RuleSet;
@@ -27,6 +28,7 @@ public class RuleSetDetailView implements DetailView{
 	private Collection<String> contributors;
 	private Collection<String> publishers;
 	private Collection<DocumentableOntologicalObject> referencedOntologicalObjects;
+	private Collection<Label> labels;
 	private Collection<RelatedDocument> relatedDocuments;
 	private Collection<Rule> rules;
 	private Collection<RuleSet> ruleSets;
@@ -189,6 +191,20 @@ public class RuleSetDetailView implements DetailView{
 	 */
 	public Collection<RuleSet> getRuleSets() {
 		return Collections.unmodifiableCollection(ruleSets);
+	}
+	
+	/**
+	 * @param labels the labels to set
+	 */
+	public void setLabels(Collection<Label> labels) {
+		this.labels = labels;
+	}
+
+	/**
+	 * @return the labels
+	 */
+	public Collection<Label> getLabels() {
+		return Collections.unmodifiableCollection(labels);
 	}
 	
 	/**

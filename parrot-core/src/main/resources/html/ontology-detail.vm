@@ -35,6 +35,15 @@
    #end
    #end
    
+   #if(!$element.labels.isEmpty())
+   <dt>Labels</dt>
+   <dd>
+   #foreach($element in $element.labels)
+     <span>$element.text</span>#if ($foreach.hasNext), #end
+   #end
+   </dd>
+   #end
+   
    #if(!$element.relatedDocuments.isEmpty())
    <dt>Related Documents</dt> 
    <dd>

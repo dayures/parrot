@@ -14,9 +14,11 @@
      </a> 
 
      #if($element.type == "video/mpeg")
-     <object data="$element.uri">
-		<param name="movie" value="$element.uri" />
+	 <object type="application/x-shockwave-flash" width="400" height="329" data="$element.uri">
+	 	<param name="movie" value="$element.uri" />
+	 	<param name="wmode" value="transparent" />
 	 </object>
+	 
 	 #end
 
      #if($element.type == "image/png")

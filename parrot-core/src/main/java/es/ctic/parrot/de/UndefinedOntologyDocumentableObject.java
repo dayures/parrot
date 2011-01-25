@@ -293,4 +293,8 @@ public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObj
 		//return false;
 	}
 
+    public String getKindString() {
+        return Kind.UNDEFINED.toString();
+    }
+
 }

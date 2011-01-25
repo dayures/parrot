@@ -41,6 +41,10 @@ public class Glossary {
         return glossaryEntries.isEmpty();
     }
     
+    public int size() {
+        return glossaryEntries.size();
+    }
+    
 }
 
 class GlossaryEntryComparator implements Comparator<String> {

@@ -177,5 +177,9 @@ public class OntologyClassJenaImpl extends AbstractJenaDocumentableObject implem
 	public void setDisjointClasses(Collection<OntologyClass> disjointClasses) {
 		this.disjointClasses = disjointClasses;
 	}
+
+    public String getKindString() {
+        return Kind.ONTOLOGY_CLASS.toString();
+    }
 	
 }

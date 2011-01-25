@@ -9,6 +9,7 @@ import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 
 import es.ctic.parrot.de.DocumentableObjectRegister;
+import es.ctic.parrot.de.DocumentableObject.Kind;
 import es.ctic.parrot.transformers.DocumentableObjectVisitor;
 import es.ctic.parrot.transformers.TransformerException;
 
@@ -60,4 +61,8 @@ public class OntologyJenaImpl extends AbstractJenaDocumentableObject implements 
 		return contributors;
 	}
 
+    public String getKindString() {
+        return Kind.ONTOLOGY.toString();
+    }
+    
 }

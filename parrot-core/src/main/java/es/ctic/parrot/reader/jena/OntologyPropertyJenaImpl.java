@@ -23,6 +23,7 @@ import com.hp.hpl.jena.vocabulary.RDF;
 import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.de.OntologyProperty;
+import es.ctic.parrot.de.DocumentableObject.Kind;
 import es.ctic.parrot.transformers.DocumentableObjectVisitor;
 import es.ctic.parrot.transformers.TransformerException;
 
@@ -276,4 +277,9 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 			Collection<OntologyProperty> disjointProperties) {
 		this.disjointProperties = disjointProperties;
 	}
+
+    public String getKindString() {
+        return Kind.ONTOLOGY_PROPERTY.toString();
+    }
+    
 }

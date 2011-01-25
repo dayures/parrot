@@ -89,10 +89,6 @@ public abstract class AbstractJenaDocumentableObject extends
         
         Collection<Label> labels = getLabels(locale);
         
-        if (labels.isEmpty()){
-        	return URIUtils.getReference(getURI());
-        }
-        
         /* Preferred order:
          * 
          * http://www.w3.org/2008/05/skos-xl#prefLabel
@@ -110,25 +106,25 @@ public abstract class AbstractJenaDocumentableObject extends
         }
 
         for (Label label : labels){
-        	if (label.getQualifier().equals(SKOS_XL_ALT_LABEL)) {
-        		return label.getText();
-        	}
-        }
-
-        for (Label label : labels){
         	if (label.getQualifier().equals(SKOS_CORE_PREF_LABEL)) {
         		return label.getText();
         	}
         }
         
         for (Label label : labels){
-        	if (label.getQualifier().equals(SKOS_CORE_ALT_LABEL)) {
-        		return label.getText();
-        	}
+            if (label.getQualifier().equals(RDF_SCHEMA_LABEL)) {
+                return label.getText();
+            }
         }
 
         for (Label label : labels){
-        	if (label.getQualifier().equals(RDF_SCHEMA_LABEL)) {
+            if (label.getQualifier().equals(SKOS_XL_ALT_LABEL)) {
+                return label.getText();
+            }
+        }
+
+        for (Label label : labels){
+        	if (label.getQualifier().equals(SKOS_CORE_ALT_LABEL)) {
         		return label.getText();
         	}
         }

@@ -337,27 +337,26 @@ public abstract class AbstractJenaDocumentableObject extends
 			labels.addAll(skosXLPrefLabels);
 		}
 
+        Collection<Label> skosPrefLabels = getLiteralLabels(SKOS_CORE_PREF_LABEL, locale);
+        if (skosPrefLabels.isEmpty() == false && labels.isEmpty()) { // hidden by the previous labels
+            labels.addAll(skosPrefLabels);
+        }
+
+        Collection<Label> rdfsLabels = getLiteralLabels(RDF_SCHEMA_LABEL, locale);
+        if (rdfsLabels.isEmpty() == false && labels.isEmpty()) { // hidden by the previous labels
+            labels.addAll(rdfsLabels);
+        }
+        
 		Collection<Label> skosXLAltLabels = getSkosxlLabels(SKOS_XL_ALT_LABEL, locale);
 		if (skosXLAltLabels.isEmpty() == false){
 			labels.addAll(skosXLAltLabels);
 		}
-
-		Collection<Label> skosPrefLabels = getLiteralLabels(SKOS_CORE_PREF_LABEL, locale);
-		if (skosPrefLabels.isEmpty() == false){
-			labels.addAll(skosPrefLabels);
-		}
-
 		
 		Collection<Label> skosAltLabels = getLiteralLabels(SKOS_CORE_ALT_LABEL, locale);
 		if (skosAltLabels.isEmpty() == false){
 			labels.addAll(skosAltLabels);
 		}
 
-		Collection<Label> rdfsLabels = getLiteralLabels(RDF_SCHEMA_LABEL, locale);
-		if (rdfsLabels.isEmpty() == false){
-			labels.addAll(rdfsLabels);
-		}
-		
 		return labels;
 	}	
 

@@ -251,6 +251,9 @@ public abstract class AbstractJenaDocumentableObject extends
 			} else {
 				logger.debug("Not found in register: " + identifier);
 				logger.debug("resource.getURI() "+ resource.getURI());
+				
+				// FIXME resource.getURI could be null
+				
 				if (isDomainSpecific(resource.getURI())) {
 					_resource = (TR) new UndefinedOntologyDocumentableObject(resource.getURI());
 					documentableObjectList.add(_resource);
@@ -387,13 +390,13 @@ public abstract class AbstractJenaDocumentableObject extends
 			if (locale != null) {
 				//compare locales
 				if (locale.equals(literalLabel.getLocale())) {
-					logger.debug(literalLabel + " is " + uri + " for resource " + getOntResource());
+					//logger.debug(literalLabel + " is " + uri + " for resource " + getOntResource());
 					literalLabels.add(literalLabel);
 				} else{
-					logger.debug("Not add label  " + literalLabel + " for resource " + getOntResource() + " because its locale " + literalLabel.getLocale() + " does not match with required locale " + locale);
+					//logger.debug("Not add label  " + literalLabel + " for resource " + getOntResource() + " because its locale " + literalLabel.getLocale() + " does not match with required locale " + locale);
 				}
 			} else {
-				logger.debug(literalLabel + " is " + uri + " for resource " + getOntResource());
+				//logger.debug(literalLabel + " is " + uri + " for resource " + getOntResource());
 				literalLabels.add(literalLabel);
 			}
 
@@ -431,13 +434,13 @@ public abstract class AbstractJenaDocumentableObject extends
 				if (locale != null) {
 					//compare locales
 					if (locale.equals(skosxlLabel.getLocale())) {
-						logger.debug(skosxlLabel + " is " + uri + " for resource " + getOntResource());
+						//logger.debug(skosxlLabel + " is " + uri + " for resource " + getOntResource());
 						skosxlLabels.add(skosxlLabel);
 					} else{
-						logger.debug("Not add label  " + skosxlLabel + " for resource " + getOntResource() + " because its locale " + skosxlLabel.getLocale() + " does not match with required locale " + locale);
+						//logger.debug("Not add label  " + skosxlLabel + " for resource " + getOntResource() + " because its locale " + skosxlLabel.getLocale() + " does not match with required locale " + locale);
 					}
 				} else {
-					logger.debug(skosxlLabel + " is " + uri + " for resource " + getOntResource());
+					//logger.debug(skosxlLabel + " is " + uri + " for resource " + getOntResource());
 					skosxlLabels.add(skosxlLabel);
 				}
 			}
@@ -464,6 +467,7 @@ public abstract class AbstractJenaDocumentableObject extends
 				labels.add(label);
 			}
 		}
+		
 
 		for(Label label: labels){
 			
@@ -477,10 +481,6 @@ public abstract class AbstractJenaDocumentableObject extends
 				labelOccurrences.add(ontModel.getOntResource(statement.getSubject()));
 			}
 			
-			if (labelOccurrences.isEmpty()){
-				return relatedDocuments;
-			}
-			
 			for (OntResource labelOcurrence :labelOccurrences){
 				listStatements = ontModel.listStatements(labelOcurrence, ResourceFactory.createProperty(LINGKNOW_OCCURS), (RDFNode) null );
 				while (listStatements.hasNext()){
@@ -489,10 +489,6 @@ public abstract class AbstractJenaDocumentableObject extends
 				}
 			}
 	
-			if (sentences.isEmpty()){
-				return relatedDocuments;
-			}
-			
 			for (OntResource sentence :sentences){
 				listStatements = ontModel.listStatements(sentence, ResourceFactory.createProperty(LINGKNOW_VALUE), (RDFNode) null );
 				while (listStatements.hasNext()){

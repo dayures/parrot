@@ -93,6 +93,10 @@ p.back-to-top {
 	background-image: url("images/icon-rule-24.png");
 }
 
+.parrot-label-locale {
+	color: green;
+}
+
 .toggle_container {
 	margin: 0 0 5px;
 	padding: 0;

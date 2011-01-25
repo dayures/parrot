@@ -1,4 +1,4 @@
-<h4>Document related: <a href="$element.Uri">$element.Uri</a></h4>
+<!-- <h4>Related document</h4> -->
 <div class="toggle_container" style="display: block;"> 
   <div class="block">
      <a href="$element.Uri">
@@ -20,12 +20,14 @@
 	 #end
 
      #if($element.type == "image/png")
-	<img src="$element.uri" alt=""/>
+	 <a href="$element.uri"><img src="$element.uri" alt="Related image"/></a>
 	 #end
      
      #if($element.sourceText)
-     <p>$element.sourceText</p>      
+     <p>$element.sourceText ...</p>      
+     <p class="relatedDocumentUrl"><a href="$element.Uri">$element.Uri</a><p>
      #end
+
   </div>
 </div>
 

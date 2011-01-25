@@ -54,4 +54,10 @@ Rules:
 #end
 </p>
 
+<p>
+#if(!$document.glossary.isEmpty())
+<a href="#glossary">Glossary</a>
+#end
+</p>
+
 </div>

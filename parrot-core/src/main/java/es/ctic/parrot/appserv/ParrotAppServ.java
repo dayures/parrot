@@ -17,6 +17,7 @@ import es.ctic.parrot.reader.rifle.RiflePSReader;
 import es.ctic.parrot.reader.rifle.RifleXmlReader;
 import es.ctic.parrot.transformers.DetailsVisitor;
 import es.ctic.parrot.transformers.DocumentableObjectVisitor;
+import es.ctic.parrot.transformers.GlossaryVisitor;
 import es.ctic.parrot.transformers.OntologyInternalReferenceResolver;
 import es.ctic.parrot.transformers.RuleToOntologyReferenceResolver;
 import es.ctic.parrot.transformers.TransformerException;
@@ -93,11 +94,13 @@ public class ParrotAppServ {
     }
 
     private Document transformToDocument(Collection<DocumentableObject> documentableObjects, Locale locale) throws TransformerException {
-        Document document = new Document();
+        Document document = new Document(locale);
 		document.setTitle("Parrot"); // FIXME
         DetailsVisitor detailVisitor = new DetailsVisitor(document, locale);
+        GlossaryVisitor glossaryVisitor = new GlossaryVisitor(document, locale);
 		for (DocumentableObject documentableObject : documentableObjects) {
 			documentableObject.accept(detailVisitor);
+			documentableObject.accept(glossaryVisitor);
 		}
         return document;
     }

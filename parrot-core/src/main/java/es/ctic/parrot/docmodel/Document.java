@@ -2,17 +2,23 @@ package es.ctic.parrot.docmodel;
 
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Locale;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
 public class Document {
 	private String title;
-	private SortedSet<OntologyDetailView> ontologyDetailViews = new TreeSet<OntologyDetailView>(new DetailViewComparator());
-	private SortedSet<OntologyClassDetailView> ontologyClassDetailViews = new TreeSet<OntologyClassDetailView>(new DetailViewComparator());
-	private SortedSet<OntologyPropertyDetailView> ontologyPropertyDetailViews = new TreeSet<OntologyPropertyDetailView>(new DetailViewComparator());
-    private SortedSet<RuleDetailView> ruleDetailViews = new TreeSet<RuleDetailView>(new DetailViewComparator());
-    private SortedSet<RuleSetDetailView> ruleSetDetailViews = new TreeSet<RuleSetDetailView>(new DetailViewComparator());
-    private SortedSet<OntologyIndividualDetailView> ontologyIndividualDetailViews = new TreeSet<OntologyIndividualDetailView>(new DetailViewComparator());
+	private final SortedSet<OntologyDetailView> ontologyDetailViews = new TreeSet<OntologyDetailView>(new DetailViewComparator());
+	private final SortedSet<OntologyClassDetailView> ontologyClassDetailViews = new TreeSet<OntologyClassDetailView>(new DetailViewComparator());
+	private final SortedSet<OntologyPropertyDetailView> ontologyPropertyDetailViews = new TreeSet<OntologyPropertyDetailView>(new DetailViewComparator());
+    private final SortedSet<RuleDetailView> ruleDetailViews = new TreeSet<RuleDetailView>(new DetailViewComparator());
+    private final SortedSet<RuleSetDetailView> ruleSetDetailViews = new TreeSet<RuleSetDetailView>(new DetailViewComparator());
+    private final SortedSet<OntologyIndividualDetailView> ontologyIndividualDetailViews = new TreeSet<OntologyIndividualDetailView>(new DetailViewComparator());
+    private final Glossary glossary;
+    
+    public Document(Locale locale) {
+        this.glossary = new Glossary(locale);
+    }
 	
 	public String getTitle() {
 		return this.title;
@@ -68,6 +74,10 @@ public class Document {
 	public void addOntologyIndividualDetailView(OntologyIndividualDetailView details) {
 		this.ontologyIndividualDetailViews.add(details);
 	}
+
+    public Glossary getGlossary() {
+        return glossary;
+    }
     
 }
 
@@ -82,3 +92,4 @@ class DetailViewComparator implements Comparator<DetailView> {
 	}
 	
 }
+

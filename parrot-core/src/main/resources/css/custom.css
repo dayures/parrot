@@ -97,6 +97,10 @@ p.back-to-top {
 	color: green;
 }
 
+.parrot-pref-label {
+	font-weight:bold;
+}
+
 .toggle_container {
 	margin: 0 0 5px;
 	padding: 0;

@@ -1,8 +1,8 @@
 #foreach($label in $element.labels)
-<span class="parrot-label"><span class="parrot-label-text">$label.text</span>
+#if ($label.isPrefLabel())<span class="parrot-pref-label">#else<span class="parrot-label">#end
+<span class="parrot-label-text">$label.text</span>
   #if ($label.locale)
   <span class="parrot-label-locale">[$label.locale]</span>
   #end
 </span>#if ($foreach.hasNext), #end
 #end
-

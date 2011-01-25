@@ -3,6 +3,10 @@ package es.ctic.parrot.de;
 import java.util.Locale;
 
 public class Label {
+	
+	private static final String SKOS_XL_PREF_LABEL = "http://www.w3.org/2008/05/skos-xl#prefLabel";
+	private static final String SKOS_CORE_PREF_LABEL = "http://www.w3.org/2004/02/skos/core#prefLabel";
+	
 	private String qualifier;
 	private String uri;
 	private String text;
@@ -61,6 +65,15 @@ public class Label {
 	public String toString(){
 		return text;
 		
+	}
+	
+	public boolean isPrefLabel(){
+		if (this.getQualifier().equals(SKOS_XL_PREF_LABEL) || this.getQualifier().equals(SKOS_CORE_PREF_LABEL)){
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 	

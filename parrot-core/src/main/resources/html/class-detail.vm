@@ -69,7 +69,7 @@
   #end
   
   #if(!$element.relatedDocuments.isEmpty())
-  <dt>Related Documents</dt> 
+  <dt>Related documents</dt> 
   <dd>
     #foreach($element in $element.relatedDocuments)
       #parse("html/relatedDocument-detail.vm")

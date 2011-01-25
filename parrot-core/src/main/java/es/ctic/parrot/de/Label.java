@@ -6,6 +6,7 @@ public class Label {
 	
 	private static final String SKOS_XL_PREF_LABEL = "http://www.w3.org/2008/05/skos-xl#prefLabel";
 	private static final String SKOS_CORE_PREF_LABEL = "http://www.w3.org/2004/02/skos/core#prefLabel";
+	private static final String RDFS_LABEL = "http://www.w3.org/2000/01/rdf-schema#label";
 	
 	private String qualifier;
 	private String uri;
@@ -67,11 +68,10 @@ public class Label {
 		
 	}
 	
-	public boolean isPrefLabel(){
-		if (this.getQualifier().equals(SKOS_XL_PREF_LABEL) || this.getQualifier().equals(SKOS_CORE_PREF_LABEL)){
+	public boolean isPrefLabel() {
+		if (this.getQualifier().equals(SKOS_XL_PREF_LABEL) || this.getQualifier().equals(SKOS_CORE_PREF_LABEL) || this.getQualifier().equals(RDFS_LABEL)){
 			return true;
-		}
-		else {
+		} else {
 			return false;
 		}
 	}

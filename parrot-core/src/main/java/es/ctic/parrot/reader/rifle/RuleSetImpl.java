@@ -438,8 +438,15 @@ public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
 	public Collection<Label> getLiteralLabels(String uri, Locale locale) {
 		
 		Collection<Label> literalLabels = new HashSet<Label>();
+		OntModel ontModel = null;
+		
+		if (getOntResource() == null){
+			return literalLabels;
+		} else {
+			ontModel = getOntResource().getOntModel();
+		}
+		
 
-		OntModel ontModel = getOntResource().getOntModel();
 		StmtIterator listStatements = ontModel.listStatements(getOntResource(), ResourceFactory.createProperty(uri), (RDFNode) null);
 		
 		while (listStatements.hasNext()){
@@ -479,7 +486,13 @@ public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
 	public Collection<Label> getSkosxlLabels(String uri, Locale locale) {
 
 		Collection<Label> skosxlLabels = new HashSet<Label>();
-		OntModel ontModel = getOntResource().getOntModel();
+		OntModel ontModel = null;
+		
+		if (getOntResource() == null){
+			return skosxlLabels;
+		} else {
+			ontModel = getOntResource().getOntModel();
+		}
 		
 		StmtIterator listStatements = ontModel.listStatements(getOntResource(), ResourceFactory.createProperty(uri), (RDFNode) null);
 		
@@ -524,8 +537,15 @@ public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
 	 */
 	public Collection<RelatedDocument> getRelatedDocuments(Locale locale) {
 
-		OntModel ontModel = getOntResource().getOntModel();
 		Collection<RelatedDocument> relatedDocuments = new HashSet<RelatedDocument>();
+		OntModel ontModel = null;
+		
+		if (getOntResource() == null){
+			return relatedDocuments;
+		} else {
+			ontModel = getOntResource().getOntModel();
+		}
+		
 		
 		// Only labels that are resource labels 
 		Collection<Label> labels = new HashSet<Label>();
@@ -534,6 +554,7 @@ public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
 				labels.add(label);
 			}
 		}
+		
 
 		for(Label label: labels){
 			
@@ -547,10 +568,6 @@ public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
 				labelOccurrences.add(ontModel.getOntResource(statement.getSubject()));
 			}
 			
-			if (labelOccurrences.isEmpty()){
-				return relatedDocuments;
-			}
-			
 			for (OntResource labelOcurrence :labelOccurrences){
 				listStatements = ontModel.listStatements(labelOcurrence, ResourceFactory.createProperty(LINGKNOW_OCCURS), (RDFNode) null );
 				while (listStatements.hasNext()){
@@ -559,10 +576,6 @@ public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
 				}
 			}
 	
-			if (sentences.isEmpty()){
-				return relatedDocuments;
-			}
-			
 			for (OntResource sentence :sentences){
 				listStatements = ontModel.listStatements(sentence, ResourceFactory.createProperty(LINGKNOW_VALUE), (RDFNode) null );
 				while (listStatements.hasNext()){

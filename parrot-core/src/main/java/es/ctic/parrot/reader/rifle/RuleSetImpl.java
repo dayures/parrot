@@ -33,7 +33,6 @@ import es.ctic.parrot.de.RelatedDocument;
 import es.ctic.parrot.de.Rule;
 import es.ctic.parrot.de.RuleSet;
 import es.ctic.parrot.de.URIIdentifier;
-import es.ctic.parrot.de.DocumentableObject.Kind;
 import es.ctic.parrot.transformers.DocumentableObjectVisitor;
 import es.ctic.parrot.transformers.TransformerException;
 import es.ctic.parrot.utils.URIUtils;

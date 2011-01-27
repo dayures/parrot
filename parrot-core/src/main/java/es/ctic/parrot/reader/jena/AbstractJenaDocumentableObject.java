@@ -245,20 +245,19 @@ public abstract class AbstractJenaDocumentableObject extends
 			
 			TR _resource = (TR) this.getRegister().findDocumentableObject(identifier); 
 
-			if (_resource != null) { // do not add null elements in the list 
-				logger.debug("Added (not null) " + _resource);
+			if (_resource != null) { 
 				documentableObjectList.add(_resource);
-			} else {
-				logger.debug("Not found in register: " + identifier);
-				logger.debug("resource.getURI() "+ resource.getURI());
-				
-				// FIXME resource.getURI could be null
-				
-				if (isDomainSpecific(resource.getURI())) {
-					_resource = (TR) new UndefinedOntologyDocumentableObject(resource.getURI());
-					documentableObjectList.add(_resource);
-				} else {
-					logger.debug("Not added " + identifier + " (not domain specific)");
+			} else {  // do not add null elements in the list
+				// logger.debug("Not found in register: " + identifier);
+				if (resource.isAnon()){
+					logger.debug("Not added in the list the anon resource: " + resource.getId());
+				}else {
+					if (isDomainSpecific(resource.getURI())) {
+						_resource = (TR) new UndefinedOntologyDocumentableObject(resource.getURI());
+						documentableObjectList.add(_resource);
+					} else {
+						logger.debug("Not added in the list the resource " + identifier + " (not domain specific)");
+					}
 				}
 
 			}

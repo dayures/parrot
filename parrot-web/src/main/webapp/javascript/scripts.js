@@ -48,7 +48,7 @@ function moreURIs() {
 
 		var inp = document.createElement("input");
 		inp.setAttribute("type", "text");
-		inp.setAttribute("style", "width:80%");
+//		inp.setAttribute("style", "width:80%");
 		inp.setAttribute("size", "100");
 		inp.setAttribute("value", "http://");
 		inp.setAttribute("name", "documentUri");

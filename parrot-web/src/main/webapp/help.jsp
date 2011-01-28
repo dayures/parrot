@@ -185,8 +185,8 @@ currently supported by PARROT.</p>
         language tag. In some cases, it is assumed that <em>prefLabel</em>
         assumes the role of the <em>label</em> for presentation purposes.</td>
       <td>http://www.w3.org/2004/02/skos/core#</td>
-      <td><img src="images/not-supported-yet.png" height="34" width="39"
-        alt="Currently not supported"> </td>
+      <td><img alt="Currently supported"
+        src="images/supported.png" width="32" height="32"></td>
     </tr>
     <tr>
       <td><em>altLabel</em></td>
@@ -195,8 +195,8 @@ currently supported by PARROT.</p>
       <td>An alternative label of a resource. The range is a literal with a
         language tag.</td>
       <td>http://www.w3.org/2004/02/skos/core#</td>
-      <td><img src="images/not-supported-yet.png" height="34" width="39"
-        alt="Currently not supported"> </td>
+      <td><img alt="Currently supported"
+        src="images/supported.png" width="32" height="32"></td>
     </tr>
     <tr>
       <td><em>prefLabel*</em></td>
@@ -205,8 +205,8 @@ currently supported by PARROT.</p>
       <td>The preferred label of a resource. The range of the property is an
         instance of the class LexicalLabel.</td>
       <td>http://www.w3.org/2008/05/skos-xl#</td>
-      <td><img src="images/not-supported-yet.png" height="34" width="39"
-        alt="Currently not supported"> </td>
+      <td><img alt="Currently supported"
+        src="images/supported.png" width="32" height="32"></td>
     </tr>
     <tr>
       <td><em>altLabel*</em></td>
@@ -215,8 +215,8 @@ currently supported by PARROT.</p>
       <td>An alternative label of a resource. The range of the property is an
         instance of the class LexicalLabel.</td>
       <td>http://www.w3.org/2008/05/skos-xl#</td>
-      <td><img src="images/not-supported-yet.png" height="34" width="39"
-        alt="Currently not supported"> </td>
+      <td><img alt="Currently supported"
+        src="images/supported.png" width="32" height="32"></td>
     </tr>
     <tr>
       <td><em>depiction</em></td>
@@ -224,8 +224,8 @@ currently supported by PARROT.</p>
       <td>Ontology, Class, Property, Individual</td>
       <td>An image associated with the resource. </td>
       <td>http://xmlns.com/foaf/0.1/</td>
-      <td><img src="images/not-supported-yet.png" height="34" width="39"
-        alt="Currently not supported"> </td>
+      <td><img alt="Currently supported"
+        src="images/supported.png" width="32" height="32"></td>
     </tr>
     <tr>
       <td><em>preferredNamespacePrefix</em></td>

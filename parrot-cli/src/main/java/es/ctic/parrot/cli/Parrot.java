@@ -1,4 +1,4 @@
-package es.ctic.parrot;
+package es.ctic.parrot.cli;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -17,19 +17,21 @@ import org.apache.commons.cli.ParseException;
 import org.apache.commons.cli.PosixParser;
 import org.apache.log4j.Logger;
 
+import es.ctic.parrot.CommandLineInterface;
+import es.ctic.parrot.DocumentaryProject;
 import es.ctic.parrot.appserv.ParrotAppServ;
 import es.ctic.parrot.generators.HtmlOutputGenerator;
 import es.ctic.parrot.generators.OutputGenerator;
 import es.ctic.parrot.reader.FileInput;
 import es.ctic.parrot.reader.URLInput;
 
-public class CommandLineInterface  {
-    
+public class Parrot {
+
     private static final Logger logger = Logger.getLogger(CommandLineInterface.class);
     
     private static final String DEFAULT_LANG = "EN";
     private static final String DEFAULT_TEMPLATE = "classpath:html/template.vm";
-	
+    
     public static void main( String[] args ) throws Exception {
         Options options = createOptions();
         CommandLine cmd = parseCommandLine(args, options);
@@ -65,8 +67,12 @@ public class CommandLineInterface  {
                     dp.addInput(new FileInput(new File(inputFilename)));
                 }
             }
-            OutputGenerator outputGenerator = new HtmlOutputGenerator(out, templateInputStream);
-            app.createDocumentation(dp, outputGenerator);
+            if (dp.getInputs().isEmpty()) {
+                System.err.println("Please specify at least one input");
+            } else {
+                OutputGenerator outputGenerator = new HtmlOutputGenerator(out, templateInputStream);
+                app.createDocumentation(dp, outputGenerator);
+            }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -102,4 +108,5 @@ public class CommandLineInterface  {
         options.addOption("t", true, "template (default: " + DEFAULT_TEMPLATE + ")");
         return options;
     }
+
 }

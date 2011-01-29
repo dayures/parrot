@@ -6,3 +6,7 @@ parrot-core/.settings
 parrot-web/.classpath
 parrot-web/.project
 parrot-web/.settings
+parrot-cli/.classpath
+parrot-cli/.project
+parrot-cli/.settings
+parrot-cli/target

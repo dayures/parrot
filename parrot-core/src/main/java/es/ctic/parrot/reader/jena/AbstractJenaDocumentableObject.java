@@ -245,20 +245,19 @@ public abstract class AbstractJenaDocumentableObject extends
 			
 			TR _resource = (TR) this.getRegister().findDocumentableObject(identifier); 
 
-			if (_resource != null) { // do not add null elements in the list 
-				logger.debug("Added (not null) " + _resource);
+			if (_resource != null) { 
 				documentableObjectList.add(_resource);
-			} else {
-				logger.debug("Not found in register: " + identifier);
-				logger.debug("resource.getURI() "+ resource.getURI());
-				
-				// FIXME resource.getURI could be null
-				
-				if (isDomainSpecific(resource.getURI())) {
-					_resource = (TR) new UndefinedOntologyDocumentableObject(resource.getURI());
-					documentableObjectList.add(_resource);
-				} else {
-					logger.debug("Not added " + identifier + " (not domain specific)");
+			} else {  // do not add null elements in the list
+				// logger.debug("Not found in register: " + identifier);
+				if (resource.isAnon()){
+					logger.debug("Not added in the list the anon resource: " + resource.getId());
+				}else {
+					if (isDomainSpecific(resource.getURI())) {
+						_resource = (TR) new UndefinedOntologyDocumentableObject(resource.getURI());
+						documentableObjectList.add(_resource);
+					} else {
+						logger.debug("Not added in the list the resource " + identifier + " (not domain specific)");
+					}
 				}
 
 			}
@@ -371,8 +370,14 @@ public abstract class AbstractJenaDocumentableObject extends
 	public Collection<Label> getLiteralLabels(String uri, Locale locale) {
 		
 		Collection<Label> literalLabels = new HashSet<Label>();
+		OntModel ontModel = null;
+		
+		if (getOntResource() == null){
+			return literalLabels;
+		} else {
+			ontModel = getOntResource().getOntModel();
+		}
 
-		OntModel ontModel = getOntResource().getOntModel();
 		StmtIterator listStatements = ontModel.listStatements(getOntResource(), ResourceFactory.createProperty(uri), (RDFNode) null);
 		
 		while (listStatements.hasNext()){
@@ -412,7 +417,14 @@ public abstract class AbstractJenaDocumentableObject extends
 	public Collection<Label> getSkosxlLabels(String uri, Locale locale) {
 
 		Collection<Label> skosxlLabels = new HashSet<Label>();
-		OntModel ontModel = getOntResource().getOntModel();
+		OntModel ontModel = null;
+		
+		if (getOntResource() == null){
+			return skosxlLabels;
+		} else {
+			ontModel = getOntResource().getOntModel();
+		}
+		
 		
 		StmtIterator listStatements = ontModel.listStatements(getOntResource(), ResourceFactory.createProperty(uri), (RDFNode) null);
 		
@@ -457,8 +469,14 @@ public abstract class AbstractJenaDocumentableObject extends
 	 */
 	public Collection<RelatedDocument> getRelatedDocuments(Locale locale) {
 
-		OntModel ontModel = getOntResource().getOntModel();
 		Collection<RelatedDocument> relatedDocuments = new HashSet<RelatedDocument>();
+		OntModel ontModel = null;
+		
+		if (getOntResource() == null){
+			return relatedDocuments;
+		} else {
+			ontModel = getOntResource().getOntModel();
+		}
 		
 		// Only labels that are resource labels 
 		Collection<Label> labels = new HashSet<Label>();

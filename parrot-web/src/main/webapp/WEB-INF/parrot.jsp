@@ -59,7 +59,7 @@
 		      				<c:forEach var='uri' items='${paramValues.documentUri}' varStatus='uriStatus'> 
 				        	<p <c:if test="${fn:contains(errorsUri, uri)}">class="error"</c:if>>
 								<label <c:if test='${uriStatus.first}'>for="documentUri"</c:if> title="URL of the page containing the OWL/RIF document" class="uri">URI: </label>
-				        		<input <c:if test='${uriStatus.first}'>id="documentUri"</c:if> name="documentUri" value="<c:out value="${uri}" escapeXml="true"/>" type="text" size="100" style="width:80%" />
+				        		<input <c:if test='${uriStatus.first}'>id="documentUri"</c:if> name="documentUri" value="<c:out value="${uri}" escapeXml="true"/>" type="text" size="100" />
 							<select name="mimetype">
 								<option value="default" <c:if test="${paramValues.mimetype[uriStatus.index] eq 'default'}">selected="selected"</c:if>>Allow content negotiation</option>
 								<option value="application/owl+xml" <c:if test="${paramValues.mimetype[uriStatus.index] eq 'application/owl+xml'}">selected="selected"</c:if>>It is a OWL ontology</option>
@@ -82,7 +82,7 @@
 					    </c:when>
 					    <c:otherwise>
 				        	<p><label title="URL of the page containing the OWL/RIF document"
-							for="documentUri" class="uri">URI: </label><input id="documentUri" name="documentUri" value="http://" type="text" size="100" style="width:80%" />
+							for="documentUri" class="uri">URI: </label><input id="documentUri" name="documentUri" value="http://" type="text" size="100" />
 							<select name="mimetype">
 								<option value="default" selected="selected">Allow content negotiation</option>
 								<option value="application/owl+xml">It is a OWL ontology</option>

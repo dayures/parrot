@@ -12,7 +12,6 @@ import com.hp.hpl.jena.vocabulary.OWL;
 import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.de.OntologyClass;
 import es.ctic.parrot.de.OntologyIndividual;
-import es.ctic.parrot.de.DocumentableObject.Kind;
 import es.ctic.parrot.transformers.DocumentableObjectVisitor;
 import es.ctic.parrot.transformers.TransformerException;
 

@@ -23,7 +23,6 @@ import com.hp.hpl.jena.vocabulary.RDF;
 import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.de.OntologyProperty;
-import es.ctic.parrot.de.DocumentableObject.Kind;
 import es.ctic.parrot.transformers.DocumentableObjectVisitor;
 import es.ctic.parrot.transformers.TransformerException;
 

@@ -8,7 +8,10 @@
       <dd><a href="$element.Uri">$element.Uri</a></dd>      
    #end
    
+    #if ($element.hasAnyAxiom())
     <dt>Property Type</dt>
+	#end    
+    
     	#if($element.isDatatypeProperty())
     	<dd>Datatype Property</dd>      
     	#end

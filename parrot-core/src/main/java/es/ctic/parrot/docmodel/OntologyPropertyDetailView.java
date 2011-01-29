@@ -152,6 +152,10 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
 	public boolean isAsymmetricProperty() {
 		return getOntologyProperty().isAsymmetricProperty();
 	}
+	
+	public boolean hasAnyAxiom(){
+		return (isDatatypeProperty() || isObjectProperty() || isAnnotationProperty() || isTransitiveProperty() || isSymmetricProperty() || isFunctionalProperty() || isInverseFunctionalProperty() || isReflexiveProperty() || isIrreflexiveProperty() || isAsymmetricProperty());
+	}
 
 	/**
 	 * @param equivalentProperties the equivalentProperties to set

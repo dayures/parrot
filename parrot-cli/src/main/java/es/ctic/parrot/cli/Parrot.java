@@ -17,7 +17,6 @@ import org.apache.commons.cli.ParseException;
 import org.apache.commons.cli.PosixParser;
 import org.apache.log4j.Logger;
 
-import es.ctic.parrot.CommandLineInterface;
 import es.ctic.parrot.DocumentaryProject;
 import es.ctic.parrot.appserv.ParrotAppServ;
 import es.ctic.parrot.generators.HtmlOutputGenerator;
@@ -27,7 +26,7 @@ import es.ctic.parrot.reader.URLInput;
 
 public class Parrot {
 
-    private static final Logger logger = Logger.getLogger(CommandLineInterface.class);
+    private static final Logger logger = Logger.getLogger(Parrot.class);
     
     private static final String DEFAULT_LANG = "EN";
     private static final String DEFAULT_TEMPLATE = "classpath:html/template.vm";

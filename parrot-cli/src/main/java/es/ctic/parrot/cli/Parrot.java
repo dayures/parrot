@@ -12,6 +12,8 @@ import java.util.Locale;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.HelpFormatter;
+import org.apache.commons.cli.Option;
+import org.apache.commons.cli.OptionBuilder;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.commons.cli.PosixParser;
@@ -26,40 +28,57 @@ import es.ctic.parrot.reader.URLInput;
 
 public class Parrot {
 
-    private static final Logger logger = Logger.getLogger(Parrot.class);
+
+	private static final Logger logger = Logger.getLogger(Parrot.class);
     
-    private static final String DEFAULT_LANG = "EN";
+    private static final OutputStream DEFAULT_OUT = System.out;
+    private static final String DEFAULT_LANG = "en";
     private static final String DEFAULT_TEMPLATE = "classpath:html/template.vm";
     
     public static void main( String[] args ) throws Exception {
         Options options = createOptions();
         CommandLine cmd = parseCommandLine(args, options);
+
         // default values
-        OutputStream out = System.out;
+        OutputStream out = DEFAULT_OUT;
         String lang = DEFAULT_LANG;
         String template = DEFAULT_TEMPLATE;
+
         // process options
         if (cmd.hasOption("h")) {
             HelpFormatter formatter = new HelpFormatter();
-            formatter.printHelp("parrot", options);
+            formatter.printHelp(250,"java -jar target/parrot-jar-with-dependencies.jar","options" ,options, "Example of usage: \n" +
+            		"java -jar parrot-jar-with-dependencies.jar " +
+            		"-i http://ontorule-project.eu/resources/m24dem/CAx_M24_ontology.owl " +
+            		"-i http://ontorule-project.eu/resources/m24dem/CAx_M24_rules_parrot.rifps " +
+            		"-o documentation-generated.html", true); 
+            // EXAMPLE java -jar target/parrot-jar-with-dependencies.jar -i http://ontorule-project.eu/resources/m24dem/CAx_M24_ontology.owl -i http://ontorule-project.eu/resources/m24dem/CAx_M24_rules_parrot.rifps -o a.html
             return;
         }
+        
         if (cmd.hasOption("o")) {
             out = new FileOutputStream(cmd.getOptionValue("o"));
         }
+        
         if (cmd.hasOption("l")) {
             lang = cmd.getOptionValue("l");
         }
+        
         if (cmd.hasOption("t")) {
             template = cmd.getOptionValue("t");
         }
-
+        
+        if (cmd.getOptionValues('i').length == 0){
+            System.err.println("Please specify at least one input");
+            return;
+        }
+        
         ParrotAppServ app = new ParrotAppServ();
 
         try {
             InputStream templateInputStream = openTemplateInputStream(template);
             DocumentaryProject dp = new DocumentaryProject(new Locale(lang));
-            for ( String inputFilename : cmd.getArgs() ) {
+            for ( String inputFilename : cmd.getOptionValues('i') ) {
                 if (inputFilename.startsWith("http:")) {
                     dp.addInput(new URLInput(new URL(inputFilename)));
                 } else {
@@ -99,12 +118,23 @@ public class Parrot {
         return cmd;
     }
 
-    private static Options createOptions() {
+    @SuppressWarnings("static-access")
+	private static Options createOptions() {
         Options options = new Options();
-        options.addOption("o", true, "output file");
-        options.addOption("h", false, "print help");
-        options.addOption("l", true, "language (default: " + DEFAULT_LANG + ")");
-        options.addOption("t", true, "template (default: " + DEFAULT_TEMPLATE + ")");
+        options.addOption("o", "output", true, "output file");
+        options.addOption("h", "help", false, "print help");
+        options.addOption("l", "lang", true, "language using language subtag registry from IANA (default: " + DEFAULT_LANG + ")");
+        
+        Option inputFile   = OptionBuilder.withArgName("file")
+        .hasArg(true)
+        .withDescription("input document")
+        .create( 'i' );
+        
+        inputFile.setLongOpt("input");
+
+        options.addOption(inputFile);
+        
+        options.addOption("t", "template", true, "template (default: " + DEFAULT_TEMPLATE + ")");
         return options;
     }
 

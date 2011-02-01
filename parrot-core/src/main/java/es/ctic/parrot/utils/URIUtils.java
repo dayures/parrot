@@ -32,7 +32,7 @@ public final class URIUtils {
 		String uri = namespace.trim();
 		if (uri.contains("#")) {
 			//hash namespace
-			return uri.split("#")[1];
+			return (uri.split("#").length < 2)? uri.split("#")[0]: uri.split("#")[1];
 		} else {
 			//slash namespace
 			int index = uri.lastIndexOf('/');

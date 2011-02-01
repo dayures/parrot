@@ -1,20 +1,16 @@
+<%@ page language="java" contentType="application/xhtml+xml; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html lang="en-US">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> 
 <head>
   <title>PARROT, RIF and OWL documentation service</title>
-  <meta http-equiv="content-type"
-  content="application/xhtml+xml; charset=UTF-8">
-  <link rel="shortcut icon" href="images/favicon.png" type="image/png">
-  <meta name="description" content="parrot">
-  <meta name="keywords" content="parrot, documentation, tool, rif, rdf">
-  <link type="text/css" rel="stylesheet" href="css/style.css"
-  media="screen,projection,print">
-  <link rel="stylesheet" type="text/css"
-  href="http://yui.yahooapis.com/2.8.0r4/build/fonts/fonts-min.css">
-  <link rel="stylesheet" type="text/css"
-  href="http://yui.yahooapis.com/2.8.0r4/build/tabview/assets/skins/sam/tabview.css">
+  <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+  <link rel="shortcut icon" href="images/favicon.png" type="image/png" />
+  <meta name="description" content="parrot" />
+  <meta name="keywords" content="parrot, documentation, tool, rif, rdf" />
+  <link type="text/css" rel="stylesheet" href="css/style.css" media="screen,projection,print" />
+  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.8.0r4/build/fonts/fonts-min.css" />
+  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.8.0r4/build/tabview/assets/skins/sam/tabview.css" />
 </head>
 
 <body class="yui-skin-sam">
@@ -54,7 +50,7 @@ currently supported by PARROT.</p>
         although a literal is also allowed.</td>
       <td>http://purl.org/dc/terms/</td>
       <td><img alt="Currently supported"
-        src="images/supported.png" width="32" height="32"></td>
+        src="images/supported.png" width="32" height="32"/></td>
     </tr>
     <tr>
       <td><em>contributor</em></td>
@@ -66,7 +62,7 @@ currently supported by PARROT.</p>
         contributor, although a literal is also allowed.</td>
       <td>http://purl.org/dc/terms/</td>
       <td><img alt="Currently supported"
-        src="images/supported.png" width="32" height="32"></td>
+        src="images/supported.png" width="32" height="32"/></td>
     </tr>
     <tr>
       <td><em>hasVersion</em></td>
@@ -78,7 +74,7 @@ currently supported by PARROT.</p>
         the ontology with knowledge sources it is based on.</td>
       <td>http://purl.org/dc/terms/</td>
       <td><img src="images/not-supported-yet.png" height="34" width="39"
-        alt="Currently not supported"> </td>
+        alt="Currently not supported"/> </td>
     </tr>
     <tr>
       <td><em>date</em></td>
@@ -89,7 +85,7 @@ currently supported by PARROT.</p>
         Recommended best practice is to use the W3CDTF profile of ISO 8601.</td>
       <td>http://purl.org/dc/terms/</td>
       <td><img alt="Currently supported"
-        src="images/supported.png" width="32" height="32"></td>
+        src="images/supported.png" width="32" height="32" /></td>
     </tr>
     <tr>
       <td><em>publisher</em></td>
@@ -101,7 +97,7 @@ currently supported by PARROT.</p>
         although a literal is also allowed.</td>
       <td>http://purl.org/dc/terms/</td>
       <td><img alt="Currently supported"
-        src="images/supported.png" width="32" height="32"></td>
+        src="images/supported.png" width="32" height="32" /></td>
     </tr>
     <tr>
       <td><em>license</em></td>
@@ -114,7 +110,7 @@ currently supported by PARROT.</p>
         Language (CC REL). </td>
       <td>http://purl.org/dc/terms/</td>
       <td><img src="images/not-supported-yet.png" height="34" width="39"
-        alt="Currently not supported"> </td>
+        alt="Currently not supported" /> </td>
     </tr>
     <tr>
       <td><em>title</em></td>
@@ -124,7 +120,7 @@ currently supported by PARROT.</p>
       <td>See <em>label</em></td>
       <td>http://purl.org/dc/terms/</td>
       <td><img src="images/not-supported-yet.png" height="34" width="39"
-        alt="Currently not supported"> </td>
+        alt="Currently not supported" /> </td>
     </tr>
     <tr>
       <td><em>subject</em></td>
@@ -135,7 +131,7 @@ currently supported by PARROT.</p>
         controlled vocabulary encoded in SKOS format.</td>
       <td>http://purl.org/dc/terms/</td>
       <td><img src="images/not-supported-yet.png" height="34" width="39"
-        alt="Currently not supported"> </td>
+        alt="Currently not supported" /> </td>
     </tr>
     <tr>
       <td><em>description</em></td>
@@ -145,7 +141,7 @@ currently supported by PARROT.</p>
       <td>See <em>comment</em></td>
       <td>http://purl.org/dc/terms/</td>
       <td><img src="images/not-supported-yet.png" height="34" width="39"
-        alt="Currently not supported"> </td>
+        alt="Currently not supported" /> </td>
     </tr>
     <tr>
       <td><em>versionInfo</em></td>
@@ -155,7 +151,7 @@ currently supported by PARROT.</p>
       <td>Provides a hook suitable for use by versioning systems.</td>
       <td>http://www.w3.org/2002/07/owl#</td>
       <td><img alt="Currently supported"
-        src="images/supported.png" width="32" height="32"></td>
+        src="images/supported.png" width="32" height="32" /></td>
     </tr>
     <tr>
       <td><em>label</em></td>
@@ -165,7 +161,7 @@ currently supported by PARROT.</p>
       tag.</td>
       <td>http://www.w3.org/2000/01/rdf-schema#</td>
       <td><img alt="Currently supported"
-        src="images/supported.png" width="32" height="32"></td>
+        src="images/supported.png" width="32" height="32" /></td>
     </tr>
     <tr>
       <td><em>comment</em></td>
@@ -175,7 +171,7 @@ currently supported by PARROT.</p>
         language tag.</td>
       <td>http://www.w3.org/2000/01/rdf-schema#</td>
       <td><img alt="Currently supported"
-        src="images/supported.png" width="32" height="32"></td>
+        src="images/supported.png" width="32" height="32" /></td>
     </tr>
     <tr>
       <td><em>prefLabel</em></td>
@@ -186,7 +182,7 @@ currently supported by PARROT.</p>
         assumes the role of the <em>label</em> for presentation purposes.</td>
       <td>http://www.w3.org/2004/02/skos/core#</td>
       <td><img alt="Currently supported"
-        src="images/supported.png" width="32" height="32"></td>
+        src="images/supported.png" width="32" height="32" /></td>
     </tr>
     <tr>
       <td><em>altLabel</em></td>
@@ -196,7 +192,7 @@ currently supported by PARROT.</p>
         language tag.</td>
       <td>http://www.w3.org/2004/02/skos/core#</td>
       <td><img alt="Currently supported"
-        src="images/supported.png" width="32" height="32"></td>
+        src="images/supported.png" width="32" height="32" /></td>
     </tr>
     <tr>
       <td><em>prefLabel*</em></td>
@@ -206,7 +202,7 @@ currently supported by PARROT.</p>
         instance of the class LexicalLabel.</td>
       <td>http://www.w3.org/2008/05/skos-xl#</td>
       <td><img alt="Currently supported"
-        src="images/supported.png" width="32" height="32"></td>
+        src="images/supported.png" width="32" height="32" /></td>
     </tr>
     <tr>
       <td><em>altLabel*</em></td>
@@ -216,7 +212,7 @@ currently supported by PARROT.</p>
         instance of the class LexicalLabel.</td>
       <td>http://www.w3.org/2008/05/skos-xl#</td>
       <td><img alt="Currently supported"
-        src="images/supported.png" width="32" height="32"></td>
+        src="images/supported.png" width="32" height="32" /></td>
     </tr>
     <tr>
       <td><em>depiction</em></td>
@@ -225,7 +221,7 @@ currently supported by PARROT.</p>
       <td>An image associated with the resource. </td>
       <td>http://xmlns.com/foaf/0.1/</td>
       <td><img alt="Currently supported"
-        src="images/supported.png" width="32" height="32"></td>
+        src="images/supported.png" width="32" height="32" /></td>
     </tr>
     <tr>
       <td><em>preferredNamespacePrefix</em></td>
@@ -235,7 +231,7 @@ currently supported by PARROT.</p>
         ontologies.</td>
       <td>http://purl.org/vocab/vann/</td>
       <td><img alt="Currently supported"
-        src="images/supported.png" width="32" height="32"></td>
+        src="images/supported.png" width="32" height="32" /></td>
     </tr>
     <tr>
       <td><em>primaryTopic</em></td>
@@ -244,7 +240,7 @@ currently supported by PARROT.</p>
       <td>See <em>subject</em></td>
       <td>http://xmlns.com/foaf/0.1/</td>
       <td><img src="images/not-supported-yet.png" height="34" width="39"
-        alt="Currently not supported"> </td>
+        alt="Currently not supported" /> </td>
     </tr>
   </tbody>
 </table>
@@ -273,7 +269,7 @@ supported by PARROT.</p>
       tag.</td>
       <td>http://www.w3.org/2000/01/rdf-schema#</td>
       <td><img alt="Currently supported"
-        src="images/supported.png" width="32" height="32"></td>
+        src="images/supported.png" width="32" height="32" /></td>
     </tr>
     <tr>
       <td><em>comment</em></td>
@@ -283,7 +279,7 @@ supported by PARROT.</p>
         language tag.</td>
       <td>http://www.w3.org/2000/01/rdf-schema#</td>
       <td><img alt="Currently supported"
-        src="images/supported.png" width="32" height="32"></td>
+        src="images/supported.png" width="32" height="32" /></td>
     </tr>
     <tr>
       <td><em>creator</em></td>
@@ -295,7 +291,7 @@ supported by PARROT.</p>
         although a literal is also allowed.</td>
       <td>http://purl.org/dc/terms/</td>
       <td><img alt="Currently supported"
-        src="images/supported.png" width="32" height="32"></td>
+        src="images/supported.png" width="32" height="32" /></td>
     </tr>
     <tr>
       <td><em>contributor</em></td>
@@ -307,7 +303,7 @@ supported by PARROT.</p>
         although a literal is also allowed.</td>
       <td>http://purl.org/dc/terms/</td>
       <td><img alt="Currently supported"
-        src="images/supported.png" width="32" height="32"></td>
+        src="images/supported.png" width="32" height="32" /></td>
     </tr>
     <tr>
       <td><em>publisher</em></td>
@@ -319,7 +315,7 @@ supported by PARROT.</p>
         although a literal is also allowed.</td>
       <td>http://purl.org/dc/terms/</td>
       <td><img alt="Currently supported"
-        src="images/supported.png" width="32" height="32"></td>
+        src="images/supported.png" width="32" height="32" /></td>
     </tr>
     <tr>
       <td><em>date</em></td>
@@ -330,7 +326,7 @@ supported by PARROT.</p>
         Recommended best practice is to use the W3CDTF profile of ISO 8601.</td>
       <td>http://purl.org/dc/terms/</td>
       <td><img alt="Currently supported"
-        src="images/supported.png" width="32" height="32"></td>
+        src="images/supported.png" width="32" height="32" /></td>
     </tr>
     <tr>
       <td><em>title</em></td>
@@ -340,7 +336,7 @@ supported by PARROT.</p>
       <td>See <em>label</em></td>
       <td>http://purl.org/dc/terms/</td>
       <td><img src="images/not-supported-yet.png" height="34" width="39"
-        alt="Currently not supported"></td>
+        alt="Currently not supported" /></td>
     </tr>
     <tr>
       <td><em>description</em></td>
@@ -350,7 +346,7 @@ supported by PARROT.</p>
       <td>See <em>comment</em></td>
       <td>http://purl.org/dc/terms/</td>
       <td><img src="images/not-supported-yet.png" height="34" width="39"
-        alt="Currently not supported"></td>
+        alt="Currently not supported" /></td>
     </tr>
     <tr>
       <td><em>source</em></td>
@@ -362,7 +358,7 @@ supported by PARROT.</p>
       possible.</td>
       <td>http://purl.org/dc/terms/</td>
       <td><img src="images/not-supported-yet.png" height="34" width="39"
-        alt="Currently not supported"></td>
+        alt="Currently not supported" /></td>
     </tr>
     <tr>
       <td><em>versionInfo</em></td>
@@ -372,7 +368,7 @@ supported by PARROT.</p>
       <td>Provides a hook suitable to be used by versioning systems.</td>
       <td>http://www.w3.org/2002/07/owl#</td>
       <td><img src="images/not-supported-yet.png" height="34" width="39"
-        alt="Currently not supported"> </td>
+        alt="Currently not supported" /> </td>
     </tr>
   </tbody>
 </table>
@@ -383,8 +379,8 @@ supported by PARROT.</p>
 
 <div id="footer">
 <p id="logo"><a href="http://www.fundacionctic.org/"><img src="images/ctic.png"
-alt="Fundacion CTIC"></a> <a href="http://ontorule-project.eu"><img
-src="images/ontorule.png" alt="ONTORULE Project"></a> </p>
+alt="Fundacion CTIC"/></a> <a href="http://ontorule-project.eu"><img
+src="images/ontorule.png" alt="ONTORULE Project"/></a> </p>
 
 <p><a href="http://ontorule-project.eu/parrot">PARROT</a> is a RIF and OWL
 documentation service developed <a href="http://ct.ctic.es">Fundación

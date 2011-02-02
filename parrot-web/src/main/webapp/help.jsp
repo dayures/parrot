@@ -10,10 +10,9 @@
   <meta name="keywords" content="parrot, documentation, tool, rif, rdf" />
   <link type="text/css" rel="stylesheet" href="css/style.css" media="screen,projection,print" />
   <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.8.0r4/build/fonts/fonts-min.css" />
-  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.8.0r4/build/tabview/assets/skins/sam/tabview.css" />
 </head>
 
-<body class="yui-skin-sam">
+<body>
 
 <div class="all">
 
@@ -48,7 +47,7 @@ currently supported by PARROT.</p>
       <td>The creator of the ontology: a person or an organization. Recommended
         best practice is to use a FOAF profile to describe the creator,
         although a literal is also allowed.</td>
-      <td>http://purl.org/dc/terms/</td>
+      <td>http://purl.org/dc/elements/1.1/</td>
       <td><img alt="Currently supported"
         src="images/supported.png" width="32" height="32"/></td>
     </tr>
@@ -60,9 +59,29 @@ currently supported by PARROT.</p>
       <td>A contributor to the ontology: a person or an organization.
         Recommended best practice is to use a FOAF profile to describe a
         contributor, although a literal is also allowed.</td>
-      <td>http://purl.org/dc/terms/</td>
+      <td>http://purl.org/dc/elements/1.1/</td>
       <td><img alt="Currently supported"
         src="images/supported.png" width="32" height="32"/></td>
+    </tr>
+    <tr>
+      <td><em>preferredNamespacePrefix</em></td>
+      <td><a href="http://vocab.org/vann">VANN</a></td>
+      <td>Ontology</td>
+      <td>The preferred namespace prefix when using entities of other
+        ontologies.</td>
+      <td>http://purl.org/vocab/vann/</td>
+      <td><img alt="Currently supported"
+        src="images/supported.png" width="32" height="32" /></td>
+    </tr>
+    <tr>
+      <td><em>versionInfo</em></td>
+      <td><a
+        href="http://www.w3.org/TR/2004/REC-owl-guide-20040210/#OntologyVersioning">OWL</a></td>
+      <td>Ontology</td>
+      <td>Provides a hook suitable for use by versioning systems.</td>
+      <td>http://www.w3.org/2002/07/owl#</td>
+      <td><img alt="Currently supported"
+        src="images/supported.png" width="32" height="32" /></td>
     </tr>
     <tr>
       <td><em>hasVersion</em></td>
@@ -73,7 +92,7 @@ currently supported by PARROT.</p>
         other ontologies. Notice that this property shouldn't be used to relate
         the ontology with knowledge sources it is based on.</td>
       <td>http://purl.org/dc/terms/</td>
-      <td><img src="images/not-supported-yet.png" height="34" width="39"
+      <td><img src="images/not-supported-yet.png" height="32" width="32"
         alt="Currently not supported"/> </td>
     </tr>
     <tr>
@@ -83,9 +102,9 @@ currently supported by PARROT.</p>
       <td>Ontology</td>
       <td>Expresses the date of creation or publication of the ontology.
         Recommended best practice is to use the W3CDTF profile of ISO 8601.</td>
-      <td>http://purl.org/dc/terms/</td>
-      <td><img alt="Currently supported"
-        src="images/supported.png" width="32" height="32" /></td>
+      <td>http://purl.org/dc/elements/1.1/</td>
+      <td><img alt="Currently not supported"
+        src="images/not-supported-yet.png" width="32" height="32" /></td>
     </tr>
     <tr>
       <td><em>publisher</em></td>
@@ -95,9 +114,9 @@ currently supported by PARROT.</p>
       <td>The entity responsible for making the ontology available. Recommended
         best practice is to use a FOAF profile to describe the publisher,
         although a literal is also allowed.</td>
-      <td>http://purl.org/dc/terms/</td>
-      <td><img alt="Currently supported"
-        src="images/supported.png" width="32" height="32" /></td>
+      <td>http://purl.org/dc/elements/1.1/</td>
+      <td><img alt="Currently not supported"
+        src="images/not-supported-yet.png" width="32" height="32" /></td>
     </tr>
     <tr>
       <td><em>license</em></td>
@@ -109,7 +128,7 @@ currently supported by PARROT.</p>
         describe them in RDF with the Creative Commons Rights Expression
         Language (CC REL). </td>
       <td>http://purl.org/dc/terms/</td>
-      <td><img src="images/not-supported-yet.png" height="34" width="39"
+      <td><img src="images/not-supported-yet.png" height="32" width="32"
         alt="Currently not supported" /> </td>
     </tr>
     <tr>
@@ -119,20 +138,18 @@ currently supported by PARROT.</p>
       <td>Ontology</td>
       <td>See <em>label</em></td>
       <td>http://purl.org/dc/terms/</td>
-      <td><img src="images/not-supported-yet.png" height="34" width="39"
+      <td><img src="images/not-supported-yet.png" height="32" width="32"
         alt="Currently not supported" /> </td>
     </tr>
     <tr>
-      <td><em>subject</em></td>
-      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin
-      Core</a></td>
-      <td>Ontology, Class, Property, Individual</td>
-      <td>The topic of a resource. A recommended best practice is to use a
-        controlled vocabulary encoded in SKOS format.</td>
-      <td>http://purl.org/dc/terms/</td>
-      <td><img src="images/not-supported-yet.png" height="34" width="39"
+      <td><em>primaryTopic</em></td>
+      <td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td>
+      <td>Ontology</td>
+      <td>See <em>subject</em></td>
+      <td>http://xmlns.com/foaf/0.1/</td>
+      <td><img src="images/not-supported-yet.png" height="32" width="32"
         alt="Currently not supported" /> </td>
-    </tr>
+    </tr>    
     <tr>
       <td><em>description</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin
@@ -140,18 +157,8 @@ currently supported by PARROT.</p>
       <td>Ontology</td>
       <td>See <em>comment</em></td>
       <td>http://purl.org/dc/terms/</td>
-      <td><img src="images/not-supported-yet.png" height="34" width="39"
+      <td><img src="images/not-supported-yet.png" height="32" width="32"
         alt="Currently not supported" /> </td>
-    </tr>
-    <tr>
-      <td><em>versionInfo</em></td>
-      <td><a
-        href="http://www.w3.org/TR/2004/REC-owl-guide-20040210/#OntologyVersioning">OWL</a></td>
-      <td>Ontology</td>
-      <td>Provides a hook suitable for use by versioning systems.</td>
-      <td>http://www.w3.org/2002/07/owl#</td>
-      <td><img alt="Currently supported"
-        src="images/supported.png" width="32" height="32" /></td>
     </tr>
     <tr>
       <td><em>label</em></td>
@@ -174,9 +181,27 @@ currently supported by PARROT.</p>
         src="images/supported.png" width="32" height="32" /></td>
     </tr>
     <tr>
+      <td><em>depiction</em></td>
+      <td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td>
+      <td>Ontology, Class, Property, Individual</td>
+      <td>An image associated with the resource. </td>
+      <td>http://xmlns.com/foaf/0.1/</td>
+      <td><img alt="Currently supported"
+        src="images/supported.png" width="32" height="32" /></td>
+    </tr>
+    <tr>
+      <td><em>video</em></td>
+      <td><a href="http://ogp.me">OG</a></td>
+      <td>Group, Rule</td>
+      <td>A video associated with the resource. </td>
+      <td>http://ogp.me/ns#</td>
+      <td><img alt="Currently supported"
+        src="images/supported.png" width="32" height="32" /></td>
+    </tr>    
+    <tr>
       <td><em>prefLabel</em></td>
       <td><a href="http://www.w3.org/TR/skos-reference/#overview">SKOS</a></td>
-      <td>Class, Property, Individual</td>
+      <td>Ontology, Class, Property, Individual</td>
       <td>The preferred label of a resource. The range is a literal with a
         language tag. In some cases, it is assumed that <em>prefLabel</em>
         assumes the role of the <em>label</em> for presentation purposes.</td>
@@ -187,7 +212,7 @@ currently supported by PARROT.</p>
     <tr>
       <td><em>altLabel</em></td>
       <td><a href="http://www.w3.org/TR/skos-reference/#overview">SKOS</a></td>
-      <td>Class, Property, Individual</td>
+      <td>Ontology, Class, Property, Individual</td>
       <td>An alternative label of a resource. The range is a literal with a
         language tag.</td>
       <td>http://www.w3.org/2004/02/skos/core#</td>
@@ -197,7 +222,7 @@ currently supported by PARROT.</p>
     <tr>
       <td><em>prefLabel*</em></td>
       <td><a href="http://www.w3.org/TR/skos-reference/#xl">SKOS-XL</a></td>
-      <td>Class, Property, Individual</td>
+      <td>Ontology, Class, Property, Individual</td>
       <td>The preferred label of a resource. The range of the property is an
         instance of the class LexicalLabel.</td>
       <td>http://www.w3.org/2008/05/skos-xl#</td>
@@ -207,7 +232,7 @@ currently supported by PARROT.</p>
     <tr>
       <td><em>altLabel*</em></td>
       <td><a href="http://www.w3.org/TR/skos-reference/#xl">SKOS-XL</a></td>
-      <td>Class, Property, Individual</td>
+      <td>Ontology, Class, Property, Individual</td>
       <td>An alternative label of a resource. The range of the property is an
         instance of the class LexicalLabel.</td>
       <td>http://www.w3.org/2008/05/skos-xl#</td>
@@ -215,31 +240,14 @@ currently supported by PARROT.</p>
         src="images/supported.png" width="32" height="32" /></td>
     </tr>
     <tr>
-      <td><em>depiction</em></td>
-      <td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td>
+      <td><em>subject</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin
+      Core</a></td>
       <td>Ontology, Class, Property, Individual</td>
-      <td>An image associated with the resource. </td>
-      <td>http://xmlns.com/foaf/0.1/</td>
-      <td><img alt="Currently supported"
-        src="images/supported.png" width="32" height="32" /></td>
-    </tr>
-    <tr>
-      <td><em>preferredNamespacePrefix</em></td>
-      <td><a href="http://vocab.org/vann">VANN</a></td>
-      <td>Ontology</td>
-      <td>The preferred namespace prefix when using entities of other
-        ontologies.</td>
-      <td>http://purl.org/vocab/vann/</td>
-      <td><img alt="Currently supported"
-        src="images/supported.png" width="32" height="32" /></td>
-    </tr>
-    <tr>
-      <td><em>primaryTopic</em></td>
-      <td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td>
-      <td>Ontology</td>
-      <td>See <em>subject</em></td>
-      <td>http://xmlns.com/foaf/0.1/</td>
-      <td><img src="images/not-supported-yet.png" height="34" width="39"
+      <td>The topic of a resource. A recommended best practice is to use a
+        controlled vocabulary encoded in SKOS format.</td>
+      <td>http://purl.org/dc/terms/</td>
+      <td><img src="images/not-supported-yet.png" height="32" width="32"
         alt="Currently not supported" /> </td>
     </tr>
   </tbody>
@@ -264,7 +272,7 @@ supported by PARROT.</p>
     <tr>
       <td><em>label</em></td>
       <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
-      <td>Document, Group, Rule</td>
+      <td>Group, Rule</td>
       <td>The label of the resource. The range is a literal with a language
       tag.</td>
       <td>http://www.w3.org/2000/01/rdf-schema#</td>
@@ -274,7 +282,7 @@ supported by PARROT.</p>
     <tr>
       <td><em>comment</em></td>
       <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
-      <td>Document, Group, Rule</td>
+      <td>Group, Rule</td>
       <td>The description of the resource. The range is a literal with a
         language tag.</td>
       <td>http://www.w3.org/2000/01/rdf-schema#</td>
@@ -285,11 +293,11 @@ supported by PARROT.</p>
       <td><em>creator</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin
       Core</a></td>
-      <td>Document, Group, Rule</td>
+      <td>Group, Rule</td>
       <td>The creator of the rulehg : a person or an organization. Recommended
         best practice is to use a FOAF profile to describe the creator,
         although a literal is also allowed.</td>
-      <td>http://purl.org/dc/terms/</td>
+      <td>http://purl.org/dc/elements/1.1/</td>
       <td><img alt="Currently supported"
         src="images/supported.png" width="32" height="32" /></td>
     </tr>
@@ -297,11 +305,11 @@ supported by PARROT.</p>
       <td><em>contributor</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin
       Core</a></td>
-      <td>Document, Group, Rule</td>
+      <td>Group, Rule</td>
       <td>A contributor to the rule: a person or an organization. Recommended
         best practice is to use a FOAF profile to describe a contributor,
         although a literal is also allowed.</td>
-      <td>http://purl.org/dc/terms/</td>
+      <td>http://purl.org/dc/elements/1.1/</td>
       <td><img alt="Currently supported"
         src="images/supported.png" width="32" height="32" /></td>
     </tr>
@@ -309,11 +317,11 @@ supported by PARROT.</p>
       <td><em>publisher</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin
       Core</a></td>
-      <td>Document, Group, Rule</td>
+      <td>Group, Rule</td>
       <td>The entity responsible for making the rule available. Recommended
         best practice is to use a FOAF profile to describe the publisher,
         although a literal is also allowed.</td>
-      <td>http://purl.org/dc/terms/</td>
+      <td>http://purl.org/dc/elements/1.1/</td>
       <td><img alt="Currently supported"
         src="images/supported.png" width="32" height="32" /></td>
     </tr>
@@ -321,10 +329,10 @@ supported by PARROT.</p>
       <td><em>date</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin
       Core</a></td>
-      <td>Document, Group, Rule</td>
+      <td>Group, Rule</td>
       <td>Expresses the date of creation or publication of the rule.
         Recommended best practice is to use the W3CDTF profile of ISO 8601.</td>
-      <td>http://purl.org/dc/terms/</td>
+      <td>http://purl.org/dc/elements/1.1/</td>
       <td><img alt="Currently supported"
         src="images/supported.png" width="32" height="32" /></td>
     </tr>
@@ -332,43 +340,102 @@ supported by PARROT.</p>
       <td><em>title</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin
       Core</a></td>
-      <td>Document, Group, Rule</td>
+      <td>Group, Rule</td>
       <td>See <em>label</em></td>
       <td>http://purl.org/dc/terms/</td>
-      <td><img src="images/not-supported-yet.png" height="34" width="39"
+      <td><img src="images/not-supported-yet.png" height="32" width="32"
         alt="Currently not supported" /></td>
     </tr>
     <tr>
       <td><em>description</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin
       Core</a></td>
-      <td>Document, Group, Rule</td>
+      <td>Group, Rule</td>
       <td>See <em>comment</em></td>
       <td>http://purl.org/dc/terms/</td>
-      <td><img src="images/not-supported-yet.png" height="34" width="39"
+      <td><img src="images/not-supported-yet.png" height="32" width="32"
         alt="Currently not supported" /></td>
     </tr>
     <tr>
       <td><em>source</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin
       Core</a></td>
-      <td>Document, Group, Rule</td>
+      <td>Group, Rule</td>
       <td>The resources from which the rules are derived. Typically, they are
         documentary sources, but diagrams, plans or pictures are also
       possible.</td>
       <td>http://purl.org/dc/terms/</td>
-      <td><img src="images/not-supported-yet.png" height="34" width="39"
+      <td><img src="images/not-supported-yet.png" height="32" width="32"
         alt="Currently not supported" /></td>
     </tr>
     <tr>
       <td><em>versionInfo</em></td>
       <td><a
         href="http://www.w3.org/TR/2004/REC-owl-guide-20040210/#OntologyVersioning">OWL</a></td>
-      <td>Document, Group, Rule</td>
+      <td>Group, Rule</td>
       <td>Provides a hook suitable to be used by versioning systems.</td>
       <td>http://www.w3.org/2002/07/owl#</td>
-      <td><img src="images/not-supported-yet.png" height="34" width="39"
+      <td><img src="images/not-supported-yet.png" height="32" width="32"
         alt="Currently not supported" /> </td>
+    </tr>
+        <tr>
+      <td><em>prefLabel</em></td>
+      <td><a href="http://www.w3.org/TR/skos-reference/#overview">SKOS</a></td>
+      <td>Group, Rule</td>
+      <td>The preferred label of a resource. The range is a literal with a
+        language tag. In some cases, it is assumed that <em>prefLabel</em>
+        assumes the role of the <em>label</em> for presentation purposes.</td>
+      <td>http://www.w3.org/2004/02/skos/core#</td>
+      <td><img alt="Currently supported"
+        src="images/supported.png" width="32" height="32" /></td>
+    </tr>
+    <tr>
+      <td><em>altLabel</em></td>
+      <td><a href="http://www.w3.org/TR/skos-reference/#overview">SKOS</a></td>
+      <td>Group, Rule</td>
+      <td>An alternative label of a resource. The range is a literal with a
+        language tag.</td>
+      <td>http://www.w3.org/2004/02/skos/core#</td>
+      <td><img alt="Currently supported"
+        src="images/supported.png" width="32" height="32" /></td>
+    </tr>
+    <tr>
+      <td><em>prefLabel*</em></td>
+      <td><a href="http://www.w3.org/TR/skos-reference/#xl">SKOS-XL</a></td>
+      <td>Group, Rule</td>
+      <td>The preferred label of a resource. The range of the property is an
+        instance of the class LexicalLabel.</td>
+      <td>http://www.w3.org/2008/05/skos-xl#</td>
+      <td><img alt="Currently supported"
+        src="images/supported.png" width="32" height="32" /></td>
+    </tr>
+    <tr>
+      <td><em>altLabel*</em></td>
+      <td><a href="http://www.w3.org/TR/skos-reference/#xl">SKOS-XL</a></td>
+      <td>Group, Rule</td>
+      <td>An alternative label of a resource. The range of the property is an
+        instance of the class LexicalLabel.</td>
+      <td>http://www.w3.org/2008/05/skos-xl#</td>
+      <td><img alt="Currently supported"
+        src="images/supported.png" width="32" height="32" /></td>
+    </tr>
+    <tr>
+      <td><em>depiction</em></td>
+      <td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td>
+      <td>Group, Rule</td>
+      <td>An image associated with the resource. </td>
+      <td>http://xmlns.com/foaf/0.1/</td>
+      <td><img alt="Currently supported"
+        src="images/supported.png" width="32" height="32" /></td>
+    </tr>
+    <tr>
+      <td><em>video</em></td>
+      <td><a href="http://ogp.me">OG</a></td>
+      <td>Group, Rule</td>
+      <td>A video associated with the resource. </td>
+      <td>http://ogp.me/ns#</td>
+      <td><img alt="Currently supported"
+        src="images/supported.png" width="32" height="32" /></td>
     </tr>
   </tbody>
 </table>
@@ -396,16 +463,5 @@ under <a href="http://creativecommons.org/licenses/by/2.5/">CreativeCommons-by
 2.5</a> license.</p>
 </div>
 </div>
-<script type="text/javascript"
-src="http://yui.yahooapis.com/2.8.0r4/build/yahoo-dom-event/yahoo-dom-event.js">
-</script>
-<script type="text/javascript"
-src="http://yui.yahooapis.com/2.8.0r4/build/element/element-min.js">
-</script>
-<script type="text/javascript"
-src="http://yui.yahooapis.com/2.8.0r4/build/tabview/tabview-min.js">
-</script>
-<script type="text/javascript" src="javascript/scripts.js">
-</script>
 </body>
 </html>

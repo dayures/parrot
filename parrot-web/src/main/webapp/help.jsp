@@ -40,6 +40,67 @@ currently supported by PARROT.</p>
       <th>Supported?</th>
     </tr>
     <tr>
+      <td><em>prefLabel*</em></td>
+      <td><a href="http://www.w3.org/TR/skos-reference/#xl">SKOS-XL</a></td>
+      <td>Ontology, Class, Property, Individual</td>
+      <td>The preferred label of a resource. The range of the property is an
+        instance of the class LexicalLabel.</td>
+      <td>http://www.w3.org/2008/05/skos-xl#</td>
+      <td><img alt="Currently supported"
+        src="images/supported.png" width="32" height="32" /></td>
+    </tr>
+    <tr>
+      <td><em>altLabel*</em></td>
+      <td><a href="http://www.w3.org/TR/skos-reference/#xl">SKOS-XL</a></td>
+      <td>Ontology, Class, Property, Individual</td>
+      <td>An alternative label of a resource. The range of the property is an
+        instance of the class LexicalLabel.</td>
+      <td>http://www.w3.org/2008/05/skos-xl#</td>
+      <td><img alt="Currently supported"
+        src="images/supported.png" width="32" height="32" /></td>
+    </tr>
+    <tr>
+      <td><em>prefLabel</em></td>
+      <td><a href="http://www.w3.org/TR/skos-reference/#overview">SKOS</a></td>
+      <td>Ontology, Class, Property, Individual</td>
+      <td>The preferred label of a resource. The range is a literal with a
+        language tag. In some cases, it is assumed that <em>prefLabel</em>
+        assumes the role of the <em>label</em> for presentation purposes.</td>
+      <td>http://www.w3.org/2004/02/skos/core#</td>
+      <td><img alt="Currently supported"
+        src="images/supported.png" width="32" height="32" /></td>
+    </tr>
+    <tr>
+      <td><em>altLabel</em></td>
+      <td><a href="http://www.w3.org/TR/skos-reference/#overview">SKOS</a></td>
+      <td>Ontology, Class, Property, Individual</td>
+      <td>An alternative label of a resource. The range is a literal with a
+        language tag.</td>
+      <td>http://www.w3.org/2004/02/skos/core#</td>
+      <td><img alt="Currently supported"
+        src="images/supported.png" width="32" height="32" /></td>
+    </tr>
+    <tr>
+      <td><em>title</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin
+      Core</a></td>
+      <td>Ontology, Class, Property, Individual</td>
+      <td>See <em>label</em></td>
+      <td>http://purl.org/dc/elements/1.1/</td>
+      <td><img src="images/supported.png" height="32" width="32"
+        alt="Currently supported" /> </td>
+    </tr>
+    <tr>
+      <td><em>label</em></td>
+      <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
+      <td>Ontology, Class, Property, Individual</td>
+      <td>The label of the resource. The range is a literal with a language
+      tag.</td>
+      <td>http://www.w3.org/2000/01/rdf-schema#</td>
+      <td><img alt="Currently supported"
+        src="images/supported.png" width="32" height="32" /></td>
+    </tr>
+    <tr>
       <td><em>creator</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin
       Core</a></td>
@@ -132,16 +193,6 @@ currently supported by PARROT.</p>
         alt="Currently not supported" /> </td>
     </tr>
     <tr>
-      <td><em>title</em></td>
-      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin
-      Core</a></td>
-      <td>Ontology</td>
-      <td>See <em>label</em></td>
-      <td>http://purl.org/dc/terms/</td>
-      <td><img src="images/not-supported-yet.png" height="32" width="32"
-        alt="Currently not supported" /> </td>
-    </tr>
-    <tr>
       <td><em>primaryTopic</em></td>
       <td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td>
       <td>Ontology</td>
@@ -159,16 +210,6 @@ currently supported by PARROT.</p>
       <td>http://purl.org/dc/terms/</td>
       <td><img src="images/not-supported-yet.png" height="32" width="32"
         alt="Currently not supported" /> </td>
-    </tr>
-    <tr>
-      <td><em>label</em></td>
-      <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
-      <td>Ontology, Class, Property, Individual</td>
-      <td>The label of the resource. The range is a literal with a language
-      tag.</td>
-      <td>http://www.w3.org/2000/01/rdf-schema#</td>
-      <td><img alt="Currently supported"
-        src="images/supported.png" width="32" height="32" /></td>
     </tr>
     <tr>
       <td><em>comment</em></td>
@@ -198,47 +239,6 @@ currently supported by PARROT.</p>
       <td><img alt="Currently supported"
         src="images/supported.png" width="32" height="32" /></td>
     </tr>    
-    <tr>
-      <td><em>prefLabel</em></td>
-      <td><a href="http://www.w3.org/TR/skos-reference/#overview">SKOS</a></td>
-      <td>Ontology, Class, Property, Individual</td>
-      <td>The preferred label of a resource. The range is a literal with a
-        language tag. In some cases, it is assumed that <em>prefLabel</em>
-        assumes the role of the <em>label</em> for presentation purposes.</td>
-      <td>http://www.w3.org/2004/02/skos/core#</td>
-      <td><img alt="Currently supported"
-        src="images/supported.png" width="32" height="32" /></td>
-    </tr>
-    <tr>
-      <td><em>altLabel</em></td>
-      <td><a href="http://www.w3.org/TR/skos-reference/#overview">SKOS</a></td>
-      <td>Ontology, Class, Property, Individual</td>
-      <td>An alternative label of a resource. The range is a literal with a
-        language tag.</td>
-      <td>http://www.w3.org/2004/02/skos/core#</td>
-      <td><img alt="Currently supported"
-        src="images/supported.png" width="32" height="32" /></td>
-    </tr>
-    <tr>
-      <td><em>prefLabel*</em></td>
-      <td><a href="http://www.w3.org/TR/skos-reference/#xl">SKOS-XL</a></td>
-      <td>Ontology, Class, Property, Individual</td>
-      <td>The preferred label of a resource. The range of the property is an
-        instance of the class LexicalLabel.</td>
-      <td>http://www.w3.org/2008/05/skos-xl#</td>
-      <td><img alt="Currently supported"
-        src="images/supported.png" width="32" height="32" /></td>
-    </tr>
-    <tr>
-      <td><em>altLabel*</em></td>
-      <td><a href="http://www.w3.org/TR/skos-reference/#xl">SKOS-XL</a></td>
-      <td>Ontology, Class, Property, Individual</td>
-      <td>An alternative label of a resource. The range of the property is an
-        instance of the class LexicalLabel.</td>
-      <td>http://www.w3.org/2008/05/skos-xl#</td>
-      <td><img alt="Currently supported"
-        src="images/supported.png" width="32" height="32" /></td>
-    </tr>
     <tr>
       <td><em>subject</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin

@@ -40,6 +40,7 @@ import es.ctic.parrot.utils.URIUtils;
 public abstract class AbstractJenaDocumentableObject extends
 		AbstractDocumentableObject {
 	
+	private static final String DC_TITLE = "http://purl.org/dc/elements/1.1/title";
 	private static final String DC_TERMS_IS_PART_OF = "http://purl.org/dc/terms/isPartOf";
 	private static final String DC_DCMITYPE_TEXT = "http://purl.org/dc/dcmitype/Text";
 	private static final String RDF_SCHEMA_LABEL = "http://www.w3.org/2000/01/rdf-schema#label";
@@ -95,7 +96,9 @@ public abstract class AbstractJenaDocumentableObject extends
          * http://www.w3.org/2008/05/skos-xl#altLabel
          * http://www.w3.org/2004/02/skos/core#prefLabel
          * http://www.w3.org/2004/02/skos/core#altLabel
+         * http://purl.org/dc/elements/1.1/title
          * http://www.w3.org/2000/01/rdf-schema#label
+         * 
          * 
          */
         
@@ -112,12 +115,6 @@ public abstract class AbstractJenaDocumentableObject extends
         }
         
         for (Label label : labels){
-            if (label.getQualifier().equals(RDF_SCHEMA_LABEL)) {
-                return label.getText();
-            }
-        }
-
-        for (Label label : labels){
             if (label.getQualifier().equals(SKOS_XL_ALT_LABEL)) {
                 return label.getText();
             }
@@ -128,7 +125,19 @@ public abstract class AbstractJenaDocumentableObject extends
         		return label.getText();
         	}
         }
-
+        
+        for (Label label : labels){
+        	if (label.getQualifier().equals(DC_TITLE)) {
+        		return label.getText();
+        	}
+        }
+        
+        for (Label label : labels){
+            if (label.getQualifier().equals(RDF_SCHEMA_LABEL)) {
+                return label.getText();
+            }
+        }
+        
         return URIUtils.getReference(getURI());
     }
     
@@ -339,16 +348,6 @@ public abstract class AbstractJenaDocumentableObject extends
 			labels.addAll(skosXLPrefLabels);
 		}
 
-        Collection<Label> skosPrefLabels = getLiteralLabels(SKOS_CORE_PREF_LABEL, locale);
-        if (skosPrefLabels.isEmpty() == false && labels.isEmpty()) { // hidden by the previous labels
-            labels.addAll(skosPrefLabels);
-        }
-
-        Collection<Label> rdfsLabels = getLiteralLabels(RDF_SCHEMA_LABEL, locale);
-        if (rdfsLabels.isEmpty() == false && labels.isEmpty()) { // hidden by the previous labels
-            labels.addAll(rdfsLabels);
-        }
-        
 		Collection<Label> skosXLAltLabels = getSkosxlLabels(SKOS_XL_ALT_LABEL, locale);
 		if (skosXLAltLabels.isEmpty() == false){
 			labels.addAll(skosXLAltLabels);
@@ -358,7 +357,22 @@ public abstract class AbstractJenaDocumentableObject extends
 		if (skosAltLabels.isEmpty() == false){
 			labels.addAll(skosAltLabels);
 		}
+        
+		Collection<Label> skosPrefLabels = getLiteralLabels(SKOS_CORE_PREF_LABEL, locale);
+        if (skosPrefLabels.isEmpty() == false && labels.isEmpty()) { // hidden by the previous labels
+            labels.addAll(skosPrefLabels);
+        }
+        
+		Collection<Label> dcTitleLabels = getLiteralLabels(DC_TITLE, locale);
+        if (dcTitleLabels.isEmpty() == false && labels.isEmpty()) { // hidden by the previous labels
+            labels.addAll(dcTitleLabels);
+        }
 
+        Collection<Label> rdfsLabels = getLiteralLabels(RDF_SCHEMA_LABEL, locale);
+        if (rdfsLabels.isEmpty() == false && labels.isEmpty()) { // hidden by the previous labels
+            labels.addAll(rdfsLabels);
+        }
+		
 		return labels;
 	}	
 

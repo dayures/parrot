@@ -24,6 +24,8 @@ import es.ctic.parrot.utils.URIUtils;
 
 public class OntResourceAnnotationStrategy {
 
+	private static final String RCLN_RULE_TEXT = "http://lipn.univ-paris13.fr/RCLN/schema#ruleText";
+
 	private static final Logger logger = Logger.getLogger(OntResourceAnnotationStrategy.class);
 
 	private static final String DC_TITLE = "http://purl.org/dc/elements/1.1/title";
@@ -46,12 +48,15 @@ public class OntResourceAnnotationStrategy {
 	private static final String DC_CREATOR = "http://purl.org/dc/elements/1.1/creator";
 	private static final String DC_DATE = "http://purl.org/dc/elements/1.1/date";
 	private static final String DC_DESCRIPTION = "http://purl.org/dc/elements/1.1/description";
+	
 	private static final String DCT_DESCRIPTION = "http://purl.org/dc/terms/description";
+	private static final String DCT_SOURCE = "http://purl.org/dc/terms/source";
 
 	
 	private static final String TYPE_VIDEO = "video/mpeg";
 	private static final String TYPE_IMAGE = "image/png";
 	private static final String TYPE_TEXT = "text/plain";
+	private static final String TYPE_HTML = "text/html";
 	
 	public String getComment(OntResource ontResource, Locale locale) {
 
@@ -180,7 +185,6 @@ public class OntResourceAnnotationStrategy {
                 return label.getText();
             }
         }
-        logger.debug("ontResource " + ontResource);
         return URIUtils.getReference(ontResource.getURI());
     }
     
@@ -188,7 +192,7 @@ public class OntResourceAnnotationStrategy {
 	 * @param the uri of the property used to annotate
 	 * @return a collection of literal labels for the uri
 	 */
-	public Collection<Label> getLiteralLabels(OntResource ontResource, String uri, Locale locale) {
+	private Collection<Label> getLiteralLabels(OntResource ontResource, String uri, Locale locale) {
 		
 		Collection<Label> literalLabels = new HashSet<Label>();
 		OntModel ontModel = null;
@@ -235,7 +239,7 @@ public class OntResourceAnnotationStrategy {
 	/**
 	 * @return a collection of labels for the skosXL uri
 	 */
-	public Collection<Label> getSkosxlLabels(OntResource ontResource, String uri, Locale locale) {
+	private Collection<Label> getSkosxlLabels(OntResource ontResource, String uri, Locale locale) {
 
 		Collection<Label> skosxlLabels = new HashSet<Label>();
 		OntModel ontModel = null;
@@ -282,7 +286,7 @@ public class OntResourceAnnotationStrategy {
 		return skosxlLabels;
 	}
 	
-	public Collection<RelatedDocument> getVideosRelated(OntResource ontResource) {
+	private Collection<RelatedDocument> getVideosRelated(OntResource ontResource) {
 		Collection<RelatedDocument> videos = new ArrayList<RelatedDocument>();
     	if (ontResource == null){
     		return videos;
@@ -304,7 +308,7 @@ public class OntResourceAnnotationStrategy {
     	}
 	}
 	
-	public Collection<RelatedDocument> getImagesRelated(OntResource ontResource) {
+	private Collection<RelatedDocument> getImagesRelated(OntResource ontResource) {
 		Collection<RelatedDocument> images = new ArrayList<RelatedDocument>();
     	if (ontResource == null){
     		return images;
@@ -389,17 +393,64 @@ public class OntResourceAnnotationStrategy {
 		
 		//add images
 		relatedDocuments.addAll(getImagesRelated(ontResource));
+		
+		//add candidate rules
+		relatedDocuments.addAll(getCandidateRulesRelated(ontResource));
+		
 		return relatedDocuments;
 	}
 
 	
+	private Collection<RelatedDocument> getCandidateRulesRelated(OntResource ontResource) {
+		
+		Collection<RelatedDocument> candidateRules = new ArrayList<RelatedDocument>();
+    	if (ontResource == null){
+    		return candidateRules;
+    	} else {		
+
+			StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(DCT_SOURCE));
+			while(it.hasNext()){
+				Statement statement = it.nextStatement();
+				try{
+					RelatedDocument candidateRule = new RelatedDocument();
+					candidateRule.setUri(statement.getObject().asResource().getURI());
+					candidateRule.setType(TYPE_HTML);
+
+					String ruleText = new String();
+					
+					StmtIterator listRuleTexts = statement.getObject().asResource().listProperties(ResourceFactory.createProperty(RCLN_RULE_TEXT));
+					if (listRuleTexts.hasNext()){
+						ruleText = listRuleTexts.nextStatement().getObject().asLiteral().getLexicalForm();
+
+						// change <a> tag to <span>
+						ruleText = ruleText.replaceAll("<a", "<span");
+						// change </a> tag to </span>
+						ruleText = ruleText.replaceAll("</a>", "</span>");
+						
+						// remove href="javascript:void();"
+						ruleText = ruleText.replaceAll("href=\"javascript:void\\(\\);\"", "");
+						// remove onclick="function1('MicroSlipTest');"
+						ruleText = ruleText.replaceAll("onclick=\"function1\\(.+?\\);\"","");
+					}
+					logger.debug(ruleText);
+
+					candidateRule.setSourceText(ruleText);
+					candidateRules.add(candidateRule);
+				} catch (ResourceRequiredException e)  {
+					logger.warn("Ignore triple "+ statement +" because it is not a Object property");
+				}
+			}
+			return candidateRules;
+    	}
+	}
+
 	/**
 	 * 
 	 * @param model The ontological model
 	 * @param uri the uri to search for
 	 * @return the uri of the source document
 	 */
-	public String getSourceDocumentUri(OntModel model, String uri){
+	private String getSourceDocumentUri(OntModel model, String uri){
 		if (model.contains(ResourceFactory.createResource(uri), RDF.type, ResourceFactory.createResource(DC_DCMITYPE_TEXT))){
 			return uri;
 		} else {
@@ -434,7 +485,7 @@ public class OntResourceAnnotationStrategy {
 		return getLiteralPropertyValues(ontResource, DC_PUBLISHER);
 	}
 	
-	public List<String> getLiteralPropertyValues(OntResource ontResource, String property) {
+	private List<String> getLiteralPropertyValues(OntResource ontResource, String property) {
     	if (ontResource == null){
     		return new ArrayList<String>();
     	}
@@ -454,7 +505,7 @@ public class OntResourceAnnotationStrategy {
 	 * @param property
 	 * @return the value of the literal or null if the resource has not this property associated
 	 */
-	public String getLiteralPropertyValue(OntResource ontResource, String property) {
+	private String getLiteralPropertyValue(OntResource ontResource, String property) {
     	if (ontResource == null){
     		return null;
     	} else {

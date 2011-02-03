@@ -30,7 +30,7 @@ import es.ctic.parrot.transformers.TransformerException;
  */
 public class ParrotAppServ {
     
-    private DocumentReader ontologyReader;
+    private JenaOWLReader ontologyReader;
     private DocumentReader ruleXmlReader;
     private DocumentReader rifPSReader;
     
@@ -55,6 +55,7 @@ public class ParrotAppServ {
 		resolveCrossReferences(register);
 		Collection<DocumentableObject> documentableObjects = register.getDocumentableObjects();
 		Document document = transformToDocument(documentableObjects, dp.getLocale());
+		//ontologyReader.getOntModel().write(System.out);
 		outputGenerator.generateOutput(document);
 	}
 	
@@ -108,14 +109,14 @@ public class ParrotAppServ {
 	/**
 	 * @param ontologyReader the ontologyReader to set
 	 */
-	public void setOntologyReader(DocumentReader ontologyReader) {
+	public void setOntologyReader(JenaOWLReader ontologyReader) {
 		this.ontologyReader = ontologyReader;
 	}
 
 	/**
 	 * @return the ontologyReader
 	 */
-	public DocumentReader getOntologyReader() {
+	public JenaOWLReader getOntologyReader() {
 		return ontologyReader;
 	}
 

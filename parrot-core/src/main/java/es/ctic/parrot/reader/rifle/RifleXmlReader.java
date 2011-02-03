@@ -5,19 +5,17 @@ import java.io.IOException;
 import javax.xml.transform.Source;
 import javax.xml.transform.stream.StreamSource;
 
-import com.hp.hpl.jena.ontology.OntModel;
-
 import net.sourceforge.rifle.ast.Document;
 import net.sourceforge.rifle.prd.xml.Parser;
 import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.reader.DocumentReader;
 import es.ctic.parrot.reader.Input;
 import es.ctic.parrot.reader.ReaderException;
-import es.ctic.parrot.reader.jena.OntResourceAnnotationStrategy;
+import es.ctic.parrot.reader.jena.JenaOWLReader;
 
 public class RifleXmlReader extends ImportResolver implements DocumentReader {
 
-    public RifleXmlReader(DocumentReader ontologyReader) {
+    public RifleXmlReader(JenaOWLReader ontologyReader) {
         super(ontologyReader);
         setRifXmlReader(this);
     }
@@ -30,19 +28,11 @@ public class RifleXmlReader extends ImportResolver implements DocumentReader {
         try {
             Document document = parser.parse(source);
             resolveImports(document, register);
-            RifleASTVisitor visitor = new RifleASTVisitor(register, getAnnotationStrategy(), getOntModel());
+            RifleASTVisitor visitor = new RifleASTVisitor(register, getOntologyReader().getAnnotationStrategy(), getOntologyReader().getOntModel());
             document.accept(visitor, null);
         } catch (Exception e) {
             throw new ReaderException(e);
         }
     }
-
-	public OntResourceAnnotationStrategy getAnnotationStrategy() {
-		return getOntologyReader().getAnnotationStrategy();
-	}
-
-	public OntModel getOntModel() {
-		return getOntologyReader().getOntModel();
-	}
 
 }

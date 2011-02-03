@@ -13,19 +13,17 @@ import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
 import org.apache.log4j.Logger;
 
-import com.hp.hpl.jena.ontology.OntModel;
-
 import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.reader.DocumentReader;
 import es.ctic.parrot.reader.Input;
 import es.ctic.parrot.reader.ReaderException;
-import es.ctic.parrot.reader.jena.OntResourceAnnotationStrategy;
+import es.ctic.parrot.reader.jena.JenaOWLReader;
 
 public class RiflePSReader extends ImportResolver implements DocumentReader {
 
     private static final Logger logger = Logger.getLogger(RiflePSReader.class);
     
-    public RiflePSReader(DocumentReader ontologyReader, DocumentReader rifXmlReader) {
+    public RiflePSReader(JenaOWLReader ontologyReader, DocumentReader rifXmlReader) {
         super(ontologyReader, rifXmlReader);
     }
     
@@ -44,7 +42,7 @@ public class RiflePSReader extends ImportResolver implements DocumentReader {
 			if (parser.getNumberOfSyntaxErrors() == 0) {
 			      Document document = document_return.ret_document;
                   resolveImports(document, register);
-			      RifleASTVisitor visitor = new RifleASTVisitor(register, getAnnotationStrategy(), getOntModel());
+			      RifleASTVisitor visitor = new RifleASTVisitor(register, getOntologyReader().getAnnotationStrategy(), getOntologyReader().getOntModel());
 			      document.accept(visitor, null); // it's null because it is the root node
 			} else {
                 throw new ReaderException("RIF PS document " + input + " cannot be parsed. There are " + parser.getNumberOfSyntaxErrors() + " syntax errors. First error is: " + errorReporter.getFirstError());
@@ -58,14 +56,6 @@ public class RiflePSReader extends ImportResolver implements DocumentReader {
 		}
 		
 
-	}
-
-	public OntResourceAnnotationStrategy getAnnotationStrategy() {
-		return getOntologyReader().getAnnotationStrategy();
-	}
-
-	public OntModel getOntModel() {
-		return getOntologyReader().getOntModel();
 	}
 
 }

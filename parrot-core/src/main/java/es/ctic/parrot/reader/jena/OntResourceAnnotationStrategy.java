@@ -16,6 +16,7 @@ import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.rdf.model.ResourceRequiredException;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
+import com.hp.hpl.jena.vocabulary.OWL2;
 import com.hp.hpl.jena.vocabulary.RDF;
 
 import es.ctic.parrot.de.Label;
@@ -23,6 +24,8 @@ import es.ctic.parrot.de.RelatedDocument;
 import es.ctic.parrot.utils.URIUtils;
 
 public class OntResourceAnnotationStrategy {
+
+	private static final String RCLN_RULE = "http://lipn.univ-paris13.fr/RCLN/schema#Rule";
 
 	private static final String RCLN_RULE_TEXT = "http://lipn.univ-paris13.fr/RCLN/schema#ruleText";
 
@@ -57,6 +60,8 @@ public class OntResourceAnnotationStrategy {
 	private static final String TYPE_IMAGE = "image/png";
 	private static final String TYPE_TEXT = "text/plain";
 	private static final String TYPE_HTML = "text/html";
+
+	private static final String TYPE_URI = "undefined";
 	
 	public String getComment(OntResource ontResource, Locale locale) {
 
@@ -413,28 +418,42 @@ public class OntResourceAnnotationStrategy {
 				Statement statement = it.nextStatement();
 				try{
 					RelatedDocument candidateRule = new RelatedDocument();
-					candidateRule.setUri(statement.getObject().asResource().getURI());
-					candidateRule.setType(TYPE_HTML);
 
-					String ruleText = new String();
-					
-					StmtIterator listRuleTexts = statement.getObject().asResource().listProperties(ResourceFactory.createProperty(RCLN_RULE_TEXT));
-					if (listRuleTexts.hasNext()){
-						ruleText = listRuleTexts.nextStatement().getObject().asLiteral().getLexicalForm();
+					if (statement.getObject().isLiteral()){
+						candidateRule.setType(TYPE_TEXT);
+						candidateRule.setSourceText(statement.getObject().asLiteral().getLexicalForm());
+						logger.debug("statement.getObject().asLiteral().getLexicalForm() " + statement.getObject().asLiteral().getLexicalForm());
+					} else {
 
-						// change <a> tag to <span>
-						ruleText = ruleText.replaceAll("<a", "<span");
-						// change </a> tag to </span>
-						ruleText = ruleText.replaceAll("</a>", "</span>");
+						candidateRule.setUri(statement.getObject().asResource().getURI());
+
+						if (ontResource.getModel().contains(statement.getObject().asResource(), RDF.type, ResourceFactory.createResource(RCLN_RULE))){
 						
-						// remove href="javascript:void();"
-						ruleText = ruleText.replaceAll("href=\"javascript:void\\(\\);\"", "");
-						// remove onclick="function1('MicroSlipTest');"
-						ruleText = ruleText.replaceAll("onclick=\"function1\\(.+?\\);\"","");
+							StmtIterator listRuleTexts = statement.getObject().asResource().listProperties(ResourceFactory.createProperty(RCLN_RULE_TEXT));
+	
+							candidateRule.setType(TYPE_HTML);
+							
+							if (listRuleTexts.hasNext()){
+								String ruleText = new String();
+								ruleText = listRuleTexts.nextStatement().getObject().asLiteral().getLexicalForm();
+		
+								// change <a> tag to <span>
+								ruleText = ruleText.replaceAll("<a", "<span");
+								// change </a> tag to </span>
+								ruleText = ruleText.replaceAll("</a>", "</span>");
+								
+								// remove href="javascript:void();"
+								ruleText = ruleText.replaceAll("href=\"javascript:void\\(\\);\"", "");
+								// remove onclick="function1('MicroSlipTest');"
+								ruleText = ruleText.replaceAll("onclick=\"function1\\(.+?\\);\"","");
+								candidateRule.setSourceText(ruleText);
+							}
+							
+						} else {
+							candidateRule.setType(TYPE_URI);
+							candidateRule.setSourceText(candidateRule.getUri());
+						}
 					}
-					logger.debug(ruleText);
-
-					candidateRule.setSourceText(ruleText);
 					candidateRules.add(candidateRule);
 				} catch (ResourceRequiredException e)  {
 					logger.warn("Ignore triple "+ statement +" because it is not a Object property");
@@ -493,7 +512,12 @@ public class OntResourceAnnotationStrategy {
 			ArrayList<String> values = new ArrayList<String>();
 			StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(property));
 			while(it.hasNext()){
-				values.add(it.nextStatement().getLiteral().getString());
+				Statement st = it.nextStatement();
+				if (st.getObject().isLiteral()) {
+					values.add(st.getObject().asLiteral().toString());
+				} else {
+					logger.debug("As is not a literal, not added " + st.toString() );
+				}
 			}
 			return values;
     	}
@@ -506,18 +530,24 @@ public class OntResourceAnnotationStrategy {
 	 * @return the value of the literal or null if the resource has not this property associated
 	 */
 	private String getLiteralPropertyValue(OntResource ontResource, String property) {
-    	if (ontResource == null){
+        String value = null;
+
+		if (ontResource == null){
     		return null;
     	} else {
-            String value = null;
 			RDFNode propertyValue = ontResource.getPropertyValue(ResourceFactory.createProperty(property));
 	
-			if (propertyValue != null && propertyValue.isLiteral()){
-				value = propertyValue.asLiteral().getString();
+			if (propertyValue != null) {
+				if (propertyValue.isLiteral()) {
+					value = propertyValue.asLiteral().getString();
+				} else {
+					logger.debug("As is not a literal, not added " + propertyValue.toString() );
+				}
 			}
 			
 			return value;
     	}
+
 	}
 
 	

@@ -45,24 +45,46 @@ public class OntResourceAnnotationStrategy {
 	private static final String DC_CONTRIBUTOR = "http://purl.org/dc/elements/1.1/contributor";
 	private static final String DC_CREATOR = "http://purl.org/dc/elements/1.1/creator";
 	private static final String DC_DATE = "http://purl.org/dc/elements/1.1/date";
+	private static final String DC_DESCRIPTION = "http://purl.org/dc/elements/1.1/description";
+	private static final String DCT_DESCRIPTION = "http://purl.org/dc/terms/description";
+
 	
 	private static final String TYPE_VIDEO = "video/mpeg";
 	private static final String TYPE_IMAGE = "image/png";
 	private static final String TYPE_TEXT = "text/plain";
 	
 	public String getComment(OntResource ontResource, Locale locale) {
-    	
+
     	if (ontResource == null){
     		return null;
-    	} else {
-    		String comment = ontResource.getComment(locale.toString());
+    	}
 
-    		if (comment == null) {
-		        return ontResource.getComment(null);
-		    } else {
-		        return comment;
-		    }
+		/* Preferred order:
+         * 
+         * http://purl.org/dc/terms/description
+         * http://purl.org/dc/elements/1.1/description
+         * http://www.w3.org/2000/01/rdf-schema#comment
+         * 
+         */
+		String comment = getLiteralPropertyValue(ontResource, DCT_DESCRIPTION);
+		logger.debug("DCT_DESCRIPTION" + getLiteralPropertyValue(ontResource, DCT_DESCRIPTION));
+		logger.debug("DC_DESCRIPTION" + getLiteralPropertyValue(ontResource, DC_DESCRIPTION));
+		
+		if (comment != null){
+    		return comment;
 		}
+		
+		comment = getLiteralPropertyValue(ontResource, DC_DESCRIPTION);
+		if (comment != null){
+    		return comment;
+		}
+		
+		comment = ontResource.getComment(locale.toString());
+		if (comment == null) {
+	        return ontResource.getComment(null);
+	    } else {
+	        return comment;
+	    }
 	}
 	
 	public Collection<Label> getLabels(OntResource ontResource){
@@ -122,7 +144,6 @@ public class OntResourceAnnotationStrategy {
          * http://www.w3.org/2004/02/skos/core#altLabel
          * http://purl.org/dc/elements/1.1/title
          * http://www.w3.org/2000/01/rdf-schema#label
-         * 
          * 
          */
         

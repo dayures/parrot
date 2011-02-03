@@ -5,6 +5,8 @@ import java.io.IOException;
 import javax.xml.transform.Source;
 import javax.xml.transform.stream.StreamSource;
 
+import com.hp.hpl.jena.ontology.OntModel;
+
 import net.sourceforge.rifle.ast.Document;
 import net.sourceforge.rifle.prd.xml.Parser;
 import es.ctic.parrot.de.DocumentableObjectRegister;
@@ -28,7 +30,7 @@ public class RifleXmlReader extends ImportResolver implements DocumentReader {
         try {
             Document document = parser.parse(source);
             resolveImports(document, register);
-            RifleASTVisitor visitor = new RifleASTVisitor(register, getAnnotationStrategy());
+            RifleASTVisitor visitor = new RifleASTVisitor(register, getAnnotationStrategy(), getOntModel());
             document.accept(visitor, null);
         } catch (Exception e) {
             throw new ReaderException(e);
@@ -37,6 +39,10 @@ public class RifleXmlReader extends ImportResolver implements DocumentReader {
 
 	public OntResourceAnnotationStrategy getAnnotationStrategy() {
 		return getOntologyReader().getAnnotationStrategy();
+	}
+
+	public OntModel getOntModel() {
+		return getOntologyReader().getOntModel();
 	}
 
 }

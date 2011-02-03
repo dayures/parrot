@@ -205,12 +205,22 @@ currently supported by PARROT.</p>
       <td><em>description</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin
       Core</a></td>
-      <td>Ontology</td>
+      <td>Ontology, Class, Property, Individual</td>
       <td>See <em>comment</em></td>
       <td>http://purl.org/dc/terms/</td>
-      <td><img src="images/not-supported-yet.png" height="32" width="32"
-        alt="Currently not supported" /> </td>
+      <td><img alt="Currently supported"
+        src="images/supported.png" width="32" height="32" /></td>
     </tr>
+    <tr>
+      <td><em>description</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin
+      Core</a></td>
+      <td>Ontology, Class, Property, Individual</td>
+      <td>See <em>comment</em></td>
+      <td>http://purl.org/dc/elements/1.1/</td>
+      <td><img alt="Currently supported"
+        src="images/supported.png" width="32" height="32" /></td>
+    </tr>    
     <tr>
       <td><em>comment</em></td>
       <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
@@ -342,9 +352,9 @@ supported by PARROT.</p>
       Core</a></td>
       <td>Group, Rule</td>
       <td>See <em>label</em></td>
-      <td>http://purl.org/dc/terms/</td>
-      <td><img src="images/not-supported-yet.png" height="32" width="32"
-        alt="Currently not supported" /></td>
+      <td>http://purl.org/dc/elements/1.1/</td>
+      <td><img alt="Currently supported"
+        src="images/supported.png" width="32" height="32" /></td>
     </tr>
     <tr>
       <td><em>description</em></td>
@@ -353,21 +363,19 @@ supported by PARROT.</p>
       <td>Group, Rule</td>
       <td>See <em>comment</em></td>
       <td>http://purl.org/dc/terms/</td>
-      <td><img src="images/not-supported-yet.png" height="32" width="32"
-        alt="Currently not supported" /></td>
+      <td><img alt="Currently supported"
+        src="images/supported.png" width="32" height="32" /></td>
     </tr>
     <tr>
-      <td><em>source</em></td>
+      <td><em>description</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin
       Core</a></td>
       <td>Group, Rule</td>
-      <td>The resources from which the rules are derived. Typically, they are
-        documentary sources, but diagrams, plans or pictures are also
-      possible.</td>
-      <td>http://purl.org/dc/terms/</td>
-      <td><img src="images/not-supported-yet.png" height="32" width="32"
-        alt="Currently not supported" /></td>
-    </tr>
+      <td>See <em>comment</em></td>
+      <td>http://purl.org/dc/elements/1.1/</td>
+      <td><img alt="Currently supported"
+        src="images/supported.png" width="32" height="32" /></td>
+    </tr>  
     <tr>
       <td><em>versionInfo</em></td>
       <td><a
@@ -434,6 +442,15 @@ supported by PARROT.</p>
       <td>Group, Rule</td>
       <td>A video associated with the resource. </td>
       <td>http://ogp.me/ns#</td>
+      <td><img alt="Currently supported"
+        src="images/supported.png" width="32" height="32" /></td>
+    </tr>
+    <tr>
+      <td><em>source</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core</a></td>
+      <td>Rule</td>
+      <td>The resources from which the rules are derived. Typically, they are documentary sources (as candidate rules), but diagrams, plans or pictures are also possible.</td>
+      <td>http://purl.org/dc/terms/</td>
       <td><img alt="Currently supported"
         src="images/supported.png" width="32" height="32" /></td>
     </tr>

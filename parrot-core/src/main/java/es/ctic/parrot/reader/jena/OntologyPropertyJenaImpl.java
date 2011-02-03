@@ -44,8 +44,8 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 		return (OntProperty) getOntResource();
 	}
     
-    public OntologyPropertyJenaImpl(OntProperty ontProperty, DocumentableObjectRegister register) {
-    	super(ontProperty, register);
+    public OntologyPropertyJenaImpl(OntProperty ontProperty, DocumentableObjectRegister register, OntResourceAnnotationStrategy annotationStrategy) {
+    	super(ontProperty, register, annotationStrategy);
     }
 
 	public Object accept(DocumentableObjectVisitor visitor) throws TransformerException {
@@ -60,7 +60,7 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
     	if (domain == null){
     		OntResource _domain = getOntProperty().getDomain();
     		if(_domain != null && _domain.isClass() && _domain.getURI() != null){
-    			domain = new OntologyClassJenaImpl(_domain.asClass(), this.getRegister());
+    			domain = new OntologyClassJenaImpl(_domain.asClass(), this.getRegister(), getAnnotationStrategy());
     		}
     	}
     	
@@ -76,7 +76,7 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
     	if (range == null){
     		OntResource _range = getOntProperty().getRange();
     		if(_range != null && _range.isClass() && _range.getURI() != null) {
-    			range = new OntologyClassJenaImpl(_range.asClass(), this.getRegister());
+    			range = new OntologyClassJenaImpl(_range.asClass(), this.getRegister(), getAnnotationStrategy());
     		}
     	}
     	return range;
@@ -132,11 +132,11 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
     		
     		OntResource _inverseOf = getOntProperty().getInverseOf();
     		if(_inverseOf != null ){
-    			inverseOf = new OntologyPropertyJenaImpl (_inverseOf.asProperty(), this.getRegister());
+    			inverseOf = new OntologyPropertyJenaImpl (_inverseOf.asProperty(), this.getRegister(), getAnnotationStrategy());
     		} else {
     			_inverseOf = getOntProperty().getInverse();
         		if(_inverseOf != null ){
-        			inverseOf = new OntologyPropertyJenaImpl (_inverseOf.asProperty(), this.getRegister());
+        			inverseOf = new OntologyPropertyJenaImpl (_inverseOf.asProperty(), this.getRegister(), getAnnotationStrategy());
         		}	
     		}
     	}

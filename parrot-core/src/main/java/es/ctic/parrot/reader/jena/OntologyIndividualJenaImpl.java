@@ -18,8 +18,8 @@ import es.ctic.parrot.transformers.TransformerException;
 public class OntologyIndividualJenaImpl extends AbstractJenaDocumentableObject
 		implements OntologyIndividual {
 
-	public OntologyIndividualJenaImpl(Individual individual, DocumentableObjectRegister register) {
-		super(individual, register);
+	public OntologyIndividualJenaImpl(Individual individual, DocumentableObjectRegister register, OntResourceAnnotationStrategy annotationStrategy) {
+		super(individual, register, annotationStrategy);
 	}
 
 	public Object accept(DocumentableObjectVisitor visitor) throws TransformerException {

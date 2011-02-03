@@ -3,6 +3,7 @@ package es.ctic.parrot.reader.jena;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Locale;
 
 import org.apache.log4j.Logger;
@@ -39,62 +40,29 @@ public class OntResourceAnnotationStrategy {
 	private static final String LINGKNOW_VALUE = "http://idi.fundacionctic.org/lingknow/value";
 	private static final String LINGKNOW_OCCURS = "http://idi.fundacionctic.org/lingknow/occurs";
 	private static final String TELIX_REALIZES = "http://ontorule-project.eu/telix#realizes";
+
+	private static final String DC_PUBLISHER = "http://purl.org/dc/elements/1.1/publisher";
+	private static final String DC_CONTRIBUTOR = "http://purl.org/dc/elements/1.1/contributor";
+	private static final String DC_CREATOR = "http://purl.org/dc/elements/1.1/creator";
+	private static final String DC_DATE = "http://purl.org/dc/elements/1.1/date";
 	
 	private static final String TYPE_VIDEO = "video/mpeg";
 	private static final String TYPE_IMAGE = "image/png";
 	private static final String TYPE_TEXT = "text/plain";
 	
 	public String getComment(OntResource ontResource, Locale locale) {
-	    String comment = ontResource.getComment(locale.toString());
-	    if (comment == null) {
-	        return ontResource.getComment(null);
-	    } else {
-	        return comment;
-	    }
-	}
-	
-	public Collection<RelatedDocument> getVideosRelated(OntResource ontResource) {
-		Collection<RelatedDocument> videos = new ArrayList<RelatedDocument>();
+    	
     	if (ontResource == null){
-    		return videos;
-    	} else {		
+    		return null;
+    	} else {
+    		String comment = ontResource.getComment(locale.toString());
 
-			StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(OG_VIDEO));
-			while(it.hasNext()){
-				Statement statement = it.nextStatement();
-				try{
-					RelatedDocument video = new RelatedDocument();
-					video.setUri(statement.getObject().asResource().getURI());
-					video.setType(TYPE_VIDEO);
-					videos.add(video);
-				} catch (ResourceRequiredException e)  {
-					logger.warn("Ignore triple "+ statement +" because it is not a Object property");
-				}
-			}
-			return videos;
-    	}
-	}
-	
-	public Collection<RelatedDocument> getImagesRelated(OntResource ontResource) {
-		Collection<RelatedDocument> images = new ArrayList<RelatedDocument>();
-    	if (ontResource == null){
-    		return images;
-    	} else {		
-
-			StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(FOAF_DEPICTION));
-			while(it.hasNext()){
-				Statement statement = it.nextStatement();
-				try{
-					RelatedDocument image = new RelatedDocument();
-					image.setUri(statement.getObject().asResource().getURI());
-					image.setType(TYPE_IMAGE);
-					images.add(image);
-				} catch (ResourceRequiredException e)  {
-					logger.warn("Ignore triple "+ statement +" because it is not a Object property");
-				}
-			}
-			return images;
-    	}
+    		if (comment == null) {
+		        return ontResource.getComment(null);
+		    } else {
+		        return comment;
+		    }
+		}
 	}
 	
 	public Collection<Label> getLabels(OntResource ontResource){
@@ -136,8 +104,67 @@ public class OntResourceAnnotationStrategy {
         }
 		
 		return labels;
-	}	
+	}
+	
+    public String getLabel(OntResource ontResource) {
+        return this.getLabel(ontResource, null);
+    }
+	
+    public String getLabel(OntResource ontResource, Locale locale) {
 
+    	Collection<Label> labels = getLabels(ontResource, locale);
+        
+        /* Preferred order:
+         * 
+         * http://www.w3.org/2008/05/skos-xl#prefLabel
+         * http://www.w3.org/2008/05/skos-xl#altLabel
+         * http://www.w3.org/2004/02/skos/core#prefLabel
+         * http://www.w3.org/2004/02/skos/core#altLabel
+         * http://purl.org/dc/elements/1.1/title
+         * http://www.w3.org/2000/01/rdf-schema#label
+         * 
+         * 
+         */
+        
+        for (Label label : labels){
+        	if (label.getQualifier().equals(SKOS_XL_PREF_LABEL)) {
+        		return label.getText();
+        	}
+        }
+
+        for (Label label : labels){
+        	if (label.getQualifier().equals(SKOS_CORE_PREF_LABEL)) {
+        		return label.getText();
+        	}
+        }
+        
+        for (Label label : labels){
+            if (label.getQualifier().equals(SKOS_XL_ALT_LABEL)) {
+                return label.getText();
+            }
+        }
+
+        for (Label label : labels){
+        	if (label.getQualifier().equals(SKOS_CORE_ALT_LABEL)) {
+        		return label.getText();
+        	}
+        }
+        
+        for (Label label : labels){
+        	if (label.getQualifier().equals(DC_TITLE)) {
+        		return label.getText();
+        	}
+        }
+        
+        for (Label label : labels){
+            if (label.getQualifier().equals(RDF_SCHEMA_LABEL)) {
+                return label.getText();
+            }
+        }
+        logger.debug("ontResource " + ontResource);
+        return URIUtils.getReference(ontResource.getURI());
+    }
+    
 	/**
 	 * @param the uri of the property used to annotate
 	 * @return a collection of literal labels for the uri
@@ -236,6 +263,49 @@ public class OntResourceAnnotationStrategy {
 		return skosxlLabels;
 	}
 	
+	public Collection<RelatedDocument> getVideosRelated(OntResource ontResource) {
+		Collection<RelatedDocument> videos = new ArrayList<RelatedDocument>();
+    	if (ontResource == null){
+    		return videos;
+    	} else {		
+
+			StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(OG_VIDEO));
+			while(it.hasNext()){
+				Statement statement = it.nextStatement();
+				try{
+					RelatedDocument video = new RelatedDocument();
+					video.setUri(statement.getObject().asResource().getURI());
+					video.setType(TYPE_VIDEO);
+					videos.add(video);
+				} catch (ResourceRequiredException e)  {
+					logger.warn("Ignore triple "+ statement +" because it is not a Object property");
+				}
+			}
+			return videos;
+    	}
+	}
+	
+	public Collection<RelatedDocument> getImagesRelated(OntResource ontResource) {
+		Collection<RelatedDocument> images = new ArrayList<RelatedDocument>();
+    	if (ontResource == null){
+    		return images;
+    	} else {		
+
+			StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(FOAF_DEPICTION));
+			while(it.hasNext()){
+				Statement statement = it.nextStatement();
+				try{
+					RelatedDocument image = new RelatedDocument();
+					image.setUri(statement.getObject().asResource().getURI());
+					image.setType(TYPE_IMAGE);
+					images.add(image);
+				} catch (ResourceRequiredException e)  {
+					logger.warn("Ignore triple "+ statement +" because it is not a Object property");
+				}
+			}
+			return images;
+    	}
+	}
 
 	/**
 	 * 
@@ -326,66 +396,53 @@ public class OntResourceAnnotationStrategy {
 		
 	}
 	
-    public String getLabel(OntResource ontResource, Locale locale) {
-        
-        Collection<Label> labels = getLabels(ontResource, locale);
-        
-        /* Preferred order:
-         * 
-         * http://www.w3.org/2008/05/skos-xl#prefLabel
-         * http://www.w3.org/2008/05/skos-xl#altLabel
-         * http://www.w3.org/2004/02/skos/core#prefLabel
-         * http://www.w3.org/2004/02/skos/core#altLabel
-         * http://purl.org/dc/elements/1.1/title
-         * http://www.w3.org/2000/01/rdf-schema#label
-         * 
-         * 
-         */
-        
-        for (Label label : labels){
-        	if (label.getQualifier().equals(SKOS_XL_PREF_LABEL)) {
-        		return label.getText();
-        	}
-        }
+	/************************************************************************/
+	
 
-        for (Label label : labels){
-        	if (label.getQualifier().equals(SKOS_CORE_PREF_LABEL)) {
-        		return label.getText();
-        	}
-        }
-        
-        for (Label label : labels){
-            if (label.getQualifier().equals(SKOS_XL_ALT_LABEL)) {
-                return label.getText();
-            }
-        }
+	public String getDate(OntResource ontResource) {
+		return getLiteralPropertyValue(ontResource, DC_DATE);
+	}
 
-        for (Label label : labels){
-        	if (label.getQualifier().equals(SKOS_CORE_ALT_LABEL)) {
-        		return label.getText();
-        	}
-        }
-        
-        for (Label label : labels){
-        	if (label.getQualifier().equals(DC_TITLE)) {
-        		return label.getText();
-        	}
-        }
-        
-        for (Label label : labels){
-            if (label.getQualifier().equals(RDF_SCHEMA_LABEL)) {
-                return label.getText();
-            }
-        }
-        
-        return URIUtils.getReference(ontResource.getURI());
-    }
-    
-    public String getLabel(OntResource ontResource) {
-        return this.getLabel(ontResource, null);
-    }
-    
-    
+	public List<String> getCreators(OntResource ontResource) {
+		return getLiteralPropertyValues(ontResource, DC_CREATOR);
+	}
 
+	public List<String> getContributors(OntResource ontResource) {
+		return getLiteralPropertyValues(ontResource, DC_CONTRIBUTOR);
+	}
 
+	public List<String> getPublishers(OntResource ontResource) {
+		return getLiteralPropertyValues(ontResource, DC_PUBLISHER);
+	}
+	
+	public List<String> getLiteralPropertyValues(OntResource ontResource, String property) {
+    	if (ontResource == null){
+    		return new ArrayList<String>();
+    	}
+    	else {
+			ArrayList<String> values = new ArrayList<String>();
+			StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(property));
+			while(it.hasNext()){
+				values.add(it.nextStatement().getLiteral().getString());
+			}
+			return values;
+    	}
+	}
+
+	public String getLiteralPropertyValue(OntResource ontResource, String property) {
+    	if (ontResource == null){
+    		return null;
+    	} else {
+            String value = null;
+			RDFNode propertyValue = ontResource.getPropertyValue(ResourceFactory.createProperty(property));
+	
+			if (propertyValue != null && propertyValue.isLiteral()){
+				value = propertyValue.asLiteral().getString();
+			}
+			
+			return value;
+    	}
+	}
+
+	
 }

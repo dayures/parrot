@@ -11,6 +11,7 @@ import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.reader.DocumentReader;
 import es.ctic.parrot.reader.Input;
 import es.ctic.parrot.reader.ReaderException;
+import es.ctic.parrot.reader.jena.OntResourceAnnotationStrategy;
 
 public class RifleXmlReader extends ImportResolver implements DocumentReader {
 
@@ -27,11 +28,15 @@ public class RifleXmlReader extends ImportResolver implements DocumentReader {
         try {
             Document document = parser.parse(source);
             resolveImports(document, register);
-            RifleASTVisitor visitor = new RifleASTVisitor(register);
+            RifleASTVisitor visitor = new RifleASTVisitor(register, getAnnotationStrategy());
             document.accept(visitor, null);
         } catch (Exception e) {
             throw new ReaderException(e);
         }
     }
+
+	public OntResourceAnnotationStrategy getAnnotationStrategy() {
+		return getOntologyReader().getAnnotationStrategy();
+	}
 
 }

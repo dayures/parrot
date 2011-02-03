@@ -25,8 +25,7 @@ public class ImportResolver {
         this.setOntologyReader(ontologyReader);
     }
     
-    public ImportResolver(DocumentReader ontologyReader,
-            DocumentReader rifXmlReader) {
+    public ImportResolver(DocumentReader ontologyReader, DocumentReader rifXmlReader) {
         this.setOntologyReader(ontologyReader);
         this.setRifXmlReader(rifXmlReader);
     }

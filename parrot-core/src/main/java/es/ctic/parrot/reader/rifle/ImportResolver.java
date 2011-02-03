@@ -13,19 +13,20 @@ import es.ctic.parrot.reader.DocumentReader;
 import es.ctic.parrot.reader.Input;
 import es.ctic.parrot.reader.ReaderException;
 import es.ctic.parrot.reader.URLInput;
+import es.ctic.parrot.reader.jena.JenaOWLReader;
 
 public class ImportResolver {
     
     private static final Logger logger = Logger.getLogger(ImportResolver.class);
     
-    private DocumentReader ontologyReader;
+    private JenaOWLReader ontologyReader;
     private DocumentReader rifXmlReader;
     
-    public ImportResolver(DocumentReader ontologyReader) {
+    public ImportResolver(JenaOWLReader ontologyReader) {
         this.setOntologyReader(ontologyReader);
     }
     
-    public ImportResolver(DocumentReader ontologyReader, DocumentReader rifXmlReader) {
+    public ImportResolver(JenaOWLReader ontologyReader, DocumentReader rifXmlReader) {
         this.setOntologyReader(ontologyReader);
         this.setRifXmlReader(rifXmlReader);
     }
@@ -61,11 +62,11 @@ public class ImportResolver {
         return rifXmlReader;
     }
 
-    public void setOntologyReader(DocumentReader ontologyReader) {
+    public void setOntologyReader(JenaOWLReader ontologyReader) {
         this.ontologyReader = ontologyReader;
     }
 
-    public DocumentReader getOntologyReader() {
+    public JenaOWLReader getOntologyReader() {
         return ontologyReader;
     }
 

@@ -28,6 +28,7 @@ public class JenaOWLReader implements DocumentReader {
     private static final String HTML = "HTML";
     private static final Logger logger = Logger.getLogger(JenaOWLReader.class);
     private OntModel model = ModelFactory.createOntologyModel();
+    private OntResourceAnnotationStrategy annotationStrategy = new OntResourceAnnotationStrategy(); 
 	
 	/* (non-Javadoc)
 	 * @see es.ctic.parrot.reader.DocumentReader#readDocumentableObjects(es.ctic.parrot.reader.Input, es.ctic.parrot.de.DocumentableObjectRegister)
@@ -49,8 +50,6 @@ public class JenaOWLReader implements DocumentReader {
             	model.read(input.openReader(), base, getJenaFormat(input));	
             }
         	
-        	model.write(System.out);
-            
             loadOntology(model, register);
             loadOntClasses(model, register);
             loadOntProperties(model, register);
@@ -63,7 +62,7 @@ public class JenaOWLReader implements DocumentReader {
             }
         } catch (ClassNotFoundException e) { // When RDFa Reader is not available
              throw new ReaderException("RDFa not supported", e);
-        } catch (RuntimeException e) { // RDFaReader throws a RuntimException when a SAXException is catched
+        } catch (RuntimeException e) { // RDFaReader throws a RuntimException when a SAXException is caught
              throw new ReaderException("While reading RDFa file", e);
         }
         
@@ -85,49 +84,49 @@ public class JenaOWLReader implements DocumentReader {
 	    }
     }
 
-    private static void loadOntClasses(OntModel model, DocumentableObjectRegister register) {
+    private void loadOntClasses(OntModel model, DocumentableObjectRegister register) {
 		Iterator<OntClass> it= model.listNamedClasses();
 		while(it.hasNext()){
 			OntClass ontclass=it.next();
 			if (isDomainSpecific(ontclass.getURI())) {
-				OntologyClassJenaImpl docObject=new OntologyClassJenaImpl(ontclass, register);
+				OntologyClassJenaImpl docObject=new OntologyClassJenaImpl(ontclass, register, getAnnotationStrategy());
 			    register.registerDocumentableObject(docObject);
 			}
 		}
 	}
 	
-	private static void loadOntProperties(OntModel model, DocumentableObjectRegister register) {
+	private void loadOntProperties(OntModel model, DocumentableObjectRegister register) {
 	    Iterator<OntProperty> it = model.listAllOntProperties();
 	    while (it.hasNext()) {
 	        OntProperty ontProperty = it.next();
 	        if (isDomainSpecific(ontProperty.getURI())) {
-	            OntologyPropertyJenaImpl docObject = new OntologyPropertyJenaImpl(ontProperty, register);
+	            OntologyPropertyJenaImpl docObject = new OntologyPropertyJenaImpl(ontProperty, register, getAnnotationStrategy());
 	            register.registerDocumentableObject(docObject);	        
 	        }
 	    }
 	}
 	
-	private static void loadOntology(OntModel model, DocumentableObjectRegister register) {
+	private void loadOntology(OntModel model, DocumentableObjectRegister register) {
 	    Iterator<Ontology> it = model.listOntologies();
 	    while (it.hasNext()) {
 	    	Ontology ontology = it.next();
-            OntologyJenaImpl docObject = new OntologyJenaImpl(ontology, register);
+            OntologyJenaImpl docObject = new OntologyJenaImpl(ontology, register, getAnnotationStrategy());
             register.registerDocumentableObject(docObject);	        
 	    }
 	}
 
-	private static void loadOntIndividuals(OntModel model, DocumentableObjectRegister register) {
+	private void loadOntIndividuals(OntModel model, DocumentableObjectRegister register) {
 	    Iterator<Individual> it = model.listIndividuals();
 	    while (it.hasNext()) {
 	    	Individual individual = it.next();
 	    	if (individual.isAnon()){
         		logger.debug("Included anonymous individual: " + individual.getId().toString());
-        		OntologyIndividualJenaImpl docObject = new OntologyIndividualJenaImpl(individual, register);
+        		OntologyIndividualJenaImpl docObject = new OntologyIndividualJenaImpl(individual, register, getAnnotationStrategy());
 	        	register.registerDocumentableObject(docObject);
 	    	}
 	    	else {
 		    	if (isDomainSpecific(individual.getURI()) && isClassDomainSpecific(individual)) {
-		        	OntologyIndividualJenaImpl docObject = new OntologyIndividualJenaImpl(individual, register);
+		        	OntologyIndividualJenaImpl docObject = new OntologyIndividualJenaImpl(individual, register, getAnnotationStrategy());
 		        	register.registerDocumentableObject(docObject);
 		        } else {
 	        		logger.debug("Not included individual: " + individual.getURI() +" because is not domain specific.");
@@ -156,5 +155,19 @@ public class JenaOWLReader implements DocumentReader {
     	}
         return false;
     }
+
+	/**
+	 * @param annotationStrategy the annotationStrategy to set
+	 */
+	public void setAnnotationStrategy(OntResourceAnnotationStrategy annotationStrategy) {
+		this.annotationStrategy = annotationStrategy;
+	}
+
+	/**
+	 * @return the annotationStrategy
+	 */
+	public OntResourceAnnotationStrategy getAnnotationStrategy() {
+		return annotationStrategy;
+	}
 
 }

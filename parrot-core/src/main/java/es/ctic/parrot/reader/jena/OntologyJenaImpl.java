@@ -7,6 +7,7 @@ import com.hp.hpl.jena.ontology.OntResource;
 import com.hp.hpl.jena.ontology.Ontology;
 import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
+import com.hp.hpl.jena.shared.JenaException;
 
 import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.transformers.DocumentableObjectVisitor;
@@ -18,8 +19,8 @@ public class OntologyJenaImpl extends AbstractJenaDocumentableObject implements 
 	private static final String DC_CREATOR = "http://purl.org/dc/elements/1.1/creator";
 	private static final String DC_CONTRIBUTOR = "http://purl.org/dc/elements/1.1/contributor";
 
-	public OntologyJenaImpl(OntResource ontResource, DocumentableObjectRegister register) {
-		super(ontResource, register);
+	public OntologyJenaImpl(OntResource ontResource, DocumentableObjectRegister register, OntResourceAnnotationStrategy annotationStrategy) {
+		super(ontResource, register, annotationStrategy);
 	}
 	
 	public Ontology getOntology(){
@@ -27,8 +28,12 @@ public class OntologyJenaImpl extends AbstractJenaDocumentableObject implements 
 	}
 
 	public Object accept(DocumentableObjectVisitor visitor) throws TransformerException {
-		return visitor.visit(this);
-	}
+        try{
+        	return visitor.visit(this);
+        }catch (JenaException e) {
+        	throw new TransformerException(e);
+        }
+    }
 
 	public String getPreferredPrefix() {
 		if (getOntology().hasProperty(ResourceFactory.createProperty(VANN_PREFERRED_PREFIX)))

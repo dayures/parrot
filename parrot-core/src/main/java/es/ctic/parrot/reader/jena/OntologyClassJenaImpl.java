@@ -36,8 +36,8 @@ public class OntologyClassJenaImpl extends AbstractJenaDocumentableObject implem
 	private Collection<OntologyClass> disjointClasses;
 	private Collection<OntologyIndividual> individuals;
 	
-	public OntologyClassJenaImpl(OntClass ontclass, DocumentableObjectRegister register){
-		super(ontclass, register);
+	public OntologyClassJenaImpl(OntClass ontclass, DocumentableObjectRegister register, OntResourceAnnotationStrategy annotationStrategy){
+		super(ontclass, register, annotationStrategy);
 	}
 	
 	public Object accept(DocumentableObjectVisitor visitor) throws TransformerException {

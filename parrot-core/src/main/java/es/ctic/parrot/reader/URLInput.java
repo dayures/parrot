@@ -123,6 +123,8 @@ public class URLInput implements Input {
     }
 
     public String getCleanMimeType(String rawMimeType){
+    	if (rawMimeType == null)
+    		return null;
         return rawMimeType.split(";")[0];
     }
 

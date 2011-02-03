@@ -27,7 +27,7 @@ public class JenaOWLReader implements DocumentReader {
     private static final String XHTML = "XHTML";
     private static final String HTML = "HTML";
     private static final Logger logger = Logger.getLogger(JenaOWLReader.class);
-    private OntModel model = ModelFactory.createOntologyModel();
+    private OntModel ontModel = ModelFactory.createOntologyModel();
     private OntResourceAnnotationStrategy annotationStrategy = new OntResourceAnnotationStrategy(); 
 	
 	/* (non-Javadoc)
@@ -44,16 +44,16 @@ public class JenaOWLReader implements DocumentReader {
 	        String base = input.getBase();
 
         	if (getJenaFormat(input).equals(XHTML) || getJenaFormat(input).equals(HTML)) {
-            	model.read(input.openReader(), base == null ? "http://example.org/base#" : base, getJenaFormat(input)); // FIXME fix this adhoc url
+            	ontModel.read(input.openReader(), base == null ? "http://example.org/base#" : base, getJenaFormat(input)); // FIXME fix this adhoc url
             } else {
 
-            	model.read(input.openReader(), base, getJenaFormat(input));	
+            	ontModel.read(input.openReader(), base, getJenaFormat(input));	
             }
         	
-            loadOntology(model, register);
-            loadOntClasses(model, register);
-            loadOntProperties(model, register);
-            loadOntIndividuals(model, register);
+            loadOntology(ontModel, register);
+            loadOntClasses(ontModel, register);
+            loadOntProperties(ontModel, register);
+            loadOntIndividuals(ontModel, register);
         } catch (JenaException e) {
             if (e.getCause() != null && e.getCause() instanceof SAXParseException) {
                 throw new ReaderException(input.getMimeType() + " parse error: " + e.getCause().getMessage(), e);
@@ -168,6 +168,10 @@ public class JenaOWLReader implements DocumentReader {
 	 */
 	public OntResourceAnnotationStrategy getAnnotationStrategy() {
 		return annotationStrategy;
+	}
+
+	public OntModel getOntModel() {
+		return ontModel;
 	}
 
 }

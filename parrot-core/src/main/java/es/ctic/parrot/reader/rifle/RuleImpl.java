@@ -12,7 +12,6 @@ import org.apache.log4j.Logger;
 
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.ontology.OntResource;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
 
 import es.ctic.parrot.de.AbstractDocumentableObject;
 import es.ctic.parrot.de.DocumentableObject;
@@ -37,7 +36,7 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 	
 	private static final Logger logger = Logger.getLogger(RuleImpl.class);
 
-	public RuleImpl(net.sourceforge.rifle.ast.Rule rule, DocumentableObjectRegister register, OntResourceAnnotationStrategy annotationStrategy) {
+	public RuleImpl(net.sourceforge.rifle.ast.Rule rule, DocumentableObjectRegister register, OntResourceAnnotationStrategy annotationStrategy, OntModel ontModel) {
 		this.rule = rule;
 		this.setAnnotationStrategy(annotationStrategy);
 		this.setRegister(register);
@@ -49,9 +48,8 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 			this.identifier = new URIIdentifier(rule.getId());
 		}
 		
-		OntModel iriMeta = ModelFactory.createOntologyModel();
-    	iriMeta.add(rule.getIriMeta());
-    	this.setOntResource(iriMeta.getOntResource(getURI()));
+		ontModel.add(rule.getIriMeta());
+    	this.setOntResource(ontModel.getOntResource(getURI()));
 	}
 
 	public Object accept(DocumentableObjectVisitor visitor) throws TransformerException {

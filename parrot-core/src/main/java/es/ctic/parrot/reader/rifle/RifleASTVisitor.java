@@ -9,6 +9,8 @@ import net.sourceforge.rifle.ast.visitor.Visitor;
 
 import org.apache.log4j.Logger;
 
+import com.hp.hpl.jena.ontology.OntModel;
+
 import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.de.RuleSet;
@@ -20,11 +22,13 @@ public class RifleASTVisitor extends Visitor {
 	
 	private DocumentableObjectRegister register;
 	private OntResourceAnnotationStrategy annotationStrategy;
+	private OntModel ontModel;
 
-	public RifleASTVisitor(DocumentableObjectRegister register, OntResourceAnnotationStrategy annotationStrategy) {
+	public RifleASTVisitor(DocumentableObjectRegister register, OntResourceAnnotationStrategy annotationStrategy, OntModel ontModel) {
 		super();
 		this.register = register;
 		this.setAnnotationStrategy(annotationStrategy);
+		this.setOntModel(ontModel);
 	}
 
 	@Override
@@ -45,7 +49,7 @@ public class RifleASTVisitor extends Visitor {
 	public Object visit(Group group, Object parent) {
 		logger.debug("Visiting RIF group AST node: " + group);
 		
-		RuleSetImpl ruleset = new RuleSetImpl(group, register, getAnnotationStrategy());
+		RuleSetImpl ruleset = new RuleSetImpl(group, register, getAnnotationStrategy(), getOntModel());
 		
 		if (parent != null) {
 			DocumentableObject parentDocumentableObject = register.findDocumentableObject(((RuleSet) parent).getIdentifier());
@@ -69,7 +73,7 @@ public class RifleASTVisitor extends Visitor {
 	public Object visit(Rule astRule, Object parent) {
 		logger.debug("Visiting RIF rule AST node: " + astRule);
 		
-		RuleImpl rule = new RuleImpl(astRule, register, getAnnotationStrategy());
+		RuleImpl rule = new RuleImpl(astRule, register, getAnnotationStrategy(), getOntModel());
 		
 		if (parent != null) {
 			DocumentableObject parentDocumentableObject = register.findDocumentableObject(((DocumentableObject) parent).getIdentifier());
@@ -104,6 +108,20 @@ public class RifleASTVisitor extends Visitor {
 	 */
 	public OntResourceAnnotationStrategy getAnnotationStrategy() {
 		return annotationStrategy;
+	}
+
+	/**
+	 * @param ontModel the ontModel to set
+	 */
+	public void setOntModel(OntModel ontModel) {
+		this.ontModel = ontModel;
+	}
+
+	/**
+	 * @return the ontModel
+	 */
+	public OntModel getOntModel() {
+		return ontModel;
 	}
 
 }

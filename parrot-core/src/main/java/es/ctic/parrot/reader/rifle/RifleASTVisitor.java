@@ -12,16 +12,19 @@ import org.apache.log4j.Logger;
 import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.de.RuleSet;
+import es.ctic.parrot.reader.jena.OntResourceAnnotationStrategy;
 
 public class RifleASTVisitor extends Visitor {
     
     private static final Logger logger = Logger.getLogger(RifleASTVisitor.class);
 	
 	private DocumentableObjectRegister register;
+	private OntResourceAnnotationStrategy annotationStrategy;
 
-	public RifleASTVisitor(DocumentableObjectRegister register) {
+	public RifleASTVisitor(DocumentableObjectRegister register, OntResourceAnnotationStrategy annotationStrategy) {
 		super();
 		this.register = register;
+		this.setAnnotationStrategy(annotationStrategy);
 	}
 
 	@Override
@@ -42,7 +45,7 @@ public class RifleASTVisitor extends Visitor {
 	public Object visit(Group group, Object parent) {
 		logger.debug("Visiting RIF group AST node: " + group);
 		
-		RuleSetImpl ruleset = new RuleSetImpl(group, register);
+		RuleSetImpl ruleset = new RuleSetImpl(group, register, getAnnotationStrategy());
 		
 		if (parent != null) {
 			DocumentableObject parentDocumentableObject = register.findDocumentableObject(((RuleSet) parent).getIdentifier());
@@ -66,7 +69,7 @@ public class RifleASTVisitor extends Visitor {
 	public Object visit(Rule astRule, Object parent) {
 		logger.debug("Visiting RIF rule AST node: " + astRule);
 		
-		RuleImpl rule = new RuleImpl(astRule, register);
+		RuleImpl rule = new RuleImpl(astRule, register, getAnnotationStrategy());
 		
 		if (parent != null) {
 			DocumentableObject parentDocumentableObject = register.findDocumentableObject(((DocumentableObject) parent).getIdentifier());
@@ -88,5 +91,19 @@ public class RifleASTVisitor extends Visitor {
         // nothing to do, imports have been resolved before
         return null;
     }
+
+	/**
+	 * @param annotationStrategy the annotationStrategy to set
+	 */
+	public void setAnnotationStrategy(OntResourceAnnotationStrategy annotationStrategy) {
+		this.annotationStrategy = annotationStrategy;
+	}
+
+	/**
+	 * @return the annotationStrategy
+	 */
+	public OntResourceAnnotationStrategy getAnnotationStrategy() {
+		return annotationStrategy;
+	}
 
 }

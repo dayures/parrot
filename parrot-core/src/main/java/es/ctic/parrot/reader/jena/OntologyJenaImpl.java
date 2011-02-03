@@ -1,12 +1,10 @@
 package es.ctic.parrot.reader.jena;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.hp.hpl.jena.ontology.OntResource;
 import com.hp.hpl.jena.ontology.Ontology;
 import com.hp.hpl.jena.rdf.model.ResourceFactory;
-import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.shared.JenaException;
 
 import es.ctic.parrot.de.DocumentableObjectRegister;
@@ -16,8 +14,7 @@ import es.ctic.parrot.transformers.TransformerException;
 public class OntologyJenaImpl extends AbstractJenaDocumentableObject implements es.ctic.parrot.de.Ontology {
 	
 	private static final String VANN_PREFERRED_PREFIX = "http://purl.org/vocab/vann/preferredNamespacePrefix";
-	private static final String DC_CREATOR = "http://purl.org/dc/elements/1.1/creator";
-	private static final String DC_CONTRIBUTOR = "http://purl.org/dc/elements/1.1/contributor";
+
 
 	public OntologyJenaImpl(OntResource ontResource, DocumentableObjectRegister register, OntResourceAnnotationStrategy annotationStrategy) {
 		super(ontResource, register, annotationStrategy);
@@ -47,22 +44,11 @@ public class OntologyJenaImpl extends AbstractJenaDocumentableObject implements 
 	}
 
 	public List<String> getEditors() {
-		
-		ArrayList<String> editors = new ArrayList<String>();
-		StmtIterator it = getOntology().listProperties(ResourceFactory.createProperty(DC_CREATOR));
-		while(it.hasNext()){
-			editors.add(it.nextStatement().getLiteral().getString());
-		}
-		return editors;
+		return getAnnotationStrategy().getCreators(getOntResource());
 	}
 
 	public List<String> getContributors() {
-		ArrayList<String> contributors = new ArrayList<String>();
-		StmtIterator it = getOntology().listProperties(ResourceFactory.createProperty(DC_CONTRIBUTOR));
-		while(it.hasNext()){
-			contributors.add(it.nextStatement().getLiteral().getString());
-		}
-		return contributors;
+		return getAnnotationStrategy().getContributors(getOntResource());
 	}
 
     public String getKindString() {

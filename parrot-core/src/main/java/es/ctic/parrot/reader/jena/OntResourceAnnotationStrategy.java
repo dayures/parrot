@@ -67,9 +67,7 @@ public class OntResourceAnnotationStrategy {
          * 
          */
 		String comment = getLiteralPropertyValue(ontResource, DCT_DESCRIPTION);
-		logger.debug("DCT_DESCRIPTION" + getLiteralPropertyValue(ontResource, DCT_DESCRIPTION));
-		logger.debug("DC_DESCRIPTION" + getLiteralPropertyValue(ontResource, DC_DESCRIPTION));
-		
+	
 		if (comment != null){
     		return comment;
 		}
@@ -450,6 +448,12 @@ public class OntResourceAnnotationStrategy {
     	}
 	}
 
+	/**
+	 * 
+	 * @param ontResource
+	 * @param property
+	 * @return the value of the literal or null if the resource has not this property associated
+	 */
 	public String getLiteralPropertyValue(OntResource ontResource, String property) {
     	if (ontResource == null){
     		return null;

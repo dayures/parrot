@@ -38,6 +38,7 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 		details.setComment(object.getComment(locale));
 		details.setVersion(object.getVersion());
 		details.setEditors(object.getEditors());
+		details.setDate(object.getDate());
 		details.setContributors(object.getContributors());
 		details.setPreferredPrefix(object.getPreferredPrefix());
 		details.setLabels(object.getLabels());

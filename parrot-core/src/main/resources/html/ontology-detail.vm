@@ -21,6 +21,11 @@
   <dd>$element.Version</dd>
   #end
   
+  #if($element.Date)
+  <dt>Date</dt>
+  <dd>$element.Date</dd>
+  #end
+  
    #if(!$element.editors.isEmpty())
    <dt>Editors:</dt>
    #foreach($editor in $element.editors)

@@ -8,5 +8,6 @@ public interface Ontology extends DocumentableOntologicalObject {
 	public abstract String getVersion();
 	public abstract List<String> getEditors();
 	public abstract List<String> getContributors();
+	public abstract String getDate();
 
 }

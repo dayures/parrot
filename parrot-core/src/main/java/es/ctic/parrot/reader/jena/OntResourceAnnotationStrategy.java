@@ -215,7 +215,7 @@ public class OntResourceAnnotationStrategy {
 			Label literalLabel = new Label();
 			literalLabel.setQualifier(uri);
 			//It cannot applied skosLabel.setUri()
-			literalLabel.setText(statement.getObject().asLiteral().getString());
+			literalLabel.setText(statement.getObject().asLiteral().getLexicalForm());
 			String LanguageTag = statement.getObject().asLiteral().getLanguage(); 
 			if (LanguageTag.equals("") == false){
 				String language = LanguageTag.split("-")[0]; 
@@ -266,7 +266,7 @@ public class OntResourceAnnotationStrategy {
 			StmtIterator it = ontModel.listStatements(statement.getObject().asResource(), ResourceFactory.createProperty(SKOS_XL_LITERAL_FORM), (RDFNode) null);
 			while (it.hasNext()){
 				Statement st = it.next();
-				skosxlLabel.setText(st.getObject().asLiteral().getString());
+				skosxlLabel.setText(st.getObject().asLiteral().getLexicalForm());
 				String LanguageTag = st.getObject().asLiteral().getLanguage(); 
 				if (LanguageTag.equals("") == false){
 					String language = LanguageTag.split("-")[0];
@@ -521,7 +521,7 @@ public class OntResourceAnnotationStrategy {
 			while(it.hasNext()){
 				Statement st = it.nextStatement();
 				if (st.getObject().isLiteral()) {
-					values.add(st.getObject().asLiteral().toString());
+					values.add(st.getObject().asLiteral().getLexicalForm());
 				} else {
 					logger.debug("As is not a literal, not added " + st.toString() );
 				}

@@ -16,7 +16,6 @@ import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.rdf.model.ResourceRequiredException;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
-import com.hp.hpl.jena.vocabulary.OWL2;
 import com.hp.hpl.jena.vocabulary.RDF;
 
 import es.ctic.parrot.de.Label;
@@ -530,23 +529,14 @@ public class OntResourceAnnotationStrategy {
 	 * @return the value of the literal or null if the resource has not this property associated
 	 */
 	private String getLiteralPropertyValue(OntResource ontResource, String property) {
-        String value = null;
+        
+        List<String> literalPropertyValues = getLiteralPropertyValues(ontResource, property);
 
-		if (ontResource == null){
-    		return null;
-    	} else {
-			RDFNode propertyValue = ontResource.getPropertyValue(ResourceFactory.createProperty(property));
-	
-			if (propertyValue != null) {
-				if (propertyValue.isLiteral()) {
-					value = propertyValue.asLiteral().getString();
-				} else {
-					logger.debug("As is not a literal, not added " + propertyValue.toString() );
-				}
-			}
-			
-			return value;
-    	}
+        if (literalPropertyValues.isEmpty()){
+        	return null;
+        } else {
+        	return literalPropertyValues.iterator().next(); // Take the first one
+        }
 
 	}
 

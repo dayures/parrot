@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.hp.hpl.jena.ontology.OntResource;
 import com.hp.hpl.jena.ontology.Ontology;
-import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.shared.JenaException;
 
 import es.ctic.parrot.de.DocumentableObjectRegister;
@@ -13,9 +12,6 @@ import es.ctic.parrot.transformers.TransformerException;
 
 public class OntologyJenaImpl extends AbstractJenaDocumentableObject implements es.ctic.parrot.de.Ontology {
 	
-	private static final String VANN_PREFERRED_PREFIX = "http://purl.org/vocab/vann/preferredNamespacePrefix";
-
-
 	public OntologyJenaImpl(OntResource ontResource, DocumentableObjectRegister register, OntResourceAnnotationStrategy annotationStrategy) {
 		super(ontResource, register, annotationStrategy);
 	}
@@ -33,14 +29,11 @@ public class OntologyJenaImpl extends AbstractJenaDocumentableObject implements 
     }
 
 	public String getPreferredPrefix() {
-		if (getOntology().hasProperty(ResourceFactory.createProperty(VANN_PREFERRED_PREFIX)))
-			return getOntology().getProperty(ResourceFactory.createProperty(VANN_PREFERRED_PREFIX)).getLiteral().getString();
-		else
-			return null;
+		return getAnnotationStrategy().getPreferredPrefix(getOntResource());
 	}
 
 	public String getVersion() {
-		return getOntology().getVersionInfo();
+		return getAnnotationStrategy().getVersion(getOntResource());
 	}
 
 	public List<String> getEditors() {

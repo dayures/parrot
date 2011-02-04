@@ -54,6 +54,7 @@ public class OntResourceAnnotationStrategy {
 	private static final String DCT_DESCRIPTION = "http://purl.org/dc/terms/description";
 	private static final String DCT_SOURCE = "http://purl.org/dc/terms/source";
 
+	private static final String VANN_PREFERRED_PREFIX = "http://purl.org/vocab/vann/preferredNamespacePrefix";
 	
 	private static final String TYPE_VIDEO = "video/mpeg";
 	private static final String TYPE_IMAGE = "image/png";
@@ -486,11 +487,18 @@ public class OntResourceAnnotationStrategy {
 	
 	/************************************************************************/
 	
+	public String getVersion(OntResource ontResource) {
+		return ontResource.getVersionInfo();
+	}
+
+	public String getPreferredPrefix(OntResource ontResource) {
+		return getLiteralPropertyValue(ontResource, VANN_PREFERRED_PREFIX);
+	}
 
 	public String getDate(OntResource ontResource) {
 		return getLiteralPropertyValue(ontResource, DC_DATE);
 	}
-
+	
 	public List<String> getCreators(OntResource ontResource) {
 		return getLiteralPropertyValues(ontResource, DC_CREATOR);
 	}
@@ -540,5 +548,4 @@ public class OntResourceAnnotationStrategy {
 
 	}
 
-	
 }

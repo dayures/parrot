@@ -11,6 +11,7 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 	private List<String> editors;
 	private List<String> contributors;
 	private String preferredPrefix;
+	private String date;
 	
 	public OntologyDetailView(Ontology ontology){
 		this.ontology=ontology;
@@ -55,5 +56,12 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 	public List<String> getContributors() {
 		return contributors;
 	}
-	
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public String getDate() {
+		return date;
+	}
 }

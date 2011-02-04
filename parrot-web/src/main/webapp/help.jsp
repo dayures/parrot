@@ -161,11 +161,11 @@ currently supported by PARROT.</p>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin
       Core</a></td>
       <td>Ontology</td>
-      <td>Expresses the date of creation or publication of the ontology.
+      <td>Expresses the date of creation or publication of the rule.
         Recommended best practice is to use the W3CDTF profile of ISO 8601.</td>
       <td>http://purl.org/dc/elements/1.1/</td>
-      <td><img alt="Currently not supported"
-        src="images/not-supported-yet.png" width="32" height="32" /></td>
+      <td><img alt="Currently supported"
+        src="images/supported.png" width="32" height="32" /></td>
     </tr>
     <tr>
       <td><em>publisher</em></td>

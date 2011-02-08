@@ -39,12 +39,11 @@ public class HtmlOutputGenerator implements OutputGenerator {
             p.setProperty("resource.loader", "class,file");
             p.setProperty("class.resource.loader.class","org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
             p.setProperty("file.resource.loader.class","org.apache.velocity.runtime.resource.loader.FileResourceLoader");
-            //p.setProperty(Velocity.EVENTHANDLER_REFERENCEINSERTION, "org.apache.velocity.app.event.implement.EscapeHtmlReference");
-
+            p.setProperty(Velocity.EVENTHANDLER_REFERENCEINSERTION, "org.apache.velocity.app.event.implement.EscapeHtmlReference");
+            p.setProperty("eventhandler.escape.html.match", "/^(?!\\$unescapehtml_).*/");
             Velocity.init(p);
 
             OutputStreamWriter osw = new OutputStreamWriter(out, (new InputStreamReader(template)).getEncoding());
-            //Velocity.mergeTemplate("html.vm","utf-8",ctx, osw);
             Velocity.evaluate(ctx, osw, "parrot", new BufferedReader(new InputStreamReader(template))); 
             osw.flush();
             osw.close();

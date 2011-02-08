@@ -26,7 +26,11 @@
 	 #end
      
      #if($element.sourceText)
-     	<p>$element.sourceText</p>
+        
+        ## rename the variable in order to unescape the html content
+     	#set($unescapehtml_sourceText = $element.sourceText)
+     	<p>$unescapehtml_sourceText</p>
+     	
      	#if ($element.Uri)      
      	<p class="relatedDocumentUrl"><a href="$element.Uri">$element.Uri</a></p>
      	#end

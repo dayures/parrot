@@ -61,6 +61,14 @@ p.back-to-top {
 	padding-left: 26px;
 }
 
+.parrot-ontology-ref {
+	background-image: url("images/icon-ontology-16.png");
+}
+
+.parrot-ontology-title {
+	background-image: url("images/icon-ontology-24.png");
+}
+
 .parrot-class-ref {
 	background-image: url("images/icon-class-16.png");
 }
@@ -91,6 +99,14 @@ p.back-to-top {
 
 .parrot-rule-title {
 	background-image: url("images/icon-rule-24.png");
+}
+
+.parrot-ruleset-ref {
+	background-image: url("images/icon-ruleset-16.png");
+}
+
+.parrot-ruleset-title {
+	background-image: url("images/icon-ruleset-24.png");
 }
 
 .parrot-label-locale {

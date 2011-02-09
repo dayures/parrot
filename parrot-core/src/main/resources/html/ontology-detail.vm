@@ -1,5 +1,7 @@
 <div class="term">
-  <h3><a id="$element.Anchor"></a>Ontology: $element.Label</h3>
+  <h3><a id="$element.Anchor"></a><span class="parrot-element-title parrot-ontology-title">Ontology: $element.Label</span></h3>
+  
+  
   <dl>
   #if($element.Uri)
       <dt>Uri</dt>

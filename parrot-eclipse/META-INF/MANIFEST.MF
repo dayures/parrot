@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Parrot
+Bundle-SymbolicName: es.ctic.parrot.parrot_eclipse; singleton:=true
+Bundle-Version: 1.0.0.20100417
+Bundle-Activator: es.ctic.parrot.parrot_eclipse.ParrotEclipsePlugin
+Require-Bundle: org.eclipse.ui;bundle-version="3.5.2",
+ org.eclipse.core.runtime;bundle-version="3.5.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Vendor: CTIC
+Import-Package: org.eclipse.jface.text,
+ org.eclipse.ui.texteditor
+Bundle-ClassPath: .,
+ lib/parrot-core-1.0-SNAPSHOT-jar-with-dependencies.jar

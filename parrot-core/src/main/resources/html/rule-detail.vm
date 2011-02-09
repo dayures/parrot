@@ -39,14 +39,14 @@
    
    #if(!$element.referencedOntologicalObjects.isEmpty())
    <dt>Referenced model objects</dt>
-   #foreach($v in $element.referencedOntologicalObjects)
-	 <dd><a href="#$v.LocalName">$v.Label</a></dd>
+   #foreach($reference in $element.referencedOntologicalObjects)
+	 <dd><span class="parrot-element-ref parrot-${reference.kindString}-ref"><a href="#$reference.localName">$reference.label</a></span></dd>
    #end
    #end
    
    #if($element.Parent)
       <dt>is inside of</dt>
-      <dd><a href="#$element.Parent.LocalName">$element.Parent.Label</a></dd>
+      <dd><span class="parrot-element-ref parrot-${element.Parent.kindString}-ref"><a href="#$element.Parent.LocalName">$element.Parent.Label</a></span></dd>
    #end
    
    #if(!$element.labels.isEmpty())

@@ -79,7 +79,7 @@ public class URLInput implements Input {
 
             if (isValidResponseCode(connection.getResponseCode()) == false ){
                 logger.error("URI " + this.url + " not accesible. HTTP Status code: " + connection.getResponseCode());
-                throw new ReaderException("URI not accesible. HTTP Status code: " + connection.getResponseCode());
+                throw new ReaderException("URI "+ this.url +" not accesible. HTTP Status code: " + connection.getResponseCode());
             } 
 
             // For content negotiation, set mimetype
@@ -92,7 +92,7 @@ public class URLInput implements Input {
                 	logger.info("Use extension "+ extension + " to fix content-type: " + this.mimeType + " for URL " + this.url);
                 }else {
                     logger.error("mimeType not valid: " + this.mimeType + " for URL " + this.url);
-                    throw new ReaderException("mimeType not valid: " + this.mimeType);
+                    throw new ReaderException("invalid mimeType \"" + this.mimeType + "\" (returned by URI "+ this.url + ") for parrot");
                 }
             }
         } catch (IOException e) {
@@ -137,7 +137,7 @@ public class URLInput implements Input {
 
     @Override
     public String toString() {
-        return "URLInput [mimeType=" + mimeType + ", url=" + url + "]";
+        return "URL " + url + " (mimeType \"" + mimeType + "\")";
     }
 
 	public String getBase() {

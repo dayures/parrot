@@ -31,7 +31,7 @@ public class RifleXmlReader extends ImportResolver implements DocumentReader {
             RifleASTVisitor visitor = new RifleASTVisitor(register, getOntologyReader().getAnnotationStrategy(), getOntologyReader().getOntModel());
             document.accept(visitor, null);
         } catch (Exception e) {
-            throw new ReaderException(e);
+            throw new ReaderException("While parsing RIF XML document", e);
         }
     }
 

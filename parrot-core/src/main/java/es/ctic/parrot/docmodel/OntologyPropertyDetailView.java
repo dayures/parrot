@@ -6,7 +6,6 @@ import java.util.Locale;
 
 import org.apache.log4j.Logger;
 
-import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.OntologyProperty;
 
 public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailView  implements DetailView{
@@ -23,7 +22,7 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
 	private Collection<DocumentableObjectReference> equivalentProperties;
 	private Collection<DocumentableObjectReference> disjointProperties;
     private int cardinality;
-    private DocumentableObject inverseOf;
+    private DocumentableObjectReference inverseOf;
 	
 	private OntologyPropertyDetailView(){
         logger.debug("Created " + this.getClass());
@@ -92,14 +91,14 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
 	/**
 	 * @param inverseOf the inverseOf to set
 	 */
-	public void setInverseOf(DocumentableObject inverseOf) {
+	public void setInverseOf(DocumentableObjectReference inverseOf) {
 		this.inverseOf = inverseOf;
 	}
 
 	/**
 	 * @return the inverseOf
 	 */
-	public DocumentableObject getInverseOf() {
+	public DocumentableObjectReference getInverseOf() {
 		return inverseOf;
 	}
 	
@@ -205,7 +204,7 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
 		details.setInverseRuleReferences(object.getInverseRuleReferences());
 		details.setInverseReferences(DocumentableObjectReference.createReferences(object.getInternalReferences(), locale));
 		details.setCardinality(object.getCardinality());
-		details.setInverseOf(object.getInverseOf());
+		details.setInverseOf(DocumentableObjectReference.createReference(object.getInverseOf(), locale));
 		details.setLabels(object.getLabels());
 		details.setRelatedDocuments(object.getRelatedDocuments(locale));
 		

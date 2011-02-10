@@ -1,30 +1,26 @@
 package es.ctic.parrot.docmodel;
 
 import java.util.List;
+import java.util.Locale;
 
-import es.ctic.parrot.de.Identifier;
+import org.apache.log4j.Logger;
+
 import es.ctic.parrot.de.Ontology;
 
 public class OntologyDetailView extends AbstractOntologicalObjectDetailView implements DetailView{
-	private Ontology ontology;
+	
+    private static final Logger logger = Logger.getLogger(OntologyDetailView.class);
+
 	private String version;
 	private List<String> editors;
 	private List<String> contributors;
 	private String preferredPrefix;
 	private String date;
 	
-	public OntologyDetailView(Ontology ontology){
-		this.ontology=ontology;
+	private OntologyDetailView(){
+		logger.debug("Created " + this.getClass());
 	}
 	
-	public Identifier getIdentifier(){
-		return ontology.getIdentifier();
-	}
-
-	public String getAnchor() {
-		return ontology.getLocalName();
-	}
-
 	public void setVersion(String version) {
 		this.version = version;
 	}
@@ -64,4 +60,28 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 	public String getDate() {
 		return date;
 	}
+	
+    public static OntologyDetailView createFromOntology(Ontology object, Locale locale) {
+    	
+	    OntologyDetailView details = new OntologyDetailView();
+		
+	    details.setUri(object.getURI());
+		details.setLabel(object.getLabel(locale));
+		details.setComment(object.getComment(locale));
+		details.setVersion(object.getVersion());
+		details.setEditors(object.getEditors());
+		details.setDate(object.getDate());
+		details.setContributors(object.getContributors());
+		details.setPreferredPrefix(object.getPreferredPrefix());
+		details.setLabels(object.getLabels());
+		details.setRelatedDocuments(object.getRelatedDocuments(locale));
+		
+		details.setAnchor(object.getLocalName());
+		details.setIdentifier(object.getIdentifier());
+		
+		return details;
+
+    }
+
+
 }

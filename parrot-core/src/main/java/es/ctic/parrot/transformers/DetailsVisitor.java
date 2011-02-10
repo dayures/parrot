@@ -32,19 +32,10 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
     
 	public Object visit(Ontology object) throws TransformerException {
 	    logger.debug("Visiting ontology " + object);
-		OntologyDetailView details=new OntologyDetailView(object);
-		details.setUri(object.getURI());
-		details.setLabel(object.getLabel(locale));
-		details.setComment(object.getComment(locale));
-		details.setVersion(object.getVersion());
-		details.setEditors(object.getEditors());
-		details.setDate(object.getDate());
-		details.setContributors(object.getContributors());
-		details.setPreferredPrefix(object.getPreferredPrefix());
-		details.setLabels(object.getLabels());
-		details.setRelatedDocuments(object.getRelatedDocuments(locale));
-
+		
+	    OntologyDetailView details = OntologyDetailView.createFromOntology(object, locale);		
 		document.addOntologyDetailView(details);     
+		
 		return details;
 	}
 	
@@ -119,18 +110,20 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 	
 	public Object visit(RuleSet object) throws TransformerException {
 	    logger.debug("Visiting ruleset " + object);
-	    RuleSetDetailView details = RuleSetDetailView.createFromRuleSet(object, locale);		
 	    
+	    RuleSetDetailView details = RuleSetDetailView.createFromRuleSet(object, locale);		
 	    document.addRuleSetDetailView(details);
+
 	    return details;
 	}
 
 	public Object visit(Rule object) throws TransformerException {
 	    logger.debug("Visiting rule " + object);
+	    
 	    RuleDetailView details = RuleDetailView.createFromRule(object, locale);		
-
 		document.addRuleDetailView(details);
-	    return details;
+
+		return details;
 	}
 
 }

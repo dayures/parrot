@@ -50,25 +50,11 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 	
 	public Object visit(OntologyProperty object) throws TransformerException {
 	    logger.debug("Visiting property " + object);
-		OntologyPropertyDetailView details = new OntologyPropertyDetailView(object);
-		details.setUri(object.getURI());
-		details.setLabel(object.getLabel(locale));
-		details.setComment(object.getComment(locale));
-		details.setDomain(object.getDomain());
-		details.setRange(object.getRange());
-		details.setSuperProperties(object.getSuperProperties());
-		details.setSubProperties(object.getSubProperties());
-		details.setEquivalentProperties(object.getEquivalentProperties());
-		details.setDisjointProperties(object.getDisjointProperties());
-		details.setInverseRuleReferences(object.getInverseRuleReferences());
-		details.setInverseReferences(object.getInternalReferences());
-		details.setCardinality(object.getCardinality());
-		details.setInverseOf(object.getInverseOf());
-		details.setLabels(object.getLabels());
-		details.setRelatedDocuments(object.getRelatedDocuments(locale));
-		
+
+	    OntologyPropertyDetailView details = OntologyPropertyDetailView.createFromProperty(object, locale);
         document.addOntologyPropertyDetailView(details);     
-		return details;
+		
+        return details;
 	}
 
 	

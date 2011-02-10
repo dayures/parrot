@@ -201,7 +201,7 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
 		details.setSubProperties(DocumentableObjectReference.createReferences(object.getSubProperties(), locale));
 		details.setEquivalentProperties(DocumentableObjectReference.createReferences(object.getEquivalentProperties(), locale));
 		details.setDisjointProperties(DocumentableObjectReference.createReferences(object.getDisjointProperties(), locale));
-		details.setInverseRuleReferences(object.getInverseRuleReferences());
+		details.setInverseRuleReferences(DocumentableObjectReference.createReferences(object.getInverseRuleReferences(), locale));
 		details.setInverseReferences(DocumentableObjectReference.createReferences(object.getInternalReferences(), locale));
 		details.setCardinality(object.getCardinality());
 		details.setInverseOf(DocumentableObjectReference.createReference(object.getInverseOf(), locale));

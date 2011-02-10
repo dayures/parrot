@@ -6,7 +6,6 @@ import java.util.Locale;
 
 import org.apache.log4j.Logger;
 
-import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.Identifier;
 import es.ctic.parrot.de.Label;
 import es.ctic.parrot.de.RelatedDocument;
@@ -30,7 +29,7 @@ public class RuleSetDetailView implements DetailView {
 	private Collection<RelatedDocument> relatedDocuments;
 	private Collection<DocumentableObjectReference> rules;
 	private Collection<DocumentableObjectReference> ruleSets;
-	private DocumentableObject parent;
+	private DocumentableObjectReference parent;
     private String anchor;
 
 	
@@ -166,14 +165,14 @@ public class RuleSetDetailView implements DetailView {
 	/**
 	 * @param parent the parent to set
 	 */
-	public void setParent(DocumentableObject parent) {
+	public void setParent(DocumentableObjectReference parent) {
 		this.parent = parent;
 	}
 
 	/**
 	 * @return the parent
 	 */
-	public DocumentableObject getParent() {
+	public DocumentableObjectReference getParent() {
 		return parent;
 	}
 
@@ -238,7 +237,7 @@ public class RuleSetDetailView implements DetailView {
         details.setRuleSets(DocumentableObjectReference.createReferences(object.getRuleSets(), locale));
         details.setPriority(object.getPriority());
         details.setStrategy(object.getStrategy());
-        details.setParent(object.getParent());
+        details.setParent(DocumentableObjectReference.createReference(object.getParent(), locale));
         details.setLabels(object.getLabels());
         details.setAnchor(object.getLocalName());
         details.setRelatedDocuments(object.getRelatedDocuments(locale));        

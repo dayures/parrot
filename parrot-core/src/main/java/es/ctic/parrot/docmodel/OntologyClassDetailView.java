@@ -89,7 +89,7 @@ public class OntologyClassDetailView extends AbstractOntologicalObjectDetailView
 		details.setSubClasses(DocumentableObjectReference.createReferences(object.getSubClasses(), locale));
 		details.setEquivalentClasses(DocumentableObjectReference.createReferences(object.getEquivalentClasses(),locale));
 		details.setDisjointClasses(DocumentableObjectReference.createReferences(object.getDisjointClasses(), locale));
-		details.setInverseRuleReferences(object.getInverseRuleReferences());
+		details.setInverseRuleReferences(DocumentableObjectReference.createReferences(object.getInverseRuleReferences(), locale));
 		details.setInverseReferences(DocumentableObjectReference.createReferences(object.getInternalReferences(), locale));
 		details.setIndividuals(DocumentableObjectReference.createReferences(object.getIndividuals(), locale));
 		details.setLabels(object.getLabels());

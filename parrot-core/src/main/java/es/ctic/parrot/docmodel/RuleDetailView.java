@@ -29,7 +29,7 @@ public class RuleDetailView implements DetailView{
 	private DocumentableObject parent;
     private String anchor;
 	
-	public RuleDetailView() {
+	private RuleDetailView() {
         logger.debug("Created " + this.getClass());
     }
 

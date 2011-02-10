@@ -11,7 +11,6 @@ import es.ctic.parrot.de.OntologyProperty;
 import es.ctic.parrot.de.Rule;
 import es.ctic.parrot.de.RuleSet;
 import es.ctic.parrot.docmodel.Document;
-import es.ctic.parrot.docmodel.DocumentableObjectReference;
 import es.ctic.parrot.docmodel.OntologyClassDetailView;
 import es.ctic.parrot.docmodel.OntologyDetailView;
 import es.ctic.parrot.docmodel.OntologyIndividualDetailView;
@@ -121,25 +120,14 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 	public Object visit(RuleSet object) throws TransformerException {
 	    logger.debug("Visiting ruleset " + object);
 	    RuleSetDetailView details = RuleSetDetailView.createFromRuleSet(object, locale);		
+	    
 	    document.addRuleSetDetailView(details);
 	    return details;
 	}
 
 	public Object visit(Rule object) throws TransformerException {
 	    logger.debug("Visiting rule " + object);
-	    RuleDetailView details = new RuleDetailView(object);
-	    details.setIdentifier(object.getIdentifier());
-		details.setUri(object.getURI());
-		details.setLabel(object.getLabel(locale));
-		details.setComment(object.getComment(locale));
-		details.setDate(object.getDate());
-		details.setCreators(object.getCreators());
-		details.setContributors(object.getContributors());
-		details.setPublishers(object.getPublishers());
-		details.setParent(object.getParent());
-		details.setReferencedOntologicalObjects(object.getReferencedOntologicalObjects());
-		details.setLabels(object.getLabels());
-		details.setRelatedDocuments(object.getRelatedDocuments(locale));
+	    RuleDetailView details = RuleDetailView.createFromRule(object, locale);		
 
 		document.addRuleDetailView(details);
 	    return details;

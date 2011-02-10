@@ -30,68 +30,51 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
         this.locale = locale;
     }
     
+	@Override
 	public Object visit(Ontology object) throws TransformerException {
 	    logger.debug("Visiting ontology " + object);
-		
 	    OntologyDetailView details = OntologyDetailView.createFromOntology(object, locale);		
 		document.addOntologyDetailView(details);     
-		
 		return details;
 	}
 	
+	@Override
 	public Object visit(OntologyClass object) throws TransformerException {
 	    logger.debug("Visiting class " + object);
-
 	    OntologyClassDetailView details = OntologyClassDetailView.createFromClass(object, locale);	
         document.addOntologyClassDetailView(details);     
-		
         return details;
 	}
 	
+	@Override
 	public Object visit(OntologyProperty object) throws TransformerException {
 	    logger.debug("Visiting property " + object);
-
 	    OntologyPropertyDetailView details = OntologyPropertyDetailView.createFromProperty(object, locale);
         document.addOntologyPropertyDetailView(details);     
-		
         return details;
 	}
 
-	
-	/* (non-Javadoc)
-	 * @see es.ctic.parrot.transformers.AbstractDocumentableObjectVisitor#visit(es.ctic.parrot.de.OntologyIndividual)
-	 */
 	@Override
 	public Object visit(OntologyIndividual object) throws TransformerException {
 	    logger.debug("Visiting individual " + object);
-		OntologyIndividualDetailView details = new OntologyIndividualDetailView(object);
-		details.setLabel(object.getLabel(locale));
-		details.setUri(object.getURI());
-		details.addAllTypes(object.getTypes());
-		details.setInverseRuleReferences(object.getInverseRuleReferences());
-		details.setLabels(object.getLabels());
-		details.setRelatedDocuments(object.getRelatedDocuments(locale));
-		
+		OntologyIndividualDetailView details = OntologyIndividualDetailView.createFromIndividual(object, locale);		
 		document.addOntologyIndividualDetailView(details);
 		return details;
 	}
 	
-	
+	@Override
 	public Object visit(RuleSet object) throws TransformerException {
 	    logger.debug("Visiting ruleset " + object);
-	    
 	    RuleSetDetailView details = RuleSetDetailView.createFromRuleSet(object, locale);		
 	    document.addRuleSetDetailView(details);
-
 	    return details;
 	}
 
+	@Override
 	public Object visit(Rule object) throws TransformerException {
 	    logger.debug("Visiting rule " + object);
-	    
 	    RuleDetailView details = RuleDetailView.createFromRule(object, locale);		
 		document.addRuleDetailView(details);
-
 		return details;
 	}
 

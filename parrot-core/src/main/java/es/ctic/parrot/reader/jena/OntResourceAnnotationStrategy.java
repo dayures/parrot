@@ -434,8 +434,7 @@ public class OntResourceAnnotationStrategy {
 							candidateRule.setType(TYPE_HTML);
 							
 							if (listRuleTexts.hasNext()){
-								String ruleText = new String();
-								ruleText = listRuleTexts.nextStatement().getObject().asLiteral().getLexicalForm();
+								String ruleText = listRuleTexts.nextStatement().getObject().asLiteral().getLexicalForm();
 		
 								// change <a> tag to <span>
 								ruleText = ruleText.replaceAll("<a", "<span");

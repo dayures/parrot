@@ -34,7 +34,7 @@ public class OntologyIndividualDetailView extends AbstractOntologicalObjectDetai
     	details.setLabel(object.getLabel(locale));
 		details.setUri(object.getURI());
 		details.addAllTypes(DocumentableObjectReference.createReferences(object.getTypes(),locale));
-		details.setInverseRuleReferences(object.getInverseRuleReferences());
+		details.setInverseRuleReferences(DocumentableObjectReference.createReferences(object.getInverseRuleReferences(), locale));
 		details.setLabels(object.getLabels());
 		details.setRelatedDocuments(object.getRelatedDocuments(locale));
 

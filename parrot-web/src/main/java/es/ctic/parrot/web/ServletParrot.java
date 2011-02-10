@@ -49,9 +49,15 @@ public class ServletParrot extends HttpServlet {
 		List<String> advices = new ArrayList<String>();
 		req.setAttribute(ERRORS_GENERAL, errors.getErrorsNotAssociated());
 		req.setAttribute(ADVICES, advices);
+		
+		Locale locale = Locale.ENGLISH; // default Locale
+		
+		String language = req.getParameter("language");
+		if ( language != null && language.trim().length() != 0) 
+			locale = new Locale(language);
 
 		try {
-			DocumentaryProject dp = new DocumentaryProject(Locale.ENGLISH); // FIXME
+			DocumentaryProject dp = new DocumentaryProject(locale);
 			addDirectInput(dp, req);
 			
 			if (dp.getInputs().isEmpty()){

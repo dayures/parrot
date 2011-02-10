@@ -13,6 +13,7 @@ import es.ctic.parrot.reader.ReaderException;
 import es.ctic.parrot.reader.StringInput;
 import es.ctic.parrot.reader.jena.JenaOWLReader;
 import es.ctic.parrot.reader.rifle.RifleXmlReader;
+import es.ctic.parrot.transformers.TransformerException;
 import es.ctic.parrot.DocumentaryProject;
 
 
@@ -28,10 +29,10 @@ public class ParrotCoreWrapper {
 	public String exec(String input, String contenttype){
 		System.out.println("Exec Parrot plugin"); // DEBUG
 		app = new ParrotAppServ();
-        DocumentReader ontologyWrapper = new JenaOWLReader();
+		JenaOWLReader ontologyWrapper = new JenaOWLReader();
         DocumentReader ruleWrapper = new RifleXmlReader(ontologyWrapper);
-        app.setOntologyWrapper(ontologyWrapper);
-        app.setRuleWrapper(ruleWrapper);
+        app.setOntologyReader(ontologyWrapper);
+        app.setRuleXmlReader(ruleWrapper);
         template = Thread.currentThread().getContextClassLoader().getResourceAsStream("html/template.vm");
 		System.out.println("Parrot Core Input:" + input); // DEBUG
 		
@@ -45,6 +46,8 @@ public class ParrotCoreWrapper {
 		} catch (ReaderException e) {
 			throw new RuntimeException(e);
 		} catch (IOException e) {
+			throw new RuntimeException(e);
+		} catch (TransformerException e) {
 			throw new RuntimeException(e);
 		}
 		

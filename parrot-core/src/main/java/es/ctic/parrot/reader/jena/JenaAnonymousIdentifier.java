@@ -13,7 +13,7 @@ public class JenaAnonymousIdentifier implements Identifier {
     private final String id;
 
 	public JenaAnonymousIdentifier(AnonId anonId) {
-		this.id = new Integer (anonId.hashCode()).toString();
+		this.id = Integer.valueOf(anonId.hashCode()).toString();
 	}
 	
     @Override

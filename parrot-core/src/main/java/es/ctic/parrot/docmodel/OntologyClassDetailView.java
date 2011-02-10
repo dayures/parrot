@@ -3,96 +3,116 @@ package es.ctic.parrot.docmodel;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
-import java.util.List;
+import java.util.Locale;
 
-import es.ctic.parrot.de.DocumentableObject;
-import es.ctic.parrot.de.Identifier;
+import org.apache.log4j.Logger;
+
 import es.ctic.parrot.de.OntologyClass;
-import es.ctic.parrot.de.OntologyIndividual;
 
 public class OntologyClassDetailView extends AbstractOntologicalObjectDetailView implements DetailView{
-	private OntologyClass ontologyClass;
-	private List<OntologyClass> superClasses;
-	private List<OntologyClass> subClasses;
-	private Collection<OntologyClass> equivalentClasses;
-	private Collection<OntologyClass> disjointClasses;
-	private Collection<DocumentableObject> inverseReferences;
-	private Collection<OntologyIndividual> individuals;
+	
+    private static final Logger logger = Logger.getLogger(OntologyClassDetailView.class);
 
-	public OntologyClassDetailView(OntologyClass ontologyClass){
-		this.ontologyClass=ontologyClass;
-		this.superClasses=new LinkedList<OntologyClass>();
-		this.subClasses=new LinkedList<OntologyClass>();
-		this.inverseReferences=new LinkedList<DocumentableObject>();
+	private Collection<DocumentableObjectReference> superClasses = new LinkedList<DocumentableObjectReference>();
+	private Collection<DocumentableObjectReference> subClasses = new LinkedList<DocumentableObjectReference>();
+	private Collection<DocumentableObjectReference> equivalentClasses;
+	private Collection<DocumentableObjectReference> disjointClasses;
+	private Collection<DocumentableObjectReference> inverseReferences = new LinkedList<DocumentableObjectReference>();
+	private Collection<DocumentableObjectReference> individuals;
+
+	private OntologyClassDetailView(){
+        logger.debug("Created " + this.getClass());
 	}
 	
-	public Identifier getIdentifier(){
-		return ontologyClass.getIdentifier();
+	public Collection<DocumentableObjectReference> getSuperClasses() {
+		return Collections.unmodifiableCollection(this.superClasses);
 	}
 
-	public List<OntologyClass> getSuperClasses() {
-		return Collections.unmodifiableList(this.superClasses);
+	public Collection<DocumentableObjectReference> getSubClasses() {
+		return Collections.unmodifiableCollection(this.subClasses);
 	}
 
-	public void addSuperClasses(OntologyClass superClasses) {
-		this.superClasses.add(superClasses);
-	}
 
-	public List<OntologyClass> getSubClasses() {
-		return Collections.unmodifiableList(this.subClasses);
-	}
-
-	public void addSubClasses(OntologyClass subClasses) {
-		this.subClasses.add(subClasses);
-	}
-
-	public void setInverseReferences(Collection<DocumentableObject> inverseReferences) {
+	public void setInverseReferences(Collection<DocumentableObjectReference> inverseReferences) {
 		this.inverseReferences = inverseReferences;
 	}
 
-	public Collection<DocumentableObject> getInverseReferences() {
+	public Collection<DocumentableObjectReference> getInverseReferences() {
 		return inverseReferences;
 	}
 
-	public String getAnchor() {
-		return ontologyClass.getLocalName();
-	}
-
-	public void setIndividuals(Collection<OntologyIndividual> individuals) {
+	public void setIndividuals(Collection<DocumentableObjectReference> individuals) {
 		this.individuals = individuals;
 	}
 
-	public Collection<OntologyIndividual> getIndividuals() {
+	public Collection<DocumentableObjectReference> getIndividuals() {
 		return Collections.unmodifiableCollection(individuals);
 	}
 
 	/**
 	 * @param equivalentClasses the equivalentClasses to set
 	 */
-	public void setEquivalentClasses(Collection<OntologyClass> equivalentClasses) {
+	public void setEquivalentClasses(Collection<DocumentableObjectReference> equivalentClasses) {
 		this.equivalentClasses = equivalentClasses;
 	}
 
 	/**
 	 * @return the equivalentClasses
 	 */
-	public Collection<OntologyClass> getEquivalentClasses() {
+	public Collection<DocumentableObjectReference> getEquivalentClasses() {
 		return Collections.unmodifiableCollection(equivalentClasses);
 	}
 
 	/**
 	 * @param disjointClasses the disjointClasses to set
 	 */
-	public void setDisjointClasses(Collection<OntologyClass> disjointClasses) {
+	public void setDisjointClasses(Collection<DocumentableObjectReference> disjointClasses) {
 		this.disjointClasses = disjointClasses;
 	}
 
 	/**
 	 * @return the disjointClasses
 	 */
-	public Collection<OntologyClass> getDisjointClasses() {
+	public Collection<DocumentableObjectReference> getDisjointClasses() {
 		return Collections.unmodifiableCollection(disjointClasses);
 	}
 	
-	
+
+    public static OntologyClassDetailView createFromClass(OntologyClass object, Locale locale) {
+    	
+    	OntologyClassDetailView details = new OntologyClassDetailView();
+    	
+		details.setUri(object.getURI());
+		details.setLabel(object.getLabel(locale));
+		details.setComment(object.getComment(locale));
+		details.setSuperClasses(DocumentableObjectReference.createReferences(object.getSuperClasses(), locale));
+		details.setSubClasses(DocumentableObjectReference.createReferences(object.getSubClasses(), locale));
+		details.setEquivalentClasses(DocumentableObjectReference.createReferences(object.getEquivalentClasses(),locale));
+		details.setDisjointClasses(DocumentableObjectReference.createReferences(object.getDisjointClasses(), locale));
+		details.setInverseRuleReferences(object.getInverseRuleReferences());
+		details.setInverseReferences(DocumentableObjectReference.createReferences(object.getInternalReferences(), locale));
+		details.setIndividuals(DocumentableObjectReference.createReferences(object.getIndividuals(), locale));
+		details.setLabels(object.getLabels());
+		details.setRelatedDocuments(object.getRelatedDocuments(locale));
+
+		details.setAnchor(object.getLocalName());
+		details.setIdentifier(object.getIdentifier());
+		
+		return details;
+
+    }
+
+	/**
+	 * @param superClasses the superClasses to set
+	 */
+	public void setSuperClasses(Collection<DocumentableObjectReference> superClasses) {
+		this.superClasses = superClasses;
+	}
+
+	/**
+	 * @param subClasses the subClasses to set
+	 */
+	public void setSubClasses(Collection<DocumentableObjectReference> subClasses) {
+		this.subClasses = subClasses;
+	}
 }

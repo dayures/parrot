@@ -2,11 +2,11 @@ package es.ctic.parrot.docmodel;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Locale;
 
 import org.apache.log4j.Logger;
 
 import es.ctic.parrot.de.DocumentableObject;
-import es.ctic.parrot.de.DocumentableOntologicalObject;
 import es.ctic.parrot.de.Identifier;
 import es.ctic.parrot.de.Label;
 import es.ctic.parrot.de.RelatedDocument;
@@ -15,7 +15,6 @@ import es.ctic.parrot.de.Rule;
 public class RuleDetailView implements DetailView{
 
     private static final Logger logger = Logger.getLogger(RuleDetailView.class);
-    private Rule rule;
     private Identifier identifier;
 	private String uri;
 	private String label;
@@ -24,15 +23,20 @@ public class RuleDetailView implements DetailView{
 	private Collection<String> creators;
 	private Collection<String> contributors;
 	private Collection<String> publishers;
-	private Collection<DocumentableOntologicalObject> referencedOntologicalObjects;
+	private Collection<DocumentableObjectReference> referencedOntologicalObjects;
 	private Collection<Label> labels;
 	private Collection<RelatedDocument> relatedDocuments;
 	private DocumentableObject parent;
-    
+    private String anchor;
+	
+	public RuleDetailView() {
+        logger.debug("Created " + this.getClass());
+    }
+
     /**
 	 * @return the referencedOntologicalObjects
 	 */
-	public Collection<DocumentableOntologicalObject> getReferencedOntologicalObjects() {
+	public Collection<DocumentableObjectReference> getReferencedOntologicalObjects() {
 		return Collections.unmodifiableCollection(referencedOntologicalObjects);
 	}
 
@@ -40,14 +44,9 @@ public class RuleDetailView implements DetailView{
 	 * @param referencedOntologicalObjects the referencedOntologicalObjects to set
 	 */
 	public void setReferencedOntologicalObjects(
-			Collection<DocumentableOntologicalObject> referencedOntologicalObjects) {
+			Collection<DocumentableObjectReference> referencedOntologicalObjects) {
 		this.referencedOntologicalObjects = referencedOntologicalObjects;
 	}
-
-	public RuleDetailView(Rule rule) {
-        this.rule=rule;
-        logger.debug("Created " + this.getClass());
-    }
 
     public void setIdentifier(Identifier identifier) {
         this.identifier = identifier;
@@ -56,9 +55,16 @@ public class RuleDetailView implements DetailView{
     public Identifier getIdentifier() {
         return identifier;
     }
-
+	
+    /**
+	 * @param anchor the anchor to set
+	 */
+	public void setAnchor(String anchor) {
+		this.anchor = anchor;
+	}
+	
 	public String getAnchor() {
-		return rule.getLocalName();
+		return anchor;
 	}
 	
 	public String getUri(){
@@ -158,5 +164,27 @@ public class RuleDetailView implements DetailView{
 	public Collection<RelatedDocument> getRelatedDocuments() {
 		return relatedDocuments;
 	}
+	
+    public static RuleDetailView createFromRule(Rule object, Locale locale) {
+    	
+	    RuleDetailView details = new RuleDetailView();
+	    details.setIdentifier(object.getIdentifier());
+		details.setUri(object.getURI());
+		details.setLabel(object.getLabel(locale));
+		details.setComment(object.getComment(locale));
+		details.setDate(object.getDate());
+		details.setCreators(object.getCreators());
+		details.setContributors(object.getContributors());
+		details.setPublishers(object.getPublishers());
+		details.setParent(object.getParent());
+		details.setReferencedOntologicalObjects(DocumentableObjectReference.createReferences(object.getReferencedOntologicalObjects(), locale));
+		details.setLabels(object.getLabels());
+        details.setAnchor(object.getLocalName());
+		details.setRelatedDocuments(object.getRelatedDocuments(locale));
+		
+		return details;
+
+    }
+
     
 }

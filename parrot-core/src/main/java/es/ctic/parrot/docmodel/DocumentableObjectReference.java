@@ -21,9 +21,18 @@ public class DocumentableObjectReference {
     public static Collection<DocumentableObjectReference> createReferences(Collection<? extends DocumentableObject> documentableObjects, Locale locale) {
         Collection<DocumentableObjectReference> result = new ArrayList<DocumentableObjectReference>(documentableObjects.size());
         for (DocumentableObject documentableObject : documentableObjects) {
-            result.add(new DocumentableObjectReference(documentableObject, locale));
+            result.add(DocumentableObjectReference.createReference(documentableObject, locale));
         }
         return result;
+    }
+    
+    public static DocumentableObjectReference createReference(DocumentableObject documentableObject, Locale locale) {
+    	if (documentableObject != null){
+    		return new DocumentableObjectReference(documentableObject, locale);
+    	} else {
+    		return null;
+    	}
+    		
     }
 
     public String getLabel() {

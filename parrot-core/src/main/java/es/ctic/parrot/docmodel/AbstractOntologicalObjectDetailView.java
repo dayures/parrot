@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 
+import es.ctic.parrot.de.Identifier;
 import es.ctic.parrot.de.Label;
 import es.ctic.parrot.de.RelatedDocument;
 import es.ctic.parrot.de.Rule;
@@ -14,9 +15,12 @@ public abstract class AbstractOntologicalObjectDetailView implements DetailView 
 	private String uri;
 	private String label;
 	private String comment;
+	private String anchor;
 	private Collection<Rule> inverseRuleReferences = new HashSet<Rule>();
 	private Collection<RelatedDocument> relatedDocuments;
 	private Collection<Label> labels;
+    private Identifier identifier;
+
 
 	public String getUri() {
 		return uri;
@@ -76,6 +80,34 @@ public abstract class AbstractOntologicalObjectDetailView implements DetailView 
 	 */
 	public Collection<Label> getLabels() {
 		return Collections.unmodifiableCollection(labels);
+	}
+
+	/**
+	 * @param anchor the anchor to set
+	 */
+	public void setAnchor(String anchor) {
+		this.anchor = anchor;
+	}
+
+	/**
+	 * @return the anchor
+	 */
+	public String getAnchor() {
+		return anchor;
+	}
+
+	/**
+	 * @param identifier the identifier to set
+	 */
+	public void setIdentifier(Identifier identifier) {
+		this.identifier = identifier;
+	}
+
+	/**
+	 * @return the identifier
+	 */
+	public Identifier getIdentifier() {
+		return identifier;
 	}
 
 

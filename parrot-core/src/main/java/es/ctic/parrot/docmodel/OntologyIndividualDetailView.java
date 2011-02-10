@@ -3,44 +3,44 @@ package es.ctic.parrot.docmodel;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
-import java.util.List;
+import java.util.Locale;
 
-import es.ctic.parrot.de.Identifier;
-import es.ctic.parrot.de.OntologyClass;
+import org.apache.log4j.Logger;
+
 import es.ctic.parrot.de.OntologyIndividual;
 
 public class OntologyIndividualDetailView extends AbstractOntologicalObjectDetailView implements DetailView {
 	
-	private OntologyIndividual ontologyIndividual;
-	private List<OntologyClass> types = new LinkedList<OntologyClass>();
+    private static final Logger logger = Logger.getLogger(OntologyIndividualDetailView.class);
 
-	public OntologyIndividualDetailView(OntologyIndividual ontologyIndividual) {
-		super();
-		this.ontologyIndividual = ontologyIndividual;
+	private Collection<DocumentableObjectReference> types = new LinkedList<DocumentableObjectReference>();
+
+	private OntologyIndividualDetailView() {
+        logger.debug("Created " + this.getClass());
 	}
 
-	public Identifier getIdentifier() {
-		return ontologyIndividual.getIdentifier();
+	public Collection<DocumentableObjectReference> getTypes() {
+		return Collections.unmodifiableCollection(this.types);
 	}
 
-	public String getAnchor() {
-		return getOntologyIndividual().getLocalName();
-	}
-
-	public void setOntologyIndividual(OntologyIndividual ontologyIndividual) {
-		this.ontologyIndividual = ontologyIndividual;
-	}
-
-	public OntologyIndividual getOntologyIndividual() {
-		return ontologyIndividual;
-	}
-
-	public List<OntologyClass> getTypes() {
-		return Collections.unmodifiableList(this.types);
-	}
-
-	public void addAllTypes(Collection<OntologyClass> types) {
+	public void addAllTypes(Collection<DocumentableObjectReference> types) {
 		this.types.addAll(types);
+	}
+	
+	
+    public static OntologyIndividualDetailView createFromIndividual(OntologyIndividual object, Locale locale) {
+		
+    	OntologyIndividualDetailView details = new OntologyIndividualDetailView();
+    	details.setLabel(object.getLabel(locale));
+		details.setUri(object.getURI());
+		details.addAllTypes(DocumentableObjectReference.createReferences(object.getTypes(),locale));
+		details.setInverseRuleReferences(object.getInverseRuleReferences());
+		details.setLabels(object.getLabels());
+		details.setRelatedDocuments(object.getRelatedDocuments(locale));
+
+		details.setAnchor(object.getLocalName());
+		details.setIdentifier(object.getIdentifier());
+		return details;
 	}
 
 }

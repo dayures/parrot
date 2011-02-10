@@ -2,21 +2,19 @@ package es.ctic.parrot.docmodel;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Locale;
 
 import org.apache.log4j.Logger;
 
 import es.ctic.parrot.de.DocumentableObject;
-import es.ctic.parrot.de.DocumentableOntologicalObject;
 import es.ctic.parrot.de.Identifier;
 import es.ctic.parrot.de.Label;
 import es.ctic.parrot.de.RelatedDocument;
-import es.ctic.parrot.de.Rule;
 import es.ctic.parrot.de.RuleSet;
 
-public class RuleSetDetailView implements DetailView{
+public class RuleSetDetailView implements DetailView {
 
     private static final Logger logger = Logger.getLogger(RuleSetDetailView.class);
-    private RuleSet ruleSet;
     private Identifier identifier;
 	private String uri;
 	private String label;
@@ -27,23 +25,23 @@ public class RuleSetDetailView implements DetailView{
 	private Collection<String> creators;
 	private Collection<String> contributors;
 	private Collection<String> publishers;
-	private Collection<DocumentableOntologicalObject> referencedOntologicalObjects;
+	private Collection<DocumentableObjectReference> referencedOntologicalObjects;
 	private Collection<Label> labels;
 	private Collection<RelatedDocument> relatedDocuments;
-	private Collection<Rule> rules;
-	private Collection<RuleSet> ruleSets;
+	private Collection<DocumentableObjectReference> rules;
+	private Collection<DocumentableObjectReference> ruleSets;
 	private DocumentableObject parent;
+    private String anchor;
 
 	
-	public RuleSetDetailView(RuleSet ruleSet) {
-        this.ruleSet = ruleSet;
+	private RuleSetDetailView() {
         logger.debug("Created " + this.getClass());
     }
     
     /**
 	 * @return the referencedOntologicalObjects
 	 */
-	public Collection<DocumentableOntologicalObject> getReferencedOntologicalObjects() {
+	public Collection<DocumentableObjectReference> getReferencedOntologicalObjects() {
 		return Collections.unmodifiableCollection(referencedOntologicalObjects);
 	}
 
@@ -51,7 +49,7 @@ public class RuleSetDetailView implements DetailView{
 	 * @param referencedOntologicalObjects the referencedOntologicalObjects to set
 	 */
 	public void setReferencedOntologicalObjects(
-			Collection<DocumentableOntologicalObject> referencedOntologicalObjects) {
+			Collection<DocumentableObjectReference> referencedOntologicalObjects) {
 		this.referencedOntologicalObjects = referencedOntologicalObjects;
 	}
 
@@ -64,7 +62,7 @@ public class RuleSetDetailView implements DetailView{
     }
 
 	public String getAnchor() {
-		return ruleSet.getLocalName();
+		return anchor;
 	}
 	
 	public String getUri(){
@@ -126,14 +124,14 @@ public class RuleSetDetailView implements DetailView{
 	/**
 	 * @param rules the rules to set
 	 */
-	public void setRules(Collection<Rule> rules) {
+	public void setRules(Collection<DocumentableObjectReference> rules) {
 		this.rules = rules;
 	}
 
 	/**
 	 * @return the rules
 	 */
-	public Collection<Rule> getRules() {
+	public Collection<DocumentableObjectReference> getRules() {
 		return Collections.unmodifiableCollection(rules);
 	}
 
@@ -182,14 +180,14 @@ public class RuleSetDetailView implements DetailView{
 	/**
 	 * @param ruleSets the ruleSets to set
 	 */
-	public void setRuleSets(Collection<RuleSet> ruleSets) {
+	public void setRuleSets(Collection<DocumentableObjectReference> ruleSets) {
 		this.ruleSets = ruleSets;
 	}
 
 	/**
 	 * @return the ruleSets
 	 */
-	public Collection<RuleSet> getRuleSets() {
+	public Collection<DocumentableObjectReference> getRuleSets() {
 		return Collections.unmodifiableCollection(ruleSets);
 	}
 	
@@ -220,4 +218,30 @@ public class RuleSetDetailView implements DetailView{
 	public Collection<RelatedDocument> getRelatedDocuments() {
 		return relatedDocuments;
 	}
+
+    public void setAnchor(String anchor) {
+        this.anchor = anchor;
+    }
+
+    public static RuleSetDetailView createFromRuleSet(RuleSet object, Locale locale) {
+        RuleSetDetailView details = new RuleSetDetailView();
+        details.setIdentifier(object.getIdentifier());
+        details.setUri(object.getURI());
+        details.setLabel(object.getLabel(locale));
+        details.setComment(object.getComment(locale));
+        details.setDate(object.getDate());
+        details.setCreators(object.getCreators());
+        details.setContributors(object.getContributors());
+        details.setPublishers(object.getPublishers());
+        details.setReferencedOntologicalObjects(DocumentableObjectReference.createReferences(object.getReferencedOntologicalObjects(), locale));
+        details.setRules(DocumentableObjectReference.createReferences(object.getRules(), locale));
+        details.setRuleSets(DocumentableObjectReference.createReferences(object.getRuleSets(), locale));
+        details.setPriority(object.getPriority());
+        details.setStrategy(object.getStrategy());
+        details.setParent(object.getParent());
+        details.setLabels(object.getLabels());
+        details.setAnchor(object.getLocalName());
+        details.setRelatedDocuments(object.getRelatedDocuments(locale));        
+        return details;
+    }
 }

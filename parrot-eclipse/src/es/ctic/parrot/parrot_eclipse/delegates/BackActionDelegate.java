@@ -11,20 +11,17 @@ public class BackActionDelegate implements IViewActionDelegate {
 
 	DocBrowserView view;
 	
-	@Override
 	public void init(IViewPart view) {
 		// TODO Auto-generated method stub
 		this.view = (DocBrowserView)view;
 	}
 
-	@Override
 	public void run(IAction action) {
 		view.browserBack();
 		// TODO Auto-generated method stub
 
 	}
 
-	@Override
 	public void selectionChanged(IAction action, ISelection selection) {
 		// TODO Auto-generated method stub
 

@@ -1,6 +1,9 @@
 <!-- <h4>Related document</h4> -->
 <div class="toggle_container" style="display: block;"> 
   <div class="block">
+     #if($element.type == "text/html")
+       <p>Candidate Rule:</p>
+     #end
      <a href="$element.Uri">
      #if($element.type == "application/pdf")
        <img src="images/pdf-icon.png" alt="pdf icon" />
@@ -10,6 +13,9 @@
      #end
      #if($element.type == "application/vnd.ms-powerpoint")
        <img src="images/ppt-icon.png" alt="ppt icon" />
+     #end
+     #if($element.type == "text/html")
+       <img src="images/candidate-rule-icon.png" alt="candidate-rule icon" />
      #end
      </a> 
 

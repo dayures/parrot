@@ -98,6 +98,7 @@
 					</c:choose>
 					<p id="addURI"><img src="images/add.png" width="16" height="16" alt=""/><span id="addURILink">add another URI</span></p>
 		        </div> 
+		        <!-- 
 		        <div class="language">
 		        <label>Select preferred language: </label>
        			<select name="language">
@@ -126,6 +127,7 @@
 					<option value="sv">svenska</option>
 				</select>
 		        </div>
+		         -->
 				<div class="buttons">
 					<button type="submit" class="positive"><img src="images/tick.png" alt=""/>Generate documentation</button>
 				</div>
@@ -147,6 +149,7 @@
 					      </select>
 					    </p> 
 			        </div> 
+			         <!-- 
 			        <div class="language">
 		        		<label>Select preferred language: </label>
        					<select name="language">
@@ -175,6 +178,7 @@
 							<option value="sv">svenska</option>
 						</select>
 		        	</div>
+		        	 -->
 					<div class="buttons">
 						<button type="submit" class="positive"><img src="images/tick.png" alt=""/>Generate documentation</button>
 					</div>

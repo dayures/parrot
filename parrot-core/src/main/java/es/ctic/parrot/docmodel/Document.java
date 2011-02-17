@@ -1,19 +1,22 @@
 package es.ctic.parrot.docmodel;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Locale;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.Set;
 
 public class Document {
 	private String title;
-	private final SortedSet<OntologyDetailView> ontologyDetailViews = new TreeSet<OntologyDetailView>(new DetailViewComparator());
-	private final SortedSet<OntologyClassDetailView> ontologyClassDetailViews = new TreeSet<OntologyClassDetailView>(new DetailViewComparator());
-	private final SortedSet<OntologyPropertyDetailView> ontologyPropertyDetailViews = new TreeSet<OntologyPropertyDetailView>(new DetailViewComparator());
-    private final SortedSet<RuleDetailView> ruleDetailViews = new TreeSet<RuleDetailView>(new DetailViewComparator());
-    private final SortedSet<RuleSetDetailView> ruleSetDetailViews = new TreeSet<RuleSetDetailView>(new DetailViewComparator());
-    private final SortedSet<OntologyIndividualDetailView> ontologyIndividualDetailViews = new TreeSet<OntologyIndividualDetailView>(new DetailViewComparator());
+	private final Set<OntologyDetailView> ontologyDetailViews = new HashSet<OntologyDetailView>();
+	private final Set<OntologyClassDetailView> ontologyClassDetailViews = new HashSet<OntologyClassDetailView>();
+	private final Set<OntologyPropertyDetailView> ontologyPropertyDetailViews = new HashSet<OntologyPropertyDetailView>();
+    private final Set<RuleDetailView> ruleDetailViews = new HashSet<RuleDetailView>();
+    private final Set<RuleSetDetailView> ruleSetDetailViews = new HashSet<RuleSetDetailView>();
+    private final Set<OntologyIndividualDetailView> ontologyIndividualDetailViews = new HashSet<OntologyIndividualDetailView>();
     private final Glossary glossary;
     
     public Document(Locale locale) {
@@ -28,28 +31,40 @@ public class Document {
 		this.title = title;
 	}
 	
-	public SortedSet<OntologyDetailView> getOntologyDetailViews() {
-		return Collections.unmodifiableSortedSet(this.ontologyDetailViews);
+	public Collection<OntologyDetailView> getOntologyDetailViews() {
+		List<OntologyDetailView> listOntologyDetailsViews = new LinkedList<OntologyDetailView>(this.ontologyDetailViews);
+		Collections.sort(listOntologyDetailsViews, new DetailViewComparator());
+		return listOntologyDetailsViews;
 	}
 
-	public SortedSet<OntologyClassDetailView> getOntologyClassDetailViews() {
-		return Collections.unmodifiableSortedSet(this.ontologyClassDetailViews);
+	public Collection<OntologyClassDetailView> getOntologyClassDetailViews() {
+		List<OntologyClassDetailView> listOntologyClassDetailViews = new LinkedList<OntologyClassDetailView>(this.ontologyClassDetailViews);
+		Collections.sort(listOntologyClassDetailViews, new DetailViewComparator());
+		return listOntologyClassDetailViews;
 	}
 	
-	public SortedSet<OntologyPropertyDetailView> getOntologyPropertyDetailViews() {
-		return Collections.unmodifiableSortedSet(this.ontologyPropertyDetailViews);
+	public Collection<OntologyPropertyDetailView> getOntologyPropertyDetailViews() {
+		List<OntologyPropertyDetailView> listOntologyPropertyDetailViews = new LinkedList<OntologyPropertyDetailView>(this.ontologyPropertyDetailViews);
+		Collections.sort(listOntologyPropertyDetailViews, new DetailViewComparator());
+		return listOntologyPropertyDetailViews;
 	}
 	
-    public SortedSet<RuleDetailView> getRuleDetailViews() {
-        return Collections.unmodifiableSortedSet(ruleDetailViews);
+    public Collection<RuleDetailView> getRuleDetailViews() {
+		List<RuleDetailView> listRuleDetailViews = new LinkedList<RuleDetailView>(this.ruleDetailViews);
+		Collections.sort(listRuleDetailViews, new DetailViewComparator());
+		return listRuleDetailViews;
     }
     
-    public SortedSet<RuleSetDetailView> getRuleSetDetailViews() {
-        return Collections.unmodifiableSortedSet(ruleSetDetailViews);
+    public Collection<RuleSetDetailView> getRuleSetDetailViews() {
+		List<RuleSetDetailView> listRuleSetDetailViews = new LinkedList<RuleSetDetailView>(this.ruleSetDetailViews);
+		Collections.sort(listRuleSetDetailViews, new DetailViewComparator());
+		return listRuleSetDetailViews;
     }
     
-    public SortedSet<OntologyIndividualDetailView> getOntologyIndividualDetailViews() {
-    	return Collections.unmodifiableSortedSet(ontologyIndividualDetailViews);
+    public Collection<OntologyIndividualDetailView> getOntologyIndividualDetailViews() {
+		List<OntologyIndividualDetailView> listOntologyIndividualDetailViews = new LinkedList<OntologyIndividualDetailView>(this.ontologyIndividualDetailViews);
+		Collections.sort(listOntologyIndividualDetailViews, new DetailViewComparator());
+		return listOntologyIndividualDetailViews;
     }
 
     public void addRuleDetailView(RuleDetailView details) {
@@ -83,9 +98,10 @@ public class Document {
 
 class DetailViewComparator implements Comparator<DetailView> {
 
+	// This comparator is not consistent with equals()
 	public int compare(DetailView arg0, DetailView arg1) {
 		if (arg0.getLabel() != null && arg1.getLabel() != null) {
-			return arg0.getLabel().toLowerCase().compareTo(arg1.getLabel().toLowerCase());
+			return  arg0.getLabel().toLowerCase().compareTo(arg1.getLabel().toLowerCase());
 		} else {
 			return 0; // FIXME change comparable method
 		}

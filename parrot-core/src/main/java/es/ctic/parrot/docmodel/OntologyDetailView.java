@@ -15,6 +15,7 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 	private List<String> editors;
 	private List<String> contributors;
 	private String preferredPrefix;
+	private String preferredNamespace;
 	private String date;
 	
 	private OntologyDetailView(){
@@ -61,6 +62,20 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 		return date;
 	}
 	
+	/**
+	 * @param preferredNamespace the preferredNamespace to set
+	 */
+	public void setPreferredNamespace(String preferredNamespace) {
+		this.preferredNamespace = preferredNamespace;
+	}
+
+	/**
+	 * @return the preferredNamespace
+	 */
+	public String getPreferredNamespace() {
+		return preferredNamespace;
+	}
+	
     public static OntologyDetailView createFromOntology(Ontology object, Locale locale) {
     	
 	    OntologyDetailView details = new OntologyDetailView();
@@ -73,6 +88,7 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 		details.setDate(object.getDate());
 		details.setContributors(object.getContributors());
 		details.setPreferredPrefix(object.getPreferredPrefix());
+		details.setPreferredNamespace(object.getPreferredNamespace());
 		details.setLabels(object.getLabels());
 		details.setRelatedDocuments(object.getRelatedDocuments(locale));
 		
@@ -82,6 +98,8 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 		return details;
 
     }
+
+
 
 
 }

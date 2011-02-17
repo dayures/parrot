@@ -125,11 +125,19 @@ currently supported by PARROT.</p>
         src="images/supported.png" width="32" height="32"/></td>
     </tr>
     <tr>
+      <td><em>preferredNamespaceUri</em></td>
+      <td><a href="http://vocab.org/vann">VANN</a></td>
+      <td>Ontology</td>
+      <td>The preferred namespace URI to use when using terms from a ontology.</td>
+      <td>http://purl.org/vocab/vann/</td>
+      <td><img alt="Currently supported"
+        src="images/supported.png" width="32" height="32" /></td>
+    </tr>
+    <tr>
       <td><em>preferredNamespacePrefix</em></td>
       <td><a href="http://vocab.org/vann">VANN</a></td>
       <td>Ontology</td>
-      <td>The preferred namespace prefix when using entities of other
-        ontologies.</td>
+      <td>The preferred namespace prefix when using entities of a ontology.</td>
       <td>http://purl.org/vocab/vann/</td>
       <td><img alt="Currently supported"
         src="images/supported.png" width="32" height="32" /></td>

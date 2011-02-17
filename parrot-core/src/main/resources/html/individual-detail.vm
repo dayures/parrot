@@ -2,7 +2,7 @@
   <h3><a id="$element.Anchor"></a><span class="parrot-element-title parrot-individual-title">$element.Label</span> (Individual)</h3>
   <dl>
   #if($element.Uri)
-      <dt>Uri</dt>
+      <dt>URI</dt>
       <dd><a href="$element.Uri">$element.Uri</a></dd>      
   #end
 

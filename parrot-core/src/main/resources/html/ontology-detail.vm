@@ -13,8 +13,8 @@
       <dd>$element.Comment</dd>
   #end
   
-  #if($element.PreferredPrefix)
-      <dt>Preferred Namespace Uri</dt>
+  #if($element.PreferredNamespace)
+      <dt>Preferred Namespace URI</dt>
       <dd><pre><code>$element.PreferredNamespace</code></pre></dd>
   #end
 

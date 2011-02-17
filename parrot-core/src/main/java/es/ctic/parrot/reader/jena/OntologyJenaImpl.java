@@ -31,6 +31,10 @@ public class OntologyJenaImpl extends AbstractJenaDocumentableObject implements 
 	public String getPreferredPrefix() {
 		return getAnnotationStrategy().getPreferredPrefix(getOntResource());
 	}
+	
+	public String getPreferredNamespace() {
+		return getAnnotationStrategy().getPreferredNamespace(getOntResource());
+	}
 
 	public String getVersion() {
 		return getAnnotationStrategy().getVersion(getOntResource());

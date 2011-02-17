@@ -14,8 +14,13 @@
   #end
   
   #if($element.PreferredPrefix)
+      <dt>Preferred Namespace Uri</dt>
+      <dd><pre><code>$element.PreferredNamespace</code></pre></dd>
+  #end
+
+  #if($element.PreferredPrefix)
       <dt>Preferred Prefix</dt>
-      <dd>$element.PreferredPrefix</dd>
+      <dd><pre><code>$element.PreferredPrefix</code></pre></dd>
   #end
   
   #if($element.Version)

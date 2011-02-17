@@ -55,6 +55,7 @@ public class OntResourceAnnotationStrategy {
 	private static final String DCT_SOURCE = "http://purl.org/dc/terms/source";
 
 	private static final String VANN_PREFERRED_PREFIX = "http://purl.org/vocab/vann/preferredNamespacePrefix";
+	private static final String VANN_PREFERRED_NAMESPACE = "http://purl.org/vocab/vann/preferredNamespaceUri";
 	
 	private static final String TYPE_VIDEO = "video/mpeg";
 	private static final String TYPE_IMAGE = "image/png";
@@ -494,6 +495,10 @@ public class OntResourceAnnotationStrategy {
 		return getLiteralPropertyValue(ontResource, VANN_PREFERRED_PREFIX);
 	}
 
+	public String getPreferredNamespace(OntResource ontResource) {
+		return getLiteralPropertyValue(ontResource, VANN_PREFERRED_NAMESPACE);
+	}
+	
 	public String getDate(OntResource ontResource) {
 		return getLiteralPropertyValue(ontResource, DC_DATE);
 	}

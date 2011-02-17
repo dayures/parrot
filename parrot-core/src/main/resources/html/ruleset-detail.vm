@@ -12,7 +12,7 @@
    #end
 	   
    #if($element.Uri)
-      <dt>Uri</dt>
+      <dt>URI</dt>
       <dd><a href="$element.Uri">$element.Uri</a></dd>      
 
 	   #if($element.Comment)

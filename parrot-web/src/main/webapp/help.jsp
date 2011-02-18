@@ -188,6 +188,16 @@ currently supported by PARROT.</p>
         src="images/not-supported-yet.png" width="32" height="32" /></td>
     </tr>
     <tr>
+      <td><em>rights</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin
+      Core</a></td>
+      <td>Ontology</td>
+      <td>Information about rights held in and over the resource.</td>
+      <td>http://purl.org/dc/elements/1.1/</td>
+      <td><img alt="Currently supported"
+        src="images/supported.png" width="32" height="32"/></td>
+    </tr>
+    <tr>
       <td><em>license</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin
       Core</a></td>
@@ -251,7 +261,7 @@ currently supported by PARROT.</p>
     <tr>
       <td><em>video</em></td>
       <td><a href="http://ogp.me">OG</a></td>
-      <td>Group, Rule</td>
+      <td>Ontology, Class, Property, Individual</td>
       <td>A video associated with the resource. </td>
       <td>http://ogp.me/ns#</td>
       <td><img alt="Currently supported"

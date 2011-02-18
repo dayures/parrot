@@ -47,6 +47,11 @@
    #end
    #end
    
+   #if($element.Rights)
+   <dt>Rights</dt>
+   <dd>$element.Rights</dd>
+   #end
+   
    #if(!$element.labels.isEmpty())
    <dt>Labels</dt>
    <dd>

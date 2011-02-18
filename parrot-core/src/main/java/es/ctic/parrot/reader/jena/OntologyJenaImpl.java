@@ -51,6 +51,10 @@ public class OntologyJenaImpl extends AbstractJenaDocumentableObject implements 
 	public String getDate() {
 		return getAnnotationStrategy().getDate(getOntResource());
 	}
+	
+	public String getRights() {
+		return getAnnotationStrategy().getRights(getOntResource());
+	}
 
     public String getKindString() {
         return Kind.ONTOLOGY.toString();

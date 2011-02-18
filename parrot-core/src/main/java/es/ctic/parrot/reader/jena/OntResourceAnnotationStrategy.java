@@ -50,6 +50,7 @@ public class OntResourceAnnotationStrategy {
 	private static final String DC_CREATOR = "http://purl.org/dc/elements/1.1/creator";
 	private static final String DC_DATE = "http://purl.org/dc/elements/1.1/date";
 	private static final String DC_DESCRIPTION = "http://purl.org/dc/elements/1.1/description";
+	private static final String DC_RIGHTS = "http://purl.org/dc/elements/1.1/rights";
 	
 	private static final String DCT_DESCRIPTION = "http://purl.org/dc/terms/description";
 	private static final String DCT_SOURCE = "http://purl.org/dc/terms/source";
@@ -501,6 +502,10 @@ public class OntResourceAnnotationStrategy {
 	
 	public String getDate(OntResource ontResource) {
 		return getLiteralPropertyValue(ontResource, DC_DATE);
+	}
+
+	public String getRights(OntResource ontResource) {
+		return getLiteralPropertyValue(ontResource, DC_RIGHTS);
 	}
 	
 	public List<String> getCreators(OntResource ontResource) {

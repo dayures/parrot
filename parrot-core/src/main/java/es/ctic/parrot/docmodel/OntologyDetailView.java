@@ -17,6 +17,7 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 	private String preferredPrefix;
 	private String preferredNamespace;
 	private String date;
+	private String rights;
 	
 	private OntologyDetailView(){
 		logger.debug("Created " + this.getClass());
@@ -86,6 +87,7 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 		details.setVersion(object.getVersion());
 		details.setEditors(object.getEditors());
 		details.setDate(object.getDate());
+		details.setRights(object.getRights());
 		details.setContributors(object.getContributors());
 		details.setPreferredPrefix(object.getPreferredPrefix());
 		details.setPreferredNamespace(object.getPreferredNamespace());
@@ -98,6 +100,20 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 		return details;
 
     }
+
+	/**
+	 * @param rights the rights to set
+	 */
+	public void setRights(String rights) {
+		this.rights = rights;
+	}
+
+	/**
+	 * @return the rights
+	 */
+	public String getRights() {
+		return rights;
+	}
 
 
 

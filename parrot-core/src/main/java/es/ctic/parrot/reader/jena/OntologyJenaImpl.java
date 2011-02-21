@@ -17,7 +17,7 @@ public class OntologyJenaImpl extends AbstractJenaDocumentableObject implements 
 	}
 	
 	public Ontology getOntology(){
-		return (Ontology) getOntResource();
+		return getOntResource().asOntology();
 	}
 
 	public Object accept(DocumentableObjectVisitor visitor) throws TransformerException {

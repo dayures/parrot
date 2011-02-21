@@ -41,7 +41,7 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 	private DocumentableObject inverseOf;
 
 	public OntProperty getOntProperty(){
-		return (OntProperty) getOntResource();
+		return getOntResource().asProperty();
 	}
     
     public OntologyPropertyJenaImpl(OntProperty ontProperty, DocumentableObjectRegister register, OntResourceAnnotationStrategy annotationStrategy) {

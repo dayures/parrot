@@ -21,6 +21,10 @@ public class OntologyIndividualJenaImpl extends AbstractJenaDocumentableObject
 	public OntologyIndividualJenaImpl(Individual individual, DocumentableObjectRegister register, OntResourceAnnotationStrategy annotationStrategy) {
 		super(individual, register, annotationStrategy);
 	}
+	
+	public Individual getIndividual(){
+		return getOntResource().asIndividual();
+	}
 
 	public Object accept(DocumentableObjectVisitor visitor) throws TransformerException {
         try {

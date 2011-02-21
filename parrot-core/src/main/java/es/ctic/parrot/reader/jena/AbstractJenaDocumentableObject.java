@@ -104,45 +104,6 @@ public abstract class AbstractJenaDocumentableObject extends
 		return ontologyClassList;
 	}
 	
-//	protected Collection<OntologyIndividual> ontResourceIteratorToOntologyInstanceList(Iterator<Individual> it) {
-//		List<OntologyIndividual> ontologyIndividualList = new LinkedList<OntologyIndividual>();
-//		while(it.hasNext()){
-//			Individual individual=it.next();
-//			
-//			Identifier identifier = null;
-//			
-//			if (individual.isAnon() == false){
-//				identifier = new URIIdentifier(individual.getURI());
-//			} else {
-//				identifier = new JenaAnonymousIdentifier(individual.getModel(), individual.getId());
-//			}
-//
-//			OntologyIndividual _individual = (OntologyIndividual) this.getRegister().findDocumentableObject(identifier);
-//
-//			if (_individual != null) { // do not add null elements in the list 
-//				ontologyIndividualList.add(_individual);
-//			}
-//		}
-//		return ontologyIndividualList;
-//	}
-	
-//	protected Collection<OntologyProperty> ontPropertyIteratorToOntologyPropertyList(Iterator<OntProperty> it) {
-//		List<OntologyProperty> ontologyPropertyList = new LinkedList<OntologyProperty>();
-//		
-//		while(it.hasNext()){
-//			OntProperty property = it.next();
-//			
-//			Identifier identifier = new URIIdentifier(property.getURI());
-//
-//			OntologyProperty _property = (OntologyProperty) this.getRegister().findDocumentableObject(identifier); 
-//
-//			if (_property != null) { // do not add null elements in the list 
-//				ontologyPropertyList.add(_property);
-//			}
-//		}
-//		return ontologyPropertyList;
-//	}
-	
 	@SuppressWarnings("unchecked")
 	protected <TR extends DocumentableObject, TJ extends Resource> Collection<TR> resourceIteratorToDocumentableObjectList(Iterator<TJ> it) {
 		

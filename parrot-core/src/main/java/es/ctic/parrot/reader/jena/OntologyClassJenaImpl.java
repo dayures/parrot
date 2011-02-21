@@ -49,7 +49,7 @@ public class OntologyClassJenaImpl extends AbstractJenaDocumentableObject implem
 	}
 	
 	public OntClass getOntClass(){
-		return (OntClass) getOntResource();
+		return  getOntResource().asClass();
 	}
 
 	public Collection<OntologyClass> getSuperClasses(){

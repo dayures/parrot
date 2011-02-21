@@ -11,5 +11,6 @@ public interface Ontology extends DocumentableOntologicalObject {
 	public abstract List<String> getContributors();
 	public abstract String getDate();
 	public abstract String getRights();
+	public abstract String getLicenseLabel();
 
 }

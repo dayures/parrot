@@ -9,6 +9,7 @@ import org.xml.sax.SAXParseException;
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
+import com.hp.hpl.jena.ontology.OntModelSpec;
 import com.hp.hpl.jena.ontology.OntProperty;
 import com.hp.hpl.jena.ontology.Ontology;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
@@ -27,7 +28,7 @@ public class JenaOWLReader implements DocumentReader {
     private static final String XHTML = "XHTML";
     private static final String HTML = "HTML";
     private static final Logger logger = Logger.getLogger(JenaOWLReader.class);
-    private OntModel ontModel = ModelFactory.createOntologyModel();
+    private OntModel ontModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM); // by default it is OntModelSpec.OWL_DL_MEM_RDFS_INF
     private OntResourceAnnotationStrategy annotationStrategy = new OntResourceAnnotationStrategy();
     
     public JenaOWLReader(){ 

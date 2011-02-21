@@ -28,7 +28,11 @@ public class JenaOWLReader implements DocumentReader {
     private static final String HTML = "HTML";
     private static final Logger logger = Logger.getLogger(JenaOWLReader.class);
     private OntModel ontModel = ModelFactory.createOntologyModel();
-    private OntResourceAnnotationStrategy annotationStrategy = new OntResourceAnnotationStrategy(); 
+    private OntResourceAnnotationStrategy annotationStrategy = new OntResourceAnnotationStrategy();
+    
+    public JenaOWLReader(){ 
+    	getOntModel().setStrictMode(false);
+    }
 	
 	/* (non-Javadoc)
 	 * @see es.ctic.parrot.reader.DocumentReader#readDocumentableObjects(es.ctic.parrot.reader.Input, es.ctic.parrot.de.DocumentableObjectRegister)
@@ -173,5 +177,5 @@ public class JenaOWLReader implements DocumentReader {
 	public OntModel getOntModel() {
 		return ontModel;
 	}
-
+	
 }

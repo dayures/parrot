@@ -55,6 +55,10 @@ public class OntologyJenaImpl extends AbstractJenaDocumentableObject implements 
 	public String getRights() {
 		return getAnnotationStrategy().getRights(getOntResource());
 	}
+	
+	public String getLicenseLabel() {
+		return getAnnotationStrategy().getLicenseLabel(getOntResource());
+	}
 
     public String getKindString() {
         return Kind.ONTOLOGY.toString();

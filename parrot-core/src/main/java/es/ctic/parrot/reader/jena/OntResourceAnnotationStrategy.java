@@ -24,6 +24,10 @@ import es.ctic.parrot.utils.URIUtils;
 
 public class OntResourceAnnotationStrategy {
 
+	private static final String CC_LICENSE_DEPRECATED = "http://web.resource.org/cc/license";
+
+	private static final String CC_LICENSE = "http://creativecommons.org/ns#license";
+
 	private static final String RCLN_RULE = "http://lipn.univ-paris13.fr/RCLN/schema#Rule";
 
 	private static final String RCLN_RULE_TEXT = "http://lipn.univ-paris13.fr/RCLN/schema#ruleText";
@@ -54,6 +58,7 @@ public class OntResourceAnnotationStrategy {
 	
 	private static final String DCT_DESCRIPTION = "http://purl.org/dc/terms/description";
 	private static final String DCT_SOURCE = "http://purl.org/dc/terms/source";
+	private static final String DCT_LICENSE = "http://purl.org/dc/terms/license";
 
 	private static final String VANN_PREFERRED_PREFIX = "http://purl.org/vocab/vann/preferredNamespacePrefix";
 	private static final String VANN_PREFERRED_NAMESPACE = "http://purl.org/vocab/vann/preferredNamespaceUri";
@@ -518,6 +523,69 @@ public class OntResourceAnnotationStrategy {
 
 	public List<String> getPublishers(OntResource ontResource) {
 		return getLiteralPropertyValues(ontResource, DC_PUBLISHER);
+	}
+	
+	/**
+	 * 
+	 * @param ontResource
+	 * @return teh URI of the license or null if there is no license URI
+	 */
+	public String getLicenseLabel(OntResource ontResource) {
+
+    	if (ontResource == null){
+    		return null;
+    	}
+    	
+		StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(DCT_LICENSE));
+		if(it.hasNext()){
+			Statement statement = it.nextStatement();
+			return statement.getObject().asResource().getURI();
+		}
+		
+		it = ontResource.listProperties(ResourceFactory.createProperty(CC_LICENSE));
+		if(it.hasNext()){
+			Statement statement = it.nextStatement();
+			return statement.getObject().asResource().getURI();
+		}
+		
+		it = ontResource.listProperties(ResourceFactory.createProperty(CC_LICENSE_DEPRECATED)); // deprecated 
+		if(it.hasNext()){
+			Statement statement = it.nextStatement();
+			return statement.getObject().asResource().getURI();
+		}
+
+		return null;
+		
+		
+//	while(it.hasNext()){
+//		Statement statement = it.nextStatement();
+//		try{
+//			Model model = ModelFactory.createDefaultModel();
+//
+//			// Option 1. XHTML + RDFa
+//			Resource license = statement.getObject().asResource();
+//			model.read(license.getURI(), "HTML"); // even it should be a XHTML page, it is not.
+//        	StmtIterator listStatements = model.listStatements(license, ResourceFactory.createProperty(DCT_TITLE), (RDFNode) null);
+//
+//        	// Option 2
+//			//model.read("http://code.creativecommons.org/viewgit/license.rdf.git/plain/cc/licenserdf/rdf/index.rdf", "RDF/XML");
+//        	//StmtIterator listStatements = model.listStatements(license, ResourceFactory.createProperty(DC_TITLE), (RDFNode) null);
+//        	
+//        	// Read only one license 
+//        	if (listStatements.hasNext()){
+//        		Statement st = listStatements.next();
+//        		licenseLabel = st.getObject().asLiteral().getLexicalForm();
+//        		return licenseLabel;
+//        	} else {
+//        		return licenseLabel;
+//        	}
+//		} catch (ResourceRequiredException e)  {
+//			logger.warn("Ignore triple "+ statement +" because it is not a Object property");
+//		}
+//	}
+//	
+//	return licenseLabel;
+
 	}
 	
 	private List<String> getLiteralPropertyValues(OntResource ontResource, String property) {

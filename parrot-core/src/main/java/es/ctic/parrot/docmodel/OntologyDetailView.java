@@ -18,6 +18,7 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 	private String preferredNamespace;
 	private String date;
 	private String rights;
+	private String licenseLabel;
 	
 	private OntologyDetailView(){
 		logger.debug("Created " + this.getClass());
@@ -88,6 +89,7 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 		details.setEditors(object.getEditors());
 		details.setDate(object.getDate());
 		details.setRights(object.getRights());
+		details.setLicenseLabel(object.getLicenseLabel());
 		details.setContributors(object.getContributors());
 		details.setPreferredPrefix(object.getPreferredPrefix());
 		details.setPreferredNamespace(object.getPreferredNamespace());
@@ -113,6 +115,20 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 	 */
 	public String getRights() {
 		return rights;
+	}
+
+	/**
+	 * @param licenseLabel the licenseLabel to set
+	 */
+	public void setLicenseLabel(String licenseLabel) {
+		this.licenseLabel = licenseLabel;
+	}
+
+	/**
+	 * @return the licenseLabel
+	 */
+	public String getLicenseLabel() {
+		return licenseLabel;
 	}
 
 

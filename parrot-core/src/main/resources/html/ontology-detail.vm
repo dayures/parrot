@@ -51,6 +51,11 @@
    <dt>Rights</dt>
    <dd>$element.Rights</dd>
    #end
+
+   #if($element.LicenseLabel)
+   <dt>License</dt>
+   <dd>$element.LicenseLabel</dd>
+   #end
    
    #if(!$element.labels.isEmpty())
    <dt>Labels</dt>

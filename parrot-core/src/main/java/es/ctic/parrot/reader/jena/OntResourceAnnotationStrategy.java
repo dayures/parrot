@@ -147,6 +147,12 @@ public class OntResourceAnnotationStrategy {
         return this.getLabel(ontResource, null);
     }
 	
+    /**
+     * 
+     * @param ontResource
+     * @param locale 
+     * @return the best label associated to the resource. The method use the locale element if it is provided
+     */
     public String getLabel(OntResource ontResource, Locale locale) {
 
     	Collection<Label> labels = getLabels(ontResource, locale);
@@ -197,7 +203,11 @@ public class OntResourceAnnotationStrategy {
                 return label.getText();
             }
         }
-        return URIUtils.getReference(ontResource.getURI());
+        
+        if (locale == null)
+        	return URIUtils.getReference(ontResource.getURI());
+        else
+        	return getLabel(ontResource, null);
     }
     
 	/**

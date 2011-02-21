@@ -54,7 +54,7 @@
 
    #if($element.LicenseLabel)
    <dt>License</dt>
-   <dd>$element.LicenseLabel</dd>
+   <dd><a href="$element.LicenseLabel">$element.LicenseLabel</a></dd>
    #end
    
    #if(!$element.labels.isEmpty())

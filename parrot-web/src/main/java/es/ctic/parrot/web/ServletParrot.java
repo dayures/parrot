@@ -137,6 +137,14 @@ public class ServletParrot extends HttpServlet {
 			uriInputs = new String[0];
 		}
 
+		if (uriInputMimetypes == null) {
+			uriInputMimetypes = new String[0];
+		}
+		
+		if (uriInputs.length != uriInputMimetypes.length){
+			throw new IllegalArgumentException("Number of URIs is different to number of mimetypes");
+		} 
+		
 		for( int i=0 ; i<uriInputs.length ; i++) {
 			String uriInput = uriInputs[i];
 			if (checkURI(uriInput)) {

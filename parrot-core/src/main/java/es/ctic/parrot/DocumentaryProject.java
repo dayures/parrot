@@ -2,7 +2,7 @@ package es.ctic.parrot;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.LinkedList;
+import java.util.HashSet;
 import java.util.Locale;
 
 import es.ctic.parrot.reader.Input;
@@ -16,30 +16,48 @@ import es.ctic.parrot.reader.Input;
  */
 public class DocumentaryProject {
     
-    private final Collection<Input> inputs = new LinkedList<Input>();
+    private final Collection<Input> inputs = new HashSet<Input>();
     private Locale locale;
     
-    /**
-     * @param lang Report locale
+    /** Create a new Documentary project 
+     * @param locale A locale (language) to be set 
      */
     public DocumentaryProject(Locale locale) {
         this.setLocale(locale);
     }
 
+    /**
+     * Adds the specified input to this set if it is not already present (optional operation).
+     * @param input input to be added
+     */
     public void addInput(Input input) {
         inputs.add(input);
     }
     
+    /**
+     * Returns the inputs 
+     * @return the collection of inputs
+     */
     public Collection<Input> getInputs() {
+    	System.err.println("tamaño de inputs: " + inputs.size());
         return Collections.unmodifiableCollection(inputs);
     }
 
-    public void setLocale(Locale locale) {
-        this.locale = locale;
-    }
+	/** 
+	 * Set the locale
+	 * @param locale the locale to set
+	 */
+	private void setLocale(Locale locale) {
+		this.locale = locale;
+	}
 
-    public Locale getLocale() {
-        return locale;
-    }
+	/**
+	 * Returns the locale
+	 * @return the locale
+	 */
+	public Locale getLocale() {
+		return locale;
+	}
+
 
 }

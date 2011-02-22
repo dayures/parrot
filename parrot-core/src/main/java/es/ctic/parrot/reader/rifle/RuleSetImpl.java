@@ -143,7 +143,7 @@ public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
 	}
 
 	/**
-	 * @param documentableObject the parentGroup to set
+	 * @param parent the parent to set
 	 */
 	public void setParent(DocumentableObject parent) {
 		this.parent = parent;

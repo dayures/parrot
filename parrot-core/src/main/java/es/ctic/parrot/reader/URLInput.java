@@ -24,7 +24,7 @@ import org.apache.log4j.Logger;
 
 public class URLInput implements Input {
 
-    private static final Logger logger = Logger.getLogger(URLInput.class);
+	private static final Logger logger = Logger.getLogger(URLInput.class);
 
     // application/rdf+xml, application/xml : http://www.w3.org/TR/owl-ref/#MIMEType
     // application/rif+xml : http://www.w3.org/TR/rif-core/#Appendix:_RIF_Media_Type_Registration
@@ -145,4 +145,41 @@ public class URLInput implements Input {
 	}
 
 
+    /* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((mimeType == null) ? 0 : mimeType.hashCode());
+		result = prime * result + ((url == null) ? 0 : url.hashCode());
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof URLInput))
+			return false;
+		URLInput other = (URLInput) obj;
+		if (mimeType == null) {
+			if (other.mimeType != null)
+				return false;
+		} else if (!mimeType.equals(other.mimeType))
+			return false;
+		if (url == null) {
+			if (other.url != null)
+				return false;
+		} else if (!url.equals(other.url))
+			return false;
+		return true;
+	}
 }

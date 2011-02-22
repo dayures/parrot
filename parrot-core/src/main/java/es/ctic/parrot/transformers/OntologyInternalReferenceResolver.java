@@ -21,22 +21,30 @@ public class OntologyInternalReferenceResolver extends
 	public OntologyInternalReferenceResolver(DocumentableObjectRegister register){
 		this.register=register;
 	}
-	
-	public Object visit(OntologyProperty property) throws TransformerException {
-    	logger.debug("Resolving internal references of property "+property);
 
+	public Object visit(OntologyProperty property) throws TransformerException {
+    	
+		logger.debug("Resolving internal references of property "+property);
+
+    	// set domain (and create an inverse reference)
 		DocumentableObject domain = property.getDomain();
 	    if(domain!=null){
 	        domain=register.findDocumentableObject(domain.getIdentifier());
 	        property.setDomain(domain);
+            domain.addReference(property);
 	    }
 	    
+	    
+	    // set range (and create an inverse reference)
 	    DocumentableObject range = property.getRange();
 	    if(range!=null){
 	        range=register.findDocumentableObject(range.getIdentifier());
 	        property.setRange(range);
+	        range.addReference(property);
 	    }
-
+	    
+	    
+	    //set superproperties
 	    Collection<DocumentableObject> superProperties = property.getSuperProperties();
 	    Collection<DocumentableObject> cleanSuperProperties = new HashSet<DocumentableObject>();
 
@@ -48,8 +56,9 @@ public class OntologyInternalReferenceResolver extends
 	    	}
 	    }
 	    property.setSuperProperties(cleanSuperProperties);
-	    
 
+	    
+	    //set subproperties
 	    Collection<DocumentableObject> subProperties = property.getSubProperties();
 	    Collection<DocumentableObject> cleanSubProperties = new HashSet<DocumentableObject>();
 

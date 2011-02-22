@@ -14,6 +14,7 @@ public class RuleToOntologyReferenceResolver extends AbstractDocumentableObjectV
     private static final Logger logger = Logger.getLogger(RuleToOntologyReferenceResolver.class);
 
     public Object visit(Rule rule) throws TransformerException {
+    	logger.debug("Visiting rule " + rule.toString());
         Collection<DocumentableOntologicalObject> referencedOntologicalObjects = rule.getReferencedOntologicalObjects();
         for ( DocumentableOntologicalObject obj : referencedOntologicalObjects ) {
         	obj.addInverseRuleReference(rule);

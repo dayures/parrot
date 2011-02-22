@@ -12,11 +12,11 @@ public interface OntologyProperty extends DocumentableOntologicalObject {
     public abstract Collection<DocumentableObject> getSuperProperties();
     public abstract void setSuperProperties(Collection<DocumentableObject> superProperties);
     
-	public abstract Collection<OntologyProperty> getEquivalentProperties();
-	public abstract void setEquivalentProperties(Collection<OntologyProperty> equivalentProperties);
+	public abstract Collection<DocumentableObject> getEquivalentProperties();
+	public abstract void setEquivalentProperties(Collection<DocumentableObject> equivalentProperties);
 
-	public abstract Collection<OntologyProperty> getDisjointProperties();
-	public abstract void setDisjointProperties(Collection<OntologyProperty> disjointProperties);
+	public abstract Collection<DocumentableObject> getDisjointProperties();
+	public abstract void setDisjointProperties(Collection<DocumentableObject> disjointProperties);
 	
     public abstract Collection<DocumentableObject> getSubProperties();
     public abstract void setSubProperties(Collection<DocumentableObject> subProperties);

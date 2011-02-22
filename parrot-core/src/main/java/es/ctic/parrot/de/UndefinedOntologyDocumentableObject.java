@@ -189,27 +189,27 @@ public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObj
 		//
 	}
 
-	public Collection<OntologyProperty> getEquivalentProperties() {
+	public Collection<DocumentableObject> getEquivalentProperties() {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
 		//return null;
 	}
 
 	public void setEquivalentProperties(
-			Collection<OntologyProperty> equivalentProperties) {
+			Collection<DocumentableObject> equivalentProperties) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
 		//
 	}
 
-	public Collection<OntologyProperty> getDisjointProperties() {
+	public Collection<DocumentableObject> getDisjointProperties() {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
 		//return null;
 	}
 
 	public void setDisjointProperties(
-			Collection<OntologyProperty> disjointProperties) {
+			Collection<DocumentableObject> disjointProperties) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
 		//

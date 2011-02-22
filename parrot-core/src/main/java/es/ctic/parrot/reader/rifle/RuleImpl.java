@@ -157,14 +157,15 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 	}
 	
 	/**
-	 * @param parentGroup the parentGroup to set
+	 * @param parent the parent to set
 	 */
 	public void setParent(DocumentableObject parent) {
 		this.parent = parent;
 	}
 
 	/**
-	 * @return the parentGroup
+	 * Returns the parent
+	 * @return the parent
 	 */
 	public DocumentableObject getParent() {
 		return parent;

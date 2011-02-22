@@ -91,7 +91,8 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 	}
 
 	/**
-	 * @return the subProperties
+	 * Returns the superproperties
+	 * @return the superProperties
 	 */
 	public Collection<DocumentableObject> getSuperProperties() {
 		
@@ -103,13 +104,14 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 	}
 
 	/**
-	 * @param subProperties the subProperties to set
+	 * @param superProperties the superProperties to set
 	 */
 	public void setSuperProperties(Collection<DocumentableObject> superProperties) {
 		this.superProperties = superProperties;
 	}
 
 	/**
+	 * Returns the subproperties
 	 * @return the subProperties
 	 */
 	public Collection<DocumentableObject> getSubProperties() {

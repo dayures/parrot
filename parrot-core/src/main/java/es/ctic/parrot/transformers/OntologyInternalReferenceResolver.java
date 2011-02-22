@@ -28,19 +28,23 @@ public class OntologyInternalReferenceResolver extends
 
     	// set domain (and create an inverse reference)
 		DocumentableObject domain = property.getDomain();
-	    if(domain!=null){
+	    if(domain != null){
 	        domain=register.findDocumentableObject(domain.getIdentifier());
-	        property.setDomain(domain);
-            domain.addReference(property);
+	        if (domain != null){
+	        	property.setDomain(domain);
+	        	domain.addReference(property);
+	        }
 	    }
 	    
 	    
 	    // set range (and create an inverse reference)
 	    DocumentableObject range = property.getRange();
-	    if(range!=null){
+	    if(range != null){
 	        range=register.findDocumentableObject(range.getIdentifier());
-	        property.setRange(range);
-	        range.addReference(property);
+	        if (range != null){
+	        	property.setRange(range);
+	        	range.addReference(property);
+	        }
 	    }
 	    
 	    
@@ -77,6 +81,7 @@ public class OntologyInternalReferenceResolver extends
 	public Object visit(OntologyClass clazz) throws TransformerException {
     	logger.debug("Resolving internal references of class "+clazz);
 		
+    	// set subclasses
     	Collection<OntologyClass> subClasses = clazz.getSubClasses();
 	    List<OntologyClass> registersSubClasses = new LinkedList<OntologyClass>();
 	    for(OntologyClass subclass:subClasses){
@@ -87,6 +92,8 @@ public class OntologyInternalReferenceResolver extends
 	    }
 	    clazz.setSubClasses(registersSubClasses);
 
+	    
+	    // set superclasses
 	    Collection<OntologyClass> superClasses = clazz.getSuperClasses();
 	    List<OntologyClass> registersSuperClasses = new LinkedList<OntologyClass>();
 	    for(OntologyClass superclass:superClasses){

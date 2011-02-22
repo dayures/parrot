@@ -35,8 +35,8 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
     
 	private Collection<DocumentableObject> superProperties;
 	private Collection<DocumentableObject> subProperties;
-	private Collection<OntologyProperty> equivalentProperties;
-	private Collection<OntologyProperty> disjointProperties;
+	private Collection<DocumentableObject> equivalentProperties;
+	private Collection<DocumentableObject> disjointProperties;
 
 	private DocumentableObject inverseOf;
 
@@ -192,14 +192,14 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 	/**
 	 * @param equivalentProperties the equivalentProperties to set
 	 */
-	public void setEquivalentProperties(Collection<OntologyProperty> equivalentProperties) {
+	public void setEquivalentProperties(Collection<DocumentableObject> equivalentProperties) {
 		this.equivalentProperties = equivalentProperties;
 	}
 
 	/**
 	 * @return the equivalentProperties
 	 */
-	public Collection<OntologyProperty> getEquivalentProperties() {
+	public Collection<DocumentableObject> getEquivalentProperties() {
 		
 		OntModel ontModel = getOntProperty().getOntModel();
 		Collection <Resource> equivalents = new HashSet<Resource>();
@@ -228,7 +228,7 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
     /**
 	 * @return the disjointProperties
 	 */
-	public Collection<OntologyProperty> getDisjointProperties() {
+	public Collection<DocumentableObject> getDisjointProperties() {
 		
 		OntModel ontModel = getOntProperty().getOntModel();
 		Collection <Resource> disjoints = new HashSet<Resource>();
@@ -274,7 +274,7 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 	 * @param disjointProperties the disjointProperties to set
 	 */
 	public void setDisjointProperties(
-			Collection<OntologyProperty> disjointProperties) {
+			Collection<DocumentableObject> disjointProperties) {
 		this.disjointProperties = disjointProperties;
 	}
 

@@ -177,13 +177,13 @@ public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObj
 		//return 0;
 	}
 
-	public Collection<OntologyProperty> getSuperProperties() {
+	public Collection<DocumentableObject> getSuperProperties() {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
 		//return null;
 	}
 
-	public void setSuperProperties(Collection<OntologyProperty> superProperties) {
+	public void setSuperProperties(Collection<DocumentableObject> superProperties) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
 		//
@@ -215,13 +215,13 @@ public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObj
 		//
 	}
 
-	public Collection<OntologyProperty> getSubProperties() {
+	public Collection<DocumentableObject> getSubProperties() {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
 		//return null;
 	}
 
-	public void setSubProperties(Collection<OntologyProperty> subProperties) {
+	public void setSubProperties(Collection<DocumentableObject> subProperties) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
 		//

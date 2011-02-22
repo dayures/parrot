@@ -37,25 +37,27 @@ public class OntologyInternalReferenceResolver extends
 	        property.setRange(range);
 	    }
 
-	    Collection<OntologyProperty> superProperties = property.getSuperProperties();
-	    Collection<OntologyProperty> cleanSuperProperties = new HashSet<OntologyProperty>();
+	    Collection<DocumentableObject> superProperties = property.getSuperProperties();
+	    Collection<DocumentableObject> cleanSuperProperties = new HashSet<DocumentableObject>();
 
 	    for(DocumentableObject superProperty: superProperties){
 	    	DocumentableObject _superProperty = register.findDocumentableObject(superProperty.getIdentifier());
 	    	if (_superProperty != null){
-	    		cleanSuperProperties.add((OntologyProperty) _superProperty);
+	    		logger.error(_superProperty.getClass().getCanonicalName());
+	    		cleanSuperProperties.add(_superProperty);
 	    	}
 	    }
 	    property.setSuperProperties(cleanSuperProperties);
 	    
 
-	    Collection<OntologyProperty> subProperties = property.getSubProperties();
-	    Collection<OntologyProperty> cleanSubProperties = new HashSet<OntologyProperty>();
+	    Collection<DocumentableObject> subProperties = property.getSubProperties();
+	    Collection<DocumentableObject> cleanSubProperties = new HashSet<DocumentableObject>();
 
 	    for(DocumentableObject subProperty: subProperties){
 	    	DocumentableObject _subProperty = register.findDocumentableObject(subProperty.getIdentifier());
 	    	if (_subProperty != null){
-	    		cleanSubProperties.add((OntologyProperty) _subProperty);
+	    		logger.error(_subProperty.getClass().getCanonicalName());
+	    		cleanSubProperties.add( _subProperty);
 	    	}
 	    }
 	    property.setSubProperties(cleanSubProperties);

@@ -33,8 +33,8 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 	private DocumentableObject domain;
     private DocumentableObject range;
     
-	private Collection<OntologyProperty> superProperties;
-	private Collection<OntologyProperty> subProperties;
+	private Collection<DocumentableObject> superProperties;
+	private Collection<DocumentableObject> subProperties;
 	private Collection<OntologyProperty> equivalentProperties;
 	private Collection<OntologyProperty> disjointProperties;
 
@@ -93,25 +93,26 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 	/**
 	 * @return the subProperties
 	 */
-	public Collection<OntologyProperty> getSuperProperties() {
+	public Collection<DocumentableObject> getSuperProperties() {
 		
 		if(superProperties == null){
 			superProperties = resourceIteratorToDocumentableObjectList(getOntProperty().listSuperProperties(true));
 		}
+		
 		return Collections.unmodifiableCollection(superProperties);
 	}
 
 	/**
 	 * @param subProperties the subProperties to set
 	 */
-	public void setSuperProperties(Collection<OntologyProperty> superProperties) {
+	public void setSuperProperties(Collection<DocumentableObject> superProperties) {
 		this.superProperties = superProperties;
 	}
 
 	/**
 	 * @return the subProperties
 	 */
-	public Collection<OntologyProperty> getSubProperties() {
+	public Collection<DocumentableObject> getSubProperties() {
 		if(subProperties == null){
 			subProperties = resourceIteratorToDocumentableObjectList(getOntProperty().listSubProperties(true));
 		}
@@ -122,7 +123,7 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 	/**
 	 * @param subProperties the subProperties to set
 	 */
-	public void setSubProperties(Collection<OntologyProperty> subProperties) {
+	public void setSubProperties(Collection<DocumentableObject> subProperties) {
 		this.subProperties = subProperties;
 	}
 	

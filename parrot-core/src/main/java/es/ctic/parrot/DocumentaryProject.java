@@ -39,7 +39,6 @@ public class DocumentaryProject {
      * @return the collection of inputs
      */
     public Collection<Input> getInputs() {
-    	System.err.println("tamaño de inputs: " + inputs.size());
         return Collections.unmodifiableCollection(inputs);
     }
 

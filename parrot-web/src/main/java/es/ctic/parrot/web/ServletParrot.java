@@ -148,6 +148,13 @@ public class ServletParrot extends HttpServlet {
 		for( int i=0 ; i<uriInputs.length ; i++) {
 			String uriInput = uriInputs[i];
 			if (checkURI(uriInput)) {
+			    if (uriInput.contains(":") == false) {
+			        PrefixCCClient prefixCCClient = new PrefixCCClient();
+			        String prefixCCResponse = prefixCCClient.resolvePrefix(uriInput);
+			        if (prefixCCResponse != null) {
+			            uriInput = prefixCCResponse;
+			        }
+			    }
 				logger.info("Trying to add valid input: " + uriInput);
 				if (uriInputMimetypes[i].equals("default")) { // allow content negotiation
 					dp.addInput(new URLInput(new URL(uriInput)));

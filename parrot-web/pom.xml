@@ -54,6 +54,12 @@
 	<artifactId>log4j</artifactId>
 	<version>1.2.14</version>
     </dependency>
+    
+    <dependency>
+    		<groupId>com.sun.jersey</groupId>
+    		<artifactId>jersey-client</artifactId>
+    		<version>1.6-ea05</version>
+    </dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
@@ -103,5 +109,12 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+	
+	  <repositories>
+    <repository>
+      <id>java.net</id>
+      <url>http://download.java.net/maven/2</url>
+    </repository>
+  </repositories>
 </project>
 

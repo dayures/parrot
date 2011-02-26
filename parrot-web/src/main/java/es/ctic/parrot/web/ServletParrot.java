@@ -141,10 +141,6 @@ public class ServletParrot extends HttpServlet {
 			uriInputMimetypes = new String[0];
 		}
 		
-		if (uriInputs.length != uriInputMimetypes.length){
-			throw new IllegalArgumentException("Number of URIs is different to number of mimetypes");
-		} 
-		
 		for( int i=0 ; i<uriInputs.length ; i++) {
 			String uriInput = uriInputs[i];
 			if (checkURI(uriInput)) {
@@ -156,7 +152,7 @@ public class ServletParrot extends HttpServlet {
 			        }
 			    }
 				logger.info("Trying to add valid input: " + uriInput);
-				if (uriInputMimetypes[i].equals("default")) { // allow content negotiation
+				if (uriInputMimetypes.length <= i || uriInputMimetypes[i].equals("default")) { // allow content negotiation
 					dp.addInput(new URLInput(new URL(uriInput)));
 				} else {
 					dp.addInput(new URLInput(new URL(uriInput), uriInputMimetypes[i]));

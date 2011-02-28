@@ -65,13 +65,13 @@
    #if(!$element.ruleSets.isEmpty())
    <dt>RuleSets</dt>
    #foreach($v in $element.ruleSets)
-	 <dd><a href="#$v.LocalName">$v.Label</a></dd>
+	 <dd><span class="parrot-element-ref parrot-ruleset-ref"><a href="#$v.LocalName">$v.Label</a></span></dd>
    #end
    #end
    
    #if($element.Parent)
       <dt>is inside of</dt>
-      <dd><a href="#$element.Parent.LocalName">$element.Parent.Label</a></dd>
+	  <dd><span class="parrot-element-ref parrot-${element.Parent.kindString}-ref"><a href="#$element.Parent.localName">$element.Parent.label</a></span></dd>
    #end
    
    #if(!$element.labels.isEmpty())

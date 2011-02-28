@@ -19,7 +19,7 @@ public class DocumentaryProject {
     private final Collection<Input> inputs = new HashSet<Input>();
     private Locale locale;
     
-    /** Create a new Documentary project 
+    /** Constructs a new Documentary project with the specified locale. 
      * @param locale A locale (language) to be set 
      */
     public DocumentaryProject(Locale locale) {
@@ -28,10 +28,11 @@ public class DocumentaryProject {
 
     /**
      * Adds the specified input to this set if it is not already present (optional operation).
-     * @param input input to be added
+     * @param input input to be added.
+     * @return <code>true</code> if the input has been added. 
      */
-    public void addInput(Input input) {
-        inputs.add(input);
+    public boolean addInput(Input input) {
+        return inputs.add(input);
     }
     
     /**

@@ -55,7 +55,6 @@ public class OntologyInternalReferenceResolver extends
 	    for(DocumentableObject superProperty: superProperties){
 	    	DocumentableObject _superProperty = register.findDocumentableObject(superProperty.getIdentifier());
 	    	if (_superProperty != null){
-	    		logger.error(_superProperty.getClass().getCanonicalName());
 	    		cleanSuperProperties.add(_superProperty);
 	    	}
 	    }
@@ -69,7 +68,6 @@ public class OntologyInternalReferenceResolver extends
 	    for(DocumentableObject subProperty: subProperties){
 	    	DocumentableObject _subProperty = register.findDocumentableObject(subProperty.getIdentifier());
 	    	if (_subProperty != null){
-	    		logger.error(_subProperty.getClass().getCanonicalName());
 	    		cleanSubProperties.add( _subProperty);
 	    	}
 	    }

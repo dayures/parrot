@@ -18,6 +18,7 @@ public class DocumentableObjectRegister {
 
     
     /**
+     * Returns the documentable object
      * @param identifier Identifier of the documentable object
      * @return Returns the value or null if the register contains no mapping for this identifier.  
      */

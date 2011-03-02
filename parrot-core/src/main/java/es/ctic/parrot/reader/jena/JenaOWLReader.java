@@ -33,6 +33,7 @@ public class JenaOWLReader implements DocumentReader {
     
     public JenaOWLReader(){ 
     	getOntModel().setStrictMode(false);
+    	getOntModel().getDocumentManager().setProcessImports(false); // do NOT the imports
     }
 	
 	/* (non-Javadoc)
@@ -51,8 +52,7 @@ public class JenaOWLReader implements DocumentReader {
         	if (getJenaFormat(input).equals(XHTML) || getJenaFormat(input).equals(HTML)) {
             	ontModel.read(input.openReader(), base == null ? "http://example.org/base#" : base, getJenaFormat(input)); // FIXME fix this adhoc url
             } else {
-
-            	ontModel.read(input.openReader(), base, getJenaFormat(input));	
+            	ontModel.read(input.openReader(), base, getJenaFormat(input));
             }
         	
             loadOntology(ontModel, register);

@@ -278,7 +278,16 @@ currently supported by PARROT.</p>
       <td><img src="images/not-supported-yet.png" height="32" width="32"
         alt="Currently not supported" /> </td>
     </tr>
-  </tbody>
+    <tr>
+      <td><em>isDefinedBy</em></td>
+      <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
+      <td>Ontology, Class, Property, Individual</td>
+      <td>Used to indicate where this resource has been defining.</td>
+      <td>http://www.w3.org/2000/01/rdf-schema#</td>
+      <td><img src="images/supported.png" height="32" width="32"
+        alt="Currently supported" /> </td>
+    </tr>
+    </tbody>
 </table>
 
 <p>This table describes the annotates properties relevant for adding metadata

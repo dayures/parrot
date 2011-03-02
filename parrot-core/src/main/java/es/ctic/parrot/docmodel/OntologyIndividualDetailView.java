@@ -40,6 +40,8 @@ public class OntologyIndividualDetailView extends AbstractOntologicalObjectDetai
 
 		details.setAnchor(object.getLocalName());
 		details.setIdentifier(object.getIdentifier());
+		details.setIsDefinedBy(DocumentableObjectReference.createReference(object.getIsDefinedBy(),locale));
+
 		return details;
 	}
 

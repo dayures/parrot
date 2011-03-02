@@ -24,6 +24,8 @@ import es.ctic.parrot.utils.URIUtils;
 
 public class OntResourceAnnotationStrategy {
 
+	private static final String RDFS_IS_DEFINED_BY = "http://www.w3.org/2000/01/rdf-schema#isDefinedBy";
+
 	private static final String CC_LICENSE_DEPRECATED = "http://web.resource.org/cc/license";
 
 	private static final String CC_LICENSE = "http://creativecommons.org/ns#license";
@@ -535,6 +537,10 @@ public class OntResourceAnnotationStrategy {
 		return getLiteralPropertyValues(ontResource, DC_PUBLISHER);
 	}
 	
+	public String getIsDefinedBy(OntResource ontResource) {
+		return getObjectPropertyURI(ontResource, RDFS_IS_DEFINED_BY);
+	}
+	
 	/**
 	 * 
 	 * @param ontResource
@@ -635,4 +641,32 @@ public class OntResourceAnnotationStrategy {
 
 	}
 
+	/**
+	 * 
+	 * @param ontResource
+	 * @param property
+	 * @return
+	 */
+	private String getObjectPropertyURI(OntResource ontResource, String property) {
+		String uri = null;
+    	if (ontResource == null){
+    		return uri;
+    	} else {		
+
+			StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(property));
+			if (it.hasNext()){
+				Statement statement = it.nextStatement();
+				try{
+					uri = statement.getObject().asResource().getURI();
+				} catch (ResourceRequiredException e)  {
+					logger.warn("Ignore triple "+ statement +" because it is not a Object property");
+				}
+			}
+			return uri;
+    	}
+	}
+	
+	
+	
 }
+

@@ -33,10 +33,10 @@
   <dd>$element.Date</dd>
   #end
   
-   #if(!$element.editors.isEmpty())
-   <dt>Editors:</dt>
-   #foreach($editor in $element.editors)
-     <dd>$editor</dd>
+   #if(!$element.creators.isEmpty())
+   <dt>Creators:</dt>
+   #foreach($creator in $element.creators)
+     <dd>$creator</dd>
    #end
    #end
    

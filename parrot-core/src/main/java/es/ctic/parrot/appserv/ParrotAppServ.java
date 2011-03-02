@@ -25,7 +25,7 @@ import es.ctic.parrot.transformers.TransformerException;
 /**
  * Main entry point for Parrot users.
  * 
- * @author CTIC
+ * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
  *
  */
 public class ParrotAppServ {
@@ -35,7 +35,18 @@ public class ParrotAppServ {
     private DocumentReader rifPSReader;
     
     /**
-     * Creates a parrot service.
+     * Constructs a parrot service.
+     * Nowadays, the supported mimetypes are:
+	 * <ul>
+	 * 	<li><code>application/rdf+xml</code></li>
+	 * 	<li><code>application/xml</code></li>
+	 *  <li><code>application/owl+xml</code></li>
+	 *  <li><code>application/xhtml+xml</code></li>
+	 *  <li><code>text/html</code></li>
+	 *  <li><code>text/n3</code></li>
+	 *  <li><code>text/rdf+n3</code></li>
+	 * </ul>
+	 * 
      */
     public ParrotAppServ() {
 		setOntologyReader(new JenaOWLReader());
@@ -52,7 +63,7 @@ public class ParrotAppServ {
 	 * @throws ReaderException if a input is malformed or not valid (usually, markup issues)   
 	 */
 	public void createDocumentation(DocumentaryProject dp, OutputGenerator outputGenerator) throws IOException, ReaderException, TransformerException {
-	    DocumentableObjectRegister register = new DocumentableObjectRegister();
+		DocumentableObjectRegister register = new DocumentableObjectRegister();
 		readAndRegisterDocumentableObjects(dp.getInputs(), register);
 		resolveInternalReferences(register);
 		resolveCrossReferences(register);
@@ -184,7 +195,7 @@ public class ParrotAppServ {
 	 *  <li>text/html</li>
 	 *  <li>text/n3</li>
 	 *  <li>text/rdf+n3</li>
-	 * </ul 
+	 * </ul>
 	 * @param mimetype
 	 * @return true if the mimetype is supported
 	 */

@@ -12,7 +12,7 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
     private static final Logger logger = Logger.getLogger(OntologyDetailView.class);
 
 	private String version;
-	private List<String> editors;
+	private List<String> creators;
 	private List<String> contributors;
 	private String preferredPrefix;
 	private String preferredNamespace;
@@ -32,12 +32,12 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 		return version;
 	}
 
-	public void setEditors(List<String> editors) {
-		this.editors = editors;
+	public void setCreators(List<String> creators) {
+		this.creators = creators;
 	}
 
-	public List<String> getEditors() {
-		return editors;
+	public List<String> getCreators() {
+		return creators;
 	}
 
 	public void setPreferredPrefix(String preferredPrefix) {
@@ -86,7 +86,7 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 		details.setLabel(object.getLabel(locale));
 		details.setComment(object.getComment(locale));
 		details.setVersion(object.getVersion());
-		details.setEditors(object.getEditors());
+		details.setCreators(object.getCreators());
 		details.setDate(object.getDate());
 		details.setRights(object.getRights());
 		details.setLicenseLabel(object.getLicenseLabel());

@@ -1,0 +1,63 @@
+<h1 id ="toc">Table of contents</h1>
+<div class="toc">
+<!-- The list of ontologies, classes, properties and rules goes here --> 
+<p>
+#if(!$document.ontologyDetailViews.isEmpty())
+Ontologies (${document.ontologyDetailViews.size()}): 
+#foreach($element in $document.ontologyDetailViews)
+	<span class="parrot-element-ref parrot-ontology-ref"><a href="#$element.Anchor">$element.Label</a>#if ($foreach.hasNext), #end</span> 
+#end
+#end
+</p>
+
+<p>
+#if(!$document.ontologyClassDetailViews.isEmpty())
+Classes (${document.ontologyClassDetailViews.size()}):
+#foreach($element in $document.ontologyClassDetailViews)
+	<span class="parrot-element-ref parrot-class-ref"><a href="#$element.Anchor">$element.Label</a>#if ($foreach.hasNext), #end</span>
+#end
+#end
+</p>
+<p>
+#if(!$document.ontologyPropertyDetailViews.isEmpty())
+Properties (${document.ontologyPropertyDetailViews.size()}):
+#foreach($element in $document.ontologyPropertyDetailViews)
+	<span class="parrot-element-ref parrot-property-ref"><a href="#$element.Anchor">$element.Label</a>#if ($foreach.hasNext), #end</span> 
+#end
+#end
+</p>
+
+<p>
+#if(!$document.ontologyIndividualDetailViews.isEmpty())
+Individuals (${document.ontologyIndividualDetailViews.size()}):
+#foreach($element in $document.ontologyIndividualDetailViews)
+	<span class="parrot-element-ref parrot-individual-ref"><a href="#$element.Anchor">$element.Label</a>#if ($foreach.hasNext), #end</span>
+#end
+#end
+</p>
+
+<p>
+#if(!$document.ruleSetDetailViews.isEmpty())
+RuleSets (${document.ruleSetDetailViews.size()}):
+#foreach($element in $document.ruleSetDetailViews)
+	<span class="parrot-element-ref parrot-ruleset-ref"><a href="#$element.Anchor">$element.Label</a>#if ($foreach.hasNext), #end</span>
+#end
+#end
+</p>
+
+<p>
+#if(!$document.ruleDetailViews.isEmpty())
+Rules (${document.ruleDetailViews.size()}):
+#foreach($element in $document.ruleDetailViews)
+	<span class="parrot-element-ref parrot-rule-ref"><a href="#$element.Anchor">$element.Label</a>#if ($foreach.hasNext), #end</span>
+#end
+#end
+</p>
+
+<p>
+#if(!$document.glossary.isEmpty())
+Glossary: <a href="#glossary">$document.glossary.size() entries</a>
+#end
+</p>
+
+</div>

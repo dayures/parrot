@@ -1,0 +1,80 @@
+<div class="term">
+  <h3><a id="$element.Anchor"></a><span class="parrot-element-title parrot-ontology-title">Ontology: $element.Label</span></h3>
+  
+  
+  <dl>
+  #if($element.Uri)
+      <dt>URI</dt>
+      <dd><a href="$element.Uri">$element.Uri</a></dd>      
+  #end
+  
+  #if($element.Comment)
+      <dt>Description</dt>
+      <dd>$element.Comment</dd>
+  #end
+  
+  #if($element.PreferredNamespace)
+      <dt>Preferred Namespace URI</dt>
+      <dd><pre><code>$element.PreferredNamespace</code></pre></dd>
+  #end
+
+  #if($element.PreferredPrefix)
+      <dt>Preferred Prefix</dt>
+      <dd><pre><code>$element.PreferredPrefix</code></pre></dd>
+  #end
+  
+  #if($element.Version)
+  <dt>Version</dt>
+  <dd>$element.Version</dd>
+  #end
+  
+  #if($element.Date)
+  <dt>Date</dt>
+  <dd>$element.Date</dd>
+  #end
+  
+   #if(!$element.editors.isEmpty())
+   <dt>Editors:</dt>
+   #foreach($editor in $element.editors)
+     <dd>$editor</dd>
+   #end
+   #end
+   
+   #if(!$element.contributors.isEmpty())
+   <dt>Contributors:</dt>
+   #foreach($contributor in $element.contributors)
+     <dd>$contributor</dd>
+   #end
+   #end
+   
+   #if($element.Rights)
+   <dt>Rights</dt>
+   <dd>$element.Rights</dd>
+   #end
+
+   #if($element.LicenseLabel)
+   <dt>License</dt>
+   <dd><a href="$element.LicenseLabel">$element.LicenseLabel</a></dd>
+   #end
+   
+   #if(!$element.labels.isEmpty())
+   <dt>Labels</dt>
+   <dd>
+   #foreach($element in $element.labels)
+     <span>$element.text</span>#if ($foreach.hasNext), #end
+   #end
+   </dd>
+   #end
+   
+   #if(!$element.relatedDocuments.isEmpty())
+   <dt>Related Documents</dt> 
+   <dd>
+   #foreach($element in $element.relatedDocuments)
+   	  #parse("html/relatedDocument-detail.vm")
+   #end
+   </dd>
+   #end
+   
+  </dl>
+  <p class="back-to-top">[<a href="#toc">back to top</a>]</p> 
+</div> 

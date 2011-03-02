@@ -1,0 +1,150 @@
+body {
+  padding: 2em 8% 4em 8%;
+}
+
+h1, h2, h3, h4, h5, h6,.toc {color: #5674BC; }
+
+/* background should be transparent, but WebTV has a bug */
+h1 { font: 170% sans-serif; display: inline; }
+h2, .toc b { font: 140% sans-serif }
+h2 { margin-top: 1em; }
+
+div.term {
+  padding-bottom: 1em;
+  border-bottom: 1px solid #3d506f;
+  margin-bottom: 1em;
+}
+
+div#footer {
+  margin-top: 5em;
+  border-top: 1px #3d506f solid;
+  padding-top: 0.5em;
+  font-size: 0.65em;
+  float: right;
+  margin-left: 0.5em;
+}
+
+div.toc{
+	padding: 1em;
+	border: dotted #5674BC;
+	background-color: #ddd;
+	margin-bottom: 1em;
+}
+
+dt{
+ 	font-weight:bold;
+}
+
+div.term a{
+	font-family: monospace;
+}
+
+p.back-to-top {
+	background-image: url("images/1292359916_stock_top.png");
+	background-repeat: no-repeat;
+	background-position:0 0;
+	padding-left: 18px;
+    float: right;
+    font-size: small;
+    margin-top: 19px;
+}
+
+.parrot-element-ref {
+	background-repeat: no-repeat;
+	background-position: 0 50%;
+	padding-left: 18px;
+}
+
+.parrot-element-title {
+	background-repeat: no-repeat;
+	background-position: 0 50%;
+	padding-left: 26px;
+}
+
+.parrot-ontology-ref {
+	background-image: url("images/icon-ontology-16.png");
+}
+
+.parrot-ontology-title {
+	background-image: url("images/icon-ontology-24.png");
+}
+
+.parrot-class-ref {
+	background-image: url("images/icon-class-16.png");
+}
+
+.parrot-class-title {
+	background-image: url("images/icon-class-24.png");
+}
+
+.parrot-property-ref {
+	background-image: url("images/icon-property-16.png");
+}
+
+.parrot-property-title {
+	background-image: url("images/icon-property-24.png");
+}
+
+.parrot-individual-ref {
+	background-image: url("images/icon-individual-16.png");
+}
+
+.parrot-individual-title {
+	background-image: url("images/icon-individual-24.png");
+}
+
+.parrot-rule-ref {
+	background-image: url("images/icon-rule-16.png");
+}
+
+.parrot-rule-title {
+	background-image: url("images/icon-rule-24.png");
+}
+
+.parrot-ruleset-ref {
+	background-image: url("images/icon-ruleset-16.png");
+}
+
+.parrot-ruleset-title {
+	background-image: url("images/icon-ruleset-24.png");
+}
+
+.parrot-label-locale {
+	color: green;
+}
+
+.parrot-label-text-pref {
+	font-weight:bold;
+}
+
+.toggle_container {
+	margin: 0 0 5px;
+	padding: 0;
+	border: 1px solid #d6d6d6;
+	background: #f0f0f0;
+	overflow: hidden;
+	font-size: 1em;
+	clear: both;
+}
+
+.toggle_container .block {
+	padding: 20px;
+}
+.toggle_container .block p {
+	padding: 5px 0;
+	margin: 5px 0;
+}
+.toggle_container h5 {
+	font: 2.5em normal Georgia, "Times New Roman", Times, serif;
+	margin: 0 0 10px;
+	padding: 0 0 5px 0;
+	border-bottom: 1px dashed #ccc;
+}
+.toggle_container img {
+	float: left;
+	margin: 10px 15px 15px 0;
+	padding: 5px;
+	background: #ddd;
+	border: 1px solid #ccc;
+}
+pre { margin: 0em }

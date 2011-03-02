@@ -112,14 +112,12 @@ public class OntologyClassJenaImpl extends AbstractJenaDocumentableObject implem
 
 		if(equivalentClasses == null){
 			
-			StmtIterator listStatements = ontModel.listStatements(getOntClass(), OWL2.equivalentClass, (RDFNode) null);
-			while (listStatements.hasNext()){
+			for(StmtIterator listStatements = ontModel.listStatements(getOntClass(), OWL2.equivalentClass, (RDFNode) null); listStatements.hasNext(); ){
 				Statement statement = listStatements.next();
 				equivalents.add(ontModel.getOntResource(statement.getObject().asResource()));
 			}
 			
-			listStatements = ontModel.listStatements(null, OWL2.equivalentClass, getOntClass());
-			while (listStatements.hasNext()){
+			for(StmtIterator listStatements = ontModel.listStatements(null, OWL2.equivalentClass, getOntClass()); listStatements.hasNext(); ){
 				Statement statement = listStatements.next();
 				equivalents.add(ontModel.getOntResource(statement.getSubject().asResource()));
 			}

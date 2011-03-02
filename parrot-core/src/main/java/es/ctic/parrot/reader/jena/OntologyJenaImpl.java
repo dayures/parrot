@@ -40,7 +40,7 @@ public class OntologyJenaImpl extends AbstractJenaDocumentableObject implements 
 		return getAnnotationStrategy().getVersion(getOntResource());
 	}
 
-	public List<String> getEditors() {
+	public List<String> getCreators() {
 		return getAnnotationStrategy().getCreators(getOntResource());
 	}
 

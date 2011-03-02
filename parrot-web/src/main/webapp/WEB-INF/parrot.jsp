@@ -189,8 +189,60 @@
 		        	<h2>By file upload</h2> 
 					<form method="post" action="" enctype="multipart/form-data">
 						<p><label title="File to be documented"
-							for="file">File: </label><input type="file" name="datafile" size="40"/></p>
-						<p class="direct-input">This file is a: 
+							for="file">File: </label><input type="file" name="datafile" size="40"/>
+						This file is a: 
+						  <select name="mimetypeFile">
+							<option value="default" selected="selected">Autodetect (if possible)</option>
+					        <option value="application/owl+xml" <c:if test="${param.mimetypeText eq 'application/owl+xml'}">selected="selected"</c:if>>OWL ontology</option>
+					        <option value="text/n3" <c:if test="${param.mimetypeText eq 'text/n3'}">selected="selected"</c:if>>N3 ontology</option>
+					        <option value="application/xhtml+xml" <c:if test="${param.mimetypeText eq 'application/xhtml+xml'}">selected="selected"</c:if>>XHTML+RDFa document</option>
+					        <option value="text/html" <c:if test="${param.mimetypeText eq 'text/html'}">selected="selected"</c:if>>HTML+RDFa document</option>
+					        <option value="application/rif+xml" <c:if test="${param.mimetypeText eq 'application/rif+xml'}">selected="selected"</c:if>>RIF XML document</option>
+					        <option value="text/x-rif-ps" <c:if test="${param.mimetypeText eq 'text/x-rif-ps'}">selected="selected"</c:if>>RIF PS document</option>
+					      </select>
+					    </p> 
+						<p><label title="File to be documented"
+							for="file">File: </label><input type="file" name="datafile" size="40"/>
+						This file is a: 
+						  <select name="mimetypeFile">
+							<option value="default" selected="selected">Autodetect (if possible)</option>
+					        <option value="application/owl+xml" <c:if test="${param.mimetypeText eq 'application/owl+xml'}">selected="selected"</c:if>>OWL ontology</option>
+					        <option value="text/n3" <c:if test="${param.mimetypeText eq 'text/n3'}">selected="selected"</c:if>>N3 ontology</option>
+					        <option value="application/xhtml+xml" <c:if test="${param.mimetypeText eq 'application/xhtml+xml'}">selected="selected"</c:if>>XHTML+RDFa document</option>
+					        <option value="text/html" <c:if test="${param.mimetypeText eq 'text/html'}">selected="selected"</c:if>>HTML+RDFa document</option>
+					        <option value="application/rif+xml" <c:if test="${param.mimetypeText eq 'application/rif+xml'}">selected="selected"</c:if>>RIF XML document</option>
+					        <option value="text/x-rif-ps" <c:if test="${param.mimetypeText eq 'text/x-rif-ps'}">selected="selected"</c:if>>RIF PS document</option>
+					      </select>
+					    </p> 
+						<p><label title="File to be documented"
+							for="file">File: </label><input type="file" name="datafile" size="40"/>
+						This file is a: 
+						  <select name="mimetypeFile">
+							<option value="default" selected="selected">Autodetect (if possible)</option>
+					        <option value="application/owl+xml" <c:if test="${param.mimetypeText eq 'application/owl+xml'}">selected="selected"</c:if>>OWL ontology</option>
+					        <option value="text/n3" <c:if test="${param.mimetypeText eq 'text/n3'}">selected="selected"</c:if>>N3 ontology</option>
+					        <option value="application/xhtml+xml" <c:if test="${param.mimetypeText eq 'application/xhtml+xml'}">selected="selected"</c:if>>XHTML+RDFa document</option>
+					        <option value="text/html" <c:if test="${param.mimetypeText eq 'text/html'}">selected="selected"</c:if>>HTML+RDFa document</option>
+					        <option value="application/rif+xml" <c:if test="${param.mimetypeText eq 'application/rif+xml'}">selected="selected"</c:if>>RIF XML document</option>
+					        <option value="text/x-rif-ps" <c:if test="${param.mimetypeText eq 'text/x-rif-ps'}">selected="selected"</c:if>>RIF PS document</option>
+					      </select>
+					    </p> 
+						<p><label title="File to be documented"
+							for="file">File: </label><input type="file" name="datafile" size="40"/>
+						This file is a: 
+						  <select name="mimetypeFile">
+							<option value="default" selected="selected">Autodetect (if possible)</option>
+					        <option value="application/owl+xml" <c:if test="${param.mimetypeText eq 'application/owl+xml'}">selected="selected"</c:if>>OWL ontology</option>
+					        <option value="text/n3" <c:if test="${param.mimetypeText eq 'text/n3'}">selected="selected"</c:if>>N3 ontology</option>
+					        <option value="application/xhtml+xml" <c:if test="${param.mimetypeText eq 'application/xhtml+xml'}">selected="selected"</c:if>>XHTML+RDFa document</option>
+					        <option value="text/html" <c:if test="${param.mimetypeText eq 'text/html'}">selected="selected"</c:if>>HTML+RDFa document</option>
+					        <option value="application/rif+xml" <c:if test="${param.mimetypeText eq 'application/rif+xml'}">selected="selected"</c:if>>RIF XML document</option>
+					        <option value="text/x-rif-ps" <c:if test="${param.mimetypeText eq 'text/x-rif-ps'}">selected="selected"</c:if>>RIF PS document</option>
+					      </select>
+					    </p> 
+						<p><label title="File to be documented"
+							for="file">File: </label><input type="file" name="datafile" size="40"/>
+						This file is a: 
 						  <select name="mimetypeFile">
 							<option value="default" selected="selected">Autodetect (if possible)</option>
 					        <option value="application/owl+xml" <c:if test="${param.mimetypeText eq 'application/owl+xml'}">selected="selected"</c:if>>OWL ontology</option>

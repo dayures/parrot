@@ -7,6 +7,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 
@@ -150,24 +151,33 @@ public class ServletParrot extends HttpServlet {
 			ServletFileUpload upload = new ServletFileUpload(factory);
 			List /* FileItem */ items = upload.parseRequest(req);
 			Iterator iter = items.iterator();
-			InputStream is = null;
-			String providedContentType = null;
-			String mimetypeFile = null;
+			List<InputStream> inputStreams = new LinkedList<InputStream>();
+			List<String> providedContentTypes = new LinkedList<String>();
+			List<String> mimetypeFiles = new LinkedList<String>();
 			while (iter.hasNext()) {
 				FileItem item = (FileItem) iter.next();
 
 				if (!item.isFormField()) {
-					is = item.getInputStream();
-					providedContentType = item.getContentType();
-				} else {
+					if (!item.getName().isEmpty()) {
+						logger.debug("Found non-empty file upload field with name=" + item.getName());
+						inputStreams.add(item.getInputStream());
+						providedContentTypes.add(item.getContentType());
+					}
+				} else { // regular field
 					if (item.getFieldName().equals("mimetypeFile")) {
-						mimetypeFile = item.getString();
+						logger.debug("Found mimetypeFile=" + item.getString());
+						mimetypeFiles.add(item.getString());
 					}
 				}
 			}
 			
-			if (is != null) {
+			Iterator<String> providedContentTypesIterator = providedContentTypes.iterator();
+			Iterator<String> mimetypeFilesIterator = mimetypeFiles.iterator();
+			for (InputStream is : inputStreams) {
 				final String BASE = null;
+				String providedContentType = providedContentTypesIterator.next();
+				String mimetypeFile = mimetypeFilesIterator.next();
+				logger.debug("Adding input with provided content type=" + providedContentType + " and mimetypeFile=" + mimetypeFile);
 				if (mimetypeFile == null || mimetypeFile.equals(AUTODETECT_MIMETYPE)) {
 					dp.addInput(new InputStreamInput(is, req.getCharacterEncoding(), providedContentType, BASE));				
 				} else {

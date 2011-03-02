@@ -7,12 +7,14 @@ import java.io.Reader;
  * An input document for Parrot. This interface encapsulates
  * different sources for input documents.
  * 
- * @author CTIC
- *
+ * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @version 1.0
+ * @since 1.0
  */
 public interface Input {
 
     /**
+     * Returns a reader to read the contents of the input document
      * @return A reader to read the contents of the input document
      * @throws IOException
      */

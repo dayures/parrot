@@ -41,6 +41,7 @@ public class HtmlOutputGenerator implements OutputGenerator {
             p.setProperty("file.resource.loader.class","org.apache.velocity.runtime.resource.loader.FileResourceLoader");
             p.setProperty(Velocity.EVENTHANDLER_REFERENCEINSERTION, "org.apache.velocity.app.event.implement.EscapeHtmlReference");
             p.setProperty("eventhandler.escape.html.match", "/^(?!\\$unescapehtml_).*/");
+            p.setProperty("runtime.log.logsystem.class", "org.apache.velocity.runtime.log.NullLogSystem");
             Velocity.init(p);
 
             OutputStreamWriter osw = new OutputStreamWriter(out, (new InputStreamReader(template)).getEncoding());

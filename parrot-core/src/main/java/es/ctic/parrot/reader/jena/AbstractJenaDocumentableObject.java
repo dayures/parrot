@@ -182,6 +182,17 @@ public abstract class AbstractJenaDocumentableObject extends
 	public Collection<RelatedDocument> getRelatedDocuments(Locale locale) {
         return getAnnotationStrategy().getRelatedDocuments(getOntResource(), locale);
     }
+	
+	public DocumentableObject getIsDefinedBy() {
+		String isDefinedBy = getAnnotationStrategy().getIsDefinedBy(getOntResource());
+		if (isDefinedBy != null) {
+			Identifier identifier = new URIIdentifier(isDefinedBy);
+			return this.getRegister().findDocumentableObject(identifier);	
+		} else {
+			return null;
+		}
+    }
+
 
 	/**
 	 * @param annotationStrategy the annotationStrategy to set
@@ -196,6 +207,5 @@ public abstract class AbstractJenaDocumentableObject extends
 	public OntResourceAnnotationStrategy getAnnotationStrategy() {
 		return annotationStrategy;
 	}
-
-
+	
 }

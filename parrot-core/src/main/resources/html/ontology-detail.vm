@@ -75,6 +75,11 @@
    </dd>
    #end
    
+   #if($element.isDefinedBy)
+      <dt>isDefinedBy</dt>
+      <dd><span class="parrot-element-ref parrot-${element.isDefinedBy.kindString}-ref"><a href="#$element.isDefinedBy.LocalName">$element.isDefinedBy.Label</a></span></dd>
+   #end
+   
   </dl>
   <p class="back-to-top">[<a href="#toc">back to top</a>]</p> 
 </div> 

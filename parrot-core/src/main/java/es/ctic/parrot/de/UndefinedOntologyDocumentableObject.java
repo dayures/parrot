@@ -297,4 +297,10 @@ public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObj
         return Kind.UNDEFINED.toString();
     }
 
+	public DocumentableObject getIsDefinedBy() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Method not implemented yet.");
+		//return null;
+	}
+
 }

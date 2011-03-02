@@ -19,7 +19,7 @@ public abstract class AbstractOntologicalObjectDetailView implements DetailView 
 	private Collection<RelatedDocument> relatedDocuments;
 	private Collection<Label> labels;
     private Identifier identifier;
-
+	private DocumentableObjectReference isDefinedBy;
 
 	public String getUri() {
 		return uri;
@@ -107,6 +107,20 @@ public abstract class AbstractOntologicalObjectDetailView implements DetailView 
 	 */
 	public Identifier getIdentifier() {
 		return identifier;
+	}
+
+	/**
+	 * @param isDefinedBy the isDefinedBy to set
+	 */
+	public void setIsDefinedBy(DocumentableObjectReference isDefinedBy) {
+		this.isDefinedBy = isDefinedBy;
+	}
+
+	/**
+	 * @return the isDefinedBy
+	 */
+	public DocumentableObjectReference getIsDefinedBy() {
+		return isDefinedBy;
 	}
 
 

@@ -154,11 +154,12 @@ public class ServletParrot extends HttpServlet {
 			List<InputStream> inputStreams = new LinkedList<InputStream>();
 			List<String> providedContentTypes = new LinkedList<String>();
 			List<String> mimetypeFiles = new LinkedList<String>();
+			
 			while (iter.hasNext()) {
 				FileItem item = (FileItem) iter.next();
 
 				if (!item.isFormField()) {
-					if (!item.getName().isEmpty()) {
+					if (item.getName().length() != 0) {
 						logger.debug("Found non-empty file upload field with name=" + item.getName());
 						inputStreams.add(item.getInputStream());
 						providedContentTypes.add(item.getContentType());

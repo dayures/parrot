@@ -47,12 +47,13 @@
 		<div id="demo" class="yui-navset"> 
 		    <ul class="yui-nav"> 
 		        <li><a href="#tab1"><em>by URI</em></a></li> 
-		        <li><a href="#tab2"><em>by Direct Input</em></a></li> 
+		        <li><a href="#tab2"><em>by direct input</em></a></li> 
+		        <li><a href="#tab3"><em>by file upload</em></a></li> 
 		    </ul>            
 		    <div class="yui-content"> 
-				<form method="get" action="">
 		        <div id="tab1"> 
 		        	<h2>By URI</h2> 
+					<form method="get" action="">
 		        	<c:choose>
     					<c:when test='${not empty paramValues.documentUri}'>
 				        	<%-- For every String[] item of paramValues... --%>
@@ -97,6 +98,10 @@
 						</c:otherwise>
 					</c:choose>
 					<p id="addURI"><img src="images/add.png" width="16" height="16" alt=""/><span id="addURILink">add another URI</span></p>
+					<div class="buttons">
+						<button type="submit" class="positive"><img src="images/tick.png" alt=""/>Generate documentation</button>
+					</div>
+					</form>
 		        </div> 
 		        <!-- 
 		        <div class="language">
@@ -128,14 +133,10 @@
 				</select>
 		        </div>
 		         -->
-				<div class="buttons">
-					<button type="submit" class="positive"><img src="images/tick.png" alt=""/>Generate documentation</button>
-				</div>
-				</form>
 				
-				<form method="post" action="">
 			        <div id="tab2"> 
 			        	<h2>By direct input</h2> 
+						<form method="post" action="">
 			        	<p class="direct-input"><label title="Text of the document" for="documentText" class="text">Enter your document:</label><br />
 			        	<textarea id="documentText" name="documentText" cols="150" rows="15" style="width:80%"><c:if test='${not empty param.documentText}'><c:out value="${param.documentText}" escapeXml="true"/></c:if></textarea></p>
 						<p class="direct-input">This is an : 
@@ -148,6 +149,10 @@
 					        <option value="text/x-rif-ps" <c:if test="${param.mimetypeText eq 'text/x-rif-ps'}">selected="selected"</c:if>>RIF PS document</option>
 					      </select>
 					    </p> 
+						<div class="buttons">
+							<button type="submit" class="positive"><img src="images/tick.png" alt=""/>Generate documentation</button>
+						</div>
+						</form>
 			        </div> 
 			         <!-- 
 			        <div class="language">
@@ -179,10 +184,28 @@
 						</select>
 		        	</div>
 		        	 -->
-					<div class="buttons">
-						<button type="submit" class="positive"><img src="images/tick.png" alt=""/>Generate documentation</button>
-					</div>
-				</form>
+
+		        <div id="tab3"> 
+		        	<h2>By file upload</h2> 
+					<form method="post" action="" enctype="multipart/form-data">
+						<p><label title="File to be documented"
+							for="file">File: </label><input type="file" name="datafile" size="40"/></p>
+						<p class="direct-input">This file is a: 
+						  <select name="mimetypeFile">
+							<option value="default" selected="selected">Autodetect (if possible)</option>
+					        <option value="application/owl+xml" <c:if test="${param.mimetypeText eq 'application/owl+xml'}">selected="selected"</c:if>>OWL ontology</option>
+					        <option value="text/n3" <c:if test="${param.mimetypeText eq 'text/n3'}">selected="selected"</c:if>>N3 ontology</option>
+					        <option value="application/xhtml+xml" <c:if test="${param.mimetypeText eq 'application/xhtml+xml'}">selected="selected"</c:if>>XHTML+RDFa document</option>
+					        <option value="text/html" <c:if test="${param.mimetypeText eq 'text/html'}">selected="selected"</c:if>>HTML+RDFa document</option>
+					        <option value="application/rif+xml" <c:if test="${param.mimetypeText eq 'application/rif+xml'}">selected="selected"</c:if>>RIF XML document</option>
+					        <option value="text/x-rif-ps" <c:if test="${param.mimetypeText eq 'text/x-rif-ps'}">selected="selected"</c:if>>RIF PS document</option>
+					      </select>
+					    </p> 
+						<div class="buttons">
+							<button type="submit" class="positive"><img src="images/tick.png" alt=""/>Generate documentation</button>
+						</div>
+					</form>
+				</div> <!--  /tab3 -->
 		    </div> 
 		    
 		    <p>Do you need <a href="help.jsp">help</a>?</p>

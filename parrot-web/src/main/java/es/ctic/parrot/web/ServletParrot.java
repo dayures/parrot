@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
@@ -15,11 +16,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileItemFactory;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.log4j.Logger;
 
 import es.ctic.parrot.DocumentaryProject;
 import es.ctic.parrot.appserv.ParrotAppServ;
 import es.ctic.parrot.generators.HtmlOutputGenerator;
+import es.ctic.parrot.reader.Input;
+import es.ctic.parrot.reader.InputStreamInput;
 import es.ctic.parrot.reader.ReaderException;
 import es.ctic.parrot.reader.StringInput;
 import es.ctic.parrot.reader.URLInput;
@@ -29,6 +37,7 @@ import es.ctic.parrot.utils.ErrorBuffer;
 
 public class ServletParrot extends HttpServlet {
 
+	private static final String AUTODETECT_MIMETYPE = "default";
 	private static final String ERRORS_GENERAL = "errorsGeneral";
 	private static final String DOCUMENT_URI = "documentUri";
 	private static final String DOCUMENT_TEXT = "documentText";
@@ -58,6 +67,9 @@ public class ServletParrot extends HttpServlet {
 
 		try {
 			DocumentaryProject dp = new DocumentaryProject(locale);
+			
+			addFileUploadInput(dp, req);
+			
 			addDirectInput(dp, req);
 			
 			if (dp.getInputs().isEmpty()){
@@ -92,6 +104,9 @@ public class ServletParrot extends HttpServlet {
 		    logger.error("While generating documentation", e);
 		    errors.addError("I/O Error: " + e.getMessage());
 		    forwardToForm(req, res);
+		} catch (FileUploadException e) {
+			logger.error("While uploading file", e);
+			res.sendError(400);
 		} catch (IllegalArgumentException e) {
 		    logger.error("Illegal request: " + req, e);
 		    res.sendError(400);
@@ -129,6 +144,39 @@ public class ServletParrot extends HttpServlet {
         return template;
     }
 	
+	private void addFileUploadInput(DocumentaryProject dp, HttpServletRequest req) throws FileUploadException, IOException {
+		if (ServletFileUpload.isMultipartContent(req)) {
+			FileItemFactory factory = new DiskFileItemFactory();
+			ServletFileUpload upload = new ServletFileUpload(factory);
+			List /* FileItem */ items = upload.parseRequest(req);
+			Iterator iter = items.iterator();
+			InputStream is = null;
+			String providedContentType = null;
+			String mimetypeFile = null;
+			while (iter.hasNext()) {
+				FileItem item = (FileItem) iter.next();
+
+				if (!item.isFormField()) {
+					is = item.getInputStream();
+					providedContentType = item.getContentType();
+				} else {
+					if (item.getFieldName().equals("mimetypeFile")) {
+						mimetypeFile = item.getString();
+					}
+				}
+			}
+			
+			if (is != null) {
+				final String BASE = null;
+				if (mimetypeFile == null || mimetypeFile.equals(AUTODETECT_MIMETYPE)) {
+					dp.addInput(new InputStreamInput(is, req.getCharacterEncoding(), providedContentType, BASE));				
+				} else {
+					dp.addInput(new InputStreamInput(is, req.getCharacterEncoding(), mimetypeFile, BASE));
+				}
+			}
+		}
+	}
+
 	private void addUriInputs(DocumentaryProject dp, HttpServletRequest req) throws MalformedURLException, IOException, ReaderException {
 		String[] uriInputs = req.getParameterValues(DOCUMENT_URI);
 		String[] uriInputMimetypes = req.getParameterValues(MIMETYPE);
@@ -152,7 +200,7 @@ public class ServletParrot extends HttpServlet {
 			        }
 			    }
 				logger.info("Trying to add valid input: " + uriInput);
-				if (uriInputMimetypes.length <= i || uriInputMimetypes[i].equals("default")) { // allow content negotiation
+				if (uriInputMimetypes.length <= i || uriInputMimetypes[i].equals(AUTODETECT_MIMETYPE)) { // allow content negotiation
 					dp.addInput(new URLInput(new URL(uriInput)));
 				} else {
 					dp.addInput(new URLInput(new URL(uriInput), uriInputMimetypes[i]));

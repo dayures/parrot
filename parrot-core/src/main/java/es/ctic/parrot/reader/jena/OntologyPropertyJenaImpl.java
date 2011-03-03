@@ -20,6 +20,7 @@ import com.hp.hpl.jena.shared.JenaException;
 import com.hp.hpl.jena.vocabulary.OWL2;
 import com.hp.hpl.jena.vocabulary.RDF;
 
+import es.ctic.parrot.de.DataType;
 import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.de.OntologyProperty;
@@ -59,7 +60,7 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 	public DocumentableObject getDomain() {
     	if (domain == null){
     		OntResource _domain = getOntProperty().getDomain();
-    		if(_domain != null && _domain.isClass() && _domain.getURI() != null){
+    		if(_domain != null && _domain.isClass() && _domain.isAnon() == false){
     			domain = new OntologyClassJenaImpl(_domain.asClass(), this.getRegister(), getAnnotationStrategy());
     		}
     	}
@@ -75,8 +76,13 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 	public DocumentableObject getRange() {
     	if (range == null){
     		OntResource _range = getOntProperty().getRange();
-    		if(_range != null && _range.isClass() && _range.getURI() != null) {
-    			range = new OntologyClassJenaImpl(_range.asClass(), this.getRegister(), getAnnotationStrategy());
+    		
+    		if(_range != null && _range.isAnon() == false) {
+        		if (getOntProperty().isDatatypeProperty()){
+        			range = new DataType(_range.getURI());	
+        		} else {
+        			range = new OntologyClassJenaImpl(_range.asClass(), this.getRegister(), getAnnotationStrategy());
+        		}
     		}
     	}
     	return range;

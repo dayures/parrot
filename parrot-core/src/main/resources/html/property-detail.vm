@@ -62,7 +62,11 @@
 
    #if($element.Range)
       <dt>Range</dt>
-      <dd><span class="parrot-element-ref parrot-class-ref"><a href="#$element.Range.LocalName">$element.Range.Label</a></span></dd>
+      <dd>
+        <span class="parrot-element-ref parrot-${element.Range.kindString}-ref">
+      	  <a href="#$element.Range.LocalName">$element.Range.Label</a>
+      	</span>
+      </dd>
    #end
    
    #if(!$element.SuperProperties.isEmpty())

@@ -14,6 +14,7 @@ public interface DocumentableObject {
         ONTOLOGY_CLASS("class"),
         ONTOLOGY_PROPERTY("property"),
         ONTOLOGY_INDIVIDUAL("individual"),
+        DATATYPE("datatype"),
         RULE("rule"),
         RULE_SET("ruleset");
         private final String name;

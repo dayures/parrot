@@ -109,6 +109,10 @@ p.back-to-top {
 	background-image: url("images/icon-ruleset-24.png");
 }
 
+.parrot-datatype-ref {
+	background-image: url("images/icon-datatype-16.png");
+}
+
 .parrot-label-locale {
 	color: green;
 }

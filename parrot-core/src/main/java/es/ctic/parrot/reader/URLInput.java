@@ -18,7 +18,9 @@ import org.apache.log4j.Logger;
 /**
  * A web input document, anything that can be referenced by a URL.
  * 
- * @author CTIC
+ * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @version 1.0
+ * @since 1.0
  *
  */
 
@@ -48,21 +50,42 @@ public class URLInput implements Input {
     }
     //private static final Set<String> NOT_STRICT_MIMETYPES = new HashSet<String>(Arrays.asList("text/x-rif-ps"));
 
-    public static final char extensionSeparator = '.';
+    private static final char extensionSeparator = '.';
     
     private URL url;
     private String mimeType;
 
+    
+    /**
+     * Constructs a URLInput with the specified detail URL.
+     * @param url The detail URL. 
+	 * @throws IOException if a failed or interrupted I/O operation occurs.
+	 * @throws ReaderException if a URL is not accessible or the MIME type is invalid.
+     */
+    public URLInput(URL url) throws IOException, ReaderException {
+        this.url = url;
+        checkUrl();
+    }
+    
+    
+    /**
+     * Constructs a URLInput with the specified detail URL and detail MIME type.
+     * @param url The detail URL. 
+     * @param mimeType The detail MIME type.
+	 * @throws IOException if a failed or interrupted I/O operation occurs.
+	 * @throws ReaderException if a URL is not accessible or the MIME type is invalid.
+     */
     public URLInput(URL url, String mimeType) throws IOException, ReaderException {
         this.url = url;
         this.mimeType = mimeType;
         checkUrl();
     }
 
+    
     /**
      * Checks if the URL is available and establish content negotiation 
-     * @throws IOException 
-     * @throws ReaderException 
+	 * @throws IOException if a failed or interrupted I/O operation occurs.
+	 * @throws ReaderException if a URL is not accessible or the MIME type is invalid.
      */
     private void checkUrl() throws IOException, ReaderException {
         try {
@@ -102,14 +125,13 @@ public class URLInput implements Input {
         }
     }
 
-    public URLInput(URL url) throws IOException, ReaderException {
-        this.url = url;
-        checkUrl();
-    }
-
     public String getMimeType() {
         return mimeType;
     }
+    
+	public String getBase() {
+		return this.url.toString();
+	}
 
     public Reader openReader() throws IOException {
         URLConnection conn = url.openConnection();
@@ -122,13 +144,24 @@ public class URLInput implements Input {
         return new InputStreamReader(conn.getInputStream());
     }
 
-    public String getCleanMimeType(String rawMimeType){
+    /**
+     * Returns the MIME type without parameters
+     * @param rawMimeType The MIME type that could have parameters.
+     * @return The MIME type without parameters.
+     * @see <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.7">Hypertext Transfer Protocol 1.1 - Section 3.7 Media Types</a>
+     */
+    private String getCleanMimeType(String rawMimeType){
     	if (rawMimeType == null)
     		return null;
         return rawMimeType.split(";")[0];
     }
 
-    public boolean isValidResponseCode(int code){
+    /**
+     * Returns true if and only if the HTTP code is a valid response code (between 200 (included) and 400 (not included)).
+     * @param code The HTTP response code.
+     * @return true if the code is a valid response code, false otherwise.
+     */
+    private boolean isValidResponseCode(int code){
         if (code>=200 && code<400)
             return true;
         else
@@ -140,14 +173,6 @@ public class URLInput implements Input {
         return "URL " + url + " (mimeType \"" + mimeType + "\")";
     }
 
-	public String getBase() {
-		return this.url.toString();
-	}
-
-
-    /* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
-	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -158,9 +183,6 @@ public class URLInput implements Input {
 		return result;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

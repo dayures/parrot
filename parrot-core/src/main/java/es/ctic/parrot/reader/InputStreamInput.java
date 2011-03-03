@@ -6,7 +6,13 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 
 import org.apache.log4j.Logger;
-
+/**
+ * An input document provided as input stream of bytes.
+ * 
+ * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @version 1.0
+ * @since 1.0
+ */
 public class InputStreamInput implements Input {
 	
 	private static final Logger logger = Logger.getLogger(InputStreamInput.class);

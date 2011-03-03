@@ -10,23 +10,26 @@ import java.io.Reader;
  * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
  * @version 1.0
  * @since 1.0
+ * 
  */
 public interface Input {
 
     /**
-     * Returns a reader to read the contents of the input document
-     * @return A reader to read the contents of the input document
-     * @throws IOException
+     * Returns a reader to read the contents of this input document.
+     * @return a reader to read the contents of this input document.
+     * @throws IOException if a failed or interrupted I/O operation occurs.
      */
     public abstract Reader openReader() throws IOException;
 
     /**
-     * @return The MIME type of the input document
+     * Returns the MIME type of this input document.
+     * @return the MIME type of this input document.
      */
     public abstract String getMimeType();
 
     /**
-     * @return The Base
+     * Returns the base to resolve relative URIs.
+     * @return the base of this input document.
      */
     public abstract String getBase();
 

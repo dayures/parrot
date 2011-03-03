@@ -12,9 +12,9 @@ package es.ctic.parrot.reader;
 public class ReaderException extends Exception {
 
 	/**
-	 * Create a new ReaderException wrapping an existing exception.
-	 * The existing exception will be embedded in the new one, and its message will become the default message for the ReaderException.
-	 * @param e The exception to be wrapped in a ReaderException.
+	 * Create a new <code>ReaderException</code> wrapping an existing exception.
+	 * The existing exception will be embedded in the new one, and its message will become the default message for the <code>ReaderException</code>.
+	 * @param e The exception to be wrapped in a <code>ReaderException</code>.
 	 */
 	public ReaderException(Throwable e) {
 		super(e);
@@ -29,10 +29,10 @@ public class ReaderException extends Exception {
 	}
 
 	/**
-	 * Create a new ReaderException from an existing exception.
+	 * Create a new <code>ReaderException</code> from an existing exception.
 	 * The existing exception will be embedded in the new one, but the new exception will have its own message.
 	 * @param message The detail message.
-	 * @param e The exception to be wrapped in a ReaderException.
+	 * @param e The exception to be wrapped in a <code>ReaderException</code>.
 	 */
 	public ReaderException(String message, Throwable e) {
 		super(message, e);

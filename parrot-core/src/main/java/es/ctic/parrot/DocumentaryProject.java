@@ -11,7 +11,9 @@ import es.ctic.parrot.reader.Input;
  * A documentary project represents a unit of work executed by Parrot. It
  * contains the information required by Parrot to generate a document.
  * 
- * @author CTIC
+ * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @version 1.0
+ * @since 1.0
  *
  */
 public class DocumentaryProject {
@@ -20,7 +22,7 @@ public class DocumentaryProject {
     private Locale locale;
     
     /** Constructs a new Documentary project with the specified locale. 
-     * @param locale A locale (language) to be set 
+     * @param locale A locale (language) to be set.
      */
     public DocumentaryProject(Locale locale) {
         this.setLocale(locale);
@@ -36,24 +38,24 @@ public class DocumentaryProject {
     }
     
     /**
-     * Returns the inputs 
-     * @return the collection of inputs
+     * Returns the inputs .
+     * @return the collection of inputs.
      */
     public Collection<Input> getInputs() {
         return Collections.unmodifiableCollection(inputs);
     }
 
 	/** 
-	 * Set the locale
-	 * @param locale the locale to set
+	 * Set the locale.
+	 * @param locale the locale to set.
 	 */
 	private void setLocale(Locale locale) {
 		this.locale = locale;
 	}
 
 	/**
-	 * Returns the locale
-	 * @return the locale
+	 * Returns the locale.
+	 * @return the locale.
 	 */
 	public Locale getLocale() {
 		return locale;

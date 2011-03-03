@@ -21,17 +21,13 @@ public abstract class AbstractDocumentableObject implements DocumentableObject {
     public String toString() {
         return getIdentifier().toString();
     }
-    
-    
-	/** (non-Javadoc)
-	 * @see es.ctic.parrot.de.DocumentableObject#getLocalName()
-	 * @return an unique anchor for the element
-	 */
-	public String getLocalName() {
+
+   	public String getLocalName() {
 		return "anchor"+getIdentifier().hashCode();
 	}
 
 	/**
+	 * Set the register to this documentable element.
 	 * @param register the register to set
 	 */
 	public void setRegister(DocumentableObjectRegister register) {
@@ -39,7 +35,8 @@ public abstract class AbstractDocumentableObject implements DocumentableObject {
 	}
 
 	/**
-	 * @return the register
+	 * Returns the register.
+	 * @return the register.
 	 */
 	public DocumentableObjectRegister getRegister() {
 		return register;

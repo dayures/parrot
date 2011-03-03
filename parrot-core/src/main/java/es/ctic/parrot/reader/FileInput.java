@@ -12,8 +12,9 @@ import org.apache.log4j.Logger;
 /**
  * An input document stored in a filesystem.
  * 
- * @author CTIC
- *
+ * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @version 1.0
+ * @since 1.0
  */
 public class FileInput implements Input {
     
@@ -42,14 +43,14 @@ public class FileInput implements Input {
     public Reader openReader() throws FileNotFoundException {
         return new FileReader(file);
     }
+    
+	public String getBase() {
+		return null;
+	}
 
 	@Override
 	public String toString() {
 		return "FileInput [mimeType=" + mimeType + ", file=" + file + "]";
-	}
-
-	public String getBase() {
-		return null;
 	}
 
 }

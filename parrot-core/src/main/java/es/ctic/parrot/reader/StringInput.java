@@ -7,8 +7,10 @@ import java.io.StringReader;
 /**
  * An input document provided as a String.
  * 
- * @author CTIC
- *
+ * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @version 1.0
+ * @since 1.0
+ * 
  */
 public class StringInput implements Input {
     
@@ -28,14 +30,13 @@ public class StringInput implements Input {
         return new StringReader(content);
     }
 
-	@Override
-	public String toString() {
-		return "StringInput [mimeType=" + mimeType + ", content=" + content
-				+ "]";
-	}
-
 	public String getBase() {
 		return null;
+	}
+	
+	@Override
+	public String toString() {
+		return "StringInput [mimeType=" + mimeType + ", content=" + content + "]";
 	}
     
 }

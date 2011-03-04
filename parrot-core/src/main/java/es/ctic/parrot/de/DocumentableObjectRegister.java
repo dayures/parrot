@@ -2,6 +2,7 @@ package es.ctic.parrot.de;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 
@@ -9,7 +10,7 @@ public class DocumentableObjectRegister {
 
     private static final Logger logger = Logger.getLogger(DocumentableObjectRegister.class);
     
-    private HashMap<Identifier, DocumentableObject> documentableObjects = new HashMap<Identifier, DocumentableObject>();
+    private Map<Identifier, DocumentableObject> documentableObjects = new HashMap<Identifier, DocumentableObject>();
     
     public void registerDocumentableObject(DocumentableObject documentableObject) {
         logger.debug("Registering documentable object [" +documentableObject.getClass().getSimpleName() + "] " + documentableObject);

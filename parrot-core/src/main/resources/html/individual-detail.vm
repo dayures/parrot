@@ -1,5 +1,7 @@
 <div class="term">
-  <h3><a id="$element.Anchor"></a><span class="parrot-element-title parrot-individual-title">$element.Label</span> (Individual)</h3>
+  <h3><a id="$element.Anchor"></a><span class="parrot-element-title parrot-individual-title">$element.Label</span> (Individual)
+  #if($element.isDeprecated())<span class="deprecated">(Deprecated)</span>#end
+  </h3>
   <dl>
   #if($element.Uri)
       <dt>URI</dt>

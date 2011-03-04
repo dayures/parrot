@@ -208,4 +208,8 @@ public abstract class AbstractJenaDocumentableObject extends
 		return annotationStrategy;
 	}
 	
+	public boolean isDeprecated(){
+		return getAnnotationStrategy().isDeprecated(getOntResource());
+	}
+	
 }

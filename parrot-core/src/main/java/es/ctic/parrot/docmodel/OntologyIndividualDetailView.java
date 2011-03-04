@@ -26,8 +26,7 @@ public class OntologyIndividualDetailView extends AbstractOntologicalObjectDetai
 	public void addAllTypes(Collection<DocumentableObjectReference> types) {
 		this.types.addAll(types);
 	}
-	
-	
+
     public static OntologyIndividualDetailView createFromIndividual(OntologyIndividual object, Locale locale) {
 		
     	OntologyIndividualDetailView details = new OntologyIndividualDetailView();
@@ -41,6 +40,7 @@ public class OntologyIndividualDetailView extends AbstractOntologicalObjectDetai
 		details.setAnchor(object.getLocalName());
 		details.setIdentifier(object.getIdentifier());
 		details.setIsDefinedBy(DocumentableObjectReference.createReference(object.getIsDefinedBy(),locale));
+		details.setDeprecated(object.isDeprecated());
 
 		return details;
 	}

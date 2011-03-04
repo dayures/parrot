@@ -1,5 +1,7 @@
 <div class="term">
-  <h3><a id="$element.Anchor"></a><span class="parrot-element-title parrot-property-title">$element.Label</span> (Property)</h3>
+  <h3><a id="$element.Anchor"></a><span class="parrot-element-title parrot-property-title">$element.Label</span> (Property)
+  #if($element.isDeprecated())<span class="deprecated">(Deprecated)</span>#end
+  </h3>
   <dl>
   
    
@@ -44,7 +46,7 @@
     	#if($element.isAsymmetricProperty())
     	<dd>Asymmetric Property</dd>      
     	#end
-    	
+
    #if($element.InverseOf)
       <dt>inverse of</dt>
       <dd><span class="parrot-element-ref parrot-property-ref"><a href="#$element.InverseOf.LocalName">$element.InverseOf.Label</a></span></dd>

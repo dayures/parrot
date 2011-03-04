@@ -27,7 +27,6 @@ import org.apache.log4j.Logger;
 import es.ctic.parrot.DocumentaryProject;
 import es.ctic.parrot.appserv.ParrotAppServ;
 import es.ctic.parrot.generators.HtmlOutputGenerator;
-import es.ctic.parrot.reader.Input;
 import es.ctic.parrot.reader.InputStreamInput;
 import es.ctic.parrot.reader.ReaderException;
 import es.ctic.parrot.reader.StringInput;

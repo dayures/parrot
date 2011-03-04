@@ -8,6 +8,7 @@ import java.util.Locale;
 
 import org.apache.log4j.Logger;
 
+import com.hp.hpl.jena.datatypes.xsd.XSDDatatype;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.ontology.OntResource;
 import com.hp.hpl.jena.rdf.model.RDFNode;
@@ -16,6 +17,8 @@ import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.rdf.model.ResourceRequiredException;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
+import com.hp.hpl.jena.vocabulary.OWL;
+import com.hp.hpl.jena.vocabulary.OWL2;
 import com.hp.hpl.jena.vocabulary.RDF;
 
 import es.ctic.parrot.de.Label;
@@ -24,17 +27,13 @@ import es.ctic.parrot.utils.URIUtils;
 
 public class OntResourceAnnotationStrategy {
 
-	private static final String RDFS_IS_DEFINED_BY = "http://www.w3.org/2000/01/rdf-schema#isDefinedBy";
+	private static final String TRUE = "true";
 
+	private static final String RDF_SCHEMA_IS_DEFINED_BY = "http://www.w3.org/2000/01/rdf-schema#isDefinedBy";
 	private static final String CC_LICENSE_DEPRECATED = "http://web.resource.org/cc/license";
-
 	private static final String CC_LICENSE = "http://creativecommons.org/ns#license";
-
 	private static final String RCLN_RULE = "http://lipn.univ-paris13.fr/RCLN/schema#Rule";
-
 	private static final String RCLN_RULE_TEXT = "http://lipn.univ-paris13.fr/RCLN/schema#ruleText";
-
-	private static final Logger logger = Logger.getLogger(OntResourceAnnotationStrategy.class);
 
 	private static final String DC_TITLE = "http://purl.org/dc/elements/1.1/title";
 	private static final String DC_TERMS_IS_PART_OF = "http://purl.org/dc/terms/isPartOf";
@@ -71,7 +70,9 @@ public class OntResourceAnnotationStrategy {
 	private static final String TYPE_HTML = "text/html";
 
 	private static final String TYPE_URI = "undefined";
-	
+
+	private static final Logger logger = Logger.getLogger(OntResourceAnnotationStrategy.class);
+
 	public String getComment(OntResource ontResource, Locale locale) {
 
     	if (ontResource == null){
@@ -538,7 +539,7 @@ public class OntResourceAnnotationStrategy {
 	}
 	
 	public String getIsDefinedBy(OntResource ontResource) {
-		return getObjectPropertyURI(ontResource, RDFS_IS_DEFINED_BY);
+		return getObjectPropertyURI(ontResource, RDF_SCHEMA_IS_DEFINED_BY);
 	}
 	
 	/**
@@ -665,8 +666,38 @@ public class OntResourceAnnotationStrategy {
 			return uri;
     	}
 	}
-	
-	
+
+	/**
+	 * Returns <code>true</code> if the ontology resource is deprecated, otherwise <code>false</code>.
+	 *  A ontology resource is deprecated if :
+	 *  <ul>
+	 *  <li><code>resource owl:deprecated "true"^^xsd:boolean</code></li>
+	 *  <li><code>resource rdf:type owl:DeprecatedProperty</code></li> 
+	 *  <li><code>resource rdf:type owl:DeprecatedClass</code></li>
+	 *  </ul>
+	 * @param ontResource the ontology resource.
+	 * @return <code>true</code> if the ontology resource is deprecated, otherwise <code>false</code>.
+	 */
+	public boolean isDeprecated(OntResource ontResource) {
+		
+		if (ontResource == null){
+			return false;
+		}
+		
+		if (ontResource.isProperty() && ontResource.asProperty().hasRDFType(OWL.DeprecatedProperty)){
+			return true;
+		}
+
+		if (ontResource.isClass() && ontResource.asClass().hasRDFType(OWL.DeprecatedClass)){
+			return true;
+		}
+
+		if (ontResource.isProperty() && ontResource.getOntModel().listStatements(ontResource, OWL2.deprecated, ResourceFactory.createTypedLiteral(TRUE, XSDDatatype.XSDboolean)).hasNext()) {
+			return true;
+		}
+
+		return false;
+				
+	}
 	
 }
-

@@ -28,8 +28,8 @@ public interface Input {
     public abstract String getMimeType();
 
     /**
-     * Returns the base to resolve relative URIs.
-     * @return the base of this input document.
+     * Returns the base to resolve relative URIs of this input document.
+     * @return the base to resolve relative URIs of this input document.
      */
     public abstract String getBase();
 

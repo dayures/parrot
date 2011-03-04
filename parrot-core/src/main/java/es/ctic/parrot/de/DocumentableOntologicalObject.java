@@ -7,5 +7,6 @@ public interface DocumentableOntologicalObject extends DocumentableObject,Compar
 	public abstract void addInverseRuleReference(Rule rule);
 	public abstract Collection<Rule> getInverseRuleReferences();
 	public abstract DocumentableObject getIsDefinedBy();
+	public abstract boolean isDeprecated();
 	
 }

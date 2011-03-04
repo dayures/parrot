@@ -20,6 +20,7 @@ public abstract class AbstractOntologicalObjectDetailView implements DetailView 
 	private Collection<Label> labels;
     private Identifier identifier;
 	private DocumentableObjectReference isDefinedBy;
+	private boolean deprecated;
 
 	public String getUri() {
 		return uri;
@@ -123,5 +124,18 @@ public abstract class AbstractOntologicalObjectDetailView implements DetailView 
 		return isDefinedBy;
 	}
 
+	/**
+	 * @param deprecated the deprecated to set
+	 */
+	public void setDeprecated(boolean deprecated) {
+		this.deprecated = deprecated;
+	}
+
+	/**
+	 * @return the deprecated
+	 */
+	public boolean isDeprecated() {
+		return deprecated;
+	}
 
 }

@@ -152,3 +152,7 @@ p.back-to-top {
 	border: 1px solid #ccc;
 }
 pre { margin: 0em }
+
+.deprecated {
+	color: red;
+}

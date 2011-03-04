@@ -99,6 +99,7 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 		details.setAnchor(object.getLocalName());
 		details.setIdentifier(object.getIdentifier());
 		details.setIsDefinedBy(DocumentableObjectReference.createReference(object.getIsDefinedBy(),locale));
+		details.setDeprecated(object.isDeprecated());
 		
 		return details;
 

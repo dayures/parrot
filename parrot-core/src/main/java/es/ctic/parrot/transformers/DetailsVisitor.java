@@ -18,6 +18,17 @@ import es.ctic.parrot.docmodel.OntologyPropertyDetailView;
 import es.ctic.parrot.docmodel.RuleDetailView;
 import es.ctic.parrot.docmodel.RuleSetDetailView;
 
+/**
+ * 
+ * Visitor that fills a <code>document</code> (this document will be used later for presentation issues).
+ * <code>DetailsVisitor</code> is an implementation of the Visitor pattern.
+ * Please refer to the Gang of Four book of Design Patterns for more details on the Visitor pattern.
+ * 
+ * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @version 1.0
+ * @since 1.0
+ *
+ */
 public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
     
     private static final Logger logger = Logger.getLogger(DetailsVisitor.class);
@@ -25,6 +36,11 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
     private Document document;
     private Locale locale;
     
+    /**
+     * Constructs a details visitor.
+     * @param document the document to be fulfilled.
+     * @param locale the locale.
+     */
     public DetailsVisitor(Document document, Locale locale) {
         this.document = document;
         this.locale = locale;

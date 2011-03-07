@@ -12,16 +12,44 @@ import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.de.OntologyClass;
 import es.ctic.parrot.de.OntologyProperty;
 
-public class OntologyInternalReferenceResolver extends
-		AbstractDocumentableObjectVisitor {
+/**
+ * 
+ * Visitor that resolve references between ontology elements.
+ * <code>OntologyInternalReferenceResolver</code> is an implementation of the Visitor pattern.
+ * Please refer to the Gang of Four book of Design Patterns for more details on the Visitor pattern.
+ * 
+ * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @version 1.0
+ * @since 1.0
+ *
+ */
+public class OntologyInternalReferenceResolver extends AbstractDocumentableObjectVisitor {
+	
 	private final DocumentableObjectRegister register;
 	
 	private static final Logger logger = Logger.getLogger(OntologyInternalReferenceResolver.class);
 
+	/**
+	 * Constructs a ontology internal reference resolver.
+	 * @param register the register to set.
+	 */
 	public OntologyInternalReferenceResolver(DocumentableObjectRegister register){
 		this.register=register;
 	}
 
+    /**
+     * Adds reference from the ontological elements referenced by a property to that property.
+     * The references checked are:
+     * <ul>
+     * <li>range</li>
+     * <li>domain</li>
+     * <li>super properties</li>
+     * <li>sub properties</li>
+     * </ul>
+     * @param property the property to visit.
+     * @return always null. 
+     */
+	@Override
 	public Object visit(OntologyProperty property) throws TransformerException {
     	
 		logger.debug("Resolving internal references of property "+property);
@@ -76,6 +104,17 @@ public class OntologyInternalReferenceResolver extends
 	    return null;
 	}
     
+    /**
+     * Adds reference from the ontological elements referenced by a property to that property.
+     * The references checked are:
+     * <ul>
+     * <li>super classes</li>
+     * <li>sub classes</li>
+     * </ul>
+     * @param clazz the class to visit.
+     * @return always null. 
+     */
+	@Override
 	public Object visit(OntologyClass clazz) throws TransformerException {
     	logger.debug("Resolving internal references of class "+clazz);
 		

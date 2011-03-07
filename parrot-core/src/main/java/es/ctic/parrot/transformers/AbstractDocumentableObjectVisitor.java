@@ -81,7 +81,7 @@ public class AbstractDocumentableObjectVisitor implements
 	}
 
 	/**
-     * Do nothing.
+     * Does nothing.
      * @param object the <code>individual</code> to visit.
      * @throws TransformerException if a failed transformation operation occurs.
      * @return always null.
@@ -92,7 +92,7 @@ public class AbstractDocumentableObjectVisitor implements
 	}
 
     /**
-     * Do nothing.
+     * Does nothing.
      * @param object the <code>rule set</code> to visit.
      * @throws TransformerException if a failed transformation operation occurs.
      * @return always null.

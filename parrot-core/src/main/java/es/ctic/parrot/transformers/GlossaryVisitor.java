@@ -40,32 +40,62 @@ public class GlossaryVisitor extends AbstractDocumentableObjectVisitor {
         this.locale = locale;
     }
 
+    /**
+     * Visits the <code>class</code>.
+     * @param object the class.
+     *  
+     */
     @Override
     public Object visit(OntologyClass object) throws TransformerException {
         return visitDocumentableObject(object);
     }
 
+    /**
+     * Visits the <code>property</code>.
+     * @param object the property.
+     *  
+     */
     @Override
     public Object visit(OntologyProperty object) throws TransformerException {
         return visitDocumentableObject(object);
     }
 
+    /**
+     * Visits the <code>rule</code>.
+     * @param object the rule.
+     *  
+     */
     @Override
     public Object visit(Rule object) throws TransformerException {
         return visitDocumentableObject(object);
     }
 
+    /**
+     * Visits the <code>ontology</code>.
+     * @param object the ontology.
+     *  
+     */
     @Override
     public Object visit(Ontology ontology) throws TransformerException {
         return visitDocumentableObject(ontology);
     }
 
+    /**
+     * Visits the <code>individual</code>.
+     * @param object the individual.
+     *  
+     */
     @Override
     public Object visit(OntologyIndividual ontologyIndividual)
             throws TransformerException {
         return visitDocumentableObject(ontologyIndividual);
     }
 
+    /**
+     * Visits the <code>rule set</code>.
+     * @param object the rule set.
+     *  
+     */
     @Override
     public Object visit(RuleSet ruleSet) throws TransformerException {
         return visitDocumentableObject(ruleSet);

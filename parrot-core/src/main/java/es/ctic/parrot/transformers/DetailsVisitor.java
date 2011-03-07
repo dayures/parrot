@@ -46,6 +46,12 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
         this.locale = locale;
     }
     
+    /**
+     * Visits the <code>ontology</code>.
+     * @param object the ontology.
+     * @return the details view generated.
+     *  
+     */
 	@Override
 	public Object visit(Ontology object) throws TransformerException {
 	    logger.debug("Visiting ontology " + object);
@@ -54,6 +60,12 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 		return details;
 	}
 	
+    /**
+     * Visits the <code>class</code>.
+     * @param object the class.
+     * @return the details view generated.
+     *  
+     */	
 	@Override
 	public Object visit(OntologyClass object) throws TransformerException {
 	    logger.debug("Visiting class " + object);
@@ -62,6 +74,12 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
         return details;
 	}
 	
+    /**
+     * Visits the <code>property</code>.
+     * @param object the property.
+     * @return the details view generated.
+     *  
+     */	
 	@Override
 	public Object visit(OntologyProperty object) throws TransformerException {
 	    logger.debug("Visiting property " + object);
@@ -70,6 +88,12 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
         return details;
 	}
 
+    /**
+     * Visits the <code>individual</code>.
+     * @param object the individual.
+     * @return the details view generated.
+     *  
+     */
 	@Override
 	public Object visit(OntologyIndividual object) throws TransformerException {
 	    logger.debug("Visiting individual " + object);
@@ -78,6 +102,12 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 		return details;
 	}
 	
+    /**
+     * Visits the <code>rule set</code>.
+     * @param object the rule set.
+     * @return the details view generated.
+     *  
+     */	
 	@Override
 	public Object visit(RuleSet object) throws TransformerException {
 	    logger.debug("Visiting ruleset " + object);
@@ -86,6 +116,12 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 	    return details;
 	}
 
+    /**
+     * Visits the <code>rule</code>.
+     * @param object the rule.
+     * @return the details view generated.
+     *  
+     */
 	@Override
 	public Object visit(Rule object) throws TransformerException {
 	    logger.debug("Visiting rule " + object);

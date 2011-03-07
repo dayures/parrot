@@ -9,24 +9,58 @@ import es.ctic.parrot.de.OntologyProperty;
 import es.ctic.parrot.de.Rule;
 import es.ctic.parrot.de.RuleSet;
 
+/**
+ * 
+ * A default implementation of <code>DocumentableObjectVisitor</code>.
+ * 
+ * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @version 1.0
+ * @since 1.0
+ *
+ */
 public class AbstractDocumentableObjectVisitor implements
         DocumentableObjectVisitor {
 
+    /**
+     * Does nothing.
+     * @param object the <code>class</code> to visit.
+     * @throws TransformerException if a failed transformation operation occurs.
+     * @return always null.
+     */
     public Object visit(OntologyClass object) throws TransformerException{
         // default implementation: do nothing
         return null;
     }
 
+    /**
+     * Does nothing.
+     * @param object the <code>property</code> to visit.
+     * @throws TransformerException if a failed transformation operation occurs.
+     * @return always null.
+     */
     public Object visit(OntologyProperty object) throws TransformerException{
         // default implementation: do nothing
         return null;
     }
 
+
+    /**
+     * Does nothing.
+     * @param object the <code>rule</code> to visit.
+     * @throws TransformerException if a failed transformation operation occurs.
+     * @return always null.
+     */
     public Object visit(Rule object) throws TransformerException{
         // default implementation: do nothing
         return null;
     }
 
+    /**
+     * Visits the documentable elements that are registered.
+     * @param register the <code>register</code> to visit.
+     * @throws TransformerException if a failed transformation operation occurs.
+     * @return always null.
+     */
     public Object visit(DocumentableObjectRegister register) throws TransformerException{
         // default implementation: visit all the objects in the register
         for ( DocumentableObject documentableObject : register.getDocumentableObjects() ) {
@@ -35,17 +69,35 @@ public class AbstractDocumentableObjectVisitor implements
         return null;
     }
 
-	public Object visit(Ontology ontology) throws TransformerException{
+    /**
+     * Does nothing.
+     * @param object the <code>ontology</code> to visit.
+     * @throws TransformerException if a failed transformation operation occurs.
+     * @return always null.
+     */
+	public Object visit(Ontology object) throws TransformerException{
         // default implementation: do nothing
 		return null;
 	}
 
-	public Object visit(OntologyIndividual ontologyIndividual) throws TransformerException{
+	/**
+     * Do nothing.
+     * @param object the <code>individual</code> to visit.
+     * @throws TransformerException if a failed transformation operation occurs.
+     * @return always null.
+     */
+	public Object visit(OntologyIndividual object) throws TransformerException{
         // default implementation: do nothing
 		return null;
 	}
 
-	public Object visit(RuleSet ruleSet) throws TransformerException{
+    /**
+     * Do nothing.
+     * @param object the <code>rule set</code> to visit.
+     * @throws TransformerException if a failed transformation operation occurs.
+     * @return always null.
+     */
+	public Object visit(RuleSet object) throws TransformerException{
         // default implementation: do nothing
 		return null;
 	}

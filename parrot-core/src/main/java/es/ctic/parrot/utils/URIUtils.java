@@ -53,7 +53,12 @@ public final class URIUtils {
 		} else {
 			//slash namespace
 			int index = _uri.lastIndexOf('/');
-			return _uri.substring(index+1);
+			if (index+1 == _uri.length()){
+				return _uri;
+			}
+			else {
+				return _uri.substring(index+1);
+			}
 		}
 	}
 

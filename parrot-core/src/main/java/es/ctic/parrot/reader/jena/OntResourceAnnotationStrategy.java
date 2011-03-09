@@ -20,9 +20,11 @@ import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.vocabulary.OWL;
 import com.hp.hpl.jena.vocabulary.OWL2;
 import com.hp.hpl.jena.vocabulary.RDF;
+import com.hp.hpl.jena.vocabulary.RDFS;
 
 import es.ctic.parrot.de.Label;
 import es.ctic.parrot.de.RelatedDocument;
+import es.ctic.parrot.de.RelatedDocument.Type;
 import es.ctic.parrot.utils.URIUtils;
 
 public class OntResourceAnnotationStrategy {
@@ -63,13 +65,6 @@ public class OntResourceAnnotationStrategy {
 
 	private static final String VANN_PREFERRED_PREFIX = "http://purl.org/vocab/vann/preferredNamespacePrefix";
 	private static final String VANN_PREFERRED_NAMESPACE = "http://purl.org/vocab/vann/preferredNamespaceUri";
-	
-	private static final String TYPE_VIDEO = "video/mpeg";
-	private static final String TYPE_IMAGE = "image/png";
-	private static final String TYPE_TEXT = "text/plain";
-	private static final String TYPE_HTML = "text/html";
-
-	private static final String TYPE_URI = "undefined";
 
 	private static final Logger logger = Logger.getLogger(OntResourceAnnotationStrategy.class);
 
@@ -323,8 +318,30 @@ public class OntResourceAnnotationStrategy {
 				try{
 					RelatedDocument video = new RelatedDocument();
 					video.setUri(statement.getObject().asResource().getURI());
-					video.setType(TYPE_VIDEO);
+					video.setType(Type.VIDEO);
 					videos.add(video);
+				} catch (ResourceRequiredException e)  {
+					logger.warn("Ignore triple "+ statement +" because it is not a Object property");
+				}
+			}
+			return videos;
+    	}
+	}
+	
+	private Collection<RelatedDocument> getUrisRelated(OntResource ontResource) {
+		Collection<RelatedDocument> videos = new ArrayList<RelatedDocument>();
+    	if (ontResource == null){
+    		return videos;
+    	} else {		
+
+			StmtIterator it = ontResource.listProperties(RDFS.seeAlso);
+			while(it.hasNext()){
+				Statement statement = it.nextStatement();
+				try{
+					RelatedDocument uriLink = new RelatedDocument();
+					uriLink.setUri(statement.getObject().asResource().getURI());
+					uriLink.setType(Type.URI);
+					videos.add(uriLink);
 				} catch (ResourceRequiredException e)  {
 					logger.warn("Ignore triple "+ statement +" because it is not a Object property");
 				}
@@ -345,7 +362,7 @@ public class OntResourceAnnotationStrategy {
 				try{
 					RelatedDocument image = new RelatedDocument();
 					image.setUri(statement.getObject().asResource().getURI());
-					image.setType(TYPE_IMAGE);
+					image.setType(Type.IMAGE);
 					images.add(image);
 				} catch (ResourceRequiredException e)  {
 					logger.warn("Ignore triple "+ statement +" because it is not a Object property");
@@ -407,7 +424,7 @@ public class OntResourceAnnotationStrategy {
 					RelatedDocument relatedDocument = new RelatedDocument();
 					relatedDocument.setUri(getSourceDocumentUri(ontModel, sentence.getURI()));
 					relatedDocument.setSourceText(statement.getLiteral().getLexicalForm());
-					relatedDocument.setType(TYPE_TEXT); // FIXME now it's fixed to plain/text
+					relatedDocument.setType(Type.TEXT); // FIXME now it's fixed to plain/text
 					relatedDocuments.add(relatedDocument);
 				}
 			}
@@ -421,6 +438,9 @@ public class OntResourceAnnotationStrategy {
 		
 		//add candidate rules
 		relatedDocuments.addAll(getCandidateRulesRelated(ontResource));
+		
+		//add uri links (seeAlso)
+		relatedDocuments.addAll(getUrisRelated(ontResource));
 		
 		return relatedDocuments;
 	}
@@ -440,7 +460,7 @@ public class OntResourceAnnotationStrategy {
 					RelatedDocument candidateRule = new RelatedDocument();
 
 					if (statement.getObject().isLiteral()){
-						candidateRule.setType(TYPE_TEXT);
+						candidateRule.setType(Type.TEXT);
 						candidateRule.setSourceText(statement.getObject().asLiteral().getLexicalForm());
 						logger.debug("statement.getObject().asLiteral().getLexicalForm() " + statement.getObject().asLiteral().getLexicalForm());
 					} else {
@@ -451,7 +471,7 @@ public class OntResourceAnnotationStrategy {
 						
 							StmtIterator listRuleTexts = statement.getObject().asResource().listProperties(ResourceFactory.createProperty(RCLN_RULE_TEXT));
 	
-							candidateRule.setType(TYPE_HTML);
+							candidateRule.setType(Type.HTML);
 							
 							if (listRuleTexts.hasNext()){
 								String ruleText = listRuleTexts.nextStatement().getObject().asLiteral().getLexicalForm();
@@ -469,7 +489,7 @@ public class OntResourceAnnotationStrategy {
 							}
 							
 						} else {
-							candidateRule.setType(TYPE_URI);
+							candidateRule.setType(Type.URI);
 							candidateRule.setSourceText(candidateRule.getUri());
 						}
 					}

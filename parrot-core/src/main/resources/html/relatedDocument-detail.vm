@@ -17,6 +17,9 @@
      #if($element.type == "text/html")
        <img src="images/candidate-rule-icon.png" alt="candidate-rule icon" />
      #end
+     #if($element.type == "uri")
+       <img src="images/hyperlink-icon.png" alt="hyperlink icon" />
+     #end
      </a> 
 
      #if($element.type == "video/mpeg")
@@ -24,7 +27,6 @@
 	 	<param name="movie" value="$element.uri" />
 	 	<param name="wmode" value="transparent" />
 	 </object>
-	 
 	 #end
 
      #if($element.type == "image/png")
@@ -32,7 +34,6 @@
 	 #end
      
      #if($element.sourceText)
-        
         ## rename the variable in order to unescape the html content
      	#set($unescapehtml_sourceText = $element.sourceText)
      	<p>$unescapehtml_sourceText</p>
@@ -40,6 +41,10 @@
      	#if ($element.Uri)      
      	<p class="relatedDocumentUrl"><a href="$element.Uri">$element.Uri</a></p>
      	#end
+     #end
+     
+     #if($element.type == "uri")
+      	<p class="relatedDocumentUrl"><a href="$element.Uri">$element.Uri</a></p>
      #end
 
   </div>

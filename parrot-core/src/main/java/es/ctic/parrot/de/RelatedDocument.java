@@ -2,9 +2,25 @@ package es.ctic.parrot.de;
 
 public class RelatedDocument {
 	
+    public enum Type {
+        HTML("text/html"), 
+        TEXT("text/plain"),
+        IMAGE("image/png"),
+        VIDEO("video/mpeg"),
+        URI("uri"),
+        UNDEFINED("undefined");
+        private final String name;
+        private Type(String name) { 
+            this.name = name;
+        }
+        public String toString(){
+        	return name;
+        }
+    };
+	
 	private String title;
 	private String uri;
-	private String type;
+	private Type type;
 	private String sourceText;
 
 	/**
@@ -38,14 +54,14 @@ public class RelatedDocument {
 	/**
 	 * @param type the type to set
 	 */
-	public void setType(String type) {
+	public void setType(Type type) {
 		this.type = type;
 	}
 
 	/**
 	 * @return the type
 	 */
-	public String getType() {
+	public Type getType() {
 		return type;
 	}
 

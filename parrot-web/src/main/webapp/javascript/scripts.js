@@ -120,7 +120,7 @@ function moreURIs() {
 		var br = document.createElement("br");
 		p.appendChild(br);
 
-		document.getElementById("tab1").insertBefore(p, document.getElementById("addURI"));
+		document.getElementById("addURI").parentNode.insertBefore(p, document.getElementById("addURI"));
 	};
 						
 /*

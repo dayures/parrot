@@ -12,14 +12,23 @@ import org.apache.velocity.app.Velocity;
 
 import es.ctic.parrot.docmodel.Document;
 
+/**
+ * Generates <code>HTML</code> content from a documentary model.
+ * 
+ * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @version 1.0
+ * @since 1.0
+ *
+ */
 public class HtmlOutputGenerator implements OutputGenerator {
 
     private final OutputStream out;
     private InputStream template;
 
     /**
-     * @param out Stream where the output will be written
-     * @param template The template for the output report
+     * Constructs a generator of <code>HTML</code> content
+     * @param out Stream where the output will be written.
+     * @param template The template for the output report.
      */
     public HtmlOutputGenerator(OutputStream out, InputStream template) {
         this.out = out;
@@ -32,6 +41,14 @@ public class HtmlOutputGenerator implements OutputGenerator {
         fillTemplate(out, ctx, template);
     }
 
+    
+    /**
+     * Fills the template using the context given and writes the result into an output stream.
+     * @param out Stream where the output will be written.
+     * @param ctx The velocity context that contains the information to fill the template.
+     * @param template The template for the output report.
+     * 
+     */
     private void fillTemplate(OutputStream out, VelocityContext ctx, InputStream template) {
         // FIXME: this code is not reentrant!
         try {

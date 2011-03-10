@@ -89,9 +89,6 @@ public abstract class AbstractOntologicalObjectDetailView implements DetailView 
 		this.anchor = anchor;
 	}
 
-	/**
-	 * @return the anchor
-	 */
 	public String getAnchor() {
 		return anchor;
 	}

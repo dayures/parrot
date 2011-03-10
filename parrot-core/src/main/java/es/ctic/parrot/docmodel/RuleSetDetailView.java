@@ -11,6 +11,14 @@ import es.ctic.parrot.de.Label;
 import es.ctic.parrot.de.RelatedDocument;
 import es.ctic.parrot.de.RuleSet;
 
+/**
+ * A detailed view of a rule set.
+ * 
+ * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @version 1.0
+ * @since 1.0
+ *
+ */
 public class RuleSetDetailView implements DetailView {
 
     private static final Logger logger = Logger.getLogger(RuleSetDetailView.class);

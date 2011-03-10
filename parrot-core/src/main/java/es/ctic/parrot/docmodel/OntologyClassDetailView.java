@@ -9,6 +9,14 @@ import org.apache.log4j.Logger;
 
 import es.ctic.parrot.de.OntologyClass;
 
+/**
+ * A detailed view of a ontology class.
+ * 
+ * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @version 1.0
+ * @since 1.0
+ *
+ */
 public class OntologyClassDetailView extends AbstractOntologicalObjectDetailView implements DetailView{
 	
     private static final Logger logger = Logger.getLogger(OntologyClassDetailView.class);

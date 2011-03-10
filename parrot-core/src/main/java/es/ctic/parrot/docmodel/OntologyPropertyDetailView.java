@@ -8,6 +8,14 @@ import org.apache.log4j.Logger;
 
 import es.ctic.parrot.de.OntologyProperty;
 
+/**
+ * A detailed view of a ontology property.
+ * 
+ * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @version 1.0
+ * @since 1.0
+ *
+ */
 public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailView  implements DetailView{
 	
     private static final Logger logger = Logger.getLogger(OntologyPropertyDetailView.class);

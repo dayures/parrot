@@ -6,13 +6,17 @@ import es.ctic.parrot.docmodel.Document;
  * Implementations of this interface must transform the documentary model
  * into actual output.
  * 
+ * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @version 1.0
+ * @since 1.0
+ *
  */
 public interface OutputGenerator {
     
     /**
-     * Generate output for the documentary model
+     * Generates output for the documentary model.
      * 
-     * @param document
+     * @param document The documentary model.
      */
     public abstract void generateOutput(Document document);
 

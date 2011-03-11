@@ -12,5 +12,9 @@ import java.util.Collection;
  */
 public interface OntologyIndividual extends DocumentableOntologicalObject {
 	
+	/**
+	 * Returns the collection of the classes that this individual is instance of.
+	 * @return the collection of the classes that this individual is instance of.
+	 */	
 	public abstract Collection<OntologyClass> getTypes();
 }

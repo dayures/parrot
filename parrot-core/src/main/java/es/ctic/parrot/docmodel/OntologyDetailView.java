@@ -38,7 +38,7 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 	
 	/**
 	 * Set the version.
-	 * @param version version to set
+	 * @param version version to set.
 	 */
 	private void setVersion(String version) {
 		this.version = version;
@@ -54,7 +54,7 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 
 	/**
 	 * Set the creators.
-	 * @param creators creators to set
+	 * @param creators creators to set.
 	 */
 	private void setCreators(Collection<String> creators) {
 		this.creators = creators;
@@ -70,7 +70,7 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 
 	/**
 	 * Set the preferred prefix.
-	 * @param preferredPrefix preferred prefix to set
+	 * @param preferredPrefix preferred prefix to set.
 	 */
 	private void setPreferredPrefix(String preferredPrefix) {
 		this.preferredPrefix = preferredPrefix;
@@ -86,7 +86,7 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 
 	/**
 	 * Set the contributors.
-	 * @param contributors contributors to set
+	 * @param contributors contributors to set.
 	 */
 	private void setContributors(Collection<String> contributors) {
 		this.contributors = contributors;
@@ -118,7 +118,7 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 	
 	/**
 	 * Set the preferred namespace.
-	 * @param preferredNamespace preferred namespace to set
+	 * @param preferredNamespace preferred namespace to set.
 	 */
 	private void setPreferredNamespace(String preferredNamespace) {
 		this.preferredNamespace = preferredNamespace;
@@ -134,7 +134,7 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 
 	/**
 	 * Set information about the ontology rights.
-	 * @param rights information about the ontology rights to set
+	 * @param rights information about the ontology rights to set.
 	 */
 	private void setRights(String rights) {
 		this.rights = rights;
@@ -150,7 +150,7 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 
 	/**
 	 * Set the license's label.
-	 * @param licenseLabel the license's label to set
+	 * @param licenseLabel the license's label to set.
 	 */
 	private void setLicenseLabel(String licenseLabel) {
 		this.licenseLabel = licenseLabel;

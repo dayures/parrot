@@ -4,6 +4,14 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 
+/**
+ * An implementation of the DocumentableObject interface to serve as a basis for implementing various kinds of documentable elements.
+ * 
+ * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @version 1.0
+ * @since 1.0
+ *
+ */
 public abstract class AbstractDocumentableObject implements DocumentableObject {
 
     private Collection<DocumentableObject> references = new HashSet<DocumentableObject>();

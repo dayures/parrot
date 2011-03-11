@@ -1,7 +1,6 @@
 package es.ctic.parrot.de;
 
 import java.util.Collection;
-import java.util.List;
 
 /**
  * A rule set be documented by Parrot. 
@@ -29,19 +28,19 @@ public interface RuleSet extends DocumentableObject {
 	 * Returns the creators.
 	 * @return the creators.
 	 */	
-	public abstract List<String> getCreators();
+	public abstract Collection<String> getCreators();
 	
 	/**
 	 * Returns the contributors.
 	 * @return the contributors.
 	 */
-	public abstract List<String> getContributors();
+	public abstract Collection<String> getContributors();
 	
 	/**
 	 * Returns the publishers.
 	 * @return the publishers.
 	 */
-	public abstract List<String> getPublishers();
+	public abstract Collection<String> getPublishers();
 	
 	/**
 	 * Returns the reference to the parent documentable element.

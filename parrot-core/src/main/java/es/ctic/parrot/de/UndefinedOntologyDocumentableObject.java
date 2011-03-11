@@ -9,6 +9,15 @@ import org.apache.log4j.Logger;
 import es.ctic.parrot.transformers.DocumentableObjectVisitor;
 import es.ctic.parrot.transformers.TransformerException;
 
+/**
+ * An undefined ontology element to be documented by Parrot. 
+ * 
+ * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @version 1.0
+ * @since 1.0
+ * 
+ */
+
 public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObject implements OntologyProperty, OntologyClass{
 
 	private static final Logger logger = Logger.getLogger(UndefinedOntologyDocumentableObject.class);

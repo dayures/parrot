@@ -2,6 +2,14 @@ package es.ctic.parrot.de;
 
 import java.util.Locale;
 
+/**
+ * A label.
+ * 
+ * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @version 1.0
+ * @since 1.0
+ *
+ */
 public class Label {
 	
 	private static final String SKOS_XL_PREF_LABEL = "http://www.w3.org/2008/05/skos-xl#prefLabel";
@@ -14,48 +22,69 @@ public class Label {
 	private Locale locale;
 	
 	/**
-	 * @return the qualifier
+	 * Constructs a label (Suppress default constructor for noninstantiability).
+	 */
+	public Label(){
+	}
+	
+	/**
+	 * Returns the qualifier.
+	 * @return the qualifier.
 	 */
 	public String getQualifier() {
 		return qualifier;
 	}
+	
 	/**
-	 * @param qualifier the qualifier to set
+	 * Sets the qualifier.
+	 * @param qualifier the qualifier to set.
 	 */
 	public void setQualifier(String qualifier) {
 		this.qualifier = qualifier;
 	}
+	
 	/**
-	 * @return the uri
+	 * Returns the URI.
+	 * @return the URI.
 	 */
 	public String getUri() {
 		return uri;
 	}
+	
 	/**
-	 * @param uri the uri to set
+	 * Sets the URI.
+	 * @param uri the URI to set.
 	 */
 	public void setUri(String uri) {
 		this.uri = uri;
 	}
+	
 	/**
-	 * @return the text
+	 * Returns the text.
+	 * @return the text.
 	 */
 	public String getText() {
 		return text;
 	}
+	
 	/**
-	 * @param text the text to set
+	 * Sets the text.
+	 * @param text the text to set.
 	 */
 	public void setText(String text) {
 		this.text = text;
 	}
+	
 	/**
-	 * @return the locale
+	 * Returns the locale.
+	 * @return the locale.
 	 */
 	public Locale getLocale() {
 		return locale;
 	}
+	
 	/**
+	 * Sets the locale.
 	 * @param locale the locale to set
 	 */
 	public void setLocale(Locale locale) {

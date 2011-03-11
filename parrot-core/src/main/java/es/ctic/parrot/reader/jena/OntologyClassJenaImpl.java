@@ -3,7 +3,6 @@ package es.ctic.parrot.reader.jena;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
@@ -91,11 +90,11 @@ public class OntologyClassJenaImpl extends AbstractJenaDocumentableObject implem
 		}
 	}
 
-	public void setSubClasses(List<OntologyClass> classes) {
+	public void setSubClasses(Collection<OntologyClass> classes) {
 		this.subClasses=classes;
 	}
 
-	public void setSuperClasses(List<OntologyClass> classes) {
+	public void setSuperClasses(Collection<OntologyClass> classes) {
 		this.superClasses=classes;
 	}
 

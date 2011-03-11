@@ -1,7 +1,6 @@
 package es.ctic.parrot.de;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Locale;
 
 import org.apache.log4j.Logger;
@@ -108,7 +107,7 @@ public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObj
 		//return null;
 	}
 
-	public void setSuperClasses(List<OntologyClass> classes) {
+	public void setSuperClasses(Collection<OntologyClass> classes) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
 		//
@@ -120,7 +119,7 @@ public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObj
 		//return null;
 	}
 
-	public void setSubClasses(List<OntologyClass> classes) {
+	public void setSubClasses(Collection<OntologyClass> classes) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
 		//

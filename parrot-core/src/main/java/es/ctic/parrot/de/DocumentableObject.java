@@ -16,16 +16,55 @@ import es.ctic.parrot.transformers.TransformerException;
  * 
  */
 public interface DocumentableObject {
-    
+    /**
+	 * Kinds of elements to be documented by Parrot.
+	 * 
+	 * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+	 * @version 1.0
+	 * @since 1.0
+     */
     public enum Kind {
-        UNDEFINED("undefined"), 
+    	
+    	/**
+    	 * an undefinied element.
+    	 */
+        UNDEFINED("undefined"),
+        
+        /**
+         * an ontology.
+         */
         ONTOLOGY("ontology"),
+        
+        /**
+         * an ontology class.
+         */
         ONTOLOGY_CLASS("class"),
+        
+        /**
+         * an ontology property.
+         */
         ONTOLOGY_PROPERTY("property"),
+        
+        /**
+         * an ontology individual.
+         */
         ONTOLOGY_INDIVIDUAL("individual"),
+        
+        /**
+         * a datatype.
+         */
         DATATYPE("datatype"),
+        
+        /**
+         * a rule.
+         */
         RULE("rule"),
+
+        /**
+         * a rule set.
+         */
         RULE_SET("ruleset");
+        
         private final String name;
         private Kind(String name) { 
             this.name = name;

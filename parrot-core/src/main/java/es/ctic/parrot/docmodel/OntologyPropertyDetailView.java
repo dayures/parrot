@@ -65,7 +65,7 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
 
 	/**
 	 * Set the range class of this property.
-	 * @param domain the range class of this property.
+	 * @param range the range class of this property.
 	 */
 	private void setRange(DocumentableObjectReference range) {
 		this.range = range;
@@ -257,7 +257,7 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
 
 	/**
 	 * Set the collection of disjoint properties.
-	 * @param equivalentProperties the collection of disjoint properties to set.
+	 * @param disjointProperties the collection of disjoint properties to set.
 	 */
 	private void setDisjointProperties(Collection<DocumentableObjectReference> disjointProperties) {
 		this.disjointProperties = disjointProperties;

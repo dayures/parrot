@@ -22,7 +22,7 @@ public interface OntologyClass extends DocumentableOntologicalObject {
 	 * Set the super classes to this detailed view.
 	 * @param superClasses the super classes to set to this detailed view.
 	 */
-    public abstract void setSuperClasses(Collection<OntologyClass> classes);
+    public abstract void setSuperClasses(Collection<OntologyClass> superClasses);
     
 	/**
 	 * Returns the sub classes.
@@ -34,7 +34,7 @@ public interface OntologyClass extends DocumentableOntologicalObject {
 	 * Set the sub classes to this detailed view.
 	 * @param subClasses the sub classes to set to this detailed view.
 	 */
-    public abstract void setSubClasses(Collection<OntologyClass> classes); 
+    public abstract void setSubClasses(Collection<OntologyClass> subClasses); 
 	
 	/**
 	 * Returns the individuals.

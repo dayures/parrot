@@ -41,6 +41,9 @@ public class RuleSetDetailView implements DetailView {
     private String anchor;
 
 	
+	/**
+	 * Constructs a rule individual detail view (Suppress default constructor for noninstantiability).
+	 */
 	private RuleSetDetailView() {
         logger.debug("Created " + this.getClass());
     }

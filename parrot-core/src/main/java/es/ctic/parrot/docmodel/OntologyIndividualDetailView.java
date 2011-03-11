@@ -23,18 +23,35 @@ public class OntologyIndividualDetailView extends AbstractOntologicalObjectDetai
 
 	private Collection<DocumentableObjectReference> types = new LinkedList<DocumentableObjectReference>();
 
+	/**
+	 * Constructs a ontology individual detail view (Suppress default constructor for noninstantiability).
+	 */
 	private OntologyIndividualDetailView() {
         logger.debug("Created " + this.getClass());
 	}
 
+	/**
+	 * Returns the collection of the classes that this individual is instance of.
+	 * @return the collection of the classes that this individual is instance of.
+	 */	
 	public Collection<DocumentableObjectReference> getTypes() {
 		return Collections.unmodifiableCollection(this.types);
 	}
 
+	/**
+	 * Adds the types given to this individual.
+	 * @param types the types.
+	 */
 	public void addAllTypes(Collection<DocumentableObjectReference> types) {
 		this.types.addAll(types);
 	}
 
+	/**
+	 * Returns a detailed view for the ontology individual given.
+	 * @param object the ontology individual.
+	 * @param locale the locale.
+	 * @return a detailed view for an ontology individual.
+	 */
     public static OntologyIndividualDetailView createFromIndividual(OntologyIndividual object, Locale locale) {
 		
     	OntologyIndividualDetailView details = new OntologyIndividualDetailView();

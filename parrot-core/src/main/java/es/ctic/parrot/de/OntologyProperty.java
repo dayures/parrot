@@ -20,7 +20,7 @@ public interface OntologyProperty extends DocumentableOntologicalObject {
 	
 	/**
 	 * Set the range class of this property.
-	 * @param domain the range class of this property.
+	 * @param range the range class of this property.
 	 */
 	public abstract void setRange(DocumentableObject range);
 	
@@ -66,14 +66,14 @@ public interface OntologyProperty extends DocumentableOntologicalObject {
     public abstract void setSubProperties(Collection<DocumentableObject> subProperties);
 
 	/**
-	 * Set the collection of equivalent properties.
-	 * @param equivalentProperties the collection of equivalent properties to set.
+	 * Returns the collection of equivalent properties of this property.
+	 * @return the collection of equivalent properties of this property.
 	 */
 	public abstract Collection<DocumentableObject> getEquivalentProperties();
 	
 	/**
-	 * Returns the collection of equivalent properties of this property.
-	 * @return the collection of equivalent properties of this property.
+	 * Set the collection of equivalent properties.
+	 * @param equivalentProperties the collection of equivalent properties to set.
 	 */
 	public abstract void setEquivalentProperties(Collection<DocumentableObject> equivalentProperties);
 
@@ -85,7 +85,7 @@ public interface OntologyProperty extends DocumentableOntologicalObject {
 	
 	/**
 	 * Set the collection of disjoint properties.
-	 * @param equivalentProperties the collection of disjoint properties to set.
+	 * @param disjointProperties the collection of disjoint properties to set.
 	 */
 	public abstract void setDisjointProperties(Collection<DocumentableObject> disjointProperties);
 	

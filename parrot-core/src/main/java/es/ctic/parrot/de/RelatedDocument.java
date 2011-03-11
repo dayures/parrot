@@ -9,14 +9,47 @@ package es.ctic.parrot.de;
  * 
  */
 public class RelatedDocument {
-	
+	/**
+	 * Types of a related document. 
+	 * 
+	 * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+	 * @version 1.0
+	 * @since 1.0
+	 * 
+	 */
     public enum Type {
-        HTML("text/html"), 
+    	
+    	/**
+    	 * an HTML type.
+    	 */
+        HTML("text/html"),
+        
+        /**
+         * a plain text type.
+         */
         TEXT("text/plain"),
+
+        /**
+         * an image type.
+         */
         IMAGE("image/png"),
+        
+        /**
+         * a video type.
+         */
         VIDEO("video/mpeg"),
+        
+        /**
+         * a hyperlink type.
+         */
         URI("uri"),
+        
+        /**
+         * an undefined type.
+         */
         UNDEFINED("undefined");
+        
+        
         private final String name;
         private Type(String name) { 
             this.name = name;

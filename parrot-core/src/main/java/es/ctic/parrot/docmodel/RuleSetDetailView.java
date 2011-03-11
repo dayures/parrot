@@ -48,191 +48,285 @@ public class RuleSetDetailView implements DetailView {
         logger.debug("Created " + this.getClass());
     }
     
-    /**
-	 * @return the referencedOntologicalObjects
+	/**
+	 * Returns the references to the ontological elements that reference this rule.
+	 * @return the references to the ontological elements that reference this rule.
 	 */
 	public Collection<DocumentableObjectReference> getReferencedOntologicalObjects() {
 		return Collections.unmodifiableCollection(referencedOntologicalObjects);
 	}
 
 	/**
-	 * @param referencedOntologicalObjects the referencedOntologicalObjects to set
+	 * Sets the references to the ontological elements that reference this rule.
+	 * @param referencedOntologicalObjects the references to the ontological elements that reference this rule.
 	 */
 	public void setReferencedOntologicalObjects(
 			Collection<DocumentableObjectReference> referencedOntologicalObjects) {
 		this.referencedOntologicalObjects = referencedOntologicalObjects;
 	}
 
-    public void setIdentifier(Identifier identifier) {
-        this.identifier = identifier;
-    }
+	/**
+	 * Set the identifier.
+	 * @param identifier the identifier to set.
+	 */
+	public void setIdentifier(Identifier identifier) {
+		this.identifier = identifier;
+	}
 
-    public Identifier getIdentifier() {
-        return identifier;
-    }
-
-	public String getAnchor() {
-		return anchor;
+	/**
+	 * Returns the identifier.
+	 * @return the identifier.
+	 */
+	public Identifier getIdentifier() {
+		return identifier;
 	}
 	
-	public String getUri(){
+	/**
+	 * Returns the URI.
+	 * @return the URI.
+	 */
+	public String getUri() {
 		return uri;
 	}
-	
-	public void setUri(String uri){
+
+	/**
+	 * Sets the URI.
+	 * @param uri the URI to set.
+	 */
+	public void setUri(String uri) {
 		this.uri=uri;
 	}
 
+	/**
+	 * Returns the label.
+	 * @return the label.
+	 */
 	public String getLabel() {
 		return this.label;
 	}
 
+	/**
+	 * Sets the label.
+	 * @param label the label to set.
+	 */
 	public void setLabel(String label) {
 		this.label = label;
 	}
-	
+
+	/**
+	 * Returns the description.
+	 * @return the description.
+	 */
 	public String getComment() {
 		return this.comment;
 	}
 
+	/**
+	 * Sets the description.
+	 * @param comment the description to set.
+	 */	
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
 
+	/**
+	 * Sets the anchor.
+	 * @param anchor the anchor to set
+	 */
+	public void setAnchor(String anchor) {
+		this.anchor = anchor;
+	}
+
+	/**
+	 * Returns the anchor.
+	 * @return the anchor.
+	 */
+	public String getAnchor() {
+		return anchor;
+	}
+	
+	/**
+	 * Set the date.
+	 * @param date date to set.
+	 */	
 	public void setDate(String date) {
 		this.date = date;
 	}
 
+	/**
+	 * Returns the date.
+	 * @return the date.
+	 */	
 	public String getDate() {
 		return date;
 	}
 
+	/**
+	 * Sets the publishers
+	 * @param publishers to set.
+	 */
 	public void setPublishers(Collection<String> publishers) {
 		this.publishers = publishers;
 	}
 
+	/**
+	 * Returns the publishers.
+	 * @return the publishers.
+	 */
 	public Collection<String> getPublishers() {
 		return Collections.unmodifiableCollection(publishers);
 	}
 
+	/**
+	 * Set the creators.
+	 * @param creators creators to set
+	 */	
 	public void setCreators(Collection<String> creators) {
 		this.creators = creators;
 	}
-
+	
+	/**
+	 * Returns the creators.
+	 * @return the creators.
+	 */	
 	public Collection<String> getCreators() {
 		return Collections.unmodifiableCollection(creators);
 	}
-
+	
+	/**
+	 * Set the contributors.
+	 * @param contributors contributors to set
+	 */
 	public void setContributors(Collection<String> contributors) {
 		this.contributors = contributors;
 	}
 
+	/**
+	 * Returns the contributors.
+	 * @return the contributors.
+	 */
 	public Collection<String> getContributors() {
 		return Collections.unmodifiableCollection(contributors);
 	}
 
 	/**
-	 * @param rules the rules to set
-	 */
-	public void setRules(Collection<DocumentableObjectReference> rules) {
-		this.rules = rules;
-	}
-
-	/**
-	 * @return the rules
-	 */
-	public Collection<DocumentableObjectReference> getRules() {
-		return Collections.unmodifiableCollection(rules);
-	}
-
-	/**
-	 * @param strategy the strategy to set
-	 */
-	public void setStrategy(String strategy) {
-		this.strategy = strategy;
-	}
-
-	/**
-	 * @return the strategy
-	 */
-	public String getStrategy() {
-		return strategy;
-	}
-
-	/**
-	 * @param priority the priority to set
-	 */
-	public void setPriority(Integer priority) {
-		this.priority = priority;
-	}
-
-	/**
-	 * @return the priority
-	 */
-	public Integer getPriority() {
-		return priority;
-	}
-
-	/**
-	 * @param parent the parent to set
+	 * Sets the reference to the parent element.
+	 * @param parent the reference to the parent element.
 	 */
 	public void setParent(DocumentableObjectReference parent) {
 		this.parent = parent;
 	}
 
 	/**
-	 * @return the parent
+	 * Returns the reference to the parent element.
+	 * @return the reference to the parent element.
 	 */
 	public DocumentableObjectReference getParent() {
 		return parent;
 	}
-
-	/**
-	 * @param ruleSets the ruleSets to set
-	 */
-	public void setRuleSets(Collection<DocumentableObjectReference> ruleSets) {
-		this.ruleSets = ruleSets;
-	}
-
-	/**
-	 * @return the ruleSets
-	 */
-	public Collection<DocumentableObjectReference> getRuleSets() {
-		return Collections.unmodifiableCollection(ruleSets);
-	}
 	
 	/**
-	 * @param labels the labels to set
+	 * Set all labels.
+	 * @param labels all labels to set.
 	 */
 	public void setLabels(Collection<Label> labels) {
 		this.labels = labels;
 	}
 
 	/**
-	 * @return the labels
+	 * Returns all labels.
+	 * @return all labels.
 	 */
 	public Collection<Label> getLabels() {
 		return Collections.unmodifiableCollection(labels);
 	}
 	
 	/**
-	 * @param relatedDocuments the relatedDocuments to set
+	 * Sets the related documents to this ontological element.
+	 * @param relatedDocuments the related documents to this ontological element to set.
 	 */
 	public void setRelatedDocuments(Collection<RelatedDocument> relatedDocuments) {
 		this.relatedDocuments = relatedDocuments;
 	}
 
 	/**
-	 * @return the relatedDocuments
+	 * Returns the related documents.
+	 * @return the related documents.
 	 */
 	public Collection<RelatedDocument> getRelatedDocuments() {
 		return relatedDocuments;
 	}
+	
+	/**
+	 * Sets the rules of this rule set.
+	 * @param rules the rules of this rule set to set.
+	 */
+	public void setRules(Collection<DocumentableObjectReference> rules) {
+		this.rules = rules;
+	}
 
-    public void setAnchor(String anchor) {
-        this.anchor = anchor;
-    }
+	/**
+	 * Returns the rules of this rule set.
+	 * @return the rules of this rule set.
+	 */
+	public Collection<DocumentableObjectReference> getRules() {
+		return Collections.unmodifiableCollection(rules);
+	}
 
+	/**
+	 * Sets the strategy of this rule set.
+	 * @param strategy the strategy of this rule set to set
+	 */
+	public void setStrategy(String strategy) {
+		this.strategy = strategy;
+	}
+
+	/**
+	 * Returns the strategy of this rule set.
+	 * @return the strategy of this rule set.
+	 */
+	public String getStrategy() {
+		return strategy;
+	}
+
+	/**
+	 * Sets the priority of this rule set.
+	 * @param priority the priority of this rule set to set.
+	 */
+	public void setPriority(Integer priority) {
+		this.priority = priority;
+	}
+
+	/**
+	 * Returns the priority of this rule set.
+	 * @return the priority of this rule set.
+	 */
+	public Integer getPriority() {
+		return priority;
+	}
+
+	/**
+	 * Sets the rule sets of this rule set.
+	 * @param ruleSets the rule sets of this rule set to set.
+	 */
+	public void setRuleSets(Collection<DocumentableObjectReference> ruleSets) {
+		this.ruleSets = ruleSets;
+	}
+
+	/**
+	 * Returns the rule sets of this rule set.
+	 * @return the rule sets of this rule set.
+	 */
+	public Collection<DocumentableObjectReference> getRuleSets() {
+		return Collections.unmodifiableCollection(ruleSets);
+	}
+	
+	/**
+	 * Returns a detailed view for the rule set given.
+	 * @param object the rule set.
+	 * @param locale the locale.
+	 * @return a detailed view for a rule set.
+	 */
     public static RuleSetDetailView createFromRuleSet(RuleSet object, Locale locale) {
         RuleSetDetailView details = new RuleSetDetailView();
         details.setIdentifier(object.getIdentifier());

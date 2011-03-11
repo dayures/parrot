@@ -20,8 +20,8 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
     private static final Logger logger = Logger.getLogger(OntologyDetailView.class);
 
 	private String version;
-	private List<String> creators;
-	private List<String> contributors;
+	private List<String> creators; // FIXME change to collection
+	private List<String> contributors; // FIXME change to collection
 	private String preferredPrefix;
 	private String preferredNamespace;
 	private String date;
@@ -101,7 +101,7 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 
 	/**
 	 * Set the date.
-	 * @param date date to set
+	 * @param date date to set.
 	 */	
 	public void setDate(String date) {
 		this.date = date;

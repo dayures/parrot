@@ -29,7 +29,7 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 	private String licenseLabel;
 
 	/**
-	 * Constructs a ontology detail view. 
+	 * Constructs a ontology detail view (Suppress default constructor for noninstantiability).
 	 */
 	private OntologyDetailView(){
 		logger.debug("Created " + this.getClass());
@@ -163,6 +163,12 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 		return licenseLabel;
 	}
 
+	/**
+	 * Returns a detailed view for the ontology given.
+	 * @param object the ontology.
+	 * @param locale the locale.
+	 * @return a detailed view for an ontology.
+	 */
     public static OntologyDetailView createFromOntology(Ontology object, Locale locale) {
     	
 	    OntologyDetailView details = new OntologyDetailView();

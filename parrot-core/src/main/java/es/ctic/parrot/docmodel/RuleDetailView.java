@@ -36,6 +36,9 @@ public class RuleDetailView implements DetailView{
 	private DocumentableObjectReference parent;
     private String anchor;
 	
+	/**
+	 * Constructs a rule detail view (Suppress default constructor for noninstantiability).
+	 */
 	private RuleDetailView() {
         logger.debug("Created " + this.getClass());
     }

@@ -29,7 +29,7 @@ public class OntologyClassDetailView extends AbstractOntologicalObjectDetailView
 	private Collection<DocumentableObjectReference> individuals;
 
 	/**
-	 * Constructs a ontology class detail view. 
+	 * Constructs a ontology class detail view (Suppress default constructor for noninstantiability). 
 	 */
 	private OntologyClassDetailView(){
         logger.debug("Created " + this.getClass());
@@ -133,7 +133,7 @@ public class OntologyClassDetailView extends AbstractOntologicalObjectDetailView
 	
 	/**
 	 * Returns a detailed view for the ontology class given.
-	 * @param object the onlotogy class.
+	 * @param object the ontology class.
 	 * @param locale the locale.
 	 * @return a detailed view for an ontology class.
 	 */

@@ -1,6 +1,6 @@
 package es.ctic.parrot.de;
 
-import java.util.List;
+import java.util.Collection;
 
 /**
  * An ontology to be documented by Parrot. 
@@ -34,13 +34,13 @@ public interface Ontology extends DocumentableOntologicalObject {
 	 * Returns the creators.
 	 * @return the creators.
 	 */	
-	public abstract List<String> getCreators();
+	public abstract Collection<String> getCreators();
 	
 	/**
 	 * Returns the contributors.
 	 * @return the contributors.
 	 */
-	public abstract List<String> getContributors();
+	public abstract Collection<String> getContributors();
 	
 	/**
 	 * Returns the date.

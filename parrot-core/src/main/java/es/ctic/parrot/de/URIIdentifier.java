@@ -13,6 +13,10 @@ public class URIIdentifier implements Identifier {
 
     private final String uri;
     
+    /**
+     * Constructs a URI identifier using the given URI.
+     * @param uri the URI.
+     */
     public URIIdentifier(String uri) {
         assert uri != null;
         assert uri.trim().length() > 0;
@@ -49,6 +53,10 @@ public class URIIdentifier implements Identifier {
         return true;
     }
 
+    /**
+     * Returns the URI.
+     * @return the URI.
+     */
     public String getUri() {
         return uri;
     }

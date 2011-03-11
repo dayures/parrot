@@ -1,6 +1,7 @@
 package es.ctic.parrot.docmodel;
 
-import java.util.List;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Locale;
 
 import org.apache.log4j.Logger;
@@ -20,8 +21,8 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
     private static final Logger logger = Logger.getLogger(OntologyDetailView.class);
 
 	private String version;
-	private List<String> creators; // FIXME change to collection
-	private List<String> contributors; // FIXME change to collection
+	private Collection<String> creators;
+	private Collection<String> contributors;
 	private String preferredPrefix;
 	private String preferredNamespace;
 	private String date;
@@ -55,7 +56,7 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 	 * Set the creators.
 	 * @param creators creators to set
 	 */
-	public void setCreators(List<String> creators) {
+	public void setCreators(Collection<String> creators) {
 		this.creators = creators;
 	}
 
@@ -63,8 +64,8 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 	 * Returns the creators.
 	 * @return the creators.
 	 */	
-	public List<String> getCreators() {
-		return creators;
+	public Collection<String> getCreators() {
+		return Collections.unmodifiableCollection(creators);
 	}
 
 	/**
@@ -87,7 +88,7 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 	 * Set the contributors.
 	 * @param contributors contributors to set
 	 */
-	public void setContributors(List<String> contributors) {
+	public void setContributors(Collection<String> contributors) {
 		this.contributors = contributors;
 	}
 
@@ -95,8 +96,8 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 	 * Returns the contributors.
 	 * @return the contributors.
 	 */
-	public List<String> getContributors() {
-		return contributors;
+	public Collection<String> getContributors() {
+		return Collections.unmodifiableCollection(contributors);
 	}
 
 	/**

@@ -51,7 +51,7 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
 	 * Set the domain class of this property.
 	 * @param domain the domain class of this property.
 	 */
-	public void setDomain(DocumentableObjectReference domain) {
+	private void setDomain(DocumentableObjectReference domain) {
 		this.domain = domain;
 	}
 
@@ -67,7 +67,7 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
 	 * Set the range class of this property.
 	 * @param domain the range class of this property.
 	 */
-	public void setRange(DocumentableObjectReference range) {
+	private void setRange(DocumentableObjectReference range) {
 		this.range = range;
 	}
 
@@ -83,7 +83,7 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
 	 * Set the references from other document elements to this property.
 	 * @param inverseReferences the references from other document elements to this property.
 	 */
-	public void setInverseReferences(Collection<DocumentableObjectReference> inverseReferences) {
+	private void setInverseReferences(Collection<DocumentableObjectReference> inverseReferences) {
 	    this.inverseReferences = inverseReferences;
 	}
 
@@ -91,7 +91,7 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
 	 * Set the number of times that this property is used.
 	 * @param cardinality the number of times that this property is used.
 	 */
-	public void setCardinality(int cardinality) {
+	private void setCardinality(int cardinality) {
 		this.cardinality = cardinality;
 	}
 
@@ -107,7 +107,7 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
 	 * Set the super properties of this property.
 	 * @param superProperties the super properties to set.
 	 */
-	public void setSuperProperties(Collection<DocumentableObjectReference> superProperties) {
+	private void setSuperProperties(Collection<DocumentableObjectReference> superProperties) {
 		this.superProperties = superProperties;
 	}
 
@@ -123,7 +123,7 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
 	 * Set the sub properties of this property.
 	 * @param subProperties the sub properties to set.
 	 */
-	public void setSubProperties(Collection<DocumentableObjectReference> subProperties) {
+	private void setSubProperties(Collection<DocumentableObjectReference> subProperties) {
 		this.subProperties = subProperties;
 	}
 
@@ -139,7 +139,7 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
 	 * Set the inverse property of this property.
 	 * @param inverseOf the inverse property to set.
 	 */
-	public void setInverseOf(DocumentableObjectReference inverseOf) {
+	private void setInverseOf(DocumentableObjectReference inverseOf) {
 		this.inverseOf = inverseOf;
 	}
 
@@ -243,7 +243,7 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
 	 * Set the collection of equivalent properties.
 	 * @param equivalentProperties the collection of equivalent properties to set.
 	 */
-	public void setEquivalentProperties(Collection<DocumentableObjectReference> equivalentProperties) {
+	private void setEquivalentProperties(Collection<DocumentableObjectReference> equivalentProperties) {
 		this.equivalentProperties = equivalentProperties;
 	}
 
@@ -259,7 +259,7 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
 	 * Set the collection of disjoint properties.
 	 * @param equivalentProperties the collection of disjoint properties to set.
 	 */
-	public void setDisjointProperties(Collection<DocumentableObjectReference> disjointProperties) {
+	private void setDisjointProperties(Collection<DocumentableObjectReference> disjointProperties) {
 		this.disjointProperties = disjointProperties;
 	}
 
@@ -275,7 +275,7 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
 	 * Set the ontology property (documentable element).
 	 * @param ontologyProperty the ontologyProperty to set.
 	 */
-	public void setOntologyProperty(OntologyProperty ontologyProperty) {
+	private void setOntologyProperty(OntologyProperty ontologyProperty) {
 		this.ontologyProperty = ontologyProperty;
 	}
 

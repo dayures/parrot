@@ -60,7 +60,7 @@ public class RuleSetDetailView implements DetailView {
 	 * Sets the references to the ontological elements that reference this rule.
 	 * @param referencedOntologicalObjects the references to the ontological elements that reference this rule.
 	 */
-	public void setReferencedOntologicalObjects(
+	private void setReferencedOntologicalObjects(
 			Collection<DocumentableObjectReference> referencedOntologicalObjects) {
 		this.referencedOntologicalObjects = referencedOntologicalObjects;
 	}
@@ -69,7 +69,7 @@ public class RuleSetDetailView implements DetailView {
 	 * Set the identifier.
 	 * @param identifier the identifier to set.
 	 */
-	public void setIdentifier(Identifier identifier) {
+	private void setIdentifier(Identifier identifier) {
 		this.identifier = identifier;
 	}
 
@@ -93,7 +93,7 @@ public class RuleSetDetailView implements DetailView {
 	 * Sets the URI.
 	 * @param uri the URI to set.
 	 */
-	public void setUri(String uri) {
+	private void setUri(String uri) {
 		this.uri=uri;
 	}
 
@@ -109,7 +109,7 @@ public class RuleSetDetailView implements DetailView {
 	 * Sets the label.
 	 * @param label the label to set.
 	 */
-	public void setLabel(String label) {
+	private void setLabel(String label) {
 		this.label = label;
 	}
 
@@ -125,7 +125,7 @@ public class RuleSetDetailView implements DetailView {
 	 * Sets the description.
 	 * @param comment the description to set.
 	 */	
-	public void setComment(String comment) {
+	private void setComment(String comment) {
 		this.comment = comment;
 	}
 
@@ -133,7 +133,7 @@ public class RuleSetDetailView implements DetailView {
 	 * Sets the anchor.
 	 * @param anchor the anchor to set
 	 */
-	public void setAnchor(String anchor) {
+	private void setAnchor(String anchor) {
 		this.anchor = anchor;
 	}
 
@@ -149,7 +149,7 @@ public class RuleSetDetailView implements DetailView {
 	 * Set the date.
 	 * @param date date to set.
 	 */	
-	public void setDate(String date) {
+	private void setDate(String date) {
 		this.date = date;
 	}
 
@@ -165,7 +165,7 @@ public class RuleSetDetailView implements DetailView {
 	 * Sets the publishers
 	 * @param publishers to set.
 	 */
-	public void setPublishers(Collection<String> publishers) {
+	private void setPublishers(Collection<String> publishers) {
 		this.publishers = publishers;
 	}
 
@@ -181,7 +181,7 @@ public class RuleSetDetailView implements DetailView {
 	 * Set the creators.
 	 * @param creators creators to set
 	 */	
-	public void setCreators(Collection<String> creators) {
+	private void setCreators(Collection<String> creators) {
 		this.creators = creators;
 	}
 	
@@ -197,7 +197,7 @@ public class RuleSetDetailView implements DetailView {
 	 * Set the contributors.
 	 * @param contributors contributors to set
 	 */
-	public void setContributors(Collection<String> contributors) {
+	private void setContributors(Collection<String> contributors) {
 		this.contributors = contributors;
 	}
 
@@ -213,7 +213,7 @@ public class RuleSetDetailView implements DetailView {
 	 * Sets the reference to the parent element.
 	 * @param parent the reference to the parent element.
 	 */
-	public void setParent(DocumentableObjectReference parent) {
+	private void setParent(DocumentableObjectReference parent) {
 		this.parent = parent;
 	}
 
@@ -229,7 +229,7 @@ public class RuleSetDetailView implements DetailView {
 	 * Set all labels.
 	 * @param labels all labels to set.
 	 */
-	public void setLabels(Collection<Label> labels) {
+	private void setLabels(Collection<Label> labels) {
 		this.labels = labels;
 	}
 
@@ -245,7 +245,7 @@ public class RuleSetDetailView implements DetailView {
 	 * Sets the related documents to this ontological element.
 	 * @param relatedDocuments the related documents to this ontological element to set.
 	 */
-	public void setRelatedDocuments(Collection<RelatedDocument> relatedDocuments) {
+	private void setRelatedDocuments(Collection<RelatedDocument> relatedDocuments) {
 		this.relatedDocuments = relatedDocuments;
 	}
 
@@ -261,7 +261,7 @@ public class RuleSetDetailView implements DetailView {
 	 * Sets the rules of this rule set.
 	 * @param rules the rules of this rule set to set.
 	 */
-	public void setRules(Collection<DocumentableObjectReference> rules) {
+	private void setRules(Collection<DocumentableObjectReference> rules) {
 		this.rules = rules;
 	}
 
@@ -277,7 +277,7 @@ public class RuleSetDetailView implements DetailView {
 	 * Sets the strategy of this rule set.
 	 * @param strategy the strategy of this rule set to set
 	 */
-	public void setStrategy(String strategy) {
+	private void setStrategy(String strategy) {
 		this.strategy = strategy;
 	}
 
@@ -293,7 +293,7 @@ public class RuleSetDetailView implements DetailView {
 	 * Sets the priority of this rule set.
 	 * @param priority the priority of this rule set to set.
 	 */
-	public void setPriority(Integer priority) {
+	private void setPriority(Integer priority) {
 		this.priority = priority;
 	}
 
@@ -309,7 +309,7 @@ public class RuleSetDetailView implements DetailView {
 	 * Sets the rule sets of this rule set.
 	 * @param ruleSets the rule sets of this rule set to set.
 	 */
-	public void setRuleSets(Collection<DocumentableObjectReference> ruleSets) {
+	private void setRuleSets(Collection<DocumentableObjectReference> ruleSets) {
 		this.ruleSets = ruleSets;
 	}
 

@@ -53,9 +53,9 @@ public class OntologyClassDetailView extends AbstractOntologicalObjectDetailView
 
 	/**
 	 * Set the inverse references to this detailed view.
-	 * @param individuals the inverse references to set to this detailed view.
+	 * @param inverseReferences the inverse references to set to this detailed view.
 	 */
-	public void setInverseReferences(Collection<DocumentableObjectReference> inverseReferences) {
+	private void setInverseReferences(Collection<DocumentableObjectReference> inverseReferences) {
 		this.inverseReferences = inverseReferences;
 	}
 
@@ -71,7 +71,7 @@ public class OntologyClassDetailView extends AbstractOntologicalObjectDetailView
 	 * Set the individuals to this detailed view.
 	 * @param individuals the individuals to set to this detailed view.
 	 */
-	public void setIndividuals(Collection<DocumentableObjectReference> individuals) {
+	private void setIndividuals(Collection<DocumentableObjectReference> individuals) {
 		this.individuals = individuals;
 	}
 
@@ -87,7 +87,7 @@ public class OntologyClassDetailView extends AbstractOntologicalObjectDetailView
 	 * Set the equivalent classes to this detailed view.
 	 * @param equivalentClasses the equivalent classes to set.
 	 */
-	public void setEquivalentClasses(Collection<DocumentableObjectReference> equivalentClasses) {
+	private void setEquivalentClasses(Collection<DocumentableObjectReference> equivalentClasses) {
 		this.equivalentClasses = equivalentClasses;
 	}
 
@@ -103,7 +103,7 @@ public class OntologyClassDetailView extends AbstractOntologicalObjectDetailView
 	 * Set the disjoint classes to this detailed view.
 	 * @param disjointClasses the disjoint classes to set to this detailed view.
 	 */
-	public void setDisjointClasses(Collection<DocumentableObjectReference> disjointClasses) {
+	private void setDisjointClasses(Collection<DocumentableObjectReference> disjointClasses) {
 		this.disjointClasses = disjointClasses;
 	}
 
@@ -119,7 +119,7 @@ public class OntologyClassDetailView extends AbstractOntologicalObjectDetailView
 	 * Set the super classes to this detailed view.
 	 * @param superClasses the super classes to set to this detailed view.
 	 */
-	public void setSuperClasses(Collection<DocumentableObjectReference> superClasses) {
+	private void setSuperClasses(Collection<DocumentableObjectReference> superClasses) {
 		this.superClasses = superClasses;
 	}
 
@@ -127,7 +127,7 @@ public class OntologyClassDetailView extends AbstractOntologicalObjectDetailView
 	 * Set the sub classes to this detailed view.
 	 * @param subClasses the sub classes to set to this detailed view.
 	 */
-	public void setSubClasses(Collection<DocumentableObjectReference> subClasses) {
+	private void setSubClasses(Collection<DocumentableObjectReference> subClasses) {
 		this.subClasses = subClasses;
 	}
 	

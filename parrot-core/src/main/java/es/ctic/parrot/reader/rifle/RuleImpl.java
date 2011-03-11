@@ -3,7 +3,6 @@ package es.ctic.parrot.reader.rifle;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 import java.util.TreeSet;
@@ -97,15 +96,15 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
         return getAnnotationStrategy().getRelatedDocuments(getOntResource(), locale);
     }
     
-	public List<String> getCreators() {
+	public Collection<String> getCreators() {
 		return getAnnotationStrategy().getCreators(getOntResource());
 	}
 
-	public List<String> getContributors() {
+	public Collection<String> getContributors() {
 		return getAnnotationStrategy().getContributors(getOntResource());
 	}
 
-	public List<String> getPublishers() {
+	public Collection<String> getPublishers() {
 		return getAnnotationStrategy().getPublishers(getOntResource());
 	}
 	

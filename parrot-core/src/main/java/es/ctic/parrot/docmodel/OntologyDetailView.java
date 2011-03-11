@@ -40,7 +40,7 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 	 * Set the version.
 	 * @param version version to set
 	 */
-	public void setVersion(String version) {
+	private void setVersion(String version) {
 		this.version = version;
 	}
 
@@ -56,7 +56,7 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 	 * Set the creators.
 	 * @param creators creators to set
 	 */
-	public void setCreators(Collection<String> creators) {
+	private void setCreators(Collection<String> creators) {
 		this.creators = creators;
 	}
 
@@ -72,7 +72,7 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 	 * Set the preferred prefix.
 	 * @param preferredPrefix preferred prefix to set
 	 */
-	public void setPreferredPrefix(String preferredPrefix) {
+	private void setPreferredPrefix(String preferredPrefix) {
 		this.preferredPrefix = preferredPrefix;
 	}
 
@@ -88,7 +88,7 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 	 * Set the contributors.
 	 * @param contributors contributors to set
 	 */
-	public void setContributors(Collection<String> contributors) {
+	private void setContributors(Collection<String> contributors) {
 		this.contributors = contributors;
 	}
 
@@ -104,7 +104,7 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 	 * Set the date.
 	 * @param date date to set.
 	 */	
-	public void setDate(String date) {
+	private void setDate(String date) {
 		this.date = date;
 	}
 
@@ -120,7 +120,7 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 	 * Set the preferred namespace.
 	 * @param preferredNamespace preferred namespace to set
 	 */
-	public void setPreferredNamespace(String preferredNamespace) {
+	private void setPreferredNamespace(String preferredNamespace) {
 		this.preferredNamespace = preferredNamespace;
 	}
 
@@ -136,7 +136,7 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 	 * Set information about the ontology rights.
 	 * @param rights information about the ontology rights to set
 	 */
-	public void setRights(String rights) {
+	private void setRights(String rights) {
 		this.rights = rights;
 	}
 
@@ -152,7 +152,7 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 	 * Set the license's label.
 	 * @param licenseLabel the license's label to set
 	 */
-	public void setLicenseLabel(String licenseLabel) {
+	private void setLicenseLabel(String licenseLabel) {
 		this.licenseLabel = licenseLabel;
 	}
 

@@ -8,7 +8,14 @@ import es.ctic.parrot.de.Identifier;
 import es.ctic.parrot.de.Label;
 import es.ctic.parrot.de.RelatedDocument;
 
-
+/**
+ * An implementation of the DetailView interface to serve as a basis for implementing various kinds of detailed views.
+ * 
+ * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @version 1.0
+ * @since 1.0
+ *
+ */
 public abstract class AbstractOntologicalObjectDetailView implements DetailView {
 
 	private String uri;
@@ -34,7 +41,7 @@ public abstract class AbstractOntologicalObjectDetailView implements DetailView 
 	 * Sets the URI.
 	 * @param uri the URI to set.
 	 */
-	public void setUri(String uri) {
+	protected void setUri(String uri) {
 		this.uri=uri;
 	}
 
@@ -50,7 +57,7 @@ public abstract class AbstractOntologicalObjectDetailView implements DetailView 
 	 * Sets the label.
 	 * @param label the label to set.
 	 */
-	public void setLabel(String label) {
+	protected void setLabel(String label) {
 		this.label = label;
 	}
 
@@ -66,7 +73,7 @@ public abstract class AbstractOntologicalObjectDetailView implements DetailView 
 	 * Sets the description.
 	 * @param comment the description to set.
 	 */	
-	public void setComment(String comment) {
+	protected void setComment(String comment) {
 		this.comment = comment;
 	}
 
@@ -74,7 +81,7 @@ public abstract class AbstractOntologicalObjectDetailView implements DetailView 
 	 * Sets the rules that reference this ontological element.
 	 * @param rules the rules that reference this ontological element.
 	 */
-	public void setInverseRuleReferences(Collection<DocumentableObjectReference> rules) {
+	protected void setInverseRuleReferences(Collection<DocumentableObjectReference> rules) {
 		this.inverseRuleReferences = rules;
 	}
 
@@ -90,7 +97,7 @@ public abstract class AbstractOntologicalObjectDetailView implements DetailView 
 	 * Sets the related documents to this ontological element.
 	 * @param relatedDocuments the related documents to this ontological element to set.
 	 */
-	public void setRelatedDocuments(Collection<RelatedDocument> relatedDocuments) {
+	protected void setRelatedDocuments(Collection<RelatedDocument> relatedDocuments) {
 		this.relatedDocuments = relatedDocuments;
 	}
 
@@ -106,7 +113,7 @@ public abstract class AbstractOntologicalObjectDetailView implements DetailView 
 	 * Set all labels.
 	 * @param labels all labels to set.
 	 */
-	public void setLabels(Collection<Label> labels) {
+	protected void setLabels(Collection<Label> labels) {
 		this.labels = labels;
 	}
 
@@ -122,7 +129,7 @@ public abstract class AbstractOntologicalObjectDetailView implements DetailView 
 	 * Sets the anchor.
 	 * @param anchor the anchor to set
 	 */
-	public void setAnchor(String anchor) {
+	protected void setAnchor(String anchor) {
 		this.anchor = anchor;
 	}
 
@@ -138,7 +145,7 @@ public abstract class AbstractOntologicalObjectDetailView implements DetailView 
 	 * Set the identifier.
 	 * @param identifier the identifier to set.
 	 */
-	public void setIdentifier(Identifier identifier) {
+	protected void setIdentifier(Identifier identifier) {
 		this.identifier = identifier;
 	}
 
@@ -154,7 +161,7 @@ public abstract class AbstractOntologicalObjectDetailView implements DetailView 
 	 * Sets the reference where this ontological element is defined.
 	 * @param isDefinedBy the reference where this ontological element is defined.
 	 */
-	public void setIsDefinedBy(DocumentableObjectReference isDefinedBy) {
+	protected void setIsDefinedBy(DocumentableObjectReference isDefinedBy) {
 		this.isDefinedBy = isDefinedBy;
 	}
 
@@ -170,7 +177,7 @@ public abstract class AbstractOntologicalObjectDetailView implements DetailView 
 	 * Sets the value of the deprecation of this ontological element. 
 	 * @param deprecated the value of the deprecation of this ontological element.
 	 */
-	public void setDeprecated(boolean deprecated) {
+	protected void setDeprecated(boolean deprecated) {
 		this.deprecated = deprecated;
 	}
 

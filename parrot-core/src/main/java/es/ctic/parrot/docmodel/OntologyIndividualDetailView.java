@@ -42,7 +42,7 @@ public class OntologyIndividualDetailView extends AbstractOntologicalObjectDetai
 	 * Adds the types given to this individual.
 	 * @param types the types.
 	 */
-	public void addAllTypes(Collection<DocumentableObjectReference> types) {
+	private void addAllTypes(Collection<DocumentableObjectReference> types) {
 		this.types.addAll(types);
 	}
 

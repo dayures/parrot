@@ -13,15 +13,40 @@ import java.util.List;
  */
 public interface Rule extends DocumentableObject {
 
+	/**
+	 * Returns the references to the documentable ontological elements that reference this rule.
+	 * @return the references to the documentable ontological elements that reference this rule.
+	 */
     public abstract Collection<DocumentableOntologicalObject> getReferencedOntologicalObjects();
 
-    // public Collection<String> getDeclaredVars();
+	/**
+	 * Returns the date.
+	 * @return the date.
+	 */	
+    public abstract String getDate();
     
-	public abstract String getDate();
+	/**
+	 * Returns the creators.
+	 * @return the creators.
+	 */	
 	public abstract List<String> getCreators();
+	
+	/**
+	 * Returns the contributors.
+	 * @return the contributors.
+	 */
 	public abstract List<String> getContributors();
+	
+	/**
+	 * Returns the publishers.
+	 * @return the publishers.
+	 */
 	public abstract List<String> getPublishers();
 	
+	/**
+	 * Returns the reference to the parent documentable element.
+	 * @return the reference to the parent documentable element.
+	 */
 	public abstract DocumentableObject getParent();
     
 }

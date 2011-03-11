@@ -8,6 +8,15 @@ import org.apache.log4j.Logger;
 import es.ctic.parrot.transformers.DocumentableObjectVisitor;
 import es.ctic.parrot.transformers.TransformerException;
 
+
+/**
+ * A datatype to be used as referenced by Parrot. 
+ * 
+ * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @version 1.0
+ * @since 1.0
+ * 
+ */
 public class DataType extends AbstractDocumentableObject {
 
 	private static final Logger logger = Logger.getLogger(DataType.class);

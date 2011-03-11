@@ -12,18 +12,58 @@ import java.util.Collection;
  */
 public interface OntologyClass extends DocumentableOntologicalObject {
 
+	/**
+	 * Returns the super classes.
+	 * @return the super classes.
+	 */	
     public abstract Collection<OntologyClass> getSuperClasses();
+    
+	/**
+	 * Set the super classes to this detailed view.
+	 * @param superClasses the super classes to set to this detailed view.
+	 */
     public abstract void setSuperClasses(Collection<OntologyClass> classes);
     
+	/**
+	 * Returns the sub classes.
+	 * @return the sub classes.
+	 */
     public abstract Collection<OntologyClass> getSubClasses();
+    
+	/**
+	 * Set the sub classes to this detailed view.
+	 * @param subClasses the sub classes to set to this detailed view.
+	 */
     public abstract void setSubClasses(Collection<OntologyClass> classes); 
 	
+	/**
+	 * Returns the individuals.
+	 * @return the individuals.
+	 */
     public abstract Collection<OntologyIndividual> getIndividuals();
 
+	/**
+	 * Returns the equivalent classes.
+	 * @return the equivalent classes.
+	 */
 	public abstract Collection<OntologyClass> getEquivalentClasses();
+	
+	/**
+	 * Set the equivalent classes to this detailed view.
+	 * @param equivalentClasses the equivalent classes to set.
+	 */
 	public abstract void setEquivalentClasses(Collection<OntologyClass> equivalentClasses);
 	
+	/**
+	 * Returns the disjoint classes.
+	 * @return the disjoint classes.
+	 */
 	public abstract Collection<OntologyClass> getDisjointClasses();
+	
+	/**
+	 * Set the disjoint classes to this detailed view.
+	 * @param disjointClasses the disjoint classes to set to this detailed view.
+	 */
 	public abstract void setDisjointClasses(Collection<OntologyClass> disjointClasses);
 
 }

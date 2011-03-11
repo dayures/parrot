@@ -184,8 +184,8 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
 	}
 
 	/**
-     * Returns <code>true</code> if, and only if, this property is a datatype property.
-     * @return <code>true</code> if this property is a datatype property, otherwise <code>false</code>.
+     * Returns <code>true</code> if, and only if, this property is a symmetric property.
+     * @return <code>true</code> if this property is a symmetric property, otherwise <code>false</code>.
      */
 	public boolean isSymmetricProperty() {
 		return getOntologyProperty().isSymmetricProperty();

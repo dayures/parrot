@@ -12,13 +12,52 @@ import java.util.List;
  */
 public interface Ontology extends DocumentableOntologicalObject {
 	
+	/**
+	 * Returns the preferred prefix.
+	 * @return the preferred prefix.
+	 */
 	public abstract String getPreferredPrefix();
+	
+	/**
+	 * Returns the preferred namespace.
+	 * @return the preferred namespace.
+	 */
 	public abstract String getPreferredNamespace();
+	
+	/**
+	 * Returns the version.
+	 * @return the version.
+	 */
 	public abstract String getVersion();
+	
+	/**
+	 * Returns the creators.
+	 * @return the creators.
+	 */	
 	public abstract List<String> getCreators();
+	
+	/**
+	 * Returns the contributors.
+	 * @return the contributors.
+	 */
 	public abstract List<String> getContributors();
+	
+	/**
+	 * Returns the date.
+	 * @return the date.
+	 */
 	public abstract String getDate();
+	
+	/**
+	 * Returns information about the ontology rights.
+	 * @return information about the ontology rights.
+	 */
 	public abstract String getRights();
+	
+	/**
+	 * Returns the label for the license of this ontology.
+	 * @return the label for the license of this ontology.
+	 */
 	public abstract String getLicenseLabel();
 
 }

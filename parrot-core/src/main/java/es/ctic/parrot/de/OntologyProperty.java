@@ -2,6 +2,14 @@ package es.ctic.parrot.de;
 
 import java.util.Collection;
 
+/**
+ * An ontology property to be documented by Parrot. 
+ * 
+ * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @version 1.0
+ * @since 1.0
+ * 
+ */
 public interface OntologyProperty extends DocumentableOntologicalObject {
 	public abstract DocumentableObject getRange();
 	public abstract void setRange(DocumentableObject range);

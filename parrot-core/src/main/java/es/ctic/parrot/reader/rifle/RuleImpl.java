@@ -2,7 +2,6 @@ package es.ctic.parrot.reader.rifle;
 
 import java.util.Collection;
 import java.util.Comparator;
-import java.util.LinkedList;
 import java.util.Locale;
 import java.util.Set;
 import java.util.TreeSet;
@@ -110,10 +109,6 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 	
 	public String getDate() {
 		return getAnnotationStrategy().getDate(getOntResource());
-	}
-	
-	public Collection<String> getDeclaredVars() {
-		return new LinkedList<String>();//FIXME create proper list	
 	}
 	
 	public int compareTo(DocumentableOntologicalObject o) {

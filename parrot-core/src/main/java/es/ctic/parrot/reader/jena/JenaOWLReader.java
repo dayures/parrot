@@ -23,6 +23,14 @@ import es.ctic.parrot.reader.DocumentReader;
 import es.ctic.parrot.reader.Input;
 import es.ctic.parrot.reader.ReaderException;
 
+/**
+ * A reader for OWL, RDF and RDFa input documents that uses <a href="http://www.openjena.org/">jena</a>. 
+ * 
+ * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @version 1.0
+ * @since 1.0
+ * 
+ */
 public class JenaOWLReader implements DocumentReader {
     
     private static final String XHTML = "XHTML";
@@ -31,6 +39,9 @@ public class JenaOWLReader implements DocumentReader {
     private OntModel ontModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM); // by default it is OntModelSpec.OWL_DL_MEM_RDFS_INF
     private OntResourceAnnotationStrategy annotationStrategy = new OntResourceAnnotationStrategy();
     
+    /**
+     * Constructs a reader.
+     */
     public JenaOWLReader(){ 
     	getOntModel().setStrictMode(false);
     	getOntModel().getDocumentManager().setProcessImports(false); // do NOT the imports
@@ -141,9 +152,9 @@ public class JenaOWLReader implements DocumentReader {
 	}
 	
 	/**
-	 * 
-	 * @param uri The URI to check
-	 * @return true if the URI is domain specific, false if not. if the uri is null, it returns false
+     * Returns <code>true</code> if, and only if, the URI is domain specified.
+     * @param uri the URI.
+     * @return <code>true</code> if the URI is domain specified, otherwise <code>false</code>.
 	 */
 	public static boolean isDomainSpecific(String uri) {
 		if (uri != null){
@@ -152,6 +163,11 @@ public class JenaOWLReader implements DocumentReader {
 			return false;
     }
 	
+    /**
+     * Returns <code>true</code> if, and only if, the individual is an instance of a domain specified class.
+     * @param individual the individual.
+     * @return <code>true</code> if the individual is an instance of a domain specified class, otherwise <code>false</code>.
+     */
 	private static boolean isClassDomainSpecific(Individual individual) {
     	for(OntClass ontClass : individual.listOntClasses(true).toList()){
    			if (isDomainSpecific(ontClass.getURI())){
@@ -162,19 +178,25 @@ public class JenaOWLReader implements DocumentReader {
     }
 
 	/**
-	 * @param annotationStrategy the annotationStrategy to set
+	 * Sets the annotation strategy.
+	 * @param annotationStrategy the annotation strategy to set.
 	 */
 	public void setAnnotationStrategy(OntResourceAnnotationStrategy annotationStrategy) {
 		this.annotationStrategy = annotationStrategy;
 	}
 
 	/**
-	 * @return the annotationStrategy
+	 * Returns the annotation strategy
+	 * @return the annotation strategy
 	 */
 	public OntResourceAnnotationStrategy getAnnotationStrategy() {
 		return annotationStrategy;
 	}
 
+	/**
+	 * Returns the ontModel.
+	 * @return the ontModel.
+	 */
 	public OntModel getOntModel() {
 		return ontModel;
 	}

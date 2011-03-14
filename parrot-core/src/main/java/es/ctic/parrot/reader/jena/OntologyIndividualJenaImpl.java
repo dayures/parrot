@@ -30,6 +30,12 @@ import es.ctic.parrot.transformers.TransformerException;
 public class OntologyIndividualJenaImpl extends AbstractJenaDocumentableObject
 		implements OntologyIndividual {
 
+	/**
+	 * Constructs an ontology individual.
+	 * @param ontclass the Jena individual to set.
+	 * @param register the register to set
+	 * @param annotationStrategy the annotation strategy to set.
+	 */
 	public OntologyIndividualJenaImpl(Individual individual, DocumentableObjectRegister register, OntResourceAnnotationStrategy annotationStrategy) {
 		super(individual, register, annotationStrategy);
 	}

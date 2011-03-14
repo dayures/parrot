@@ -77,6 +77,14 @@ public class OntResourceAnnotationStrategy {
 
 	private static final Logger logger = Logger.getLogger(OntResourceAnnotationStrategy.class);
 
+	
+	/**
+	 * Constructs a register (Suppress default constructor for noninstantiability).
+	 */
+	public OntResourceAnnotationStrategy() {
+		logger.debug("Created a OntResourceAnnotationStrategy");
+	}
+
 	/**
 	 * Returns the description of a resource for a locale.
 	 * The preferred order for a description is:

@@ -19,6 +19,12 @@ import es.ctic.parrot.transformers.TransformerException;
  */
 public class OntologyJenaImpl extends AbstractJenaDocumentableObject implements es.ctic.parrot.de.Ontology {
 	
+	/**
+	 * Constructs an ontology.
+	 * @param ontclass the Jena ontology to set.
+	 * @param register the register to set
+	 * @param annotationStrategy the annotation strategy to set.
+	 */
 	public OntologyJenaImpl(OntResource ontResource, DocumentableObjectRegister register, OntResourceAnnotationStrategy annotationStrategy) {
 		super(ontResource, register, annotationStrategy);
 	}

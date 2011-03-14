@@ -39,6 +39,7 @@ public abstract class AbstractJenaDocumentableObject extends
 	private OntResourceAnnotationStrategy annotationStrategy;
 
 	/**
+	 * Returns the ontResource.
 	 * @return the ontResource
 	 */
 	public OntResource getOntResource() {
@@ -53,15 +54,17 @@ public abstract class AbstractJenaDocumentableObject extends
 		logger.debug("Created a documentable object for " + ontResource);
 	}
 	
-	/** (non-Javadoc)
-	 * @see es.ctic.parrot.de.DocumentableObject#getURI()
-	 * 
-	 * @return the uri of the documentable object or null if it's a blank node
+	/**
+	 * Returns the URI of this documentable element or <code>null</code> if it's a blank node.
+	 * @return the URI of this documentable element or <code>null</code> if it's a blank node.
 	 */
 	public String getURI() {
 		return ontResource.getURI();
 	}
-	
+	/**
+	 * Returns the identifier.
+	 * @return the identifier.
+	 */
 	public Identifier getIdentifier() {
 		if (ontResource.isAnon() == true){
 			return new JenaAnonymousIdentifier(ontResource.getId());

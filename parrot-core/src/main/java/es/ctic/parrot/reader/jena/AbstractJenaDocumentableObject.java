@@ -27,6 +27,15 @@ import es.ctic.parrot.de.Rule;
 import es.ctic.parrot.de.URIIdentifier;
 import es.ctic.parrot.de.UndefinedOntologyDocumentableObject;
 
+
+/**
+ * An implementation of the DocumentableOntologicalObject interface to serve as a basis for implementing various kinds of ontology documentable elements.
+ * 
+ * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @version 1.0
+ * @since 1.0
+ *
+ */
 public abstract class AbstractJenaDocumentableObject extends
 		AbstractDocumentableObject implements DocumentableOntologicalObject {
 	
@@ -110,7 +119,7 @@ public abstract class AbstractJenaDocumentableObject extends
 	}
 
 	/**
-	 * Get the compact URI (for instance <code>foaf:name</code>) or the URI if it cannot be compact. 
+	 * Returns the compact URI (for instance <code>foaf:name</code>) or the URI if it cannot be compact. 
 	 * @return the compact URI or the URI if it cannot be compact.
 	 */
 	public String getURIAbbrev(){
@@ -125,6 +134,11 @@ public abstract class AbstractJenaDocumentableObject extends
 		return getURI().compareTo(o.getURI());
 	}
 
+    /**
+     * Converts an iterator over Jena resources to a collection of documentable elements.
+     * @param it an iterator over Jena resources.
+     * @return a collection of documentable elements.
+     */
 	@SuppressWarnings("unchecked")
 	protected <TR extends DocumentableObject, TJ extends Resource> Collection<TR> resourceIteratorToDocumentableObjectList(Iterator<TJ> it) {
 		

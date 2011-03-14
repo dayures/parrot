@@ -10,7 +10,6 @@ import java.util.Locale;
 
 import org.apache.log4j.Logger;
 
-import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntResource;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.vocabulary.OWL;
@@ -23,7 +22,6 @@ import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.de.DocumentableOntologicalObject;
 import es.ctic.parrot.de.Identifier;
 import es.ctic.parrot.de.Label;
-import es.ctic.parrot.de.OntologyClass;
 import es.ctic.parrot.de.RelatedDocument;
 import es.ctic.parrot.de.Rule;
 import es.ctic.parrot.de.URIIdentifier;
@@ -39,14 +37,6 @@ public abstract class AbstractJenaDocumentableObject extends
 	private OntResourceAnnotationStrategy annotationStrategy;
 
 	/**
-	 * Returns the ontResource.
-	 * @return the ontResource
-	 */
-	public OntResource getOntResource() {
-		return ontResource;
-	}
-
-	/**
 	 * Constructs an abstract Jena documentable element, setting the ontResource, the annotation strategy and the register.
 	 * @param ontResource the ontResource.
 	 * @param register the register.
@@ -54,10 +44,50 @@ public abstract class AbstractJenaDocumentableObject extends
 	 */
 	public AbstractJenaDocumentableObject(OntResource ontResource, DocumentableObjectRegister register, OntResourceAnnotationStrategy annotationStrategy) {
 		super();
-		this.ontResource = ontResource;
+		this.setOntResource(ontResource);
 		this.setAnnotationStrategy(annotationStrategy);
 		this.setRegister(register);
 		logger.debug("Created a documentable object for " + ontResource);
+	}
+	
+	/**
+	 * Returns the ontResource.
+	 * @return the ontResource.
+	 */
+	public OntResource getOntResource() {
+		return ontResource;
+	}
+	
+	/**
+	 * Sets the ontResource.
+	 * @param ontResource the ontResource to set.
+	 */
+	private void setOntResource(OntResource ontResource) {
+		this.ontResource = ontResource;
+	}
+	
+	public void addInverseRuleReference(Rule rule) {
+		inverseRuleReferences.add(rule);
+	}
+	
+	public Collection<Rule> getInverseRuleReferences(){
+		return Collections.unmodifiableCollection(inverseRuleReferences);
+	}
+	
+	/**
+	 * Sets the annotation strategy.
+	 * @param annotationStrategy the annotation strategy to set.
+	 */
+	private void setAnnotationStrategy(OntResourceAnnotationStrategy annotationStrategy) {
+		this.annotationStrategy = annotationStrategy;
+	}
+
+	/**
+	 * Returns the annotation strategy.
+	 * @return the annotation strategy
+	 */
+	public OntResourceAnnotationStrategy getAnnotationStrategy() {
+		return annotationStrategy;
 	}
 	
 	/**
@@ -65,17 +95,17 @@ public abstract class AbstractJenaDocumentableObject extends
 	 * @return the URI of this documentable element or <code>null</code> if it's a blank node.
 	 */
 	public String getURI() {
-		return ontResource.getURI();
+		return getOntResource().getURI();
 	}
 	/**
 	 * Returns the identifier.
 	 * @return the identifier.
 	 */
 	public Identifier getIdentifier() {
-		if (ontResource.isAnon() == true){
-			return new JenaAnonymousIdentifier(ontResource.getId());
+		if (getOntResource().isAnon() == true){
+			return new JenaAnonymousIdentifier(getOntResource().getId());
 		} else{
-			return new URIIdentifier(ontResource.getURI());
+			return new URIIdentifier(getOntResource().getURI());
 		}
 	}
 
@@ -84,39 +114,17 @@ public abstract class AbstractJenaDocumentableObject extends
 	 * @return the compact URI or the URI if it cannot be compact.
 	 */
 	public String getURIAbbrev(){
-		String ns=ontResource.getModel().getNsURIPrefix(ontResource.getNameSpace());
+		String ns=getOntResource().getModel().getNsURIPrefix(getOntResource().getNameSpace());
 		if(ns!=null){
-			return ns+":"+ontResource.getLocalName();
+			return ns+":"+getOntResource().getLocalName();
 		}
-		return ontResource.getURI();
+		return getOntResource().getURI();
 	}
 	
 	public int compareTo(DocumentableOntologicalObject o) {
 		return getURI().compareTo(o.getURI());
 	}
 
-	protected Collection<OntologyClass> ontClassIteratorToOntologyClassList(Iterator<OntClass> it) {
-		List<OntologyClass> ontologyClassList = new LinkedList<OntologyClass>();
-		
-		while(it.hasNext()){
-			OntClass clazz=it.next();
-			
-			Identifier identifier = null;
-			
-			if (clazz.isAnon() == false){
-				identifier = new URIIdentifier(clazz.getURI());
-			} else {
-				identifier = new JenaAnonymousIdentifier(clazz.getId());
-			}
-
-			OntologyClass _class = (OntologyClass) this.getRegister().findDocumentableObject(identifier); 
-			if (_class != null) { // do not add null elements in the list 
-				ontologyClassList.add(_class);
-			}
-		}
-		return ontologyClassList;
-	}
-	
 	@SuppressWarnings("unchecked")
 	protected <TR extends DocumentableObject, TJ extends Resource> Collection<TR> resourceIteratorToDocumentableObjectList(Iterator<TJ> it) {
 		
@@ -153,14 +161,6 @@ public abstract class AbstractJenaDocumentableObject extends
 			}
 		}
 		return documentableObjectList;
-	}
-	
-	public void addInverseRuleReference(Rule rule) {
-		inverseRuleReferences.add(rule);
-	}
-	
-	public Collection<Rule> getInverseRuleReferences(){
-		return Collections.unmodifiableCollection(inverseRuleReferences);
 	}
 	
 	/**
@@ -205,23 +205,6 @@ public abstract class AbstractJenaDocumentableObject extends
 			return null;
 		}
     }
-
-
-	/**
-	 * Sets the annotation strategy.
-	 * @param annotationStrategy the annotation strategy to set.
-	 */
-	public void setAnnotationStrategy(OntResourceAnnotationStrategy annotationStrategy) {
-		this.annotationStrategy = annotationStrategy;
-	}
-
-	/**
-	 * Returns the annotation strategy.
-	 * @return the annotation strategy
-	 */
-	public OntResourceAnnotationStrategy getAnnotationStrategy() {
-		return annotationStrategy;
-	}
 	
 	public boolean isDeprecated(){
 		return getAnnotationStrategy().isDeprecated(getOntResource());

@@ -75,10 +75,6 @@ public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
 		}	
 	}
 	
-	public Collection<String> getDeclaredVars() {
-		return new LinkedList<String>();//FIXME create proper list	
-	}
-	
 	public int compareTo(DocumentableOntologicalObject o) {
 		return getURI().compareTo(o.getURI());
 	}

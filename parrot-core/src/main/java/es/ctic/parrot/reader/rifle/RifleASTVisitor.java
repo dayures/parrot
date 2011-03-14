@@ -111,7 +111,7 @@ public class RifleASTVisitor extends Visitor {
 	 * Sets the annotation strategy. 
 	 * @param annotationStrategy the annotation strategy to set.
 	 */
-	public void setAnnotationStrategy(OntResourceAnnotationStrategy annotationStrategy) {
+	private void setAnnotationStrategy(OntResourceAnnotationStrategy annotationStrategy) {
 		this.annotationStrategy = annotationStrategy;
 	}
 
@@ -127,7 +127,7 @@ public class RifleASTVisitor extends Visitor {
 	 * Sets the ontModel.
 	 * @param ontModel the ontModel to set.
 	 */
-	public void setOntModel(OntModel ontModel) {
+	private void setOntModel(OntModel ontModel) {
 		this.ontModel = ontModel;
 	}
 
@@ -143,7 +143,7 @@ public class RifleASTVisitor extends Visitor {
 	 * Sets the register.
 	 * @param register the register to set.
 	 */
-	public void setRegister(DocumentableObjectRegister register) {
+	private void setRegister(DocumentableObjectRegister register) {
 		this.register = register;
 	}
 

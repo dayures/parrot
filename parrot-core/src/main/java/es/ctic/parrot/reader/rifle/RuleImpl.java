@@ -42,6 +42,13 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 	
 	private static final Logger logger = Logger.getLogger(RuleImpl.class);
 
+	/**
+ 	 * Constructs a rule.
+	 * @param rule the rule.
+	 * @param register the register.
+	 * @param annotationStrategy the annotation strategy.
+	 * @param ontModel the ontModel.
+	 */
 	public RuleImpl(net.sourceforge.rifle.ast.Rule rule, DocumentableObjectRegister register, OntResourceAnnotationStrategy annotationStrategy, OntModel ontModel) {
 		this.setRule(rule);
 		this.setAnnotationStrategy(annotationStrategy);

@@ -19,6 +19,14 @@ import es.ctic.parrot.de.URIIdentifier;
 import es.ctic.parrot.transformers.DocumentableObjectVisitor;
 import es.ctic.parrot.transformers.TransformerException;
 
+/**
+ * An implementation of the OntologyIndividual interface coupled to <a href="http://openjena.org/">Jena</a>.
+ * 
+ * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @version 1.0
+ * @since 1.0
+ *
+ */
 public class OntologyIndividualJenaImpl extends AbstractJenaDocumentableObject
 		implements OntologyIndividual {
 

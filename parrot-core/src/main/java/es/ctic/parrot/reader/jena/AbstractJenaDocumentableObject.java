@@ -46,6 +46,12 @@ public abstract class AbstractJenaDocumentableObject extends
 		return ontResource;
 	}
 
+	/**
+	 * Constructs an abstract Jena documentable element, setting the ontResource, the annotation strategy and the register.
+	 * @param ontResource the ontResource.
+	 * @param register the register.
+	 * @param annotationStrategy the annotation strategy.
+	 */
 	public AbstractJenaDocumentableObject(OntResource ontResource, DocumentableObjectRegister register, OntResourceAnnotationStrategy annotationStrategy) {
 		super();
 		this.ontResource = ontResource;
@@ -73,6 +79,10 @@ public abstract class AbstractJenaDocumentableObject extends
 		}
 	}
 
+	/**
+	 * Get the compact URI (for instance <code>foaf:name</code>) or the URI if it cannot be compact. 
+	 * @return the compact URI or the URI if it cannot be compact.
+	 */
 	public String getURIAbbrev(){
 		String ns=ontResource.getModel().getNsURIPrefix(ontResource.getNameSpace());
 		if(ns!=null){
@@ -154,9 +164,9 @@ public abstract class AbstractJenaDocumentableObject extends
 	}
 	
 	/**
-	 * 
-	 * @param uri The URI to check
-	 * @return true if the URI is domain specific, false if not
+     * Returns <code>true</code> if, and only if, the URI is domain specified.
+     * @param uri the URI.
+     * @return <code>true</code> if the URI is domain specified, otherwise <code>false</code>.
 	 */
 	public static boolean isDomainSpecific(String uri) {
        	return !uri.startsWith(RDFS.getURI()) && !uri.startsWith(RDF.getURI()) && !uri.startsWith(OWL.getURI());

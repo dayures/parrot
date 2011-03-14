@@ -42,6 +42,12 @@ public class OntologyClassJenaImpl extends AbstractJenaDocumentableObject implem
 	private Collection<OntologyClass> disjointClasses;
 	private Collection<OntologyIndividual> individuals;
 	
+	/**
+	 * Constructs an ontology class.
+	 * @param ontclass the Jena ontClass to set.
+	 * @param register the register to set
+	 * @param annotationStrategy the annotation strategy to set.
+	 */
 	public OntologyClassJenaImpl(OntClass ontclass, DocumentableObjectRegister register, OntResourceAnnotationStrategy annotationStrategy){
 		super(ontclass, register, annotationStrategy);
 	}

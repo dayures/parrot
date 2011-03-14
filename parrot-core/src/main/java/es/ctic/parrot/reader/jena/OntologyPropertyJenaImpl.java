@@ -53,6 +53,12 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 		return getOntResource().asProperty();
 	}
     
+	/**
+	 * Constructs an ontology property.
+	 * @param ontclass the Jena ontProperty to set.
+	 * @param register the register to set
+	 * @param annotationStrategy the annotation strategy to set.
+	 */
     public OntologyPropertyJenaImpl(OntProperty ontProperty, DocumentableObjectRegister register, OntResourceAnnotationStrategy annotationStrategy) {
     	super(ontProperty, register, annotationStrategy);
     }

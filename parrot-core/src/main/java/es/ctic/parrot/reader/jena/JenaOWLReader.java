@@ -156,7 +156,7 @@ public class JenaOWLReader implements DocumentReader {
      * @param uri the URI.
      * @return <code>true</code> if the URI is domain specified, otherwise <code>false</code>.
 	 */
-	public static boolean isDomainSpecific(String uri) {
+	private static boolean isDomainSpecific(String uri) {
 		if (uri != null){
 			return !uri.startsWith(RDFS.getURI()) && !uri.startsWith(RDF.getURI()) && !uri.startsWith(OWL.getURI());
 		} else 

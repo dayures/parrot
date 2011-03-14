@@ -195,14 +195,16 @@ public abstract class AbstractJenaDocumentableObject extends
 
 
 	/**
-	 * @param annotationStrategy the annotationStrategy to set
+	 * Sets the annotation strategy.
+	 * @param annotationStrategy the annotation strategy to set.
 	 */
 	public void setAnnotationStrategy(OntResourceAnnotationStrategy annotationStrategy) {
 		this.annotationStrategy = annotationStrategy;
 	}
 
 	/**
-	 * @return the annotationStrategy
+	 * Returns the annotation strategy.
+	 * @return the annotation strategy
 	 */
 	public OntResourceAnnotationStrategy getAnnotationStrategy() {
 		return annotationStrategy;

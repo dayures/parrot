@@ -68,6 +68,19 @@ public class OntResourceAnnotationStrategy {
 
 	private static final Logger logger = Logger.getLogger(OntResourceAnnotationStrategy.class);
 
+	/**
+	 * Returns the description of a resource for a locale.
+	 * The preferred order for a description is:
+	 * <ul>
+	 * 	<li>http://purl.org/dc/terms/description</li>
+	 * 	<li>http://purl.org/dc/elements/1.1/description</li>
+	 *  <li>http://www.w3.org/2000/01/rdf-schema#comment</li>
+	 * </ul>
+	 *  
+	 * @param ontResource the ontology resource.
+	 * @param locale the locale.
+	 * @return the description or <code>null</code> if there is the resource has no description for that locale.
+	 */
 	public String getComment(OntResource ontResource, Locale locale) {
 
     	if (ontResource == null){
@@ -144,13 +157,24 @@ public class OntResourceAnnotationStrategy {
     public String getLabel(OntResource ontResource) {
         return this.getLabel(ontResource, null);
     }
-	
-    /**
-     * 
-     * @param ontResource
-     * @param locale 
-     * @return the best label associated to the resource. The method use the locale element if it is provided
-     */
+    
+	/**
+	 * Returns the best label associated, using the locale element if it is provided.
+	 * 
+ 	 * The preferred order for a description is:
+	 * <ul>
+	 * 	<li>http://www.w3.org/2008/05/skos-xl#prefLabel</li>
+	 * 	<li>http://www.w3.org/2008/05/skos-xl#altLabel</li>
+	 *  <li>http://www.w3.org/2004/02/skos/core#prefLabel</li>
+	 *  <li>http://www.w3.org/2004/02/skos/core#altLabel</li>
+	 *  <li>http://purl.org/dc/elements/1.1/title</li>
+	 *  <li>http://www.w3.org/2000/01/rdf-schema#label</li>
+	 * </ul>
+
+	 * @param ontResource the ontology resource.
+	 * @param locale the locale.
+	 * @return the best label associated, using the locale element if it is provided.
+	 */
     public String getLabel(OntResource ontResource, Locale locale) {
 
     	Collection<Label> labels = getLabels(ontResource, locale);
@@ -563,9 +587,9 @@ public class OntResourceAnnotationStrategy {
 	}
 	
 	/**
-	 * 
-	 * @param ontResource
-	 * @return teh URI of the license or null if there is no license URI
+	 * Returns the URI of the license associated or <code>null</code> if there is no license URI associated.
+	 * @param ontResource the ontResource.
+	 * @return the URI of the license associated or <code>null</code> if there is no license URI associated.
 	 */
 	public String getLicenseLabel(OntResource ontResource) {
 

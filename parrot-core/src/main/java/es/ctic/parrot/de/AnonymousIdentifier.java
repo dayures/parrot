@@ -12,7 +12,6 @@ public class AnonymousIdentifier implements Identifier {
 
     private final int internalId;
     
-    
     /**
      * Constructs an anonymous identifier.
      */

@@ -21,6 +21,11 @@ public class DataType extends AbstractDocumentableObject {
 
 	private static final Logger logger = Logger.getLogger(DataType.class);
 
+    
+    /**
+     * Constructs a datatype for the given URI.
+     * @param uri the URI.
+     */
 	public DataType(String uri) {
 		super();
 		this.uri = uri;

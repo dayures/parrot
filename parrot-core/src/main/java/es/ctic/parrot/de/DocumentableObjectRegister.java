@@ -19,6 +19,13 @@ public class DocumentableObjectRegister {
     private static final Logger logger = Logger.getLogger(DocumentableObjectRegister.class);
     
     private Map<Identifier, DocumentableObject> documentableObjects = new HashMap<Identifier, DocumentableObject>();
+    
+    /**
+     * Constructs a register (Suppress default constructor for noninstantiability).
+     */
+	public DocumentableObjectRegister() {
+		logger.debug("Created DocumentableObjectRegister");
+	}
 
     /**
      * Register a given documentable element.

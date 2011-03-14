@@ -63,6 +63,12 @@ public class RelatedDocument {
 	private String uri;
 	private Type type;
 	private String sourceText;
+	
+    /**
+     * Constructs a register (Suppress default constructor for noninstantiability).
+     */
+	public RelatedDocument() {
+	}
 
 	/**
 	 * Sets the title.

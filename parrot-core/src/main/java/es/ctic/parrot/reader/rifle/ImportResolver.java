@@ -16,7 +16,7 @@ import es.ctic.parrot.reader.URLInput;
 import es.ctic.parrot.reader.jena.JenaOWLReader;
 
 /**
- * This class hold the methods to import documents (usually <code>owl:imports</code> and <code>rif:Import</code>).
+ * This class hold the methods to import documents (<code>rif:Import</code>).
  * 
  * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
  * @version 1.0
@@ -49,7 +49,7 @@ public class ImportResolver {
     }
 
     /**
-     * Resolver the import documents (usually <code>owl:imports</code> and <code>rif:Import</code>) of the document given.
+     * Resolver the import documents (<code>rif:Import</code>) of the document given.
      * @param document the document.
      * @param register the register.
 	 * @throws IOException if a failed or interrupted I/O operation occurs, usually during the initial reading of inputs.

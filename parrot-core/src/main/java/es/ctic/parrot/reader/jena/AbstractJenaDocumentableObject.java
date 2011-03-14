@@ -30,7 +30,7 @@ import es.ctic.parrot.de.URIIdentifier;
 import es.ctic.parrot.de.UndefinedOntologyDocumentableObject;
 
 public abstract class AbstractJenaDocumentableObject extends
-		AbstractDocumentableObject {
+		AbstractDocumentableObject implements DocumentableOntologicalObject {
 	
 	private static final Logger logger = Logger.getLogger(AbstractJenaDocumentableObject.class);
 	

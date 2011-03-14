@@ -24,6 +24,14 @@ import es.ctic.parrot.reader.jena.OntResourceAnnotationStrategy;
 import es.ctic.parrot.transformers.DocumentableObjectVisitor;
 import es.ctic.parrot.transformers.TransformerException;
 
+/**
+ * An implementation of the Rule (documentable element) interface.
+ * 
+ * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @version 1.0
+ * @since 1.0
+ *
+ */
 public class RuleImpl extends AbstractDocumentableObject implements Rule {
 	
 	private net.sourceforge.rifle.ast.Rule rule;
@@ -35,7 +43,7 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 	private static final Logger logger = Logger.getLogger(RuleImpl.class);
 
 	public RuleImpl(net.sourceforge.rifle.ast.Rule rule, DocumentableObjectRegister register, OntResourceAnnotationStrategy annotationStrategy, OntModel ontModel) {
-		this.rule = rule;
+		this.setRule(rule);
 		this.setAnnotationStrategy(annotationStrategy);
 		this.setRegister(register);
 		if (rule.getId() == null) {
@@ -59,7 +67,7 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 	}
 	
 	public String getURI() {
-		if (rule.getId() == null) {
+		if (getRule().getId() == null) {
 		    return null;
 		} else {
 			return getIdentifier().toString();
@@ -119,7 +127,7 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 		
 		Set<DocumentableOntologicalObject> referencedOntologicalObjects = new TreeSet<DocumentableOntologicalObject>(new DocumentableObjectComparator());
 		
-		for(String uriConst : rule.getUriConsts()){
+		for(String uriConst : getRule().getUriConsts()){
 			URIIdentifier uriIdentifier = new URIIdentifier(uriConst);
 			try {
 				DocumentableOntologicalObject documentableOntologicalObject = (DocumentableOntologicalObject) this.getRegister().findDocumentableObject(uriIdentifier);
@@ -137,21 +145,24 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 	}
 
 	/**
-	 * @param ontResource the ontResource to set
+	 * Sets the ontResource.
+	 * @param ontResource the ontResource to set.
 	 */
 	public void setOntResource(OntResource ontResource) {
 		this.ontResource = ontResource;
 	}
 
 	/**
-	 * @return the ontResource
+	 * Returns the ontResource.
+	 * @return the ontResource.
 	 */
 	public OntResource getOntResource() {
 		return ontResource;
 	}
 	
 	/**
-	 * @param parent the parent to set
+	 * Sets the parent element.
+	 * @param parent the parent to set.
 	 */
 	public void setParent(DocumentableObject parent) {
 		this.parent = parent;
@@ -170,17 +181,35 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
     }
 
 	/**
-	 * @param annotationStrategy the annotationStrategy to set
+	 * Sets the annotation strategy.
+	 * @param annotationStrategy the annotation strategy to set.
 	 */
 	public void setAnnotationStrategy(OntResourceAnnotationStrategy annotationStrategy) {
 		this.annotationStrategy = annotationStrategy;
 	}
 
 	/**
-	 * @return the annotationStrategy
+	 * Returns the annotation strategy.
+	 * @return the annotation strategy.
 	 */
 	public OntResourceAnnotationStrategy getAnnotationStrategy() {
 		return annotationStrategy;
+	}
+
+	/**
+	 * Sets the rule.
+	 * @param rule the rule to set.
+	 */
+	private void setRule(net.sourceforge.rifle.ast.Rule rule) {
+		this.rule = rule;
+	}
+
+	/**
+	 * Returns the rule.
+	 * @return the rule.
+	 */
+	public net.sourceforge.rifle.ast.Rule getRule() {
+		return rule;
 	}
     
 }

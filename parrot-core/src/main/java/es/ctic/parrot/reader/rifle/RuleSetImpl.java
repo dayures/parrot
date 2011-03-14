@@ -26,6 +26,14 @@ import es.ctic.parrot.reader.jena.OntResourceAnnotationStrategy;
 import es.ctic.parrot.transformers.DocumentableObjectVisitor;
 import es.ctic.parrot.transformers.TransformerException;
 
+/**
+ * An implementation of the Rule set (documentable element) interface.
+ * 
+ * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @version 1.0
+ * @since 1.0
+ *
+ */
 public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
 	
 	private net.sourceforge.rifle.ast.Group ruleSet;
@@ -53,7 +61,55 @@ public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
 		ontModel.add(ruleSet.getIriMeta());
     	this.setOntResource(ontModel.getOntResource(getURI()));
 	}
+	
+	/**
+	 * Sets the parent element.
+	 * @param parent the parent to set.
+	 */
+	public void setParent(DocumentableObject parent) {
+		this.parent = parent;
+	}
 
+	/**
+	 * Returns the parent
+	 * @return the parent
+	 */
+	public DocumentableObject getParent() {
+		return parent;
+	}
+    
+	/**
+	 * Sets the annotation strategy.
+	 * @param annotationStrategy the annotation strategy to set.
+	 */
+	public void setAnnotationStrategy(OntResourceAnnotationStrategy annotationStrategy) {
+		this.annotationStrategy = annotationStrategy;
+	}
+
+	/**
+	 * Returns the annotation strategy.
+	 * @return the annotation strategy.
+	 */
+	public OntResourceAnnotationStrategy getAnnotationStrategy() {
+		return annotationStrategy;
+	}
+	
+	/**
+	 * Sets the ontResource.
+	 * @param ontResource the ontResource to set.
+	 */
+	public void setOntResource(OntResource ontResource) {
+		this.ontResource = ontResource;
+	}
+
+	/**
+	 * Returns the ontResource.
+	 * @return the ontResource.
+	 */
+	public OntResource getOntResource() {
+		return ontResource;
+	}
+	
 	public Object accept(DocumentableObjectVisitor visitor) throws TransformerException {
 		return visitor.visit(this);
 	}
@@ -62,11 +118,6 @@ public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
 		return identifier;
 	}
 	
-	/** (non-Javadoc)
-	 * @see es.ctic.parrot.de.DocumentableObject#getURI()
-	 * 
-	 * @return the uri (id) of the ruleset or null if the ruleset has not id
-	 */
 	public String getURI() {
 		if (ruleSet.getId() == null) {
 		    return null;
@@ -79,26 +130,10 @@ public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
 		return getURI().compareTo(o.getURI());
 	}
 
-
-	/**
-	 * @param ontResource the ontResource to set
-	 */
-	public void setOntResource(OntResource ontResource) {
-		this.ontResource = ontResource;
-	}
-
-	/**
-	 * @return the ontResource
-	 */
-	public OntResource getOntResource() {
-		return ontResource;
-	}
-	
 	public Collection<DocumentableOntologicalObject> getReferencedOntologicalObjects() {
 		Set<DocumentableOntologicalObject> referencedOntologicalObjects = new TreeSet<DocumentableOntologicalObject>(new DocumentableObjectComparator());
 		// FIXME implement this method properly
 		return referencedOntologicalObjects;
-
 	}
 
 	public Collection<Rule> getRules() {
@@ -133,17 +168,6 @@ public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
 		return ruleSet.getPriority();
 	}
 
-	public DocumentableObject getParent() {
-		return this.parent;
-	}
-
-	/**
-	 * @param parent the parent to set
-	 */
-	public void setParent(DocumentableObject parent) {
-		this.parent = parent;
-	}
-
 	public Collection<RuleSet> getRuleSets() {
 		return Collections.unmodifiableCollection(astGroupCollectionToRuleSetCollection(ruleSet.getGroups()));
 
@@ -173,20 +197,6 @@ public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
     public String getKindString() {
         return Kind.RULE_SET.toString();
     }
-    
-	/**
-	 * @param annotationStrategy the annotationStrategy to set
-	 */
-	public void setAnnotationStrategy(OntResourceAnnotationStrategy annotationStrategy) {
-		this.annotationStrategy = annotationStrategy;
-	}
-
-	/**
-	 * @return the annotationStrategy
-	 */
-	public OntResourceAnnotationStrategy getAnnotationStrategy() {
-		return annotationStrategy;
-	}
     
     /****************************************************************************/
     
@@ -234,7 +244,6 @@ public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
 	public String getDate() {
 		return getAnnotationStrategy().getDate(getOntResource());
 	}
-
 
 }
 

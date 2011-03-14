@@ -31,6 +31,11 @@ public class RiflePSReader extends ImportResolver implements DocumentReader {
 
     private static final Logger logger = Logger.getLogger(RiflePSReader.class);
     
+    /**
+     * Constructs a RIF PS reader.
+     * @param ontologyReader the ontology reader.
+     * @param rifXmlReader the RIF XML reader.
+     */
     public RiflePSReader(JenaOWLReader ontologyReader, DocumentReader rifXmlReader) {
         super(ontologyReader, rifXmlReader);
     }

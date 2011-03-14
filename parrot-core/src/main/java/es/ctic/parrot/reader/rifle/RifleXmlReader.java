@@ -23,6 +23,10 @@ import es.ctic.parrot.reader.jena.JenaOWLReader;
  */
 public class RifleXmlReader extends ImportResolver implements DocumentReader {
 
+    /**
+     * Constructs a RIF XML reader.
+     * @param ontologyReader the ontology reader.
+     */
     public RifleXmlReader(JenaOWLReader ontologyReader) {
         super(ontologyReader);
         setRifXmlReader(this);

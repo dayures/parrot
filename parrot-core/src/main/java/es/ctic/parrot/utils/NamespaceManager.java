@@ -22,7 +22,7 @@ public class NamespaceManager {
 	}
 	
 	/**
-	 * Get the compact URI (for instance <code>foaf:name</code>) from a given URI. 
+	 * Returns the compact URI (for instance <code>foaf:name</code>) from a given URI. 
 	 * @param uri the URI.
 	 * @return the compact URI.
 	 */
@@ -45,7 +45,7 @@ public class NamespaceManager {
 	}
 	
 	/**
-	 * Set a namespace manager.
+	 * Sets a namespace manager.
 	 * @param ns a namespace manager.
 	 */
 	public void setNamespaces(Map<String,String> ns){

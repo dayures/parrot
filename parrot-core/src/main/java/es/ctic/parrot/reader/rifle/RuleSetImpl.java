@@ -45,6 +45,14 @@ public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
 	
 	private static final Logger logger = Logger.getLogger(RuleSetImpl.class);
 	
+	/**
+ 	 * Constructs a rule set.
+	 * @param group the rule set.
+	 * @param register the register.
+	 * @param annotationStrategy the annotation strategy.
+	 * @param ontModel the ontModel.
+	 */
+
 	public RuleSetImpl(net.sourceforge.rifle.ast.Group group, DocumentableObjectRegister register, OntResourceAnnotationStrategy annotationStrategy, OntModel ontModel) {
 		this.ruleSet = group;
 		this.setRegister(register);

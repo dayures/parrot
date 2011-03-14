@@ -35,7 +35,6 @@ import es.ctic.parrot.transformers.TransformerException;
 public class OntologyClassJenaImpl extends AbstractJenaDocumentableObject implements OntologyClass{
 
 	private static final Logger logger = Logger.getLogger(OntologyClassJenaImpl.class);
-
 	
     private Collection<OntologyClass> superClasses;
 	private Collection<OntologyClass> subClasses;
@@ -55,7 +54,7 @@ public class OntologyClassJenaImpl extends AbstractJenaDocumentableObject implem
         }
 	}
 	
-	public OntClass getOntClass(){
+	private OntClass getOntClass(){
 		return  getOntResource().asClass();
 	}
 

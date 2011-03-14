@@ -20,7 +20,7 @@ import es.ctic.parrot.transformers.DocumentableObjectVisitor;
 import es.ctic.parrot.transformers.TransformerException;
 
 /**
- * An implementation of the OntologyIndividual interface coupled to <a href="http://openjena.org/">Jena</a>.
+ * An implementation of the OntologyIndividual (documentable element) interface coupled to <a href="http://openjena.org/">Jena</a>.
  * 
  * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
  * @version 1.0
@@ -34,7 +34,7 @@ public class OntologyIndividualJenaImpl extends AbstractJenaDocumentableObject
 		super(individual, register, annotationStrategy);
 	}
 	
-	public Individual getIndividual(){
+	private Individual getIndividual(){
 		return getOntResource().asIndividual();
 	}
 
@@ -47,7 +47,7 @@ public class OntologyIndividualJenaImpl extends AbstractJenaDocumentableObject
 	}
 	
 	public Collection<OntologyClass> getTypes() {
-		ExtendedIterator<OntClass> it = ((Individual) getOntResource()).listOntClasses(true);
+		ExtendedIterator<OntClass> it = getIndividual().listOntClasses(true);
 		Filter<OntClass> f = new FilterByNamespace(OWL.NS);
 		
 		return ontClassIteratorToOntologyClassList(it.filterDrop(f));

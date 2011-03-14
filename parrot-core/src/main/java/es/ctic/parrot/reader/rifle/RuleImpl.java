@@ -57,6 +57,70 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 		ontModel.add(rule.getIriMeta());
     	this.setOntResource(ontModel.getOntResource(getURI()));
 	}
+	
+	/**
+	 * Sets the annotation strategy.
+	 * @param annotationStrategy the annotation strategy to set.
+	 */
+	private void setAnnotationStrategy(OntResourceAnnotationStrategy annotationStrategy) {
+		this.annotationStrategy = annotationStrategy;
+	}
+
+	/**
+	 * Returns the annotation strategy.
+	 * @return the annotation strategy.
+	 */
+	public OntResourceAnnotationStrategy getAnnotationStrategy() {
+		return annotationStrategy;
+	}
+
+	/**
+	 * Sets the rule.
+	 * @param rule the rule to set.
+	 */
+	private void setRule(net.sourceforge.rifle.ast.Rule rule) {
+		this.rule = rule;
+	}
+
+	/**
+	 * Returns the rule.
+	 * @return the rule.
+	 */
+	public net.sourceforge.rifle.ast.Rule getRule() {
+		return rule;
+	}
+	
+	/**
+	 * Sets the ontResource.
+	 * @param ontResource the ontResource to set.
+	 */
+	private void setOntResource(OntResource ontResource) {
+		this.ontResource = ontResource;
+	}
+
+	/**
+	 * Returns the ontResource.
+	 * @return the ontResource.
+	 */
+	public OntResource getOntResource() {
+		return ontResource;
+	}
+	
+	/**
+	 * Sets the parent element.
+	 * @param parent the parent to set.
+	 */
+	public void setParent(DocumentableObject parent) {
+		this.parent = parent;
+	}
+
+	/**
+	 * Returns the parent
+	 * @return the parent
+	 */
+	public DocumentableObject getParent() {
+		return parent;
+	}
 
 	public Object accept(DocumentableObjectVisitor visitor) throws TransformerException {
 		return visitor.visit(this);
@@ -144,73 +208,9 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 		
 	}
 
-	/**
-	 * Sets the ontResource.
-	 * @param ontResource the ontResource to set.
-	 */
-	public void setOntResource(OntResource ontResource) {
-		this.ontResource = ontResource;
-	}
-
-	/**
-	 * Returns the ontResource.
-	 * @return the ontResource.
-	 */
-	public OntResource getOntResource() {
-		return ontResource;
-	}
-	
-	/**
-	 * Sets the parent element.
-	 * @param parent the parent to set.
-	 */
-	public void setParent(DocumentableObject parent) {
-		this.parent = parent;
-	}
-
-	/**
-	 * Returns the parent
-	 * @return the parent
-	 */
-	public DocumentableObject getParent() {
-		return parent;
-	}
-	
     public String getKindString() {
         return Kind.RULE.toString();
     }
-
-	/**
-	 * Sets the annotation strategy.
-	 * @param annotationStrategy the annotation strategy to set.
-	 */
-	public void setAnnotationStrategy(OntResourceAnnotationStrategy annotationStrategy) {
-		this.annotationStrategy = annotationStrategy;
-	}
-
-	/**
-	 * Returns the annotation strategy.
-	 * @return the annotation strategy.
-	 */
-	public OntResourceAnnotationStrategy getAnnotationStrategy() {
-		return annotationStrategy;
-	}
-
-	/**
-	 * Sets the rule.
-	 * @param rule the rule to set.
-	 */
-	private void setRule(net.sourceforge.rifle.ast.Rule rule) {
-		this.rule = rule;
-	}
-
-	/**
-	 * Returns the rule.
-	 * @return the rule.
-	 */
-	public net.sourceforge.rifle.ast.Rule getRule() {
-		return rule;
-	}
     
 }
 

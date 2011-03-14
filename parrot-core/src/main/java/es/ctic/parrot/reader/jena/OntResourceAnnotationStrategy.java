@@ -3,7 +3,6 @@ package es.ctic.parrot.reader.jena;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Locale;
 
 import org.apache.log4j.Logger;
@@ -648,7 +647,7 @@ public class OntResourceAnnotationStrategy {
 	 * @param ontResource the ontResource.
 	 * @return the creators.
 	 */	
-	public List<String> getCreators(OntResource ontResource) {
+	public Collection<String> getCreators(OntResource ontResource) {
 		return getLiteralPropertyValues(ontResource, DC_CREATOR);
 	}
 
@@ -657,7 +656,7 @@ public class OntResourceAnnotationStrategy {
 	 * @param ontResource the ontResource.
 	 * @return the contributors.
 	 */
-	public List<String> getContributors(OntResource ontResource) {
+	public Collection<String> getContributors(OntResource ontResource) {
 		return getLiteralPropertyValues(ontResource, DC_CONTRIBUTOR);
 	}
 	
@@ -666,7 +665,7 @@ public class OntResourceAnnotationStrategy {
 	 * @param ontResource the ontResource.
 	 * @return the publishers.
 	 */
-	public List<String> getPublishers(OntResource ontResource) {
+	public Collection<String> getPublishers(OntResource ontResource) {
 		return getLiteralPropertyValues(ontResource, DC_PUBLISHER);
 	}
 	
@@ -748,7 +747,7 @@ public class OntResourceAnnotationStrategy {
 	 * @param property the URI of the property.
 	 * @return a list of strings, the lexical values of the literal properties.
 	 */
-	private List<String> getLiteralPropertyValues(OntResource ontResource, String property) {
+	private Collection<String> getLiteralPropertyValues(OntResource ontResource, String property) {
     	if (ontResource == null){
     		return new ArrayList<String>();
     	}
@@ -775,7 +774,7 @@ public class OntResourceAnnotationStrategy {
 	 */
 	private String getLiteralPropertyValue(OntResource ontResource, String property) {
         
-        List<String> literalPropertyValues = getLiteralPropertyValues(ontResource, property);
+		Collection<String> literalPropertyValues = getLiteralPropertyValues(ontResource, property);
 
         if (literalPropertyValues.isEmpty()){
         	return null;

@@ -21,12 +21,12 @@ public class OntologyJenaImpl extends AbstractJenaDocumentableObject implements 
 	
 	/**
 	 * Constructs an ontology.
-	 * @param ontclass the Jena ontology to set.
+	 * @param ontology the Jena ontology to set.
 	 * @param register the register to set
 	 * @param annotationStrategy the annotation strategy to set.
 	 */
-	public OntologyJenaImpl(OntResource ontResource, DocumentableObjectRegister register, OntResourceAnnotationStrategy annotationStrategy) {
-		super(ontResource, register, annotationStrategy);
+	public OntologyJenaImpl(OntResource ontology, DocumentableObjectRegister register, OntResourceAnnotationStrategy annotationStrategy) {
+		super(ontology, register, annotationStrategy);
 	}
 
 	public Object accept(DocumentableObjectVisitor visitor) throws TransformerException {

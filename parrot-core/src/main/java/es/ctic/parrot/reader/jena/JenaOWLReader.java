@@ -24,7 +24,7 @@ import es.ctic.parrot.reader.Input;
 import es.ctic.parrot.reader.ReaderException;
 
 /**
- * A reader for OWL, RDF and RDFa input documents that uses <a href="http://www.openjena.org/">jena</a>. 
+ * A reader for OWL, RDF and RDFa input documents that uses <a href="http://www.openjena.org/">Jena</a>. 
  * 
  * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
  * @version 1.0
@@ -46,10 +46,7 @@ public class JenaOWLReader implements DocumentReader {
     	getOntModel().setStrictMode(false);
     	getOntModel().getDocumentManager().setProcessImports(false); // do NOT the imports
     }
-	
-	/* (non-Javadoc)
-	 * @see es.ctic.parrot.reader.DocumentReader#readDocumentableObjects(es.ctic.parrot.reader.Input, es.ctic.parrot.de.DocumentableObjectRegister)
-	 */
+
 	public void readDocumentableObjects(Input input, DocumentableObjectRegister register) throws IOException, ReaderException {
         
         try {
@@ -83,7 +80,12 @@ public class JenaOWLReader implements DocumentReader {
         }
         
 	}
-
+	
+	/**
+     * Returns the language of the serialization for Jena.
+     * @param input the input
+     * @return the language of the serialization for Jena.
+	 */
 	private static String getJenaFormat(Input input) {
 	    if ("application/rdf+xml".equals(input.getMimeType())) {
 	        return "RDF/XML";
@@ -100,6 +102,11 @@ public class JenaOWLReader implements DocumentReader {
 	    }
     }
 
+	/**
+     * Register the classes (only domain specified) that are in the model.
+     * @param model the model to query.
+     * @param register the register.
+	 */
     private void loadOntClasses(OntModel model, DocumentableObjectRegister register) {
 		Iterator<OntClass> it= model.listNamedClasses();
 		while(it.hasNext()){
@@ -111,6 +118,11 @@ public class JenaOWLReader implements DocumentReader {
 		}
 	}
 	
+	/**
+     * Register the properties (only domain specified) that are in the model.
+     * @param model the model to query.
+     * @param register the register.
+	 */
 	private void loadOntProperties(OntModel model, DocumentableObjectRegister register) {
 	    Iterator<OntProperty> it = model.listAllOntProperties();
 	    while (it.hasNext()) {
@@ -122,6 +134,11 @@ public class JenaOWLReader implements DocumentReader {
 	    }
 	}
 	
+	/**
+     * Register the ontologies that are in the model.
+     * @param model the model to query.
+     * @param register the register.
+	 */
 	private void loadOntology(OntModel model, DocumentableObjectRegister register) {
 	    Iterator<Ontology> it = model.listOntologies();
 	    while (it.hasNext()) {
@@ -131,6 +148,11 @@ public class JenaOWLReader implements DocumentReader {
 	    }
 	}
 
+	/**
+     * Register the individuals (only domain specified) that are in the model.
+     * @param model the model to query.
+     * @param register the register.
+	 */
 	private void loadOntIndividuals(OntModel model, DocumentableObjectRegister register) {
 	    Iterator<Individual> it = model.listIndividuals();
 	    while (it.hasNext()) {

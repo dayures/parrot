@@ -6,12 +6,24 @@ import com.hp.hpl.jena.rdf.model.AnonId;
 
 import es.ctic.parrot.de.Identifier;
 
+/**
+ * An identifier for a Jena node that is anonymous (it has not URI).
+ * 
+ * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @version 1.0
+ * @since 1.0
+ * 
+ */
 public class JenaAnonymousIdentifier implements Identifier {
 
     private static final Logger logger = Logger.getLogger(JenaAnonymousIdentifier.class);
 	
     private final String id;
 
+    /**
+     * Constructs an identifier for an anonymous element.
+     * @param anonId the anonymous element.
+     */
 	public JenaAnonymousIdentifier(AnonId anonId) {
 		this.id = Integer.valueOf(anonId.hashCode()).toString();
 	}
@@ -22,7 +34,8 @@ public class JenaAnonymousIdentifier implements Identifier {
     }
 
 	/**
-	 * @return the id
+	 * Returns the internal id.
+	 * @return the internal id.
 	 */
 	public String getId() {
 		return id;
@@ -58,7 +71,5 @@ public class JenaAnonymousIdentifier implements Identifier {
 			return false;
 		return true;
 	}
-	
-	
 
 }

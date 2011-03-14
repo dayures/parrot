@@ -3,7 +3,6 @@ package es.ctic.parrot.reader.jena;
 import java.util.List;
 
 import com.hp.hpl.jena.ontology.OntResource;
-import com.hp.hpl.jena.ontology.Ontology;
 import com.hp.hpl.jena.shared.JenaException;
 
 import es.ctic.parrot.de.DocumentableObjectRegister;
@@ -11,7 +10,7 @@ import es.ctic.parrot.transformers.DocumentableObjectVisitor;
 import es.ctic.parrot.transformers.TransformerException;
 
 /**
- * An implementation of the Ontology interface coupled to <a href="http://openjena.org/">Jena</a>.
+ * An implementation of the Ontology (documentable element) interface coupled to <a href="http://openjena.org/">Jena</a>.
  * 
  * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
  * @version 1.0
@@ -22,10 +21,6 @@ public class OntologyJenaImpl extends AbstractJenaDocumentableObject implements 
 	
 	public OntologyJenaImpl(OntResource ontResource, DocumentableObjectRegister register, OntResourceAnnotationStrategy annotationStrategy) {
 		super(ontResource, register, annotationStrategy);
-	}
-	
-	public Ontology getOntology(){
-		return getOntResource().asOntology();
 	}
 
 	public Object accept(DocumentableObjectVisitor visitor) throws TransformerException {

@@ -19,6 +19,14 @@ import es.ctic.parrot.reader.Input;
 import es.ctic.parrot.reader.ReaderException;
 import es.ctic.parrot.reader.jena.JenaOWLReader;
 
+/**
+ * A reader for RIF Presentation Syntax (PS) input documents. 
+ * 
+ * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @version 1.0
+ * @since 1.0
+ * 
+ */
 public class RiflePSReader extends ImportResolver implements DocumentReader {
 
     private static final Logger logger = Logger.getLogger(RiflePSReader.class);

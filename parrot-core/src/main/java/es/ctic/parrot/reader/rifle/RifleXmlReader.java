@@ -13,6 +13,14 @@ import es.ctic.parrot.reader.Input;
 import es.ctic.parrot.reader.ReaderException;
 import es.ctic.parrot.reader.jena.JenaOWLReader;
 
+/**
+ * A reader for RIF XML input documents that uses <a href="http://rifle.sourceforge.net/">rifle</a>. 
+ * 
+ * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @version 1.0
+ * @since 1.0
+ * 
+ */
 public class RifleXmlReader extends ImportResolver implements DocumentReader {
 
     public RifleXmlReader(JenaOWLReader ontologyReader) {

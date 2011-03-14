@@ -16,6 +16,17 @@ import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.de.RuleSet;
 import es.ctic.parrot.reader.jena.OntResourceAnnotationStrategy;
 
+/**
+ * 
+ * Visitor that fills a <code>document</code> (this document will be used later for presentation issues).
+ * <code>DetailsVisitor</code> is an implementation of the Visitor pattern.
+ * Please refer to the Gang of Four book of Design Patterns for more details on the Visitor pattern.
+ * 
+ * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @version 1.0
+ * @since 1.0
+ *
+ */
 public class RifleASTVisitor extends Visitor {
     
     private static final Logger logger = Logger.getLogger(RifleASTVisitor.class);
@@ -26,7 +37,7 @@ public class RifleASTVisitor extends Visitor {
 
 	public RifleASTVisitor(DocumentableObjectRegister register, OntResourceAnnotationStrategy annotationStrategy, OntModel ontModel) {
 		super();
-		this.register = register;
+		this.setRegister(register);
 		this.setAnnotationStrategy(annotationStrategy);
 		this.setOntModel(ontModel);
 	}
@@ -49,15 +60,15 @@ public class RifleASTVisitor extends Visitor {
 	public Object visit(Group group, Object parent) {
 		logger.debug("Visiting RIF group AST node: " + group);
 		
-		RuleSetImpl ruleset = new RuleSetImpl(group, register, getAnnotationStrategy(), getOntModel());
+		RuleSetImpl ruleset = new RuleSetImpl(group, getRegister(), getAnnotationStrategy(), getOntModel());
 		
 		if (parent != null) {
-			DocumentableObject parentDocumentableObject = register.findDocumentableObject(((RuleSet) parent).getIdentifier());
+			DocumentableObject parentDocumentableObject = getRegister().findDocumentableObject(((RuleSet) parent).getIdentifier());
 			logger.debug("Linking ruleset " + ruleset.getIdentifier() + " to his parent " + parentDocumentableObject);
 			ruleset.setParent(parentDocumentableObject);
 		}
 
-		register.registerDocumentableObject(ruleset);
+		getRegister().registerDocumentableObject(ruleset);
 
 		for(Rule rule : group.getRules()){
 			rule.accept(this, ruleset);
@@ -73,15 +84,15 @@ public class RifleASTVisitor extends Visitor {
 	public Object visit(Rule astRule, Object parent) {
 		logger.debug("Visiting RIF rule AST node: " + astRule);
 		
-		RuleImpl rule = new RuleImpl(astRule, register, getAnnotationStrategy(), getOntModel());
+		RuleImpl rule = new RuleImpl(astRule, getRegister(), getAnnotationStrategy(), getOntModel());
 		
 		if (parent != null) {
-			DocumentableObject parentDocumentableObject = register.findDocumentableObject(((DocumentableObject) parent).getIdentifier());
+			DocumentableObject parentDocumentableObject = getRegister().findDocumentableObject(((DocumentableObject) parent).getIdentifier());
 			logger.debug("Linking rule " + rule.getIdentifier() + " to his parent " + parentDocumentableObject);
 			rule.setParent(parentDocumentableObject);
 		}
 		
-		register.registerDocumentableObject(rule);
+		getRegister().registerDocumentableObject(rule);
 //		if (astRule.getInnerRule() != null){
 //			astRule.getInnerRule().accept(this, rule);
 //		}
@@ -97,31 +108,51 @@ public class RifleASTVisitor extends Visitor {
     }
 
 	/**
-	 * @param annotationStrategy the annotationStrategy to set
+	 * Sets the annotation strategy. 
+	 * @param annotationStrategy the annotation strategy to set.
 	 */
 	public void setAnnotationStrategy(OntResourceAnnotationStrategy annotationStrategy) {
 		this.annotationStrategy = annotationStrategy;
 	}
 
 	/**
-	 * @return the annotationStrategy
+	 * Returns the annotation strategy.
+	 * @return the annotation strategy.
 	 */
 	public OntResourceAnnotationStrategy getAnnotationStrategy() {
 		return annotationStrategy;
 	}
 
 	/**
-	 * @param ontModel the ontModel to set
+	 * Sets the ontModel.
+	 * @param ontModel the ontModel to set.
 	 */
 	public void setOntModel(OntModel ontModel) {
 		this.ontModel = ontModel;
 	}
 
 	/**
-	 * @return the ontModel
+	 * Returns the ontModel.
+	 * @return the ontModel.
 	 */
 	public OntModel getOntModel() {
 		return ontModel;
+	}
+
+	/**
+	 * Sets the register.
+	 * @param register the register to set.
+	 */
+	public void setRegister(DocumentableObjectRegister register) {
+		this.register = register;
+	}
+
+	/**
+	 * Returns the register.
+	 * @return the register.
+	 */
+	public DocumentableObjectRegister getRegister() {
+		return register;
 	}
 
 }

@@ -4,12 +4,24 @@ import org.apache.log4j.Logger;
 
 import es.ctic.parrot.de.Identifier;
 
+/**
+ * An identifier for a rule or rule set that is anonymous (it has not ID).
+ * 
+ * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @version 1.0
+ * @since 1.0
+ * 
+ */
 public class RifleAnonymousIdentifier implements Identifier {
 	
     private static final Logger logger = Logger.getLogger(RifleAnonymousIdentifier.class);
 	
     private final String id;
 
+    /**
+     * Constructs an identifier for an anonymous rule or rule set.
+     * @param id the internal identification string.
+     */
 	public RifleAnonymousIdentifier(String id) {
 		this.id = id;
 		logger.debug("creating a RifleAnonymousIdentifier with id: " + id);
@@ -21,7 +33,8 @@ public class RifleAnonymousIdentifier implements Identifier {
     }
 
 	/**
-	 * @return the id
+	 * Returns the internal id.
+	 * @return the internal id.
 	 */
 	public String getId() {
 		return id;

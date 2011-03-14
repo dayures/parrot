@@ -27,6 +27,16 @@ import es.ctic.parrot.de.RelatedDocument;
 import es.ctic.parrot.de.RelatedDocument.Type;
 import es.ctic.parrot.utils.URIUtils;
 
+/**
+ * The class <code>OntResourceAnnotationStrategy</code> includes methods for extracting information from ontResources. 
+ * It is used to implement the Strategy pattern.
+ * Please refer to the Gang of Four book of Design Patterns for more details on the Strategy pattern.
+ * 
+ * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @version 1.0
+ * @since 1.0
+ * 
+ */
 public class OntResourceAnnotationStrategy {
 
 	private static final String TRUE = "true";
@@ -113,10 +123,21 @@ public class OntResourceAnnotationStrategy {
 	    }
 	}
 	
+	/**
+	 * Returns a collection of labels for this ontResource.
+	 * @param ontResource the ontResource.
+	 * @return a collection of labels for this ontResource.
+	 */
 	public Collection<Label> getLabels(OntResource ontResource){
    		return getLabels(ontResource, null);
    	}
 	
+	/**
+	 * Returns a collection of labels for this ontResource for the given locale.
+	 * @param locale the locale.
+	 * @param ontResource the ontResource.
+	 * @return a collection of labels for this ontResource.
+	 */
 	public Collection<Label> getLabels(OntResource ontResource, Locale locale){
 		
 		Collection<Label> labels = new HashSet<Label>();
@@ -154,6 +175,11 @@ public class OntResourceAnnotationStrategy {
 		return labels;
 	}
 	
+	/**
+	 * Returns the best label associated.
+	 * @param ontResource the ontology resource.
+	 * @return the best label associated.
+	 */
     public String getLabel(OntResource ontResource) {
         return this.getLabel(ontResource, null);
     }
@@ -233,8 +259,11 @@ public class OntResourceAnnotationStrategy {
     }
     
 	/**
-	 * @param the uri of the property used to annotate
-	 * @return a collection of literal labels for the uri
+	 * Returns a collection of literal labels for the URI.
+	 * @param ontResource the ontResource.
+	 * @param uri the URI of the property used to annotate.
+	 * @param locale the locale.
+	 * @return a collection of literal labels for the URI.
 	 */
 	private Collection<Label> getLiteralLabels(OntResource ontResource, String uri, Locale locale) {
 		
@@ -279,9 +308,12 @@ public class OntResourceAnnotationStrategy {
 		return literalLabels;
 	}
 
-	
 	/**
-	 * @return a collection of labels for the skosXL uri
+	 * Returns a collection of labels for the given SKOS-XL URI.
+	 * @param ontResource the ontResource.
+	 * @param uri the URI of the property used to annotate (SKOS-XL).
+	 * @param locale the locale.
+	 * @return a collection of labels for the given SKOS-XL URI.
 	 */
 	private Collection<Label> getSkosxlLabels(OntResource ontResource, String uri, Locale locale) {
 
@@ -293,7 +325,6 @@ public class OntResourceAnnotationStrategy {
 		} else {
 			ontModel = ontResource.getOntModel();
 		}
-		
 		
 		StmtIterator listStatements = ontModel.listStatements(ontResource, ResourceFactory.createProperty(uri), (RDFNode) null);
 		
@@ -330,6 +361,11 @@ public class OntResourceAnnotationStrategy {
 		return skosxlLabels;
 	}
 	
+	/**
+	 * Returns a collection of videos related to the ontResource.
+	 * @param ontResource the ontResource.
+	 * @return a collection of videos related to the ontResource.
+	 */
 	private Collection<RelatedDocument> getVideosRelated(OntResource ontResource) {
 		Collection<RelatedDocument> videos = new ArrayList<RelatedDocument>();
     	if (ontResource == null){
@@ -352,6 +388,11 @@ public class OntResourceAnnotationStrategy {
     	}
 	}
 	
+	/**
+	 * Returns a collection of URIs related to the ontResource.
+	 * @param ontResource the ontResource.
+	 * @return a collection of URIs related to the ontResource.
+	 */
 	private Collection<RelatedDocument> getUrisRelated(OntResource ontResource) {
 		Collection<RelatedDocument> videos = new ArrayList<RelatedDocument>();
     	if (ontResource == null){
@@ -374,6 +415,11 @@ public class OntResourceAnnotationStrategy {
     	}
 	}
 	
+	/**
+	 * Returns a collection of images related to the ontResource.
+	 * @param ontResource the ontResource.
+	 * @return a collection of images related to the ontResource.
+	 */
 	private Collection<RelatedDocument> getImagesRelated(OntResource ontResource) {
 		Collection<RelatedDocument> images = new ArrayList<RelatedDocument>();
     	if (ontResource == null){
@@ -395,81 +441,12 @@ public class OntResourceAnnotationStrategy {
 			return images;
     	}
 	}
-
+	
 	/**
-	 * 
-	 * @param locale
-	 * @return a collection of related documents for this documentable object
-	 */
-	public Collection<RelatedDocument> getRelatedDocuments(OntResource ontResource, Locale locale) {
-
-		Collection<RelatedDocument> relatedDocuments = new HashSet<RelatedDocument>();
-		OntModel ontModel = null;
-		
-		if (ontResource == null){
-			return relatedDocuments;
-		} else {
-			ontModel = ontResource.getOntModel();
-		}
-		
-		// Only labels that are resource labels 
-		Collection<Label> labels = new HashSet<Label>();
-		for(Label label: getLabels(ontResource, locale)){
-			if (label.getUri() != null){
-				labels.add(label);
-			}
-		}
-		
-
-		for(Label label: labels){
-			
-			Collection<OntResource> labelOccurrences = new HashSet<OntResource>();
-			Collection<OntResource> sentences = new HashSet<OntResource>();
-			
-			StmtIterator listStatements = ontModel.listStatements((Resource) null, ResourceFactory.createProperty(TELIX_REALIZES), ResourceFactory.createResource(label.getUri()));
-			
-			while (listStatements.hasNext()){
-				Statement statement = listStatements.next();
-				labelOccurrences.add(ontModel.getOntResource(statement.getSubject()));
-			}
-			
-			for (OntResource labelOcurrence :labelOccurrences){
-				listStatements = ontModel.listStatements(labelOcurrence, ResourceFactory.createProperty(LINGKNOW_OCCURS), (RDFNode) null );
-				while (listStatements.hasNext()){
-					Statement statement = listStatements.next();
-					sentences.add(ontModel.getOntResource(statement.getObject().asResource()));
-				}
-			}
-	
-			for (OntResource sentence :sentences){
-				listStatements = ontModel.listStatements(sentence, ResourceFactory.createProperty(LINGKNOW_VALUE), (RDFNode) null );
-				while (listStatements.hasNext()){
-					Statement statement = listStatements.next();
-					RelatedDocument relatedDocument = new RelatedDocument();
-					relatedDocument.setUri(getSourceDocumentUri(ontModel, sentence.getURI()));
-					relatedDocument.setSourceText(statement.getLiteral().getLexicalForm());
-					relatedDocument.setType(Type.TEXT); // FIXME now it's fixed to plain/text
-					relatedDocuments.add(relatedDocument);
-				}
-			}
-		}
-		
-		//add videos
-		relatedDocuments.addAll(getVideosRelated(ontResource));
-		
-		//add images
-		relatedDocuments.addAll(getImagesRelated(ontResource));
-		
-		//add candidate rules
-		relatedDocuments.addAll(getCandidateRulesRelated(ontResource));
-		
-		//add uri links (seeAlso)
-		relatedDocuments.addAll(getUrisRelated(ontResource));
-		
-		return relatedDocuments;
-	}
-
-	
+	 * Returns a collection of candidate rules related to the ontResource.
+	 * @param ontResource the ontResource.
+	 * @return a collection of candidate rules related to the ontResource.
+	 */	
 	private Collection<RelatedDocument> getCandidateRulesRelated(OntResource ontResource) {
 		
 		Collection<RelatedDocument> candidateRules = new ArrayList<RelatedDocument>();
@@ -527,10 +504,10 @@ public class OntResourceAnnotationStrategy {
 	}
 
 	/**
-	 * 
-	 * @param model The ontological model
-	 * @param uri the uri to search for
-	 * @return the uri of the source document
+	 * Returns the URI of the source document for the given URI.
+	 * @param model The ontological model.
+	 * @param uri the URI to search for.
+	 * @return the URI of the source document.
 	 */
 	private String getSourceDocumentUri(OntModel model, String uri){
 		if (model.contains(ResourceFactory.createResource(uri), RDF.type, ResourceFactory.createResource(DC_DCMITYPE_TEXT))){
@@ -546,49 +523,165 @@ public class OntResourceAnnotationStrategy {
 
 		}
 		
+	}	
+
+	/**
+	 * Returns a collection of documents related to the ontResource.
+	 * @param ontResource the ontResource.
+	 * @param locale the locale.
+	 * @return a collection of documents related to the ontResource.
+	 */
+	public Collection<RelatedDocument> getRelatedDocuments(OntResource ontResource, Locale locale) {
+
+		Collection<RelatedDocument> relatedDocuments = new HashSet<RelatedDocument>();
+		OntModel ontModel = null;
+		
+		if (ontResource == null){
+			return relatedDocuments;
+		} else {
+			ontModel = ontResource.getOntModel();
+		}
+		
+		// Only labels that are resource labels 
+		Collection<Label> labels = new HashSet<Label>();
+		for(Label label: getLabels(ontResource, locale)){
+			if (label.getUri() != null){
+				labels.add(label);
+			}
+		}
+
+		for(Label label: labels){
+			
+			Collection<OntResource> labelOccurrences = new HashSet<OntResource>();
+			Collection<OntResource> sentences = new HashSet<OntResource>();
+			
+			StmtIterator listStatements = ontModel.listStatements((Resource) null, ResourceFactory.createProperty(TELIX_REALIZES), ResourceFactory.createResource(label.getUri()));
+			
+			while (listStatements.hasNext()){
+				Statement statement = listStatements.next();
+				labelOccurrences.add(ontModel.getOntResource(statement.getSubject()));
+			}
+			
+			for (OntResource labelOcurrence :labelOccurrences){
+				listStatements = ontModel.listStatements(labelOcurrence, ResourceFactory.createProperty(LINGKNOW_OCCURS), (RDFNode) null );
+				while (listStatements.hasNext()){
+					Statement statement = listStatements.next();
+					sentences.add(ontModel.getOntResource(statement.getObject().asResource()));
+				}
+			}
+	
+			for (OntResource sentence :sentences){
+				listStatements = ontModel.listStatements(sentence, ResourceFactory.createProperty(LINGKNOW_VALUE), (RDFNode) null );
+				while (listStatements.hasNext()){
+					Statement statement = listStatements.next();
+					RelatedDocument relatedDocument = new RelatedDocument();
+					relatedDocument.setUri(getSourceDocumentUri(ontModel, sentence.getURI()));
+					relatedDocument.setSourceText(statement.getLiteral().getLexicalForm());
+					relatedDocument.setType(Type.TEXT); // FIXME now it's fixed to plain/text
+					relatedDocuments.add(relatedDocument);
+				}
+			}
+		}
+		
+		//add videos
+		relatedDocuments.addAll(getVideosRelated(ontResource));
+		
+		//add images
+		relatedDocuments.addAll(getImagesRelated(ontResource));
+		
+		//add candidate rules
+		relatedDocuments.addAll(getCandidateRulesRelated(ontResource));
+		
+		//add uri links (seeAlso)
+		relatedDocuments.addAll(getUrisRelated(ontResource));
+		
+		return relatedDocuments;
 	}
-	
-	/************************************************************************/
-	
+
+	/**
+	 * Returns the version.
+	 * @param ontResource the ontResource.
+	 * @return the version.
+	 */
 	public String getVersion(OntResource ontResource) {
 		return ontResource.getVersionInfo();
 	}
 
+	/**
+	 * Returns the preferred prefix.
+	 * @param ontResource the ontResource.
+	 * @return the preferred prefix.
+	 */
 	public String getPreferredPrefix(OntResource ontResource) {
 		return getLiteralPropertyValue(ontResource, VANN_PREFERRED_PREFIX);
 	}
 
+	/**
+	 * Returns the preferred namespace.
+	 * @param ontResource the ontResource.
+	 * @return the preferred namespace.
+	 */
 	public String getPreferredNamespace(OntResource ontResource) {
 		return getLiteralPropertyValue(ontResource, VANN_PREFERRED_NAMESPACE);
 	}
 	
+	/**
+	 * Returns the date.
+	 * @param ontResource the ontResource.
+	 * @return the date.
+	 */
 	public String getDate(OntResource ontResource) {
 		return getLiteralPropertyValue(ontResource, DC_DATE);
 	}
 
+	/**
+	 * Returns information about the rights.
+	 * @param ontResource the ontResource.
+	 * @return information about the rights.
+	 */
 	public String getRights(OntResource ontResource) {
 		return getLiteralPropertyValue(ontResource, DC_RIGHTS);
 	}
 	
+	/**
+	 * Returns the creators.
+	 * @param ontResource the ontResource.
+	 * @return the creators.
+	 */	
 	public List<String> getCreators(OntResource ontResource) {
 		return getLiteralPropertyValues(ontResource, DC_CREATOR);
 	}
 
+	/**
+	 * Returns the contributors.
+	 * @param ontResource the ontResource.
+	 * @return the contributors.
+	 */
 	public List<String> getContributors(OntResource ontResource) {
 		return getLiteralPropertyValues(ontResource, DC_CONTRIBUTOR);
 	}
-
+	
+	/**
+	 * Returns the publishers.
+	 * @param ontResource the ontResource.
+	 * @return the publishers.
+	 */
 	public List<String> getPublishers(OntResource ontResource) {
 		return getLiteralPropertyValues(ontResource, DC_PUBLISHER);
 	}
 	
+	/**
+	 * Returns the reference where this resource is defined.
+	 * @param ontResource the ontResource.
+	 * @return the reference where this resource is defined.
+	 */
 	public String getIsDefinedBy(OntResource ontResource) {
 		return getObjectPropertyURI(ontResource, RDF_SCHEMA_IS_DEFINED_BY);
 	}
 	
 	/**
 	 * Returns the URI of the license associated or <code>null</code> if there is no license URI associated.
-	 * @param ontResource the ontResource.
+	 * @param ontResource the ontResource.	
 	 * @return the URI of the license associated or <code>null</code> if there is no license URI associated.
 	 */
 	public String getLicenseLabel(OntResource ontResource) {
@@ -649,6 +742,12 @@ public class OntResourceAnnotationStrategy {
 
 	}
 	
+	/**
+	 * Returns a list of strings, the lexical values of the literal properties. 
+	 * @param ontResource the ontResource.
+	 * @param property the URI of the property.
+	 * @return a list of strings, the lexical values of the literal properties.
+	 */
 	private List<String> getLiteralPropertyValues(OntResource ontResource, String property) {
     	if (ontResource == null){
     		return new ArrayList<String>();
@@ -669,10 +768,10 @@ public class OntResourceAnnotationStrategy {
 	}
 
 	/**
-	 * 
-	 * @param ontResource
-	 * @param property
-	 * @return the value of the literal or null if the resource has not this property associated
+	 * Returns the value of the literal or <code>null</code> if the resource has not this property associated
+	 * @param ontResource the ontResource.
+	 * @param property the URI of the property.
+	 * @return the value of the literal or <code>null</code> if the resource has not this property associated
 	 */
 	private String getLiteralPropertyValue(OntResource ontResource, String property) {
         
@@ -687,10 +786,10 @@ public class OntResourceAnnotationStrategy {
 	}
 
 	/**
-	 * 
-	 * @param ontResource
-	 * @param property
-	 * @return
+	 * Returns the URI or <code>null</code> if the resource has not this property associated.
+	 * @param ontResource the ontResource.
+	 * @param property the URI of the property.
+	 * @return the URI or <code>null</code> if the resource has not this property associated.
 	 */
 	private String getObjectPropertyURI(OntResource ontResource, String property) {
 		String uri = null;

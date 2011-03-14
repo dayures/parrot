@@ -82,7 +82,7 @@ public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
 	 * Sets the annotation strategy.
 	 * @param annotationStrategy the annotation strategy to set.
 	 */
-	public void setAnnotationStrategy(OntResourceAnnotationStrategy annotationStrategy) {
+	private void setAnnotationStrategy(OntResourceAnnotationStrategy annotationStrategy) {
 		this.annotationStrategy = annotationStrategy;
 	}
 
@@ -98,7 +98,7 @@ public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
 	 * Sets the ontResource.
 	 * @param ontResource the ontResource to set.
 	 */
-	public void setOntResource(OntResource ontResource) {
+	private void setOntResource(OntResource ontResource) {
 		this.ontResource = ontResource;
 	}
 
@@ -140,7 +140,7 @@ public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
 		return Collections.unmodifiableCollection(astRuleCollectionToRuleCollection(ruleSet.getRules()));
 	}
 	
-	protected Collection<es.ctic.parrot.de.Rule> astRuleCollectionToRuleCollection(Collection<net.sourceforge.rifle.ast.Rule> astRules) {
+	private Collection<es.ctic.parrot.de.Rule> astRuleCollectionToRuleCollection(Collection<net.sourceforge.rifle.ast.Rule> astRules) {
 		Collection<es.ctic.parrot.de.Rule> ruleList = new LinkedList<es.ctic.parrot.de.Rule>();
 
 		for(net.sourceforge.rifle.ast.Rule astRule : astRules){
@@ -173,7 +173,7 @@ public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
 
 	}
 
-	protected Collection<es.ctic.parrot.de.RuleSet> astGroupCollectionToRuleSetCollection(Collection<net.sourceforge.rifle.ast.Group> astGroups) {
+	private Collection<es.ctic.parrot.de.RuleSet> astGroupCollectionToRuleSetCollection(Collection<net.sourceforge.rifle.ast.Group> astGroups) {
 		
 		Collection<es.ctic.parrot.de.RuleSet> ruleSetList = new LinkedList<es.ctic.parrot.de.RuleSet>();
 

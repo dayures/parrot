@@ -20,7 +20,11 @@ import es.ctic.parrot.transformers.TransformerException;
 public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObject implements OntologyProperty, OntologyClass{
 
 	private static final Logger logger = Logger.getLogger(UndefinedOntologyDocumentableObject.class);
-
+    
+	/**
+     * Constructs an undefined ontology element for the given URI
+     * @param uri the URI.
+     */
 	public UndefinedOntologyDocumentableObject(String uri) {
 		super();
 		this.uri = uri;

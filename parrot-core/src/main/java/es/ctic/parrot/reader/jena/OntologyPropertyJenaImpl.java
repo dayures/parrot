@@ -55,7 +55,7 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
     
 	/**
 	 * Constructs an ontology property.
-	 * @param ontclass the Jena ontProperty to set.
+	 * @param ontProperty the Jena ontProperty to set.
 	 * @param register the register to set
 	 * @param annotationStrategy the annotation strategy to set.
 	 */

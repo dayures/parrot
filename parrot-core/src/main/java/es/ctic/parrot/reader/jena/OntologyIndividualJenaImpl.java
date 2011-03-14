@@ -32,7 +32,7 @@ public class OntologyIndividualJenaImpl extends AbstractJenaDocumentableObject
 
 	/**
 	 * Constructs an ontology individual.
-	 * @param ontclass the Jena individual to set.
+	 * @param individual the Jena individual to set.
 	 * @param register the register to set
 	 * @param annotationStrategy the annotation strategy to set.
 	 */

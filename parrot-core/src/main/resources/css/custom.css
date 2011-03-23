@@ -173,7 +173,7 @@ div#header {
   background-repeat: no-repeat;
   background-position: bottom right;
   border: 1px solid white;
-  padding:3em;-moz-border-radius: 10px;-webkit-border-radius: 10px;
+  padding:3em;
 }
 
 #header h1 {

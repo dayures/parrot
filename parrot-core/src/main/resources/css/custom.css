@@ -13,9 +13,10 @@ h1 { font: 170% sans-serif; display: inline; }
 h2, .toc b { font: 140% sans-serif }
 h2 { margin-top: 1em; }
 
-div.term {
-  padding-bottom: 1em;
-  margin-bottom: 1em;
+.details {
+   border: 1px solid #ccc;
+   margin-top: 2em;
+   padding-left: 1em;
 }
 
 div#footer {
@@ -190,3 +191,54 @@ h1 a[href]:hover { background-color: transparent; }
 
 
 /** end header **/
+
+/** begin color details **/
+.ontologies{
+	background-color: #CCCCFF;
+}
+
+.ontologies h3{
+	background-color: #CCCCFF;
+}
+
+.classes {
+	background-color: #FFFFCC;
+}
+
+.classes h3 {
+	background-color: #FFFFCC;
+}
+
+.properties{
+	background-color: #E8E8E8;
+}
+
+.properties h3{
+	background-color: #E8E8E8;
+}
+
+.individuals{
+	background-color: #FFCCFF;
+}
+
+.individuals h3{
+	background-color: #FFCCFF;
+}
+
+.rulesets{
+	background-color: #C6E2FF;
+}
+
+.rulesets h3{
+	background-color: #C6E2FF;
+}
+
+.rules{
+	background-color: #CAFF70;
+}
+
+.rules h3{
+	background-color: #CAFF70;
+}
+
+/** end color details **/

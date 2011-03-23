@@ -1,5 +1,9 @@
 body {
-  padding: 2em 8% 4em 8%;
+    padding: 0em;
+}
+
+#content {
+    padding: 0em 20% 4em 20%;
 }
 
 h1, h2, h3, h4, h5, h6,.toc {color: #5674BC; }
@@ -156,3 +160,44 @@ pre { margin: 0em }
 .deprecated {
 	color: red;
 }
+
+/** begin header **/
+
+div#header {
+  background-color: #336699;
+  text-align: left;
+  vertical-align: top;
+  display: block;
+  margin: 0.3em 10em 0em 10em;
+  background-image: url(../images/ctic-white.png);
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  border: 1px solid white;
+  padding:3em;-moz-border-radius: 10px;-webkit-border-radius: 10px;
+}
+
+#header h1 {
+  font-size: 2.4em;
+  font-weight: bold;
+  color: #ffffff;
+  display: inline;
+  background-color: transparent;
+}
+
+#header h2{
+  background-color: transparent;
+  font-size: 1.4em;
+  color: #dddddd;
+  display: inline;
+  padding-left: 0.4em;
+}
+
+h1 a, h1 a:active, h1 a:hover, h1 a:visited {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+h1 a[href]:hover { background-color: transparent; }
+
+
+/** end header **/

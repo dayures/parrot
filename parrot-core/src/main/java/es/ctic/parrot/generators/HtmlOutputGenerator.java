@@ -27,7 +27,6 @@ public class HtmlOutputGenerator implements OutputGenerator {
 	
 	private final OutputStream out;
     private InputStream template;
-    private String profile;
 
     /**
      * Constructs a generator of <code>HTML</code> content

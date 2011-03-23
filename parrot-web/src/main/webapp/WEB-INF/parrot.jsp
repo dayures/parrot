@@ -6,7 +6,7 @@
 <head> 
 <title>PARROT, RIF and OWL documentation service</title> 
 <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" /> 
-<link rel="shortcut icon" href="images/favicon.png" type="image/png" /> 
+<link rel="shortcut icon" href="images/favicon.ico" type="image/png" /> 
 <meta name="description" content="parrot" /> 
 <meta name="keywords" content="parrot, documentation, tool, rif, rdf" /> 
 <link type="text/css" rel="stylesheet" href="css/style.css"	media="screen,projection,print" /> 

@@ -3,12 +3,11 @@
   #if($element.isDeprecated())<span class="deprecated">(Deprecated)</span>#end
   </h3>
   <dl>
-  
    
    #if($element.Uri)
       <dt>URI</dt>
-      <dd><a href="$element.Uri">$element.Uri</a></dd>      
-   #end
+      <dd><pre>$element.Uri</pre></dd>
+  #end
    
     #if ($element.hasAnyAxiom())
     <dt>Property Type</dt>

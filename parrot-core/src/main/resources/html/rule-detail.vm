@@ -3,7 +3,8 @@
   <dl>
    #if($element.Uri)
       <dt>URI</dt>
-      <dd><a href="$element.Uri">$element.Uri</a></dd>      
+      <dd><pre>$element.Uri</pre></dd>
+            
 	   #if($element.Comment)
 	      <dt>Description</dt>
 	      <dd>$element.Comment</dd>

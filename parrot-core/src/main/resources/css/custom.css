@@ -2,8 +2,17 @@ body {
     padding: 0em;
 }
 
-#content {
+div#content {
     padding: 0em 20% 4em 20%;
+}
+
+div#footer {
+  margin-top: 5em;
+  border-top: 1px #3d506f solid;
+  padding-top: 0.5em;
+  font-size: 0.65em;
+  float: right;
+  margin-left: 0.5em;
 }
 
 h1, h2, h3, h4, h5, h6,.toc {color: #5674BC; }
@@ -19,13 +28,22 @@ h2 { margin-top: 1em; }
    padding-left: 1em;
 }
 
-div#footer {
-  margin-top: 5em;
-  border-top: 1px #3d506f solid;
-  padding-top: 0.5em;
-  font-size: 0.65em;
-  float: right;
-  margin-left: 0.5em;
+div.term a{
+	font-family: monospace;
+}
+
+div.term > div{
+    border-top: 3px groove red;
+    margin: 0px;
+    padding: 1em;
+    margin-right:1em;
+}
+
+.it , .vci, .otherinfo{
+   border: 1px solid White;
+   padding-left: 1em;
+   margin-top: 1em;
+   background-color: White;
 }
 
 div.toc{
@@ -37,10 +55,6 @@ div.toc{
 
 dt{
  	font-weight:bold;
-}
-
-div.term a{
-	font-family: monospace;
 }
 
 .parrot-element-ref {

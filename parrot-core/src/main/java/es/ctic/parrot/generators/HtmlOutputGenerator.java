@@ -22,22 +22,28 @@ import es.ctic.parrot.docmodel.Document;
  */
 public class HtmlOutputGenerator implements OutputGenerator {
 
-    private final OutputStream out;
+    private static final String PROFILE = "profile";
+	private static final String DOCUMENT = "document";
+	
+	private final OutputStream out;
     private InputStream template;
+    private String profile;
 
     /**
      * Constructs a generator of <code>HTML</code> content
      * @param out Stream where the output will be written.
      * @param template The template for the output report.
+     * @param profile The profile of the user that will read the report.
      */
     public HtmlOutputGenerator(OutputStream out, InputStream template) {
         this.out = out;
         this.template = template;
     }
 
-    public void generateOutput(Document document) {
+    public void generateOutput(Document document, Profile profile) {
         VelocityContext ctx = new VelocityContext();
-        ctx.put("document", document);
+        ctx.put(DOCUMENT, document);
+        ctx.put(PROFILE, profile);
         fillTemplate(out, ctx, template);
     }
 

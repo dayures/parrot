@@ -9,6 +9,7 @@ import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.docmodel.Document;
 import es.ctic.parrot.generators.OutputGenerator;
+import es.ctic.parrot.generators.OutputGenerator.Profile;
 import es.ctic.parrot.reader.DocumentReader;
 import es.ctic.parrot.reader.Input;
 import es.ctic.parrot.reader.ReaderException;
@@ -61,16 +62,17 @@ public class ParrotAppServ {
 	 * 
 	 * @param dp the documentary Project to be fulfilled.
 	 * @param outputGenerator the output generator.
+	 * @param profile the end user profile.
 	 * @throws IOException if a failed or interrupted I/O operation occurs, usually during the initial reading of inputs.
 	 * @throws ReaderException if a input is malformed or not valid (usually, markup issues).
 	 */
-	public void createDocumentation(DocumentaryProject dp, OutputGenerator outputGenerator) throws IOException, ReaderException, TransformerException {
+	public void createDocumentation(DocumentaryProject dp, OutputGenerator outputGenerator, Profile profile) throws IOException, ReaderException, TransformerException {
 		DocumentableObjectRegister register = new DocumentableObjectRegister();
 		readAndRegisterDocumentableObjects(dp.getInputs(), register);
 		resolveInternalReferences(register);
 		resolveCrossReferences(register);
 		Document document = transformToDocument(register.getDocumentableObjects(), dp.getLocale());
-		outputGenerator.generateOutput(document);
+		outputGenerator.generateOutput(document, profile);
 	}
 	
 	/**

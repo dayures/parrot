@@ -8,7 +8,15 @@
 	    #include("css/base.css")
 	    #include("css/custom.css")
 		#include("css/SemEx.css")
+		#if (${profile} == "business")
+			#include("css/${profile}.css")
+		#end
+		#if (${profile} == "technical")
+			#include("css/${profile}.css")
+		#end
+
     </style>
+    
     <link type="image/x-icon" href="images/favicon.ico" rel="shortcut icon" />
     <!-- for debugging 
     <link rel="stylesheet" type="text/css" media="screen,projection" href="report/css/base.css" /> 

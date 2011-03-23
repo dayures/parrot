@@ -101,6 +101,7 @@
 					<div class="buttons">
 						<button type="submit" class="positive"><img src="images/tick.png" alt=""/>Generate documentation</button>
 					</div>
+					<input type="radio" name="profile" id="business_profile" value="business" checked="checked" /><label for="business_profile">Business report</label> <input type="radio" name="profile" id="technical_profile" value="technical" /><label for="technical_profile">Technical report</label>
 					</form>
 		        </div> 
 		        <!-- 

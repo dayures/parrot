@@ -27,6 +27,7 @@ import org.apache.log4j.Logger;
 import es.ctic.parrot.DocumentaryProject;
 import es.ctic.parrot.appserv.ParrotAppServ;
 import es.ctic.parrot.generators.HtmlOutputGenerator;
+import es.ctic.parrot.generators.OutputGenerator.Profile;
 import es.ctic.parrot.reader.InputStreamInput;
 import es.ctic.parrot.reader.ReaderException;
 import es.ctic.parrot.reader.StringInput;
@@ -62,9 +63,27 @@ public class ServletParrot extends HttpServlet {
 		Locale locale = Locale.ENGLISH; // default Locale
 		
 		String language = req.getParameter("language");
-		if ( language != null && language.trim().length() != 0) 
+		if ( language != null && language.trim().length() != 0){
 			locale = new Locale(language);
+		}
 
+		String profile_param = req.getParameter("profile");
+		
+		Profile profile = Profile.UNDEFINED;
+		
+		if (profile_param != null){
+		
+			profile_param = profile_param.toLowerCase();			
+		
+			if (profile_param.equals("business")){
+				profile = Profile.BUSINESS;
+			} 
+			
+			if (profile_param.equals("technical")){
+				profile = Profile.TECHNICAL;
+			}
+		}
+		
 		try {
 			DocumentaryProject dp = new DocumentaryProject(locale);
 			
@@ -83,7 +102,7 @@ public class ServletParrot extends HttpServlet {
 			    ByteArrayOutputStream out = new ByteArrayOutputStream();
                 HtmlOutputGenerator outputGenerator = new HtmlOutputGenerator(out, template);
                 ParrotAppServ parrotAppServ = getParrotAppServ();
-			    parrotAppServ.createDocumentation(dp, outputGenerator);
+			    parrotAppServ.createDocumentation(dp, outputGenerator, profile);
                 res.setContentType("text/html");
 			    res.getOutputStream().write(out.toByteArray());
 			}

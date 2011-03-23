@@ -15,7 +15,6 @@ h2 { margin-top: 1em; }
 
 div.term {
   padding-bottom: 1em;
-  border-bottom: 1px solid #3d506f;
   margin-bottom: 1em;
 }
 
@@ -41,16 +40,6 @@ dt{
 
 div.term a{
 	font-family: monospace;
-}
-
-p.back-to-top {
-	background-image: url("images/1292359916_stock_top.png");
-	background-repeat: no-repeat;
-	background-position:0 0;
-	padding-left: 18px;
-    float: right;
-    font-size: small;
-    margin-top: 19px;
 }
 
 .parrot-element-ref {

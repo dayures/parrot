@@ -256,3 +256,20 @@ h1 a[href]:hover { background-color: transparent; }
 }
 
 /** end color details **/
+
+.details h3{
+    margin: 0em;
+    margin-right: 1em;
+    padding: 1em;
+    cursor:pointer;
+    background-position: right;
+    background-repeat: no-repeat;
+	background-image: url("../images/more-info.gif") ;
+}
+
+.details h4{
+    cursor:pointer;
+    background-position: right;
+    background-repeat: no-repeat;
+	background-image: url("../images/more-info.gif") ;
+}

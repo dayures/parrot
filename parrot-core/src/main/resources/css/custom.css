@@ -30,9 +30,9 @@ div#footer {
 
 div.toc{
 	padding: 1em;
-	border: dotted #5674BC;
-	background-color: #ddd;
-	margin-bottom: 1em;
+	border: solid #5674BC;
+	background-color: transparent;
+    margin: 1em -15% 0em -15%;
 }
 
 dt{

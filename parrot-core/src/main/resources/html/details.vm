@@ -1,5 +1,3 @@
-<h1>Details</h1>
-
 #if(!$document.ontologyDetailViews.isEmpty())
 	<h2>Ontologies</h2>
 	#foreach($element in $document.ontologyDetailViews)

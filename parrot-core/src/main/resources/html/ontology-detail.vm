@@ -2,85 +2,97 @@
   <h3><a id="$element.Anchor"></a><span class="parrot-element-title parrot-ontology-title">Ontology: $element.Label</span>
   #if($element.isDeprecated())<span class="deprecated">(Deprecated)</span>#end
   </h3>
-  
-  
-  <dl>
-  #if($element.Uri)
-      <dt>URI</dt>
-      <dd><pre>$element.Uri</pre></dd>
-  #end
-  
-  #if($element.Comment)
-      <dt>Description</dt>
-      <dd>$element.Comment</dd>
-  #end
-  
-  #if($element.PreferredNamespace)
-      <dt>Preferred Namespace URI</dt>
-      <dd><pre><code>$element.PreferredNamespace</code></pre></dd>
-  #end
+	#if($element.Comment)
+	    <p>$element.Comment</p>
+	#end
 
-  #if($element.PreferredPrefix)
-      <dt>Preferred Prefix</dt>
-      <dd><pre><code>$element.PreferredPrefix</code></pre></dd>
-  #end
+  <div> 
   
-  #if($element.Version)
-  <dt>Version</dt>
-  <dd>$element.Version</dd>
-  #end
-  
-  #if($element.Date)
-  <dt>Date</dt>
-  <dd>$element.Date</dd>
-  #end
-  
-   #if(!$element.creators.isEmpty())
-   <dt>Creators:</dt>
-   #foreach($creator in $element.creators)
-     <dd>$creator</dd>
-   #end
-   #end
-   
-   #if(!$element.contributors.isEmpty())
-   <dt>Contributors:</dt>
-   #foreach($contributor in $element.contributors)
-     <dd>$contributor</dd>
-   #end
-   #end
-   
-   #if($element.Rights)
-   <dt>Rights</dt>
-   <dd>$element.Rights</dd>
-   #end
+    <div class="vci"> 
+    <h4>Version Control information</h4> 
+    <dl> 
+	  #if($element.Version)
+	  <dt>Version</dt>
+	  <dd>$element.Version</dd>
+	  #end
+	  
+	  #if($element.Date)
+	  <dt>Date</dt>
+	  <dd>$element.Date</dd>
+	  #end
+	  
+	   #if(!$element.creators.isEmpty())
+	   <dt>Creators:</dt>
+	   #foreach($creator in $element.creators)
+	     <dd>$creator</dd>
+	   #end
+	   #end
+	   
+	   #if(!$element.contributors.isEmpty())
+	   <dt>Contributors:</dt>
+	   #foreach($contributor in $element.contributors)
+	     <dd>$contributor</dd>
+	   #end
+	   #end
+	   
+	   #if($element.Rights)
+	   <dt>Rights</dt>
+	   <dd>$element.Rights</dd>
+	   #end
+	
+	   #if($element.LicenseLabel)
+	   <dt>License</dt>
+	   <dd><a href="$element.LicenseLabel">$element.LicenseLabel</a></dd>
+	   #end
+    </dl> 
+    </div>
+    
+    <div class="it"> 
+    <h4>Technical information</h4> 
+    <dl> 
+		#if($element.Uri)
+		    <dt>URI</dt>
+		    <dd><pre>$element.Uri</pre></dd>
+		#end    
+ 
+		#if($element.PreferredNamespace)
+		    <dt>Preferred Namespace URI</dt>
+		    <dd><pre><code>$element.PreferredNamespace</code></pre></dd>
+		#end
+		
+		#if($element.PreferredPrefix)
+		    <dt>Preferred Prefix</dt>
+		    <dd><pre><code>$element.PreferredPrefix</code></pre></dd>
+		#end
+		
+		#if($element.isDefinedBy)
+      		<dt>isDefinedBy</dt>
+      		<dd><span class="parrot-element-ref parrot-${element.isDefinedBy.kindString}-ref"><a href="#$element.isDefinedBy.LocalName">$element.isDefinedBy.Label</a></span></dd>
+   		#end
+    </dl> 
+    </div>
 
-   #if($element.LicenseLabel)
-   <dt>License</dt>
-   <dd><a href="$element.LicenseLabel">$element.LicenseLabel</a></dd>
-   #end
-   
-   #if(!$element.labels.isEmpty())
-   <dt>Labels</dt>
-   <dd>
-   #foreach($element in $element.labels)
-     <span>$element.text</span>#if ($foreach.hasNext), #end
-   #end
-   </dd>
-   #end
-   
-   #if(!$element.relatedDocuments.isEmpty())
-   <dt>Related Documents</dt> 
-   <dd>
-   #foreach($element in $element.relatedDocuments)
-   	  #parse("html/relatedDocument-detail.vm")
-   #end
-   </dd>
-   #end
-   
-   #if($element.isDefinedBy)
-      <dt>isDefinedBy</dt>
-      <dd><span class="parrot-element-ref parrot-${element.isDefinedBy.kindString}-ref"><a href="#$element.isDefinedBy.LocalName">$element.isDefinedBy.Label</a></span></dd>
-   #end
-   
-  </dl>
-</div> 
+    <div class="otherinfo"> 
+    <h4>Other information</h4> 
+    <dl> 
+		#if(!$element.labels.isEmpty())
+		<dt>Labels</dt>
+		<dd>
+		#foreach($element in $element.labels)
+		  <span>$element.text</span>#if ($foreach.hasNext), #end
+		#end
+		</dd>
+		#end
+		
+		#if(!$element.relatedDocuments.isEmpty())
+		<dt>Related Documents</dt> 
+		<dd>
+		#foreach($element in $element.relatedDocuments)
+			  #parse("html/relatedDocument-detail.vm")
+		#end
+		</dd>
+		#end
+  	</dl>
+	</div>
+  </div>
+</div>

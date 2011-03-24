@@ -273,3 +273,8 @@ h1 a[href]:hover { background-color: transparent; }
     background-repeat: no-repeat;
 	background-image: url("../images/more-info.gif") ;
 }
+/** begin bar **/
+
+#bottom-bar a[href]:hover { background-color: transparent; }
+
+/** end bar**/

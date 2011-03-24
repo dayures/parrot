@@ -16,4 +16,15 @@ jQuery(document).ready(function(){
 	    return false;
     }).next().hide();
     
+    $("#bottom-bar").jixedbar({
+        transparent: true,
+        opacity: 0.5,
+        slideSpeed: "slow",
+        roundedCorners: true,
+        roundedButtons: true,
+        menuFadeSpeed: "slow",
+        tooltipFadeSpeed: "fast",
+        tooltipFadeOpacity: 0.5
+    });
+    
 })

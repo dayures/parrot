@@ -1,8 +1,8 @@
 <div class="term">
   <h3><a id="$element.Anchor"></a><span class="parrot-element-title parrot-ruleset-title">$element.Label</span> (RuleSet)</h3>
-  #if($element.Comment)
-  <p>$element.Comment</p>
-  #end
+
+  #parse("html/description.vm")
+
   <div>
   
   #if ( ($element.Date) ||

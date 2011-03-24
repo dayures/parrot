@@ -1,6 +1,6 @@
 jQuery(document).ready(function(){
 	$('#header').corner();
-	$('#toc').corner();
+	$('.toc').corner();
     $('.details').corner();
     $('.it').corner();
     $('.vci').corner();

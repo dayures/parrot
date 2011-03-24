@@ -17,10 +17,8 @@ div#footer {
 
 h1, h2, h3, h4, h5, h6,.toc {color: #5674BC; }
 
-/* background should be transparent, but WebTV has a bug */
-h1 { font: 170% sans-serif; display: inline; }
+h1 { font: 170% sans-serif;  }
 h2, .toc b { font: 140% sans-serif }
-h2 { margin-top: 1em; }
 
 .details {
    border: 1px solid #ccc;
@@ -47,7 +45,7 @@ div.term > div{
 }
 
 div.toc{
-	padding: 1em;
+	padding: 0em 1em 1em 1em;
 	border: solid #5674BC;
 	background-color: transparent;
     margin: 1em -15% 0em -15%;

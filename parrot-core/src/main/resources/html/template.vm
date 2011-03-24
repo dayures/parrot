@@ -43,7 +43,16 @@
 
   <!-- <script type="text/javascript" src="report/js/javascript.js"></script> -->
   <script type="text/javascript">
+
   	#include("js/javascript.js")
+
+  	#if (${profile} == "business")
+		#include("js/${profile}.js")
+	#end
+
+	#if (${profile} == "technical")
+		#include("js/${profile}.js")
+	#end
   </script>
   
   </body>

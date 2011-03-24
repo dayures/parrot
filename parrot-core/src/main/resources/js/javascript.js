@@ -27,4 +27,13 @@ jQuery(document).ready(function(){
         tooltipFadeOpacity: 0.5
     });
     
+    $("#openCloseAll").toggle(function() {
+        $(".term div:hidden").prevAll("h3").click();
+        $(".term div div dl:hidden").prevAll("h4").click();
+      }, function() {
+        $(".term div:visible").prevAll("h3").click();
+        $(".term div div dl:visible").prevAll("h4").click();
+      });
+    
+    
 })

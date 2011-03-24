@@ -316,3 +316,23 @@ table th {
 table td {
     text-align:left;
 }
+
+#extra_opt_uri{
+	cursor:pointer;
+    background-repeat: no-repeat;
+    background-position: center left;
+    padding-left: 1em;
+}
+
+.more-options-closed{
+	background-image: url("../images/arrow-closed.png");
+}
+
+.more-options-open{
+	background-image: url("../images/arrow-open.png");
+}
+
+fieldset{
+	border:0em;
+}
+

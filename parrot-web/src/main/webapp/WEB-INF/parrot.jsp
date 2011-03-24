@@ -101,7 +101,14 @@
 					<div class="buttons">
 						<button type="submit" class="positive"><img src="images/tick.png" alt=""/>Generate documentation</button>
 					</div>
-					<input type="radio" name="profile" id="business_profile" value="business" checked="checked" /><label for="business_profile">Business report</label> <input type="radio" name="profile" id="technical_profile" value="technical" /><label for="technical_profile">Technical report</label>
+					<fieldset class="moreoptions">
+						<legend id="extra_opt_uri" class="more-options-closed">More Options</legend>
+						<hr />
+						<div id="options">
+							<input type="radio" name="profile" id="business_profile" value="business" checked="checked" /><label for="business_profile">Business report</label> <input type="radio" name="profile" id="technical_profile" value="technical" /><label for="technical_profile">Technical report</label>
+						</div>
+					</fieldset>
+					
 					</form>
 		        </div> 
 		        <!-- 
@@ -283,6 +290,7 @@
 <script type="text/javascript" src="http://yui.yahooapis.com/2.8.0r4/build/element/element-min.js"></script> 
 <script type="text/javascript" src="http://yui.yahooapis.com/2.8.0r4/build/tabview/tabview-min.js"></script> 
 <script type="text/javascript" src="javascript/scripts.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
 
 <c:if test='${not empty paramValues.uris}'>
 	<script type="text/javascript">
@@ -301,6 +309,22 @@
 	})();
 	</script>
 </c:if>
+
+<script type="text/javascript">
+jQuery(document).ready(function(){
+    $('#extra_opt_uri').click(function() {
+    	if ($(this).attr("class") == "more-options-open")
+            $(this).attr("class", "more-options-closed");
+         else
+            $(this).attr("class", "more-options-open");
+    	
+	    $(this).nextAll().toggle();
+	    return false;
+    }).nextAll().hide();
+});
+
+</script>
+
 
 </body> 
 

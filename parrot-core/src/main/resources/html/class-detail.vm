@@ -7,7 +7,14 @@
   #end
   
   <div>
-  
+
+  #if ( ($element.Uri) || 
+  		(!$element.SuperClasses.isEmpty()) || 
+  		(!$element.SubClasses.isEmpty()) || 
+  		(!$element.EquivalentClasses.isEmpty()) || 
+  		(!$element.DisjointClasses.isEmpty()) || 
+  		(!$element.InverseReferences.isEmpty()) ||
+  		($element.isDefinedBy) )
   <div class="it"> 
   <h4>Technical information</h4> 
    <dl>
@@ -57,11 +64,16 @@
 	#end
    </dl>
   </div>
-  
+  #end
+
+
+  #if ( (!$element.inverseRuleReferences.isEmpty()) || 
+  		(!$element.individuals.isEmpty()) ||
+  		(!$element.labels.isEmpty()) ||
+  		(!$element.relatedDocuments.isEmpty()) )
   <div class="otherinfo">
   <h4>Other information</h4> 
-  
-   <dl> 
+  <dl> 
 	#if(!$element.inverseRuleReferences.isEmpty())
 	  <dt>Referenced rules</dt>
 	  #foreach($reference in $element.inverseRuleReferences)
@@ -88,9 +100,10 @@
 	    #parse("html/relatedDocument-detail.vm")
 	  #end
 	  </dd>
-	#end
-   </dl>
+    #end
+  </dl>
   </div>
+  #end
   
   </div>
 </div> 

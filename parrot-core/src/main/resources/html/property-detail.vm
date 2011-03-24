@@ -7,7 +7,17 @@
   #end
   
   <div>
-  
+
+  #if ( ($element.Uri) || 
+  		($element.hasAnyAxiom()) ||
+  		($element.InverseOf) ||
+  		($element.Domain) ||
+  		($element.Range) ||
+    	(!$element.SuperProperties.isEmpty()) ||
+    	(!$element.SubProperties.isEmpty()) ||
+    	(!$element.EquivalentProperties.isEmpty()) ||
+    	(!$element.disjointProperties.isEmpty()) ||
+    	($element.isDefinedBy) )
   <div class="it"> 
   <h4>Technical information</h4> 
   <dl>
@@ -101,44 +111,51 @@
     #end    
    </dl>
    </div>
-   
-   <div class="otherinfo">
-   <h4>Other information</h4> 
-   <dl>
-    #if(!$element.InverseReferences.isEmpty())
-      <dt>Referenced from</dt>
-      #foreach($reference in $element.InverseReferences)
-      <dd><span class="parrot-element-ref><a href="#$reference.LocalName">$reference.Label</a></span></dd>
+  #end
+  
+  #if ( (!$element.InverseReferences.isEmpty()) || 
+  		($element.cardinality != 0) ||
+  		(!$element.labels.isEmpty()) ||
+  		(!$element.relatedDocuments.isEmpty()) ||
+  		(!$element.inverseRuleReferences.isEmpty()) )
+    <div class="otherinfo">
+    <h4>Other information</h4> 
+    <dl>
+      #if(!$element.InverseReferences.isEmpty())
+        <dt>Referenced from</dt>
+        #foreach($reference in $element.InverseReferences)
+        <dd><span class="parrot-element-ref><a href="#$reference.LocalName">$reference.Label</a></span></dd>
+        #end
       #end
-    #end
 
-    #if($element.cardinality != 0)
-      <dt>Cardinality:</dt>
-      <dd>$element.cardinality</dd>
-    #end
-   
-    #if(!$element.labels.isEmpty())
-      <dt>Labels</dt>
-      <dd>#parse("html/label.vm")</dd>
-    #end
-   
-    #if(!$element.relatedDocuments.isEmpty())
-      <dt>Related Documents</dt> 
-      <dd>
-      #foreach($element in $element.relatedDocuments)
-        #parse("html/relatedDocument-detail.vm")
+      #if($element.cardinality != 0)
+        <dt>Cardinality:</dt>
+        <dd>$element.cardinality</dd>
       #end
-      </dd>
-    #end
    
-    #if(!$element.inverseRuleReferences.isEmpty())
-      <dt>Referenced rules</dt>
-      #foreach($reference in $element.inverseRuleReferences)
-      <dd><span class="parrot-element-ref parrot-rule-ref"><a href="#$reference.LocalName">$reference.Label</a></span></dd>
+      #if(!$element.labels.isEmpty())
+        <dt>Labels</dt>
+        <dd>#parse("html/label.vm")</dd>
       #end
-    #end
-
-  </dl>
-  </div>
+   
+      #if(!$element.relatedDocuments.isEmpty())
+        <dt>Related Documents</dt> 
+        <dd>
+        #foreach($element in $element.relatedDocuments)
+          #parse("html/relatedDocument-detail.vm")
+        #end
+        </dd>
+      #end
+   
+      #if(!$element.inverseRuleReferences.isEmpty())
+        <dt>Referenced rules</dt>
+        #foreach($reference in $element.inverseRuleReferences)
+        <dd><span class="parrot-element-ref parrot-rule-ref"><a href="#$reference.LocalName">$reference.Label</a></span></dd>
+        #end
+      #end
+    </dl>
+    </div>
+  #end
+    
   </div>
 </div>   

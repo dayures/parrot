@@ -3,7 +3,10 @@
   #if($element.isDeprecated())<span class="deprecated">(Deprecated)</span>#end
   </h3>
   <div>
-  
+
+  #if ( ($element.Uri) || 
+  		(!$element.types.isEmpty()) ||
+  		($element.isDefinedBy) )
 	<div class="it"> 
 	<h4>Technical information</h4> 
 	<dl>
@@ -26,7 +29,11 @@
 
 	</dl>
 	</div>	
+  #end
 
+  #if ( (!$element.relatedDocuments.isEmpty()) ||
+  		(!$element.labels.isEmpty()) ||
+  		(!$element.inverseRuleReferences.isEmpty()) )
 	<div class="otherinfo">
 	<h4>Other information</h4> 
    	<dl>
@@ -52,6 +59,6 @@
 	  #end
 	</dl>
 	</div>
-	
+  #end	
   </div>
 </div>   

@@ -5,6 +5,10 @@
   #end
   <div>
   
+  #if ( ($element.Date) ||
+  		(!$element.creators.isEmpty()) ||
+  		(!$element.contributors.isEmpty()) ||
+  		(!$element.publishers.isEmpty()) )
   <div class="vci"> 
   <h4>Version Control information</h4> 
   <dl>
@@ -37,7 +41,14 @@
     #end   
   </dl>
   </div>
-  
+  #end
+
+  #if ( ($element.Uri) ||
+		($element.Strategy) ||
+		($element.Priority) || 
+		(!$element.rules.isEmpty()) ||
+		(!$element.ruleSets.isEmpty()) ||
+		($element.Parent) )
   <div class="it"> 
   <h4>Technical information</h4> 
   <dl>
@@ -76,7 +87,11 @@
     #end
   </dl>
   </div>
+  #end
  
+  #if ( (!$element.referencedOntologicalObjects.isEmpty()) ||
+  		(!$element.labels.isEmpty()) ||
+  		(!$element.relatedDocuments.isEmpty()) )
   <div class="otherinfo"> 
   <h4>Other information</h4> 
   <dl>
@@ -102,6 +117,7 @@
     #end
   </dl>
   </div>
+  #end
   
   </div>
   

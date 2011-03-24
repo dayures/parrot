@@ -26,6 +26,10 @@ h2, .toc b { font: 140% sans-serif }
    padding-left: 1em;
 }
 
+.term p{
+	margin-top: 0em;
+}
+
 div.term a{
 	font-family: monospace;
 }

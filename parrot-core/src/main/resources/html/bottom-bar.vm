@@ -1,0 +1,36 @@
+<div id="bottom-bar"> 
+        <ul> 
+            <li title="Home"><a href="#"><img src="images/home.png" alt="" /></a></li> 
+        </ul> 
+        <span class="jx-separator-left"></span> 
+        <ul> 
+		#if(!$document.ontologyDetailViews.isEmpty())
+            <li title="Ontologies"><a href="#ontologies"><img src="images/icon-ontology-16.png" alt="ontologies" /></a></li> 
+		#end
+		
+		#if(!$document.ontologyClassDetailViews.isEmpty())
+            <li title="Classes"><a href="#classes"><img src="images/icon-class-16.png" alt="classes" /></a></li> 
+		#end
+		
+		#if(!$document.ontologyPropertyDetailViews.isEmpty())
+            <li title="Properties"><a href="#properties"><img src="images/icon-property-16.png" alt="properties" /></a></li> 
+		#end
+		
+		#if(!$document.ontologyIndividualDetailViews.isEmpty())
+			<li title="Individuals"><a href="#individuals"><img src="images/icon-individual-16.png" alt="individuals" /></a></li> 
+		#end
+		
+		#if(!$document.ruleSetDetailViews.isEmpty())
+			<li title="Rule sets"><a href="#rulesets"><img src="images/icon-ruleset-16.png" alt="rule sets" /></a></li> 
+		#end
+		
+		#if(!$document.ruleDetailViews.isEmpty())
+			<li title="Rules"><a href="#rules"><img src="images/icon-rule-16.png" alt="rules" /></a></li> 
+		#end
+        </ul> 
+        <span class="jx-separator-left"></span>        
+        <ul> 
+			<li title="Expand/Collapse all" ><a href="#" id="openCloseAll"><img src="images/block.png" alt=""/>Expand/Collapse all</a></li> 
+        </ul> 
+        <span class="jx-separator-left"></span>        
+</div> 

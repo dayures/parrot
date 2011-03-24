@@ -14,8 +14,9 @@
 		#if (${profile} == "technical")
 			#include("css/${profile}.css")
 		#end
-
     </style>
+    
+    <link rel="stylesheet" type="text/css" media="screen,projection" href="report/jixedbar/jx.stylesheet.css" /> 
     <link type="image/x-icon" href="images/favicon.ico" rel="shortcut icon" />
     <!-- for debugging 
     <link rel="stylesheet" type="text/css" media="screen,projection" href="report/css/base.css" /> 
@@ -32,11 +33,15 @@
 	  #parse("html/glossary.vm")
 	  #parse("html/footer.vm")
   </div>
+  #parse("html/bottom-bar.vm")
+
   
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script> 
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/jquery-ui.min.js"></script> 
   <script type="text/javascript" src="https://github.com/malsup/corner/raw/master/jquery.corner.js"></script> 
-  <!-- <script type="text/javascript" src="report/js/javascript.js"></script>-->
+  <script type="text/javascript" src="http://jixedbar.googlecode.com/svn/branches/0.0.5/src/jquery.jixedbar.min.js"></script> 
+
+  <!-- <script type="text/javascript" src="report/js/javascript.js"></script> -->
   <script type="text/javascript">
   	#include("js/javascript.js")
   </script>

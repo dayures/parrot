@@ -1,5 +1,5 @@
 #if(!$document.ontologyDetailViews.isEmpty())
-	<h2>Ontologies</h2>
+	<h2 id="ontologies">Ontologies</h2>
 	#foreach($element in $document.ontologyDetailViews)
 	<div class="details ontologies">
 	  #parse("html/ontology-detail.vm")
@@ -8,7 +8,7 @@
 #end
 
 #if(!$document.ontologyClassDetailViews.isEmpty())
-	<h2>Classes</h2>
+	<h2 id="classes">Classes</h2>
 	#foreach($element in $document.ontologyClassDetailViews)
 	<div class="details classes">
 	  #parse("html/class-detail.vm")
@@ -17,7 +17,7 @@
 #end
 
 #if(!$document.ontologyPropertyDetailViews.isEmpty())
-	<h2>Properties</h2>
+	<h2 id="properties">Properties</h2>
 	#foreach($element in $document.ontologyPropertyDetailViews)
 	<div class="details properties">
 	  #parse("html/property-detail.vm")
@@ -26,7 +26,7 @@
 #end
 
 #if(!$document.ontologyIndividualDetailViews.isEmpty())
-	<h2>Individuals</h2>
+	<h2 id="individuals">Individuals</h2>
 	#foreach($element in $document.ontologyIndividualDetailViews)
 	<div class="details individuals">
 	  #parse("html/individual-detail.vm")
@@ -35,7 +35,7 @@
 #end
 
 #if(!$document.ruleSetDetailViews.isEmpty())
-	<h2>RuleSets</h2>
+	<h2 id="rulesets">RuleSets</h2>
 	#foreach($element in $document.ruleSetDetailViews)
 	<div class="details rulesets">
 	  #parse("html/ruleset-detail.vm")
@@ -45,7 +45,7 @@
 
 
 #if(!$document.ruleDetailViews.isEmpty())
-	<h2>Rules</h2>
+	<h2 id="rules">Rules</h2>
 	#foreach($element in $document.ruleDetailViews)
 	<div class="details rules">
 	  #parse("html/rule-detail.vm")

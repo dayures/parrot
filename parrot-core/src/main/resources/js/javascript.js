@@ -42,6 +42,7 @@ jQuery(document).ready(function(){
             },
             padding: 10, 
             textAlign: 'center',
+    		fontSize: '.9em',
 //            width: 300,
             tip: true, // Give it a speech bubble tip with automatic corner detection
             name: 'green' // Style it according to the preset 'cream' style

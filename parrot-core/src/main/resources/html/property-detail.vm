@@ -94,6 +94,11 @@
       <dd><span class="parrot-element-ref parrot-property-ref"><a href="#$property.LocalName">$property.Label</a></span></dd>
       #end
     #end
+    
+    #if($element.isDefinedBy)
+      <dt>isDefinedBy</dt>
+      <dd><span class="parrot-element-ref parrot-${element.isDefinedBy.kindString}-ref"><a href="#$element.isDefinedBy.LocalName">$element.isDefinedBy.Label</a></span></dd>
+    #end    
    </dl>
    </div>
    
@@ -132,11 +137,7 @@
       <dd><span class="parrot-element-ref parrot-rule-ref"><a href="#$reference.LocalName">$reference.Label</a></span></dd>
       #end
     #end
-   
-    #if($element.isDefinedBy)
-      <dt>isDefinedBy</dt>
-      <dd><span class="parrot-element-ref parrot-${element.isDefinedBy.kindString}-ref"><a href="#$element.isDefinedBy.LocalName">$element.isDefinedBy.Label</a></span></dd>
-    #end
+
   </dl>
   </div>
   </div>

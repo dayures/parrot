@@ -68,6 +68,7 @@
 	  <a href="#$element.Anchor">$element.Label</a>#if ($foreach.hasNext), #end
 	#end
 	</p>
+	</div>
 	
 	#foreach($element in $document.ruleSetDetailViews)
 	<div class="details rulesets">#parse("html/ruleset-detail.vm")</div>

@@ -8,8 +8,8 @@
 #foreach($element in $document.ontologyDetailViews)
 	<a href="#$element.Anchor">$element.Label</a>#if($element.isDeprecated())<span class="deprecated">(Deprecated)</span>#end#if ($foreach.hasNext), #end
 #end
-#end
 </p>
+#end
 
 
 #if(!$document.ontologyClassDetailViews.isEmpty())
@@ -18,8 +18,8 @@
 #foreach($element in $document.ontologyClassDetailViews)
 	<a href="#$element.Anchor">$element.Label</a>#if($element.isDeprecated())<span class="deprecated">(Deprecated)</span>#end#if ($foreach.hasNext), #end
 #end
-#end
 </p>
+#end
 
 
 #if(!$document.ontologyPropertyDetailViews.isEmpty())
@@ -28,8 +28,8 @@
 #foreach($element in $document.ontologyPropertyDetailViews)
 	<a href="#$element.Anchor">$element.Label</a>#if($element.isDeprecated())<span class="deprecated">(Deprecated)</span>#end#if ($foreach.hasNext), #end
 #end
-#end
 </p>
+#end
 
 
 #if(!$document.ontologyIndividualDetailViews.isEmpty())
@@ -38,8 +38,8 @@
 #foreach($element in $document.ontologyIndividualDetailViews)
 	<a href="#$element.Anchor">$element.Label</a>#if($element.isDeprecated())<span class="deprecated">(Deprecated)</span>#end#if ($foreach.hasNext), #end
 #end
-#end
 </p>
+#end
 
 
 #if(!$document.ruleSetDetailViews.isEmpty())
@@ -48,8 +48,8 @@
 #foreach($element in $document.ruleSetDetailViews)
 	<a href="#$element.Anchor">$element.Label</a>#if ($foreach.hasNext), #end
 #end
-#end
 </p>
+#end
 
 
 #if(!$document.ruleDetailViews.isEmpty())
@@ -58,15 +58,15 @@
 #foreach($element in $document.ruleDetailViews)
 	<a href="#$element.Anchor">$element.Label</a>#if ($foreach.hasNext), #end
 #end
-#end
 </p>
+#end
 
 <hr />
 
-<p>
 #if(!$document.glossary.isEmpty())
+<p>
 <a href="#glossary">Glossary ($document.glossary.size() entries)</a>
-#end
 </p>
+#end
 
 </div>

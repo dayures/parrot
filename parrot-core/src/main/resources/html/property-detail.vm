@@ -2,12 +2,19 @@
   <h3><a id="$element.Anchor"></a><span class="parrot-element-title parrot-property-title">$element.Label</span> (Property)
   #if($element.isDeprecated())<span class="deprecated">(Deprecated)</span>#end
   </h3>
-  <dl>
-   
-   #if($element.Uri)
-      <dt>URI</dt>
-      <dd><pre>$element.Uri</pre></dd>
+  #if($element.Comment)
+    <p>$element.Comment</p>
   #end
+  
+  <div>
+  
+  <div class="it"> 
+  <h4>Technical information</h4> 
+  <dl>
+	#if($element.Uri)
+	    <dt>URI</dt>
+	    <dd><pre>$element.Uri</pre></dd>
+	#end
    
     #if ($element.hasAnyAxiom())
     <dt>Property Type</dt>
@@ -26,117 +33,111 @@
     	#if($element.isTransitiveProperty())
     	<dd>Transitive Property</dd>      
     	#end    	
-    	#if($element.isSymmetricProperty())
-    	<dd>Symmetric Property</dd>      
-    	#end    	
     	#if($element.isFunctionalProperty())
     	<dd>Functional Property</dd>      
     	#end    	
     	#if($element.isInverseFunctionalProperty())
     	<dd>Inverse Functional Property</dd>      
     	#end    	
-    	
     	#if($element.isReflexiveProperty())
     	<dd>Reflexive Property</dd>      
     	#end    	
     	#if($element.isIrreflexiveProperty())
     	<dd>Irreflexive Property</dd>      
     	#end        	
+    	#if($element.isSymmetricProperty())
+    	<dd>Symmetric Property</dd>      
+    	#end    	
     	#if($element.isAsymmetricProperty())
     	<dd>Asymmetric Property</dd>      
     	#end
 
-   #if($element.InverseOf)
+    #if($element.InverseOf)
       <dt>inverse of</dt>
       <dd><span class="parrot-element-ref parrot-property-ref"><a href="#$element.InverseOf.LocalName">$element.InverseOf.Label</a></span></dd>
-   #end
+    #end
 
-   #if($element.Comment)
-      <dt>Description</dt>
-      <dd>$element.Comment</dd>
-   #end
-
-   #if($element.Domain)
+    #if($element.Domain)
       <dt>Domain</dt>
    	  <dd><span class="parrot-element-ref parrot-class-ref"><a href="#$element.Domain.LocalName">$element.Domain.Label</a></span></dd>
-   #end
+    #end
 
-   #if($element.Range)
+    #if($element.Range)
       <dt>Range</dt>
-      <dd>
-        <span class="parrot-element-ref parrot-${element.Range.kindString}-ref">
-      	  <a href="#$element.Range.LocalName">$element.Range.Label</a>
-      	</span>
-      </dd>
-   #end
+      <dd><span class="parrot-element-ref parrot-${element.Range.kindString}-ref"><a href="#$element.Range.LocalName">$element.Range.Label</a></span></dd>
+    #end
    
-   #if(!$element.SuperProperties.isEmpty())
-    <dt>SubProperty of</dt>
-    #foreach($superproperty in $element.SuperProperties)
+    #if(!$element.SuperProperties.isEmpty())
+      <dt>SubProperty of</dt>
+      #foreach($superproperty in $element.SuperProperties)
       <dd><span class="parrot-element-ref parrot-property-ref"><a href="#$superproperty.LocalName">$superproperty.Label</a></span></dd>
+      #end
     #end
-   #end
 
-   #if(!$element.SubProperties.isEmpty())
-    <dt>SuperProperty of</dt>
-    #foreach($subproperty in $element.SubProperties)
+    #if(!$element.SubProperties.isEmpty())
+      <dt>SuperProperty of</dt>
+      #foreach($subproperty in $element.SubProperties)
       <dd><span class="parrot-element-ref parrot-property-ref"><a href="#$subproperty.LocalName">$subproperty.Label</a></span></dd>
+      #end
     #end
-   #end
    
-   #if(!$element.EquivalentProperties.isEmpty())
-    <dt>Equivalent Property of</dt>
-    #foreach($equivalentProperty in $element.EquivalentProperties)
+    #if(!$element.EquivalentProperties.isEmpty())
+      <dt>Equivalent Property of</dt>
+      #foreach($equivalentProperty in $element.EquivalentProperties)
       <dd><span class="parrot-element-ref parrot-property-ref"><a href="#$equivalentProperty.LocalName">$equivalentProperty.Label</a></span></dd>
+      #end
     #end
-   #end
 
-   #if(!$element.disjointProperties.isEmpty())
-    <dt>Disjoint Properties</dt>
-    #foreach($property in $element.disjointProperties)
+    #if(!$element.disjointProperties.isEmpty())
+      <dt>Disjoint Properties</dt>
+      #foreach($property in $element.disjointProperties)
       <dd><span class="parrot-element-ref parrot-property-ref"><a href="#$property.LocalName">$property.Label</a></span></dd>
+      #end
     #end
-   #end
+   </dl>
+   </div>
    
-   #if(!$element.InverseReferences.isEmpty())
-   <dt>Referenced from</dt>
-   #foreach($reference in $element.InverseReferences)
-     <dd><span class="parrot-element-ref><a href="#$reference.LocalName">$reference.Label</a></span></dd>
-   #end
-   #end
+   <div class="otherinfo">
+   <h4>Other information</h4> 
+   <dl>
+    #if(!$element.InverseReferences.isEmpty())
+      <dt>Referenced from</dt>
+      #foreach($reference in $element.InverseReferences)
+      <dd><span class="parrot-element-ref><a href="#$reference.LocalName">$reference.Label</a></span></dd>
+      #end
+    #end
 
-   #if($element.cardinality != 0)
-   <dt>Cardinality:</dt>
-   <dd>$element.cardinality</dd>
-   #end
+    #if($element.cardinality != 0)
+      <dt>Cardinality:</dt>
+      <dd>$element.cardinality</dd>
+    #end
    
-   #if(!$element.labels.isEmpty())
-   <dt>Labels</dt>
-   <dd>
-   #parse("html/label.vm")
-   </dd>
-   #end
+    #if(!$element.labels.isEmpty())
+      <dt>Labels</dt>
+      <dd>#parse("html/label.vm")</dd>
+    #end
    
-   #if(!$element.relatedDocuments.isEmpty())
-   <dt>Related Documents</dt> 
-   <dd>
-     #foreach($element in $element.relatedDocuments)
-       #parse("html/relatedDocument-detail.vm")
-     #end
-   </dd>
-   #end
+    #if(!$element.relatedDocuments.isEmpty())
+      <dt>Related Documents</dt> 
+      <dd>
+      #foreach($element in $element.relatedDocuments)
+        #parse("html/relatedDocument-detail.vm")
+      #end
+      </dd>
+    #end
    
-   #if(!$element.inverseRuleReferences.isEmpty())
-   <dt>Referenced rules</dt>
-   #foreach($reference in $element.inverseRuleReferences)
-     <dd><span class="parrot-element-ref parrot-rule-ref"><a href="#$reference.LocalName">$reference.Label</a></span></dd>
-   #end
-   #end
+    #if(!$element.inverseRuleReferences.isEmpty())
+      <dt>Referenced rules</dt>
+      #foreach($reference in $element.inverseRuleReferences)
+      <dd><span class="parrot-element-ref parrot-rule-ref"><a href="#$reference.LocalName">$reference.Label</a></span></dd>
+      #end
+    #end
    
-   #if($element.isDefinedBy)
+    #if($element.isDefinedBy)
       <dt>isDefinedBy</dt>
       <dd><span class="parrot-element-ref parrot-${element.isDefinedBy.kindString}-ref"><a href="#$element.isDefinedBy.LocalName">$element.isDefinedBy.Label</a></span></dd>
-   #end
-   
+    #end
   </dl>
+  </div>
+  </div>
 </div>   

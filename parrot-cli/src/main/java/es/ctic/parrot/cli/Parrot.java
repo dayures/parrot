@@ -23,6 +23,7 @@ import es.ctic.parrot.DocumentaryProject;
 import es.ctic.parrot.appserv.ParrotAppServ;
 import es.ctic.parrot.generators.HtmlOutputGenerator;
 import es.ctic.parrot.generators.OutputGenerator;
+import es.ctic.parrot.generators.OutputGenerator.Profile;
 import es.ctic.parrot.reader.FileInput;
 import es.ctic.parrot.reader.URLInput;
 
@@ -34,8 +35,12 @@ public class Parrot {
     private static final OutputStream DEFAULT_OUT = System.out;
     private static final String DEFAULT_LANG = "en";
     private static final String DEFAULT_TEMPLATE = "classpath:html/template.vm";
+    private static final String TECHNICAL_PROFILE = "technical";
+    private static final String BUSINESS_PROFILE = "business";
+    private static final String DEFAULT_PROFILE = TECHNICAL_PROFILE;
     
     public static void main( String[] args ) throws Exception {
+    	
         Options options = createOptions();
         CommandLine cmd = parseCommandLine(args, options);
 
@@ -43,7 +48,8 @@ public class Parrot {
         OutputStream out = DEFAULT_OUT;
         String lang = DEFAULT_LANG;
         String template = DEFAULT_TEMPLATE;
-
+        Profile profile = Profile.TECHNICAL;
+        
         // process options
         if (cmd.hasOption("h")) {
             HelpFormatter formatter = new HelpFormatter();
@@ -68,6 +74,20 @@ public class Parrot {
             template = cmd.getOptionValue("t");
         }
         
+        // profile
+        if (cmd.hasOption("p")) {
+            String profileStr = cmd.getOptionValue("p", DEFAULT_PROFILE).toLowerCase();
+		
+			if (profileStr.equals(BUSINESS_PROFILE)){
+				profile = Profile.BUSINESS;
+			} 
+			
+			if (profileStr.equals(TECHNICAL_PROFILE)){
+				profile = Profile.TECHNICAL;
+			}
+            
+        }
+        
         if (cmd.getOptionValues('i').length == 0){
             System.err.println("Please specify at least one input");
             return;
@@ -89,7 +109,7 @@ public class Parrot {
                 System.err.println("Please specify at least one input");
             } else {
                 OutputGenerator outputGenerator = new HtmlOutputGenerator(out, templateInputStream);
-                app.createDocumentation(dp, outputGenerator);
+                app.createDocumentation(dp, outputGenerator, profile);
             }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
@@ -123,6 +143,7 @@ public class Parrot {
         Options options = new Options();
         options.addOption("o", "output", true, "output file");
         options.addOption("h", "help", false, "print help");
+        options.addOption("p", "profile", true, "profile ( valid vules: 'technical' [default] or 'business')");        
         options.addOption("l", "lang", true, "language using language subtag registry from IANA (default: " + DEFAULT_LANG + ")");
         
         Option inputFile   = OptionBuilder.withArgName("file")

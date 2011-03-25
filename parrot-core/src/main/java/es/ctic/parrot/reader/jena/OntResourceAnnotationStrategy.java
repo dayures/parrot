@@ -202,6 +202,7 @@ public class OntResourceAnnotationStrategy {
 	 *  <li>http://www.w3.org/2004/02/skos/core#altLabel</li>
 	 *  <li>http://purl.org/dc/elements/1.1/title</li>
 	 *  <li>http://www.w3.org/2000/01/rdf-schema#label</li>
+	 *  <li>automatically generated</li>
 	 * </ul>
 
 	 * @param ontResource the ontology resource.
@@ -260,7 +261,10 @@ public class OntResourceAnnotationStrategy {
         }
         
         if (locale == null)
-        	return URIUtils.getReference(ontResource.getURI());
+        	return replaceUnderscore( splitCamelCase( URIUtils.getReference(ontResource.getURI() ) ) );
+        
+        
+        
         else
         	return getLabel(ontResource, null);
     }
@@ -849,5 +853,31 @@ public class OntResourceAnnotationStrategy {
 		return false;
 				
 	}
+
+	/**
+	 * Converts a CamelCase string into an human-readable string
+	 * From http://stackoverflow.com/questions/2559759/how-do-i-convert-camelcase-into-human-readable-names-in-java
+	 * @param s The string to convert.
+	 * @return The result string.
+	 */
+	private static String splitCamelCase(String s) {
+		   return s.replaceAll(
+		      String.format("%s|%s|%s",
+		         "(?<=[A-Z])(?=[A-Z][a-z])",
+		         "(?<=[^A-Z])(?=[A-Z])",
+		         "(?<=[A-Za-z])(?=[^A-Za-z])"
+		      ),
+		      " "
+		   );
+		}
+
+	/**
+	 * Replaces all underscore '_' to blank space ' '.
+	 * @param s The string to convert.
+	 * @return The result string.
+	 */
+	private static String replaceUnderscore(String s) {
+		   return s.replace('_' , ' ');
+		}
 	
 }

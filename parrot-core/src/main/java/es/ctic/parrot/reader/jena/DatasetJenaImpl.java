@@ -10,6 +10,8 @@ import es.ctic.parrot.transformers.TransformerException;
 
 public class DatasetJenaImpl extends AbstractJenaDocumentableObject implements Dataset {
 
+    public static final String VOID_NS = "http://rdfs.org/ns/void#";
+    
     public DatasetJenaImpl(OntResource resource, DocumentableObjectRegister register, OntResourceAnnotationStrategy annotationStrategy) {
         super(resource, register, annotationStrategy);
     }

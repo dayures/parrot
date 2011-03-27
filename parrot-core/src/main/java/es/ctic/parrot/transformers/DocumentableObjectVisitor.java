@@ -1,5 +1,6 @@
 package es.ctic.parrot.transformers;
 
+import es.ctic.parrot.de.Dataset;
 import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.de.Ontology;
 import es.ctic.parrot.de.OntologyClass;
@@ -64,6 +65,13 @@ public interface DocumentableObjectVisitor {
      */
 	public abstract Object visit(RuleSet object) throws TransformerException;
 	
+    /**
+     * Visits the given <code>data set</code>.
+     * @param object the <code>data set</code> to visit.
+     * @throws TransformerException if a failed transformation operation occurs.
+     */
+    public abstract Object visit(Dataset dataset) throws TransformerException;
+
     /**
      * Visits the given <code>register</code>.
      * @param object the <code>register</code> to visit.

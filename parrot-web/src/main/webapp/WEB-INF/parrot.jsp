@@ -267,7 +267,9 @@
 					</form>
 				</div> <!--  /tab3 -->
 		    </div> 
-		    
+		    <div id="tipOfTheDay">
+		    <span >Did you know ...</span>
+		    </div>
 		    <p>Do you need <a href="help.jsp">help</a>?</p>
 		</div> 
 
@@ -291,6 +293,8 @@
 <script type="text/javascript" src="http://yui.yahooapis.com/2.8.0r4/build/tabview/tabview-min.js"></script> 
 <script type="text/javascript" src="javascript/scripts.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://3nhanced.com/examples/randomContent/js/jquery.randomContent.js"></script>
+<script type="text/javascript" src="https://github.com/malsup/corner/raw/master/jquery.corner.js"></script> 
 
 <c:if test='${not empty paramValues.uris}'>
 	<script type="text/javascript">
@@ -321,7 +325,13 @@ jQuery(document).ready(function(){
 	    $(this).nextAll().toggle();
 	    return false;
     }).nextAll().hide();
+
+    $('#tipOfTheDay').corner();
+    $('#tipOfTheDay').randomContent({xmlPath: "tipOfTheDay.xml", nodeName: "tip"});
 });
+
+
+
 
 </script>
 

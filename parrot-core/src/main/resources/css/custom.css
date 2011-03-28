@@ -306,3 +306,8 @@ h1 a[href]:hover { background-color: transparent; }
 }
 
 /** end metadata icons ***/
+
+h3 img.icon {
+	vertical-align: middle;
+	cursor: pointer;
+}

@@ -60,4 +60,19 @@ jQuery(document).ready(function(){
           content: 'Add a description using http://purl.org/dc/terms/description', // Use the tooltip attribute of the element for the content //
           style: 'parrot'
       });
+      
+      $('.datatype-property-icon').qtip({
+          content: '<a href="http://www.w3.org/TR/owl2-syntax#Data_Properties" target="_blank">Datatype property</a>', // Use the tooltip attribute of the element for the content //
+          style: 'parrot'
+      });
+      
+      $('.object-property-icon').qtip({
+          content: '<a href="http://www.w3.org/TR/owl2-syntax#Object_Properties" target="_blank">Object property</a>', // Use the tooltip attribute of the element for the content //
+          style: 'parrot'
+      });
+      
+      $('.annotation-property-icon').qtip({
+          content: '<a href="http://www.w3.org/TR/owl2-syntax#Annotation_Properties" target="_blank">Annotation property</a>', // Use the tooltip attribute of the element for the content //
+          style: 'parrot'
+      });
 })

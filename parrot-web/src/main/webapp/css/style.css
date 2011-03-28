@@ -336,3 +336,15 @@ fieldset{
 	border:0em;
 }
 
+#tipOfTheDay{
+	background-color: #FAF9AF;
+	color: #333;
+	padding: 0.9em 1.7em;
+	margin: 1em auto;
+	font: 1.5em/150% "palatino", "georgia", "times new roman", serif;
+	border: 3px solid #CCC;
+
+	background-image: url("../images/tip.png");
+	background-repeat: no-repeat;
+    background-position: 0.3em center;
+}

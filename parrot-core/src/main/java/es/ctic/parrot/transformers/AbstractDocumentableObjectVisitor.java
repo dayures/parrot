@@ -1,5 +1,6 @@
 package es.ctic.parrot.transformers;
 
+import es.ctic.parrot.de.Dataset;
 import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.de.Ontology;
@@ -102,4 +103,15 @@ public class AbstractDocumentableObjectVisitor implements
 		return null;
 	}
 	
+    /**
+     * Does nothing.
+     * @param object the <code>data set</code> to visit.
+     * @throws TransformerException if a failed transformation operation occurs.
+     * @return always null.
+     */
+    public Object visit(Dataset dataset) throws TransformerException{
+        // default implementation: do nothing
+		return null;        
+    }
+    
 }

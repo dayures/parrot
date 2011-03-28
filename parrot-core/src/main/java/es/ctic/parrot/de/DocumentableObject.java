@@ -63,7 +63,13 @@ public interface DocumentableObject {
         /**
          * a rule set.
          */
-        RULE_SET("ruleset");
+        RULE_SET("ruleset"),
+
+        /**
+         * a data set.
+         */
+        DATASET("dataset");
+        
         
         private final String name;
         private Kind(String name) { 

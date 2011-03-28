@@ -14,31 +14,31 @@
   <dl>
     #if($element.Uri)
 
-	   #if($element.Date)
-	      <dt>Date</dt>
-	      <dd>$element.Date</dd>
-	   #end
+		#if($element.Date)
+		<dt>Date</dt>
+		<dd class="metadata-icon date">$element.Date</dd>
+		#end
             
-	   #if(!$element.creators.isEmpty())
-	   <dt>Creators:</dt>
-	   #foreach($creator in $element.creators)
-	     <dd>$creator</dd>
-	   #end
-	   #end
+		#if(!$element.creators.isEmpty())
+		<dt>Creators:</dt>
+		#foreach($creator in $element.creators)
+		  <dd class="metadata-icon creator">$creator</dd>
+		#end
+		#end
 	   
-	   #if(!$element.contributors.isEmpty())
-	   <dt>Contributors:</dt>
-	   #foreach($contributor in $element.contributors)
-	     <dd>$contributor</dd>
-	   #end
-	   #end
-	   
-	   #if(!$element.publishers.isEmpty())
-	   <dt>Publishers:</dt>
-	   #foreach($publisher in $element.publishers)
-	     <dd>$publisher</dd>
-	   #end
-	   #end
+		#if(!$element.contributors.isEmpty())
+		<dt>Contributors:</dt>
+		#foreach($contributor in $element.contributors)
+		  <dd class="metadata-icon contributor">$contributor</dd>
+		#end
+		#end
+		
+		#if(!$element.publishers.isEmpty())
+		<dt>Publishers:</dt>
+		#foreach($publisher in $element.publishers)
+		  <dd class="metadata-icon publisher">$publisher</dd>
+		#end
+		#end
     #end
   </dl>  
   </div>

@@ -11,9 +11,11 @@ import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.ontology.OntModelSpec;
 import com.hp.hpl.jena.ontology.OntProperty;
+import com.hp.hpl.jena.ontology.OntResource;
 import com.hp.hpl.jena.ontology.Ontology;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.shared.JenaException;
+import com.hp.hpl.jena.util.iterator.ExtendedIterator;
 import com.hp.hpl.jena.vocabulary.OWL;
 import com.hp.hpl.jena.vocabulary.RDF;
 import com.hp.hpl.jena.vocabulary.RDFS;
@@ -67,6 +69,7 @@ public class JenaOWLReader implements DocumentReader {
             loadOntClasses(ontModel, register);
             loadOntProperties(ontModel, register);
             loadOntIndividuals(ontModel, register);
+            loadDatasets(ontModel, register);
         } catch (JenaException e) {
             if (e.getCause() != null && e.getCause() instanceof SAXParseException) {
                 throw new ReaderException(input.getMimeType() + " parse error: " + e.getCause().getMessage(), e);
@@ -170,6 +173,15 @@ public class JenaOWLReader implements DocumentReader {
 	        		logger.debug("Not included individual: " + individual.getURI() +" because is not domain specific.");
 	        	}
 	        }
+	    }
+	}
+	
+	private void loadDatasets(OntModel model, DocumentableObjectRegister register) {
+	    OntClass voidDatasetClass = model.getOntClass(DatasetJenaImpl.VOID_NS + "Dataset");
+	    ExtendedIterator<? extends OntResource> datasetIterator = voidDatasetClass.listInstances();
+	    while (datasetIterator.hasNext()) {
+	        OntResource datasetInstance = datasetIterator.next();
+	        register.registerDocumentableObject(new DatasetJenaImpl(datasetInstance, register, getAnnotationStrategy()));
 	    }
 	}
 	

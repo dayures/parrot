@@ -1,6 +1,10 @@
 <div class="term">
   <h3><a id="$element.Anchor"></a><span class="parrot-element-title parrot-property-title">$element.Label</span> (Property)
-  #if($element.isDeprecated())<span class="deprecated">(Deprecated)</span>#end
+  	#if($element.isDeprecated())<span class="deprecated">(Deprecated)</span>#end
+  	
+	#if($element.isDatatypeProperty())<img class="datatype-property-icon icon" src="images/datatype-property-24x24.png"/>#end
+	#if($element.isObjectProperty())<img class="object-property-icon icon" src="images/object-property-24x24.png"/>#end
+	#if($element.isAnnotationProperty())<img class="annotation-property-icon icon" src="images/annotation-property-24x24.png"/>#end
   </h3>
 
   #parse("html/description.vm")

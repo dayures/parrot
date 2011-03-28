@@ -10,3 +10,5 @@ parrot-cli/.classpath
 parrot-cli/.project
 parrot-cli/.settings
 parrot-cli/target
+syntax: glob
+parrot_web.log

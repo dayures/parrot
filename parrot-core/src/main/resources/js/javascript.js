@@ -75,4 +75,25 @@ jQuery(document).ready(function(){
           content: '<a href="http://www.w3.org/TR/owl2-syntax#Annotation_Properties" target="_blank">Annotation property</a>', // Use the tooltip attribute of the element for the content //
           style: 'parrot'
       });
+      
+      $('.reflexive-property-icon').qtip({
+          content: '<a href="http://www.w3.org/TR/owl2-syntax/#Reflexive_Object_Properties" target="_blank">Reflexive property</a>', // Use the tooltip attribute of the element for the content //
+          style: 'parrot'
+      });
+      
+      $('.irreflexive-property-icon').qtip({
+          content: '<a href="http://www.w3.org/TR/owl2-syntax/#Irreflexive_Object_Properties" target="_blank">Irreflexive property</a>', // Use the tooltip attribute of the element for the content //
+          style: 'parrot'
+      });
+      
+      $('.symmetric-property-icon').qtip({
+          content: '<a href="http://www.w3.org/TR/owl2-syntax/#Symmetric_Object_Properties" target="_blank">Symmetric property</a>', // Use the tooltip attribute of the element for the content //
+          style: 'parrot'
+      });
+      
+      $('.asymmetric-property-icon').qtip({
+          content: '<a href="http://www.w3.org/TR/owl2-syntax/#Asymmetric_Object_Properties" target="_blank">Asymmetric property</a>', // Use the tooltip attribute of the element for the content //
+          style: 'parrot'
+      });
+
 })

@@ -5,6 +5,12 @@
 	#if($element.isDatatypeProperty())<img class="datatype-property-icon icon" src="images/datatype-property-24x24.png"/>#end
 	#if($element.isObjectProperty())<img class="object-property-icon icon" src="images/object-property-24x24.png"/>#end
 	#if($element.isAnnotationProperty())<img class="annotation-property-icon icon" src="images/annotation-property-24x24.png"/>#end
+
+	#if($element.isReflexiveProperty())<img class="reflexive-property-icon icon" src="images/reflexive-property-24x24.png"/>#end    	
+	#if($element.isIrreflexiveProperty())<img class="irreflexive-property-icon icon" src="images/irreflexive-property-24x24.png"/>#end
+	#if($element.isSymmetricProperty())<img class="symmetric-property-icon icon" src="images/symmetric-property-24x24.png"/>#end
+	#if($element.isAsymmetricProperty())<img class="asymmetric-property-icon icon" src="images/asymmetric-property-24x24.png"/>#end
+
   </h3>
 
   #parse("html/description.vm")

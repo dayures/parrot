@@ -40,7 +40,7 @@
 	#end    
     
     	#if($element.isDatatypeProperty())
-    	<dd>Datatype Property</dd>      
+    	<dd>Data Property</dd>      
     	#end
     	#if($element.isObjectProperty())
     	<dd>Object Property</dd>      

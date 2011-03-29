@@ -98,16 +98,17 @@
 						</c:otherwise>
 					</c:choose>
 					<p id="addURI"><img src="images/add.png" width="16" height="16" alt=""/><span id="addURILink">add another URI</span></p>
-					<div class="buttons">
-						<button type="submit" class="positive"><img src="images/tick.png" alt=""/>Generate documentation</button>
-					</div>
 					<fieldset class="moreoptions">
 						<legend id="extra_opt_uri" class="more-options-closed">More Options</legend>
-						<hr />
 						<div id="options">
 							<input type="radio" name="profile" id="business_profile" value="business" checked="checked" /><label for="business_profile">Business report</label> <input type="radio" name="profile" id="technical_profile" value="technical" /><label for="technical_profile">Technical report</label>
 						</div>
+						<hr />
 					</fieldset>
+					<div class="buttons">
+						<button type="submit" class="positive"><img src="images/tick.png" alt=""/>Generate documentation</button>
+					</div>
+
 					
 					</form>
 		        </div> 
@@ -322,9 +323,9 @@ jQuery(document).ready(function(){
          else
             $(this).attr("class", "more-options-open");
     	
-	    $(this).nextAll().toggle();
+	    $(this).nextAll('div').toggle();
 	    return false;
-    }).nextAll().hide();
+    }).nextAll('div').hide();
 
     $('#tipOfTheDay').corner();
     $('#tipOfTheDay').randomContent({xmlPath: "tipOfTheDay.xml", nodeName: "tip"});

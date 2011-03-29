@@ -57,42 +57,42 @@ jQuery(document).ready(function(){
       $.fn.qtip.defaults.hide.fixed = true;
     
       $('.icon-info-description').qtip({
-          content: 'Add a description using http://purl.org/dc/terms/description', // Use the tooltip attribute of the element for the content //
+          content: 'Add a description using http://purl.org/dc/terms/description',
           style: 'parrot'
       });
       
       $('.datatype-property-icon').qtip({
-          content: '<a href="http://www.w3.org/TR/owl2-syntax#Data_Properties" target="_blank">Datatype property</a>', // Use the tooltip attribute of the element for the content //
+          content: 'A <a href="http://www.w3.org/TR/owl2-syntax#Data_Properties" target="_blank">data property</a> is used to describe attributes of resources, such as the height of a person or the population of a country.',
           style: 'parrot'
       });
       
       $('.object-property-icon').qtip({
-          content: '<a href="http://www.w3.org/TR/owl2-syntax#Object_Properties" target="_blank">Object property</a>', // Use the tooltip attribute of the element for the content //
+          content: 'An <a href="http://www.w3.org/TR/owl2-syntax#Object_Properties" target="_blank">object property</a> is used to describe relations to other resources, such as the mother of a person or the capital of a country.',
           style: 'parrot'
       });
       
       $('.annotation-property-icon').qtip({
-          content: '<a href="http://www.w3.org/TR/owl2-syntax#Annotation_Properties" target="_blank">Annotation property</a>', // Use the tooltip attribute of the element for the content //
+          content: 'An <a href="http://www.w3.org/TR/owl2-syntax#Annotation_Properties" target="_blank">annotation property</a> is used to give more information of resources .',// FIXME complete the description 
           style: 'parrot'
       });
       
       $('.reflexive-property-icon').qtip({
-          content: '<a href="http://www.w3.org/TR/owl2-syntax/#Reflexive_Object_Properties" target="_blank">Reflexive property</a>', // Use the tooltip attribute of the element for the content //
+          content: 'A <a href="http://www.w3.org/TR/owl2-syntax/#Reflexive_Object_Properties" target="_blank">reflexive property</a> describes a relation where every resource is related to itself.', 
           style: 'parrot'
       });
       
       $('.irreflexive-property-icon').qtip({
-          content: '<a href="http://www.w3.org/TR/owl2-syntax/#Irreflexive_Object_Properties" target="_blank">Irreflexive property</a>', // Use the tooltip attribute of the element for the content //
+          content: '<a href="http://www.w3.org/TR/owl2-syntax/#Irreflexive_Object_Properties" target="_blank">Irreflexive property</a> describes a relation where none resource is related to itself.',
           style: 'parrot'
       });
       
       $('.symmetric-property-icon').qtip({
-          content: '<a href="http://www.w3.org/TR/owl2-syntax/#Symmetric_Object_Properties" target="_blank">Symmetric property</a>', // Use the tooltip attribute of the element for the content //
+          content: '<a href="http://www.w3.org/TR/owl2-syntax/#Symmetric_Object_Properties" target="_blank">Symmetric property</a>', // FIXME complete the description
           style: 'parrot'
       });
       
       $('.asymmetric-property-icon').qtip({
-          content: '<a href="http://www.w3.org/TR/owl2-syntax/#Asymmetric_Object_Properties" target="_blank">Asymmetric property</a>', // Use the tooltip attribute of the element for the content //
+          content: '<a href="http://www.w3.org/TR/owl2-syntax/#Asymmetric_Object_Properties" target="_blank">Asymmetric property</a>',// FIXME complete the description 
           style: 'parrot'
       });
 

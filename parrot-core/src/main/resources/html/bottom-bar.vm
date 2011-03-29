@@ -1,6 +1,6 @@
 <div id="bottom-bar"> 
         <ul> 
-            <li title="Home"><a href="#"><img src="images/home.png" alt="" /></a></li> 
+            <li title="Back to top"><a href="#"><img src="images/home.png" alt="Back to top" /></a></li> 
         </ul> 
         <span class="jx-separator-left"></span> 
         <ul> 

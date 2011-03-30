@@ -1,6 +1,11 @@
 <div class="term">
-  <h3><a id="$element.Anchor"></a><span class="parrot-element-title parrot-rule-title">$element.Label</span> (Rule)</h3>
-  
+  <h3><a id="$element.Anchor"></a><span class="parrot-element-title parrot-rule-title">$element.Label</span> (Rule)
+    <span class="menu"> 
+	  <span class="vci-menu">Version control Information</span> 
+	  <span class="ti-menu">Technical Information</span> 
+	  <span class="otherinfo-menu">Other information</span>
+    </span> 
+  </h3>
   #parse("html/description.vm")
   
   <div>
@@ -46,7 +51,7 @@
   
   #if ( ($element.Uri) ||
   		($element.Parent) )
-  <div class="it"> 
+  <div class="ti"> 
   <h4>Technical information</h4> 
   <dl>
     #if($element.Uri)

@@ -1,6 +1,11 @@
 <div class="term">
   <h3><a id="$element.Anchor"></a><span class="parrot-element-title parrot-class-title">$element.Label</span> (Class)
   #if($element.isDeprecated())<span class="deprecated">(Deprecated)</span>#end
+    <span class="menu"> 
+	  <span class="vci-menu">Version control Information</span> 
+	  <span class="ti-menu">Technical Information</span> 
+	  <span class="otherinfo-menu">Other information</span>
+    </span>   
   </h3>
   
   #parse("html/description.vm")
@@ -14,7 +19,7 @@
   		(!$element.DisjointClasses.isEmpty()) || 
   		(!$element.InverseReferences.isEmpty()) ||
   		($element.isDefinedBy) )
-  <div class="it"> 
+  <div class="ti"> 
   <h4>Technical information</h4> 
    <dl>
 	#if($element.Uri)

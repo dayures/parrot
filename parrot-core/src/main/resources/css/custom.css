@@ -41,7 +41,7 @@ div.term > div{
     margin-right:1em;
 }
 
-.it , .vci, .otherinfo{
+.ti , .vci, .otherinfo{
    border: 1px solid White;
    padding-left: 1em;
    margin-top: 1em;
@@ -324,4 +324,9 @@ span.no-active{
 
 span.active{
     background-color: #FFFFFF;
+}
+
+
+div.vci , div.ti , div.otherinfo{
+    display:none
 }

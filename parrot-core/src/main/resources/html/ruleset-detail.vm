@@ -30,11 +30,7 @@
 
 <div class="term">
   <h3><a id="$element.Anchor"></a><span class="parrot-element-title parrot-ruleset-title">$element.Label</span> (RuleSet)
-    <span class="menu"> 
-	  #if ($vci)<span class="vci-menu">Version control Information</span> #end 
-	  #if ($ti)<span class="ti-menu">Technical Information</span> #end
-	  #if ($otherinfo)<span class="otherinfo-menu">Other information</span> #end
-    </span>  
+    #parse("html/detail-menu.vm")
   </h3>
 
   #parse("html/description.vm")

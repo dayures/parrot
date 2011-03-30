@@ -1,3 +1,4 @@
 jQuery(document).ready(function(){
-      $('.it dl').show();
+      $('.it').show();
+      $('.menu span.ti-menu').addClass('active');
 })

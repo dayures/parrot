@@ -5,16 +5,27 @@ jQuery(document).ready(function(){
     $('.it').corner();
     $('.vci').corner();
     $('.otherinfo').corner();
-    
-    $('.term h3').click(function() {
-	    $(this).nextAll("div").toggle('slow');
-	    return false;
-    }).nextAll("div").hide();
+    $('.menu span').corner();
 
-    $('.term div h4').click(function() {
-	    $(this).next().toggle('slow');
-	    return false;
-    }).next().hide();
+    
+    $('.term h3 span span:eq(0)').click(function() {
+        $(this).parent().parent().nextAll('div').children().eq('0').toggle('slow');
+        return false;
+    });
+
+    $('.term h3 span span:eq(1)').click(function() {
+        $(this).parent().parent().nextAll('div').children().eq('1').toggle('slow');
+        return false;
+    });
+
+    $('.term h3 span span:eq(2)').click(function() {
+        $(this).parent().parent().nextAll('div').children().eq('2').toggle('slow');
+        return false;
+    });
+
+    $('.menu span').click(function () {
+        $(this).toggleClass('active no-active');
+    });
     
     $("#bottom-bar").jixedbar({
         transparent: true,

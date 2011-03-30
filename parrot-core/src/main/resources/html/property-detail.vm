@@ -39,11 +39,8 @@
 	#if($element.isIrreflexiveProperty())<img class="irreflexive-property-icon icon" src="images/irreflexive-property-24x24.png"/>#end
 	#if($element.isSymmetricProperty())<img class="symmetric-property-icon icon" src="images/symmetric-property-24x24.png"/>#end
 	#if($element.isAsymmetricProperty())<img class="asymmetric-property-icon icon" src="images/asymmetric-property-24x24.png"/>#end
-    <span class="menu"> 
-	  #if ($vci)<span class="vci-menu">Version control Information</span> #end 
-	  #if ($ti)<span class="ti-menu">Technical Information</span> #end
-	  #if ($otherinfo)<span class="otherinfo-menu">Other information</span> #end
-    </span>  
+
+    #parse("html/detail-menu.vm")
   </h3>
 
   #parse("html/description.vm")

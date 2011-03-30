@@ -1,3 +1,32 @@
+#set( $vci = false )
+
+#if ( ($element.Uri) || 
+  	  ($element.hasAnyAxiom()) ||
+  	  ($element.InverseOf) ||
+  	  ($element.Domain) ||
+  	  ($element.Range) ||
+      (!$element.SuperProperties.isEmpty()) ||
+      (!$element.SubProperties.isEmpty()) ||
+      (!$element.EquivalentProperties.isEmpty()) ||
+      (!$element.disjointProperties.isEmpty()) ||
+      ($element.isDefinedBy) )
+  #set( $ti = true )
+#else
+  #set( $ti = false )
+#end
+
+
+#if ( (!$element.InverseReferences.isEmpty()) || 
+  	  ($element.cardinality != 0) ||
+  	  (!$element.labels.isEmpty()) ||
+  	  (!$element.relatedDocuments.isEmpty()) ||
+  	  (!$element.inverseRuleReferences.isEmpty()) )
+  #set( $otherinfo = true )
+#else
+  #set( $otherinfo = false )
+#end	
+
+
 <div class="term">
   <h3><a id="$element.Anchor"></a><span class="parrot-element-title parrot-property-title">$element.Label</span> (Property)
   	#if($element.isDeprecated())<span class="deprecated">(Deprecated)</span>#end
@@ -11,26 +40,17 @@
 	#if($element.isSymmetricProperty())<img class="symmetric-property-icon icon" src="images/symmetric-property-24x24.png"/>#end
 	#if($element.isAsymmetricProperty())<img class="asymmetric-property-icon icon" src="images/asymmetric-property-24x24.png"/>#end
     <span class="menu"> 
-	  <span class="vci-menu">Version control Information</span> 
-	  <span class="ti-menu">Technical Information</span> 
-	  <span class="otherinfo-menu">Other information</span>
-    </span> 
+	  #if ($vci)<span class="vci-menu">Version control Information</span> #end 
+	  #if ($ti)<span class="ti-menu">Technical Information</span> #end
+	  #if ($otherinfo)<span class="otherinfo-menu">Other information</span> #end
+    </span>  
   </h3>
 
   #parse("html/description.vm")
   
   <div>
 
-  #if ( ($element.Uri) || 
-  		($element.hasAnyAxiom()) ||
-  		($element.InverseOf) ||
-  		($element.Domain) ||
-  		($element.Range) ||
-    	(!$element.SuperProperties.isEmpty()) ||
-    	(!$element.SubProperties.isEmpty()) ||
-    	(!$element.EquivalentProperties.isEmpty()) ||
-    	(!$element.disjointProperties.isEmpty()) ||
-    	($element.isDefinedBy) )
+  #if ( $ti )
   <div class="ti"> 
   <h4>Technical information</h4> 
   <dl>
@@ -126,11 +146,7 @@
    </div>
   #end
   
-  #if ( (!$element.InverseReferences.isEmpty()) || 
-  		($element.cardinality != 0) ||
-  		(!$element.labels.isEmpty()) ||
-  		(!$element.relatedDocuments.isEmpty()) ||
-  		(!$element.inverseRuleReferences.isEmpty()) )
+  #if ( $otherinfo )
     <div class="otherinfo">
     <h4>Other information</h4> 
     <dl>

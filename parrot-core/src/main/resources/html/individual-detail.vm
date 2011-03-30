@@ -18,12 +18,8 @@
 #end	
 <div class="term">
   <h3><a id="$element.Anchor"></a><span class="parrot-element-title parrot-individual-title">$element.Label</span> (Individual)
-  #if($element.isDeprecated())<span class="deprecated">(Deprecated)</span>#end
-    <span class="menu"> 
-	  #if ($vci)<span class="vci-menu">Version control Information</span> #end 
-	  #if ($ti)<span class="ti-menu">Technical Information</span> #end
-	  #if ($otherinfo)<span class="otherinfo-menu">Other information</span> #end
-    </span>  
+    #if($element.isDeprecated())<span class="deprecated">(Deprecated)</span>#end
+    #parse("html/detail-menu.vm")
   </h3>
   
   #parse("html/description.vm")

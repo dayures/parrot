@@ -1,5 +1,11 @@
 <div class="term">
-  <h3><a id="$element.Anchor"></a><span class="parrot-element-title parrot-ruleset-title">$element.Label</span> (RuleSet)</h3>
+  <h3><a id="$element.Anchor"></a><span class="parrot-element-title parrot-ruleset-title">$element.Label</span> (RuleSet)
+    <span class="menu"> 
+	  <span class="vci-menu">Version control Information</span> 
+	  <span class="ti-menu">Technical Information</span> 
+	  <span class="otherinfo-menu">Other information</span>
+    </span> 
+  </h3>
 
   #parse("html/description.vm")
 
@@ -50,7 +56,7 @@
 		(!$element.rules.isEmpty()) ||
 		(!$element.ruleSets.isEmpty()) ||
 		($element.Parent) )
-  <div class="it"> 
+  <div class="ti"> 
   <h4>Technical information</h4> 
   <dl>
     #if($element.Uri)

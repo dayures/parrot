@@ -2,24 +2,24 @@ jQuery(document).ready(function(){
 	$('#header').corner();
 	$('.toc').corner();
     $('.details').corner();
-    $('.it').corner();
+    $('.ti').corner();
     $('.vci').corner();
     $('.otherinfo').corner();
     $('.menu span').corner();
 
     
-    $('.term h3 span span:eq(0)').click(function() {
-        $(this).parent().parent().nextAll('div').children().eq('0').toggle('slow');
+    $('.term h3 span span.vci-menu').click(function() {
+        $(this).parent().parent().nextAll('div').children('.vci').toggle('slow');
         return false;
     });
 
-    $('.term h3 span span:eq(1)').click(function() {
-        $(this).parent().parent().nextAll('div').children().eq('1').toggle('slow');
+    $('.term h3 span span.ti-menu').click(function() {
+        $(this).parent().parent().nextAll('div').children('.ti').toggle('slow');
         return false;
     });
 
-    $('.term h3 span span:eq(2)').click(function() {
-        $(this).parent().parent().nextAll('div').children().eq('2').toggle('slow');
+    $('.term h3 span span.otherinfo-menu').click(function() {
+        $(this).parent().parent().nextAll('div').children('.otherinfo').toggle('slow');
         return false;
     });
 

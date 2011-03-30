@@ -10,7 +10,11 @@
 	#if($element.isIrreflexiveProperty())<img class="irreflexive-property-icon icon" src="images/irreflexive-property-24x24.png"/>#end
 	#if($element.isSymmetricProperty())<img class="symmetric-property-icon icon" src="images/symmetric-property-24x24.png"/>#end
 	#if($element.isAsymmetricProperty())<img class="asymmetric-property-icon icon" src="images/asymmetric-property-24x24.png"/>#end
-
+    <span class="menu"> 
+	  <span class="vci-menu">Version control Information</span> 
+	  <span class="ti-menu">Technical Information</span> 
+	  <span class="otherinfo-menu">Other information</span>
+    </span> 
   </h3>
 
   #parse("html/description.vm")
@@ -27,7 +31,7 @@
     	(!$element.EquivalentProperties.isEmpty()) ||
     	(!$element.disjointProperties.isEmpty()) ||
     	($element.isDefinedBy) )
-  <div class="it"> 
+  <div class="ti"> 
   <h4>Technical information</h4> 
   <dl>
 	#if($element.Uri)

@@ -4,7 +4,7 @@
     <span class="menu"> 
 	  <span class="vci-menu">Version control Information</span> 
 	  <span class="ti-menu">Technical Information</span> 
-	  <span class="other-menu">Other information</span>
+	  <span class="otherinfo-menu">Other information</span>
     </span> 
   </h3>
 
@@ -62,7 +62,7 @@
   		($element.PreferredNamespace) ||
   		($element.PreferredPrefix) ||
   		($element.isDefinedBy) )
-    <div class="it"> 
+    <div class="ti"> 
     <h4>Technical information</h4> 
     <dl> 
 		#if($element.Uri)

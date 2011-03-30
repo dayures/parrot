@@ -263,18 +263,8 @@ h1 a[href]:hover { background-color: transparent; }
     margin: 0em;
     margin-right: 1em;
     padding: 1em;
-    cursor:pointer;
-    background-position: right;
-    background-repeat: no-repeat;
-	background-image: url("../images/more-info.gif") ;
 }
 
-.details h4{
-    cursor:pointer;
-    background-position: right;
-    background-repeat: no-repeat;
-	background-image: url("../images/more-info.gif") ;
-}
 /** begin bar **/
 
 #bottom-bar a[href]:hover { background-color: transparent; }
@@ -310,4 +300,28 @@ h1 a[href]:hover { background-color: transparent; }
 h3 img.icon {
 	vertical-align: text-bottom;
 	cursor: pointer;
+}
+
+/******/
+
+div.term h3 span.menu {
+    font-size: 0.6em;
+    float: right;
+}
+
+div.term h3 span.menu span{
+    padding: 0.7em;
+    font-weight: bold;
+    color: #2779AA;    
+    cursor: pointer;
+    text-align: center;
+    border: 2px solid #AED0EA;
+}
+
+span.no-active{
+    background-color: transparent;
+}
+
+span.active{
+    background-color: #FFFFFF;
 }

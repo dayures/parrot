@@ -69,7 +69,7 @@ public class JenaOWLReader implements DocumentReader {
             loadOntClasses(ontModel, register);
             loadOntProperties(ontModel, register);
             loadOntIndividuals(ontModel, register);
-            loadDatasets(ontModel, register);
+            //loadDatasets(ontModel, register);
         } catch (JenaException e) {
             if (e.getCause() != null && e.getCause() instanceof SAXParseException) {
                 throw new ReaderException(input.getMimeType() + " parse error: " + e.getCause().getMessage(), e);

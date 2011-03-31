@@ -39,11 +39,13 @@ jQuery(document).ready(function(){
     });
     
     $("#openCloseAll").toggle(function() {
-        $(".term div:hidden").prevAll("h3").click();
-        $(".term div div dl:hidden").prevAll("h4").click();
+            $('div.term h3 span.menu span').addClass('active');
+    	    $('.term div div').show();
+            return false;
       }, function() {
-        $(".term div:visible").prevAll("h3").click();
-        $(".term div div dl:visible").prevAll("h4").click();
+            $('div.term h3 span.menu span').removeClass('active');
+    	    $(".term div div").hide();
+            return false;
       });
     
     $.fn.qtip.styles.parrot = { 

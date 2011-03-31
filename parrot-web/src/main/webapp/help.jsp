@@ -484,6 +484,60 @@ supported by PARROT.</p>
   </tbody>
 </table>
 
+
+<h2>Icons in parrot</h2>
+
+<table id="legend">
+  <tbody>
+    <tr>
+      <th>Icon</th>
+
+      <th>Definition</th>
+    </tr>
+    <tr>
+      <td><img alt="data property"
+        src="images/datatype-property-24x24.png" width="24" height="24" /></td>
+      <td>A <a href="http://www.w3.org/TR/owl2-syntax#Data_Properties" target="_blank">data property</a> is used to describe attributes of resources, such as the height of a person or the population of a country.</td>
+    </tr>
+    <tr>
+      <td><img alt="object property"
+        src="images/object-property-24x24.png" width="24" height="24" /></td>
+      <td>An <a href="http://www.w3.org/TR/owl2-syntax#Object_Properties" target="_blank">object property</a> is used to describe relations to other resources, such as the mother of a person or the capital of a country.</td>
+    </tr>
+
+    <tr>
+      <td><img alt="annotation property"
+        src="images/annotation-property-24x24.png" width="24" height="24" /></td>
+      <td>An <a href="http://www.w3.org/TR/owl2-syntax#Annotation_Properties" target="_blank">annotation property</a> is used to give more information of resources.</td>
+    </tr>
+
+    <tr>
+      <td><img alt="reflexive object property"
+        src="images/reflexive-property-24x24.png" width="24" height="24" /></td>
+      <td>A <a href="http://www.w3.org/TR/owl2-syntax/#Reflexive_Object_Properties" target="_blank">reflexive property</a> describes a relation where every resource is related to itself.</td>
+    </tr>
+
+    <tr>
+      <td><img alt="irreflexive object property"
+        src="images/irreflexive-property-24x24.png" width="24" height="24" /></td>
+      <td>A <a href="http://www.w3.org/TR/owl2-syntax/#Irreflexive_Object_Properties" target="_blank">irreflexive property</a> describes a relation where none resource is related to itself.</td>
+    </tr>
+
+    <tr>
+      <td><img alt="symmetric object property"
+        src="images/symmetric-property-24x24.png" width="24" height="24" /></td>
+      <td><a href="http://www.w3.org/TR/owl2-syntax/#Symmetric_Object_Properties" target="_blank">Symmetric property</a></td>
+    </tr>
+
+    <tr>
+      <td><img alt="asymmetric object property"
+        src="images/asymmetric-property-24x24.png" width="24" height="24" /></td>
+      <td><a href="http://www.w3.org/TR/owl2-syntax/#Asymmetric_Object_Properties" target="_blank">Asymmetric property</a></td>
+    </tr>
+
+  </tbody>
+</table>
+
 <p></p>
 
 <p></p>

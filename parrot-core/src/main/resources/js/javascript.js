@@ -109,4 +109,19 @@ jQuery(document).ready(function(){
           style: 'parrot'
       });
 
+      $('.transitive-property-icon').qtip({
+          content: '<a href="http://www.w3.org/TR/owl2-syntax/#Transitive_Object_Properties" target="_blank">Transitive property</a>',// FIXME complete the description 
+          style: 'parrot'
+      });
+      
+      $('.functional-property-icon').qtip({
+          content: '<a href="http://www.w3.org/TR/owl2-syntax/#Functional_Object_Properties" target="_blank">Functional property</a>',// FIXME complete the description 
+          style: 'parrot'
+      });
+      
+      $('.inverse-functional-property-icon').qtip({
+          content: '<a href="http://www.w3.org/TR/owl2-syntax/#Inverse-Functional_Object_Properties" target="_blank">Inverse functional property</a>',// FIXME complete the description 
+          style: 'parrot'
+      });
+      
 })

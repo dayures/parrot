@@ -360,3 +360,10 @@ div#options{
 #legend{
 	margin-left:auto; margin-right:auto;
 }
+#legend td:nth-child(1){
+	text-align:center;
+}
+
+#metadata-support-ontologies td:nth-child(6), #metadata-support-rules td:nth-child(6) {
+	text-align:center;
+}

@@ -6,14 +6,15 @@
 <head> 
 <title>PARROT, RIF and OWL documentation service</title> 
 <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" /> 
-<link rel="shortcut icon" href="images/favicon.ico" type="image/png" /> 
 <meta name="description" content="parrot" /> 
 <meta name="keywords" content="parrot, documentation, tool, rif, rdf" /> 
-<link type="text/css" rel="stylesheet" href="css/style.css"	media="screen,projection,print" /> 
+<link rel="shortcut icon" type="image/png" href="images/favicon.ico"  />
+<link rel="stylesheet" type="text/css" href="css/style.css"	media="screen,projection,print" /> 
 <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.8.0r4/build/fonts/fonts-min.css" /> 
 <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.8.0r4/build/tabview/assets/skins/sam/tabview.css" /> 
- 
+<link rel="stylesheet" type="text/css" media="screen,projection" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/themes/cupertino/jquery-ui.css" /> 
 </head> 
+
 <body class="yui-skin-sam">
 	<div class="all"> 
 
@@ -197,71 +198,21 @@
 		        <div id="tab3"> 
 		        	<h2>By file upload</h2> 
 					<form method="post" action="" enctype="multipart/form-data">
-						<p><label title="File to be documented"
-							for="file">File: </label><input type="file" name="datafile" size="40"/>
+						<p>
+						<label title="File to be documented" for="file">File: </label><input type="file" name="datafile" size="40"/>
 						This file is a: 
-						  <select name="mimetypeFile">
+						<select name="mimetypeFile">
 							<option value="default" selected="selected">Autodetect (if possible)</option>
-					        <option value="application/owl+xml" <c:if test="${param.mimetypeText eq 'application/owl+xml'}">selected="selected"</c:if>>OWL ontology</option>
-					        <option value="text/n3" <c:if test="${param.mimetypeText eq 'text/n3'}">selected="selected"</c:if>>N3 ontology</option>
-					        <option value="application/xhtml+xml" <c:if test="${param.mimetypeText eq 'application/xhtml+xml'}">selected="selected"</c:if>>XHTML+RDFa document</option>
-					        <option value="text/html" <c:if test="${param.mimetypeText eq 'text/html'}">selected="selected"</c:if>>HTML+RDFa document</option>
-					        <option value="application/rif+xml" <c:if test="${param.mimetypeText eq 'application/rif+xml'}">selected="selected"</c:if>>RIF XML document</option>
-					        <option value="text/x-rif-ps" <c:if test="${param.mimetypeText eq 'text/x-rif-ps'}">selected="selected"</c:if>>RIF PS document</option>
-					      </select>
-					    </p> 
-						<p><label title="File to be documented"
-							for="file">File: </label><input type="file" name="datafile" size="40"/>
-						This file is a: 
-						  <select name="mimetypeFile">
-							<option value="default" selected="selected">Autodetect (if possible)</option>
-					        <option value="application/owl+xml" <c:if test="${param.mimetypeText eq 'application/owl+xml'}">selected="selected"</c:if>>OWL ontology</option>
-					        <option value="text/n3" <c:if test="${param.mimetypeText eq 'text/n3'}">selected="selected"</c:if>>N3 ontology</option>
-					        <option value="application/xhtml+xml" <c:if test="${param.mimetypeText eq 'application/xhtml+xml'}">selected="selected"</c:if>>XHTML+RDFa document</option>
-					        <option value="text/html" <c:if test="${param.mimetypeText eq 'text/html'}">selected="selected"</c:if>>HTML+RDFa document</option>
-					        <option value="application/rif+xml" <c:if test="${param.mimetypeText eq 'application/rif+xml'}">selected="selected"</c:if>>RIF XML document</option>
-					        <option value="text/x-rif-ps" <c:if test="${param.mimetypeText eq 'text/x-rif-ps'}">selected="selected"</c:if>>RIF PS document</option>
-					      </select>
-					    </p> 
-						<p><label title="File to be documented"
-							for="file">File: </label><input type="file" name="datafile" size="40"/>
-						This file is a: 
-						  <select name="mimetypeFile">
-							<option value="default" selected="selected">Autodetect (if possible)</option>
-					        <option value="application/owl+xml" <c:if test="${param.mimetypeText eq 'application/owl+xml'}">selected="selected"</c:if>>OWL ontology</option>
-					        <option value="text/n3" <c:if test="${param.mimetypeText eq 'text/n3'}">selected="selected"</c:if>>N3 ontology</option>
-					        <option value="application/xhtml+xml" <c:if test="${param.mimetypeText eq 'application/xhtml+xml'}">selected="selected"</c:if>>XHTML+RDFa document</option>
-					        <option value="text/html" <c:if test="${param.mimetypeText eq 'text/html'}">selected="selected"</c:if>>HTML+RDFa document</option>
-					        <option value="application/rif+xml" <c:if test="${param.mimetypeText eq 'application/rif+xml'}">selected="selected"</c:if>>RIF XML document</option>
-					        <option value="text/x-rif-ps" <c:if test="${param.mimetypeText eq 'text/x-rif-ps'}">selected="selected"</c:if>>RIF PS document</option>
-					      </select>
-					    </p> 
-						<p><label title="File to be documented"
-							for="file">File: </label><input type="file" name="datafile" size="40"/>
-						This file is a: 
-						  <select name="mimetypeFile">
-							<option value="default" selected="selected">Autodetect (if possible)</option>
-					        <option value="application/owl+xml" <c:if test="${param.mimetypeText eq 'application/owl+xml'}">selected="selected"</c:if>>OWL ontology</option>
-					        <option value="text/n3" <c:if test="${param.mimetypeText eq 'text/n3'}">selected="selected"</c:if>>N3 ontology</option>
-					        <option value="application/xhtml+xml" <c:if test="${param.mimetypeText eq 'application/xhtml+xml'}">selected="selected"</c:if>>XHTML+RDFa document</option>
-					        <option value="text/html" <c:if test="${param.mimetypeText eq 'text/html'}">selected="selected"</c:if>>HTML+RDFa document</option>
-					        <option value="application/rif+xml" <c:if test="${param.mimetypeText eq 'application/rif+xml'}">selected="selected"</c:if>>RIF XML document</option>
-					        <option value="text/x-rif-ps" <c:if test="${param.mimetypeText eq 'text/x-rif-ps'}">selected="selected"</c:if>>RIF PS document</option>
-					      </select>
-					    </p> 
-						<p><label title="File to be documented"
-							for="file">File: </label><input type="file" name="datafile" size="40"/>
-						This file is a: 
-						  <select name="mimetypeFile">
-							<option value="default" selected="selected">Autodetect (if possible)</option>
-					        <option value="application/owl+xml" <c:if test="${param.mimetypeText eq 'application/owl+xml'}">selected="selected"</c:if>>OWL ontology</option>
-					        <option value="text/n3" <c:if test="${param.mimetypeText eq 'text/n3'}">selected="selected"</c:if>>N3 ontology</option>
-					        <option value="application/xhtml+xml" <c:if test="${param.mimetypeText eq 'application/xhtml+xml'}">selected="selected"</c:if>>XHTML+RDFa document</option>
-					        <option value="text/html" <c:if test="${param.mimetypeText eq 'text/html'}">selected="selected"</c:if>>HTML+RDFa document</option>
-					        <option value="application/rif+xml" <c:if test="${param.mimetypeText eq 'application/rif+xml'}">selected="selected"</c:if>>RIF XML document</option>
-					        <option value="text/x-rif-ps" <c:if test="${param.mimetypeText eq 'text/x-rif-ps'}">selected="selected"</c:if>>RIF PS document</option>
-					      </select>
-					    </p> 
+						    <option value="application/owl+xml">OWL ontology</option>
+						    <option value="text/n3">N3 ontology</option>
+						    <option value="application/xhtml+xml">XHTML+RDFa document</option>
+						    <option value="text/html">HTML+RDFa document</option>
+						    <option value="application/rif+xml">RIF XML document</option>
+						    <option value="text/x-rif-ps">RIF PS document</option>
+						</select>
+					    </p>
+					    <button id="addFile">add another file</button>
+
 						<div class="buttons">
 							<button type="submit" class="positive"><img src="images/tick.png" alt=""/>Generate documentation</button>
 						</div>
@@ -286,14 +237,14 @@
       </p> 
       <p> This work has been partially funded by <a href="http://ontorule-project.eu" title="ONTORULE Web site">ONTORULE Project (FP7-ICT-2008-3, project reference 231875)</a>.</p>
 	  <p> Some icons has been created by <a href="http://www.famfamfam.com/about/">Mark James</a> and there are distributed under <a href="http://creativecommons.org/licenses/by/2.5/">CreativeCommons-by 2.5</a> license.</p> 
-    </div> 
+    </div>
     </div> 
 
 <script type="text/javascript" src="http://yui.yahooapis.com/2.8.0r4/build/yahoo-dom-event/yahoo-dom-event.js"></script> 
 <script type="text/javascript" src="http://yui.yahooapis.com/2.8.0r4/build/element/element-min.js"></script> 
 <script type="text/javascript" src="http://yui.yahooapis.com/2.8.0r4/build/tabview/tabview-min.js"></script> 
-<script type="text/javascript" src="javascript/scripts.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
 <script type="text/javascript" src="http://3nhanced.com/examples/randomContent/js/jquery.randomContent.js"></script>
 <script type="text/javascript" src="https://github.com/malsup/corner/raw/master/jquery.corner.js"></script> 
 
@@ -316,6 +267,8 @@
 </c:if>
 
 <script type="text/javascript">
+//<![CDATA[
+
 jQuery(document).ready(function(){
     $('#extra_opt_uri').click(function() {
     	if ($(this).attr("class") == "more-options-open")
@@ -329,13 +282,21 @@ jQuery(document).ready(function(){
 
     $('#tipOfTheDay').corner();
     $('#tipOfTheDay').randomContent({xmlPath: "tipOfTheDay.xml", nodeName: "tip"});
+    
+    $('#addFile').button({
+        icons: {
+            primary: "ui-icon-circle-plus"
+        }
+    }).click(function() {
+        $('#tab3 form p:first').clone().insertBefore($(this));
+        $('#tab3 form p:last').html($('#tab3 form p:last').html()); // clear input file
+    	return false;
+    }); 
+        
 });
-
-
-
-
+//]]>
 </script>
-
+<script type="text/javascript" src="javascript/scripts.js"></script>
 
 </body> 
 

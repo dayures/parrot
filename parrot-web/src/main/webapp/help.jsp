@@ -29,7 +29,7 @@ currently supported by PARROT.</p>
 
 <p></p>
 
-<table>
+<table id="metadata-support-ontologies">
   <tbody>
     <tr>
       <th>Property</th>
@@ -296,7 +296,7 @@ supported by PARROT.</p>
 
 <p></p>
 
-<table>
+<table id="metadata-support-rules">
   <tbody>
     <tr>
       <th>Property</th>
@@ -533,6 +533,36 @@ supported by PARROT.</p>
       <td><img alt="asymmetric object property"
         src="images/asymmetric-property-24x24.png" width="24" height="24" /></td>
       <td><a href="http://www.w3.org/TR/owl2-syntax/#Asymmetric_Object_Properties" target="_blank">Asymmetric property</a></td>
+    </tr>
+
+    <tr>
+     <td><img alt="transitive object property" src="images/transitive.png" width="61" height="24" /></td>
+      <td><a href="http://www.w3.org/TR/owl2-syntax/#Transitive_Object_Properties" target="_blank">Transitive property</a></td>
+    </tr>
+    
+    <tr>
+     <td><img alt="functional object property" src="images/functional-property.png" width="33" height="24" /></td>
+      <td><a href="http://www.w3.org/TR/owl2-syntax/#Functional_Object_Properties" target="_blank">Functional property</a></td>
+    </tr>
+    
+    <tr>
+     <td><img alt="inverse functional object property" src="images/inverse-functional-property.png" width="33" height="24" /></td>
+      <td><a href="http://www.w3.org/TR/owl2-syntax/#Inverse-Functional_Object_Properties" target="_blank">Inverse functional property</a></td>
+    </tr>
+
+    <tr>
+     <td><img alt="inverse of" src="images/inverse-of.png" width="24" height="24" /></td>
+      <td><a href="http://www.w3.org/TR/owl2-syntax/#Inverse_Object_Properties_2" target="_blank">Inverse property</a></td>
+    </tr>
+
+    <tr>
+     <td><img alt="equivalent property" src="images/equivalent.png" width="24" height="24" /></td>
+     <td><a href="http://www.w3.org/TR/owl2-syntax/#Equivalent_Object_Properties " target="_blank">Equivalent Object property</a></td>
+    </tr>
+
+    <tr>
+     <td><img alt="disjoint of" src="images/disjoint.png" width="34" height="24" /></td>
+     <td><a href="http://www.w3.org/TR/owl2-syntax/#Disjoint_Object_Properties" target="_blank">Disjoint Object property</a></td>
     </tr>
 
   </tbody>

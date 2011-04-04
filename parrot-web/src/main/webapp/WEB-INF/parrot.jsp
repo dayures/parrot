@@ -267,7 +267,7 @@
 </c:if>
 
 <script type="text/javascript">
-//<![CDATA[
+<![CDATA[
 
 jQuery(document).ready(function(){
     $('#extra_opt_uri').click(function() {
@@ -294,7 +294,7 @@ jQuery(document).ready(function(){
     }); 
         
 });
-//]]>
+]]>
 </script>
 <script type="text/javascript" src="javascript/scripts.js"></script>
 

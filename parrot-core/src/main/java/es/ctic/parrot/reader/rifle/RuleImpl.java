@@ -10,6 +10,11 @@ import org.apache.log4j.Logger;
 
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.ontology.OntResource;
+import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.rdf.model.RDFNode;
+import com.hp.hpl.jena.rdf.model.ResourceFactory;
+import com.hp.hpl.jena.rdf.model.StmtIterator;
 
 import es.ctic.parrot.de.AbstractDocumentableObject;
 import es.ctic.parrot.de.DocumentableObject;
@@ -59,9 +64,12 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 		} else {
 			// Rule with identifier
 			this.identifier = new URIIdentifier(rule.getId());
+			
+			Model auxModel = ModelFactory.createDefaultModel().add(rule.getIriMeta());
+			StmtIterator listStatements = auxModel.listStatements(ResourceFactory.createResource(rule.getId()), null, (RDFNode) null);
+			ontModel.add(listStatements ); // add metadata ONLY about this rule 
 		}
 		
-		ontModel.add(rule.getIriMeta());
     	this.setOntResource(ontModel.getOntResource(getURI()));
 	}
 	

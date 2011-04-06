@@ -6,7 +6,7 @@
 <p><span class="parrot-element-ref parrot-ontology-ref">Ontologies (${document.ontologyDetailViews.size()}):</span></p> 
 <p>
 #foreach($element in $document.ontologyDetailViews)
-	<a href="#$element.Anchor">$element.Label</a>#if($element.isDeprecated())<span class="deprecated">(Deprecated)</span>#end#if ($foreach.hasNext), #end
+	<a href="#$element.Anchor">$element.Label</a>#if($element.isDeprecated())<span class="deprecated"> (Deprecated)</span>#end#if ($foreach.hasNext), #end
 #end
 </p>
 #end
@@ -16,7 +16,7 @@
 <p><span class="parrot-element-ref parrot-class-ref">Classes (${document.ontologyClassDetailViews.size()}):</span></p>
 <p>
 #foreach($element in $document.ontologyClassDetailViews)
-	<a href="#$element.Anchor">$element.Label</a>#if($element.isDeprecated())<span class="deprecated">(Deprecated)</span>#end#if ($foreach.hasNext), #end
+	<a href="#$element.Anchor">$element.Label</a>#if($element.isDeprecated())<span class="deprecated"> (Deprecated)</span>#end#if ($foreach.hasNext), #end
 #end
 </p>
 #end
@@ -26,7 +26,7 @@
 <p><span class="parrot-element-ref parrot-property-ref">Properties (${document.ontologyPropertyDetailViews.size()}):</span></p>
 <p>
 #foreach($element in $document.ontologyPropertyDetailViews)
-	<a href="#$element.Anchor">$element.Label</a>#if($element.isDeprecated())<span class="deprecated">(Deprecated)</span>#end#if ($foreach.hasNext), #end
+	<a href="#$element.Anchor">$element.Label</a>#if($element.isDeprecated())<span class="deprecated"> (Deprecated)</span>#end#if ($foreach.hasNext), #end
 #end
 </p>
 #end
@@ -36,7 +36,7 @@
 <p><span class="parrot-element-ref parrot-individual-ref">Individuals (${document.ontologyIndividualDetailViews.size()}):</span></p>
 <p>
 #foreach($element in $document.ontologyIndividualDetailViews)
-	<a href="#$element.Anchor">$element.Label</a>#if($element.isDeprecated())<span class="deprecated">(Deprecated)</span>#end#if ($foreach.hasNext), #end
+	<a href="#$element.Anchor">$element.Label</a>#if($element.isDeprecated())<span class="deprecated"> (Deprecated)</span>#end#if ($foreach.hasNext), #end
 #end
 </p>
 #end

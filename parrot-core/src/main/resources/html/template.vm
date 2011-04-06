@@ -40,7 +40,7 @@
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/jquery-ui.min.js"></script> 
   <script type="text/javascript" src="https://github.com/malsup/corner/raw/master/jquery.corner.js"></script> 
   <script type="text/javascript" src="http://jixedbar.googlecode.com/svn/branches/0.0.5/src/jquery.jixedbar.min.js"></script> 
-  <script type="text/javascript" src="http://bazaar.launchpad.net/~craig.craigsworks/qtip/1.0/download/head:/jquery.qtip1.0.min.j-20100208190353-yfo386e4500jv3h5-2/jquery.qtip-1.0.min.js"></script> 
+  <script type="text/javascript" src="http://bazaar.launchpad.net/~craig.craigsworks/qtip/1.0/download/2/jquery.qtip1.0.js-20100208190353-yfo386e4500jv3h5-1/jquery.qtip-1.0.js"></script> 
   <!-- <script type="text/javascript" src="report/js/javascript.js"></script> -->
   <script type="text/javascript">
 

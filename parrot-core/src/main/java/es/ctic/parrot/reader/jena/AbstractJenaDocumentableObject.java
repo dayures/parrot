@@ -199,7 +199,11 @@ public abstract class AbstractJenaDocumentableObject extends
    	}
     
     public String getLabel(Locale locale) {
-        return getAnnotationStrategy().getLabel(getOntResource(), locale);
+    	if (ontResource.isAnon()){
+    		return getKindString() + getIdentifier().toString();
+    	} else {
+    		return getAnnotationStrategy().getLabel(getOntResource(), locale);
+    	}
     }
     
     public String getLabel() {

@@ -260,13 +260,18 @@ public class OntResourceAnnotationStrategy {
             }
         }
         
-        if (locale == null)
-        	return replaceUnderscore( splitCamelCase( URIUtils.getReference(ontResource.getURI() ) ) );
-        
-        
-        
-        else
+        if (locale != null) {
+        	// give a change without locale
         	return getLabel(ontResource, null);
+        } else {
+        	// no more chances. do your best.
+        	String reference = URIUtils.getReference(ontResource.getURI());
+    		if (reference != null) {
+    			return replaceUnderscore(splitCamelCase(reference));
+    		} else {
+    			return ontResource.getURI();
+    		}
+        }
     }
     
 	/**

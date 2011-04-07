@@ -212,6 +212,62 @@ supported by Parrot.</p>
       <th></th>
     </tr>
     <tr>
+      <td><em>dc:contributor</em></td>
+      <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
+      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td>A contributor to the rule: a person or an organization. Recommended
+        best practice is to use a FOAF profile to describe a contributor,
+        although a literal is also allowed.</td>
+    </tr>
+    <tr>
+      <td><em>dc:creator</em></td>
+      <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
+      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td>The creator of the rulehg : a person or an organization. Recommended
+        best practice is to use a FOAF profile to describe the creator,
+        although a literal is also allowed.</td>
+    </tr>
+    <tr>
+      <td><em>dc:date</em></td>
+      <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
+      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td>Expresses the date of creation or publication of the rule.
+        Recommended best practice is to use the W3CDTF profile of ISO 8601.</td>
+    </tr>
+    <tr>
+      <td><em>dc:description</em></td>
+      <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
+      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td>See <em>comment</em></td>
+    </tr>  
+    <tr>
+      <td><em>dc:publisher</em></td>
+      <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
+      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td>The entity responsible for making the rule available. Recommended
+        best practice is to use a FOAF profile to describe the publisher,
+        although a literal is also allowed.</td>
+    </tr>
+
+    <tr>
+      <td><em>dc:title</em></td>
+      <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
+      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td>See <em>label</em></td>
+    </tr>
+    <tr>
+      <td><em>dct:description</em></td>
+	  <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
+      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td>See <em>comment</em></td>
+    </tr>
+    <tr>
+      <td><em>dct:source</em></td>
+	  <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
+      <td></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td>The resources from which the rules are derived. Typically, they are documentary sources (as candidate rules), but diagrams, plans or pictures are also possible.</td>
+    </tr>    
+    <tr>
       <td><em>rdfs:label</em></td>
       <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
       <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
@@ -225,55 +281,6 @@ supported by Parrot.</p>
       <td>The description of the resource. The range is a literal with a
         language tag.</td>
     </tr>
-    <tr>
-      <td><em>dc:creator</em></td>
-      <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
-      <td>The creator of the rulehg : a person or an organization. Recommended
-        best practice is to use a FOAF profile to describe the creator,
-        although a literal is also allowed.</td>
-    </tr>
-    <tr>
-      <td><em>dc:contributor</em></td>
-      <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
-      <td>A contributor to the rule: a person or an organization. Recommended
-        best practice is to use a FOAF profile to describe a contributor,
-        although a literal is also allowed.</td>
-    </tr>
-    <tr>
-      <td><em>dc:publisher</em></td>
-      <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
-      <td>The entity responsible for making the rule available. Recommended
-        best practice is to use a FOAF profile to describe the publisher,
-        although a literal is also allowed.</td>
-    </tr>
-    <tr>
-      <td><em>dc:date</em></td>
-      <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
-      <td>Expresses the date of creation or publication of the rule.
-        Recommended best practice is to use the W3CDTF profile of ISO 8601.</td>
-    </tr>
-    <tr>
-      <td><em>dctitle</em></td>
-      <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
-      <td>See <em>label</em></td>
-    </tr>
-    <tr>
-      <td><em>description</em></td>
-	  <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
-      <td>See <em>comment</em></td>
-    </tr>
-    <tr>
-      <td><em>dc:description</em></td>
-      <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
-      <td>See <em>comment</em></td>
-    </tr>  
     <tr>
       <td><em>skos:prefLabel</em></td>
       <td><a href="http://www.w3.org/TR/skos-reference/#overview">SKOS</a></td>
@@ -315,12 +322,7 @@ supported by Parrot.</p>
       <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
       <td>A video associated with the resource. </td>
     </tr>
-    <tr>
-      <td><em>dct:source</em></td>
-	  <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
-      <td></td><td><img alt="supported" src="/images/tick.png"/></td>
-      <td>The resources from which the rules are derived. Typically, they are documentary sources (as candidate rules), but diagrams, plans or pictures are also possible.</td>
-    </tr>
+
   </tbody>
 </table>
 

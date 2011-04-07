@@ -280,7 +280,6 @@ table {
     border-collapse:collapse;
     border-style:none;
     color:black;
-    font-size:0.9em;
 }
  tr:hover {
     -moz-background-clip:border;
@@ -364,27 +363,26 @@ div#options{
 	text-align:center;
 }
 
-#metadata-support-rules td:nth-child(6) {
-	text-align:center;
+#metadata-support-ontologies, #metadata-support-rules, #prefix-legend{
+	margin-left:auto; margin-right:auto;
 }
 
-#metadata-support-ontologies td {
+
+#metadata-support-ontologies td, #metadata-support-rules td {
 	text-align:center;
 	padding-left:0.5em;
 	padding-right:0.5em;
 }
 
-#metadata-support-ontologies td:nth-child(2) {
+#metadata-support-ontologies td:nth-child(2), #metadata-support-rules td:nth-child(2)  {
 	white-space: nowrap; 
 	overflow: hidden; 
 	text-overflow:ellipsis;
 }
 
-#metadata-support-ontologies td:nth-child(7) {
+#metadata-support-ontologies td:nth-child(7),
+#metadata-support-rules td:nth-child(5)  {
 	text-align:left;
 }
 
-#prefix-legend{
-	margin-left:auto; margin-right:auto;
-}
 

@@ -456,8 +456,25 @@ supported by Parrot.</p>
   </tbody>
 </table>
 
-<h2>Not supported yet</h2>
+<h2>Tips</h2>
+<p>If you want to add a <strong>description</strong> to an element, the preferred property order to set it is:</p>
+<ol>
+  <li>http://purl.org/dc/terms/description</li>
+  <li>http://purl.org/dc/elements/1.1/description</li>
+  <li>http://www.w3.org/2000/01/rdf-schema#comment</li>
+</ol>
 
+<p>If you want to add a <strong>label</strong> to an element, the preferred property order to set it is:</p>
+<ol>
+  <li>http://www.w3.org/2008/05/skos-xl#prefLabel</li>
+  <li>http://www.w3.org/2008/05/skos-xl#altLabel</li>
+  <li>http://www.w3.org/2004/02/skos/core#prefLabel</li>
+  <li>http://www.w3.org/2004/02/skos/core#altLabel</li>
+  <li>http://purl.org/dc/elements/1.1/title</li>
+  <li>http://www.w3.org/2000/01/rdf-schema#label</li>
+</ol>
+
+<h2>Not supported yet</h2>
 
 <table id="metadata-not-support-ontologies">
   <tbody>

@@ -364,6 +364,27 @@ div#options{
 	text-align:center;
 }
 
-#metadata-support-ontologies td:nth-child(6), #metadata-support-rules td:nth-child(6) {
+#metadata-support-rules td:nth-child(6) {
 	text-align:center;
 }
+
+#metadata-support-ontologies td {
+	text-align:center;
+	padding-left:0.5em;
+	padding-right:0.5em;
+}
+
+#metadata-support-ontologies td:nth-child(2) {
+	white-space: nowrap; 
+	overflow: hidden; 
+	text-overflow:ellipsis;
+}
+
+#metadata-support-ontologies td:nth-child(7) {
+	text-align:left;
+}
+
+#prefix-legend{
+	margin-left:auto; margin-right:auto;
+}
+

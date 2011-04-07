@@ -88,11 +88,11 @@ public class OntResourceAnnotationStrategy {
 	/**
 	 * Returns the description of a resource for a locale.
 	 * The preferred order for a description is:
-	 * <ul>
+	 * <ol>
 	 * 	<li>http://purl.org/dc/terms/description</li>
 	 * 	<li>http://purl.org/dc/elements/1.1/description</li>
 	 *  <li>http://www.w3.org/2000/01/rdf-schema#comment</li>
-	 * </ul>
+	 * </ol>
 	 *  
 	 * @param ontResource the ontology resource.
 	 * @param locale the locale.
@@ -194,8 +194,8 @@ public class OntResourceAnnotationStrategy {
 	/**
 	 * Returns the best label associated, using the locale element if it is provided.
 	 * 
- 	 * The preferred order for a description is:
-	 * <ul>
+ 	 * The preferred order for a label is:
+	 * <ol>
 	 * 	<li>http://www.w3.org/2008/05/skos-xl#prefLabel</li>
 	 * 	<li>http://www.w3.org/2008/05/skos-xl#altLabel</li>
 	 *  <li>http://www.w3.org/2004/02/skos/core#prefLabel</li>
@@ -203,7 +203,7 @@ public class OntResourceAnnotationStrategy {
 	 *  <li>http://purl.org/dc/elements/1.1/title</li>
 	 *  <li>http://www.w3.org/2000/01/rdf-schema#label</li>
 	 *  <li>automatically generated</li>
-	 * </ul>
+	 * </ol>
 
 	 * @param ontResource the ontology resource.
 	 * @param locale the locale.

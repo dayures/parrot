@@ -35,11 +35,11 @@
 	#if($element.isObjectProperty())<img class="object-property-icon icon" src="images/object-property-24x24.png"/>#end
 	#if($element.isAnnotationProperty())<img class="annotation-property-icon icon" src="images/annotation-property-24x24.png"/>#end
 
-	#if($element.isReflexiveProperty())<img class="reflexive-property-icon icon" src="images/reflexive-property-24x24.png"/>#end    	
-	#if($element.isIrreflexiveProperty())<img class="irreflexive-property-icon icon" src="images/irreflexive-property-24x24.png"/>#end
-	#if($element.isSymmetricProperty())<img class="symmetric-property-icon icon" src="images/symmetric-property-24x24.png"/>#end
-	#if($element.isAsymmetricProperty())<img class="asymmetric-property-icon icon" src="images/asymmetric-property-24x24.png"/>#end
-   	#if($element.isTransitiveProperty())<img class="transitive-property-icon icon" src="images/transitive.png"/>#end
+	#if($element.isReflexiveProperty())<img class="reflexive-property-icon icon" src="images/reflexive-property.png"/>#end    	
+	#if($element.isIrreflexiveProperty())<img class="irreflexive-property-icon icon" src="images/irreflexive-property.png"/>#end
+	#if($element.isSymmetricProperty())<img class="symmetric-property-icon icon" src="images/symmetric-property.png"/>#end
+	#if($element.isAsymmetricProperty())<img class="asymmetric-property-icon icon" src="images/asymmetric-property.png"/>#end
+   	#if($element.isTransitiveProperty())<img class="transitive-property-icon icon" src="images/transitive-property.png"/>#end
     #if($element.isFunctionalProperty())<img class="functional-property-icon icon" src="images/functional-property.png"/>#end
     #if($element.isInverseFunctionalProperty())<img class="inverse-functional-property-icon icon" src="images/inverse-functional-property.png"/>#end
 

@@ -1,5 +1,5 @@
     <span class="menu"> 
-	  #if ($vci)<span class="vci-menu">Version control Information</span> #end 
-	  #if ($ti)<span class="ti-menu">Technical Information</span> #end
-	  #if ($otherinfo)<span class="otherinfo-menu">Other information</span> #end
+	  #if ($vci)<span class="vci-menu">VC</span> #end 
+	  #if ($ti)<span class="ti-menu">Tech</span> #end
+	  #if ($otherinfo)<span class="otherinfo-menu">Other</span> #end
     </span> 

@@ -1,7 +1,6 @@
 package es.ctic.parrot.reader.jena;
 
 import com.hp.hpl.jena.ontology.OntResource;
-import com.hp.hpl.jena.rdf.model.Resource;
 
 import es.ctic.parrot.de.Dataset;
 import es.ctic.parrot.de.DocumentableObjectRegister;

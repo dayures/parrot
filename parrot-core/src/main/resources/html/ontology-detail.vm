@@ -39,44 +39,7 @@
   <div> 
 
   #if ($vci)
-    <div class="vci"> 
-    <h4>Version Control information</h4> 
-    <dl> 
-		#if($element.Version)
-		<dt>Version</dt>
-		<dd>$element.Version</dd>
-		#end
-		
-		#if($element.Date)
-		<dt>Date</dt>
-		<dd class="metadata-icon date">$element.Date</dd>
-		#end
-	  
-		#if(!$element.creators.isEmpty())
-		<dt>Creators:</dt>
-		#foreach($creator in $element.creators)
-		  <dd class="metadata-icon creator">$creator</dd>
-		#end
-		#end
-		
-		#if(!$element.contributors.isEmpty())
-		<dt>Contributors:</dt>
-		#foreach($contributor in $element.contributors)
-		  <dd class="metadata-icon contributor">$contributor</dd>
-		#end
-		#end
-		
-		#if($element.Rights)
-		<dt>Rights</dt>
-		<dd>$element.Rights</dd>
-		#end
-		
-		#if($element.LicenseLabel)
-		<dt>License</dt>
-		<dd><a href="$element.LicenseLabel">$element.LicenseLabel</a></dd>
-		#end
-    </dl> 
-    </div>
+    #parse("html/version-control.vm")
   #end
 
   #if ($ti)
@@ -96,6 +59,16 @@
 		#if($element.PreferredPrefix)
 		    <dt>Preferred Prefix</dt>
 		    <dd><pre><code>$element.PreferredPrefix</code></pre></dd>
+		#end
+		
+		#if($element.Rights)
+		<dt>Rights</dt>
+		<dd>$element.Rights</dd>
+		#end
+		
+		#if($element.LicenseLabel)
+		<dt>License</dt>
+		<dd><a href="$element.LicenseLabel">$element.LicenseLabel</a></dd>
 		#end
 		
 		#if($element.isDefinedBy)

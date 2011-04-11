@@ -2,8 +2,9 @@ jQuery(document).ready(function(){
 	$('#header').corner();
 	$('.toc').corner();
     $('.details').corner();
-    $('.ti').corner();
     $('.vci').corner();
+    $('.ti').corner();
+    $('.inuse').corner();
     $('.otherinfo').corner();
     $('.menu span').corner();
 
@@ -23,6 +24,11 @@ jQuery(document).ready(function(){
         return false;
     });
 
+    $('.term h3 span span.inuse-menu').click(function() {
+        $(this).parent().parent().nextAll('div').children('.inuse').toggle('slow');
+        return false;
+    });
+    
     $('.menu span').click(function () {
         $(this).toggleClass('active no-active');
     });

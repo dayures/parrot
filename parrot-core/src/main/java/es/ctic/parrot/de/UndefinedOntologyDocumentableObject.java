@@ -56,6 +56,10 @@ public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObj
 		return "anchor"+getIdentifier().hashCode();
 	}
 
+    public String getKindString() {
+        return Kind.UNDEFINED.toString();
+    }
+
 	public void addInverseRuleReference(Rule rule) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
@@ -63,6 +67,42 @@ public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObj
 	}
 
 	public Collection<Rule> getInverseRuleReferences() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Method not implemented yet.");
+		//return null;
+	}
+
+	public DocumentableObject getIsDefinedBy() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Method not implemented yet.");
+		//return null;
+	}
+
+	public boolean isDeprecated() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Method not implemented yet.");
+		//return false;
+	}
+
+	public String getVersion() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Method not implemented yet.");
+		//return null;
+	}
+
+	public Collection<String> getCreators() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Method not implemented yet.");
+		//return null;
+	}
+
+	public Collection<String> getContributors() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Method not implemented yet.");
+		//return null;
+	}
+
+	public String getDate() {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
 		//return null;
@@ -81,12 +121,6 @@ public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObj
 		//return null;
 	}
 
-	public Collection<RelatedDocument> getRelatedDocuments(Locale locale) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
-	}
-
 	public Collection<Label> getLabels(Locale locale) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
@@ -99,7 +133,13 @@ public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObj
 		//return null;
 	}
 
-	public int compareTo(DocumentableOntologicalObject o) {
+	public Collection<RelatedDocument> getRelatedDocuments(Locale locale) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Method not implemented yet.");
+		//return null;
+	}
+
+	public int compareTo(DocumentableOntologicalObject arg0) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
 		//return 0;
@@ -111,7 +151,7 @@ public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObj
 		//return null;
 	}
 
-	public void setSuperClasses(Collection<OntologyClass> classes) {
+	public void setSuperClasses(Collection<OntologyClass> superClasses) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
 		//
@@ -123,7 +163,7 @@ public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObj
 		//return null;
 	}
 
-	public void setSubClasses(Collection<OntologyClass> classes) {
+	public void setSubClasses(Collection<OntologyClass> subClasses) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
 		//
@@ -195,7 +235,20 @@ public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObj
 		//return null;
 	}
 
-	public void setSuperProperties(Collection<DocumentableObject> superProperties) {
+	public void setSuperProperties(
+			Collection<DocumentableObject> superProperties) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Method not implemented yet.");
+		//
+	}
+
+	public Collection<DocumentableObject> getSubProperties() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Method not implemented yet.");
+		//return null;
+	}
+
+	public void setSubProperties(Collection<DocumentableObject> subProperties) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
 		//
@@ -222,18 +275,6 @@ public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObj
 
 	public void setDisjointProperties(
 			Collection<DocumentableObject> disjointProperties) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Method not implemented yet.");
-		//
-	}
-
-	public Collection<DocumentableObject> getSubProperties() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
-	}
-
-	public void setSubProperties(Collection<DocumentableObject> subProperties) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
 		//
@@ -304,21 +345,5 @@ public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObj
 		throw new UnsupportedOperationException("Method not implemented yet.");
 		//return false;
 	}
-
-    public String getKindString() {
-        return Kind.UNDEFINED.toString();
-    }
-
-	public DocumentableObject getIsDefinedBy() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
-	}
-
-	public boolean isDeprecated() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return false;
-	}
-
+    
 }

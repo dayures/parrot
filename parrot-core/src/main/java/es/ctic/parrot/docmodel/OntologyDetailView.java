@@ -1,7 +1,5 @@
 package es.ctic.parrot.docmodel;
 
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Locale;
 
 import org.apache.log4j.Logger;
@@ -20,12 +18,8 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 	
     private static final Logger logger = Logger.getLogger(OntologyDetailView.class);
 
-	private String version;
-	private Collection<String> creators;
-	private Collection<String> contributors;
 	private String preferredPrefix;
 	private String preferredNamespace;
-	private String date;
 	private String rights;
 	private String licenseLabel;
 
@@ -36,38 +30,6 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 		logger.debug("Created " + this.getClass());
 	}
 	
-	/**
-	 * Set the version.
-	 * @param version version to set.
-	 */
-	private void setVersion(String version) {
-		this.version = version;
-	}
-
-	/**
-	 * Returns the version.
-	 * @return the version.
-	 */
-	public String getVersion() {
-		return version;
-	}
-
-	/**
-	 * Set the creators.
-	 * @param creators creators to set.
-	 */
-	private void setCreators(Collection<String> creators) {
-		this.creators = creators;
-	}
-
-	/**
-	 * Returns the creators.
-	 * @return the creators.
-	 */	
-	public Collection<String> getCreators() {
-		return Collections.unmodifiableCollection(creators);
-	}
-
 	/**
 	 * Set the preferred prefix.
 	 * @param preferredPrefix preferred prefix to set.
@@ -82,38 +44,6 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 	 */
 	public String getPreferredPrefix() {
 		return preferredPrefix;
-	}
-
-	/**
-	 * Set the contributors.
-	 * @param contributors contributors to set.
-	 */
-	private void setContributors(Collection<String> contributors) {
-		this.contributors = contributors;
-	}
-
-	/**
-	 * Returns the contributors.
-	 * @return the contributors.
-	 */
-	public Collection<String> getContributors() {
-		return Collections.unmodifiableCollection(contributors);
-	}
-
-	/**
-	 * Set the date.
-	 * @param date date to set.
-	 */	
-	private void setDate(String date) {
-		this.date = date;
-	}
-
-	/**
-	 * Returns the date.
-	 * @return the date.
-	 */
-	public String getDate() {
-		return date;
 	}
 	
 	/**

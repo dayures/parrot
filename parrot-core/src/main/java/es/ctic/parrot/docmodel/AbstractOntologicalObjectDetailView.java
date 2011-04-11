@@ -28,6 +28,11 @@ public abstract class AbstractOntologicalObjectDetailView implements DetailView 
     private Identifier identifier;
 	private DocumentableObjectReference isDefinedBy;
 	private boolean deprecated;
+	
+	private String version;
+	private Collection<String> creators;
+	private Collection<String> contributors;
+	private String date;
 
 	/**
 	 * Returns the URI.
@@ -189,4 +194,67 @@ public abstract class AbstractOntologicalObjectDetailView implements DetailView 
 		return deprecated;
 	}
 
+	/**
+	 * Set the version.
+	 * @param version version to set.
+	 */
+	protected void setVersion(String version) {
+		this.version = version;
+	}
+
+	/**
+	 * Returns the version.
+	 * @return the version.
+	 */
+	public String getVersion() {
+		return version;
+	}
+
+	/**
+	 * Set the creators.
+	 * @param creators creators to set.
+	 */
+	protected void setCreators(Collection<String> creators) {
+		this.creators = creators;
+	}
+
+	/**
+	 * Returns the creators.
+	 * @return the creators.
+	 */	
+	public Collection<String> getCreators() {
+		return Collections.unmodifiableCollection(creators);
+	}
+	
+	/**
+	 * Set the contributors.
+	 * @param contributors contributors to set.
+	 */
+	protected void setContributors(Collection<String> contributors) {
+		this.contributors = contributors;
+	}
+
+	/**
+	 * Returns the contributors.
+	 * @return the contributors.
+	 */
+	public Collection<String> getContributors() {
+		return Collections.unmodifiableCollection(contributors);
+	}
+
+	/**
+	 * Set the date.
+	 * @param date date to set.
+	 */	
+	protected void setDate(String date) {
+		this.date = date;
+	}
+
+	/**
+	 * Returns the date.
+	 * @return the date.
+	 */
+	public String getDate() {
+		return date;
+	}	
 }

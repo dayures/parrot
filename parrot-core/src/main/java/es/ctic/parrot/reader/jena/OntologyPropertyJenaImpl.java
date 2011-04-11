@@ -17,6 +17,7 @@ import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.shared.JenaException;
+import com.hp.hpl.jena.vocabulary.OWL;
 import com.hp.hpl.jena.vocabulary.OWL2;
 import com.hp.hpl.jena.vocabulary.RDF;
 
@@ -177,7 +178,7 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 	}
 
 	public boolean isAnnotationProperty() {
-		return getOntProperty().isAnnotationProperty();
+		return getOntProperty().hasRDFType(OWL.AnnotationProperty,true);
 	}
 	
 	public boolean isTransitiveProperty() {

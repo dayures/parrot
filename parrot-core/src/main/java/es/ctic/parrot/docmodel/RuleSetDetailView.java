@@ -26,12 +26,9 @@ public class RuleSetDetailView implements DetailView {
 	private String uri;
 	private String label;
 	private String comment;
-	private String date;
 	private String strategy;
 	private Integer priority;
-	private Collection<String> creators;
-	private Collection<String> contributors;
-	private Collection<String> publishers;
+
 	private Collection<DocumentableObjectReference> referencedOntologicalObjects;
 	private Collection<Label> labels;
 	private Collection<RelatedDocument> relatedDocuments;
@@ -39,6 +36,14 @@ public class RuleSetDetailView implements DetailView {
 	private Collection<DocumentableObjectReference> ruleSets;
 	private DocumentableObjectReference parent;
     private String anchor;
+    
+	private String version;
+	private String date;
+	private Collection<String> creators;
+	private Collection<String> contributors;
+	private Collection<String> publishers;
+	private String rights;
+	private String licenseLabel;
 
 	
 	/**
@@ -145,70 +150,6 @@ public class RuleSetDetailView implements DetailView {
 		return anchor;
 	}
 	
-	/**
-	 * Set the date.
-	 * @param date date to set.
-	 */	
-	private void setDate(String date) {
-		this.date = date;
-	}
-
-	/**
-	 * Returns the date.
-	 * @return the date.
-	 */	
-	public String getDate() {
-		return date;
-	}
-
-	/**
-	 * Sets the publishers
-	 * @param publishers to set.
-	 */
-	private void setPublishers(Collection<String> publishers) {
-		this.publishers = publishers;
-	}
-
-	/**
-	 * Returns the publishers.
-	 * @return the publishers.
-	 */
-	public Collection<String> getPublishers() {
-		return Collections.unmodifiableCollection(publishers);
-	}
-
-	/**
-	 * Set the creators.
-	 * @param creators creators to set
-	 */	
-	private void setCreators(Collection<String> creators) {
-		this.creators = creators;
-	}
-	
-	/**
-	 * Returns the creators.
-	 * @return the creators.
-	 */	
-	public Collection<String> getCreators() {
-		return Collections.unmodifiableCollection(creators);
-	}
-	
-	/**
-	 * Set the contributors.
-	 * @param contributors contributors to set
-	 */
-	private void setContributors(Collection<String> contributors) {
-		this.contributors = contributors;
-	}
-
-	/**
-	 * Returns the contributors.
-	 * @return the contributors.
-	 */
-	public Collection<String> getContributors() {
-		return Collections.unmodifiableCollection(contributors);
-	}
-
 	/**
 	 * Sets the reference to the parent element.
 	 * @param parent the reference to the parent element.
@@ -322,6 +263,118 @@ public class RuleSetDetailView implements DetailView {
 	}
 	
 	/**
+	 * Set the version.
+	 * @param version version to set.
+	 */
+	protected void setVersion(String version) {
+		this.version = version;
+	}
+
+	/**
+	 * Returns the version.
+	 * @return the version.
+	 */
+	public String getVersion() {
+		return version;
+	}
+	
+	/**
+	 * Set the date.
+	 * @param date date to set.
+	 */	
+	protected void setDate(String date) {
+		this.date = date;
+	}
+
+	/**
+	 * Returns the date.
+	 * @return the date.
+	 */
+	public String getDate() {
+		return date;
+	}
+
+	/**
+	 * Set the creators.
+	 * @param creators creators to set.
+	 */
+	protected void setCreators(Collection<String> creators) {
+		this.creators = creators;
+	}
+
+	/**
+	 * Returns the creators.
+	 * @return the creators.
+	 */	
+	public Collection<String> getCreators() {
+		return Collections.unmodifiableCollection(creators);
+	}
+	
+	/**
+	 * Set the contributors.
+	 * @param contributors contributors to set.
+	 */
+	protected void setContributors(Collection<String> contributors) {
+		this.contributors = contributors;
+	}
+
+	/**
+	 * Returns the contributors.
+	 * @return the contributors.
+	 */
+	public Collection<String> getContributors() {
+		return Collections.unmodifiableCollection(contributors);
+	}
+
+	/**
+	 * Set the publishers.
+	 * @param publishers publishers to set.
+	 */
+	protected void setPublishers(Collection<String> publishers) {
+		this.publishers = publishers;
+	}
+
+	/**
+	 * Returns the publishers.
+	 * @return the publishers.
+	 */
+	public Collection<String> getPublishers() {
+		return Collections.unmodifiableCollection(publishers);
+	}
+	
+	/**
+	 * Set information about the ontology rights.
+	 * @param rights information about the ontology rights to set.
+	 */
+	protected void setRights(String rights) {
+		this.rights = rights;
+	}
+
+	/**
+	 * Returns information about the ontology rights.
+	 * @return information about the ontology rights.
+	 */
+	public String getRights() {
+		return rights;
+	}
+
+	/**
+	 * Set the license's label.
+	 * @param licenseLabel the license's label to set.
+	 */
+	protected void setLicenseLabel(String licenseLabel) {
+		this.licenseLabel = licenseLabel;
+	}
+
+	/**
+	 * Returns the label for the license of this ontology.
+	 * @return the label for the license of this ontology.
+	 */
+	public String getLicenseLabel() {
+		return licenseLabel;
+	}
+	
+	/**
 	 * Returns a detailed view for the rule set given.
 	 * @param object the rule set.
 	 * @param locale the locale.
@@ -333,10 +386,16 @@ public class RuleSetDetailView implements DetailView {
         details.setUri(object.getURI());
         details.setLabel(object.getLabel(locale));
         details.setComment(object.getComment(locale));
-        details.setDate(object.getDate());
-        details.setCreators(object.getCreators());
-        details.setContributors(object.getContributors());
-        details.setPublishers(object.getPublishers());
+        
+		// Control version information
+		details.setVersion(object.getVersion());
+		details.setDate(object.getDate());
+		details.setCreators(object.getCreators());
+		details.setContributors(object.getContributors());
+		details.setPublishers(object.getPublishers());
+		details.setRights(object.getRights());
+		details.setLicenseLabel(object.getLicenseLabel());
+		
         details.setReferencedOntologicalObjects(DocumentableObjectReference.createReferences(object.getReferencedOntologicalObjects(), locale));
         details.setRules(DocumentableObjectReference.createReferences(object.getRules(), locale));
         details.setRuleSets(DocumentableObjectReference.createReferences(object.getRuleSets(), locale));

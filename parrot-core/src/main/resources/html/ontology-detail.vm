@@ -2,6 +2,7 @@
 	  ($element.Date) ||
 	  (!$element.creators.isEmpty()) ||
 	  (!$element.contributors.isEmpty()) ||
+	  (!$element.publishers.isEmpty()) ||
 	  ($element.Rights) ||
 	  ($element.LicenseLabel) )
   #set( $vci = true )
@@ -59,16 +60,6 @@
 		#if($element.PreferredPrefix)
 		    <dt>Preferred Prefix</dt>
 		    <dd><pre><code>$element.PreferredPrefix</code></pre></dd>
-		#end
-		
-		#if($element.Rights)
-		<dt>Rights</dt>
-		<dd>$element.Rights</dd>
-		#end
-		
-		#if($element.LicenseLabel)
-		<dt>License</dt>
-		<dd><a href="$element.LicenseLabel">$element.LicenseLabel</a></dd>
 		#end
 		
 		#if($element.isDefinedBy)

@@ -296,10 +296,21 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
     public static OntologyPropertyDetailView createFromProperty(OntologyProperty object, Locale locale) {
     	
     	OntologyPropertyDetailView details = new OntologyPropertyDetailView();
+    	
     	details.setOntologyProperty(object);
 		details.setUri(object.getURI());
 		details.setLabel(object.getLabel(locale));
 		details.setComment(object.getComment(locale));
+		
+		// Control version information
+		details.setVersion(object.getVersion());
+		details.setDate(object.getDate());
+		details.setCreators(object.getCreators());
+		details.setContributors(object.getContributors());
+		details.setPublishers(object.getPublishers());
+		details.setRights(object.getRights());
+		details.setLicenseLabel(object.getLicenseLabel());
+		
 		details.setDomain(DocumentableObjectReference.createReference(object.getDomain(), locale));
 		details.setRange(DocumentableObjectReference.createReference(object.getRange(), locale));
 		details.setSuperProperties(DocumentableObjectReference.createReferences(object.getSuperProperties(), locale));
@@ -317,12 +328,7 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
 		details.setIdentifier(object.getIdentifier());
 		details.setIsDefinedBy(DocumentableObjectReference.createReference(object.getIsDefinedBy(),locale));
 		details.setDeprecated(object.isDeprecated());
-		
-		// Version Control Information
-		details.setVersion(object.getVersion());
-		details.setCreators(object.getCreators());
-		details.setContributors(object.getContributors());		
-		details.setDate(object.getDate());
+
 
 		
 		return details;

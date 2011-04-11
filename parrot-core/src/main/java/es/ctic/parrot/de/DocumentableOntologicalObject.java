@@ -44,6 +44,12 @@ public interface DocumentableOntologicalObject extends DocumentableObject,Compar
 	public abstract String getVersion();
 	
 	/**
+	 * Returns the date.
+	 * @return the date.
+	 */
+	public abstract String getDate();
+
+	/**
 	 * Returns the creators.
 	 * @return the creators.
 	 */	
@@ -56,9 +62,21 @@ public interface DocumentableOntologicalObject extends DocumentableObject,Compar
 	public abstract Collection<String> getContributors();
 	
 	/**
-	 * Returns the date.
-	 * @return the date.
+	 * Returns the publishers.
+	 * @return the publishers.
 	 */
-	public abstract String getDate();
+	public abstract Collection<String> getPublishers();
+	
+	/**
+	 * Returns information about the element rights.
+	 * @return information about the element rights.
+	 */
+	public abstract String getRights();
+	
+	/**
+	 * Returns the label for the license of this element.
+	 * @return the label for the license of this element.
+	 */
+	public abstract String getLicenseLabel();
 	
 }

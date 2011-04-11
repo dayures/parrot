@@ -19,11 +19,17 @@ public interface Rule extends DocumentableObject {
     public abstract Collection<DocumentableOntologicalObject> getReferencedOntologicalObjects();
 
 	/**
+	 * Returns the version.
+	 * @return the version.
+	 */
+	public abstract String getVersion();
+	
+	/**
 	 * Returns the date.
 	 * @return the date.
-	 */	
-    public abstract String getDate();
-    
+	 */
+	public abstract String getDate();
+
 	/**
 	 * Returns the creators.
 	 * @return the creators.
@@ -41,6 +47,18 @@ public interface Rule extends DocumentableObject {
 	 * @return the publishers.
 	 */
 	public abstract Collection<String> getPublishers();
+	
+	/**
+	 * Returns information about the element rights.
+	 * @return information about the element rights.
+	 */
+	public abstract String getRights();
+	
+	/**
+	 * Returns the label for the license of this element.
+	 * @return the label for the license of this element.
+	 */
+	public abstract String getLicenseLabel();
 	
 	/**
 	 * Returns the reference to the parent documentable element.

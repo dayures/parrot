@@ -182,6 +182,14 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
         return getAnnotationStrategy().getRelatedDocuments(getOntResource(), locale);
     }
     
+	public String getVersion() {
+		return getAnnotationStrategy().getVersion(getOntResource());
+	}
+
+	public String getDate() {
+		return getAnnotationStrategy().getDate(getOntResource());
+	}
+
 	public Collection<String> getCreators() {
 		return getAnnotationStrategy().getCreators(getOntResource());
 	}
@@ -189,13 +197,17 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 	public Collection<String> getContributors() {
 		return getAnnotationStrategy().getContributors(getOntResource());
 	}
-
+	
 	public Collection<String> getPublishers() {
 		return getAnnotationStrategy().getPublishers(getOntResource());
 	}
 	
-	public String getDate() {
-		return getAnnotationStrategy().getDate(getOntResource());
+	public String getRights() {
+		return getAnnotationStrategy().getRights(getOntResource());
+	}
+	
+	public String getLicenseLabel() {
+		return getAnnotationStrategy().getLicenseLabel(getOntResource());
 	}
 	
 	public int compareTo(DocumentableOntologicalObject o) {

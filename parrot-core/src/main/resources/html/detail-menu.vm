@@ -1,5 +1,6 @@
     <span class="menu"> 
 	  #if ($vci)<span class="vci-menu">VC</span> #end 
-	  #if ($ti)<span class="ti-menu">Tech</span> #end
-	  #if ($otherinfo)<span class="otherinfo-menu">Other</span> #end
+	  #if ($ti)<span class="ti-menu">Definition</span> #end
+	  #if ($inuse)<span class="inuse-menu">In use</span> #end
+	  #if ($otherinfo)<span class="otherinfo-menu">Documentation</span> #end
     </span> 

@@ -15,18 +15,22 @@
   	  (!$element.SuperClasses.isEmpty()) || 
   	  (!$element.SubClasses.isEmpty()) || 
   	  (!$element.EquivalentClasses.isEmpty()) || 
-  	  (!$element.DisjointClasses.isEmpty()) || 
-  	  (!$element.InverseReferences.isEmpty()) ||
-  	  ($element.isDefinedBy) )
+  	  (!$element.DisjointClasses.isEmpty()) ) 
   #set( $ti = true )
 #else
   #set( $ti = false )
 #end
 
+#if ( ($element.isDefinedBy) || 
+  	  (!$element.InverseReferences.isEmpty()) || 
+  	  (!$element.inverseRuleReferences.isEmpty()) || 
+  	  (!$element.individuals.isEmpty()) )
+  #set( $inuse = true )
+#else
+  #set( $inuse = false )
+#end	
 
-#if ( (!$element.inverseRuleReferences.isEmpty()) || 
-  	  (!$element.individuals.isEmpty()) ||
-  	  (!$element.labels.isEmpty()) ||
+#if ( (!$element.labels.isEmpty()) ||
   	  (!$element.relatedDocuments.isEmpty()) )
   #set( $otherinfo = true )
 #else
@@ -44,87 +48,131 @@
   #parse("html/description.vm")
   
   <div>
-
+  
   #if ($vci)
     #parse("html/version-control.vm")
   #end
 
   #if ( $ti )
   <div class="ti"> 
-  <h4>Technical information</h4> 
-   <dl>
-	#if($element.Uri)
+  <h4>Definition</h4> 
+  	#if($element.Uri)
+	  <dl>
 	  <dt>URI</dt>
-	  <dd><pre>$element.Uri</pre></dd>
+	  <dd><code>$element.Uri</code></dd>
+	  </dl>
 	#end
-	 
+
+  <p>This class...</p>
+  <table>
 	#if(!$element.SuperClasses.isEmpty())
-	  <dt>SuperClasses</dt>
+	  <tr>
+	  <td><img src="images/super-class.png" alt="Super Class"></img></td><td>... is a sub class of </td>
+	  <td>
 	  #foreach($superclass in $element.SuperClasses)
-	  <dd><span class="parrot-element-ref parrot-class-ref"><a href="#$superclass.LocalName">$superclass.Label</a></span></dd>
+	  <span class="parrot-element-ref parrot-class-ref"><a href="#$superclass.LocalName">$superclass.Label</a></span>
 	  #end
+	  </td>
+	  </tr>
 	#end
-	 
+
 	#if(!$element.SubClasses.isEmpty())
-	  <dt>SubClasses</dt>
+	  <tr>
+	  <td><img src="images/sub-class.png" alt="Sub Class"></img></td><td>... is a super class of</td>
+	  <td>
 	  #foreach($subclass in $element.SubClasses)
-	  <dd><span class="parrot-element-ref parrot-class-ref"><a href="#$subclass.LocalName">$subclass.Label</a></span></dd>
+	  <span class="parrot-element-ref parrot-class-ref"><a href="#$subclass.LocalName">$subclass.Label</a></span>
 	  #end
+	  </td>
+	  </tr>
 	#end
 	
 	#if(!$element.EquivalentClasses.isEmpty())
-	  <dt>Equivalent Classes</dt>
+	  <tr>
+	  <td><img src="images/equivalent-class.png" alt="Equivalent Class"></img></td><td>... is an equivalent class of</td>
+	  <td>
 	  #foreach($equivalent in $element.EquivalentClasses)
-	  <dd><span class="parrot-element-ref parrot-class-ref"><a href="#$equivalent.LocalName">$equivalent.Label</a></span></dd>
+	  <span class="parrot-element-ref parrot-class-ref"><a href="#$equivalent.LocalName">$equivalent.Label</a></span>
 	  #end
+	  </td>
+	  </tr>
 	#end
 	
 	#if(!$element.DisjointClasses.isEmpty())
-	  <dt>Disjoint Classes</dt>
+	  <tr>
+	  <td><img src="images/disjoint-class.png" alt="Disjoint Class"></img></td><td>... is a disjoint class of</td>
+	  <td>
 	  #foreach($disjoint in $element.DisjointClasses)
-	  <dd><span class="parrot-element-ref parrot-class-ref"><a href="#$disjoint.LocalName">$disjoint.Label</a></span></dd>
+	  <span class="parrot-element-ref parrot-class-ref"><a href="#$disjoint.LocalName">$disjoint.Label</a></span>
 	  #end
+	  </td>
+	  </tr>
 	#end
 	    
-	#if(!$element.InverseReferences.isEmpty())
-	  <dt>Referenced from (range or domain of...)</dt>
-	  #foreach($reference in $element.InverseReferences)
-	  <dd><span class="parrot-element-ref parrot-property-ref"><a href="#$reference.LocalName">$reference.Label</a></span></dd>
-	  #end
-	#end
-	 
-	#if($element.isDefinedBy)
-	  <dt>isDefinedBy</dt>
-	  <dd><span class="parrot-element-ref parrot-${element.isDefinedBy.kindString}-ref"><a href="#$element.isDefinedBy.LocalName">$element.isDefinedBy.Label</a></span></dd>
-	#end
-   </dl>
+  </table>
   </div>
   #end
 
-
-  #if ( $otherinfo )
-  <div class="otherinfo">
-  <h4>Other information</h4> 
-  <dl> 
-	#if(!$element.inverseRuleReferences.isEmpty())
-	  <dt>Referenced rules</dt>
-	  #foreach($reference in $element.inverseRuleReferences)
-	  <dd><span class="parrot-element-ref parrot-rule-ref"><a href="#$reference.LocalName">$reference.Label</a></span></dd>
+  #if ( $inuse )
+  <div class="inuse">
+  <h4>In use</h4>
+  
+    <p>This class...</p>
+    <table>
+  	#if($element.isDefinedBy)
+  	  <tr>
+	  <td></td><td>... is defined by </td>
+	  <td><span class="parrot-element-ref parrot-${element.isDefinedBy.kindString}-ref"><a href="#$element.isDefinedBy.LocalName">$element.isDefinedBy.Label</a></span></td>
+	  </tr>
+	#end
+  
+  	#if(!$element.InverseReferences.isEmpty())
+	  <tr>
+	  <td><img src="images/link.png" alt="Disjoint Class"></img></td><td>... is used in</td>
+	  <td>
+	  #foreach($reference in $element.InverseReferences)
+	  <span class="parrot-element-ref parrot-property-ref"><a href="#$reference.LocalName">$reference.Label</a></span>
 	  #end
+	  </td>
+	  </tr>
 	#end
 	
 	#if(!$element.individuals.isEmpty())
-	  <dt>Individuals of this class</dt>
+	  <tr>
+	  <td></td><td>... has individuals such as</td>
+	  <td>
 	  #foreach($individual in $element.individuals)
-	  <dd><span class="parrot-element-ref parrot-individual-ref"><a href="#$individual.LocalName">$individual.Label</a></span></dd>
+	  <span class="parrot-element-ref parrot-individual-ref"><a href="#$individual.LocalName">$individual.Label</a></span>
 	  #end
+	  </td>
+	  </tr>
 	#end
-	
+
+	#if(!$element.inverseRuleReferences.isEmpty())
+	  <tr>
+	  <td></td><td>... is referenced in rules such as</td>
+	  <td>
+	  #foreach($reference in $element.inverseRuleReferences)
+	  <span class="parrot-element-ref parrot-rule-ref"><a href="#$reference.LocalName">$reference.Label</a></span>
+	  #end
+	  </td>
+	  </tr>
+	#end
+
+  </table>
+  </div>
+  #end
+  
+  
+  
+  #if ( $otherinfo )
+  <div class="otherinfo">
+  <h4>Documentation</h4> 
+
 	#if(!$element.labels.isEmpty())
-	  <dt>Labels</dt>
-	  <dd>#parse("html/label.vm")</dd>
+	  <p>Labels: #parse("html/label.vm")</p>
 	#end
-	
+  <dl> 	
 	#if(!$element.relatedDocuments.isEmpty())
 	  <dt>Related documents</dt> 
 	  <dd>

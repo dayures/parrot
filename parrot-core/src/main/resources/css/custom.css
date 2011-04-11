@@ -41,7 +41,7 @@ div.term > div{
     margin-right:1em;
 }
 
-.ti , .vci, .otherinfo{
+.vci, .ti , .inuse , .otherinfo{
    border: 1px solid White;
    padding-left: 1em;
    margin-top: 1em;
@@ -327,6 +327,12 @@ span.active{
 }
 
 
-div.vci , div.ti , div.otherinfo{
+div.vci , div.ti , div.inuse, div.otherinfo{
     display:none
+}
+
+div.term div div table td {
+	text-align:left;
+	padding-left:0.5em;
+	padding-right:0.5em;
 }

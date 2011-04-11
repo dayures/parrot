@@ -13,11 +13,9 @@ import com.hp.hpl.jena.ontology.OntResource;
 import com.hp.hpl.jena.rdf.model.RDFList;
 import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.shared.JenaException;
-import com.hp.hpl.jena.vocabulary.OWL;
 import com.hp.hpl.jena.vocabulary.OWL2;
 import com.hp.hpl.jena.vocabulary.RDF;
 
@@ -178,7 +176,7 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 	}
 
 	public boolean isAnnotationProperty() {
-		return getOntProperty().hasRDFType(OWL.AnnotationProperty,true);
+		return getOntProperty().hasRDFType(OWL2.AnnotationProperty,true);
 	}
 	
 	public boolean isTransitiveProperty() {
@@ -198,18 +196,15 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 	}
 
 	public boolean isReflexiveProperty() {
-		Statement statement = ResourceFactory.createStatement(getOntProperty(), RDF.type, OWL2.ReflexiveProperty );
-		return getOntProperty().getOntModel().contains(statement);
+		return getOntProperty().hasRDFType(OWL2.ReflexiveProperty,true);
 	}
 	
 	public boolean isIrreflexiveProperty() {
-		Statement statement = ResourceFactory.createStatement(getOntProperty(), RDF.type, OWL2.IrreflexiveProperty );
-		return getOntProperty().getOntModel().contains(statement);
+		return getOntProperty().hasRDFType(OWL2.IrreflexiveProperty,true);
 	}
 	
 	public boolean isAsymmetricProperty(){
-		Statement statement = ResourceFactory.createStatement(getOntProperty(), RDF.type, OWL2.AsymmetricProperty );
-		return getOntProperty().getOntModel().contains(statement);
+		return getOntProperty().hasRDFType(OWL2.AsymmetricProperty,true);
 	}
 
 	/**

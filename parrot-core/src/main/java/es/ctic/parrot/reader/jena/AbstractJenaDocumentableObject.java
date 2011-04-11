@@ -228,4 +228,20 @@ public abstract class AbstractJenaDocumentableObject extends
 		return getAnnotationStrategy().isDeprecated(getOntResource());
 	}
 	
+	public String getVersion() {
+		return getAnnotationStrategy().getVersion(getOntResource());
+	}
+
+	public Collection<String> getCreators() {
+		return getAnnotationStrategy().getCreators(getOntResource());
+	}
+
+	public Collection<String> getContributors() {
+		return getAnnotationStrategy().getContributors(getOntResource());
+	}
+	
+	public String getDate() {
+		return getAnnotationStrategy().getDate(getOntResource());
+	}
+	
 }

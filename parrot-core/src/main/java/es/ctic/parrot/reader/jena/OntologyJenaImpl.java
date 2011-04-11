@@ -1,7 +1,5 @@
 package es.ctic.parrot.reader.jena;
 
-import java.util.Collection;
-
 import com.hp.hpl.jena.ontology.OntResource;
 import com.hp.hpl.jena.shared.JenaException;
 
@@ -45,22 +43,6 @@ public class OntologyJenaImpl extends AbstractJenaDocumentableObject implements 
 		return getAnnotationStrategy().getPreferredNamespace(getOntResource());
 	}
 
-	public String getVersion() {
-		return getAnnotationStrategy().getVersion(getOntResource());
-	}
-
-	public Collection<String> getCreators() {
-		return getAnnotationStrategy().getCreators(getOntResource());
-	}
-
-	public Collection<String> getContributors() {
-		return getAnnotationStrategy().getContributors(getOntResource());
-	}
-	
-	public String getDate() {
-		return getAnnotationStrategy().getDate(getOntResource());
-	}
-	
 	public String getRights() {
 		return getAnnotationStrategy().getRights(getOntResource());
 	}

@@ -318,6 +318,13 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
 		details.setIsDefinedBy(DocumentableObjectReference.createReference(object.getIsDefinedBy(),locale));
 		details.setDeprecated(object.isDeprecated());
 		
+		// Version Control Information
+		details.setVersion(object.getVersion());
+		details.setCreators(object.getCreators());
+		details.setContributors(object.getContributors());		
+		details.setDate(object.getDate());
+
+		
 		return details;
     }
 }

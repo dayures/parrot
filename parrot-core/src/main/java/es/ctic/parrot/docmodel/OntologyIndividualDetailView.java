@@ -67,6 +67,13 @@ public class OntologyIndividualDetailView extends AbstractOntologicalObjectDetai
 		details.setIdentifier(object.getIdentifier());
 		details.setIsDefinedBy(DocumentableObjectReference.createReference(object.getIsDefinedBy(),locale));
 		details.setDeprecated(object.isDeprecated());
+		
+		// Version Control Information
+		details.setVersion(object.getVersion());
+		details.setCreators(object.getCreators());
+		details.setContributors(object.getContributors());		
+		details.setDate(object.getDate());
+
 
 		return details;
 	}

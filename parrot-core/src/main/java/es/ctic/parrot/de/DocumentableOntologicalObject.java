@@ -37,4 +37,28 @@ public interface DocumentableOntologicalObject extends DocumentableObject,Compar
      */
 	public abstract boolean isDeprecated();
 	
+	/**
+	 * Returns the version.
+	 * @return the version.
+	 */
+	public abstract String getVersion();
+	
+	/**
+	 * Returns the creators.
+	 * @return the creators.
+	 */	
+	public abstract Collection<String> getCreators();
+	
+	/**
+	 * Returns the contributors.
+	 * @return the contributors.
+	 */
+	public abstract Collection<String> getContributors();
+	
+	/**
+	 * Returns the date.
+	 * @return the date.
+	 */
+	public abstract String getDate();
+	
 }

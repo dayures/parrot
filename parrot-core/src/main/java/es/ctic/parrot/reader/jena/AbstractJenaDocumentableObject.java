@@ -232,6 +232,10 @@ public abstract class AbstractJenaDocumentableObject extends
 		return getAnnotationStrategy().getVersion(getOntResource());
 	}
 
+	public String getDate() {
+		return getAnnotationStrategy().getDate(getOntResource());
+	}
+
 	public Collection<String> getCreators() {
 		return getAnnotationStrategy().getCreators(getOntResource());
 	}
@@ -240,8 +244,16 @@ public abstract class AbstractJenaDocumentableObject extends
 		return getAnnotationStrategy().getContributors(getOntResource());
 	}
 	
-	public String getDate() {
-		return getAnnotationStrategy().getDate(getOntResource());
+	public Collection<String> getPublishers() {
+		return getAnnotationStrategy().getPublishers(getOntResource());
+	}
+	
+	public String getRights() {
+		return getAnnotationStrategy().getRights(getOntResource());
+	}
+	
+	public String getLicenseLabel() {
+		return getAnnotationStrategy().getLicenseLabel(getOntResource());
 	}
 	
 }

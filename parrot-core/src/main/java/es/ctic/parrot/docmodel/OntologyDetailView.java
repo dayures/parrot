@@ -20,8 +20,7 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 
 	private String preferredPrefix;
 	private String preferredNamespace;
-	private String rights;
-	private String licenseLabel;
+
 
 	/**
 	 * Constructs a ontology detail view (Suppress default constructor for noninstantiability).
@@ -63,38 +62,6 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 	}
 
 	/**
-	 * Set information about the ontology rights.
-	 * @param rights information about the ontology rights to set.
-	 */
-	private void setRights(String rights) {
-		this.rights = rights;
-	}
-
-	/**
-	 * Returns information about the ontology rights.
-	 * @return information about the ontology rights.
-	 */
-	public String getRights() {
-		return rights;
-	}
-
-	/**
-	 * Set the license's label.
-	 * @param licenseLabel the license's label to set.
-	 */
-	private void setLicenseLabel(String licenseLabel) {
-		this.licenseLabel = licenseLabel;
-	}
-
-	/**
-	 * Returns the label for the license of this ontology.
-	 * @return the label for the license of this ontology.
-	 */
-	public String getLicenseLabel() {
-		return licenseLabel;
-	}
-
-	/**
 	 * Returns a detailed view for the ontology given.
 	 * @param object the ontology.
 	 * @param locale the locale.
@@ -107,12 +74,16 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 	    details.setUri(object.getURI());
 		details.setLabel(object.getLabel(locale));
 		details.setComment(object.getComment(locale));
+
+		// Control version information
 		details.setVersion(object.getVersion());
-		details.setCreators(object.getCreators());
 		details.setDate(object.getDate());
+		details.setCreators(object.getCreators());
+		details.setContributors(object.getContributors());
+		details.setPublishers(object.getPublishers());
 		details.setRights(object.getRights());
 		details.setLicenseLabel(object.getLicenseLabel());
-		details.setContributors(object.getContributors());
+
 		details.setPreferredPrefix(object.getPreferredPrefix());
 		details.setPreferredNamespace(object.getPreferredNamespace());
 		details.setLabels(object.getLabels());

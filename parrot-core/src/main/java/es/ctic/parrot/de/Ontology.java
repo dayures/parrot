@@ -23,16 +23,4 @@ public interface Ontology extends DocumentableOntologicalObject {
 	 */
 	public abstract String getPreferredNamespace();
 	
-	/**
-	 * Returns information about the ontology rights.
-	 * @return information about the ontology rights.
-	 */
-	public abstract String getRights();
-	
-	/**
-	 * Returns the label for the license of this ontology.
-	 * @return the label for the license of this ontology.
-	 */
-	public abstract String getLicenseLabel();
-
 }

@@ -25,6 +25,23 @@
 		#end
 		#end
 		
+		#if(!$element.publishers.isEmpty())
+		<dt>Publishers:</dt>
+		#foreach($publisher in $element.publishers)
+		  <dd class="metadata-icon publisher">$publisher</dd>
+		#end
+		#end
+		
+		#if($element.Rights)
+		<dt>Rights</dt>
+		<dd>$element.Rights</dd>
+		#end
+		
+		#if($element.LicenseLabel)
+		<dt>License</dt>
+		<dd><a href="$element.LicenseLabel">$element.LicenseLabel</a></dd>
+		#end
+		
     </dl> 
     </div>
     

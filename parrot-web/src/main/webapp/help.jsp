@@ -49,24 +49,24 @@ currently supported by Parrot.</p>
     <tr>
       <td><em>dc:contributor</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td></td><td></td><td></td>
-      <td>A contributor to the ontology: a person or an organization.
+      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td>A contributor to the ontological element: a person or an organization.
         Recommended best practice is to use a FOAF profile to describe a
         contributor, although a literal is also allowed.</td>
     </tr>
     <tr>
       <td><em>dc:creator</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td></td><td></td><td></td>
-      <td>The creator of the ontology: a person or an organization. Recommended
+      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td>The creator of the ontological element: a person or an organization. Recommended
         best practice is to use a FOAF profile to describe the creator,
         although a literal is also allowed.</td>
     </tr>
     <tr>
       <td><em>dc:date</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td></td><td></td><td></td>
-      <td>Expresses the date of creation or publication of the rule.
+      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td>Expresses the date of creation or publication of the ontological element.
         Recommended best practice is to use the W3CDTF profile of ISO 8601.</td>
     </tr>
     <tr>
@@ -74,12 +74,20 @@ currently supported by Parrot.</p>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
       <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
       <td>See <em>comment</em></td>
+    </tr>
+    <tr>
+      <td><em>dc:publisher</em></td>
+      <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
+      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td>The entity responsible for making the ontological element available. Recommended
+        best practice is to use a FOAF profile to describe the publisher,
+        although a literal is also allowed.</td>
     </tr>       
     <tr>
       <td><em>dc:rights</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td></td><td></td><td></td>
-      <td>Information about rights held in and over the resource.</td>
+      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td>Information about rights held in and over the ontological element.</td>
     </tr>
     <tr>
       <td><em>dc:title</em></td>
@@ -96,8 +104,8 @@ currently supported by Parrot.</p>
     <tr>
       <td><em>dct:license</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td></td><td></td><td></td>
-      <td>A legal document describing the copyright license of the ontology.
+      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td>A legal document describing the copyright license of the ontological element.
         Recommended best practice is to use Creative Commons licenses and to
         describe them in RDF with the Creative Commons Rights Expression
         Language (CC REL). </td>
@@ -106,52 +114,70 @@ currently supported by Parrot.</p>
       <td><em>rdfs:comment</em></td>
       <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
       <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
-      <td>The description of the resource. The range is a literal with a
+      <td>The description of the ontological element. The range is a literal with a
         language tag.</td>
     </tr>
     <tr>
       <td><em>rdfs:isDefinedBy</em></td>
       <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
       <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
-      <td>Used to indicate where this resource has been defining.</td>
+      <td>Used to indicate where this ontological element has been defining.</td>
     </tr>
     <tr>
       <td><em>rdfs:label</em></td>
       <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
       <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
-      <td>The label of the resource. The range is a literal with a language
+      <td>The label of the ontological element. The range is a literal with a language
       tag.</td>
     </tr>    
     <tr>
       <td><em>skosxl:altLabel</em></td>
       <td><a href="http://www.w3.org/TR/skos-reference/#xl">SKOS-XL</a></td>
       <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
-      <td>An alternative label of a resource. The range of the property is an
+      <td>An alternative label of a ontological element. The range of the property is an
         instance of the class LexicalLabel.</td>
     </tr>
     <tr>
       <td><em>skosxl:prefLabel</em></td>
       <td><a href="http://www.w3.org/TR/skos-reference/#xl">SKOS-XL</a></td>
       <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
-      <td>The preferred label of a resource. The range of the property is an
+      <td>The preferred label of a ontological element. The range of the property is an
         instance of the class LexicalLabel.</td>
     </tr>
     <tr>
       <td><em>skos:altLabel</em></td>
       <td><a href="http://www.w3.org/TR/skos-reference/#overview">SKOS</a></td>
       <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
-      <td>An alternative label of a resource. The range is a literal with a
+      <td>An alternative label of a ontological element. The range is a literal with a
         language tag.</td>
     </tr>
     <tr>
       <td><em>skos:prefLabel</em></td>
       <td><a href="http://www.w3.org/TR/skos-reference/#overview">SKOS</a></td>
       <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
-      <td>The preferred label of a resource. The range is a literal with a
+      <td>The preferred label of a ontological element. The range is a literal with a
         language tag. In some cases, it is assumed that <em>prefLabel</em>
         assumes the role of the <em>label</em> for presentation purposes.</td>
     </tr>
-    
+    <tr>
+      <td><em>foaf:depiction</em></td>
+      <td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td>
+      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td>An image associated with the ontological element. </td>
+    </tr>
+    <tr>
+      <td><em>og:video</em></td>
+      <td><a href="http://ogp.me">OG</a></td>
+      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td>A video associated with the ontological element. </td>
+    </tr>    
+    <tr>
+      <td><em>owl:versionInfo</em></td>
+      <td><a
+        href="http://www.w3.org/TR/2004/REC-owl-guide-20040210/#OntologyVersioning">OWL</a></td>
+      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td>Provides a hook suitable for use by versioning systems.</td>
+    </tr>
     <tr>
       <td><em>vann:preferredNamespacePrefix</em></td>
       <td><a href="http://vocab.org/vann">VANN</a></td>
@@ -164,26 +190,6 @@ currently supported by Parrot.</p>
       <td><img alt="supported" src="/images/tick.png"/></td><td></td><td></td><td></td>
       <td>The preferred namespace URI to use when using terms from a ontology.</td>
     </tr>
-    <tr>
-      <td><em>foaf:depiction</em></td>
-      <td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
-      <td>An image associated with the resource. </td>
-    </tr>
-    <tr>
-      <td><em>og:video</em></td>
-      <td><a href="http://ogp.me">OG</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
-      <td>A video associated with the resource. </td>
-    </tr>    
-    <tr>
-      <td><em>owl:versionInfo</em></td>
-      <td><a
-        href="http://www.w3.org/TR/2004/REC-owl-guide-20040210/#OntologyVersioning">OWL</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td></td><td></td><td></td>
-      <td>Provides a hook suitable for use by versioning systems.</td>
-    </tr>
-
     </tbody>
 </table>
 
@@ -215,7 +221,7 @@ supported by Parrot.</p>
       <td><em>dc:contributor</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
       <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
-      <td>A contributor to the rule: a person or an organization. Recommended
+      <td>A contributor to the resource: a person or an organization. Recommended
         best practice is to use a FOAF profile to describe a contributor,
         although a literal is also allowed.</td>
     </tr>
@@ -223,7 +229,7 @@ supported by Parrot.</p>
       <td><em>dc:creator</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
       <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
-      <td>The creator of the rulehg : a person or an organization. Recommended
+      <td>The creator of the resource: a person or an organization. Recommended
         best practice is to use a FOAF profile to describe the creator,
         although a literal is also allowed.</td>
     </tr>
@@ -231,7 +237,7 @@ supported by Parrot.</p>
       <td><em>dc:date</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
       <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
-      <td>Expresses the date of creation or publication of the rule.
+      <td>Expresses the date of creation or publication of the resource.
         Recommended best practice is to use the W3CDTF profile of ISO 8601.</td>
     </tr>
     <tr>
@@ -244,11 +250,16 @@ supported by Parrot.</p>
       <td><em>dc:publisher</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
       <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
-      <td>The entity responsible for making the rule available. Recommended
+      <td>The entity responsible for making the resource available. Recommended
         best practice is to use a FOAF profile to describe the publisher,
         although a literal is also allowed.</td>
     </tr>
-
+    <tr>
+      <td><em>dc:rights</em></td>
+      <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
+      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td>Information about rights held in and over the resource.</td>
+    </tr>    
     <tr>
       <td><em>dc:title</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
@@ -261,6 +272,15 @@ supported by Parrot.</p>
       <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
       <td>See <em>comment</em></td>
     </tr>
+    <tr>
+      <td><em>dct:license</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
+      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td>A legal document describing the copyright license of the resource.
+        Recommended best practice is to use Creative Commons licenses and to
+        describe them in RDF with the Creative Commons Rights Expression
+        Language (CC REL). </td>
+    </tr>     
     <tr>
       <td><em>dct:source</em></td>
 	  <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
@@ -321,6 +341,13 @@ supported by Parrot.</p>
       <td><a href="http://ogp.me">OG</a></td>
       <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
       <td>A video associated with the resource. </td>
+    </tr>
+    <tr>
+      <td><em>owl:versionInfo</em></td>
+      <td><a
+        href="http://www.w3.org/TR/2004/REC-owl-guide-20040210/#OntologyVersioning">OWL</a></td>
+      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td>Provides a hook suitable for use by versioning systems.</td>
     </tr>
 
   </tbody>
@@ -401,30 +428,30 @@ supported by Parrot.</p>
 
     <tr>
       <td><img alt="reflexive object property"
-        src="images/reflexive-property-24x24.png" width="24" height="24" /></td>
+        src="images/reflexive-property.png" width="24" height="24" /></td>
       <td>A <a href="http://www.w3.org/TR/owl2-syntax/#Reflexive_Object_Properties" target="_blank">reflexive property</a> describes a relation where every resource is related to itself.</td>
     </tr>
 
     <tr>
       <td><img alt="irreflexive object property"
-        src="images/irreflexive-property-24x24.png" width="24" height="24" /></td>
+        src="images/irreflexive-property.png" width="26" height="24" /></td>
       <td>A <a href="http://www.w3.org/TR/owl2-syntax/#Irreflexive_Object_Properties" target="_blank">irreflexive property</a> describes a relation where none resource is related to itself.</td>
     </tr>
 
     <tr>
       <td><img alt="symmetric object property"
-        src="images/symmetric-property-24x24.png" width="24" height="24" /></td>
+        src="images/symmetric-property.png" width="45" height="24" /></td>
       <td><a href="http://www.w3.org/TR/owl2-syntax/#Symmetric_Object_Properties" target="_blank">Symmetric property</a></td>
     </tr>
 
     <tr>
       <td><img alt="asymmetric object property"
-        src="images/asymmetric-property-24x24.png" width="24" height="24" /></td>
+        src="images/asymmetric-property.png" width="40" height="24" /></td>
       <td><a href="http://www.w3.org/TR/owl2-syntax/#Asymmetric_Object_Properties" target="_blank">Asymmetric property</a></td>
     </tr>
 
     <tr>
-     <td><img alt="transitive object property" src="images/transitive.png" width="61" height="24" /></td>
+     <td><img alt="transitive object property" src="images/transitive-property.png" width="61" height="24" /></td>
       <td><a href="http://www.w3.org/TR/owl2-syntax/#Transitive_Object_Properties" target="_blank">Transitive property</a></td>
     </tr>
     
@@ -439,17 +466,17 @@ supported by Parrot.</p>
     </tr>
 
     <tr>
-     <td><img alt="inverse of" src="images/inverse-of.png" width="24" height="24" /></td>
+     <td><img alt="inverse of" src="images/inverse-of-property.png" width="28" height="24" /></td>
       <td><a href="http://www.w3.org/TR/owl2-syntax/#Inverse_Object_Properties_2" target="_blank">Inverse property</a></td>
     </tr>
 
     <tr>
-     <td><img alt="equivalent property" src="images/equivalent.png" width="24" height="24" /></td>
+     <td><img alt="equivalent property" src="images/equivalent-property.png" width="24" height="24" /></td>
      <td><a href="http://www.w3.org/TR/owl2-syntax/#Equivalent_Object_Properties " target="_blank">Equivalent Object property</a></td>
     </tr>
 
     <tr>
-     <td><img alt="disjoint of" src="images/disjoint.png" width="34" height="24" /></td>
+     <td><img alt="disjoint of" src="images/disjoint-property.png" width="26" height="24" /></td>
      <td><a href="http://www.w3.org/TR/owl2-syntax/#Disjoint_Object_Properties" target="_blank">Disjoint Object property</a></td>
     </tr>
 
@@ -507,16 +534,6 @@ supported by Parrot.</p>
         alt="Currently not supported"/> </td>
     </tr>
     <tr>
-      <td><em>dc:publisher</em></td>
-      <td><a href="http://dublincore.org/documents/dces/">Dublin Core Metadata Element Set</a></td>
-      <td>Ontology</td><td></td><td></td><td></td>
-      <td>The entity responsible for making the ontology available. Recommended
-        best practice is to use a FOAF profile to describe the publisher,
-        although a literal is also allowed.</td>
-      <td><img alt="Currently not supported"
-        src="images/not-supported-yet.png" width="32" height="32" /></td>
-    </tr>
-    <tr>
       <td><em>foaf:primaryTopic</em></td>
       <td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td>
       <td>Ontology</td><td></td><td></td><td></td>
@@ -537,33 +554,7 @@ supported by Parrot.</p>
     </tbody>
 </table>
 
-
-<table id="metadata-not-support-rules">
-  <tbody>
-    <tr>
-      <th>Property</th>
-      <th>Vocabulary</th>
-      <th>Scope</th>
-      <th>Description</th>
-      <th>Namespace</th>
-      <th>Supported?</th>
-    </tr>
-    <tr>
-      <td><em>versionInfo</em></td>
-      <td><a
-        href="http://www.w3.org/TR/2004/REC-owl-guide-20040210/#OntologyVersioning">OWL</a></td>
-      <td>Group, Rule</td>
-      <td>Provides a hook suitable to be used by versioning systems.</td>
-      <td>http://www.w3.org/2002/07/owl#</td>
-      <td><img src="images/not-supported-yet.png" height="32" width="32"
-        alt="Currently not supported" /> </td>
-    </tr>
-  </tbody>
-</table>
 <p></p>
-
-<p></p>
-
 <div id="footer">
 <p id="logo"><a href="http://www.fundacionctic.org/"><img src="images/ctic.png"
 alt="Fundacion CTIC"/></a> <a href="http://ontorule-project.eu"><img

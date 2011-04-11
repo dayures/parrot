@@ -30,10 +30,12 @@ public abstract class AbstractOntologicalObjectDetailView implements DetailView 
 	private boolean deprecated;
 	
 	private String version;
+	private String date;
 	private Collection<String> creators;
 	private Collection<String> contributors;
-	private String date;
-
+	private Collection<String> publishers;
+	private String rights;
+	private String licenseLabel;
 	/**
 	 * Returns the URI.
 	 * @return the URI.
@@ -209,6 +211,22 @@ public abstract class AbstractOntologicalObjectDetailView implements DetailView 
 	public String getVersion() {
 		return version;
 	}
+	
+	/**
+	 * Set the date.
+	 * @param date date to set.
+	 */	
+	protected void setDate(String date) {
+		this.date = date;
+	}
+
+	/**
+	 * Returns the date.
+	 * @return the date.
+	 */
+	public String getDate() {
+		return date;
+	}
 
 	/**
 	 * Set the creators.
@@ -243,18 +261,50 @@ public abstract class AbstractOntologicalObjectDetailView implements DetailView 
 	}
 
 	/**
-	 * Set the date.
-	 * @param date date to set.
-	 */	
-	protected void setDate(String date) {
-		this.date = date;
+	 * Set the publishers.
+	 * @param publishers publishers to set.
+	 */
+	protected void setPublishers(Collection<String> publishers) {
+		this.publishers = publishers;
 	}
 
 	/**
-	 * Returns the date.
-	 * @return the date.
+	 * Returns the publishers.
+	 * @return the publishers.
 	 */
-	public String getDate() {
-		return date;
-	}	
+	public Collection<String> getPublishers() {
+		return Collections.unmodifiableCollection(publishers);
+	}
+	
+	/**
+	 * Set information about the ontology rights.
+	 * @param rights information about the ontology rights to set.
+	 */
+	protected void setRights(String rights) {
+		this.rights = rights;
+	}
+
+	/**
+	 * Returns information about the ontology rights.
+	 * @return information about the ontology rights.
+	 */
+	public String getRights() {
+		return rights;
+	}
+
+	/**
+	 * Set the license's label.
+	 * @param licenseLabel the license's label to set.
+	 */
+	protected void setLicenseLabel(String licenseLabel) {
+		this.licenseLabel = licenseLabel;
+	}
+
+	/**
+	 * Returns the label for the license of this ontology.
+	 * @return the label for the license of this ontology.
+	 */
+	public String getLicenseLabel() {
+		return licenseLabel;
+	}
 }

@@ -345,5 +345,23 @@ public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObj
 		throw new UnsupportedOperationException("Method not implemented yet.");
 		//return false;
 	}
+
+	public Collection<String> getPublishers() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Method not implemented yet.");
+		//return null;
+	}
+
+	public String getRights() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Method not implemented yet.");
+		//return null;
+	}
+
+	public String getLicenseLabel() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Method not implemented yet.");
+		//return null;
+	}
     
 }

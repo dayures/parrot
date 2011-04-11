@@ -1,7 +1,10 @@
 #if ( ($element.Version) ||
 	  ($element.Date) ||
 	  (!$element.creators.isEmpty()) ||
-	  (!$element.contributors.isEmpty()) )
+	  (!$element.contributors.isEmpty()) ||
+	  (!$element.publishers.isEmpty()) ||
+	  ($element.Rights) ||
+	  ($element.LicenseLabel) )
   #set( $vci = true )
 #else
   #set( $vci = false )

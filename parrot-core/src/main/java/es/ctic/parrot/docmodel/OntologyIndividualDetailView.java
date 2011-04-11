@@ -55,9 +55,20 @@ public class OntologyIndividualDetailView extends AbstractOntologicalObjectDetai
     public static OntologyIndividualDetailView createFromIndividual(OntologyIndividual object, Locale locale) {
 		
     	OntologyIndividualDetailView details = new OntologyIndividualDetailView();
+    	
     	details.setLabel(object.getLabel(locale));
 		details.setUri(object.getURI());
 		details.setComment(object.getComment(locale));
+		
+		// Control version information
+		details.setVersion(object.getVersion());
+		details.setDate(object.getDate());
+		details.setCreators(object.getCreators());
+		details.setContributors(object.getContributors());
+		details.setPublishers(object.getPublishers());
+		details.setRights(object.getRights());
+		details.setLicenseLabel(object.getLicenseLabel());
+		
 		details.addAllTypes(DocumentableObjectReference.createReferences(object.getTypes(),locale));
 		details.setInverseRuleReferences(DocumentableObjectReference.createReferences(object.getInverseRuleReferences(), locale));
 		details.setLabels(object.getLabels());
@@ -68,13 +79,6 @@ public class OntologyIndividualDetailView extends AbstractOntologicalObjectDetai
 		details.setIsDefinedBy(DocumentableObjectReference.createReference(object.getIsDefinedBy(),locale));
 		details.setDeprecated(object.isDeprecated());
 		
-		// Version Control Information
-		details.setVersion(object.getVersion());
-		details.setCreators(object.getCreators());
-		details.setContributors(object.getContributors());		
-		details.setDate(object.getDate());
-
-
 		return details;
 	}
 

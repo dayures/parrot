@@ -1,10 +1,9 @@
-package es.ctic.parrot.appserv;
+package es.ctic.parrot;
 
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Locale;
 
-import es.ctic.parrot.DocumentaryProject;
 import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.docmodel.Document;

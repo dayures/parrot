@@ -348,7 +348,7 @@ supported by Parrot.</p>
     </tr>
     <tr>
       <td>dct</td>
-      <td>http://purl.org/dc/elements/1.1/</td>
+      <td>http://purl.org/dc/terms/</td>
     </tr>
     <tr>
       <td>rdfs</td>

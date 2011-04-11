@@ -1,4 +1,12 @@
-#set( $vci = false )
+#if ( ($element.Version) ||
+	  ($element.Date) ||
+	  (!$element.creators.isEmpty()) ||
+	  (!$element.contributors.isEmpty()) )
+  #set( $vci = true )
+#else
+  #set( $vci = false )
+#end
+
 
 #if ( ($element.Uri) || 
   	  (!$element.SuperClasses.isEmpty()) || 
@@ -33,6 +41,10 @@
   #parse("html/description.vm")
   
   <div>
+
+  #if ($vci)
+    #parse("html/version-control.vm")
+  #end
 
   #if ( $ti )
   <div class="ti"> 

@@ -56,19 +56,15 @@
   #if ( $ti )
   <div class="ti"> 
   <h4>Definition</h4> 
-  	#if($element.Uri)
-	  <dl>
-	  <dt>URI</dt>
-	  <dd><code>$element.Uri</code></dd>
-	  </dl>
+	#if($element.Uri)
+		<p>The <strong>URI</strong> of this class is <span><code>$element.Uri</code></span></p>
 	#end
 
-  <p>This class...</p>
-  <table>
+	<table>
 	#if(!$element.SuperClasses.isEmpty())
 	  <tr>
-	  <td><img src="images/super-class.png" alt="Super Class"></img></td><td>... is a sub class of </td>
-	  <td>
+	  <td>This class is a sub class of</td>
+	  <td> 
 	  #foreach($superclass in $element.SuperClasses)
 	  <span class="parrot-element-ref parrot-class-ref"><a href="#$superclass.LocalName">$superclass.Label</a></span>
 	  #end
@@ -78,8 +74,8 @@
 
 	#if(!$element.SubClasses.isEmpty())
 	  <tr>
-	  <td><img src="images/sub-class.png" alt="Sub Class"></img></td><td>... is a super class of</td>
-	  <td>
+	  <td>This class is a super class of</td>
+	  <td> 	  
 	  #foreach($subclass in $element.SubClasses)
 	  <span class="parrot-element-ref parrot-class-ref"><a href="#$subclass.LocalName">$subclass.Label</a></span>
 	  #end
@@ -89,8 +85,8 @@
 	
 	#if(!$element.EquivalentClasses.isEmpty())
 	  <tr>
-	  <td><img src="images/equivalent-class.png" alt="Equivalent Class"></img></td><td>... is an equivalent class of</td>
-	  <td>
+	  <td>This class is an equivalent class of</td>
+	  <td> 
 	  #foreach($equivalent in $element.EquivalentClasses)
 	  <span class="parrot-element-ref parrot-class-ref"><a href="#$equivalent.LocalName">$equivalent.Label</a></span>
 	  #end
@@ -100,36 +96,32 @@
 	
 	#if(!$element.DisjointClasses.isEmpty())
 	  <tr>
-	  <td><img src="images/disjoint-class.png" alt="Disjoint Class"></img></td><td>... is a disjoint class of</td>
-	  <td>
+	  <td>This class is a disjoint class of</td>
+	  <td> 
 	  #foreach($disjoint in $element.DisjointClasses)
 	  <span class="parrot-element-ref parrot-class-ref"><a href="#$disjoint.LocalName">$disjoint.Label</a></span>
 	  #end
 	  </td>
 	  </tr>
 	#end
+	</table>
 	    
-  </table>
   </div>
   #end
 
   #if ( $inuse )
   <div class="inuse">
   <h4>In use</h4>
-  
-    <p>This class...</p>
-    <table>
-  	#if($element.isDefinedBy)
-  	  <tr>
-	  <td></td><td>... is defined by </td>
-	  <td><span class="parrot-element-ref parrot-${element.isDefinedBy.kindString}-ref"><a href="#$element.isDefinedBy.LocalName">$element.isDefinedBy.Label</a></span></td>
-	  </tr>
+    #if($element.isDefinedBy)
+		<p>This class is defined by <span class="parrot-element-ref parrot-${element.isDefinedBy.kindString}-ref"><a href="#$element.isDefinedBy.LocalName">$element.isDefinedBy.Label</a></span></p>
 	#end
   
+    <table>
+
   	#if(!$element.InverseReferences.isEmpty())
 	  <tr>
-	  <td><img src="images/link.png" alt="Disjoint Class"></img></td><td>... is used in</td>
-	  <td>
+	  <td>This class is used in</td>
+	  <td> 	  
 	  #foreach($reference in $element.InverseReferences)
 	  <span class="parrot-element-ref parrot-property-ref"><a href="#$reference.LocalName">$reference.Label</a></span>
 	  #end
@@ -139,8 +131,8 @@
 	
 	#if(!$element.individuals.isEmpty())
 	  <tr>
-	  <td></td><td>... has individuals such as</td>
-	  <td>
+	  <td>This class has individuals such as</td>
+	  <td>	  
 	  #foreach($individual in $element.individuals)
 	  <span class="parrot-element-ref parrot-individual-ref"><a href="#$individual.LocalName">$individual.Label</a></span>
 	  #end
@@ -150,7 +142,7 @@
 
 	#if(!$element.inverseRuleReferences.isEmpty())
 	  <tr>
-	  <td></td><td>... is referenced in rules such as</td>
+	  <td>This class is referenced in rules such as</td>
 	  <td>
 	  #foreach($reference in $element.inverseRuleReferences)
 	  <span class="parrot-element-ref parrot-rule-ref"><a href="#$reference.LocalName">$reference.Label</a></span>
@@ -164,11 +156,9 @@
   #end
   
   
-  
   #if ( $otherinfo )
   	#parse("html/documentation.vm")
   #end
-
   
   </div>
 </div> 

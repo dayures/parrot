@@ -19,6 +19,9 @@ h1, h2, h3, h4, h5, h6,.toc {color: #5674BC; }
 
 h1 { font: 170% sans-serif;  }
 h2, .toc b { font: 140% sans-serif }
+h4 {
+	margin-bottom: 0.5em;
+}
 
 .details {
    border: 1px solid #ccc;
@@ -335,4 +338,9 @@ div.term div div table td {
 	text-align:left;
 	padding-left:0.5em;
 	padding-right:0.5em;
+}
+
+div.ti table tr td:nth-child(1),
+div.inuse table tr td:nth-child(1){
+	white-space:nowrap;
 }

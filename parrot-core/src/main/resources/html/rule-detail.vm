@@ -48,12 +48,9 @@
   #if ( $ti )
   <div class="ti"> 
   <h4>Definition</h4> 
-  <dl>
-    #if($element.Uri)
-      <dt>URI</dt>
-      <dd><pre>$element.Uri</pre></dd>
-    #end
-  </dl>
+	#if($element.Uri)
+		<p>The <strong>URI</strong> of this rule is <span><code>$element.Uri</code></span></p>
+	#end
   </div>
   #end
   

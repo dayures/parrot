@@ -10,7 +10,6 @@
   #set( $vci = false )
 #end
 
-
 #if ( ($element.Uri) ||
 	  ($element.PreferredNamespace) ||
 	  ($element.PreferredPrefix) ||
@@ -20,6 +19,11 @@
   #set( $ti = false )
 #end
 
+#if ( ($element.isDefinedBy) )
+  #set( $inuse = true )
+#else
+  #set( $inuse = false )
+#end	
 
 #if ( (!$element.labels.isEmpty()) ||
 	  (!$element.relatedDocuments.isEmpty()) )
@@ -45,7 +49,7 @@
 
   #if ($ti)
     <div class="ti"> 
-    <h4>Technical information</h4> 
+    <h4>Definition</h4> 
     <dl> 
 		#if($element.Uri)
 		    <dt>URI</dt>
@@ -70,29 +74,25 @@
     </div>
   #end
   
-  #if ($otherinfo)
-    <div class="otherinfo"> 
-    <h4>Other information</h4> 
-    <dl> 
-		#if(!$element.labels.isEmpty())
-		<dt>Labels</dt>
-		<dd>
-		#foreach($element in $element.labels)
-		  <span>$element.text</span>#if ($foreach.hasNext), #end
-		#end
-		</dd>
-		#end
-		
-		#if(!$element.relatedDocuments.isEmpty())
-		<dt>Related Documents</dt> 
-		<dd>
-		#foreach($element in $element.relatedDocuments)
-			  #parse("html/relatedDocument-detail.vm")
-		#end
-		</dd>
-		#end
-  	</dl>
-	</div>
+  #if ( $inuse )
+  <div class="inuse">
+  <h4>In use</h4>
+  
+    <p>This ontology...</p>
+    <table>
+  	#if($element.isDefinedBy)
+  	  <tr>
+	  <td></td><td>... is defined by </td>
+	  <td><span class="parrot-element-ref parrot-${element.isDefinedBy.kindString}-ref"><a href="#$element.isDefinedBy.LocalName">$element.isDefinedBy.Label</a></span></td>
+	  </tr>
+	#end
+	</table>
+  </div>
+  #end
+  
+
+  #if ( $otherinfo )
+  	#parse("html/documentation.vm")
   #end
 
   </div>

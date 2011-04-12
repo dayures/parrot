@@ -48,26 +48,29 @@
   #if ( $ti )
 	<div class="ti"> 
 	<h4>Definition</h4> 
-	<dl>
-	  #if($element.Uri)
-	    <dt>URI</dt>
-	    <dd><pre>$element.Uri</pre></dd>
-	  #end
 	
-	  #if(!$element.types.isEmpty())
-	    <dt>Types</dt>
-	    #foreach($type in $element.types)
-	    <dd><span class="parrot-element-ref parrot-class-ref"><a href="#$type.LocalName">$type.Label</a></span></dd>
-	    #end
-	  #end
+	#if($element.Uri)
+		<p>The <strong>URI</strong> of this individual is <span><code>$element.Uri</code></span></p>
+	#end
 
-	</dl>
+	#if(!$element.types.isEmpty())
+	<p>The type of the individual is 
+		#foreach($type in $element.types)
+	    	<span class="parrot-element-ref parrot-class-ref"><a href="#$type.LocalName">$type.Label</a></span>
+	    #end
+	</p>
+	#end
+	
 	</div>	
   #end
   
   #if ( $inuse )
   <div class="inuse">
   <h4>In use</h4>
+    #if($element.isDefinedBy)
+		<p>This individual is defined by <span class="parrot-element-ref parrot-${element.isDefinedBy.kindString}-ref"><a href="#$element.isDefinedBy.LocalName">$element.isDefinedBy.Label</a></span></p>
+	#end
+  
   <dl>
   	  #if(!$element.inverseRuleReferences.isEmpty())
 	    <dt>Referenced rules</dt>
@@ -76,10 +79,6 @@
 	    #end
 	  #end
 	  
-	  #if($element.isDefinedBy)
-	    <dt>isDefinedBy</dt>
-	    <dd><span class="parrot-element-ref parrot-${element.isDefinedBy.kindString}-ref"><a href="#$element.isDefinedBy.LocalName">$element.isDefinedBy.Label</a></span></dd>
-	  #end
   </dl>
   </div>
   #end

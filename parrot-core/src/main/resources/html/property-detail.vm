@@ -71,49 +71,51 @@
 
   #if ( $ti )
   <div class="ti"> 
-  <h4>Technical information</h4> 
-  <dl>
+  <h4>Definition</h4> 
+
 	#if($element.Uri)
-	    <dt>URI</dt>
-	    <dd><pre>$element.Uri</pre></dd>
+		<p>The <strong>URI</strong> of this property is <span><code>$element.Uri</code></span></p>
 	#end
    
     #if ($element.hasAnyAxiom())
-    <dt>Property Type</dt>
-	#end    
-    
-    	#if($element.isDatatypeProperty())
-    	<dd>Data Property</dd>      
-    	#end
-    	#if($element.isObjectProperty())
-    	<dd>Object Property</dd>      
-    	#end
-    	#if($element.isAnnotationProperty())
-    	<dd>Annotation Property</dd>      
-    	#end
-    	
+    	<p>This property is a  
+
     	#if($element.isTransitiveProperty())
-    	<dd>Transitive Property</dd>      
+    	<strong>transitive</strong>,       
     	#end    	
     	#if($element.isFunctionalProperty())
-    	<dd>Functional Property</dd>      
+    	<strong>functional</strong>,      
     	#end    	
     	#if($element.isInverseFunctionalProperty())
-    	<dd>Inverse Functional Property</dd>      
+    	<strong>inverse functional</strong>,      
     	#end    	
     	#if($element.isReflexiveProperty())
-    	<dd>Reflexive Property</dd>      
+    	<strong>reflexive</strong>,      
     	#end    	
     	#if($element.isIrreflexiveProperty())
-    	<dd>Irreflexive Property</dd>      
+    	<strong>irreflexive</strong>,      
     	#end        	
     	#if($element.isSymmetricProperty())
-    	<dd>Symmetric Property</dd>      
+    	<strong>symmetric</strong>,      
     	#end    	
     	#if($element.isAsymmetricProperty())
-    	<dd>Asymmetric Property</dd>      
+    	<strong>asymmetric</strong>,      
     	#end
+    
+    	#if($element.isDatatypeProperty())
+    	<strong>data</strong> property.    
+    	#end
+    	#if($element.isObjectProperty())
+    	<strong>object</strong> property.  
+    	#end
+    	#if($element.isAnnotationProperty())
+    	<strong>annotation</strong> property. 
+    	#end
+    	</p>
 
+    	
+    #end    	
+    <dl>
     #if($element.InverseOf)
       <dt>inverse of</dt>
       <dd><span class="parrot-element-ref parrot-property-ref"><a href="#$element.InverseOf.LocalName">$element.InverseOf.Label</a></span></dd>
@@ -164,7 +166,10 @@
   
   #if ( $inuse )
     <div class="inuse">
-    <h4>In use</h4> 
+    <h4>In use</h4>
+    #if($element.isDefinedBy)
+		<p>This property is defined by <span class="parrot-element-ref parrot-${element.isDefinedBy.kindString}-ref"><a href="#$element.isDefinedBy.LocalName">$element.isDefinedBy.Label</a></span></p>
+	#end 
     <dl>
       #if(!$element.InverseReferences.isEmpty())
         <dt>Referenced from</dt>
@@ -185,10 +190,6 @@
         #end
       #end
       
-      #if($element.isDefinedBy)
-      <dt>isDefinedBy</dt>
-      <dd><span class="parrot-element-ref parrot-${element.isDefinedBy.kindString}-ref"><a href="#$element.isDefinedBy.LocalName">$element.isDefinedBy.Label</a></span></dd>
-      #end  
     </dl>
     </div>
   #end

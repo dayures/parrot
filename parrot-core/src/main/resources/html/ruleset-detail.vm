@@ -34,7 +34,7 @@
 #end
 
 <div class="term">
-  <h3><a id="$element.Anchor"></a><span class="parrot-element-title parrot-ruleset-title">$element.Label</span> (RuleSet)
+  <h3><a id="$element.Anchor"></a><span class="parrot-element-title parrot-ruleset-title">$element.Label</span> (Rule Set)
     #parse("html/detail-menu.vm")
   </h3>
 
@@ -51,21 +51,19 @@
   <div class="ti"> 
   <h4>Definition</h4> 
 
-    #if($element.Uri)
-    <dl>
-      <dt>URI</dt>
-      <dd><pre>$element.Uri</pre></dd>
-    </dl>
-    #end
+	#if($element.Uri)
+		<p>The <strong>URI</strong> of this rule set is <span><code>$element.Uri</code></span></p>
+	#end
   
-	<p>This ruleset ... </p> 
+	<p>This ruleset 
     #if($element.Strategy)
-      <p>... use a strategy <span><code>$element.Strategy</code></span></p>
+      <span>use the strategy <span><code>$element.Strategy</code></span></span>
     #end
 
     #if($element.Priority)
-      <p>... has as priority <span><strong>$element.Priority</strong></span></p>
+      <span> and has <span><strong>$element.Priority</strong></span> as priority.</p></span>
     #end
+    </p>
 
   </div>
   #end
@@ -100,7 +98,6 @@
   </dl>    
   </div>
   #end
-  
   
   #if ( $otherinfo )
   	#parse("html/documentation.vm")

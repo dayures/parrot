@@ -12,7 +12,7 @@
 
 #if ( ($element.Uri) ||
 	  ($element.PreferredNamespace) ||
-	  ($element.PreferredPrefix) )
+	  ($element.PreferredPrefix))
   #set( $ti = true )
 #else
   #set( $ti = false )
@@ -42,45 +42,43 @@
 
   <div> 
 
-  #if ($vci)
-    #parse("html/version-control.vm")
-  #end
-
-  #if ($ti)
+    #if ($vci)
+      #parse("html/version-control.vm")
+    #end
+  
+  
+    #if ($ti)
     <div class="ti"> 
     <h4>Definition</h4> 
-    <dl> 
-		#if($element.Uri)
-		    <dt>URI</dt>
-		    <dd><pre>$element.Uri</pre></dd>
-		#end    
- 
+    
+    #if($element.Uri)
+		<p>The <strong>URI</strong> of this ontology is <span><code>$element.Uri</code></span></p>
+	#end
+	
+    <table> 
 		#if($element.PreferredNamespace)
-		    <dt>Preferred Namespace URI</dt>
-		    <dd><pre><code>$element.PreferredNamespace</code></pre></dd>
+		<tr>
+		    <td><strong>Preferred Namespace URI</strong></td>
+		    <td><pre><code>$element.PreferredNamespace</code></pre></td>
+		</tr>
 		#end
-		
 		#if($element.PreferredPrefix)
-		    <dt>Preferred Prefix</dt>
-		    <dd><pre><code>$element.PreferredPrefix</code></pre></dd>
+		<tr>
+		    <td><strong>Preferred Prefix</strong></td>
+		    <td><pre><code>$element.PreferredPrefix</code></pre></td>
+		</tr>
 		#end
-    </dl> 
+	</table>
     </div>
   #end
+
   
   #if ( $inuse )
   <div class="inuse">
   <h4>In use</h4>
-  
-    <p>This ontology...</p>
-    <table>
   	#if($element.isDefinedBy)
-  	  <tr>
-	  <td></td><td>... is defined by </td>
-	  <td><span class="parrot-element-ref parrot-${element.isDefinedBy.kindString}-ref"><a href="#$element.isDefinedBy.LocalName">$element.isDefinedBy.Label</a></span></td>
-	  </tr>
+		<p>This ontology is defined by <span class="parrot-element-ref parrot-${element.isDefinedBy.kindString}-ref"><a href="#$element.isDefinedBy.LocalName">$element.isDefinedBy.Label</a></span></p>
 	#end
-	</table>
   </div>
   #end
   

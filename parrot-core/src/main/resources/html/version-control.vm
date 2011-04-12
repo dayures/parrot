@@ -12,21 +12,21 @@
 		#end
 	  
 		#if(!$element.creators.isEmpty())
-		<dt>Creators:</dt>
+		<dt>Creators</dt>
 		#foreach($creator in $element.creators)
 		  <dd class="metadata-icon creator">$creator</dd>
 		#end
 		#end
 		
 		#if(!$element.contributors.isEmpty())
-		<dt>Contributors:</dt>
+		<dt>Contributors</dt>
 		#foreach($contributor in $element.contributors)
 		  <dd class="metadata-icon contributor">$contributor</dd>
 		#end
 		#end
 		
 		#if(!$element.publishers.isEmpty())
-		<dt>Publishers:</dt>
+		<dt>Publishers</dt>
 		#foreach($publisher in $element.publishers)
 		  <dd class="metadata-icon publisher">$publisher</dd>
 		#end

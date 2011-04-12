@@ -60,17 +60,19 @@
   #if ( $inuse )
   <div class="inuse"> 
   <h4>In use</h4> 
-  <dl>   
+  
     #if(!$element.referencedOntologicalObjects.isEmpty())
-      <dt>Referenced model objects</dt>
+      <p>This rule references model objects such as
       #foreach($reference in $element.referencedOntologicalObjects)
-	  <dd><span class="parrot-element-ref parrot-${reference.kindString}-ref"><a href="#$reference.localName">$reference.label</a></span></dd>
+	    <span class="parrot-element-ref parrot-${reference.kindString}-ref"><a href="#$reference.localName">$reference.label</a></span>
       #end
+      </p>
     #end
 
     #if($element.Parent)
-      <dt>is inside of</dt>
-      <dd><span class="parrot-element-ref parrot-${element.Parent.kindString}-ref"><a href="#$element.Parent.LocalName">$element.Parent.Label</a></span></dd>
+      <p>This rule is inside 
+	  <span class="parrot-element-ref parrot-${element.Parent.kindString}-ref"><a href="#$element.Parent.localName">$element.Parent.label</a></span>
+	  </p>
     #end
     
   </dl>

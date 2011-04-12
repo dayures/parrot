@@ -12,8 +12,7 @@
 
 #if ( ($element.Uri) ||
 	  ($element.PreferredNamespace) ||
-	  ($element.PreferredPrefix) ||
- 	  ($element.isDefinedBy) )
+	  ($element.PreferredPrefix) )
   #set( $ti = true )
 #else
   #set( $ti = false )
@@ -65,11 +64,6 @@
 		    <dt>Preferred Prefix</dt>
 		    <dd><pre><code>$element.PreferredPrefix</code></pre></dd>
 		#end
-		
-		#if($element.isDefinedBy)
-      		<dt>isDefinedBy</dt>
-      		<dd><span class="parrot-element-ref parrot-${element.isDefinedBy.kindString}-ref"><a href="#$element.isDefinedBy.LocalName">$element.isDefinedBy.Label</a></span></dd>
-   		#end
     </dl> 
     </div>
   #end

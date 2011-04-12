@@ -10,27 +10,29 @@
   #set( $vci = false )
 #end
 
-
-
 #if ( ($element.Uri) ||
 	  ($element.Strategy) ||
-	  ($element.Priority) || 
-	  (!$element.rules.isEmpty()) ||
-	  (!$element.ruleSets.isEmpty()) ||
-	  ($element.Parent) )
+	  ($element.Priority) )
   #set( $ti = true )
 #else
   #set( $ti = false )
 #end
 
+#if ( (!$element.rules.isEmpty()) ||
+	  (!$element.ruleSets.isEmpty()) ||
+	  ($element.Parent) ||
+	  (!$element.referencedOntologicalObjects.isEmpty()) )
+  #set( $inuse = true )
+#else
+  #set( $inuse = false )
+#end
 
-#if ( (!$element.referencedOntologicalObjects.isEmpty()) ||
-  	  (!$element.labels.isEmpty()) ||
+#if ( (!$element.labels.isEmpty()) ||
   	  (!$element.relatedDocuments.isEmpty()) )
   #set( $otherinfo = true )
 #else
   #set( $otherinfo = false )
-#end	
+#end
 
 <div class="term">
   <h3><a id="$element.Anchor"></a><span class="parrot-element-title parrot-ruleset-title">$element.Label</span> (RuleSet)
@@ -48,7 +50,7 @@
 
   #if ( $ti )
   <div class="ti"> 
-  <h4>Technical information</h4> 
+  <h4>Definition</h4> 
   <dl>
     #if($element.Uri)
       <dt>URI</dt>
@@ -64,7 +66,22 @@
       <dt>Priority</dt>
       <dd>$element.Priority</dd>
     #end
-   
+  </dl>
+  </div>
+  #end
+  
+ 
+  #if ( $inuse )
+  <div class="inuse"> 
+  <h4>In use</h4> 
+  <dl>
+    #if(!$element.referencedOntologicalObjects.isEmpty())
+      <dt>Referenced model objects</dt>
+      #foreach($v in $element.referencedOntologicalObjects)
+	  <dd><a href="#$v.LocalName">$v.Label</a></dd>
+      #end
+    #end
+  
     #if(!$element.rules.isEmpty())
       <dt>Rules</dt>
       #foreach($v in $element.rules)
@@ -83,36 +100,13 @@
       <dt>is inside of</dt>
 	  <dd><span class="parrot-element-ref parrot-${element.Parent.kindString}-ref"><a href="#$element.Parent.localName">$element.Parent.label</a></span></dd>
     #end
-  </dl>
+  </dl>    
   </div>
   #end
- 
+  
+  
   #if ( $otherinfo )
-  <div class="otherinfo"> 
-  <h4>Other information</h4> 
-  <dl>
-    #if(!$element.referencedOntologicalObjects.isEmpty())
-      <dt>Referenced model objects</dt>
-      #foreach($v in $element.referencedOntologicalObjects)
-	  <dd><a href="#$v.LocalName">$v.Label</a></dd>
-      #end
-    #end
-       
-    #if(!$element.labels.isEmpty())
-      <dt>Labels</dt>
-      <dd>#parse("html/label.vm")</dd>
-    #end
-   
-    #if(!$element.relatedDocuments.isEmpty())
-      <dt>Related Documents</dt> 
-      <dd>
-      #foreach($element in $element.relatedDocuments)
-        #parse("html/relatedDocument-detail.vm")
-      #end
-      </dd>
-    #end
-  </dl>
-  </div>
+  	#parse("html/documentation.vm")
   #end
   
   </div>

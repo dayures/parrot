@@ -19,24 +19,28 @@
       (!$element.SuperProperties.isEmpty()) ||
       (!$element.SubProperties.isEmpty()) ||
       (!$element.EquivalentProperties.isEmpty()) ||
-      (!$element.disjointProperties.isEmpty()) ||
-      ($element.isDefinedBy) )
+      (!$element.disjointProperties.isEmpty()) )
   #set( $ti = true )
 #else
   #set( $ti = false )
 #end
 
 
-#if ( (!$element.InverseReferences.isEmpty()) || 
+#if ( ($element.isDefinedBy) ||
+	  (!$element.InverseReferences.isEmpty()) || 
   	  ($element.cardinality != 0) ||
-  	  (!$element.labels.isEmpty()) ||
-  	  (!$element.relatedDocuments.isEmpty()) ||
   	  (!$element.inverseRuleReferences.isEmpty()) )
+  #set( $inuse = true )
+#else
+  #set( $inuse = false )
+#end	
+
+#if ( (!$element.labels.isEmpty()) ||
+  	  (!$element.relatedDocuments.isEmpty()) )
   #set( $otherinfo = true )
 #else
   #set( $otherinfo = false )
-#end	
-
+#end
 
 <div class="term">
   <h3><a id="$element.Anchor"></a><span class="parrot-element-title parrot-property-title">$element.Label</span> (Property)
@@ -153,17 +157,14 @@
       #end
     #end
     
-    #if($element.isDefinedBy)
-      <dt>isDefinedBy</dt>
-      <dd><span class="parrot-element-ref parrot-${element.isDefinedBy.kindString}-ref"><a href="#$element.isDefinedBy.LocalName">$element.isDefinedBy.Label</a></span></dd>
-    #end    
+  
    </dl>
    </div>
   #end
   
-  #if ( $otherinfo )
-    <div class="otherinfo">
-    <h4>Other information</h4> 
+  #if ( $inuse )
+    <div class="inuse">
+    <h4>In use</h4> 
     <dl>
       #if(!$element.InverseReferences.isEmpty())
         <dt>Referenced from</dt>
@@ -177,29 +178,25 @@
         <dd>$element.cardinality</dd>
       #end
    
-      #if(!$element.labels.isEmpty())
-        <dt>Labels</dt>
-        <dd>#parse("html/label.vm")</dd>
-      #end
-   
-      #if(!$element.relatedDocuments.isEmpty())
-        <dt>Related Documents</dt> 
-        <dd>
-        #foreach($element in $element.relatedDocuments)
-          #parse("html/relatedDocument-detail.vm")
-        #end
-        </dd>
-      #end
-   
       #if(!$element.inverseRuleReferences.isEmpty())
         <dt>Referenced rules</dt>
         #foreach($reference in $element.inverseRuleReferences)
         <dd><span class="parrot-element-ref parrot-rule-ref"><a href="#$reference.LocalName">$reference.Label</a></span></dd>
         #end
       #end
+      
+      #if($element.isDefinedBy)
+      <dt>isDefinedBy</dt>
+      <dd><span class="parrot-element-ref parrot-${element.isDefinedBy.kindString}-ref"><a href="#$element.isDefinedBy.LocalName">$element.isDefinedBy.Label</a></span></dd>
+      #end  
     </dl>
     </div>
   #end
+  
+  #if ( $otherinfo )
+  	#parse("html/documentation.vm")
+  #end
+  
     
   </div>
 </div>   

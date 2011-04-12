@@ -50,22 +50,23 @@
   #if ( $ti )
   <div class="ti"> 
   <h4>Definition</h4> 
-  <dl>
+
     #if($element.Uri)
+    <dl>
       <dt>URI</dt>
       <dd><pre>$element.Uri</pre></dd>
+    </dl>
     #end
-
+  
+	<p>This ruleset ... </p> 
     #if($element.Strategy)
-      <dt>Strategy</dt>
-      <dd>$element.Strategy</dd>
+      <p>... use a strategy <span><code>$element.Strategy</code></span></p>
     #end
 
     #if($element.Priority)
-      <dt>Priority</dt>
-      <dd>$element.Priority</dd>
+      <p>... has as priority <span><strong>$element.Priority</strong></span></p>
     #end
-  </dl>
+
   </div>
   #end
   
@@ -76,22 +77,25 @@
   <dl>
   
     #if(!$element.rules.isEmpty())
-      <dt>Rules</dt>
+      <p>This ruleset contains rules such as...
       #foreach($v in $element.rules)
-	  <dd><span class="parrot-element-ref parrot-rule-ref"><a href="#$v.LocalName">$v.Label</a></span></dd>
+	    <span class="parrot-element-ref parrot-rule-ref"><a href="#$v.LocalName">$v.Label</a></span>
       #end
+      </p>
     #end
    
     #if(!$element.ruleSets.isEmpty())
-      <dt>RuleSets</dt>
+      <p>This ruleset contains rulesets such as...
       #foreach($v in $element.ruleSets)
-	  <dd><span class="parrot-element-ref parrot-ruleset-ref"><a href="#$v.LocalName">$v.Label</a></span></dd>
+	    <span class="parrot-element-ref parrot-ruleset-ref"><a href="#$v.LocalName">$v.Label</a></span>
       #end
+      </p>
     #end
    
     #if($element.Parent)
-      <dt>is inside of</dt>
-	  <dd><span class="parrot-element-ref parrot-${element.Parent.kindString}-ref"><a href="#$element.Parent.localName">$element.Parent.label</a></span></dd>
+      <p>This ruleset is inside 
+	  <span class="parrot-element-ref parrot-${element.Parent.kindString}-ref"><a href="#$element.Parent.localName">$element.Parent.label</a></span>
+	  </p>
     #end
   </dl>    
   </div>

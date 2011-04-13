@@ -102,10 +102,9 @@ label.text{
 }
 
 .uriHint {
-  font-size: 0.8em;
   display: block;
   clear: left;
-  margin-left: 5em;
+  margin-left: 3em;
 }
 
 #example{

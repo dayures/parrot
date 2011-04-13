@@ -1,26 +1,25 @@
 <!-- <h4>Related document</h4> -->
-<div class="toggle_container" style="display: block;"> 
+<div class="related-document" style="display: block;"> 
   <div class="block">
      #if($element.type == "text/html")
        <p>Candidate Rule:</p>
      #end
-     <a href="$element.Uri">
+     
      #if($element.type == "application/pdf")
-       <img src="images/pdf-icon.png" alt="pdf icon" />
+       <a href="$element.Uri"><img class="related-document-icon" src="images/pdf-icon.png" alt="pdf icon" /></a>
      #end
      #if($element.type == "text/plain")
-       <img src="images/text-icon.png" alt="text icon" />
+       <a href="$element.Uri"><img class="related-document-icon" src="images/text-icon.png" alt="text icon" /></a>
      #end
      #if($element.type == "application/vnd.ms-powerpoint")
-       <img src="images/ppt-icon.png" alt="ppt icon" />
+       <a href="$element.Uri"><img class="related-document-icon" src="images/ppt-icon.png" alt="ppt icon" /></a>
      #end
      #if($element.type == "text/html")
-       <img src="images/candidate-rule-icon.png" alt="candidate-rule icon" />
+       <a href="$element.Uri"><img class="related-document-icon" src="images/candidate-rule-icon.png" alt="candidate-rule icon" /></a>
      #end
      #if($element.type == "uri")
-       <img src="images/hyperlink-icon.png" alt="hyperlink icon" />
+       <a href="$element.Uri"><img class="related-document-icon" src="images/hyperlink-icon.png" alt="hyperlink icon" /></a>
      #end
-     </a> 
 
      #if($element.type == "video/mpeg")
 	 <object type="application/x-shockwave-flash" width="400" height="329" data="$element.uri">
@@ -30,7 +29,7 @@
 	 #end
 
      #if($element.type == "image/png")
-	 <a href="$element.uri"><img src="$element.uri" alt="Related image"/></a>
+	 <a href="$element.uri"><img class="related-image" src="$element.uri" alt="Related image"/></a>
 	 #end
      
      #if($element.sourceText)

@@ -53,12 +53,19 @@
 		<p>The <strong>URI</strong> of this individual is <span><code>$element.Uri</code></span></p>
 	#end
 
+	
 	#if(!$element.types.isEmpty())
-	<p>The type of the individual is 
-		#foreach($type in $element.types)
-	    	<span class="parrot-element-ref parrot-class-ref"><a href="#$type.LocalName">$type.Label</a></span>
-	    #end
-	</p>
+	<hr />
+	<table>
+	<tr>
+	<td>The type of the individual is</td>
+	<td>
+	#foreach($type in $element.types)
+    	<span class="parrot-element-ref parrot-class-ref"><a href="#$type.LocalName">$type.Label</a></span>
+    #end
+	</td>
+	</tr> 
+	</table>
 	#end
 	
 	</div>	

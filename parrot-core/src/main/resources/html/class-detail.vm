@@ -58,6 +58,7 @@
   <h4>Definition</h4> 
 	#if($element.Uri)
 		<p>The <strong>URI</strong> of this class is <span><code>$element.Uri</code></span></p>
+		<hr />
 	#end
 
 	<table>
@@ -117,41 +118,39 @@
 	#end
   
     <table>
-
-  	#if(!$element.InverseReferences.isEmpty())
-	  <tr>
-	  <td>This class is used in</td>
-	  <td> 	  
-	  #foreach($reference in $element.InverseReferences)
-	  <span class="parrot-element-ref parrot-property-ref"><a href="#$reference.LocalName">$reference.Label</a></span>
-	  #end
-	  </td>
-	  </tr>
-	#end
+	  	#if(!$element.InverseReferences.isEmpty())
+		  <tr>
+		  <td>This class is used in</td>
+		  <td> 	  
+		  #foreach($reference in $element.InverseReferences)
+		  <span class="parrot-element-ref parrot-property-ref"><a href="#$reference.LocalName">$reference.Label</a></span>
+		  #end
+		  </td>
+		  </tr>
+		#end
+		
+		#if(!$element.individuals.isEmpty())
+		  <tr>
+		  <td>This class has individuals such as</td>
+		  <td>	  
+		  #foreach($individual in $element.individuals)
+		  <span class="parrot-element-ref parrot-individual-ref"><a href="#$individual.LocalName">$individual.Label</a></span>
+		  #end
+		  </td>
+		  </tr>
+		#end
 	
-	#if(!$element.individuals.isEmpty())
-	  <tr>
-	  <td>This class has individuals such as</td>
-	  <td>	  
-	  #foreach($individual in $element.individuals)
-	  <span class="parrot-element-ref parrot-individual-ref"><a href="#$individual.LocalName">$individual.Label</a></span>
-	  #end
-	  </td>
-	  </tr>
-	#end
-
-	#if(!$element.inverseRuleReferences.isEmpty())
-	  <tr>
-	  <td>This class is referenced in rules such as</td>
-	  <td>
-	  #foreach($reference in $element.inverseRuleReferences)
-	  <span class="parrot-element-ref parrot-rule-ref"><a href="#$reference.LocalName">$reference.Label</a></span>
-	  #end
-	  </td>
-	  </tr>
-	#end
-
-  </table>
+		#if(!$element.inverseRuleReferences.isEmpty())
+		  <tr>
+		  <td>This class is referenced in rules such as</td>
+		  <td>
+		  #foreach($reference in $element.inverseRuleReferences)
+		  <span class="parrot-element-ref parrot-rule-ref"><a href="#$reference.LocalName">$reference.Label</a></span>
+		  #end
+		  </td>
+		  </tr>
+		#end
+	</table>
   </div>
   #end
   

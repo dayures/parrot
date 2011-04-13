@@ -53,6 +53,7 @@
     
     #if($element.Uri)
 		<p>The <strong>URI</strong> of this ontology is <span><code>$element.Uri</code></span></p>
+		<hr />
 	#end
 	
     <table> 

@@ -5,14 +5,9 @@
 	<p>Labels: #parse("html/label.vm")</p>
   #end
   
-  <dl> 	
-	#if(!$element.relatedDocuments.isEmpty())
-	  <dt>Related documents</dt> 
-	  <dd>
-	  #foreach($element in $element.relatedDocuments)
-	    #parse("html/relatedDocument-detail.vm")
-	  #end
-	  </dd>
+  #if(!$element.relatedDocuments.isEmpty())
+    #foreach($element in $element.relatedDocuments)
+      #parse("html/relatedDocument-detail.vm")
     #end
-  </dl>
+  #end
 </div>

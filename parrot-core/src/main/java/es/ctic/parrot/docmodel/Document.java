@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
+import es.ctic.parrot.reader.Input;
+
 /**
  * 
  * A document is a group of detailed views that will be used by a generator.
@@ -19,6 +21,7 @@ import java.util.Set;
  */
 public class Document {
 	private String title;
+	private final Collection<Input> inputs = new HashSet<Input>();
 	private final Set<OntologyDetailView> ontologyDetailViews = new HashSet<OntologyDetailView>();
 	private final Set<OntologyClassDetailView> ontologyClassDetailViews = new HashSet<OntologyClassDetailView>();
 	private final Set<OntologyPropertyDetailView> ontologyPropertyDetailViews = new HashSet<OntologyPropertyDetailView>();
@@ -166,6 +169,17 @@ public class Document {
     public Glossary getGlossary() {
         return glossary;
     }
+
+	/**
+	 * @return the inputs
+	 */
+	public Collection<Input> getInputs() {
+		return inputs;
+	}
+	
+	public void setInputs(Collection<Input> inputs){
+		this.inputs.addAll(inputs);
+	}
     
 }
 /**

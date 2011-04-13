@@ -1,6 +1,8 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd"> 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:parrot="http://vocab.ctic.es/parrot#">
+  <head typeof="parrot:Project">
     <title>$document.Title</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" type="text/css" media="screen,projection" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/themes/cupertino/jquery-ui.css" /> 
@@ -23,6 +25,10 @@
 	<link rel="stylesheet" type="text/css" media="screen,projection" href="report/css/custom.css" />
 	<link rel="stylesheet" type="text/css" media="screen,projection" href="report/css/SemEx.css" />
     -->
+
+    #parse("html/rdfa.vm")
+         
+    
   </head>
   <body>
   #parse("html/header.vm")

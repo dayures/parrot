@@ -28,7 +28,7 @@
 
 #if ( ($element.isDefinedBy) ||
 	  (!$element.InverseReferences.isEmpty()) || 
-  	  ($element.cardinality != 0) ||
+  	  ($element.occurrences != 0) ||
   	  (!$element.inverseRuleReferences.isEmpty()) )
   #set( $inuse = true )
 #else
@@ -178,9 +178,9 @@
         #end
       #end
 
-      #if($element.cardinality != 0)
-        <dt>Cardinality:</dt>
-        <dd>$element.cardinality</dd>
+      #if($element.occurrences != 0)
+        <dt>Occurrences:</dt>
+        <dd>$element.occurrences</dd>
       #end
    
       #if(!$element.inverseRuleReferences.isEmpty())

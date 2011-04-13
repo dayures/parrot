@@ -29,7 +29,7 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
     private Collection<DocumentableObjectReference> inverseReferences;
 	private Collection<DocumentableObjectReference> equivalentProperties;
 	private Collection<DocumentableObjectReference> disjointProperties;
-    private int cardinality;
+    private int occurrences;
     private DocumentableObjectReference inverseOf;
 	
 	/**
@@ -89,18 +89,18 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
 
 	/**
 	 * Set the number of times that this property is used.
-	 * @param cardinality the number of times that this property is used.
+	 * @param occurrences the number of times that this property is used.
 	 */
-	private void setCardinality(int cardinality) {
-		this.cardinality = cardinality;
+	private void setOccurrences(int occurrences) {
+		this.occurrences = occurrences;
 	}
 
 	/**
 	 * Returns the number of times that this property is used.
 	 * @return the number of times that this property is used.
 	 */
-	public int getCardinality() {
-		return cardinality;
+	public int getOccurrences() {
+		return occurrences;
 	}
 
 	/**
@@ -319,7 +319,7 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
 		details.setDisjointProperties(DocumentableObjectReference.createReferences(object.getDisjointProperties(), locale));
 		details.setInverseRuleReferences(DocumentableObjectReference.createReferences(object.getInverseRuleReferences(), locale));
 		details.setInverseReferences(DocumentableObjectReference.createReferences(object.getInternalReferences(), locale));
-		details.setCardinality(object.getCardinality());
+		details.setOccurrences(object.getOccurrences());
 		details.setInverseOf(DocumentableObjectReference.createReference(object.getInverseOf(), locale));
 		details.setLabels(object.getLabels());
 		details.setRelatedDocuments(object.getRelatedDocuments(locale));

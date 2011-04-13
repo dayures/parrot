@@ -90,6 +90,12 @@ public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObj
 		//return null;
 	}
 
+	public String getDate() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Method not implemented yet.");
+		//return null;
+	}
+
 	public Collection<String> getCreators() {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
@@ -102,7 +108,19 @@ public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObj
 		//return null;
 	}
 
-	public String getDate() {
+	public Collection<String> getPublishers() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Method not implemented yet.");
+		//return null;
+	}
+
+	public String getRights() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Method not implemented yet.");
+		//return null;
+	}
+
+	public String getLicenseLabel() {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
 		//return null;
@@ -223,7 +241,7 @@ public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObj
 		//
 	}
 
-	public int getCardinality() {
+	public int getOccurrences() {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
 		//return 0;
@@ -346,22 +364,5 @@ public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObj
 		//return false;
 	}
 
-	public Collection<String> getPublishers() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
-	}
-
-	public String getRights() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
-	}
-
-	public String getLicenseLabel() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
-	}
     
 }

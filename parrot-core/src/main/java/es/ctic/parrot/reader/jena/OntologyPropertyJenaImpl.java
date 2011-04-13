@@ -105,7 +105,7 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 		this.range=range;
 	}
 
-	public int getCardinality() {
+	public int getOccurrences() {
 		return getOntProperty().getModel().listStatements(null, this.getOntProperty(), (RDFNode) null).toList().size();
 	}
 

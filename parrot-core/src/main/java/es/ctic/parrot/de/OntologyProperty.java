@@ -40,7 +40,7 @@ public interface OntologyProperty extends DocumentableOntologicalObject {
 	 * Returns the number of times that this property is used.
 	 * @return the number of times that this property is used.
 	 */
-	public abstract int getCardinality();
+	public abstract int getOccurrences();
 	
 	/**
 	 * Returns the super properties of this property.

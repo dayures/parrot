@@ -43,6 +43,7 @@
   <script type="text/javascript" src="http://bazaar.launchpad.net/~craig.craigsworks/qtip/1.0/download/2/jquery.qtip1.0.js-20100208190353-yfo386e4500jv3h5-1/jquery.qtip-1.0.js"></script> 
   <!-- <script type="text/javascript" src="report/js/javascript.js"></script> -->
   <script type="text/javascript">
+/* <![CDATA[ */
 
   	#include("js/javascript.js")
 
@@ -53,6 +54,7 @@
 	#if (${profile} == "technical")
 		#include("js/${profile}.js")
 	#end
+/* ]]> */
   </script>
   
   </body>

@@ -61,6 +61,10 @@
 		<hr />
 	#end
 
+	#if ( (!$element.SuperClasses.isEmpty()) ||
+		  (!$element.SubClasses.isEmpty()) ||
+		  (!$element.EquivalentClasses.isEmpty()) ||
+		  (!$element.DisjointClasses.isEmpty()) )
 	<table>
 	#if(!$element.SuperClasses.isEmpty())
 	  <tr>
@@ -106,6 +110,7 @@
 	  </tr>
 	#end
 	</table>
+	#end
 	    
   </div>
   #end

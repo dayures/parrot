@@ -61,7 +61,7 @@
     #end
 
     #if($element.Priority)
-      <span> and has <span><strong>$element.Priority</strong></span> as priority.</p></span>
+      <span> and has <span><strong>$element.Priority</strong></span> as priority.</span>
     #end
     </p>
 
@@ -72,8 +72,6 @@
   #if ( $inuse )
   <div class="inuse"> 
   <h4>In use</h4> 
-  <dl>
-  
     #if(!$element.rules.isEmpty())
       <p>This ruleset contains rules such as...
       #foreach($v in $element.rules)
@@ -95,7 +93,6 @@
 	  <span class="parrot-element-ref parrot-${element.Parent.kindString}-ref"><a href="#$element.Parent.localName">$element.Parent.label</a></span>
 	  </p>
     #end
-  </dl>    
   </div>
   #end
   

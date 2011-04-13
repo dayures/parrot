@@ -465,21 +465,6 @@ supported by Parrot.</p>
       <td><a href="http://www.w3.org/TR/owl2-syntax/#Inverse-Functional_Object_Properties" target="_blank">Inverse functional property</a></td>
     </tr>
 
-    <tr>
-     <td><img alt="inverse of" src="images/inverse-of-property.png" width="28" height="24" /></td>
-      <td><a href="http://www.w3.org/TR/owl2-syntax/#Inverse_Object_Properties_2" target="_blank">Inverse property</a></td>
-    </tr>
-
-    <tr>
-     <td><img alt="equivalent property" src="images/equivalent-property.png" width="24" height="24" /></td>
-     <td><a href="http://www.w3.org/TR/owl2-syntax/#Equivalent_Object_Properties " target="_blank">Equivalent Object property</a></td>
-    </tr>
-
-    <tr>
-     <td><img alt="disjoint of" src="images/disjoint-property.png" width="26" height="24" /></td>
-     <td><a href="http://www.w3.org/TR/owl2-syntax/#Disjoint_Object_Properties" target="_blank">Disjoint Object property</a></td>
-    </tr>
-
   </tbody>
 </table>
 
@@ -500,59 +485,6 @@ supported by Parrot.</p>
   <li>http://purl.org/dc/elements/1.1/title</li>
   <li>http://www.w3.org/2000/01/rdf-schema#label</li>
 </ol>
-
-<h2>Not supported yet</h2>
-
-<table id="metadata-not-support-ontologies">
-  <tbody>
-    <tr>
-      <th>Property</th>
-      <th>Vocabulary</th>
-      <th colspan="4">Scope</th>
-      <th>Description</th>
-      <th>Supported?</th>
-    </tr>
-    <tr>
-      <th></th>
-      <th></th>
-      <th>Ontology</th>
-      <th>Class</th>
-      <th>Property</th>
-      <th>Individual</th>
-      <th></th>
-      <th></th>
-    </tr>
-    <tr>
-      <td><em>dct:hasVersion</em></td>
-      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin
-      Core</a></td>
-      <td>Ontology</td><td></td><td></td><td></td>
-      <td>This property relates the ontology with its prior versions, i.e.
-        other ontologies. Notice that this property shouldn't be used to relate
-        the ontology with knowledge sources it is based on.</td>
-      <td><img src="images/not-supported-yet.png" height="32" width="32"
-        alt="Currently not supported"/> </td>
-    </tr>
-    <tr>
-      <td><em>foaf:primaryTopic</em></td>
-      <td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td>
-      <td>Ontology</td><td></td><td></td><td></td>
-      <td>See <em>subject</em></td>
-      <td><img src="images/not-supported-yet.png" height="32" width="32"
-        alt="Currently not supported" /> </td>
-    </tr>    
-    <tr>
-      <td><em>dct:subject</em></td>
-      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin
-      Core</a></td>
-      <td>Ontology</td><td>Class</td><td>Property</td><td>Individual</td>
-      <td>The topic of a resource. A recommended best practice is to use a
-        controlled vocabulary encoded in SKOS format.</td>
-      <td><img src="images/not-supported-yet.png" height="32" width="32"
-        alt="Currently not supported" /> </td>
-    </tr>
-    </tbody>
-</table>
 
 <p></p>
 <div id="footer">

@@ -2,8 +2,11 @@
 
 /* CSS style for reports of Vapour */
 body{
-color: #333333;
+	color: #333333;
 }
+
+body{
+	font:75% arial,helvetica,clean,sans-serif;*font-size:small;*font:x-small;}
 
 div#header {
   background-color: #336699;
@@ -104,11 +107,12 @@ label.text{
   clear: left;
   margin-left: 5em;
 }
+
 #example{
   cursor:pointer;
 }
 
-#addURI >span, .removeURI{
+.removeURI{
   text-decoration:underline;
   cursor:pointer;
 }
@@ -122,11 +126,6 @@ span.removeURI:hover {
 	color:white;
 	background-color:red;
 }  /* mouse over link */
-
-#addURI >span {
-  vertical-align: top;
-  margin-left:0.2em;
-}
 
 div#footer {
   width: 90%;
@@ -150,9 +149,10 @@ div#footer p#logo {
 
 .buttons{
   padding: 1em;
+  text-align: center;
 }
 .buttons button{
-    display:block;
+    display:inline-block;
     margin:0 auto;
     background-color:#f5f5f5;
     border:1px solid #dedede;

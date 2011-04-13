@@ -9,13 +9,11 @@
 <meta name="description" content="parrot" /> 
 <meta name="keywords" content="parrot, documentation, tool, rif, rdf" /> 
 <link rel="shortcut icon" type="image/png" href="images/favicon.ico"  />
-<link rel="stylesheet" type="text/css" href="css/style.css"	media="screen,projection,print" /> 
-<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.8.0r4/build/fonts/fonts-min.css" /> 
-<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.8.0r4/build/tabview/assets/skins/sam/tabview.css" /> 
 <link rel="stylesheet" type="text/css" media="screen,projection" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/themes/cupertino/jquery-ui.css" /> 
+<link rel="stylesheet" type="text/css" href="css/style.css"	media="screen,projection,print" /> 
 </head> 
 
-<body class="yui-skin-sam">
+<body>
 	<div class="all"> 
 
 	<div id="header">
@@ -45,14 +43,13 @@
 		</c:if>
 
 		<div class="inputData"> 
-		<div id="demo" class="yui-navset"> 
-		    <ul class="yui-nav"> 
-		        <li><a href="#tab1"><em>by URI</em></a></li> 
-		        <li><a href="#tab2"><em>by direct input</em></a></li> 
-		        <li><a href="#tab3"><em>by file upload</em></a></li> 
+		<div id="tabs"> 
+		    <ul> 
+		        <li><a href="#tabs-1">by URI</a></li> 
+		        <li><a href="#tabs-2">by direct input</a></li> 
+		        <li><a href="#tabs-3">by file upload</a></li> 
 		    </ul>            
-		    <div class="yui-content"> 
-		        <div id="tab1"> 
+		        <div id="tabs-1"> 
 		        	<h2>By URI</h2> 
 					<form method="get" action="">
 		        	<c:choose>
@@ -98,7 +95,7 @@
 							</p>
 						</c:otherwise>
 					</c:choose>
-					<p id="addURI"><img src="images/add.png" width="16" height="16" alt=""/><span id="addURILink">add another URI</span></p>
+					<p id="addURI"><span id="addURILink">add another URI</span></p>
 					<fieldset class="moreoptions">
 						<legend id="extra_opt_uri" class="more-options-closed">More Options</legend>
 						<div id="options">
@@ -144,7 +141,7 @@
 		        </div>
 		         -->
 				
-			        <div id="tab2"> 
+			        <div id="tabs-2"> 
 			        	<h2>By direct input</h2> 
 						<form method="post" action="">
 			        	<p class="direct-input"><label title="Text of the document" for="documentText" class="text">Enter your document:</label><br />
@@ -195,7 +192,7 @@
 		        	</div>
 		        	 -->
 
-		        <div id="tab3"> 
+		        <div id="tabs-3"> 
 		        	<h2>By file upload</h2> 
 					<form method="post" action="" enctype="multipart/form-data">
 						<p>
@@ -218,7 +215,7 @@
 						</div>
 					</form>
 				</div> <!--  /tab3 -->
-		    </div> 
+
 		    <div id="tipOfTheDay">
 		    <span >Did you know ...</span>
 		    </div>
@@ -240,36 +237,17 @@
     </div>
     </div> 
 
-<script type="text/javascript" src="http://yui.yahooapis.com/2.8.0r4/build/yahoo-dom-event/yahoo-dom-event.js"></script> 
-<script type="text/javascript" src="http://yui.yahooapis.com/2.8.0r4/build/element/element-min.js"></script> 
-<script type="text/javascript" src="http://yui.yahooapis.com/2.8.0r4/build/tabview/tabview-min.js"></script> 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
 <script type="text/javascript" src="http://3nhanced.com/examples/randomContent/js/jquery.randomContent.js"></script>
 <script type="text/javascript" src="https://github.com/malsup/corner/raw/master/jquery.corner.js"></script> 
 
-<c:if test='${not empty paramValues.uris}'>
-	<script type="text/javascript">
-	(function() {
-			var tabView = new YAHOO.widget.TabView('demo');
-			tabView.selectTab(0);
-	})();
-	</script>
-</c:if>
-
-<c:if test='${not empty param.documentText}'>
-		<script type="text/javascript">
-		(function() {
-			var tabView = new YAHOO.widget.TabView('demo');
-			tabView.selectTab(1);
-	})();
-	</script>
-</c:if>
-
 <script type="text/javascript">
 <![CDATA[
 
 jQuery(document).ready(function(){
+	$( "#tabs" ).tabs();
+
     $('#extra_opt_uri').click(function() {
     	if ($(this).attr("class") == "more-options-open")
             $(this).attr("class", "more-options-closed");
@@ -288,11 +266,100 @@ jQuery(document).ready(function(){
             primary: "ui-icon-circle-plus"
         }
     }).click(function() {
-        $('#tab3 form p:first').clone().insertBefore($(this));
-        $('#tab3 form p:last').html($('#tab3 form p:last').html()); // clear input file
+        $('#tabs-3 form p:first').clone().insertBefore($(this));
+        $('#tabs-3 form p:last').html($('#tabs-3 form p:last').html()); // clear input file
     	return false;
     }); 
-        
+
+    $('#addURI').button({
+        icons: {
+            primary: "ui-icon-circle-plus"
+        }}).click(function(){ 
+    		var p = document.createElement("p");
+
+    		var lbl = document.createElement("label");
+    		lbl.setAttribute("title", "URL of the page containing the OWL/RIF document");
+    		lbl.setAttribute("for", "documentUri");
+    		lbl.setAttribute("class", "uri");
+    		text = document.createTextNode("URI: ");
+    		lbl.appendChild(text);
+    		p.appendChild(lbl);
+
+    		var inp = document.createElement("input");
+    		inp.setAttribute("type", "text");
+    		inp.setAttribute("size", "100");
+    		inp.setAttribute("value", "http://");
+    		inp.setAttribute("name", "documentUri");
+    		p.appendChild(inp);
+
+    		text = document.createTextNode(" ");
+    		p.appendChild(text);
+
+    		var oSelect = document.createElement("select");
+    		oSelect.setAttribute("name", "mimetype");
+
+    		var oOption = document.createElement("option");
+    		var t0 = document.createTextNode("Allow content negotiation");
+    		oOption.setAttribute("value", "default");
+    		oOption.setAttribute("selected", "selected");
+    		oOption.appendChild(t0);
+    		oSelect.appendChild(oOption);
+
+    		oOption = document.createElement("option");
+    		var t1 = document.createTextNode("It is a OWL ontology");
+    		oOption.setAttribute("value", "application/owl+xml");
+    		oOption.appendChild(t1);
+    		oSelect.appendChild(oOption);
+    	
+    		oOption = document.createElement("option");
+    		var t2 = document.createTextNode("It is a N3 ontology");
+    		oOption.setAttribute("value", "text/n3");
+    		oOption.appendChild(t2);
+    		oSelect.appendChild(oOption);
+
+    		oOption = document.createElement("option");
+    		var t3 = document.createTextNode("It is a XHTML+RDFa document");
+    		oOption.setAttribute("value", "application/xhtml+xml");
+    		oOption.appendChild(t3);
+    		oSelect.appendChild(oOption);
+
+    		oOption = document.createElement("option");
+    		var t4 = document.createTextNode("It is a HTML+RDFa document");
+    		oOption.setAttribute("value", "text/html");
+    		oOption.appendChild(t4);
+    		oSelect.appendChild(oOption);
+    		
+    		oOption = document.createElement("option");
+    		var t5 = document.createTextNode("It is a RIF XML document");
+    		oOption.setAttribute("value", "application/rif+xml");
+    		oOption.appendChild(t5);
+    		oSelect.appendChild(oOption);
+    		
+    		oOption = document.createElement("option");
+    		var t6 = document.createTextNode("It is a RIF PS document");
+    		oOption.setAttribute("value", "text/x-rif-ps");
+    		oOption.appendChild(t6);
+    		oSelect.appendChild(oOption);
+    		
+    		p.appendChild(oSelect);
+
+    		var span = document.createElement("span");
+    		span.setAttribute("class", "removeURI");
+    		text = document.createTextNode("remove");
+    		span.appendChild(text);
+    		
+    		span.onclick = function() {
+    			var parent = this.parentNode;
+    			var grandparent = parent.parentNode;
+    			grandparent.removeChild(parent);
+    		};
+    		p.appendChild(span);
+    		
+    		var br = document.createElement("br");
+    		p.appendChild(br);
+
+    		document.getElementById("addURI").parentNode.insertBefore(p, document.getElementById("addURI"));
+    	});
 });
 ]]>
 </script>

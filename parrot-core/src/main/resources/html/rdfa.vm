@@ -1,6 +1,5 @@
-    <!-- <link rel="parrot:hasPrologue" href="http://en.wikipedia.org/wiki/Prologue#Latin" /> --> 
-    <!-- <link rel="parrot:hasAppendix" href="http://en.wikipedia.org/wiki/Addendum" /> -->
-    
+    <link rel="parrot:hasPrologue" href="#prologue" /> 
+    <link rel="parrot:hasAppendix" href="#appendix"/> 
     #foreach($input in $document.inputs)
 	    #if ($input.getMimeType() == "application/rdf+xml")<link rel="parrot:documentsRDFOWLOntology" href="$input.getBase()" />#end
 	    #if ($input.getMimeType() == "application/owl+xml")<link rel="parrot:documentsRDFOWLOntology" href="$input.getBase()" />#end

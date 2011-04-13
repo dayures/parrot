@@ -112,55 +112,76 @@
     	<strong>annotation</strong> property. 
     	#end
     	</p>
-
-    	
-    #end    	
-    <dl>
+    	<hr />
+    #end
+        	
+    <table>
     #if($element.InverseOf)
-      <dt>inverse of</dt>
-      <dd><span class="parrot-element-ref parrot-property-ref"><a href="#$element.InverseOf.LocalName">$element.InverseOf.Label</a></span></dd>
+      <tr>
+      <td>This property is a inverse property of</td>
+      <td><span class="parrot-element-ref parrot-property-ref"><a href="#$element.InverseOf.LocalName">$element.InverseOf.Label</a></span></td>
+      </tr>
     #end
 
     #if($element.Domain)
-      <dt>Domain</dt>
-   	  <dd><span class="parrot-element-ref parrot-class-ref"><a href="#$element.Domain.LocalName">$element.Domain.Label</a></span></dd>
+      <tr>
+      <td>The domain of this property is</td>
+      <td><span class="parrot-element-ref parrot-class-ref"><a href="#$element.Domain.LocalName">$element.Domain.Label</a></span></td>
+      </tr>
     #end
 
     #if($element.Range)
-      <dt>Range</dt>
-      <dd><span class="parrot-element-ref parrot-${element.Range.kindString}-ref"><a href="#$element.Range.LocalName">$element.Range.Label</a></span></dd>
+      <tr>
+      <td>The range of this property is</td>
+      <td><span class="parrot-element-ref parrot-${element.Range.kindString}-ref"><a href="#$element.Range.LocalName">$element.Range.Label</a></span></td>
+      </tr>
     #end
    
     #if(!$element.SuperProperties.isEmpty())
-      <dt>SubProperty of</dt>
+      <tr>
+      <td>This property is a sub property of</td>
+      <td>
       #foreach($superproperty in $element.SuperProperties)
-      <dd><span class="parrot-element-ref parrot-property-ref"><a href="#$superproperty.LocalName">$superproperty.Label</a></span></dd>
+      <span class="parrot-element-ref parrot-property-ref"><a href="#$superproperty.LocalName">$superproperty.Label</a></span>
       #end
+      </td>
+      </tr>
     #end
 
     #if(!$element.SubProperties.isEmpty())
-      <dt>SuperProperty of</dt>
+      <tr>
+      <td>This property is super property of</td>
+      <td>
       #foreach($subproperty in $element.SubProperties)
-      <dd><span class="parrot-element-ref parrot-property-ref"><a href="#$subproperty.LocalName">$subproperty.Label</a></span></dd>
+      <span class="parrot-element-ref parrot-property-ref"><a href="#$subproperty.LocalName">$subproperty.Label</a></span>
       #end
+      </td>
+      </tr>
     #end
    
     #if(!$element.EquivalentProperties.isEmpty())
-      <dt>Equivalent Property of</dt>
+      <tr>
+      <td>This property is a equivalent property of</td>
+      <td>
       #foreach($equivalentProperty in $element.EquivalentProperties)
-      <dd><span class="parrot-element-ref parrot-property-ref"><a href="#$equivalentProperty.LocalName">$equivalentProperty.Label</a></span></dd>
+      <span class="parrot-element-ref parrot-property-ref"><a href="#$equivalentProperty.LocalName">$equivalentProperty.Label</a></span>
       #end
+      </td>
+      </tr>
     #end
 
     #if(!$element.disjointProperties.isEmpty())
-      <dt>Disjoint Properties</dt>
+      <tr>
+      <td>This property is a disjoint property of</td>
+      <td>
       #foreach($property in $element.disjointProperties)
-      <dd><span class="parrot-element-ref parrot-property-ref"><a href="#$property.LocalName">$property.Label</a></span></dd>
+      <span class="parrot-element-ref parrot-property-ref"><a href="#$property.LocalName">$property.Label</a></span>
       #end
+      </td>
+      </tr>
     #end
     
-  
-   </dl>
+   </table>
    </div>
   #end
   
@@ -169,7 +190,12 @@
     <h4>In use</h4>
     #if($element.isDefinedBy)
 		<p>This property is defined by <span class="parrot-element-ref parrot-${element.isDefinedBy.kindString}-ref"><a href="#$element.isDefinedBy.LocalName">$element.isDefinedBy.Label</a></span></p>
-	#end 
+	#end
+
+	#if($element.occurrences != 0)
+        <p>This property has $element.occurrences occurrences</p>
+    #end
+	 
     <dl>
       #if(!$element.InverseReferences.isEmpty())
         <dt>Referenced from</dt>
@@ -178,11 +204,6 @@
         #end
       #end
 
-      #if($element.occurrences != 0)
-        <dt>Occurrences:</dt>
-        <dd>$element.occurrences</dd>
-      #end
-   
       #if(!$element.inverseRuleReferences.isEmpty())
         <dt>Referenced rules</dt>
         #foreach($reference in $element.inverseRuleReferences)

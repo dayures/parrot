@@ -70,7 +70,7 @@ public class ParrotAppServ {
 		readAndRegisterDocumentableObjects(dp.getInputs(), register);
 		resolveInternalReferences(register);
 		resolveCrossReferences(register);
-		Document document = transformToDocument(register.getDocumentableObjects(), dp.getLocale());
+		Document document = transformToDocument(register.getDocumentableObjects(), dp.getLocale(), dp.getInputs());
 		outputGenerator.generateOutput(document, profile);
 	}
 	
@@ -133,9 +133,10 @@ public class ParrotAppServ {
      * @return a document to be presented by an output generator.
      * @throws TransformerException if a failed transformation operation occurs.
      */
-    private Document transformToDocument(Collection<DocumentableObject> documentableObjects, Locale locale) throws TransformerException {
+    private Document transformToDocument(Collection<DocumentableObject> documentableObjects, Locale locale, Collection<Input> inputs) throws TransformerException {
         Document document = new Document(locale);
 		document.setTitle("Parrot"); // FIXME
+		document.setInputs(inputs);
         DetailsVisitor detailVisitor = new DetailsVisitor(document, locale);
         GlossaryVisitor glossaryVisitor = new GlossaryVisitor(document, locale);
 		for (DocumentableObject documentableObject : documentableObjects) {

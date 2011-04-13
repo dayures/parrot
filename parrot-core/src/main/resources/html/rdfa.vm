@@ -1,0 +1,13 @@
+    <!-- <link rel="parrot:hasPrologue" href="http://en.wikipedia.org/wiki/Prologue#Latin" /> --> 
+    <!-- <link rel="parrot:hasAppendix" href="http://en.wikipedia.org/wiki/Addendum" /> -->
+    
+    #foreach($input in $document.inputs)
+	    #if ($input.getMimeType() == "application/rdf+xml")<link rel="parrot:documentsRDFOWLOntology" href="$input.getBase()" />#end
+	    #if ($input.getMimeType() == "application/owl+xml")<link rel="parrot:documentsRDFOWLOntology" href="$input.getBase()" />#end
+	    #if ($input.getMimeType() == "application/xml")<link rel="parrot:documentsRDFOWLOntology" href="$input.getBase()" />#end
+	    #if ($input.getMimeType() == "text/n3")<link rel="parrot:documentsN3OWLOntology" href="$input.getBase()" />#end
+	    #if ($input.getMimeType() == "application/xhtml+xml")<link rel="parrot:documentsXHTMLRDFaOntology" href="$input.getBase()" />#end
+	    #if ($input.getMimeType() == "text/html")<link rel="parrot:documentsHTMLRDFaOntology" href="$input.getBase()" />#end
+	    #if ($input.getMimeType() == "application/rif+xml")<link rel="parrot:documentsRIFXMLDocument" href="$input.getBase()" />#end
+	    #if ($input.getMimeType() == "text/x-rif-ps")<link rel="parrot:documentsRIFPSDocument" href="$input.getBase()" />#end
+	#end

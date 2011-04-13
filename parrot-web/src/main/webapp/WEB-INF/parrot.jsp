@@ -47,7 +47,8 @@
 		    <ul> 
 		        <li><a href="#tabs-1">by URI</a></li> 
 		        <li><a href="#tabs-2">by direct input</a></li> 
-		        <li><a href="#tabs-3">by file upload</a></li> 
+		        <li><a href="#tabs-3">by file upload</a></li>
+		        <li><a href="#tabs-4">Existing report</a></li>  
 		    </ul>            
 		        <div id="tabs-1"> 
 		        	<h2>By URI</h2> 
@@ -215,6 +216,16 @@
 						</div>
 					</form>
 				</div> <!--  /tab3 -->
+				
+				<div id="tabs-4"> 
+		        	<h2>Existing report</h2> 
+					<form method="get" action="">
+					<label for="reportURL" title="URL of an existing Parrot report" class="uri">URL: </label><input id="reportURL" name="reportURL" value="" type="text" size="100" />
+					<div class="buttons">
+						<button type="submit" class="positive"><img src="images/tick.png" alt=""/>Generate documentation</button>
+					</div>
+					</form>
+				</div> <!-- tab4 -->
 
 		    <div id="tipOfTheDay">
 		    <span >Did you know ...</span>

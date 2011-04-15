@@ -3,6 +3,8 @@
   <head typeof="parrot:Project">
     <title>$document.Title</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    #parse("html/rdfa.vm")
+    
     <link rel="stylesheet" type="text/css" media="screen,projection" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/themes/cupertino/jquery-ui.css" /> 
     <style type="text/css">
 	    #include("css/base.css")
@@ -23,22 +25,19 @@
 	<link rel="stylesheet" type="text/css" media="screen,projection" href="report/css/custom.css" />
 	<link rel="stylesheet" type="text/css" media="screen,projection" href="report/css/SemEx.css" />
     -->
-
-    #parse("html/rdfa.vm")
-         
-    
   </head>
   <body>
   #parse("html/header.vm")
-  <div id="prologue"></div>
   <div id="content">
-	  #parse("html/download.vm")
-	  #parse("html/toc.vm")
-	  #parse("html/details.vm")
-	  #parse("html/glossary.vm")
-	  #parse("html/footer.vm")
+
+	#parse("html/prologue.vm")
+	#parse("html/download.vm")
+	#parse("html/toc.vm")
+	#parse("html/details.vm")
+	#parse("html/glossary.vm")
+	#parse("html/appendix.vm")
+	#parse("html/footer.vm")
   </div>
-  <div id="appendix"></div>
   #parse("html/bottom-bar.vm")
 
   

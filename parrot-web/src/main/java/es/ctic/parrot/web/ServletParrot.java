@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -28,6 +29,7 @@ import es.ctic.parrot.DocumentaryProject;
 import es.ctic.parrot.ParrotAppServ;
 import es.ctic.parrot.generators.HtmlOutputGenerator;
 import es.ctic.parrot.generators.OutputGenerator.Profile;
+import es.ctic.parrot.reader.Input;
 import es.ctic.parrot.reader.InputStreamInput;
 import es.ctic.parrot.reader.ReaderException;
 import es.ctic.parrot.reader.StringInput;
@@ -84,6 +86,8 @@ public class ServletParrot extends HttpServlet {
 			}
 		}
 		
+		String reportURL = req.getParameter("reportURL");
+		
 		try {
 			DocumentaryProject dp = new DocumentaryProject(locale);
 			
@@ -94,7 +98,16 @@ public class ServletParrot extends HttpServlet {
 			if (dp.getInputs().isEmpty()){
 				addUriInputs(dp, req);
 			}
-			
+
+			// Read a previous report
+			if (reportURL != null){
+                ParrotAppServ parrotAppServ = getParrotAppServ();
+                Collection<Input> inputs = parrotAppServ.getInputsFromExistingReport(reportURL);
+                dp.setPrologueURL(parrotAppServ.getPrologueURLFromExistingReport(reportURL));
+                dp.setAppendixURL(parrotAppServ.getAppendixURLFromExistingReport(reportURL));
+               	dp.addAllInput(inputs);
+			}
+
 			if (dp.getInputs().isEmpty()) {
 				forwardToForm(req, res);
 			} else {
@@ -118,8 +131,7 @@ public class ServletParrot extends HttpServlet {
 		    logger.error("While processing documentation", e);
 		    errors.addError("Error while processing documentation: " + e.getMessage());
 		    forwardToForm(req, res);
-		}		
-		catch (IOException e) {
+		} catch (IOException e) {
 		    logger.error("While generating documentation", e);
 		    errors.addError("I/O Error: " + e.getMessage());
 		    forwardToForm(req, res);

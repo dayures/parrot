@@ -20,7 +20,9 @@ public class DocumentaryProject {
     
     private final Collection<Input> inputs = new HashSet<Input>();
     private Locale locale;
-    
+    private String prologueURL;
+    private String appendixURL;
+
     /** Constructs a new Documentary project with the specified locale. 
      * @param locale A locale (language) to be set.
      */
@@ -35,6 +37,15 @@ public class DocumentaryProject {
      */
     public boolean addInput(Input input) {
         return inputs.add(input);
+    }
+    
+    /**
+     * Adds the specified collection of inputs to this set if it is not already present (optional operation).
+     * @param collection collection of inputs to be added.
+     * @return <code>true</code> if the collection of inputs has been added. 
+     */
+    public boolean addAllInput(Collection<Input> collection) {
+        return inputs.addAll(collection);
     }
     
     /**
@@ -59,6 +70,28 @@ public class DocumentaryProject {
 	 */
 	public Locale getLocale() {
 		return locale;
+	}
+
+	public void setPrologueURL(String prologueURL) {
+		this.prologueURL = prologueURL;
+	}
+
+	public String getPrologueURL() {
+		return prologueURL;
+	}
+
+	/**
+	 * @param appendixURL the appendixURL to set
+	 */
+	public void setAppendixURL(String appendixURL) {
+		this.appendixURL = appendixURL;
+	}
+
+	/**
+	 * @return the appendixURL
+	 */
+	public String getAppendixURL() {
+		return appendixURL;
 	}
 
 

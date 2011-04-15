@@ -1,5 +1,7 @@
 jQuery(document).ready(function(){
 	$('#header').corner();
+	$('#prologue').corner();
+	$('#appendix').corner();
 	$('.toc').corner();
     $('.details').corner();
     $('.vci').corner();

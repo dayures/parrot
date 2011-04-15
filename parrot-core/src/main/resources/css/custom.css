@@ -52,7 +52,7 @@ div.term > div{
    background-color: White;
 }
 
-div.toc{
+div.toc , div#prologue , div#appendix{
 	padding: 0em 1em 1em 1em;
 	border: solid #5674BC;
 	background-color: transparent;

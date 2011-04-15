@@ -1,5 +1,9 @@
 package es.ctic.parrot.docmodel;
 
+import java.io.IOException;
+import java.io.StringReader;
+import java.io.StringWriter;
+import java.net.URL;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -8,6 +12,23 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpression;
+import javax.xml.xpath.XPathFactory;
+
+import org.w3c.dom.NodeList;
+import org.xml.sax.EntityResolver;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
 
 import es.ctic.parrot.reader.Input;
 
@@ -29,7 +50,9 @@ public class Document {
     private final Set<RuleSetDetailView> ruleSetDetailViews = new HashSet<RuleSetDetailView>();
     private final Set<OntologyIndividualDetailView> ontologyIndividualDetailViews = new HashSet<OntologyIndividualDetailView>();
     private final Glossary glossary;
-    
+    private String prologueURL;
+    private String appendixURL;
+
     /**
      * Constructs a document using the given locale.
      * @param locale the locale.
@@ -180,7 +203,79 @@ public class Document {
 	public void setInputs(Collection<Input> inputs){
 		this.inputs.addAll(inputs);
 	}
-    
+
+	/**
+	 * @return the prologue
+	 */
+	public String getPrologueURL() {
+		return prologueURL;
+	}
+
+	/**
+	 * @param prologue the prologue to set
+	 */
+	public void setPrologueURL(String prologueURL) {
+		this.prologueURL = prologueURL;
+	}
+	
+	public String getPrologue(){
+		return getContentFromURL(getPrologueURL());
+	}
+	
+	/**
+	 * @param appendixURL the appendixURL to set
+	 */
+	public void setAppendixURL(String appendixURL) {
+		this.appendixURL = appendixURL;
+	}
+
+	/**
+	 * @return the appendixURL
+	 */
+	public String getAppendixURL() {
+		return appendixURL;
+	}
+	
+	public String getAppendix(){
+		return getContentFromURL(getAppendixURL());
+	}
+	
+	private String getContentFromURL(String URL){
+		
+	    try {
+			DocumentBuilderFactory domFactory = DocumentBuilderFactory.newInstance();
+			domFactory.setNamespaceAware(true);
+
+			DocumentBuilder builder = domFactory.newDocumentBuilder();
+			
+			builder.setEntityResolver(new EntityResolver() {
+			    public InputSource resolveEntity(String publicId, String systemId)
+			            throws SAXException, IOException {
+			            return new InputSource(new StringReader(""));
+			    }
+			});
+
+			String anchor = new URL(URL).getRef();
+
+			org.w3c.dom.Document doc = builder.parse(URL);
+
+			XPathFactory factory = XPathFactory.newInstance();
+			XPath xpath = factory.newXPath();
+			XPathExpression expr = xpath.compile("//*[@id='"+anchor+"']");
+
+			Object result = expr.evaluate(doc, XPathConstants.NODESET);
+			NodeList nodes = (NodeList) result;
+
+			TransformerFactory transFactory = TransformerFactory.newInstance();
+			Transformer transformer = transFactory.newTransformer();
+			StringWriter buffer = new StringWriter();
+			transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
+			transformer.transform(new DOMSource(nodes.item(0)), new StreamResult(buffer));
+			return buffer.toString();
+		} catch (Exception e){
+			return null; //FIXME ashame code
+		}
+	}
 }
 /**
  * Compares alphabetically by label of each <code>DetailView</code> 

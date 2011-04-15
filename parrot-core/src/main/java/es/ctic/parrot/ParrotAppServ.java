@@ -1,8 +1,18 @@
 package es.ctic.parrot;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Locale;
+
+import com.hp.hpl.jena.ontology.OntModel;
+import com.hp.hpl.jena.ontology.OntModelSpec;
+import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.rdf.model.NodeIterator;
+import com.hp.hpl.jena.rdf.model.RDFNode;
+import com.hp.hpl.jena.rdf.model.ResourceFactory;
 
 import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.DocumentableObjectRegister;
@@ -12,6 +22,7 @@ import es.ctic.parrot.generators.OutputGenerator.Profile;
 import es.ctic.parrot.reader.DocumentReader;
 import es.ctic.parrot.reader.Input;
 import es.ctic.parrot.reader.ReaderException;
+import es.ctic.parrot.reader.URLInput;
 import es.ctic.parrot.reader.jena.JenaOWLReader;
 import es.ctic.parrot.reader.rifle.RiflePSReader;
 import es.ctic.parrot.reader.rifle.RifleXmlReader;
@@ -70,7 +81,7 @@ public class ParrotAppServ {
 		readAndRegisterDocumentableObjects(dp.getInputs(), register);
 		resolveInternalReferences(register);
 		resolveCrossReferences(register);
-		Document document = transformToDocument(register.getDocumentableObjects(), dp.getLocale(), dp.getInputs());
+		Document document = transformToDocument(register.getDocumentableObjects(), dp.getLocale(), dp.getInputs(), dp.getPrologueURL(), dp.getAppendixURL());
 		outputGenerator.generateOutput(document, profile);
 	}
 	
@@ -133,10 +144,12 @@ public class ParrotAppServ {
      * @return a document to be presented by an output generator.
      * @throws TransformerException if a failed transformation operation occurs.
      */
-    private Document transformToDocument(Collection<DocumentableObject> documentableObjects, Locale locale, Collection<Input> inputs) throws TransformerException {
+    private Document transformToDocument(Collection<DocumentableObject> documentableObjects, Locale locale, Collection<Input> inputs, String prologueURL, String appendixURL) throws TransformerException {
         Document document = new Document(locale);
 		document.setTitle("Parrot"); // FIXME
 		document.setInputs(inputs);
+		document.setPrologueURL(prologueURL);
+		document.setAppendixURL(appendixURL);
         DetailsVisitor detailVisitor = new DetailsVisitor(document, locale);
         GlossaryVisitor glossaryVisitor = new GlossaryVisitor(document, locale);
 		for (DocumentableObject documentableObject : documentableObjects) {
@@ -247,6 +260,145 @@ public class ParrotAppServ {
 	 */
 	private boolean isRifPSReadable(String mimetype){
 		 return "text/x-rif-ps".equals(mimetype) ? true : false;
+	}
+
+	public Collection<Input> getInputsFromExistingReport(String reportURL) {
+	    OntModel ontModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM); // by default it is OntModelSpec.OWL_DL_MEM_RDFS_INF
+	    ontModel.setStrictMode(false);
+	    ontModel.getDocumentManager().setProcessImports(false); // do NOT the imports
+	    Collection<Input> inputs = new HashSet<Input>();
+	    
+		try {
+			// Init java-rdfa in jena
+			Class.forName("net.rootdev.javardfa.jena.RDFaReader");
+
+			Input input = new URLInput(new URL(reportURL), "application/xhtml+xml");
+			String base = input.getBase();
+			ontModel.read(input.openReader(), base == null ? "http://example.org/base#" : base, "XHTML");
+
+			
+//	    #if ($input.getMimeType() == "application/rdf+xml")<link rel="parrot:documentsRDFOWLOntology" href="$input.getBase()" />#end
+//	    #if ($input.getMimeType() == "application/owl+xml")<link rel="parrot:documentsRDFOWLOntology" href="$input.getBase()" />#end
+//	    #if ($input.getMimeType() == "application/xml")<link rel="parrot:documentsRDFOWLOntology" href="$input.getBase()" />#end
+//	    #if ($input.getMimeType() == "text/n3")<link rel="parrot:documentsN3OWLOntology" href="$input.getBase()" />#end
+//	    #if ($input.getMimeType() == "application/xhtml+xml")<link rel="parrot:documentsXHTMLRDFaOntology" href="$input.getBase()" />#end
+//	    #if ($input.getMimeType() == "text/html")<link rel="parrot:documentsHTMLRDFaOntology" href="$input.getBase()" />#end
+//	    #if ($input.getMimeType() == "application/rif+xml")<link rel="parrot:documentsRIFXMLDocument" href="$input.getBase()" />#end
+//	    #if ($input.getMimeType() == "text/x-rif-ps")<link rel="parrot:documentsRIFPSDocument" href="$input.getBase()" />#end
+
+			
+			NodeIterator iterator = ontModel.listObjectsOfProperty(ResourceFactory.createProperty("http://vocab.ctic.es/parrot#documents"));
+			for (RDFNode node : iterator.toList()){
+				inputs.add(new URLInput(new URL(node.asResource().getURI())));
+			}
+
+			iterator = ontModel.listObjectsOfProperty(ResourceFactory.createProperty("http://vocab.ctic.es/parrot#documentsRDFOWLOntology"));
+			for (RDFNode node : iterator.toList()){
+				inputs.add(new URLInput(new URL(node.asResource().getURI()),"application/owl+xml"));
+			}
+
+			iterator = ontModel.listObjectsOfProperty(ResourceFactory.createProperty("http://vocab.ctic.es/parrot#documentsN3OWLOntology"));
+			for (RDFNode node : iterator.toList()){
+				inputs.add(new URLInput(new URL(node.asResource().getURI()),"text/n3"));
+			}
+
+			iterator = ontModel.listObjectsOfProperty(ResourceFactory.createProperty("http://vocab.ctic.es/parrot#documentsHTMLRDFaOntology"));
+			for (RDFNode node : iterator.toList()){
+				inputs.add(new URLInput(new URL(node.asResource().getURI()),"application/xhtml+xml"));
+			}
+
+			iterator = ontModel.listObjectsOfProperty(ResourceFactory.createProperty("http://vocab.ctic.es/parrot#documentsXHTMLRDFaOntology"));
+			for (RDFNode node : iterator.toList()){
+				inputs.add(new URLInput(new URL(node.asResource().getURI()),"text/html"));
+			}
+
+			iterator = ontModel.listObjectsOfProperty(ResourceFactory.createProperty("http://vocab.ctic.es/parrot#documentsRIFXMLDocument"));
+			for (RDFNode node : iterator.toList()){
+				inputs.add(new URLInput(new URL(node.asResource().getURI()),"application/rif+xml"));
+			}
+			
+			iterator = ontModel.listObjectsOfProperty(ResourceFactory.createProperty("http://vocab.ctic.es/parrot#documentsRIFPSDocument"));
+			for (RDFNode node : iterator.toList()){
+				inputs.add(new URLInput(new URL(node.asResource().getURI()),"text/x-rif-ps"));
+			}
+			
+			return inputs;
+			
+		} catch (MalformedURLException e) {
+			throw new RuntimeException(e);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		} catch (ReaderException e) {
+			throw new RuntimeException(e);
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException(e);
+		}
+
+	}
+
+	public String getPrologueURLFromExistingReport(String reportURL) {
+	    OntModel ontModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM); // by default it is OntModelSpec.OWL_DL_MEM_RDFS_INF
+	    ontModel.setStrictMode(false);
+	    ontModel.getDocumentManager().setProcessImports(false); // do NOT the imports
+	    
+		try {
+			// Init java-rdfa in jena
+			Class.forName("net.rootdev.javardfa.jena.RDFaReader");
+
+			Input input = new URLInput(new URL(reportURL), "application/xhtml+xml");
+			String base = input.getBase();
+			ontModel.read(input.openReader(), base == null ? "http://example.org/base#" : base, "XHTML");
+
+			NodeIterator iterator = ontModel.listObjectsOfProperty(ResourceFactory.createProperty("http://vocab.ctic.es/parrot#hasPrologue"));
+			
+			for (RDFNode node : iterator.toList()){
+				return node.asResource().getURI();
+			}
+			
+			return null;
+			
+		} catch (MalformedURLException e) {
+			throw new RuntimeException(e);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		} catch (ReaderException e) {
+			throw new RuntimeException(e);
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException(e);
+		}
+
+	}
+
+	public String getAppendixURLFromExistingReport(String reportURL) {
+	    OntModel ontModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM); // by default it is OntModelSpec.OWL_DL_MEM_RDFS_INF
+	    ontModel.setStrictMode(false);
+	    ontModel.getDocumentManager().setProcessImports(false); // do NOT the imports
+	    
+		try {
+			// Init java-rdfa in jena
+			Class.forName("net.rootdev.javardfa.jena.RDFaReader");
+
+			Input input = new URLInput(new URL(reportURL), "application/xhtml+xml");
+			String base = input.getBase();
+			ontModel.read(input.openReader(), base == null ? "http://example.org/base#" : base, "XHTML");
+
+			NodeIterator iterator = ontModel.listObjectsOfProperty(ResourceFactory.createProperty("http://vocab.ctic.es/parrot#hasAppendix"));
+			
+			for (RDFNode node : iterator.toList()){
+				return node.asResource().getURI();
+			}
+			
+			return null;
+			
+		} catch (MalformedURLException e) {
+			throw new RuntimeException(e);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		} catch (ReaderException e) {
+			throw new RuntimeException(e);
+		} catch (ClassNotFoundException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 }

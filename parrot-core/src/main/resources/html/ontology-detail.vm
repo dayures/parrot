@@ -18,7 +18,8 @@
   #set( $ti = false )
 #end
 
-#if ( ($element.isDefinedBy) )
+#if ( ($element.isDefinedBy) ||
+	  (!$element.defines.isEmpty())	)
   #set( $inuse = true )
 #else
   #set( $inuse = false )
@@ -80,10 +81,17 @@
   	#if($element.isDefinedBy)
 		<p>This ontology is defined by <span class="parrot-element-ref parrot-${element.isDefinedBy.kindString}-ref"><a href="#$element.isDefinedBy.LocalName">$element.isDefinedBy.Label</a></span></p>
 	#end
+
+    #if(!$element.defines.isEmpty())
+		<p>This ontology defines elements such as
+		#foreach($reference in $element.defines)
+	    	<span class="parrot-element-ref parrot-${reference.kindString}-ref"><a href="#$reference.LocalName">$reference.Label</a></span>
+	    #end
+	    </p>
+    #end  
   </div>
   #end
   
-
   #if ( $otherinfo )
   	#parse("html/documentation.vm")
   #end

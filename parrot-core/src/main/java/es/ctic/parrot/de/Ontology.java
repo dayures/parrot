@@ -1,5 +1,7 @@
 package es.ctic.parrot.de;
 
+import java.util.Collection;
+
 
 /**
  * An ontology to be documented by Parrot. 
@@ -22,5 +24,11 @@ public interface Ontology extends DocumentableOntologicalObject {
 	 * @return the preferred namespace.
 	 */
 	public abstract String getPreferredNamespace();
+
+	/**
+	 * Returns the collection of documentable object references.
+	 * @return the collection of documentable object references.
+	 */
+	public abstract Collection<DocumentableObject> getDefines();
 	
 }

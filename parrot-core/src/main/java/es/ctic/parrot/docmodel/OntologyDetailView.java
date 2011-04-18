@@ -1,5 +1,6 @@
 package es.ctic.parrot.docmodel;
 
+import java.util.Collection;
 import java.util.Locale;
 
 import org.apache.log4j.Logger;
@@ -20,6 +21,7 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 
 	private String preferredPrefix;
 	private String preferredNamespace;
+	private Collection<DocumentableObjectReference> defines;
 
 
 	/**
@@ -94,8 +96,24 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 		details.setIsDefinedBy(DocumentableObjectReference.createReference(object.getIsDefinedBy(),locale));
 		details.setDeprecated(object.isDeprecated());
 		
+		details.setDefines(DocumentableObjectReference.createReferences(object.getDefines(),locale));
+		
 		return details;
 
     }
+
+	/**
+	 * @param defines the defines to set
+	 */
+	private void setDefines(Collection<DocumentableObjectReference> defines) {
+		this.defines = defines;
+	}
+
+	/**
+	 * @return the defines
+	 */
+	public Collection<DocumentableObjectReference> getDefines() {
+		return defines;
+	}
 
 }

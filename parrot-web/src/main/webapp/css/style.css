@@ -338,7 +338,7 @@ fieldset{
 	background-color: #FAF9AF;
 	color: #333;
 	padding: 0.9em 1.7em;
-	margin: 1em auto;
+	margin: 1em 2em;
 	font: 1.5em/150% "palatino", "georgia", "times new roman", serif;
 	border: 3px solid #CCC;
 
@@ -385,3 +385,6 @@ div#options{
 }
 
 
+img.help {
+	vertical-align: bottom;
+}

@@ -58,6 +58,8 @@ public class ParrotAppServ {
 	 *  <li><code>text/html</code></li>
 	 *  <li><code>text/n3</code></li>
 	 *  <li><code>text/rdf+n3</code></li>
+  	 * 	<li>text/x-rif-ps</li>
+	 * 	<li>application/rif+xml</li>
 	 * </ul>
 	 * 
      */
@@ -141,6 +143,9 @@ public class ParrotAppServ {
      * Generates an internal document. This document could be pass later to an output generator in order to generate the final documentation. 
      * @param documentableObjects a collection of documentable elements.
      * @param locale a locale used for customize the output.
+     * @param inputs a collection of inputs where the documentable objects come from.
+     * @param prologueURL the URL where is the prologue.
+     * @param appendixURL the URL where is the appendix.
      * @return a document to be presented by an output generator.
      * @throws TransformerException if a failed transformation operation occurs.
      */
@@ -253,7 +258,7 @@ public class ParrotAppServ {
 	 * Returns true if the MIME type could be read by an RIF PS Reader.
 	 * Nowadays, the supported MIME type is:
 	 * <ul>
-	 * 	<li>application/rif+xml</li>
+	 * 	<li>text/x-rif-ps</li>
 	 * </ul 
 	 * @param mimetype the MIME type.
 	 * @return true if the MIME type is supported.
@@ -262,6 +267,11 @@ public class ParrotAppServ {
 		 return "text/x-rif-ps".equals(mimetype) ? true : false;
 	}
 
+	/**
+	 * Returns a collection of inputs obtained from an existing report (using RDFa).
+	 * @param reportURL the URL where is the report.
+	 * @return a collection of inputs.
+	 */
 	public Collection<Input> getInputsFromExistingReport(String reportURL) {
 	    OntModel ontModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM); // by default it is OntModelSpec.OWL_DL_MEM_RDFS_INF
 	    ontModel.setStrictMode(false);
@@ -336,6 +346,11 @@ public class ParrotAppServ {
 
 	}
 
+	/**
+	 * Returns the URL where is the prologue obtained from an existing report (using RDFa).
+	 * @param reportURL the URL where is the report.
+	 * @return the URL where is the prologue or <code>null</code> if there is no prologue URL.
+	 */
 	public String getPrologueURLFromExistingReport(String reportURL) {
 	    OntModel ontModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM); // by default it is OntModelSpec.OWL_DL_MEM_RDFS_INF
 	    ontModel.setStrictMode(false);
@@ -369,6 +384,11 @@ public class ParrotAppServ {
 
 	}
 
+	/**
+	 * Returns the URL where is the appendix obtained from an existing report (using RDFa).
+	 * @param reportURL the URL where is the report.
+	 * @return the URL where is the appendix or <code>null</code> if there is no appendix URL.
+	 */
 	public String getAppendixURLFromExistingReport(String reportURL) {
 	    OntModel ontModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM); // by default it is OntModelSpec.OWL_DL_MEM_RDFS_INF
 	    ontModel.setStrictMode(false);

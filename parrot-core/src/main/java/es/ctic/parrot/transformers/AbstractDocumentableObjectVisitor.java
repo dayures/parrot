@@ -109,7 +109,7 @@ public class AbstractDocumentableObjectVisitor implements
      * @throws TransformerException if a failed transformation operation occurs.
      * @return always null.
      */
-    public Object visit(Dataset dataset) throws TransformerException{
+    public Object visit(Dataset object) throws TransformerException{
         // default implementation: do nothing
 		return null;        
     }

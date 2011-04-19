@@ -42,37 +42,37 @@ public class GlossaryVisitor extends AbstractDocumentableObjectVisitor {
 
     /**
      * Visits the <code>class</code>.
-     * @param object the class.
+     * @param clazz the class.
      *  
      */
     @Override
-    public Object visit(OntologyClass object) throws TransformerException {
-        return visitDocumentableObject(object);
+    public Object visit(OntologyClass clazz) throws TransformerException {
+        return visitDocumentableObject(clazz);
     }
 
     /**
      * Visits the <code>property</code>.
-     * @param object the property.
+     * @param property the property.
      *  
      */
     @Override
-    public Object visit(OntologyProperty object) throws TransformerException {
-        return visitDocumentableObject(object);
+    public Object visit(OntologyProperty property) throws TransformerException {
+        return visitDocumentableObject(property);
     }
 
     /**
      * Visits the <code>rule</code>.
-     * @param object the rule.
+     * @param rule the rule.
      *  
      */
     @Override
-    public Object visit(Rule object) throws TransformerException {
-        return visitDocumentableObject(object);
+    public Object visit(Rule rule) throws TransformerException {
+        return visitDocumentableObject(rule);
     }
 
     /**
      * Visits the <code>ontology</code>.
-     * @param object the ontology.
+     * @param ontology the ontology.
      *  
      */
     @Override
@@ -82,7 +82,7 @@ public class GlossaryVisitor extends AbstractDocumentableObjectVisitor {
 
     /**
      * Visits the <code>individual</code>.
-     * @param object the individual.
+     * @param ontologyIndividual the individual.
      *  
      */
     @Override
@@ -93,7 +93,7 @@ public class GlossaryVisitor extends AbstractDocumentableObjectVisitor {
 
     /**
      * Visits the <code>rule set</code>.
-     * @param object the rule set.
+     * @param ruleSet the rule set.
      *  
      */
     @Override

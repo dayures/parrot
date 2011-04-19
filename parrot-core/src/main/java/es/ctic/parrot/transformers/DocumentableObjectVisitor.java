@@ -25,49 +25,49 @@ public interface DocumentableObjectVisitor {
 
 	/**
      * Visits the given <code>ontology</code>.
-     * @param object the <code>ontology</code> to visit.
+     * @param ontology the <code>ontology</code> to visit.
      * @throws TransformerException if a failed transformation operation occurs.
      */
-	public abstract Object visit(Ontology object) throws TransformerException;
+	public abstract Object visit(Ontology ontology) throws TransformerException;
 	
     /**
      * Visits the given <code>class</code>.
-     * @param object the <code>class</code> to visit.
+     * @param clazz the <code>class</code> to visit.
      * @throws TransformerException if a failed transformation operation occurs.
      */
-	public abstract Object visit(OntologyClass object) throws TransformerException;
+	public abstract Object visit(OntologyClass clazz) throws TransformerException;
 
     /**
      * Visits the given <code>property</code>.
-     * @param object the <code>property</code> to visit.
+     * @param property the <code>property</code> to visit.
      * @throws TransformerException if a failed transformation operation occurs.
      */
-	public abstract Object visit(OntologyProperty object) throws TransformerException;
+	public abstract Object visit(OntologyProperty property) throws TransformerException;
 
     /**
      * Visits the given <code>individual</code>.
-     * @param object the <code>individual</code> to visit.
+     * @param individual the <code>individual</code> to visit.
      * @throws TransformerException if a failed transformation operation occurs.
      */
-	public abstract Object visit(OntologyIndividual object) throws TransformerException;
+	public abstract Object visit(OntologyIndividual individual) throws TransformerException;
 
 	/**
      * Visits the given <code>rule</code>.
-     * @param object the <code>rule</code> to visit.
+     * @param rule the <code>rule</code> to visit.
      * @throws TransformerException if a failed transformation operation occurs.
      */
-	public abstract Object visit(Rule object) throws TransformerException;
+	public abstract Object visit(Rule rule) throws TransformerException;
 
     /**
      * Visits the given <code>rule set</code>.
-     * @param object the <code>rule set</code> to visit.
+     * @param ruleset the <code>rule set</code> to visit.
      * @throws TransformerException if a failed transformation operation occurs.
      */
-	public abstract Object visit(RuleSet object) throws TransformerException;
+	public abstract Object visit(RuleSet ruleset) throws TransformerException;
 	
     /**
      * Visits the given <code>data set</code>.
-     * @param object the <code>data set</code> to visit.
+     * @param dataset the <code>data set</code> to visit.
      * @throws TransformerException if a failed transformation operation occurs.
      */
     public abstract Object visit(Dataset dataset) throws TransformerException;

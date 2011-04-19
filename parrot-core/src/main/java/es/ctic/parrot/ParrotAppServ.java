@@ -58,8 +58,8 @@ public class ParrotAppServ {
 	 *  <li><code>text/html</code></li>
 	 *  <li><code>text/n3</code></li>
 	 *  <li><code>text/rdf+n3</code></li>
-  	 * 	<li>text/x-rif-ps</li>
-	 * 	<li>application/rif+xml</li>
+  	 * 	<li><code>text/x-rif-ps</code></li>
+	 * 	<li><code>application/rif+xml</code></li>
 	 * </ul>
 	 * 
      */
@@ -259,7 +259,7 @@ public class ParrotAppServ {
 	 * Nowadays, the supported MIME type is:
 	 * <ul>
 	 * 	<li>text/x-rif-ps</li>
-	 * </ul 
+	 * </ul>
 	 * @param mimetype the MIME type.
 	 * @return true if the MIME type is supported.
 	 */

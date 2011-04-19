@@ -194,52 +194,74 @@ public class Document {
     }
 
 	/**
-	 * @return the inputs
+	 * Returns a collection of inputs.
+	 * @return a collection of inputs.
 	 */
 	public Collection<Input> getInputs() {
 		return inputs;
 	}
 	
+	/**
+	 * Sets a collection of inputs.
+	 * @param inputs a collection of inputs to set.
+	 */
 	public void setInputs(Collection<Input> inputs){
 		this.inputs.addAll(inputs);
 	}
 
 	/**
-	 * @return the prologue
+	 * Returns the URL where is the prologue.
+	 * @return the URL where is the prologue.
 	 */
 	public String getPrologueURL() {
 		return prologueURL;
 	}
 
 	/**
-	 * @param prologue the prologue to set
+	 * Sets the URL where is the prologue.
+	 * @param prologueURL the URL where is the prologue.
 	 */
 	public void setPrologueURL(String prologueURL) {
 		this.prologueURL = prologueURL;
 	}
 	
+	/**
+	 * Returns the content of the prologue.
+	 * @return the content of the prologue.
+	 */
 	public String getPrologue(){
 		return getContentFromURL(getPrologueURL());
 	}
 	
 	/**
-	 * @param appendixURL the appendixURL to set
+	 * Sets the URL where is the appendix.
+	 * @param appendixURL the URL where is the appendix.
 	 */
 	public void setAppendixURL(String appendixURL) {
 		this.appendixURL = appendixURL;
 	}
 
 	/**
-	 * @return the appendixURL
+	 * Returns the URL where is the appendix.
+	 * @return the URL where is the appendix.
 	 */
 	public String getAppendixURL() {
 		return appendixURL;
 	}
 	
+	/**
+	 * Returns the content of the appendix.
+	 * @return the content of the appendix.
+	 */
 	public String getAppendix(){
 		return getContentFromURL(getAppendixURL());
 	}
 	
+	/**
+	 * Returns the XHTML content of a given URI (including the fragment part).
+	 * @param URL the URL.
+	 * @return the XHTML content of a given URI (including the fragment part).
+	 */
 	private String getContentFromURL(String URL){
 		
 	    try {

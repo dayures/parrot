@@ -32,13 +32,17 @@ public class HtmlOutputGenerator implements OutputGenerator {
      * Constructs a generator of <code>HTML</code> content
      * @param out Stream where the output will be written.
      * @param template The template for the output report.
-     * @param profile The profile of the user that will read the report.
      */
     public HtmlOutputGenerator(OutputStream out, InputStream template) {
         this.out = out;
         this.template = template;
     }
 
+    /**
+     * Generates an output.
+     * @param document The source document.
+     * @param profile The profile of the user that will read the report.
+     */
     public void generateOutput(Document document, Profile profile) {
         VelocityContext ctx = new VelocityContext();
         ctx.put(DOCUMENT, document);

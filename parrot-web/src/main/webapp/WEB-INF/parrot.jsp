@@ -227,12 +227,12 @@
 					</form>
 				</div> <!-- tab4 -->
 
+
+		</div> 
 		    <div id="tipOfTheDay">
 		    <span >Did you know ...</span>
 		    </div>
-		    <p>Do you need <a href="help.jsp">help</a>?</p>
-		</div> 
-
+		    <p><img src="images/help.png" alt="help" class="help" />Do you need <a href="help.jsp">help</a>?</p>
 	</div>    
 
     <div id="footer"> 

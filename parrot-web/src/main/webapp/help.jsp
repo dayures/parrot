@@ -469,6 +469,7 @@ supported by Parrot.</p>
 </table>
 
 <h2>Tips</h2>
+<h3>Description order</h3>
 <p>If you want to add a <strong>description</strong> to an element, the preferred property order to set it is:</p>
 <ol>
   <li>http://purl.org/dc/terms/description</li>
@@ -476,6 +477,7 @@ supported by Parrot.</p>
   <li>http://www.w3.org/2000/01/rdf-schema#comment</li>
 </ol>
 
+<h3>Label order</h3>
 <p>If you want to add a <strong>label</strong> to an element, the preferred property order to set it is:</p>
 <ol>
   <li>http://www.w3.org/2008/05/skos-xl#prefLabel</li>
@@ -486,7 +488,25 @@ supported by Parrot.</p>
   <li>http://www.w3.org/2000/01/rdf-schema#label</li>
 </ol>
 
-<p></p>
+
+  <h3>Button RDFa</h3>
+  <p>You can <strong>create a report from a webpage with RDFa</strong>. Just add a button in your webpage in order to create a link to the Parrot report.</p>
+  <img src="images/button-referer.png" alt="Document with Parrot"/>
+  <p>
+   We encourage you to use the XHTML code below (or its HTML equivalent),
+   but you may use a different code to integrate the icon within your web page
+   as long as the icon is used as a link to document the Web page it is in.
+   Sample code is as follows:
+  </p> 
+  <pre> 
+   &lt;p&gt;
+      &lt;a href="http://ontorule-project.eu/parrot?referer=true"&gt;&lt;img
+          src="http://ontorule-project.eu/parrot/images/button.png"
+          alt="Document with Parrot" /&gt;&lt;/a&gt;
+    &lt;/p&gt;
+  </pre> 
+   
+
 <div id="footer">
 <p id="logo"><a href="http://www.fundacionctic.org/"><img src="images/ctic.png"
 alt="Fundacion CTIC"/></a> <a href="http://ontorule-project.eu"><img

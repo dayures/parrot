@@ -57,6 +57,7 @@ public class ServletParrot extends HttpServlet {
 	}
 
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		
 		ErrorBuffer errors = new ErrorBuffer();
 		List<String> advices = new ArrayList<String>();
 		req.setAttribute(ERRORS_GENERAL, errors.getErrorsNotAssociated());
@@ -94,7 +95,9 @@ public class ServletParrot extends HttpServlet {
 			addFileUploadInput(dp, req);
 			
 			addDirectInput(dp, req);
-			
+
+			addRefererInput(dp, req);
+
 			if (dp.getInputs().isEmpty()){
 				addUriInputs(dp, req);
 			}
@@ -147,6 +150,14 @@ public class ServletParrot extends HttpServlet {
 		}
 	}
 
+
+	private void addRefererInput(DocumentaryProject dp, HttpServletRequest req) throws MalformedURLException, IOException, ReaderException {
+		String referer = req.getParameter("referer");
+		if ( referer != null && referer.toLowerCase().equals("true")){
+			dp.addInput(new URLInput(new URL(req.getHeader("Referer"))));
+		}
+		
+	}
 
 	private void forwardToForm(HttpServletRequest req, HttpServletResponse res)
 	throws ServletException, IOException {

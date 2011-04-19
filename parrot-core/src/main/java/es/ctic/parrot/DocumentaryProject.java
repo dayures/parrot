@@ -72,23 +72,33 @@ public class DocumentaryProject {
 		return locale;
 	}
 
+	/**
+	 * Set the URL where is the prologue.
+	 * @param prologueURL the URL where is the prologue.
+	 */
 	public void setPrologueURL(String prologueURL) {
 		this.prologueURL = prologueURL;
 	}
 
+	/**
+	 * Returns the URL where is the prologue.
+	 * @return the URL where is the prologue.
+	 */
 	public String getPrologueURL() {
 		return prologueURL;
 	}
 
 	/**
-	 * @param appendixURL the appendixURL to set
+	 * Set the URL where is the appendix.
+	 * @param appendixURL the URL where is the appendix.
 	 */
 	public void setAppendixURL(String appendixURL) {
 		this.appendixURL = appendixURL;
 	}
 
 	/**
-	 * @return the appendixURL
+	 * Returns the URL where is the appendix.
+	 * @return the URL where is the appendix.
 	 */
 	public String getAppendixURL() {
 		return appendixURL;

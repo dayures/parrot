@@ -22,6 +22,8 @@ public class DocumentaryProject {
     private Locale locale;
     private String prologueURL;
     private String appendixURL;
+    private String reportURL;
+
 
     /** Constructs a new Documentary project with the specified locale. 
      * @param locale A locale (language) to be set.
@@ -104,5 +106,20 @@ public class DocumentaryProject {
 		return appendixURL;
 	}
 
+	/**
+	 * Sets the report URL.
+	 * @param reportURL the report URL to set.
+	 */
+	public void setReportURL(String reportURL) {
+		this.reportURL = reportURL;
+	}
 
+	/**
+ 	 * Returns the report URL.
+	 * @return the report URL.
+	 */
+	public String getReportURL() {
+		return reportURL;
+	}
+	
 }

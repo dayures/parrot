@@ -220,7 +220,14 @@
 				<div id="tabs-4"> 
 		        	<h2>Existing report</h2> 
 					<form method="get" action="">
-					<label for="reportURL" title="URL of an existing Parrot report" class="uri">URL: </label><input id="reportURL" name="reportURL" value="" type="text" size="100" />
+					<c:choose>  
+						<c:when test='${empty param.reportURL}'>
+							<label for="reportURL" title="URL of an existing Parrot report" class="uri">URL: </label><input id="reportURL" name="reportURL" value="" type="text" size="100" />
+						</c:when>
+						<c:otherwise>
+							<label for="reportURL" title="URL of an existing Parrot report" class="uri">URL: </label><input id="reportURL" name="reportURL" value="<c:out value="${param.reportURL}" />" type="text" size="100" />
+						</c:otherwise>
+					</c:choose>
 					<div class="buttons">
 						<button type="submit" class="positive"><img src="images/tick.png" alt=""/>Generate documentation</button>
 					</div>
@@ -375,6 +382,16 @@ jQuery(document).ready(function(){
 ]]>
 </script>
 <script type="text/javascript" src="javascript/scripts.js"></script>
+
+<c:if test='${!empty param.reportURL}'>
+<script type="text/javascript">
+<![CDATA[ 
+jQuery(document).ready(function(){
+	$("#tabs").tabs("select", 3);
+});
+]]>         
+</script>
+</c:if>
 
 </body> 
 

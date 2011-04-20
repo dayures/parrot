@@ -52,6 +52,7 @@ public class Document {
     private final Glossary glossary;
     private String prologueURL;
     private String appendixURL;
+    private String reportURL;
 
     /**
      * Constructs a document using the given locale.
@@ -297,6 +298,22 @@ public class Document {
 		} catch (Exception e){
 			return null; //FIXME ashame code
 		}
+	}
+
+	/**
+	 * Sets the report URL.
+	 * @param reportURL the report URL to set.
+	 */
+	public void setReportURL(String reportURL) {
+		this.reportURL = reportURL;
+	}
+
+	/**
+ 	 * Returns the report URL.
+	 * @return the report URL.
+	 */
+	public String getReportURL() {
+		return reportURL;
 	}
 }
 /**

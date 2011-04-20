@@ -218,7 +218,7 @@
 				</div> <!--  /tab3 -->
 				
 				<div id="tabs-4"> 
-		        	<h2>Existing report</h2> 
+		        	<h2>by existing report</h2> 
 					<form method="get" action="">
 					<c:choose>  
 						<c:when test='${empty param.reportURL}'>

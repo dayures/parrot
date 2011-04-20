@@ -1,6 +1,6 @@
 <parrot>
 	<tip>Parrot documents ontologies expressed in various formats (RDF/XML, N3, RDFa).</tip>
-	<tip>Parrot documents rules expressed in various formats ()RIF/XML and RIF PS).</tip>
+	<tip>Parrot documents rules expressed in various formats (RIF/XML and RIF PS).</tip>
 	<tip>There is a &lt;a href=&quot;/help.jsp&quot;&gt;help page&lt;/a&gt; to know the supported items by Parrot.</tip>
 	<tip>Parrot allows to upload a document for documentation.</tip>
 	<tip>Parrot allows to enter directly the Markup to document.</tip>

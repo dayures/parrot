@@ -91,7 +91,8 @@
 								<option value="text/html">It is a HTML+RDFa document</option>
 								<option value="application/rif+xml">It is a RIF XML document</option>
 								<option value="text/x-rif-ps">It is a RIF PS document</option>
-							</select>	 
+							</select>
+							<span class="removeURI">remove</span>
 							<span class="uriHint">(for example: <tt id="example">http://ontorule-project.eu/resources/steel-30.owl</tt>)</span>
 							</p>
 						</c:otherwise>

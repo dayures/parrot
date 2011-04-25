@@ -48,10 +48,10 @@
 		        <li><a href="#tabs-1">by URI</a></li> 
 		        <li><a href="#tabs-2">by direct input</a></li> 
 		        <li><a href="#tabs-3">by file upload</a></li>
-		        <li><a href="#tabs-4">Existing report</a></li>  
+		        <li><a href="#tabs-4">by existing report</a></li>  
 		    </ul>            
 		        <div id="tabs-1"> 
-		        	<h2>By URI</h2> 
+		        	<h2>by URI</h2> 
 					<form method="get" action="">
 		        	<c:choose>
     					<c:when test='${not empty paramValues.documentUri}'>
@@ -144,7 +144,7 @@
 		         -->
 				
 			        <div id="tabs-2"> 
-			        	<h2>By direct input</h2> 
+			        	<h2>by direct input</h2> 
 						<form method="post" action="">
 			        	<p class="direct-input"><label title="Text of the document" for="documentText" class="text">Enter your document:</label><br />
 			        	<textarea id="documentText" name="documentText" cols="150" rows="15" style="width:80%"><c:if test='${not empty param.documentText}'><c:out value="${param.documentText}" escapeXml="true"/></c:if></textarea></p>
@@ -195,7 +195,7 @@
 		        	 -->
 
 		        <div id="tabs-3"> 
-		        	<h2>By file upload</h2> 
+		        	<h2>by file upload</h2> 
 					<form method="post" action="" enctype="multipart/form-data">
 						<p>
 						<label title="File to be documented" for="file">File: </label><input type="file" name="datafile" size="40"/>

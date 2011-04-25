@@ -124,15 +124,6 @@ function example() {
 	node.onclick = function() { document.getElementById("documentUri").value=this.innerHTML; };
 }
 
-function cleanInputs() {
-    var inputs = new Array("documentUri");
-    for (var i=0; i<inputs.length; i++) {
-        var input = document.getElementById(inputs[i]);
-        input.onfocus = function() { if (this.value=='http://') { this.value=''; } };
-        input.onblur = function() { if (this.value=='') {this.value='http://'; } };
-    }
-}
-
 function addLoadEvent(func) {
 	//by Simon Willison:
 	//   http://simon.incutio.com/archive/2004/05/26/addLoadEvent
@@ -167,6 +158,5 @@ function addRemoveLink() {
 }
 
 addLoadEvent(example);
-addLoadEvent(cleanInputs);
 addLoadEvent(addRemoveLink);
 

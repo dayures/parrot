@@ -22,7 +22,15 @@ jQuery(document).ready(function(){
         $('#tabs-3 form p:first').clone().insertBefore($(this));
         $('#tabs-3 form p:last').html($('#tabs-3 form p:last').html()); // clear input file
     	return false;
-    }); 
+    });
+    
+    $('#example').click(function() {
+    	$('#documentUri').val($('#example').html()); 
+    });
+    
+    $('.removeURI').click(function() {
+    	$(this).parent().remove();
+    });
 
     $('#addURI').button({
         icons: {
@@ -115,48 +123,6 @@ jQuery(document).ready(function(){
     	});
 });
 
-/*
- From  vapour.sf.net scripts
-*/
 
-function example() {
-	var node = document.getElementById("example");
-	node.onclick = function() { document.getElementById("documentUri").value=this.innerHTML; };
-}
 
-function addLoadEvent(func) {
-	//by Simon Willison:
-	//   http://simon.incutio.com/archive/2004/05/26/addLoadEvent
-	var oldonload = window.onload;
-	if (typeof window.onload != 'function') {
-		window.onload = func;
-	}
-	else {
-		window.onload = function() {
-			oldonload();
-			func();
-		};
-	}
-}
-
-function addRemoveLink() {
-	var nodes = document.getElementsByName("mimetype");
-
-	for (x=0;x<nodes.length;x++){
-	    var span = document.createElement("span");
-	    span.setAttribute("class", "removeURI");
-	    text = document.createTextNode("remove");
-	    span.appendChild(text);
-		
-	    span.onclick = function() {
-	    	var parent = this.parentNode;
-	    	var grandparent = parent.parentNode;
-	    	grandparent.removeChild(parent);
-	    };
-	    nodes[x].parentNode.insertBefore(span, nodes[x].nextSibling);
-	}
-}
-
-addLoadEvent(example);
-addLoadEvent(addRemoveLink);
 

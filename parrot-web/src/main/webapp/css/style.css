@@ -116,6 +116,10 @@ label.text{
   cursor:pointer;
 }
 
+p#addURI{
+	margin-top: 0em;
+}
+
 .removeURI{
   margin-left:0.5em;
   padding:0.3em;

@@ -186,7 +186,7 @@ div#header {
   vertical-align: top;
   display: block;
   margin: 0.3em 10em 0em 10em;
-  background-image: url(../images/ctic-white.png);
+  background-image: url(images/ctic-white.png);
   background-repeat: no-repeat;
   background-position: bottom right;
   border: 1px solid white;
@@ -291,19 +291,19 @@ h1 a[href]:hover { background-color: transparent; }
 }
 
 .date{
-	background-image: url("../images/date.png");
+	background-image: url("images/date.png");
 }
 
 .creator{
-	background-image: url("../images/user.png");
+	background-image: url("images/user.png");
 }
 
 .contributor{
-	background-image: url("../images/user_gray.png");
+	background-image: url("images/user_gray.png");
 }
 
 .publisher{
-	background-image: url("../images/user_suit.png");
+	background-image: url("images/user_suit.png");
 }
 
 /** end metadata icons ***/

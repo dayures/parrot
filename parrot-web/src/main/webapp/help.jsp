@@ -49,7 +49,7 @@ currently supported by Parrot.</p>
     <tr>
       <td><em>dc:contributor</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>A contributor to the ontological element: a person or an organization.
         Recommended best practice is to use a FOAF profile to describe a
         contributor, although a literal is also allowed.</td>
@@ -57,7 +57,7 @@ currently supported by Parrot.</p>
     <tr>
       <td><em>dc:creator</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>The creator of the ontological element: a person or an organization. Recommended
         best practice is to use a FOAF profile to describe the creator,
         although a literal is also allowed.</td>
@@ -65,20 +65,20 @@ currently supported by Parrot.</p>
     <tr>
       <td><em>dc:date</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>Expresses the date of creation or publication of the ontological element.
         Recommended best practice is to use the W3CDTF profile of ISO 8601.</td>
     </tr>
     <tr>
       <td><em>dc:description</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>See <em>comment</em></td>
     </tr>
     <tr>
       <td><em>dc:publisher</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>The entity responsible for making the ontological element available. Recommended
         best practice is to use a FOAF profile to describe the publisher,
         although a literal is also allowed.</td>
@@ -86,25 +86,25 @@ currently supported by Parrot.</p>
     <tr>
       <td><em>dc:rights</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>Information about rights held in and over the ontological element.</td>
     </tr>
     <tr>
       <td><em>dc:title</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>See <em>label</em></td>
     </tr>
     <tr>
       <td><em>dct:description</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>See <em>comment</em></td>
     </tr>
     <tr>
       <td><em>dct:license</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>A legal document describing the copyright license of the ontological element.
         Recommended best practice is to use Creative Commons licenses and to
         describe them in RDF with the Creative Commons Rights Expression
@@ -113,48 +113,48 @@ currently supported by Parrot.</p>
     <tr>
       <td><em>rdfs:comment</em></td>
       <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>The description of the ontological element. The range is a literal with a
         language tag.</td>
     </tr>
     <tr>
       <td><em>rdfs:isDefinedBy</em></td>
       <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>Used to indicate where this ontological element has been defining.</td>
     </tr>
     <tr>
       <td><em>rdfs:label</em></td>
       <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>The label of the ontological element. The range is a literal with a language
       tag.</td>
     </tr>    
     <tr>
       <td><em>skosxl:altLabel</em></td>
       <td><a href="http://www.w3.org/TR/skos-reference/#xl">SKOS-XL</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>An alternative label of a ontological element. The range of the property is an
         instance of the class LexicalLabel.</td>
     </tr>
     <tr>
       <td><em>skosxl:prefLabel</em></td>
       <td><a href="http://www.w3.org/TR/skos-reference/#xl">SKOS-XL</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>The preferred label of a ontological element. The range of the property is an
         instance of the class LexicalLabel.</td>
     </tr>
     <tr>
       <td><em>skos:altLabel</em></td>
       <td><a href="http://www.w3.org/TR/skos-reference/#overview">SKOS</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>An alternative label of a ontological element. The range is a literal with a
         language tag.</td>
     </tr>
     <tr>
       <td><em>skos:prefLabel</em></td>
       <td><a href="http://www.w3.org/TR/skos-reference/#overview">SKOS</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>The preferred label of a ontological element. The range is a literal with a
         language tag. In some cases, it is assumed that <em>prefLabel</em>
         assumes the role of the <em>label</em> for presentation purposes.</td>
@@ -162,32 +162,32 @@ currently supported by Parrot.</p>
     <tr>
       <td><em>foaf:depiction</em></td>
       <td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>An image associated with the ontological element. </td>
     </tr>
     <tr>
       <td><em>og:video</em></td>
       <td><a href="http://ogp.me">OG</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>A video associated with the ontological element. </td>
     </tr>    
     <tr>
       <td><em>owl:versionInfo</em></td>
       <td><a
         href="http://www.w3.org/TR/2004/REC-owl-guide-20040210/#OntologyVersioning">OWL</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>Provides a hook suitable for use by versioning systems.</td>
     </tr>
     <tr>
       <td><em>vann:preferredNamespacePrefix</em></td>
       <td><a href="http://vocab.org/vann">VANN</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td></td><td></td><td></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td></td><td></td><td></td>
       <td>The preferred namespace prefix when using entities of a ontology.</td>
     </tr>
     <tr>
       <td><em>vann:preferredNamespaceUri</em></td>
       <td><a href="http://vocab.org/vann">VANN</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td></td><td></td><td></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td></td><td></td><td></td>
       <td>The preferred namespace URI to use when using terms from a ontology.</td>
     </tr>
     </tbody>
@@ -220,7 +220,7 @@ supported by Parrot.</p>
     <tr>
       <td><em>dc:contributor</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>A contributor to the resource: a person or an organization. Recommended
         best practice is to use a FOAF profile to describe a contributor,
         although a literal is also allowed.</td>
@@ -228,7 +228,7 @@ supported by Parrot.</p>
     <tr>
       <td><em>dc:creator</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>The creator of the resource: a person or an organization. Recommended
         best practice is to use a FOAF profile to describe the creator,
         although a literal is also allowed.</td>
@@ -236,20 +236,20 @@ supported by Parrot.</p>
     <tr>
       <td><em>dc:date</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>Expresses the date of creation or publication of the resource.
         Recommended best practice is to use the W3CDTF profile of ISO 8601.</td>
     </tr>
     <tr>
       <td><em>dc:description</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>See <em>comment</em></td>
     </tr>  
     <tr>
       <td><em>dc:publisher</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>The entity responsible for making the resource available. Recommended
         best practice is to use a FOAF profile to describe the publisher,
         although a literal is also allowed.</td>
@@ -257,25 +257,25 @@ supported by Parrot.</p>
     <tr>
       <td><em>dc:rights</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>Information about rights held in and over the resource.</td>
     </tr>    
     <tr>
       <td><em>dc:title</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>See <em>label</em></td>
     </tr>
     <tr>
       <td><em>dct:description</em></td>
 	  <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>See <em>comment</em></td>
     </tr>
     <tr>
       <td><em>dct:license</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>A legal document describing the copyright license of the resource.
         Recommended best practice is to use Creative Commons licenses and to
         describe them in RDF with the Creative Commons Rights Expression
@@ -284,27 +284,27 @@ supported by Parrot.</p>
     <tr>
       <td><em>dct:source</em></td>
 	  <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
-      <td></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>The resources from which the rules are derived. Typically, they are documentary sources (as candidate rules), but diagrams, plans or pictures are also possible.</td>
     </tr>    
     <tr>
       <td><em>rdfs:label</em></td>
       <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>The label of the resource. The range is a literal with a language
       tag.</td>
     </tr>
     <tr>
       <td><em>rdfs:comment</em></td>
       <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>The description of the resource. The range is a literal with a
         language tag.</td>
     </tr>
     <tr>
       <td><em>skos:prefLabel</em></td>
       <td><a href="http://www.w3.org/TR/skos-reference/#overview">SKOS</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>The preferred label of a resource. The range is a literal with a
         language tag. In some cases, it is assumed that <em>prefLabel</em>
         assumes the role of the <em>label</em> for presentation purposes.</td>
@@ -312,41 +312,41 @@ supported by Parrot.</p>
     <tr>
       <td><em>skos:altLabel</em></td>
       <td><a href="http://www.w3.org/TR/skos-reference/#overview">SKOS</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>An alternative label of a resource. The range is a literal with a
         language tag.</td>
     </tr>
     <tr>
       <td><em>skosxl:prefLabel</em></td>
       <td><a href="http://www.w3.org/TR/skos-reference/#xl">SKOS-XL</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>The preferred label of a resource. The range of the property is an
         instance of the class LexicalLabel.</td>
     </tr>
     <tr>
       <td><em>skosxl:altLabel*</em></td>
       <td><a href="http://www.w3.org/TR/skos-reference/#xl">SKOS-XL</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>An alternative label of a resource. The range of the property is an
         instance of the class LexicalLabel.</td>
     </tr>
     <tr>
       <td><em>foaf:depiction</em></td>
       <td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>An image associated with the resource. </td>
     </tr>
     <tr>
       <td><em>og:video</em></td>
       <td><a href="http://ogp.me">OG</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>A video associated with the resource. </td>
     </tr>
     <tr>
       <td><em>owl:versionInfo</em></td>
       <td><a
         href="http://www.w3.org/TR/2004/REC-owl-guide-20040210/#OntologyVersioning">OWL</a></td>
-      <td><img alt="supported" src="/images/tick.png"/></td><td><img alt="supported" src="/images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>Provides a hook suitable for use by versioning systems.</td>
     </tr>
 
@@ -501,7 +501,7 @@ supported by Parrot.</p>
   <pre> 
    &lt;p&gt;
       &lt;a href="http://ontorule-project.eu/parrot?referer=true"&gt;&lt;img
-          src="http://ontorule-project.eu/parrot/images/button.png"
+          src="http://ontorule-project.eu/parrot/images/button-referer.png"
           alt="Document with Parrot" /&gt;&lt;/a&gt;
     &lt;/p&gt;
   </pre> 

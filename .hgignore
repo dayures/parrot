@@ -1,0 +1,14 @@
+parrot-core/target
+parrot-web/target
+parrot-core/.classpath
+parrot-core/.project
+parrot-core/.settings
+parrot-web/.classpath
+parrot-web/.project
+parrot-web/.settings
+parrot-cli/.classpath
+parrot-cli/.project
+parrot-cli/.settings
+parrot-cli/target
+syntax: glob
+parrot_web.log

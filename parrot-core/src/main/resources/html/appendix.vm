@@ -1,0 +1,9 @@
+  	#if ($document.getAppendix())
+	  ## rename the variable in order to unescape the html content
+	  #set($unescapehtml_Appendix = $document.getAppendix())
+	  $unescapehtml_Appendix
+	#else
+	  <div id="appendix">
+	  <h1>Appendix</h1>
+	  </div>
+	#end

@@ -1,0 +1,6 @@
+  #if($element.Comment)
+    <p>$element.Comment</p>
+  #else
+      <p><em>{{No description available}}</em> <img class="icon-info-description" src="images/info.png" alt="info"/></p> 
+  
+  #end

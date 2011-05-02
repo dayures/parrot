@@ -1,0 +1,9 @@
+  	#if ($document.getPrologue())
+	  ## rename the variable in order to unescape the html content
+	  #set($unescapehtml_Prologue = $document.getPrologue())
+	  $unescapehtml_Prologue
+	#else
+	  <div id="prologue">
+	  <h1>Prologue</h1>
+	  </div>
+	#end

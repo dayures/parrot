@@ -15,7 +15,7 @@ public final class URIUtils {
 	 * Suppress default constructor for noninstantiability.
 	 */
 	private URIUtils() {
-
+		throw new AssertionError();
 	}
 	
 	/**

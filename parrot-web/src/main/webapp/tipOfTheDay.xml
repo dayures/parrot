@@ -1,9 +1,9 @@
 <parrot>
-	<tip>Parrot documents ontologies expressed in various formats (RDF/XML, N3, RDFa).</tip>
-	<tip>Parrot documents rules expressed in various formats (RIF/XML and RIF PS).</tip>
-	<tip>There is a &lt;a href=&quot;/help.jsp&quot;&gt;help page&lt;/a&gt; to know the supported items by Parrot.</tip>
-	<tip>Parrot allows to upload a document for documentation.</tip>
-	<tip>Parrot allows to enter directly the Markup to document.</tip>
-	<tip>Parrot report offers two places (prologue and appendix) where add XHTML content to improve the report.</tip>
+	<tip>with Parrot you can generate reports from ontologies expressed in multiple formats (RDF/XML, N3, RDFa).</tip>
+	<tip>with Parrot you can generate reports from rule documents expressed in multiple formats (RIF/XML and RIF PS).</tip>
+	<tip>Parrot report offers two places (prologue and appendix) where add XHTML content to improve it.</tip>
+	<tip>you can find out about items supported by Parrot on a &lt;a href=&quot;help.jsp&quot;&gt;help page&lt;/a&gt;.</tip>
+	<tip>with Parrot you can generate a report uploading a file.</tip>
+	<tip>with Parrot you can generate a report entering directly the markup.</tip>
 	<tip>Parrot embeds RDFa in the generated reports.</tip>
 </parrot>

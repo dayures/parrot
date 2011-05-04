@@ -68,9 +68,11 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 			Model auxModel = ModelFactory.createDefaultModel().add(rule.getIriMeta());
 			StmtIterator listStatements = auxModel.listStatements(ResourceFactory.createResource(rule.getId()), null, (RDFNode) null);
 			ontModel.add(listStatements ); // add metadata ONLY about this rule 
+			logger.debug("Added metadata for rule " + rule.getId());
 		}
 		
-    	this.setOntResource(ontModel.getOntResource(getURI()));
+    	// REMIND could set resource null
+		this.setOntResource(ontModel.getOntResource(getURI()));
 	}
 	
 	/**

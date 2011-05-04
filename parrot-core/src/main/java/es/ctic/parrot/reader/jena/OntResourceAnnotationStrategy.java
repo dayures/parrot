@@ -620,7 +620,12 @@ public class OntResourceAnnotationStrategy {
 	 * @return the version.
 	 */
 	public String getVersion(OntResource ontResource) {
-		return ontResource.getVersionInfo();
+		if (ontResource == null){
+			return null;
+		}
+		else{				
+			return ontResource.getVersionInfo();
+		}
 	}
 
 	/**

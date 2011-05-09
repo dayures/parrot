@@ -192,7 +192,7 @@ public class OntResourceAnnotationStrategy {
     }
     
 	/**
-	 * Returns the best label associated, using the locale element if it is provided.
+	 * Returns the best label associated, using the locale element if it is provided (or <code>null</code> for an anonymous resource).
 	 * 
  	 * The preferred order for a label is:
 	 * <ol>
@@ -207,7 +207,7 @@ public class OntResourceAnnotationStrategy {
 
 	 * @param ontResource the ontology resource.
 	 * @param locale the locale.
-	 * @return the best label associated, using the locale element if it is provided.
+	 * @return the best label associated (using the locale element if it is provided) or <code>null</code> if the resource is an anonymous resource.
 	 */
     public String getLabel(OntResource ontResource, Locale locale) {
 

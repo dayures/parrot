@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 import com.hp.hpl.jena.datatypes.xsd.XSDDatatype;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.ontology.OntResource;
+import com.hp.hpl.jena.rdf.model.Literal;
 import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.ResourceFactory;
@@ -111,23 +112,35 @@ public class OntResourceAnnotationStrategy {
          * http://www.w3.org/2000/01/rdf-schema#comment
          * 
          */
-		String comment = getLiteralPropertyValue(ontResource, DCT_DESCRIPTION);
+		String comment = getLiteralPropertyValue(ontResource, DCT_DESCRIPTION, locale);
 	
 		if (comment != null){
     		return comment;
 		}
+
+		comment = getLiteralPropertyValue(ontResource, DCT_DESCRIPTION); //not language selected
 		
-		comment = getLiteralPropertyValue(ontResource, DC_DESCRIPTION);
+		if (comment != null){
+    		return comment;
+		}
+		
+		comment = getLiteralPropertyValue(ontResource, DC_DESCRIPTION, locale);
+		if (comment != null){
+    		return comment;
+		}
+
+		comment = getLiteralPropertyValue(ontResource, DC_DESCRIPTION); //not language selected
 		if (comment != null){
     		return comment;
 		}
 		
 		comment = ontResource.getComment(locale.toString());
-		if (comment == null) {
-	        return ontResource.getComment(null);
-	    } else {
+		if (comment != null) {
 	        return comment;
 	    }
+		
+		return ontResource.getComment(null); //not language selected
+
 	}
 	
 	/**
@@ -213,6 +226,8 @@ public class OntResourceAnnotationStrategy {
 
     	Collection<Label> labels = getLabels(ontResource, locale);
         
+    	logger.debug("locale="+locale+" labels="+labels);
+    	
         /* Preferred order:
          * 
          * http://www.w3.org/2008/05/skos-xl#prefLabel
@@ -260,7 +275,7 @@ public class OntResourceAnnotationStrategy {
             }
         }
         
-        if (locale != null) {
+        if (locale != null) { // if I hava asked for a locale
         	// give a change without locale
         	return getLabel(ontResource, null);
         } else {
@@ -301,12 +316,20 @@ public class OntResourceAnnotationStrategy {
 			//It cannot applied skosLabel.setUri()
 			literalLabel.setText(statement.getObject().asLiteral().getLexicalForm());
 			String LanguageTag = statement.getObject().asLiteral().getLanguage(); 
-			if (LanguageTag.equals("") == false){
+			if (LanguageTag.length() != 0){ //The literal has language tag
 				String language = LanguageTag.split("-")[0]; 
 				literalLabel.setLocale(new Locale(language)); // FIXME do it more specified using Locale(String language, String country, String variant)
 			}
 			
-			if (locale != null) {
+			// if there is not locale restriction and there is not language tag for the literal
+			if (locale == null){
+				if (literalLabel.getLocale() == null){
+					//logger.debug(literalLabel + " is " + uri + " for resource " + getOntResource());
+					literalLabels.add(literalLabel);
+				} else {
+					//logger.debug("Not add label  " + literalLabel + " for resource " + getOntResource() + " because it has language tag=" + literalLabel.getLocale());
+				}
+			} else {
 				//compare locales
 				if (locale.equals(literalLabel.getLocale())) {
 					//logger.debug(literalLabel + " is " + uri + " for resource " + getOntResource());
@@ -314,11 +337,7 @@ public class OntResourceAnnotationStrategy {
 				} else{
 					//logger.debug("Not add label  " + literalLabel + " for resource " + getOntResource() + " because its locale " + literalLabel.getLocale() + " does not match with required locale " + locale);
 				}
-			} else {
-				//logger.debug(literalLabel + " is " + uri + " for resource " + getOntResource());
-				literalLabels.add(literalLabel);
 			}
-
 		}
 		
 		return literalLabels;
@@ -770,22 +789,64 @@ public class OntResourceAnnotationStrategy {
 	 * @return a list of strings, the lexical values of the literal properties.
 	 */
 	private Collection<String> getLiteralPropertyValues(OntResource ontResource, String property) {
-    	if (ontResource == null){
+		return getLiteralPropertyValues(ontResource, property, null);
+	}
+	
+	/**
+	 * Returns a list of strings, the lexical values of the literal properties. 
+	 * @param ontResource the ontResource.
+	 * @param property the URI of the property.
+	 * @param locale the locale
+	 * @return a list of strings, the lexical values of the literal properties.
+	 */
+	private Collection<String> getLiteralPropertyValues(OntResource ontResource, String property, Locale locale) {
+    	
+		if (ontResource == null){
     		return new ArrayList<String>();
     	}
-    	else {
-			ArrayList<String> values = new ArrayList<String>();
-			StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(property));
-			while(it.hasNext()){
-				Statement st = it.nextStatement();
-				if (st.getObject().isLiteral()) {
-					values.add(st.getObject().asLiteral().getLexicalForm());
+
+		ArrayList<String> values = new ArrayList<String>();
+		StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(property));
+		while(it.hasNext()){
+			Statement st = it.nextStatement();
+			if (st.getObject().isLiteral()) {
+				String extractLiteral = extractLiteral(st.getObject().asLiteral(), locale);
+				if ( extractLiteral != null){				
+					values.add(extractLiteral);
 				} else {
-					logger.debug("As is not a literal, not added " + st.toString() );
+					if (locale == null){
+						logger.debug("Literal not added " + st.toString());
+					} else {
+						logger.debug("Literal not added " + st.toString() + " due to language issue (locale="+locale.toString()+", literalLanguage="+st.getObject().asLiteral().getLanguage()+")");
+					}
 				}
+			} else {
+				logger.debug("As is not a literal, not added " + st.toString() );
 			}
-			return values;
-    	}
+		}
+		return values;
+	}
+	
+	/**
+	 * Returns the string if the literal has the same locale (if presents)
+	 * @param literal the literal.
+	 * @param locale the locale
+	 * @return the string if the literal has the same locale or <code>null</code> if it is not the same. If not locale is present, it returns the string of the literal. 
+	 */
+	private static String extractLiteral(Literal literal, Locale locale) {
+		if (locale == null){
+			//if getLanguage is an empty string means that it has not language associated
+			if (literal.getLanguage().length() == 0){
+				return literal.getLexicalForm();
+			} else {
+				return null;
+			}
+		}
+		
+		if (locale.toString().equals(literal.getLanguage())){
+			return literal.getLexicalForm();
+		} 
+		return null;	
 	}
 
 	/**
@@ -795,8 +856,19 @@ public class OntResourceAnnotationStrategy {
 	 * @return the value of the literal or <code>null</code> if the resource has not this property associated
 	 */
 	private String getLiteralPropertyValue(OntResource ontResource, String property) {
+		return getLiteralPropertyValue(ontResource, property, null);
+	}
+
+	/**
+	 * Returns the value of the literal or <code>null</code> if the resource has not this property associated
+	 * @param ontResource the ontResource.
+	 * @param property the URI of the property.
+	 * @param locale the locale.
+	 * @return the value of the literal or <code>null</code> if the resource has not this property associated
+	 */
+	private String getLiteralPropertyValue(OntResource ontResource, String property, Locale locale) {
         
-		Collection<String> literalPropertyValues = getLiteralPropertyValues(ontResource, property);
+		Collection<String> literalPropertyValues = getLiteralPropertyValues(ontResource, property, locale);
 
         if (literalPropertyValues.isEmpty()){
         	return null;

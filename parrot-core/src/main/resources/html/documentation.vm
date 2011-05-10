@@ -1,0 +1,13 @@
+<div class="otherinfo">
+  <h4>Documentation</h4> 
+
+  #if(!$element.labels.isEmpty())
+	<p>Labels: #parse("html/label.vm")</p>
+  #end
+  
+  #if(!$element.relatedDocuments.isEmpty())
+    #foreach($element in $element.relatedDocuments)
+      #parse("html/relatedDocument-detail.vm")
+    #end
+  #end
+</div>

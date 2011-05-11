@@ -24,6 +24,7 @@ public class HtmlOutputGenerator implements OutputGenerator {
 
     private static final String PROFILE = "profile";
 	private static final String DOCUMENT = "document";
+	private static final String REPORTURL_NOLANG = "reportUrl_NoLang";
 	
 	private final OutputStream out;
     private InputStream template;
@@ -47,8 +48,25 @@ public class HtmlOutputGenerator implements OutputGenerator {
         VelocityContext ctx = new VelocityContext();
         ctx.put(DOCUMENT, document);
         ctx.put(PROFILE, profile);
+        ctx.put(REPORTURL_NOLANG, getNoLangURL(document.getReportURL()));
         fillTemplate(out, ctx, template);
     }
+
+    /**
+     * Returns a URL without the <code>language</code> parameter (if exists).
+     * @param url the URL to treat.
+     * @return a URL without the <code>language</code> parameter (if exists).
+     */
+	private String getNoLangURL(String url) {
+		if (url.matches(".*&language=.*?(?=[&]).*")){
+        	url = url.replaceFirst("&language=.*?(?=[&])", "");
+        } else if (url.matches(".*&language=.*$")) {
+        	url = url.replaceFirst("&language=.*$", "");
+        } else {
+        	//url = url ;
+        }
+		return url;
+	}
 
     
     /**

@@ -53,6 +53,7 @@ public class Document {
     private String prologueURL;
     private String appendixURL;
     private String reportURL;
+    private Collection<String> languages;
 
     /**
      * Constructs a document using the given locale.
@@ -314,6 +315,35 @@ public class Document {
 	 */
 	public String getReportURL() {
 		return reportURL;
+	}
+
+	/**
+	 * Set the languages.
+	 * @param languages the languages to set.
+	 */
+	public void setLanguages(Collection<String> languages) {
+		this.languages = languages;
+	}
+
+	/**
+	 * Returns the languages.
+	 * @return the languages.
+	 */
+	public Collection<String> getLanguages() {
+		return languages;
+	}
+	
+	/**
+	 * Returns <code>true</code> if all the inputs are persistent, otherwise <code>false</code>. For example, a <code>URL</code> or a <code>file</code> is a persistent input.
+     * @return <code>true</code> if all the inputs are persistent, otherwise <code>false</code>. For example, a <code>URL</code> or a <code>file</code> is a persistent input.
+	 */
+	public boolean isReloadable(){
+		for(Input input: getInputs()){
+			if (input.isPersistent() == false){
+				return false;
+			}
+		}
+		return true;
 	}
 }
 /**

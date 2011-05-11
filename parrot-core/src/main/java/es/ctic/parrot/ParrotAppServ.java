@@ -6,6 +6,9 @@ import java.net.URL;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Locale;
+import java.util.Set;
+
+import org.apache.log4j.Logger;
 
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.ontology.OntModelSpec;
@@ -43,6 +46,9 @@ import es.ctic.parrot.transformers.TransformerException;
  */
 public class ParrotAppServ {
     
+    private static final Logger logger = Logger.getLogger(ParrotAppServ.class);
+
+	
     private JenaOWLReader ontologyReader;
     private DocumentReader ruleXmlReader;
     private DocumentReader rifPSReader;
@@ -83,8 +89,20 @@ public class ParrotAppServ {
 		readAndRegisterDocumentableObjects(dp.getInputs(), register);
 		resolveInternalReferences(register);
 		resolveCrossReferences(register);
-		Document document = transformToDocument(register.getDocumentableObjects(), dp.getLocale(), dp.getInputs(), dp.getPrologueURL(), dp.getAppendixURL(), dp.getReportURL());
+		Document document = transformToDocument(register.getDocumentableObjects(), dp.getLocale(), dp.getInputs(), dp.getPrologueURL(), dp.getAppendixURL(), dp.getReportURL(), getLanguagesInModel());
 		outputGenerator.generateOutput(document, profile);
+	}
+
+	private Set<String> getLanguagesInModel() {
+		Set<String> languages = new HashSet<String>();
+		for(RDFNode rdfNode: getOntologyReader().getOntModel().listObjects().toSet()){
+			if (rdfNode.isLiteral()){
+				if (rdfNode.asLiteral().getLanguage().length() != 0){
+					languages.add(rdfNode.asLiteral().getLanguage().split("-")[0]);
+				}
+			}
+		}
+		return languages;
 	}
 	
 	/**
@@ -147,16 +165,18 @@ public class ParrotAppServ {
      * @param prologueURL the URL where is the prologue.
      * @param appendixURL the URL where is the appendix.
      * @param reportURL the URL report.
+     * @param languages a collection of the languages.
      * @return a document to be presented by an output generator.
      * @throws TransformerException if a failed transformation operation occurs.
      */
-    private Document transformToDocument(Collection<DocumentableObject> documentableObjects, Locale locale, Collection<Input> inputs, String prologueURL, String appendixURL, String reportURL) throws TransformerException {
+    private Document transformToDocument(Collection<DocumentableObject> documentableObjects, Locale locale, Collection<Input> inputs, String prologueURL, String appendixURL, String reportURL, Collection<String> languages) throws TransformerException {
         Document document = new Document(locale);
 		document.setTitle("Parrot"); // FIXME
 		document.setInputs(inputs);
 		document.setPrologueURL(prologueURL);
 		document.setAppendixURL(appendixURL);
 		document.setReportURL(reportURL);
+		document.setLanguages(languages);
         DetailsVisitor detailVisitor = new DetailsVisitor(document, locale);
         GlossaryVisitor glossaryVisitor = new GlossaryVisitor(document, locale);
 		for (DocumentableObject documentableObject : documentableObjects) {
@@ -347,8 +367,6 @@ public class ParrotAppServ {
 		}
 		
 		return inputs;
-
-
 	}
 
 	/**

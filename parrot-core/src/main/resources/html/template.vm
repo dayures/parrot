@@ -29,7 +29,7 @@
   <body>
   #parse("html/header.vm")
   <div id="content">
-
+	#parse("html/languages.vm")
 	#parse("html/prologue.vm")
 	#parse("html/download.vm")
 	#parse("html/toc.vm")

@@ -47,4 +47,8 @@ public class InputStreamInput implements Input {
 		return base;
 	}
 
+	public boolean isPersistent() {
+		return false;
+	}
+
 }

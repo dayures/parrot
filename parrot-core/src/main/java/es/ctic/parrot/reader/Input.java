@@ -32,5 +32,11 @@ public interface Input {
      * @return the base to resolve relative URIs of this input document.
      */
     public abstract String getBase();
+    
+    /**
+     * Returns <code>true</code> if the input is persistent, otherwise <code>false</code>. For example, a <code>URL</code> or a <code>file</code> is a persistent input.
+     * @return <code>true</code> if the input is persistent, otherwise <code>false</code>. For example, a <code>URL</code> or a <code>file</code> is a persistent input.
+     */
+    public abstract boolean isPersistent();
 
 }

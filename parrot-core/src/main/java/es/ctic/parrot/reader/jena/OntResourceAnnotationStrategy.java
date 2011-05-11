@@ -51,6 +51,7 @@ public class OntResourceAnnotationStrategy {
 	private static final String DC_TERMS_IS_PART_OF = "http://purl.org/dc/terms/isPartOf";
 	private static final String DC_DCMITYPE_TEXT = "http://purl.org/dc/dcmitype/Text";
 	private static final String RDF_SCHEMA_LABEL = "http://www.w3.org/2000/01/rdf-schema#label";
+	private static final String RDFS_COMMENT = "http://www.w3.org/2000/01/rdf-schema#comment";
 	private static final String SKOS_XL_PREF_LABEL = "http://www.w3.org/2008/05/skos-xl#prefLabel";
 	private static final String SKOS_XL_ALT_LABEL = "http://www.w3.org/2008/05/skos-xl#altLabel";
 	private static final String SKOS_CORE_PREF_LABEL = "http://www.w3.org/2004/02/skos/core#prefLabel";
@@ -134,12 +135,12 @@ public class OntResourceAnnotationStrategy {
     		return comment;
 		}
 		
-		comment = ontResource.getComment(locale.toString());
-		if (comment != null) {
-	        return comment;
-	    }
-		
-		return ontResource.getComment(null); //not language selected
+		comment = getLiteralPropertyValue(ontResource, RDFS_COMMENT, locale);
+		if (comment != null){
+    		return comment;
+		}
+
+		return getLiteralPropertyValue(ontResource, RDFS_COMMENT); //not language selected
 
 	}
 	
@@ -226,7 +227,7 @@ public class OntResourceAnnotationStrategy {
 
     	Collection<Label> labels = getLabels(ontResource, locale);
         
-    	logger.debug("locale="+locale+" labels="+labels);
+    	//logger.debug("locale="+locale+" labels="+labels);
     	
         /* Preferred order:
          * 

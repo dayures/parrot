@@ -351,3 +351,7 @@ div.ti table tr td:nth-child(1),
 div.inuse table tr td:nth-child(1){
 	white-space:nowrap;
 }
+
+div#languages{
+	text-align: right;
+}

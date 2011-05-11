@@ -38,5 +38,9 @@ public class StringInput implements Input {
 	public String toString() {
 		return "StringInput [mimeType=" + mimeType + ", content=" + content + "]";
 	}
+
+	public boolean isPersistent() {
+		return false;
+	}
     
 }

@@ -204,4 +204,9 @@ public class URLInput implements Input {
 			return false;
 		return true;
 	}
+
+
+	public boolean isPersistent() {
+		return true;
+	}
 }

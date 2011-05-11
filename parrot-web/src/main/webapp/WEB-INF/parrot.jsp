@@ -105,94 +105,36 @@
 						</div>
 						<hr />
 					</fieldset>
+					<jsp:include page="select-language.jsp"/>
 					<div class="buttons">
 						<button type="submit" class="positive"><img src="images/tick.png" alt=""/>Generate documentation</button>
 					</div>
 
 					
 					</form>
+		       	</div>
+			
+		        <div id="tabs-2"> 
+		        	<h2>by direct input</h2> 
+					<form method="post" action="">
+		        	<p class="direct-input"><label title="Text of the document" for="documentText" class="text">Enter your document:</label><br />
+		        	<textarea id="documentText" name="documentText" cols="150" rows="15" style="width:80%"><c:if test='${not empty param.documentText}'><c:out value="${param.documentText}" escapeXml="true"/></c:if></textarea></p>
+					<p class="direct-input">This is an : 
+					  <select name="mimetypeText">
+				        <option value="application/owl+xml" <c:if test="${param.mimetypeText eq 'application/owl+xml'}">selected="selected"</c:if>>OWL ontology</option>
+				        <option value="text/n3" <c:if test="${param.mimetypeText eq 'text/n3'}">selected="selected"</c:if>>N3 ontology</option>
+				        <option value="application/xhtml+xml" <c:if test="${param.mimetypeText eq 'application/xhtml+xml'}">selected="selected"</c:if>>XHTML+RDFa document</option>
+				        <option value="text/html" <c:if test="${param.mimetypeText eq 'text/html'}">selected="selected"</c:if>>HTML+RDFa document</option>
+				        <option value="application/rif+xml" <c:if test="${param.mimetypeText eq 'application/rif+xml'}">selected="selected"</c:if>>RIF XML document</option>
+				        <option value="text/x-rif-ps" <c:if test="${param.mimetypeText eq 'text/x-rif-ps'}">selected="selected"</c:if>>RIF PS document</option>
+				      </select>
+				    </p>
+					<jsp:include page="select-language.jsp"/>
+					<div class="buttons">
+						<button type="submit" class="positive"><img src="images/tick.png" alt=""/>Generate documentation</button>
+					</div>
+					</form>
 		        </div> 
-		        <!-- 
-		        <div class="language">
-		        <label>Select preferred language: </label>
-       			<select name="language">
-					<option value="bg">български</option>
-					<option value="cs">čeština</option>
-					<option value="da">dansk</option>
-					<option value="de">Deutsch</option>
-					<option value="et">eesti</option>
-					<option value="el">ελληνικά</option>
-					<option value="en" selected="selected">English</option>
-					<option value="es">español</option>
-					<option value="fr">français</option>
-					<option value="ga">Gaeilge</option>
-					<option value="it">italiano</option>
-					<option value="lv">latviešu</option>
-					<option value="lt">lietuvių</option>
-					<option value="hu">magyar</option>
-					<option value="mt">Malti</option>
-					<option value="nl">Nederlands</option>
-					<option value="pl">polski</option>
-					<option value="pt">português</option>
-					<option value="ro">română</option>
-					<option value="sk">slovenčina</option>
-					<option value="sl">slovenščina</option>
-					<option value="fi">suomi</option>
-					<option value="sv">svenska</option>
-				</select>
-		        </div>
-		         -->
-				
-			        <div id="tabs-2"> 
-			        	<h2>by direct input</h2> 
-						<form method="post" action="">
-			        	<p class="direct-input"><label title="Text of the document" for="documentText" class="text">Enter your document:</label><br />
-			        	<textarea id="documentText" name="documentText" cols="150" rows="15" style="width:80%"><c:if test='${not empty param.documentText}'><c:out value="${param.documentText}" escapeXml="true"/></c:if></textarea></p>
-						<p class="direct-input">This is an : 
-						  <select name="mimetypeText">
-					        <option value="application/owl+xml" <c:if test="${param.mimetypeText eq 'application/owl+xml'}">selected="selected"</c:if>>OWL ontology</option>
-					        <option value="text/n3" <c:if test="${param.mimetypeText eq 'text/n3'}">selected="selected"</c:if>>N3 ontology</option>
-					        <option value="application/xhtml+xml" <c:if test="${param.mimetypeText eq 'application/xhtml+xml'}">selected="selected"</c:if>>XHTML+RDFa document</option>
-					        <option value="text/html" <c:if test="${param.mimetypeText eq 'text/html'}">selected="selected"</c:if>>HTML+RDFa document</option>
-					        <option value="application/rif+xml" <c:if test="${param.mimetypeText eq 'application/rif+xml'}">selected="selected"</c:if>>RIF XML document</option>
-					        <option value="text/x-rif-ps" <c:if test="${param.mimetypeText eq 'text/x-rif-ps'}">selected="selected"</c:if>>RIF PS document</option>
-					      </select>
-					    </p> 
-						<div class="buttons">
-							<button type="submit" class="positive"><img src="images/tick.png" alt=""/>Generate documentation</button>
-						</div>
-						</form>
-			        </div> 
-			         <!-- 
-			        <div class="language">
-		        		<label>Select preferred language: </label>
-       					<select name="language">
-							<option value="bg">български</option>
-							<option value="cs">čeština</option>
-							<option value="da">dansk</option>
-							<option value="de">Deutsch</option>
-							<option value="et">eesti</option>
-							<option value="el">ελληνικά</option>
-							<option value="en" selected="selected">English</option>
-							<option value="es">español</option>
-							<option value="fr">français</option>
-							<option value="ga">Gaeilge</option>
-							<option value="it">italiano</option>
-							<option value="lv">latviešu</option>
-							<option value="lt">lietuvių</option>
-							<option value="hu">magyar</option>
-							<option value="mt">Malti</option>
-							<option value="nl">Nederlands</option>
-							<option value="pl">polski</option>
-							<option value="pt">português</option>
-							<option value="ro">română</option>
-							<option value="sk">slovenčina</option>
-							<option value="sl">slovenščina</option>
-							<option value="fi">suomi</option>
-							<option value="sv">svenska</option>
-						</select>
-		        	</div>
-		        	 -->
 
 		        <div id="tabs-3"> 
 		        	<h2>by file upload</h2> 
@@ -211,7 +153,7 @@
 						</select>
 					    </p>
 					    <button id="addFile">add another file</button>
-
+						<jsp:include page="select-language.jsp"/>
 						<div class="buttons">
 							<button type="submit" class="positive"><img src="images/tick.png" alt=""/>Generate documentation</button>
 						</div>
@@ -229,6 +171,8 @@
 							<label for="reportURL" title="URL of an existing Parrot report" class="uri">URL: </label><input id="reportURL" name="reportURL" value="<c:out value="${param.reportURL}" />" type="text" size="100" />
 						</c:otherwise>
 					</c:choose>
+					<jsp:include page="select-language.jsp"/>
+					
 					<div class="buttons">
 						<button type="submit" class="positive"><img src="images/tick.png" alt=""/>Generate documentation</button>
 					</div>

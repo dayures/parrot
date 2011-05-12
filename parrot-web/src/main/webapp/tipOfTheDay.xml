@@ -1,9 +1,17 @@
 <parrot>
-	<tip>with Parrot you can generate reports from ontologies expressed in multiple formats (RDF/XML, N3, RDFa).</tip>
-	<tip>with Parrot you can generate reports from rule documents expressed in multiple formats (RIF/XML and RIF PS).</tip>
-	<tip>Parrot report offers two places (prologue and appendix) where add XHTML content to improve it.</tip>
-	<tip>you can find out about items supported by Parrot on a &lt;a href=&quot;help.jsp&quot;&gt;help page&lt;/a&gt;.</tip>
+	<tip>you can generate reports from ontologies expressed in multiple formats (RDF/XML, N3, RDFa).</tip>
+	<tip>you can generate reports from rule documents expressed in multiple formats (RIF/XML and RIF PS).</tip>
+	<tip>you can add arbitrary content to the prologue and appendix of a Parrot report.</tip>
+	<tip>there is a &lt;a href=&quot;help.jsp&quot;&gt;help page&lt;/a&gt; that describes which meta-data properties are supported by Parrot.</tip>
 	<tip>with Parrot you can generate a report uploading a file.</tip>
-	<tip>with Parrot you can generate a report entering directly the markup.</tip>
-	<tip>Parrot embeds RDFa in the generated reports.</tip>
+	<tip>you can simply paste your OWL or RIF document into the 'Direct input' tab.</tip>
+	<tip>there is RDFa embedded into the Parrot reports.</tip>
+	<tip>some commonly used ontologies are recognized by their prefix (try 'foaf' in the URI field!).</tip>
+	<tip>if the file type is not correctly detected, you can force your own MIME type.</tip>
+	<tip>if your ontologies and rules contain multilingual documentation, you can pick one using 'Advanced options'.</tip>
+	<tip>you can return from a report to this form by pressing the button in the bottom toolbar.</tip>
+	<tip>the bottom toolbar makes it easy to navigate your reports.</tip>
+	<tip>you can hide or show different parts of your reports.</tip>
+	<tip>you can save the report as an XHTML file using the 'File' menu of your web browser.</tip>
+	<tip>you can generate a PDF version of the report by printing it to a PDF file.</tip>
 </parrot>

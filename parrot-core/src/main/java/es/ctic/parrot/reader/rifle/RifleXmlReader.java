@@ -7,6 +7,7 @@ import javax.xml.transform.stream.StreamSource;
 
 import net.sourceforge.rifle.ast.Document;
 import net.sourceforge.rifle.prd.xml.Parser;
+import net.sourceforge.rifle.prd.xml.ParserException;
 import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.reader.DocumentReader;
 import es.ctic.parrot.reader.Input;
@@ -37,13 +38,19 @@ public class RifleXmlReader extends ImportResolver implements DocumentReader {
             ReaderException {
         Parser parser = new Parser();
         Source source = new StreamSource(input.openReader());
+        Document document = null;
         try {
-            Document document = parser.parse(source);
+            document = parser.parse(source);
+        } catch (ParserException e) {
+            throw new ReaderException("A problem occurred when parsing the RIF/XML document: " + e.getMessage(), e);
+        }
+        
+        try {
             resolveImports(document, register);
             RifleASTVisitor visitor = new RifleASTVisitor(register, getOntologyReader().getAnnotationStrategy(), getOntologyReader().getOntModel());
             document.accept(visitor, null);
         } catch (Exception e) {
-            throw new ReaderException("While parsing RIF XML document", e);
+            throw new ReaderException("While extracting information from RIF/XML document", e);
         }
     }
 

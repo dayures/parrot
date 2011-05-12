@@ -3,7 +3,6 @@ package es.ctic.parrot.reader.rifle;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Locale;
-import java.util.Set;
 import java.util.TreeSet;
 
 import org.apache.log4j.Logger;
@@ -218,7 +217,7 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 
 	public Collection<DocumentableOntologicalObject> getReferencedOntologicalObjects() {
 		
-		Set<DocumentableOntologicalObject> referencedOntologicalObjects = new TreeSet<DocumentableOntologicalObject>(new DocumentableObjectComparator());
+		Collection<DocumentableOntologicalObject> referencedOntologicalObjects = new TreeSet<DocumentableOntologicalObject>(new DocumentableObjectComparator());
 		
 		for(String uriConst : getRule().getUriConsts()){
 			URIIdentifier uriIdentifier = new URIIdentifier(uriConst);

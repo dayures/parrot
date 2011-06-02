@@ -43,7 +43,7 @@
 #end
 
 <div class="term">
-  <h3><a id="$element.Anchor"></a><span class="parrot-element-title parrot-property-title">$element.Label</span> (Property)
+  <h3 id="$element.Anchor">#if ($element.uriFragment) <a id="$element.uriFragment"></a>#end<span class="parrot-element-title parrot-property-title">$element.Label</span> (Property)
   	#if($element.isDeprecated())<span class="deprecated">(Deprecated)</span>#end
   	
 	#if($element.isDatatypeProperty())<img class="datatype-property-icon icon" src="images/datatype-property-24x24.png" alt="datatype property"/>#end

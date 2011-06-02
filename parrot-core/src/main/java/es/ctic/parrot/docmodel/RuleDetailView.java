@@ -24,6 +24,7 @@ public class RuleDetailView implements DetailView{
     private static final Logger logger = Logger.getLogger(RuleDetailView.class);
     private Identifier identifier;
 	private String uri;
+	private String uriFragment;
 	private String label;
 	private String comment;
 	private Collection<DocumentableObjectReference> referencedOntologicalObjects;
@@ -303,6 +304,22 @@ public class RuleDetailView implements DetailView{
 	public String getLicenseLabel() {
 		return licenseLabel;
 	}
+	
+	/**
+	 * Set the fragment of the URI.
+	 * @param uriFragment the fragment of the URI to set.
+	 */
+	public void setUriFragment(String uriFragment) {
+		this.uriFragment = uriFragment;
+	}
+
+	/**
+	 * Returns the fragment of the URI.
+	 * @return the fragment of the URI.
+	 */
+	public String getUriFragment() {
+		return uriFragment;
+	}
 
 	/**
 	 * Returns a detailed view for the rule given.
@@ -315,6 +332,7 @@ public class RuleDetailView implements DetailView{
 	    RuleDetailView details = new RuleDetailView();
 	    details.setIdentifier(object.getIdentifier());
 		details.setUri(object.getURI());
+		details.setUriFragment(object.getUriFragment());
 		details.setLabel(object.getLabel(locale));
 		details.setComment(object.getComment(locale));
 		

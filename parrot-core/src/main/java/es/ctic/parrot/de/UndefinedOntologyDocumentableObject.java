@@ -364,5 +364,11 @@ public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObj
 		//return false;
 	}
 
+	public String getUriFragment() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Method not implemented yet.");
+		//return null;
+	}
+
     
 }

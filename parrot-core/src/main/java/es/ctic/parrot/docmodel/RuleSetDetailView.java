@@ -24,6 +24,7 @@ public class RuleSetDetailView implements DetailView {
     private static final Logger logger = Logger.getLogger(RuleSetDetailView.class);
     private Identifier identifier;
 	private String uri;
+	private String uriFragment;
 	private String label;
 	private String comment;
 	private String strategy;
@@ -375,6 +376,22 @@ public class RuleSetDetailView implements DetailView {
 	}
 	
 	/**
+	 * Set the fragment of the URI.
+	 * @param uriFragment the fragment of the URI to set.
+	 */
+	public void setUriFragment(String uriFragment) {
+		this.uriFragment = uriFragment;
+	}
+
+	/**
+	 * Returns the fragment of the URI.
+	 * @return the fragment of the URI.
+	 */
+	public String getUriFragment() {
+		return uriFragment;
+	}
+	
+	/**
 	 * Returns a detailed view for the rule set given.
 	 * @param object the rule set.
 	 * @param locale the locale.
@@ -384,6 +401,7 @@ public class RuleSetDetailView implements DetailView {
         RuleSetDetailView details = new RuleSetDetailView();
         details.setIdentifier(object.getIdentifier());
         details.setUri(object.getURI());
+		details.setUriFragment(object.getUriFragment());
         details.setLabel(object.getLabel(locale));
         details.setComment(object.getComment(locale));
         

@@ -19,6 +19,7 @@ import es.ctic.parrot.de.RelatedDocument;
 public abstract class AbstractOntologicalObjectDetailView implements DetailView {
 
 	private String uri;
+	private String uriFragment;
 	private String label;
 	private String comment;
 	private String anchor;
@@ -306,5 +307,21 @@ public abstract class AbstractOntologicalObjectDetailView implements DetailView 
 	 */
 	public String getLicenseLabel() {
 		return licenseLabel;
+	}
+
+	/**
+	 * Set the fragment of the URI.
+	 * @param uriFragment the fragment of the URI to set.
+	 */
+	public void setUriFragment(String uriFragment) {
+		this.uriFragment = uriFragment;
+	}
+
+	/**
+	 * Returns the fragment of the URI.
+	 * @return the fragment of the URI.
+	 */
+	public String getUriFragment() {
+		return uriFragment;
 	}
 }

@@ -1,5 +1,7 @@
 package es.ctic.parrot.reader.rifle;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -140,6 +142,18 @@ public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
 		} else {
 			return getIdentifier().toString();
 		}	
+	}
+	
+	public String getUriFragment() {
+		try {
+			if (getURI() != null) {
+				return new URI(getURI()).getFragment();
+			} else {
+				return null;
+			}
+		} catch (URISyntaxException e) {
+			return null;
+		}
 	}
 	
 	public int compareTo(DocumentableOntologicalObject o) {

@@ -38,7 +38,7 @@
 #end	
 
 <div class="term">
-  <h3><a id="$element.Anchor"></a><span class="parrot-element-title parrot-class-title">$element.Label</span> (Class)
+  <h3 id="$element.Anchor">#if ($element.uriFragment) <a id="$element.uriFragment"></a>#end<span class="parrot-element-title parrot-class-title">$element.Label</span> (Class)
   #if($element.isDeprecated())<span class="deprecated">(Deprecated)</span>#end
 
   #parse("html/detail-menu.vm")

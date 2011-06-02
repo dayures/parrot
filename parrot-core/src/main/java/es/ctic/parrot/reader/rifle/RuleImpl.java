@@ -1,5 +1,7 @@
 package es.ctic.parrot.reader.rifle;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Locale;
@@ -153,7 +155,19 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 			return getIdentifier().toString();
 		}	
 	}
-        
+
+	public String getUriFragment() {
+		try {
+			if (getURI() != null) {
+				return new URI(getURI()).getFragment();
+			} else {
+				return null;
+			}
+		} catch (URISyntaxException e) {
+			return null;
+		}
+	}
+	
     public String getComment(Locale locale) {
     	return getAnnotationStrategy().getComment(getOntResource(), locale);
     }

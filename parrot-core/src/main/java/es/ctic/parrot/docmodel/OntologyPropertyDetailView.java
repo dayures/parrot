@@ -299,6 +299,7 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
     	
     	details.setOntologyProperty(object);
 		details.setUri(object.getURI());
+		details.setUriFragment(object.getUriFragment());
 		details.setLabel(object.getLabel(locale));
 		details.setComment(object.getComment(locale));
 		

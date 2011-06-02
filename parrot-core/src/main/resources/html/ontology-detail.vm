@@ -34,7 +34,7 @@
 
 
 <div class="term">
-  <h3><a id="$element.Anchor"></a><span class="parrot-element-title parrot-ontology-title">Ontology: $element.Label</span>
+   <h3 id="$element.Anchor">#if ($element.uriFragment) <a id="$element.uriFragment"></a>#end<span class="parrot-element-title parrot-ontology-title">Ontology: $element.Label</span>
   #if($element.isDeprecated())<span class="deprecated">(Deprecated)</span>#end
   #parse("html/detail-menu.vm")
   </h3>

@@ -99,7 +99,13 @@ public interface DocumentableObject {
 	 * @return an unique anchor for the element.
 	 */
 	public abstract String getLocalName();
-	
+
+    /**
+     * Returns the fragment of the URI of this documentable element if exists, or null if doesn't exist. 
+     * @return the fragment of the URI of this documentable element if exists, or null if doesn't exist.
+     */
+    public abstract String getUriFragment();
+    
     /**
      * Returns the URI of this documentable element if exists, or null if doesn't exist. 
      * @return the URI of this documentable element if exists, or null if doesn't exist.

@@ -1,5 +1,7 @@
 package es.ctic.parrot.reader.jena;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -106,6 +108,19 @@ public abstract class AbstractJenaDocumentableObject extends
 	public String getURI() {
 		return getOntResource().getURI();
 	}
+
+	public String getUriFragment() {
+		try {
+			if (getURI() != null) {
+				return new URI(getURI()).getFragment();
+			} else {
+				return null;
+			}
+		} catch (URISyntaxException e) {
+			return null;
+		}
+	}
+	
 	/**
 	 * Returns the identifier.
 	 * @return the identifier.

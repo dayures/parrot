@@ -34,7 +34,7 @@
 #end
 
 <div class="term">
-  <h3><a id="$element.Anchor"></a><span class="parrot-element-title parrot-ruleset-title">$element.Label</span> (Rule Set)
+   <h3 id="$element.Anchor">#if ($element.uriFragment) <a id="$element.uriFragment"></a>#end<span class="parrot-element-title parrot-ruleset-title">$element.Label</span> (Rule Set)
     #parse("html/detail-menu.vm")
   </h3>
 

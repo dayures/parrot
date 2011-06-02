@@ -33,7 +33,7 @@
 #end
 
 <div class="term">
-  <h3><a id="$element.Anchor"></a><span class="parrot-element-title parrot-rule-title">$element.Label</span> (Rule)
+   <h3 id="$element.Anchor">#if ($element.uriFragment) <a id="$element.uriFragment"></a>#end<span class="parrot-element-title parrot-rule-title">$element.Label</span> (Rule)
     #parse("html/detail-menu.vm")
   </h3>
   #parse("html/description.vm")

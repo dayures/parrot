@@ -58,6 +58,7 @@ public class OntologyIndividualDetailView extends AbstractOntologicalObjectDetai
     	
     	details.setLabel(object.getLabel(locale));
 		details.setUri(object.getURI());
+		details.setUriFragment(object.getUriFragment());
 		details.setComment(object.getComment(locale));
 		
 		// Control version information

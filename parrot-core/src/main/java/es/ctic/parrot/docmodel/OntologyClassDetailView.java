@@ -142,6 +142,7 @@ public class OntologyClassDetailView extends AbstractOntologicalObjectDetailView
     	OntologyClassDetailView details = new OntologyClassDetailView();
     	
 		details.setUri(object.getURI());
+		details.setUriFragment(object.getUriFragment());
 		details.setLabel(object.getLabel(locale));
 		details.setComment(object.getComment(locale));
 		

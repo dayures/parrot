@@ -3,7 +3,7 @@
 	  #set($unescapehtml_Appendix = $document.getAppendix())
 	  $unescapehtml_Appendix
 	#else
-	  <div id="appendix">
+	  <div id="appendix" class="hidden">
 	  <h1>Appendix</h1>
 	  </div>
 	#end

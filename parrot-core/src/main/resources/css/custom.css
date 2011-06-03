@@ -355,3 +355,7 @@ div.inuse table tr td:nth-child(1){
 div#languages{
 	text-align: right;
 }
+
+.hidden {
+	display: none;
+}

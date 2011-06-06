@@ -1,5 +1,5 @@
 jQuery(document).ready(function(){
-	$( "#tabs" ).tabs();
+	$('#tabs').tabs();
 
     $('#extra_opt_uri').click(function() {
     	if ($(this).attr("class") == "more-options-open")
@@ -22,6 +22,22 @@ jQuery(document).ready(function(){
         $('#tabs-3 form p:first').clone().insertBefore($(this));
         $('#tabs-3 form p:last').html($('#tabs-3 form p:last').html()); // clear input file
     	return false;
+    });
+    
+    $('#addText').button({
+        icons: {
+            primary: "ui-icon-circle-plus"
+        }
+    }).click(function() {
+        $('#tabs-2 form div:first.direct-input').clone(true).insertBefore($(this));
+        $('#tabs-2 form div:last.direct-input textarea').val(''); // clear the textarea
+    	return false;
+    });
+    
+    $('.removeText').click(function() {
+    	if ($(this).parent().parent().siblings('.direct-input').length > 0) { // not remove all textareas
+    		$(this).parent().parent().remove();
+    	}
     });
     
     $('#example').click(function() {

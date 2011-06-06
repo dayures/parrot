@@ -109,7 +109,6 @@
 					<div class="buttons">
 						<button type="submit" class="positive"><img src="images/tick.png" alt=""/>Generate documentation</button>
 					</div>
-
 					
 					</form>
 		       	</div>
@@ -117,18 +116,54 @@
 		        <div id="tabs-2"> 
 		        	<h2>by direct input</h2> 
 					<form method="post" action="">
-		        	<p class="direct-input"><label title="Text of the document" for="documentText" class="text">Enter your document:</label><br />
-		        	<textarea id="documentText" name="documentText" cols="150" rows="15" style="width:80%"><c:if test='${not empty param.documentText}'><c:out value="${param.documentText}" escapeXml="true"/></c:if></textarea></p>
-					<p class="direct-input">This is an : 
-					  <select name="mimetypeText">
-				        <option value="application/owl+xml" <c:if test="${param.mimetypeText eq 'application/owl+xml'}">selected="selected"</c:if>>OWL ontology</option>
-				        <option value="text/n3" <c:if test="${param.mimetypeText eq 'text/n3'}">selected="selected"</c:if>>N3 ontology</option>
-				        <option value="application/xhtml+xml" <c:if test="${param.mimetypeText eq 'application/xhtml+xml'}">selected="selected"</c:if>>XHTML+RDFa document</option>
-				        <option value="text/html" <c:if test="${param.mimetypeText eq 'text/html'}">selected="selected"</c:if>>HTML+RDFa document</option>
-				        <option value="application/rif+xml" <c:if test="${param.mimetypeText eq 'application/rif+xml'}">selected="selected"</c:if>>RIF XML document</option>
-				        <option value="text/x-rif-ps" <c:if test="${param.mimetypeText eq 'text/x-rif-ps'}">selected="selected"</c:if>>RIF PS document</option>
-				      </select>
-				    </p>
+					
+		        	<c:choose>
+    					
+    					<c:when test='${not empty paramValues.documentText}'>
+				        	<%-- For every String[] item of paramValues... --%>
+		      				<c:forEach var='text' items='${paramValues.documentText}' varStatus='textStatus'>
+		      					<div class="direct-input"><label title="Text of the document" class="text">Enter your document:</label><br />
+				        		<textarea name="documentText" cols="150" rows="15" style="width:80%"><c:out value="${text}" escapeXml="true"/></textarea>
+		      				
+								<p><span class="direct-input">This is an : 
+								<select name="mimetypeText">
+									<option value="application/owl+xml" <c:if test="${paramValues.mimetypeText[textStatus.index] eq 'application/owl+xml'}">selected="selected"</c:if>>It is a OWL ontology</option>
+									<option value="text/n3" <c:if test="${paramValues.mimetypeText[textStatus.index] eq 'text/n3'}">selected="selected"</c:if>>It is a N3 ontology</option>
+									<option value="application/xhtml+xml" <c:if test="${paramValues.mimetypeText[textStatus.index] eq 'application/xhtml+xml'}">selected="selected"</c:if>>It is a XHTML+RDFa document</option>
+									<option value="text/html" <c:if test="${paramValues.mimetypeText[textStatus.index] eq 'text/html'}">selected="selected"</c:if>>It is a HTML+RDFa document</option>
+									<option value="application/rif+xml" <c:if test="${paramValues.mimetypeText[textStatus.index] eq 'application/rif+xml'}">selected="selected"</c:if>>It is a RIF XML document</option>
+									<option value="text/x-rif-ps" <c:if test="${paramValues.mimetypeText[textStatus.index] eq 'text/x-rif-ps'}">selected="selected"</c:if>>It is a RIF PS document</option>
+								</select>
+						    	</span>							 
+						    	<span class="removeText">remove</span>
+							</p>
+							</div>
+		 			        </c:forEach>
+					    </c:when>
+					    
+					    <c:otherwise>
+				        	<div class="direct-input"><label title="Text of the document" class="text">Enter your document:</label><br />
+				        	<textarea name="documentText" cols="150" rows="15" style="width:80%"><c:if test='${not empty param.documentText}'><c:out value="${param.documentText}" escapeXml="true"/></c:if></textarea>
+				        	
+							<p><span class="direct-input">This is an : 
+							  <select name="mimetypeText">
+							    <option value="application/owl+xml">OWL ontology</option>
+							    <option value="text/n3">N3 ontology</option>
+							    <option value="application/xhtml+xml">XHTML+RDFa document</option>
+							    <option value="text/html">HTML+RDFa document</option>
+							    <option value="application/rif+xml">RIF XML document</option>
+							    <option value="text/x-rif-ps">RIF PS document</option>
+						      </select>
+						    </span>
+						    <span class="removeText">remove</span></p>
+						    </div>
+						</c:otherwise>
+						
+					</c:choose>
+
+				    
+				    <p id="addText"><span id="addTextLink">add another text</span></p>
+
 					<jsp:include page="select-language.jsp"/>
 					<div class="buttons">
 						<button type="submit" class="positive"><img src="images/tick.png" alt=""/>Generate documentation</button>

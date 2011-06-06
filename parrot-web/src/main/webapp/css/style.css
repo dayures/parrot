@@ -111,21 +111,18 @@ label.text{
   cursor:pointer;
 }
 
-.removeURI{
-  text-decoration:underline;
-  cursor:pointer;
-}
-
 p#addURI{
 	margin-top: 0em;
 }
 
-.removeURI{
+.removeURI, .removeText{
+  text-decoration:underline;
+  cursor:pointer;
   margin-left:0.5em;
   padding:0.3em;
 }
 
-span.removeURI:hover {
+span.removeURI:hover,  span.removeText:hover{
 	color:white;
 	background-color:red;
 }  /* mouse over link */

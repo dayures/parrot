@@ -212,7 +212,11 @@ public abstract class AbstractJenaDocumentableObject extends
     public Collection<Label> getLabels(){
    		return getAnnotationStrategy().getLabels(getOntResource(), null);
    	}
-    
+
+    public String getLabel(String language) {
+    	return getLabel(new Locale(language));
+    }
+
     public String getLabel(Locale locale) {
     	String label = getAnnotationStrategy().getLabel(getOntResource(), locale);
     	

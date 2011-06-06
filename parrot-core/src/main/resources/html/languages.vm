@@ -1,5 +1,13 @@
 #if ($document.isReloadable())
-  	#if ($document.getLanguages().size() >1)
+  	#if ( ($document.getLanguages().size() >1) &&
+  		  (!$document.ontologyDetailViews.isEmpty() 
+		   || !$document.ontologyClassDetailViews.isEmpty() 
+		   || !$document.ontologyPropertyDetailViews.isEmpty() 
+		   || !$document.ontologyIndividualDetailViews.isEmpty()
+		   || !$document.ruleSetDetailViews.isEmpty() 
+		   || !$document.ruleDetailViews.isEmpty() 
+		  )
+  		)
 	  <div id="languages">
 	  <p>* Read the report in another languages such as:
   	    ## rename the variable in order to unescape the html content

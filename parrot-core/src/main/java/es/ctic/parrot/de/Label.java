@@ -15,7 +15,10 @@ public class Label {
 	private static final String SKOS_XL_PREF_LABEL = "http://www.w3.org/2008/05/skos-xl#prefLabel";
 	private static final String SKOS_CORE_PREF_LABEL = "http://www.w3.org/2004/02/skos/core#prefLabel";
 	private static final String RDFS_LABEL = "http://www.w3.org/2000/01/rdf-schema#label";
-	
+
+	private static final String SKOS_XL_ALT_LABEL = "http://www.w3.org/2008/05/skos-xl#altLabel";
+	private static final String SKOS_CORE_ALT_LABEL = "http://www.w3.org/2004/02/skos/core#altLabel";
+
 	private String qualifier;
 	private String uri;
 	private String text;
@@ -109,6 +112,23 @@ public class Label {
 	 */
 	public boolean isPrefLabel() {
 		if (this.getQualifier().equals(SKOS_XL_PREF_LABEL) || this.getQualifier().equals(SKOS_CORE_PREF_LABEL) || this.getQualifier().equals(RDFS_LABEL)){
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	/**
+	 * Returns <code>true</code> if the label is a alternative label, otherwise <code>false</code>.
+	 * A alternative label has as URI:
+	 * <ul>
+	 * <li>http://www.w3.org/2008/05/skos-xl#altLabel</li>
+	 * <li>http://www.w3.org/2004/02/skos/core#altLabel</li>
+	 * </ul>
+	 * @return <code>true</code> if the label is a alternative label, otherwise <code>false</code>
+	 */
+	public boolean isAltLabel() {
+		if (this.getQualifier().equals(SKOS_XL_ALT_LABEL) || this.getQualifier().equals(SKOS_CORE_ALT_LABEL)){
 			return true;
 		} else {
 			return false;

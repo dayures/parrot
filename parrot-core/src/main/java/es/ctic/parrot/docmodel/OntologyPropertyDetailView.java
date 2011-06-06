@@ -323,6 +323,7 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
 		details.setOccurrences(object.getOccurrences());
 		details.setInverseOf(DocumentableObjectReference.createReference(object.getInverseOf(), locale));
 		details.setLabels(object.getLabels());
+		details.setSynonyms(object.getSynonyms());
 		details.setRelatedDocuments(object.getRelatedDocuments(locale));
 		
 		details.setAnchor(object.getLocalName());

@@ -173,15 +173,15 @@ public class OntResourceAnnotationStrategy {
 			labels.addAll(skosXLAltLabels);
 		}
 		
-		Collection<Label> skosAltLabels = getLiteralLabels(ontResource, SKOS_CORE_ALT_LABEL, locale);
-		if (skosAltLabels.isEmpty() == false){
-			labels.addAll(skosAltLabels);
-		}
-        
 		Collection<Label> skosPrefLabels = getLiteralLabels(ontResource, SKOS_CORE_PREF_LABEL, locale);
-        if (skosPrefLabels.isEmpty() == false && labels.isEmpty()) { // hidden by the previous labels
+        if (skosPrefLabels.isEmpty() == false ){
             labels.addAll(skosPrefLabels);
         }
+        
+		Collection<Label> skosAltLabels = getLiteralLabels(ontResource, SKOS_CORE_ALT_LABEL, locale);
+		if (skosAltLabels.isEmpty() == false && labels.isEmpty()) { // hidden by the previous labels
+			labels.addAll(skosAltLabels);
+		}
         
 		Collection<Label> dcTitleLabels = getLiteralLabels(ontResource, DC_TITLE, locale);
         if (dcTitleLabels.isEmpty() == false && labels.isEmpty()) { // hidden by the previous labels
@@ -247,15 +247,15 @@ public class OntResourceAnnotationStrategy {
         }
 
         for (Label label : labels){
-        	if (label.getQualifier().equals(SKOS_CORE_PREF_LABEL)) {
-        		return label.getText();
-        	}
-        }
-        
-        for (Label label : labels){
             if (label.getQualifier().equals(SKOS_XL_ALT_LABEL)) {
                 return label.getText();
             }
+        }
+        
+        for (Label label : labels){
+        	if (label.getQualifier().equals(SKOS_CORE_PREF_LABEL)) {
+        		return label.getText();
+        	}
         }
 
         for (Label label : labels){

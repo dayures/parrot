@@ -370,5 +370,11 @@ public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObj
 		//return null;
 	}
 
+	public Collection<Label> getSynonyms() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Method not implemented yet.");
+		//return null;
+	}
+
     
 }

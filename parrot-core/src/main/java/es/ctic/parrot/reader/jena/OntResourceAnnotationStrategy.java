@@ -154,6 +154,54 @@ public class OntResourceAnnotationStrategy {
    	}
 	
 	/**
+	 * Returns a collection of synonyms for this ontResource.
+	 * @param ontResource the ontResource.
+	 * @return a collection of synonyms for this ontResource.
+	 */	
+	public Collection<Label> getSynonyms(OntResource ontResource) {
+   		return getSynonyms(ontResource, null);
+	}
+	
+	/**
+	 * Returns a collection of synonyms for this ontResource.
+	 * The order to obtain the synonyms is:
+	 * <ol>
+	 * 	<li>http://www.w3.org/2008/05/skos-xl#altLabel</li>
+	 *  <li>http://www.w3.org/2004/02/skos/core#altLabel</li>
+	 *  <li>http://purl.org/dc/elements/1.1/title</li>
+	 *  <li>http://www.w3.org/2000/01/rdf-schema#label</li>
+	 * </ol>
+	 * @param locale the locale.
+	 * @param ontResource the ontResource.
+	 * @return a collection of synonyms for this ontResource.
+	 */
+	public Collection<Label> getSynonyms(OntResource ontResource, Locale locale) {
+		Collection<Label> synonyms = new HashSet<Label>();
+
+		Collection<Label> skosXLAltLabels = getSkosxlLabels(ontResource, SKOS_XL_ALT_LABEL, locale);
+		if (skosXLAltLabels.isEmpty() == false){
+			synonyms.addAll(skosXLAltLabels);
+		}
+        
+		Collection<Label> skosAltLabels = getLiteralLabels(ontResource, SKOS_CORE_ALT_LABEL, locale);
+		if (skosAltLabels.isEmpty() == false && synonyms.isEmpty()) { // hidden by the previous labels
+			synonyms.addAll(skosAltLabels);
+		}
+        
+		Collection<Label> dcTitleLabels = getLiteralLabels(ontResource, DC_TITLE, locale);
+        if (dcTitleLabels.isEmpty() == false && synonyms.isEmpty()) { // hidden by the previous labels
+            synonyms.addAll(dcTitleLabels);
+        }
+
+        Collection<Label> rdfsLabels = getLiteralLabels(ontResource, RDF_SCHEMA_LABEL, locale);
+        if (rdfsLabels.isEmpty() == false && synonyms.isEmpty()) { // hidden by the previous labels
+            synonyms.addAll(rdfsLabels);
+        }
+		
+		return synonyms;
+	}
+	
+	/**
 	 * Returns a collection of labels for this ontResource for the given locale.
 	 * @param locale the locale.
 	 * @param ontResource the ontResource.
@@ -963,5 +1011,5 @@ public class OntResourceAnnotationStrategy {
 	private static String replaceUnderscore(String s) {
 		   return s.replace('_' , ' ');
 		}
-	
+
 }

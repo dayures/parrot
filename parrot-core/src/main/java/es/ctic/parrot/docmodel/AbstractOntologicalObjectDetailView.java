@@ -26,7 +26,8 @@ public abstract class AbstractOntologicalObjectDetailView implements DetailView 
 	private Collection<DocumentableObjectReference> inverseRuleReferences = new HashSet<DocumentableObjectReference>();
 	private Collection<RelatedDocument> relatedDocuments;
 	private Collection<Label> labels;
-    private Identifier identifier;
+	private Collection<Label> synonyms;
+	private Identifier identifier;
 	private DocumentableObjectReference isDefinedBy;
 	private boolean deprecated;
 	
@@ -323,5 +324,21 @@ public abstract class AbstractOntologicalObjectDetailView implements DetailView 
 	 */
 	public String getUriFragment() {
 		return uriFragment;
+	}
+
+	/**
+	 * Set the synonyms.
+	 * @param synonyms the synonyms to set
+	 */
+	protected void setSynonyms(Collection<Label> synonyms) {
+		this.synonyms = synonyms;
+	}
+
+	/**
+	 * Returns the synonyms.
+	 * @return the synonyms.
+	 */
+	public Collection<Label> getSynonyms() {
+		return Collections.unmodifiableCollection(synonyms);
 	}
 }

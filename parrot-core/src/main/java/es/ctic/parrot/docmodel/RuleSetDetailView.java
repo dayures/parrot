@@ -32,6 +32,7 @@ public class RuleSetDetailView implements DetailView {
 
 	private Collection<DocumentableObjectReference> referencedOntologicalObjects;
 	private Collection<Label> labels;
+	private Collection<Label> synonyms;
 	private Collection<RelatedDocument> relatedDocuments;
 	private Collection<DocumentableObjectReference> rules;
 	private Collection<DocumentableObjectReference> ruleSets;
@@ -392,6 +393,22 @@ public class RuleSetDetailView implements DetailView {
 	}
 	
 	/**
+	 * Set the synonyms.
+	 * @param synonyms the synonyms to set
+	 */
+	protected void setSynonyms(Collection<Label> synonyms) {
+		this.synonyms = synonyms;
+	}
+
+	/**
+	 * Returns the synonyms.
+	 * @return the synonyms.
+	 */
+	public Collection<Label> getSynonyms() {
+		return Collections.unmodifiableCollection(synonyms);
+	}
+	
+	/**
 	 * Returns a detailed view for the rule set given.
 	 * @param object the rule set.
 	 * @param locale the locale.
@@ -420,7 +437,10 @@ public class RuleSetDetailView implements DetailView {
         details.setPriority(object.getPriority());
         details.setStrategy(object.getStrategy());
         details.setParent(DocumentableObjectReference.createReference(object.getParent(), locale));
-        details.setLabels(object.getLabels());
+
+		details.setLabels(object.getLabels());
+		details.setSynonyms(object.getSynonyms());
+
         details.setAnchor(object.getLocalName());
         details.setRelatedDocuments(object.getRelatedDocuments(locale));        
         return details;

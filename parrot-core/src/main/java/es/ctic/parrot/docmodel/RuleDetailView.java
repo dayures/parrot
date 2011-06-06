@@ -29,6 +29,7 @@ public class RuleDetailView implements DetailView{
 	private String comment;
 	private Collection<DocumentableObjectReference> referencedOntologicalObjects;
 	private Collection<Label> labels;
+	private Collection<Label> synonyms;
 	private Collection<RelatedDocument> relatedDocuments;
 	private DocumentableObjectReference parent;
     private String anchor;
@@ -322,6 +323,22 @@ public class RuleDetailView implements DetailView{
 	}
 
 	/**
+	 * Set the synonyms.
+	 * @param synonyms the synonyms to set
+	 */
+	protected void setSynonyms(Collection<Label> synonyms) {
+		this.synonyms = synonyms;
+	}
+
+	/**
+	 * Returns the synonyms.
+	 * @return the synonyms.
+	 */
+	public Collection<Label> getSynonyms() {
+		return Collections.unmodifiableCollection(synonyms);
+	}
+	
+	/**
 	 * Returns a detailed view for the rule given.
 	 * @param object the rule.
 	 * @param locale the locale.
@@ -348,6 +365,8 @@ public class RuleDetailView implements DetailView{
 		details.setParent(DocumentableObjectReference.createReference(object.getParent(), locale));
 		details.setReferencedOntologicalObjects(DocumentableObjectReference.createReferences(object.getReferencedOntologicalObjects(), locale));
 		details.setLabels(object.getLabels());
+		details.setSynonyms(object.getSynonyms());
+		
         details.setAnchor(object.getLocalName());
 		details.setRelatedDocuments(object.getRelatedDocuments(locale));
 		

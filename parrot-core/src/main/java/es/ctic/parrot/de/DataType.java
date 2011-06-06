@@ -98,5 +98,11 @@ public class DataType extends AbstractDocumentableObject {
 		//return null;
 	}
 
+	public Collection<Label> getSynonyms() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Method not implemented yet.");
+		//return null;
+	}
+
 
 }

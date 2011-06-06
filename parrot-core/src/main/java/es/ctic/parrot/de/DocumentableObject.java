@@ -146,6 +146,12 @@ public interface DocumentableObject {
 	public abstract Collection<Label> getLabels();
 	
 	/**
+	 * Returns the synonyms associated with this documentable element. 
+	 * @return the synonyms associated with this documentable element.
+	 */
+	public abstract Collection<Label> getSynonyms();
+	
+	/**
 	 * Returns the kind string for this documentable element. 
 	 * @return the kind string for this documentable element.
 	 */

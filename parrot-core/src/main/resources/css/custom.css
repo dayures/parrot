@@ -131,7 +131,7 @@ dt{
 	color: green;
 }
 
-.parrot-label-text-pref {
+.parrot-label-text-pref , .parrot-label-text-alt {
 	font-weight:bold;
 }
 

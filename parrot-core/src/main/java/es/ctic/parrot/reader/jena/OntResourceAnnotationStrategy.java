@@ -865,13 +865,13 @@ public class OntResourceAnnotationStrategy {
 					values.add(extractLiteral);
 				} else {
 					if (locale == null){
-						logger.debug("Literal not added " + st.toString());
+						//logger.debug("Literal not added " + st.toString());
 					} else {
-						logger.debug("Literal not added " + st.toString() + " due to language issue (locale="+locale.toString()+", literalLanguage="+st.getObject().asLiteral().getLanguage()+")");
+						//logger.debug("Literal not added " + st.toString() + " due to language issue (locale="+locale.toString()+", literalLanguage="+st.getObject().asLiteral().getLanguage()+")");
 					}
 				}
 			} else {
-				logger.debug("As is not a literal, not added " + st.toString() );
+				//logger.debug("As is not a literal, not added " + st.toString() );
 			}
 		}
 		return values;

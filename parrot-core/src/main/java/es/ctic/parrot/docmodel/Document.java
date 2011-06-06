@@ -41,6 +41,7 @@ import es.ctic.parrot.reader.Input;
  *
  */
 public class Document {
+	private Locale locale;
 	private String title;
 	private final Collection<Input> inputs = new HashSet<Input>();
 	private final Set<OntologyDetailView> ontologyDetailViews = new HashSet<OntologyDetailView>();
@@ -60,6 +61,7 @@ public class Document {
      * @param locale the locale.
      */
     public Document(Locale locale) {
+    	this.setLocale(locale);
         this.glossary = new Glossary(locale);
     }
 	
@@ -344,6 +346,22 @@ public class Document {
 			}
 		}
 		return true;
+	}
+
+	/**
+	 * Sets the locale.
+	 * @param locale the locale to set.
+	 */
+	private void setLocale(Locale locale) {
+		this.locale = locale;
+	}
+
+	/**
+	 * Returns the main language of the document.
+	 * @return the main language of the document
+	 */
+	public String getMainLanguage() {
+		return locale.getLanguage();
 	}
 }
 /**

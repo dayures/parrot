@@ -322,13 +322,14 @@ public class OntResourceAnnotationStrategy {
 				literalLabel.setLocale(new Locale(language)); // FIXME do it more specified using Locale(String language, String country, String variant)
 			}
 			
-			// if there is not locale restriction and there is not language tag for the literal
+			// if there is not locale restriction
 			if (locale == null){
-				if (literalLabel.getLocale() == null){
-					//logger.debug(literalLabel + " is " + uri + " for resource " + getOntResource());
+				if (literalLabel.getLocale() == null){  //and there is not language tag for the literal
+					//logger.debug(literalLabel + " is " + uri + " for resource " + ontResource);
 					literalLabels.add(literalLabel);
 				} else {
 					//logger.debug("Not add label  " + literalLabel + " for resource " + getOntResource() + " because it has language tag=" + literalLabel.getLocale());
+					literalLabels.add(literalLabel);
 				}
 			} else {
 				//compare locales

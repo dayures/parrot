@@ -102,7 +102,7 @@ public class ServletParrot extends HttpServlet {
 
 			addFileUploadInput(dp, req);
 			
-			addDirectInput(dp, req);
+			addDirectInputs(dp, req);
 
 			addRefererInput(dp, req);
 			
@@ -269,17 +269,32 @@ public class ServletParrot extends HttpServlet {
 		}
 	}
 
-	private void addDirectInput(DocumentaryProject dp, HttpServletRequest req) {
-		String directInputText = req.getParameter(DOCUMENT_TEXT);
-		if (directInputText != null) {
-			directInputText = directInputText.trim();
+	private void addDirectInputs(DocumentaryProject dp, HttpServletRequest req) {
+		
+		String[] directInputTexts = req.getParameterValues(DOCUMENT_TEXT);
+		String[] directInputMimetypes = req.getParameterValues(MIMETYPE_TEXT);
+		
+		if (directInputTexts == null) {
+			directInputTexts = new String[0];
 		}
-		if (directInputText != null && directInputText.length() > 0) {
-		    String directInputMimetype = req.getParameter(MIMETYPE_TEXT);
-		    if (directInputMimetype == null) {
-		        throw new IllegalArgumentException("Mimetype specification is required for direct input");
-		    }
-		    dp.addInput(new StringInput(directInputText, directInputMimetype)); 
+
+		if (directInputMimetypes == null) {
+			directInputMimetypes = new String[0];
+		}
+
+		for( int i=0 ; i<directInputTexts.length ; i++) {
+			String directInputText = directInputTexts[i];
+			
+			if (directInputText != null) {
+				directInputText = directInputText.trim();
+			}
+			if (directInputText != null && directInputText.length() > 0) {
+			    String directInputMimetype = directInputMimetypes[i];
+			    if (directInputMimetype == null) {
+			        throw new IllegalArgumentException("Mimetype specification is required for direct input");
+			    }
+			    dp.addInput(new StringInput(directInputText, directInputMimetype)); 
+			}
 		}
 	}
 

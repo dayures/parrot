@@ -57,7 +57,7 @@
     					<c:when test='${not empty paramValues.documentUri}'>
 				        	<%-- For every String[] item of paramValues... --%>
 		      				<c:forEach var='uri' items='${paramValues.documentUri}' varStatus='uriStatus'> 
-				        	<p <c:if test="${fn:contains(errorsUri, uri)}">class="error"</c:if>>
+				        	<p class="uri-input<c:if test="${fn:contains(errorsUri, uri)}"> error</c:if>">
 								<label <c:if test='${uriStatus.first}'>for="documentUri"</c:if> title="URL of the page containing the OWL/RIF document" class="uri">URI: </label>
 				        		<input <c:if test='${uriStatus.first}'>id="documentUri"</c:if> name="documentUri" value="<c:out value="${uri}" escapeXml="true"/>" type="text" size="100" />
 							<select name="mimetype">
@@ -81,7 +81,7 @@
 		 			        </c:forEach>
 					    </c:when>
 					    <c:otherwise>
-				        	<p><label title="URL of the page containing the OWL/RIF document"
+				        	<p class="uri-input"><label title="URL of the page containing the OWL/RIF document"
 							for="documentUri" class="uri">URI: </label><input id="documentUri" name="documentUri" value="http://" type="text" size="100" />
 							<select name="mimetype">
 								<option value="default" selected="selected">Allow content negotiation</option>

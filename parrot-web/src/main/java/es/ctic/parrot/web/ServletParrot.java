@@ -58,103 +58,108 @@ public class ServletParrot extends HttpServlet {
 
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		
+		
 		String showForm = req.getParameter("showform");
-		if ( showForm != null && showForm.equalsIgnoreCase("true")){
+		if ( showForm != null && showForm.equalsIgnoreCase("true") && req.getMethod().equalsIgnoreCase("POST") == false){
 			forwardToForm(req, res);
-		}
-		
-		
-		ErrorBuffer errors = new ErrorBuffer();
-		List<String> advices = new ArrayList<String>();
-		req.setAttribute(ERRORS_GENERAL, errors.getErrorsNotAssociated());
-		req.setAttribute(ADVICES, advices);
-		
-		Locale locale = Locale.ENGLISH; // default Locale
-		
-		String language = req.getParameter("language");
-		if ( language != null && language.trim().length() != 0){
-			locale = new Locale(language);
-		}
-
-		String profile_param = req.getParameter("profile");
-		
-		Profile profile = Profile.UNDEFINED;
-		
-		if (profile_param != null){
-		
-			profile_param = profile_param.toLowerCase();			
-		
-			if (profile_param.equals("business")){
-				profile = Profile.BUSINESS;
-			} 
+		} else {
+			ErrorBuffer errors = new ErrorBuffer();
+			List<String> advices = new ArrayList<String>();
+			req.setAttribute(ERRORS_GENERAL, errors.getErrorsNotAssociated());
+			req.setAttribute(ADVICES, advices);
 			
-			if (profile_param.equals("technical")){
-				profile = Profile.TECHNICAL;
-			}
-		}
-		
-		String reportURL = req.getParameter("reportURL");
-		
-		try {
-			DocumentaryProject dp = new DocumentaryProject(locale);
-
-			dp.setReportURL(req.getRequestURL() + "?" + req.getQueryString());
-
-			addFileUploadInput(dp, req);
+			Locale locale = Locale.ENGLISH; // default Locale
 			
-			addDirectInputs(dp, req);
-
-			addRefererInput(dp, req);
+			String language = req.getParameter("language");
+			if ( language != null && language.trim().length() != 0){
+				locale = new Locale(language);
+			}
+	
+			String profile_param = req.getParameter("profile");
 			
-			if (dp.getInputs().isEmpty()){
-				addUriInputs(dp, req);
+			Profile profile = Profile.UNDEFINED;
+			
+			if (profile_param != null){
+			
+				profile_param = profile_param.toLowerCase();			
+			
+				if (profile_param.equals("business")){
+					profile = Profile.BUSINESS;
+				} 
+				
+				if (profile_param.equals("technical")){
+					profile = Profile.TECHNICAL;
+				}
 			}
-
-			// Read a previous report
-			if (reportURL != null){
-                ParrotAppServ parrotAppServ = getParrotAppServ();
-                Collection<Input> inputs = parrotAppServ.getInputsFromExistingReport(reportURL);
-                dp.setPrologueURL(parrotAppServ.getPrologueURLFromExistingReport(reportURL));
-                dp.setAppendixURL(parrotAppServ.getAppendixURLFromExistingReport(reportURL));
-               	dp.addAllInput(inputs);
+			
+			String reportURL = req.getParameter("reportURL");
+			
+			try {
+				DocumentaryProject dp = new DocumentaryProject(locale);
+	
+				String queryString = req.getQueryString();
+				if (queryString != null){
+					dp.setReportURL(req.getRequestURL() + "?" + queryString);
+				} else {
+					dp.setReportURL(req.getRequestURL() + "?");
+				}
+	
+				addFileUploadInput(dp, req);
+				
+				addDirectInputs(dp, req);
+	
+				addRefererInput(dp, req);
+				
+				if (dp.getInputs().isEmpty()){
+					addUriInputs(dp, req);
+				}
+	
+				// Read a previous report
+				if (reportURL != null){
+	                ParrotAppServ parrotAppServ = getParrotAppServ();
+	                Collection<Input> inputs = parrotAppServ.getInputsFromExistingReport(reportURL);
+	                dp.setPrologueURL(parrotAppServ.getPrologueURLFromExistingReport(reportURL));
+	                dp.setAppendixURL(parrotAppServ.getAppendixURLFromExistingReport(reportURL));
+	               	dp.addAllInput(inputs);
+				}
+	
+				if (dp.getInputs().isEmpty()) {
+					forwardToForm(req, res);
+				} else {
+				    InputStream template = getTemplateInputStream();
+				    ByteArrayOutputStream out = new ByteArrayOutputStream();
+	                HtmlOutputGenerator outputGenerator = new HtmlOutputGenerator(out, template);
+	                ParrotAppServ parrotAppServ = getParrotAppServ();
+				    parrotAppServ.createDocumentation(dp, outputGenerator, profile);
+	                res.setContentType("text/html");
+				    res.getOutputStream().write(out.toByteArray());
+				}
+		    } catch (MalformedURLException e) {
+		        logger.error("While generating documentation", e);
+		        errors.addError("Malformed URI: " + e.getMessage());
+		        forwardToForm(req, res);
+			} catch (ReaderException e) {
+			    logger.error("While generating documentation", e);
+			    errors.addError("Unable to read input document: " + e.getMessage());
+			    forwardToForm(req, res);
+			} catch (TransformerException e){
+			    logger.error("While processing documentation", e);
+			    errors.addError("Error while processing documentation: " + e.getMessage());
+			    forwardToForm(req, res);
+			} catch (IOException e) {
+			    logger.error("While generating documentation", e);
+			    errors.addError("I/O Error: " + e.getMessage());
+			    forwardToForm(req, res);
+			} catch (FileUploadException e) {
+				logger.error("While uploading file", e);
+				res.sendError(400);
+			} catch (IllegalArgumentException e) {
+			    logger.error("Illegal request: " + req, e);
+			    res.sendError(400);
+			} catch (RuntimeException e) {
+			    logger.error("Unexpected error while generating documentation", e);
+			    res.sendError(500);
 			}
-
-			if (dp.getInputs().isEmpty()) {
-				forwardToForm(req, res);
-			} else {
-			    InputStream template = getTemplateInputStream();
-			    ByteArrayOutputStream out = new ByteArrayOutputStream();
-                HtmlOutputGenerator outputGenerator = new HtmlOutputGenerator(out, template);
-                ParrotAppServ parrotAppServ = getParrotAppServ();
-			    parrotAppServ.createDocumentation(dp, outputGenerator, profile);
-                res.setContentType("text/html");
-			    res.getOutputStream().write(out.toByteArray());
-			}
-	    } catch (MalformedURLException e) {
-	        logger.error("While generating documentation", e);
-	        errors.addError("Malformed URI: " + e.getMessage());
-	        forwardToForm(req, res);
-		} catch (ReaderException e) {
-		    logger.error("While generating documentation", e);
-		    errors.addError("Unable to read input document: " + e.getMessage());
-		    forwardToForm(req, res);
-		} catch (TransformerException e){
-		    logger.error("While processing documentation", e);
-		    errors.addError("Error while processing documentation: " + e.getMessage());
-		    forwardToForm(req, res);
-		} catch (IOException e) {
-		    logger.error("While generating documentation", e);
-		    errors.addError("I/O Error: " + e.getMessage());
-		    forwardToForm(req, res);
-		} catch (FileUploadException e) {
-			logger.error("While uploading file", e);
-			res.sendError(400);
-		} catch (IllegalArgumentException e) {
-		    logger.error("Illegal request: " + req, e);
-		    res.sendError(400);
-		} catch (RuntimeException e) {
-		    logger.error("Unexpected error while generating documentation", e);
-		    res.sendError(500);
 		}
 	}
 

@@ -316,7 +316,7 @@ table td {
     text-align:left;
 }
 
-#extra_opt_uri{
+.extra_opt_uri{
 	cursor:pointer;
     background-repeat: no-repeat;
     background-position: center left;
@@ -348,11 +348,11 @@ fieldset{
     background-position: 0.3em center;
 }
 
-#options{
+.options{
 	padding: 0.5em;
 }
 
-div#options{
+div.options{
 	display:none;
 }
 

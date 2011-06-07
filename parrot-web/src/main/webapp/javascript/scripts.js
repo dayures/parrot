@@ -1,11 +1,11 @@
 jQuery(document).ready(function(){
 	$('#tabs').tabs();
 
-    $('#extra_opt_uri').click(function() {
+    $('.extra_opt_uri').click(function() {
     	if ($(this).attr("class") == "more-options-open")
-            $(this).attr("class", "more-options-closed");
+            $(this).attr("class", "extra_opt_uri more-options-closed");
          else
-            $(this).attr("class", "more-options-open");
+            $(this).attr("class", "extra_opt_uri more-options-open");
     	
 	    $(this).nextAll('div').toggle();
 	    return false;

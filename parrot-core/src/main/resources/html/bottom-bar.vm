@@ -36,7 +36,11 @@
         
         <ul class="jx-bar-button-right">
 		    ## rename the variable in order to unescape the html content
-			#set($unescapehtml_back-to-form = "$document.reportURL&amp;showform=true")
+		    #if ($document.reportURL)
+				#set($unescapehtml_back-to-form = "$document.reportURL&amp;showform=true")
+			#else
+				#set($unescapehtml_back-to-form = "\")
+			#end
 	      <li title="Back to form"><a href="$unescapehtml_back-to-form"><img src="images/back.png" alt="Back to form" /></a></li>
    		</ul>
    		<span class="jx-separator-right"></span>

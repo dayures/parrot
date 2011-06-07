@@ -14,6 +14,9 @@ import com.hp.hpl.jena.ontology.OntProperty;
 import com.hp.hpl.jena.ontology.OntResource;
 import com.hp.hpl.jena.ontology.Ontology;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.rdf.model.ResIterator;
+import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.shared.JenaException;
 import com.hp.hpl.jena.util.iterator.ExtendedIterator;
 import com.hp.hpl.jena.vocabulary.OWL;
@@ -111,7 +114,9 @@ public class JenaOWLReader implements DocumentReader {
      * @param register the register.
 	 */
     private void loadOntClasses(OntModel model, DocumentableObjectRegister register) {
-		Iterator<OntClass> it= model.listNamedClasses();
+		
+    	// owl:Class
+    	Iterator<OntClass> it= model.listNamedClasses();
 		while(it.hasNext()){
 			OntClass ontclass=it.next();
 			if (isDomainSpecific(ontclass.getURI())) {
@@ -119,6 +124,19 @@ public class JenaOWLReader implements DocumentReader {
 			    register.registerDocumentableObject(docObject);
 			}
 		}
+		
+		// rdfs:Class
+		ResIterator resIterator= model.listResourcesWithProperty(RDF.type, RDFS.Class);
+		while(resIterator.hasNext()){
+			Resource resource=resIterator.next();
+			if (isDomainSpecific(resource.getURI())) {
+				OntClass ontclass = model.createClass(resource.getURI());
+				OntologyClassJenaImpl docObject=new OntologyClassJenaImpl(ontclass, register, getAnnotationStrategy());
+			    register.registerDocumentableObject(docObject);
+			}
+			
+		}		
+		
 	}
 	
 	/**

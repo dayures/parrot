@@ -262,7 +262,18 @@
 
 <script type="text/javascript" src="javascript/scripts.js"></script>
 
-<c:if test='${!empty param.reportURL}'>
+<c:if test='${not empty paramValues.documentText}'>
+<script type="text/javascript">
+<![CDATA[ 
+jQuery(document).ready(function(){
+	$("#tabs").tabs("select", 1);
+});
+]]>         
+</script>
+</c:if>
+
+
+<c:if test='${not empty param.reportURL}'>
 <script type="text/javascript">
 <![CDATA[ 
 jQuery(document).ready(function(){

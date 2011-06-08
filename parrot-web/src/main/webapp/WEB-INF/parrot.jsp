@@ -97,9 +97,9 @@
 							</p>
 						</c:otherwise>
 					</c:choose>
+
 					<p id="addURI"><span id="addURILink">add another URI</span></p>
 					<jsp:include page="more-options.jsp"/>
-					<jsp:include page="select-language.jsp"/>
 					<div class="buttons">
 						<button type="submit" class="positive"><img src="images/tick.png" alt=""/>Generate documentation</button>
 					</div>
@@ -155,10 +155,8 @@
 						
 					</c:choose>
 
-				    
 				    <p id="addText"><span id="addTextLink">add another text</span></p>
 				    <jsp:include page="more-options.jsp"/>
-					<jsp:include page="select-language.jsp"/>
 					<div class="buttons">
 						<button type="submit" class="positive"><img src="images/tick.png" alt=""/>Generate documentation</button>
 					</div>
@@ -183,7 +181,6 @@
 					    </p>
 					    <p><button id="addFile">add another file</button></p>
 					    <jsp:include page="more-options.jsp"/>
-						<jsp:include page="select-language.jsp"/>
 						<div class="buttons">
 							<button type="submit" class="positive"><img src="images/tick.png" alt=""/>Generate documentation</button>
 						</div>
@@ -201,9 +198,8 @@
 							<p><label for="reportURL" title="URL of an existing Parrot report" class="uri">URL: </label><input id="reportURL" name="reportURL" value="<c:out value="${param.reportURL}" />" type="text" size="100" /></p>
 						</c:otherwise>
 					</c:choose>
-					<jsp:include page="more-options.jsp"/>
-					<jsp:include page="select-language.jsp"/>
 					
+					<jsp:include page="more-options.jsp"/>
 					<div class="buttons">
 						<button type="submit" class="positive"><img src="images/tick.png" alt=""/>Generate documentation</button>
 					</div>

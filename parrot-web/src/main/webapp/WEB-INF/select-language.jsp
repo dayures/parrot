@@ -1,6 +1,6 @@
 <%@ page pageEncoding="UTF-8"%>
 <div class="language">
-	<label>Select preferred language: </label> <select name="language">
+	<label>Report language: </label> <select name="language">
 		<option value="bg">български</option>
 		<option value="cs">čeština</option>
 		<option value="da">dansk</option>

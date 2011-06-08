@@ -23,6 +23,7 @@ public class DocumentaryProject {
     private String prologueURL;
     private String appendixURL;
     private String reportURL;
+    private String customizeCssUrl;
 
 
     /** Constructs a new Documentary project with the specified locale. 
@@ -121,5 +122,22 @@ public class DocumentaryProject {
 	public String getReportURL() {
 		return reportURL;
 	}
+
+	/**
+	 * Set the customize CSS URL.
+	 * @param customizeCssUrl the customize CSS URL to set.
+	 */
+	public void setCustomizeCssUrl(String customizeCssUrl) {
+		this.customizeCssUrl = customizeCssUrl;
+	}
+
+	/**
+	 * Returns the customize CSS URL.
+	 * @return the customize CSS URL.
+	 */
+	public String getCustomizeCssUrl() {
+		return customizeCssUrl;
+	}
+
 	
 }

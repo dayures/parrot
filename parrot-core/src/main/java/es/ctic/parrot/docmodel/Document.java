@@ -55,6 +55,7 @@ public class Document {
     private String appendixURL;
     private String reportURL;
     private Collection<String> languages;
+    private String customizeCssUrl;
 
     /**
      * Constructs a document using the given locale.
@@ -363,6 +364,33 @@ public class Document {
 	public String getMainLanguage() {
 		return locale.getLanguage();
 	}
+
+	/**
+	 * @param customizeCssUrl the customizeCssUrl to set
+	 */
+	public void setCustomizeCssUrl(String customizeCssUrl) {
+
+		// TODO  validate URL ??
+//		try {
+//		    URL url = new URL("customizeCssUrl");
+//		    URLConnection conn = url.openConnection();
+//		    conn.connect();
+//		} catch (MalformedURLException e) {
+//		    // the URL is not in a valid form
+//		} catch (IOException e) {
+//		    // the connection couldn't be established
+//		}
+		
+		this.customizeCssUrl = customizeCssUrl;
+	}
+
+	/**
+	 * @return the customizeCssUrl
+	 */
+	public String getCustomizeCssUrl() {
+		return customizeCssUrl;
+	}
+
 }
 /**
  * Compares alphabetically by label of each <code>DetailView</code> 

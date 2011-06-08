@@ -92,6 +92,9 @@ public class ServletParrot extends HttpServlet {
 				}
 			}
 			
+		
+			String customizeCssUrl = req.getParameter("customizeCssUrl");
+			
 			String reportURL = req.getParameter("reportURL");
 			
 			try {
@@ -103,6 +106,11 @@ public class ServletParrot extends HttpServlet {
 				} else {
 					dp.setReportURL(req.getRequestURL() + "?");
 				}
+				
+				if (customizeCssUrl != null && customizeCssUrl.trim().length() != 0){
+					dp.setCustomizeCssUrl(customizeCssUrl);
+				}
+				
 	
 				addFileUploadInput(dp, req);
 				

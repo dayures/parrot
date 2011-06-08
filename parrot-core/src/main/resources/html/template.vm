@@ -1,5 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd"> 
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:parrot="http://vocab.ctic.es/parrot#">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:parrot="http://vocab.ctic.es/parrot#" 
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+	xmlns:owl="http://www.w3.org/2002/07/owl#" 
+	version="XHTML+RDFa 1.0" 
+>
   <head typeof="parrot:Project">
     <title>$document.Title</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -17,7 +23,7 @@
 			#include("css/${profile}.css")
 		#end
     </style>
-    
+ 
     <link rel="stylesheet" type="text/css" media="screen,projection" href="report/jixedbar/jx.stylesheet.css" /> 
     <link type="image/x-icon" href="images/favicon.ico" rel="shortcut icon" />
     <!-- for debugging 
@@ -25,6 +31,9 @@
 	<link rel="stylesheet" type="text/css" media="screen,projection" href="report/css/custom.css" />
 	<link rel="stylesheet" type="text/css" media="screen,projection" href="report/css/SemEx.css" />
     -->
+	#if($document.customizeCssUrl)
+    	<link rel="stylesheet" type="text/css" media="screen,projection" href="$document.customizeCssUrl" />
+    #end    
   </head>
   <body>
   #parse("html/header.vm")

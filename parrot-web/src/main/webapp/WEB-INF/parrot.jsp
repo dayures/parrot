@@ -98,13 +98,7 @@
 						</c:otherwise>
 					</c:choose>
 					<p id="addURI"><span id="addURILink">add another URI</span></p>
-					<fieldset class="moreoptions">
-						<legend class="extra_opt_uri more-options-closed">More Options</legend>
-						<div class="options">
-							<input type="radio" name="profile" value="business" checked="checked" /><label>Business report</label> <input type="radio" name="profile" value="technical" /><label>Technical report</label>
-						</div>
-						<hr />
-					</fieldset>
+					<jsp:include page="more-options.jsp"/>
 					<jsp:include page="select-language.jsp"/>
 					<div class="buttons">
 						<button type="submit" class="positive"><img src="images/tick.png" alt=""/>Generate documentation</button>
@@ -163,13 +157,7 @@
 
 				    
 				    <p id="addText"><span id="addTextLink">add another text</span></p>
-					<fieldset class="moreoptions">
-						<legend class="extra_opt_uri more-options-closed">More Options</legend>
-						<div class="options">
-							<input type="radio" name="profile" value="business" checked="checked" /><label>Business report</label> <input type="radio" name="profile" value="technical" /><label>Technical report</label>
-						</div>
-						<hr />
-					</fieldset>
+				    <jsp:include page="more-options.jsp"/>
 					<jsp:include page="select-language.jsp"/>
 					<div class="buttons">
 						<button type="submit" class="positive"><img src="images/tick.png" alt=""/>Generate documentation</button>
@@ -194,13 +182,7 @@
 						</select>
 					    </p>
 					    <p><button id="addFile">add another file</button></p>
-						<fieldset class="moreoptions">
-							<legend class="extra_opt_uri more-options-closed">More Options</legend>
-							<div class="options">
-								<input type="radio" name="profile" value="business" checked="checked" /><label>Business report</label> <input type="radio" name="profile" value="technical" /><label>Technical report</label>
-							</div>
-							<hr />
-						</fieldset>
+					    <jsp:include page="more-options.jsp"/>
 						<jsp:include page="select-language.jsp"/>
 						<div class="buttons">
 							<button type="submit" class="positive"><img src="images/tick.png" alt=""/>Generate documentation</button>
@@ -219,13 +201,7 @@
 							<p><label for="reportURL" title="URL of an existing Parrot report" class="uri">URL: </label><input id="reportURL" name="reportURL" value="<c:out value="${param.reportURL}" />" type="text" size="100" /></p>
 						</c:otherwise>
 					</c:choose>
-					<fieldset class="moreoptions">
-						<legend class="extra_opt_uri more-options-closed">More Options</legend>
-						<div class="options">
-							<input type="radio" name="profile" value="business" checked="checked" /><label>Business report</label> <input type="radio" name="profile" value="technical" /><label>Technical report</label>
-						</div>
-						<hr />
-					</fieldset>					
+					<jsp:include page="more-options.jsp"/>
 					<jsp:include page="select-language.jsp"/>
 					
 					<div class="buttons">

@@ -72,6 +72,7 @@ public class JenaOWLReader implements DocumentReader {
             loadOntClasses(ontModel, register);
             loadOntProperties(ontModel, register);
             loadOntIndividuals(ontModel, register);
+            loadVocabularies(ontModel, register);
             //loadDatasets(ontModel, register);
         } catch (JenaException e) {
             if (e.getCause() != null && e.getCause() instanceof SAXParseException) {
@@ -191,6 +192,14 @@ public class JenaOWLReader implements DocumentReader {
 	        		logger.debug("Not included individual: " + individual.getURI() +" because is not domain specific.");
 	        	}
 	        }
+	    }
+	}
+	
+	private void loadVocabularies(OntModel model, DocumentableObjectRegister register) {
+		ExtendedIterator<Individual> vocabularyIterator = model.listIndividuals(ResourceFactory.createResource(VocabularyJenaImpl.VOAF_NS + "Vocabulary"));
+		while (vocabularyIterator.hasNext()) {
+	        OntResource vocabularyInstance = vocabularyIterator.next();
+	        register.registerDocumentableObject(new VocabularyJenaImpl(vocabularyInstance, register, getAnnotationStrategy()));
 	    }
 	}
 	

@@ -10,6 +10,7 @@ import es.ctic.parrot.de.OntologyIndividual;
 import es.ctic.parrot.de.OntologyProperty;
 import es.ctic.parrot.de.Rule;
 import es.ctic.parrot.de.RuleSet;
+import es.ctic.parrot.de.Vocabulary;
 import es.ctic.parrot.docmodel.Document;
 import es.ctic.parrot.docmodel.OntologyClassDetailView;
 import es.ctic.parrot.docmodel.OntologyDetailView;
@@ -17,6 +18,7 @@ import es.ctic.parrot.docmodel.OntologyIndividualDetailView;
 import es.ctic.parrot.docmodel.OntologyPropertyDetailView;
 import es.ctic.parrot.docmodel.RuleDetailView;
 import es.ctic.parrot.docmodel.RuleSetDetailView;
+import es.ctic.parrot.docmodel.VocabularyDetailView;
 
 /**
  * 
@@ -127,6 +129,20 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 	    logger.debug("Visiting rule " + object);
 	    RuleDetailView details = RuleDetailView.createFromRule(object, locale);		
 		document.addRuleDetailView(details);
+		return details;
+	}
+	
+    /**
+     * Visits the <code>vocabulary</code>.
+     * @param object the rule.
+     * @return the details view generated.
+     *  
+     */
+	@Override
+	public Object visit(Vocabulary object) throws TransformerException {
+	    logger.debug("Visiting vocabulary " + object);
+	    VocabularyDetailView details = VocabularyDetailView.createFromVocabulary(object, locale);		
+		document.addVocabularyDetailView(details);
 		return details;
 	}
 

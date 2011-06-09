@@ -8,6 +8,7 @@ import es.ctic.parrot.de.OntologyIndividual;
 import es.ctic.parrot.de.OntologyProperty;
 import es.ctic.parrot.de.Rule;
 import es.ctic.parrot.de.RuleSet;
+import es.ctic.parrot.de.Vocabulary;
 
 /**
  * 
@@ -64,7 +65,14 @@ public interface DocumentableObjectVisitor {
      * @throws TransformerException if a failed transformation operation occurs.
      */
 	public abstract Object visit(RuleSet ruleset) throws TransformerException;
-	
+
+    /**
+     * Visits the given <code>vocabulary</code>.
+     * @param vocabulary the <code>vocabulary</code> to visit.
+     * @throws TransformerException if a failed transformation operation occurs.
+     */
+    public abstract Object visit(Vocabulary vocabulary) throws TransformerException;
+    
     /**
      * Visits the given <code>data set</code>.
      * @param dataset the <code>data set</code> to visit.

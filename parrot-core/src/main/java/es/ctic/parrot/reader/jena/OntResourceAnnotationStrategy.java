@@ -81,6 +81,13 @@ public class OntResourceAnnotationStrategy {
 
 	private static final Logger logger = Logger.getLogger(OntResourceAnnotationStrategy.class);
 
+	private static final String DCTERMS_MODIFIED = "http://purl.org/dc/terms/modified";
+
+	private static final String VOAF_CLASSNUMBER = "http://labs.mondeca.com/vocab/voaf#classNumber";
+	private static final String VOAF_PROPERTYNUMBER = "http://labs.mondeca.com/vocab/voaf#propertyNumber";
+
+	private static final String FOAF_HOMEPAGE = "http://xmlns.com/foaf/0.1/homepage";
+
 	
 	/**
 	 * Constructs a register (Suppress default constructor for noninstantiability).
@@ -1126,4 +1133,54 @@ public class OntResourceAnnotationStrategy {
 		}
 	}
 
+
+	/**
+	 * Returns the modified date.
+	 * @param ontResource the ontResource.
+	 * @return the modified date.
+	 */
+	public String getModifiedDate(OntResource ontResource) {
+		return getLiteralPropertyValue(ontResource, DCTERMS_MODIFIED);
+
+	}
+
+	/**
+	 * Returns the number of classes defined in the vocabulary namespace.
+	 * @param ontResource the ontResource.
+	 * @return the number of classes defined in the vocabulary namespace.
+	 */
+	public String getClassNumber(OntResource ontResource) {
+		return getLiteralPropertyValue(ontResource, VOAF_CLASSNUMBER);
+	}
+
+	/**
+	 * Returns the number of properties defined in the vocabulary namespace.
+	 * @param ontResource the ontResource.
+	 * @return the number of properties defined in the vocabulary namespace.
+	 */
+	public String getPropertyNumber(OntResource ontResource) {
+		return getLiteralPropertyValue(ontResource, VOAF_PROPERTYNUMBER);
+	}
+
+	/**
+	 * Returns the homepage.
+	 * @param ontResource the ontResource.
+	 * @return the homepage.
+	 */
+	public String getHomepage(OntResource ontResource) {
+		StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(FOAF_HOMEPAGE));
+		if (it.hasNext()){ // Take the first
+			Statement statement = it.nextStatement();
+			try{
+				return statement.getObject().asResource().getURI();
+			} catch (ResourceRequiredException e)  {
+				logger.warn("Ignore triple "+ statement +" because it is not a Object property");
+			}
+		}
+		return null;
+	}
+
+	
+	
 }
+

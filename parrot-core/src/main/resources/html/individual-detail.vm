@@ -68,6 +68,32 @@
 	</table>
 	#end
 	
+	#if(!$element.triplesAsSubject.isEmpty())
+	<hr />
+	<table>
+	#foreach($triple in $element.triplesAsSubject)
+	<tr>
+	<td>$element.label</td>
+	<td>$triple.predicate</td>
+	<td>$triple.object</td>
+	</tr> 
+	#end
+	</table>
+	#end
+
+	#if(!$element.triplesAsObject.isEmpty())
+	<hr />
+	<table>
+	#foreach($triple in $element.triplesAsObject)
+	<tr>
+	<td>$triple.subject</td>
+	<td>$triple.predicate</td>
+	<td>$element.label</td>
+	</tr> 
+	#end
+	</table>
+	#end
+	
 	</div>	
   #end
   

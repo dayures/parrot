@@ -25,6 +25,7 @@ import com.hp.hpl.jena.vocabulary.RDFS;
 import es.ctic.parrot.de.Label;
 import es.ctic.parrot.de.RelatedDocument;
 import es.ctic.parrot.de.RelatedDocument.Type;
+import es.ctic.parrot.de.Triple;
 import es.ctic.parrot.utils.URIUtils;
 
 /**
@@ -1011,5 +1012,98 @@ public class OntResourceAnnotationStrategy {
 	private static String replaceUnderscore(String s) {
 		   return s.replace('_' , ' ');
 		}
+
+	public Collection<Triple> getTriplesAsSubject(OntResource ontResource) {
+		Collection<Triple> triples = new HashSet<Triple>();
+		OntModel ontModel = null;
+		
+		if (ontResource == null){
+			return triples;
+		} else {
+			ontModel = ontResource.getOntModel();
+		}
+
+		StmtIterator it = ontModel.listStatements(ontResource, null, (RDFNode) null);
+		while(it.hasNext()){
+			Statement statement = it.nextStatement();
+			
+			String subject = ontResource.getURI();
+			String predicate = statement.getPredicate().getURI();
+			String object = "";
+			RDFNode ob = statement.getObject();
+			if (ob.isResource()){
+				object = ob.asResource().getURI();
+			} else if (ob.isLiteral()){
+				object = ob.asLiteral().getLexicalForm();
+			} else {
+				object = "";
+			}
+			// no rdf:type
+			if (isWellKnown(predicate) == false ){
+				triples.add(new Triple(subject, predicate, object));
+				logger.debug("added triple ["+subject+", "+predicate+", "+object+"]");
+			} else {
+				logger.debug("NO added triple ["+subject+", "+predicate+", "+object+"]");
+			}
+		}
+		
+		return triples;
+
+	}
+	public Collection<Triple> getTriplesAsObject(OntResource ontResource) {
+		Collection<Triple> triples = new HashSet<Triple>();
+		OntModel ontModel = null;
+		
+		if (ontResource == null){
+			return triples;
+		} else {
+			ontModel = ontResource.getOntModel();
+		}
+
+		StmtIterator it = ontModel.listStatements(null, null, ontResource);
+		while(it.hasNext()){
+			Statement statement = it.nextStatement();
+			
+			String subject = statement.getSubject().getURI();
+			String predicate = statement.getPredicate().getURI();
+			String object = ontResource.getURI();
+			
+			if (isWellKnown(predicate) == false ){
+				triples.add(new Triple(subject, predicate, object));
+				logger.debug("added triple ["+subject+", "+predicate+", "+object+"]");
+			} else {
+				logger.debug("NO added triple ["+subject+", "+predicate+", "+object+"]");
+			}		
+		}	
+		
+		return triples;
+
+	}
+
+	private boolean isWellKnown(String predicate) {
+		if ( predicate.equals(CC_LICENSE)
+			 || predicate.equals(CC_LICENSE_DEPRECATED)
+			 || predicate.equals(DC_CONTRIBUTOR)
+			 || predicate.equals(DC_CREATOR)
+			 || predicate.equals(DC_DATE)
+			 || predicate.equals(DC_DESCRIPTION)
+			 || predicate.equals(DC_PUBLISHER)
+			 || predicate.equals(DC_RIGHTS)
+			 || predicate.equals(DC_TERMS_IS_PART_OF)
+			 || predicate.equals(DC_TITLE)
+			 || predicate.equals(DCT_DESCRIPTION)
+			 || predicate.equals(DCT_LICENSE)
+			 || predicate.equals(FOAF_DEPICTION)
+			 || predicate.equals(OG_VIDEO)
+			 || predicate.equals(RDF_SCHEMA_IS_DEFINED_BY)
+			 || predicate.equals(RDF_SCHEMA_LABEL)
+			 || predicate.equals(RDFS_COMMENT)
+			 || predicate.equals(OWL.versionInfo.getURI())			 
+			 || predicate.equals(RDF.type.getURI())) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 }

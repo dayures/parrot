@@ -49,7 +49,8 @@ public class OntResourceAnnotationStrategy {
 	private static final String RCLN_RULE_TEXT = "http://lipn.univ-paris13.fr/RCLN/schema#ruleText";
 
 	private static final String DC_TITLE = "http://purl.org/dc/elements/1.1/title";
-	private static final String DC_TERMS_IS_PART_OF = "http://purl.org/dc/terms/isPartOf";
+	private static final String DCTERMS_TITLE = "http://purl.org/dc/terms/title";
+	private static final String DCTERMS_IS_PART_OF = "http://purl.org/dc/terms/isPartOf";
 	private static final String DC_DCMITYPE_TEXT = "http://purl.org/dc/dcmitype/Text";
 	private static final String RDF_SCHEMA_LABEL = "http://www.w3.org/2000/01/rdf-schema#label";
 	private static final String RDFS_COMMENT = "http://www.w3.org/2000/01/rdf-schema#comment";
@@ -169,6 +170,7 @@ public class OntResourceAnnotationStrategy {
 	 * <ol>
 	 * 	<li>http://www.w3.org/2008/05/skos-xl#altLabel</li>
 	 *  <li>http://www.w3.org/2004/02/skos/core#altLabel</li>
+	 *  <li>http://purl.org/dc/terms/title</li>
 	 *  <li>http://purl.org/dc/elements/1.1/title</li>
 	 *  <li>http://www.w3.org/2000/01/rdf-schema#label</li>
 	 * </ol>
@@ -188,6 +190,11 @@ public class OntResourceAnnotationStrategy {
 		if (skosAltLabels.isEmpty() == false && synonyms.isEmpty()) { // hidden by the previous labels
 			synonyms.addAll(skosAltLabels);
 		}
+
+		Collection<Label> dctermsTitleLabels = getLiteralLabels(ontResource, DCTERMS_TITLE, locale);
+        if (dctermsTitleLabels.isEmpty() == false && synonyms.isEmpty()) { // hidden by the previous labels
+            synonyms.addAll(dctermsTitleLabels);
+        }
         
 		Collection<Label> dcTitleLabels = getLiteralLabels(ontResource, DC_TITLE, locale);
         if (dcTitleLabels.isEmpty() == false && synonyms.isEmpty()) { // hidden by the previous labels
@@ -231,6 +238,11 @@ public class OntResourceAnnotationStrategy {
 		if (skosAltLabels.isEmpty() == false && labels.isEmpty()) { // hidden by the previous labels
 			labels.addAll(skosAltLabels);
 		}
+
+		Collection<Label> dctermsTitleLabels = getLiteralLabels(ontResource, DCTERMS_TITLE, locale);
+        if (dctermsTitleLabels.isEmpty() == false && labels.isEmpty()) { // hidden by the previous labels
+            labels.addAll(dctermsTitleLabels);
+        }
         
 		Collection<Label> dcTitleLabels = getLiteralLabels(ontResource, DC_TITLE, locale);
         if (dcTitleLabels.isEmpty() == false && labels.isEmpty()) { // hidden by the previous labels
@@ -263,6 +275,7 @@ public class OntResourceAnnotationStrategy {
 	 * 	<li>http://www.w3.org/2008/05/skos-xl#altLabel</li>
 	 *  <li>http://www.w3.org/2004/02/skos/core#prefLabel</li>
 	 *  <li>http://www.w3.org/2004/02/skos/core#altLabel</li>
+	 *  <li>http://purl.org/dc/terms/title</li>
 	 *  <li>http://purl.org/dc/elements/1.1/title</li>
 	 *  <li>http://www.w3.org/2000/01/rdf-schema#label</li>
 	 *  <li>automatically generated</li>
@@ -284,6 +297,7 @@ public class OntResourceAnnotationStrategy {
          * http://www.w3.org/2008/05/skos-xl#altLabel
          * http://www.w3.org/2004/02/skos/core#prefLabel
          * http://www.w3.org/2004/02/skos/core#altLabel
+         * http://purl.org/dc/terms/title
          * http://purl.org/dc/elements/1.1/title
          * http://www.w3.org/2000/01/rdf-schema#label
          * 
@@ -309,6 +323,12 @@ public class OntResourceAnnotationStrategy {
 
         for (Label label : labels){
         	if (label.getQualifier().equals(SKOS_CORE_ALT_LABEL)) {
+        		return label.getText();
+        	}
+        }
+
+        for (Label label : labels){
+        	if (label.getQualifier().equals(DCTERMS_TITLE)) {
         		return label.getText();
         	}
         }
@@ -599,7 +619,7 @@ public class OntResourceAnnotationStrategy {
 		if (model.contains(ResourceFactory.createResource(uri), RDF.type, ResourceFactory.createResource(DC_DCMITYPE_TEXT))){
 			return uri;
 		} else {
-			StmtIterator listStatements = model.listStatements(ResourceFactory.createResource(uri), ResourceFactory.createProperty(DC_TERMS_IS_PART_OF), (RDFNode) null );
+			StmtIterator listStatements = model.listStatements(ResourceFactory.createResource(uri), ResourceFactory.createProperty(DCTERMS_IS_PART_OF), (RDFNode) null );
 			if (listStatements.hasNext()){ // only one iteration
 				Statement statement = listStatements.next();
 				return getSourceDocumentUri(model, statement.getObject().asResource().getURI());
@@ -1089,7 +1109,7 @@ public class OntResourceAnnotationStrategy {
 			 || predicate.equals(DC_DESCRIPTION)
 			 || predicate.equals(DC_PUBLISHER)
 			 || predicate.equals(DC_RIGHTS)
-			 || predicate.equals(DC_TERMS_IS_PART_OF)
+			 || predicate.equals(DCTERMS_IS_PART_OF)
 			 || predicate.equals(DC_TITLE)
 			 || predicate.equals(DCT_DESCRIPTION)
 			 || predicate.equals(DCT_LICENSE)

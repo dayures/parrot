@@ -47,9 +47,11 @@ public class Document {
 	private final Set<OntologyDetailView> ontologyDetailViews = new HashSet<OntologyDetailView>();
 	private final Set<OntologyClassDetailView> ontologyClassDetailViews = new HashSet<OntologyClassDetailView>();
 	private final Set<OntologyPropertyDetailView> ontologyPropertyDetailViews = new HashSet<OntologyPropertyDetailView>();
-    private final Set<RuleDetailView> ruleDetailViews = new HashSet<RuleDetailView>();
-    private final Set<RuleSetDetailView> ruleSetDetailViews = new HashSet<RuleSetDetailView>();
     private final Set<OntologyIndividualDetailView> ontologyIndividualDetailViews = new HashSet<OntologyIndividualDetailView>();
+	private final Set<RuleDetailView> ruleDetailViews = new HashSet<RuleDetailView>();
+    private final Set<RuleSetDetailView> ruleSetDetailViews = new HashSet<RuleSetDetailView>();
+    private final Set<VocabularyDetailView> vocabularyDetailViews = new HashSet<VocabularyDetailView>();
+
     private final Glossary glossary;
     private String prologueURL;
     private String appendixURL;
@@ -111,7 +113,17 @@ public class Document {
 		Collections.sort(listOntologyPropertyDetailViews, new DetailViewComparator());
 		return listOntologyPropertyDetailViews;
 	}
-	
+
+	/**
+	 * Returns the sorted collection of individual views for this document. Elements are sorted alphabetically by label.
+	 * @return the sorted collection of individual views for this document.
+	 */
+    public Collection<OntologyIndividualDetailView> getOntologyIndividualDetailViews() {
+		List<OntologyIndividualDetailView> listOntologyIndividualDetailViews = new LinkedList<OntologyIndividualDetailView>(this.ontologyIndividualDetailViews);
+		Collections.sort(listOntologyIndividualDetailViews, new DetailViewComparator());
+		return listOntologyIndividualDetailViews;
+    }
+
 	/**
 	 * Returns the sorted collection of rule views for this document. Elements are sorted alphabetically by label.
 	 * @return the sorted collection of rule views for this document.
@@ -133,15 +145,15 @@ public class Document {
     }
     
 	/**
-	 * Returns the sorted collection of individual views for this document. Elements are sorted alphabetically by label.
-	 * @return the sorted collection of individual views for this document.
+	 * Returns the sorted collection of ontology views for this document. Elements are sorted alphabetically by label.
+	 * @return the sorted collection of ontology views for this document.
 	 */
-    public Collection<OntologyIndividualDetailView> getOntologyIndividualDetailViews() {
-		List<OntologyIndividualDetailView> listOntologyIndividualDetailViews = new LinkedList<OntologyIndividualDetailView>(this.ontologyIndividualDetailViews);
-		Collections.sort(listOntologyIndividualDetailViews, new DetailViewComparator());
-		return listOntologyIndividualDetailViews;
-    }
-
+	public Collection<VocabularyDetailView> getVocabularyDetailViews() {
+		List<VocabularyDetailView> listVocabularyDetailsViews = new LinkedList<VocabularyDetailView>(this.vocabularyDetailViews);
+		Collections.sort(listVocabularyDetailsViews, new DetailViewComparator());
+		return listVocabularyDetailsViews;
+	}
+	
     /** 
      * Adds a given detailed ontology view into this document.
      * @param details the detailed ontology view.
@@ -188,6 +200,14 @@ public class Document {
      */
     public void addRuleSetDetailView(RuleSetDetailView details) {
         this.ruleSetDetailViews.add(details);
+    }
+    
+    /** 
+     * Adds a given detailed vocabulary view into this document.
+     * @param details the detailed vocabulary view.
+     */
+    public void addVocabularyDetailView(VocabularyDetailView details) {
+        this.vocabularyDetailViews.add(details);
     }
 
 	/**

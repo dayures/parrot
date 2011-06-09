@@ -90,3 +90,18 @@
 	<div class="details rules">#parse("html/rule-detail.vm")</div>
 	#end
 #end
+
+#if(!$document.vocabularyDetailViews.isEmpty())
+	<div class="toc" id="vocabularies">
+	<h2>Vocabularies</h2>
+	<p>
+	  #foreach($element in $document.vocabularyDetailViews)
+		<a href="#$element.Anchor">$element.Label</a>#if ($foreach.hasNext), #end
+	  #end
+	</p>
+	</div>
+	
+	#foreach($element in $document.vocabularyDetailViews)
+	<div class="details vocabularies">#parse("html/vocabulary-detail.vm")</div>
+	#end
+#end

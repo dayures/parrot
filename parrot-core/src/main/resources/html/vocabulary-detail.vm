@@ -1,0 +1,125 @@
+#if ( ($element.ModifiedDate) ||
+	  (!$element.creators.isEmpty()) ||
+	  (!$element.contributors.isEmpty()) ||
+	  (!$element.publishers.isEmpty()) )
+  #set( $vci = true )
+#else
+  #set( $vci = false )
+#end
+
+
+#if ( ($element.Uri) ||
+	  ($element.PreferredNamespace) ||
+	  ($element.PreferredPrefix) ||
+	  ($element.ClassNumber) ||
+	  ($element.HomePage) ||
+	  ($element.PropertyNumber))
+  #set( $ti = true )
+#else
+  #set( $ti = false )
+#end
+
+
+#if ( (!$element.labels.isEmpty()) ||
+  	  (!$element.relatedDocuments.isEmpty()) )
+  #set( $otherinfo = true )
+#else
+  #set( $otherinfo = false )
+#end
+
+<div class="term">
+   <h3 id="$element.Anchor">#if ($element.uriFragment) <a id="$element.uriFragment"></a>#end#if ($element.uriFragment) <a id="$element.uriFragment"></a>#end<span class="parrot-element-title parrot-vocabulary-title">$element.Label</span> (Vocabulary)
+    #parse("html/detail-menu.vm")
+  </h3>
+  #parse("html/description.vm")
+  
+  <div>
+
+  #if ($vci)
+    <div class="vci"> 
+    <h4>Version Control information</h4> 
+    <dl> 
+		
+		#if($element.ModifiedDate)
+		<dt>Last modified</dt>
+		<dd class="metadata-icon date">$element.ModifiedDate</dd>
+		#end
+			  
+		#if(!$element.creators.isEmpty())
+		<dt>Creators</dt>
+		#foreach($creator in $element.creators)
+		  <dd class="metadata-icon creator">$creator</dd>
+		#end
+		#end
+		
+		#if(!$element.contributors.isEmpty())
+		<dt>Contributors</dt>
+		#foreach($contributor in $element.contributors)
+		  <dd class="metadata-icon contributor">$contributor</dd>
+		#end
+		#end
+		
+		#if(!$element.publishers.isEmpty())
+		<dt>Publishers</dt>
+		#foreach($publisher in $element.publishers)
+		  <dd class="metadata-icon publisher">$publisher</dd>
+		#end
+		#end
+		
+    </dl> 
+    </div>
+  #end
+
+
+  #if ($ti)
+    <div class="ti"> 
+    <h4>Definition</h4> 
+    
+    #if($element.Uri)
+		<p>The <strong>URI</strong> of this vocabulary is <span><code>$element.Uri</code></span></p>
+		<hr />
+	#end
+	
+    <table> 
+		#if($element.PreferredNamespace)
+		<tr>
+		    <td><strong>Preferred Namespace URI</strong></td>
+		    <td><pre><code>$element.PreferredNamespace</code></pre></td>
+		</tr>
+		#end
+		#if($element.PreferredPrefix)
+		<tr>
+		    <td><strong>Preferred Prefix</strong></td>
+		    <td><pre><code>$element.PreferredPrefix</code></pre></td>
+		</tr>
+		#end
+		#if($element.ClassNumber)
+		<tr>
+		    <td><strong>Number of classes defined in the vocabulary</strong></td>
+		    <td><pre><code>$element.ClassNumber</code></pre></td>
+		</tr>
+		#end
+		#if($element.PropertyNumber)
+		<tr>
+		    <td><strong>Number of properties defined in the vocabulary</strong></td>
+		    <td><pre><code>$element.PropertyNumber</code></pre></td>
+		</tr>
+		#end
+		#if($element.Homepage)
+		<tr>
+		    <td><strong>Homepage</strong></td>
+		    <td><pre><code>$element.Homepage</code></pre></td>
+		</tr>
+		#end
+		</table>
+    </div>
+  #end
+  
+  
+  #if ( $otherinfo )
+  	#parse("html/documentation.vm")
+  #end
+  
+  </div>
+</div>
+  

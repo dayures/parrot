@@ -9,6 +9,7 @@ import es.ctic.parrot.de.OntologyIndividual;
 import es.ctic.parrot.de.OntologyProperty;
 import es.ctic.parrot.de.Rule;
 import es.ctic.parrot.de.RuleSet;
+import es.ctic.parrot.de.Vocabulary;
 
 /**
  * 
@@ -114,4 +115,14 @@ public class AbstractDocumentableObjectVisitor implements
 		return null;        
     }
     
+    /**
+     * Does nothing.
+     * @param object the <code>vocabulary</code> to visit.
+     * @throws TransformerException if a failed transformation operation occurs.
+     * @return always null.
+     */
+    public Object visit(Vocabulary object) throws TransformerException{
+        // default implementation: do nothing
+		return null;        
+    }
 }

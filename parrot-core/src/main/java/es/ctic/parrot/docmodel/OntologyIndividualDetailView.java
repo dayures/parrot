@@ -2,12 +2,14 @@ package es.ctic.parrot.docmodel;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Locale;
 
 import org.apache.log4j.Logger;
 
 import es.ctic.parrot.de.OntologyIndividual;
+import es.ctic.parrot.de.Triple;
 
 /**
  * A detailed view of a ontology individual.
@@ -22,6 +24,9 @@ public class OntologyIndividualDetailView extends AbstractOntologicalObjectDetai
     private static final Logger logger = Logger.getLogger(OntologyIndividualDetailView.class);
 
 	private Collection<DocumentableObjectReference> types = new LinkedList<DocumentableObjectReference>();
+
+	private Collection<Triple> triplesAsSubject = new HashSet<Triple>();
+	private Collection<Triple> triplesAsObject = new HashSet<Triple>();
 
 	/**
 	 * Constructs a ontology individual detail view (Suppress default constructor for noninstantiability).
@@ -82,7 +87,39 @@ public class OntologyIndividualDetailView extends AbstractOntologicalObjectDetai
 		details.setIsDefinedBy(DocumentableObjectReference.createReference(object.getIsDefinedBy(),locale));
 		details.setDeprecated(object.isDeprecated());
 		
+		details.setTriplesAsSubject(object.getTriplesAsSubject());
+		details.setTriplesAsObject(object.getTriplesAsObject());
+		
 		return details;
 	}
+
+	/**
+	 * @param triplesAsSubject the triplesAsSubject to set
+	 */
+	public void setTriplesAsSubject(Collection<Triple> triplesAsSubject) {
+		this.triplesAsSubject = triplesAsSubject;
+	}
+
+	/**
+	 * @return the triplesAsSubject
+	 */
+	public Collection<Triple> getTriplesAsSubject() {
+		return triplesAsSubject;
+	}
+
+	/**
+	 * @param triplesAsObject the triplesAsObject to set
+	 */
+	public void setTriplesAsObject(Collection<Triple> triplesAsObject) {
+		this.triplesAsObject = triplesAsObject;
+	}
+
+	/**
+	 * @return the triplesAsObject
+	 */
+	public Collection<Triple> getTriplesAsObject() {
+		return triplesAsObject;
+	}
+
 
 }

@@ -15,6 +15,7 @@ import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.de.Identifier;
 import es.ctic.parrot.de.OntologyClass;
 import es.ctic.parrot.de.OntologyIndividual;
+import es.ctic.parrot.de.Triple;
 import es.ctic.parrot.de.URIIdentifier;
 import es.ctic.parrot.transformers.DocumentableObjectVisitor;
 import es.ctic.parrot.transformers.TransformerException;
@@ -89,5 +90,13 @@ public class OntologyIndividualJenaImpl extends AbstractJenaDocumentableObject
 		}
 		return ontologyClassList;
 	}
-    
+
+	public Collection<Triple> getTriplesAsSubject() {
+   		return getAnnotationStrategy().getTriplesAsSubject(getOntResource());
+	}
+
+	public Collection<Triple> getTriplesAsObject() {
+   		return getAnnotationStrategy().getTriplesAsObject(getOntResource());
+	}
+
 }

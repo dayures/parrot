@@ -68,7 +68,12 @@ public interface DocumentableObject {
         /**
          * a data set.
          */
-        DATASET("dataset");
+        DATASET("dataset"),
+        
+        /**
+         * a vocabulary.
+         */
+        VOCABULARY("vocabulary");
         
         
         private final String name;

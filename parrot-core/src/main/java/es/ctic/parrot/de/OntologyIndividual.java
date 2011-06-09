@@ -17,4 +17,17 @@ public interface OntologyIndividual extends DocumentableOntologicalObject {
 	 * @return the collection of the classes that this individual is instance of.
 	 */	
 	public abstract Collection<OntologyClass> getTypes();
+	
+	/**
+	 * Returns the collection of triples about this individual as subject, removed the well known ones.
+	 * @return the collection of triples about this individual as subject, removed the well known ones.
+	 */	
+	public abstract Collection<Triple> getTriplesAsSubject();
+	
+	/**
+	 * Returns the collection of triples about this individual as object, removed the well known ones.
+	 * @return the collection of triples about this individual as object, removed the well known ones.
+	 */	
+	public abstract Collection<Triple> getTriplesAsObject();
+	
 }

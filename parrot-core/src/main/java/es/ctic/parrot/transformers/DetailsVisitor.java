@@ -4,6 +4,7 @@ import java.util.Locale;
 
 import org.apache.log4j.Logger;
 
+import es.ctic.parrot.de.Dataset;
 import es.ctic.parrot.de.Ontology;
 import es.ctic.parrot.de.OntologyClass;
 import es.ctic.parrot.de.OntologyIndividual;
@@ -11,6 +12,7 @@ import es.ctic.parrot.de.OntologyProperty;
 import es.ctic.parrot.de.Rule;
 import es.ctic.parrot.de.RuleSet;
 import es.ctic.parrot.de.Vocabulary;
+import es.ctic.parrot.docmodel.DatasetDetailView;
 import es.ctic.parrot.docmodel.Document;
 import es.ctic.parrot.docmodel.OntologyClassDetailView;
 import es.ctic.parrot.docmodel.OntologyDetailView;
@@ -146,4 +148,17 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 		return details;
 	}
 
+    /**
+     * Visits the <code>dataset</code>.
+     * @param object the rule.
+     * @return the details view generated.
+     *  
+     */
+	@Override
+	public Object visit(Dataset object) throws TransformerException {
+	    logger.debug("Visiting dataset " + object);
+	    DatasetDetailView details = DatasetDetailView.createFromDataset(object, locale);		
+		document.addDatasetDetailView(details);
+		return details;
+	}
 }

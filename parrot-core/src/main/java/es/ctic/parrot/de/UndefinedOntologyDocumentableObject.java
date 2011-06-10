@@ -376,5 +376,23 @@ public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObj
 		//return null;
 	}
 
+	public Collection<Agent> getPublisherAgents() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Method not implemented yet.");
+		//return null;
+	}
+
+	public Collection<Agent> getCreatorAgents() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Method not implemented yet.");
+		//return null;
+	}
+
+	public Collection<Agent> getContributorAgents() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Method not implemented yet.");
+		//return null;
+	}
+
     
 }

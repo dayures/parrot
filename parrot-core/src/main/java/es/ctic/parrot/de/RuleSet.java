@@ -89,5 +89,22 @@ public interface RuleSet extends DocumentableObject {
 	 * @return the rule sets of this rule set.
 	 */
 	public abstract Collection<RuleSet> getRuleSets();
-    
+
+	/**
+	 * Returns the creator agents.
+	 * @return the creator agents.
+	 */
+	public abstract Collection<Agent> getCreatorAgents();
+	
+	/**
+	 * Returns the contributor agents.
+	 * @return the contributor agents.
+	 */
+	public abstract Collection<Agent> getContributorAgents();
+	
+	/**
+	 * Returns the publisher agents.
+	 * @return the publisher agents.
+	 */
+	public abstract Collection<Agent> getPublisherAgents();
 }

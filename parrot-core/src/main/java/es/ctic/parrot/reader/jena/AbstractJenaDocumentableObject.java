@@ -19,6 +19,7 @@ import com.hp.hpl.jena.vocabulary.RDF;
 import com.hp.hpl.jena.vocabulary.RDFS;
 
 import es.ctic.parrot.de.AbstractDocumentableObject;
+import es.ctic.parrot.de.Agent;
 import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.de.DocumentableOntologicalObject;
@@ -268,13 +269,25 @@ public abstract class AbstractJenaDocumentableObject extends
 	public Collection<String> getCreators() {
 		return getAnnotationStrategy().getCreators(getOntResource());
 	}
+	
+	public Collection<Agent> getCreatorAgents() {
+		return getAnnotationStrategy().getCreatorAgents(getOntResource());
+	}
 
 	public Collection<String> getContributors() {
 		return getAnnotationStrategy().getContributors(getOntResource());
 	}
 	
+	public Collection<Agent> getContributorAgents() {
+		return getAnnotationStrategy().getContributorAgents(getOntResource());
+	}
+	
 	public Collection<String> getPublishers() {
 		return getAnnotationStrategy().getPublishers(getOntResource());
+	}
+	
+	public Collection<Agent> getPublisherAgents() {
+		return getAnnotationStrategy().getPublisherAgents(getOntResource());
 	}
 	
 	public String getRights() {

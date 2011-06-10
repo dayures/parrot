@@ -1,7 +1,10 @@
 #if ( ($element.ModifiedDate) ||
 	  (!$element.creators.isEmpty()) ||
 	  (!$element.contributors.isEmpty()) ||
-	  (!$element.publishers.isEmpty()) )
+	  (!$element.publishers.isEmpty()) ||
+	  (!$element.creatorAgents.isEmpty()) ||
+	  (!$element.contributorAgents.isEmpty()) ||
+	  (!$element.publisherAgents.isEmpty()) )
   #set( $vci = true )
 #else
   #set( $vci = false )
@@ -36,38 +39,7 @@
   <div>
 
   #if ($vci)
-    <div class="vci"> 
-    <h4>Version Control information</h4> 
-    <dl> 
-		
-		#if($element.ModifiedDate)
-		<dt>Last modified</dt>
-		<dd class="metadata-icon date">$element.ModifiedDate</dd>
-		#end
-			  
-		#if(!$element.creators.isEmpty())
-		<dt>Creators</dt>
-		#foreach($creator in $element.creators)
-		  <dd class="metadata-icon creator">$creator</dd>
-		#end
-		#end
-		
-		#if(!$element.contributors.isEmpty())
-		<dt>Contributors</dt>
-		#foreach($contributor in $element.contributors)
-		  <dd class="metadata-icon contributor">$contributor</dd>
-		#end
-		#end
-		
-		#if(!$element.publishers.isEmpty())
-		<dt>Publishers</dt>
-		#foreach($publisher in $element.publishers)
-		  <dd class="metadata-icon publisher">$publisher</dd>
-		#end
-		#end
-		
-    </dl> 
-    </div>
+    #parse("html/version-control.vm")
   #end
 
 

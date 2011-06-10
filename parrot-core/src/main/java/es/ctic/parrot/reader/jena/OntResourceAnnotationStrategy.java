@@ -22,6 +22,7 @@ import com.hp.hpl.jena.vocabulary.OWL2;
 import com.hp.hpl.jena.vocabulary.RDF;
 import com.hp.hpl.jena.vocabulary.RDFS;
 
+import es.ctic.parrot.de.Agent;
 import es.ctic.parrot.de.Label;
 import es.ctic.parrot.de.RelatedDocument;
 import es.ctic.parrot.de.RelatedDocument.Type;
@@ -40,6 +41,8 @@ import es.ctic.parrot.utils.URIUtils;
  */
 public class OntResourceAnnotationStrategy {
 
+	private static final Logger logger = Logger.getLogger(OntResourceAnnotationStrategy.class);
+
 	private static final String TRUE = "true";
 
 	private static final String RDF_SCHEMA_IS_DEFINED_BY = "http://www.w3.org/2000/01/rdf-schema#isDefinedBy";
@@ -48,23 +51,20 @@ public class OntResourceAnnotationStrategy {
 	private static final String RCLN_RULE = "http://lipn.univ-paris13.fr/RCLN/schema#Rule";
 	private static final String RCLN_RULE_TEXT = "http://lipn.univ-paris13.fr/RCLN/schema#ruleText";
 
-	private static final String DC_TITLE = "http://purl.org/dc/elements/1.1/title";
-	private static final String DCTERMS_TITLE = "http://purl.org/dc/terms/title";
-	private static final String DCTERMS_IS_PART_OF = "http://purl.org/dc/terms/isPartOf";
-	private static final String DC_DCMITYPE_TEXT = "http://purl.org/dc/dcmitype/Text";
+
 	private static final String RDF_SCHEMA_LABEL = "http://www.w3.org/2000/01/rdf-schema#label";
 	private static final String RDFS_COMMENT = "http://www.w3.org/2000/01/rdf-schema#comment";
 	private static final String SKOS_XL_PREF_LABEL = "http://www.w3.org/2008/05/skos-xl#prefLabel";
 	private static final String SKOS_XL_ALT_LABEL = "http://www.w3.org/2008/05/skos-xl#altLabel";
 	private static final String SKOS_CORE_PREF_LABEL = "http://www.w3.org/2004/02/skos/core#prefLabel";
 	private static final String SKOS_CORE_ALT_LABEL = "http://www.w3.org/2004/02/skos/core#altLabel";
-	private static final String FOAF_DEPICTION = "http://xmlns.com/foaf/0.1/depiction";
 	private static final String OG_VIDEO = "http://ogp.me/ns#video";
 	private static final String SKOS_XL_LITERAL_FORM = "http://www.w3.org/2008/05/skos-xl#literalForm";
 	private static final String LINGKNOW_VALUE = "http://idi.fundacionctic.org/lingknow/value";
 	private static final String LINGKNOW_OCCURS = "http://idi.fundacionctic.org/lingknow/occurs";
 	private static final String TELIX_REALIZES = "http://ontorule-project.eu/telix#realizes";
 
+	private static final String DC_TITLE = "http://purl.org/dc/elements/1.1/title";
 	private static final String DC_PUBLISHER = "http://purl.org/dc/elements/1.1/publisher";
 	private static final String DC_CONTRIBUTOR = "http://purl.org/dc/elements/1.1/contributor";
 	private static final String DC_CREATOR = "http://purl.org/dc/elements/1.1/creator";
@@ -75,18 +75,29 @@ public class OntResourceAnnotationStrategy {
 	private static final String DCT_DESCRIPTION = "http://purl.org/dc/terms/description";
 	private static final String DCT_SOURCE = "http://purl.org/dc/terms/source";
 	private static final String DCT_LICENSE = "http://purl.org/dc/terms/license";
+	private static final String DCT_DATE = "http://purl.org/dc/terms/date";
+	private static final String DCT_TITLE = "http://purl.org/dc/terms/title";
+	private static final String DCT_CREATOR = "http://purl.org/dc/terms/creator";
+	private static final String DCT_CONTRIBUTOR = "http://purl.org/dc/terms/contributor";
+	private static final String DCT_PUBLISHER = "http://purl.org/dc/terms/publisher";
+	private static final String DCT_IS_PART_OF = "http://purl.org/dc/terms/isPartOf";
 
+	private static final String FOAF_DEPICTION = "http://xmlns.com/foaf/0.1/depiction";
+	private static final String FOAF_NAME = "http://xmlns.com/foaf/0.1/name";
+	private static final String FOAF_HOMEPAGE = "http://xmlns.com/foaf/0.1/homepage";
+
+	private static final String DC_DCMITYPE_TEXT = "http://purl.org/dc/dcmitype/Text";
+	
 	private static final String VANN_PREFERRED_PREFIX = "http://purl.org/vocab/vann/preferredNamespacePrefix";
 	private static final String VANN_PREFERRED_NAMESPACE = "http://purl.org/vocab/vann/preferredNamespaceUri";
-
-	private static final Logger logger = Logger.getLogger(OntResourceAnnotationStrategy.class);
 
 	private static final String DCTERMS_MODIFIED = "http://purl.org/dc/terms/modified";
 
 	private static final String VOAF_CLASSNUMBER = "http://labs.mondeca.com/vocab/voaf#classNumber";
 	private static final String VOAF_PROPERTYNUMBER = "http://labs.mondeca.com/vocab/voaf#propertyNumber";
 
-	private static final String FOAF_HOMEPAGE = "http://xmlns.com/foaf/0.1/homepage";
+	private static final String VOID_DATADUMP = "http://rdfs.org/ns/void#dataDump";
+	private static final String VOID_SPARQLENDPOINT = "http://rdfs.org/ns/void#sparqlEndpoint";
 
 	
 	/**
@@ -198,7 +209,7 @@ public class OntResourceAnnotationStrategy {
 			synonyms.addAll(skosAltLabels);
 		}
 
-		Collection<Label> dctermsTitleLabels = getLiteralLabels(ontResource, DCTERMS_TITLE, locale);
+		Collection<Label> dctermsTitleLabels = getLiteralLabels(ontResource, DCT_TITLE, locale);
         if (dctermsTitleLabels.isEmpty() == false && synonyms.isEmpty()) { // hidden by the previous labels
             synonyms.addAll(dctermsTitleLabels);
         }
@@ -246,7 +257,7 @@ public class OntResourceAnnotationStrategy {
 			labels.addAll(skosAltLabels);
 		}
 
-		Collection<Label> dctermsTitleLabels = getLiteralLabels(ontResource, DCTERMS_TITLE, locale);
+		Collection<Label> dctermsTitleLabels = getLiteralLabels(ontResource, DCT_TITLE, locale);
         if (dctermsTitleLabels.isEmpty() == false && labels.isEmpty()) { // hidden by the previous labels
             labels.addAll(dctermsTitleLabels);
         }
@@ -335,7 +346,7 @@ public class OntResourceAnnotationStrategy {
         }
 
         for (Label label : labels){
-        	if (label.getQualifier().equals(DCTERMS_TITLE)) {
+        	if (label.getQualifier().equals(DCT_TITLE)) {
         		return label.getText();
         	}
         }
@@ -626,7 +637,7 @@ public class OntResourceAnnotationStrategy {
 		if (model.contains(ResourceFactory.createResource(uri), RDF.type, ResourceFactory.createResource(DC_DCMITYPE_TEXT))){
 			return uri;
 		} else {
-			StmtIterator listStatements = model.listStatements(ResourceFactory.createResource(uri), ResourceFactory.createProperty(DCTERMS_IS_PART_OF), (RDFNode) null );
+			StmtIterator listStatements = model.listStatements(ResourceFactory.createResource(uri), ResourceFactory.createProperty(DCT_IS_PART_OF), (RDFNode) null );
 			if (listStatements.hasNext()){ // only one iteration
 				Statement statement = listStatements.next();
 				return getSourceDocumentUri(model, statement.getObject().asResource().getURI());
@@ -749,7 +760,15 @@ public class OntResourceAnnotationStrategy {
 	 * @return the date.
 	 */
 	public String getDate(OntResource ontResource) {
-		return getLiteralPropertyValue(ontResource, DC_DATE);
+		//ontResource.getModel().write(System.out);
+		String date = getLiteralPropertyValue(ontResource, DCT_DATE);
+		//logger.debug("ontResource="+ontResource+" date DCT="+date);
+		if (date != null){
+			return date;
+		} else {
+			//logger.debug("ontResource="+ontResource+" date DC="+date);
+			return getLiteralPropertyValue(ontResource, DC_DATE);
+		}
 	}
 
 	/**
@@ -769,6 +788,15 @@ public class OntResourceAnnotationStrategy {
 	public Collection<String> getCreators(OntResource ontResource) {
 		return getLiteralPropertyValues(ontResource, DC_CREATOR);
 	}
+	
+	/**
+	 * Returns the creator agents.
+	 * @param ontResource the ontResource.
+	 * @return the creator agents.
+	 */
+	public Collection<Agent> getCreatorAgents(OntResource ontResource) {
+		return getAgentsFromObjectProperty(ontResource, DCT_CREATOR);
+	}
 
 	/**
 	 * Returns the contributors.
@@ -780,6 +808,15 @@ public class OntResourceAnnotationStrategy {
 	}
 	
 	/**
+	 * Returns the contributor agents.
+	 * @param ontResource the ontResource.
+	 * @return the contributor agents.
+	 */
+	public Collection<Agent> getContributorAgents(OntResource ontResource) {
+		return getAgentsFromObjectProperty(ontResource, DCT_CONTRIBUTOR);
+	}
+	
+	/**
 	 * Returns the publishers.
 	 * @param ontResource the ontResource.
 	 * @return the publishers.
@@ -788,6 +825,45 @@ public class OntResourceAnnotationStrategy {
 		return getLiteralPropertyValues(ontResource, DC_PUBLISHER);
 	}
 	
+	/**
+	 * Returns the publisher agents.
+	 * @param ontResource the ontResource.
+	 * @return the publisher agents.
+	 */
+	public Collection<Agent> getPublisherAgents(OntResource ontResource) {
+		return getAgentsFromObjectProperty(ontResource, DCT_PUBLISHER);
+	}
+	
+	private Collection<Agent> getAgentsFromObjectProperty(OntResource ontResource, String property) {
+		Collection<Agent> agents = new HashSet<Agent>();
+		StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(property));
+		while (it.hasNext()) {
+			
+			Statement st = it.next();
+			Resource object = st.getResource();
+
+			String name = object.asResource().getURI();
+			String homepage = object.asResource().getURI();
+			
+			Statement homepageStatement = object.getProperty(ResourceFactory.createProperty(FOAF_HOMEPAGE));
+			if (homepageStatement != null){
+				homepage = homepageStatement.getObject().asResource().getURI();
+			}
+
+			Statement nameStatement = object.getProperty(ResourceFactory.createProperty(FOAF_NAME));
+			if (nameStatement != null){
+				name = nameStatement.getObject().asLiteral().getLexicalForm();
+			}
+
+			if (name != null && homepage != null){
+				agents.add(new Agent(name, homepage));
+			} else {
+				logger.debug("not added "+property +" Agent for "+ontResource+" because it doen't have neither name or homepage");
+			}
+		}
+		return agents;
+	}
+
 	/**
 	 * Returns the reference where this resource is defined.
 	 * @param ontResource the ontResource.
@@ -917,6 +993,7 @@ public class OntResourceAnnotationStrategy {
 			if (literal.getLanguage().length() == 0){
 				return literal.getLexicalForm();
 			} else {
+				logger.debug("Not extracted "+ literal.getLexicalForm());
 				return null;
 			}
 		}
@@ -980,6 +1057,31 @@ public class OntResourceAnnotationStrategy {
 			return uri;
     	}
 	}
+	
+//	/**
+//	 * Returns the collection of URIs or <code>null</code> if the resource has not this property associated.
+//	 * @param ontResource the ontResource.
+//	 * @param property the URI of the property.
+//	 * @return a collection of URIs or <code>null</code> if the resource has not this property associated.
+//	 */
+//	private Collection<String> getObjectPropertyURIs(OntResource ontResource, String property) {
+//		Collection<String> uris = new HashSet<String>();
+//    	if (ontResource == null){
+//    		return uris;
+//    	} else {		
+//
+//			StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(property));
+//			while (it.hasNext()){
+//				Statement statement = it.nextStatement();
+//				try{
+//					uris.add(statement.getObject().asResource().getURI());
+//				} catch (ResourceRequiredException e)  {
+//					logger.warn("Ignore triple "+ statement +" because it is not a Object property");
+//				}
+//			}
+//			return uris;
+//    	}
+//	}
 
 	/**
 	 * Returns <code>true</code> if the ontology resource is deprecated, otherwise <code>false</code>.
@@ -1116,7 +1218,7 @@ public class OntResourceAnnotationStrategy {
 			 || predicate.equals(DC_DESCRIPTION)
 			 || predicate.equals(DC_PUBLISHER)
 			 || predicate.equals(DC_RIGHTS)
-			 || predicate.equals(DCTERMS_IS_PART_OF)
+			 || predicate.equals(DCT_IS_PART_OF)
 			 || predicate.equals(DC_TITLE)
 			 || predicate.equals(DCT_DESCRIPTION)
 			 || predicate.equals(DCT_LICENSE)
@@ -1168,19 +1270,26 @@ public class OntResourceAnnotationStrategy {
 	 * @return the homepage.
 	 */
 	public String getHomepage(OntResource ontResource) {
-		StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(FOAF_HOMEPAGE));
-		if (it.hasNext()){ // Take the first
-			Statement statement = it.nextStatement();
-			try{
-				return statement.getObject().asResource().getURI();
-			} catch (ResourceRequiredException e)  {
-				logger.warn("Ignore triple "+ statement +" because it is not a Object property");
-			}
-		}
-		return null;
+		return getObjectPropertyURI(ontResource, FOAF_HOMEPAGE);
 	}
 
+	/**
+	 * Returns the dataDump.
+	 * @param ontResource the ontResource.
+	 * @return the dataDump.
+	 */
+	public String getDataDump(OntResource ontResource) {
+		return getObjectPropertyURI(ontResource, VOID_DATADUMP);
+	}
 	
+	/**
+	 * Returns the SPARQL endpoint.
+	 * @param ontResource the ontResource.
+	 * @return the SPARQL endpoint.
+	 */
+	public String getSparqlEndpoint(OntResource ontResource) {
+		return getObjectPropertyURI(ontResource, VOID_SPARQLENDPOINT);
+	}
 	
 }
 

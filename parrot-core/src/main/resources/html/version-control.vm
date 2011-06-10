@@ -10,25 +10,59 @@
 		<dt>Date</dt>
 		<dd class="metadata-icon date">$element.Date</dd>
 		#end
+		
+		#if($element.ModifiedDate)
+		<dt>Last modified</dt>
+		<dd class="metadata-icon date">$element.ModifiedDate</dd>
+		#end
 	  
-		#if(!$element.creators.isEmpty())
+		#if(!$element.creators.isEmpty() || !$element.creatorAgents.isEmpty())
 		<dt>Creators</dt>
 		#foreach($creator in $element.creators)
 		  <dd class="metadata-icon creator">$creator</dd>
 		#end
+		#foreach($agent in $element.creatorAgents)
+		  <dd class="metadata-icon creator">
+		  	#if($agent.homepage)
+		  		<a href="$agent.homepage">$agent.name</a>
+		  	#else
+		  		$agent.name
+		  	#end
+		  </dd>
+		#end
 		#end
 		
-		#if(!$element.contributors.isEmpty())
+		#if(!$element.contributors.isEmpty() || !$element.contributorAgents.isEmpty())
 		<dt>Contributors</dt>
 		#foreach($contributor in $element.contributors)
 		  <dd class="metadata-icon contributor">$contributor</dd>
 		#end
+
+		#foreach($agent in $element.contributorAgents)
+		  <dd class="metadata-icon contributor">
+		  	#if($agent.homepage)
+		  		<a href="$agent.homepage">$agent.name</a>
+		  	#else
+		  		$agent.name
+		  	#end
+		  </dd>
+		#end
 		#end
 		
-		#if(!$element.publishers.isEmpty())
+		#if(!$element.publishers.isEmpty() || !$element.publisherAgents.isEmpty())
 		<dt>Publishers</dt>
 		#foreach($publisher in $element.publishers)
 		  <dd class="metadata-icon publisher">$publisher</dd>
+		#end
+		
+		#foreach($agent in $element.publisherAgents)
+		  <dd class="metadata-icon publisher">
+		  	#if($agent.homepage)
+		  		<a href="$agent.homepage">$agent.name</a>
+		  	#else
+		  		$agent.name
+		  	#end
+		  </dd>
 		#end
 		#end
 		

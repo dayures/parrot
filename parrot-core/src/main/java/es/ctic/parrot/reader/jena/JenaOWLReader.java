@@ -73,7 +73,7 @@ public class JenaOWLReader implements DocumentReader {
             loadOntProperties(ontModel, register);
             loadOntIndividuals(ontModel, register);
             loadVocabularies(ontModel, register);
-            //loadDatasets(ontModel, register);
+            loadDatasets(ontModel, register);
         } catch (JenaException e) {
             if (e.getCause() != null && e.getCause() instanceof SAXParseException) {
                 throw new ReaderException(input.getMimeType() + " parse error: " + e.getCause().getMessage(), e);
@@ -204,9 +204,8 @@ public class JenaOWLReader implements DocumentReader {
 	}
 	
 	private void loadDatasets(OntModel model, DocumentableObjectRegister register) {
-	    OntClass voidDatasetClass = model.getOntClass(DatasetJenaImpl.VOID_NS + "Dataset");
-	    ExtendedIterator<? extends OntResource> datasetIterator = voidDatasetClass.listInstances();
-	    while (datasetIterator.hasNext()) {
+		ExtendedIterator<Individual> datasetIterator = model.listIndividuals(ResourceFactory.createResource(DatasetJenaImpl.VOID_NS + "Dataset"));
+		while (datasetIterator.hasNext()) {
 	        OntResource datasetInstance = datasetIterator.next();
 	        register.registerDocumentableObject(new DatasetJenaImpl(datasetInstance, register, getAnnotationStrategy()));
 	    }

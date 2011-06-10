@@ -6,6 +6,7 @@ import java.util.Locale;
 
 import org.apache.log4j.Logger;
 
+import es.ctic.parrot.de.Agent;
 import es.ctic.parrot.de.Identifier;
 import es.ctic.parrot.de.Label;
 import es.ctic.parrot.de.RelatedDocument;
@@ -44,6 +45,9 @@ public class RuleSetDetailView implements DetailView {
 	private Collection<String> creators;
 	private Collection<String> contributors;
 	private Collection<String> publishers;
+	private Collection<Agent> creatorAgents;
+	private Collection<Agent> contributorAgents;
+	private Collection<Agent> publisherAgents;	
 	private String rights;
 	private String licenseLabel;
 
@@ -343,6 +347,49 @@ public class RuleSetDetailView implements DetailView {
 	public Collection<String> getPublishers() {
 		return Collections.unmodifiableCollection(publishers);
 	}
+
+	/**
+	 * @param creatorAgents the creatorAgents to set
+	 */
+	protected void setCreatorAgents(Collection<Agent> creatorAgents) {
+		this.creatorAgents = creatorAgents;
+	}
+
+	/**
+	 * @return the creatorAgents
+	 */
+	public Collection<Agent> getCreatorAgents() {
+		return Collections.unmodifiableCollection(creatorAgents);
+	}
+
+	/**
+	 * @param contributorAgents the contributorAgents to set
+	 */
+	protected void setContributorAgents(Collection<Agent> contributorAgents) {
+		this.contributorAgents = contributorAgents;
+	}
+
+	/**
+	 * @return the contributorAgents
+	 */
+	public Collection<Agent> getContributorAgents() {
+		return Collections.unmodifiableCollection(contributorAgents);
+	}
+	
+	/**
+	 * @param publisherAgents the publisherAgents to set
+	 */
+	protected void setPublisherAgents(Collection<Agent> publisherAgents) {
+		this.publisherAgents = publisherAgents;
+	}
+
+
+	/**
+	 * @return the publisherAgents
+	 */
+	public Collection<Agent> getPublisherAgents() {
+		return Collections.unmodifiableCollection(publisherAgents);
+	}
 	
 	/**
 	 * Set information about the ontology rights.
@@ -425,9 +472,15 @@ public class RuleSetDetailView implements DetailView {
 		// Control version information
 		details.setVersion(object.getVersion());
 		details.setDate(object.getDate());
+		
 		details.setCreators(object.getCreators());
 		details.setContributors(object.getContributors());
 		details.setPublishers(object.getPublishers());
+		
+		details.setCreatorAgents(object.getCreatorAgents());
+		details.setContributorAgents(object.getContributorAgents());
+		details.setPublisherAgents(object.getPublisherAgents());
+
 		details.setRights(object.getRights());
 		details.setLicenseLabel(object.getLicenseLabel());
 		

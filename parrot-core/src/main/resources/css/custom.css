@@ -220,61 +220,38 @@ h1 a[href]:hover { background-color: transparent; }
 /** end header **/
 
 /** begin color details **/
-.ontologies{
+.ontologies , .ontologies h3{
 	background-color: #CCCCFF;
 }
 
-.ontologies h3{
-	background-color: #CCCCFF;
-}
-
-.classes {
+.classes , .classes h3 {
 	background-color: #FFFFCC;
 }
 
-.classes h3 {
-	background-color: #FFFFCC;
-}
-
-.properties{
+.properties , .properties h3{
 	background-color: #E8E8E8;
 }
 
-.properties h3{
-	background-color: #E8E8E8;
-}
-
-.individuals{
+.individuals , .individuals h3{
 	background-color: #FFCCFF;
 }
 
-.individuals h3{
-	background-color: #FFCCFF;
-}
-
-.rulesets{
+.rulesets , .rulesets h3{
 	background-color: #C6E2FF;
 }
 
-.rulesets h3{
-	background-color: #C6E2FF;
-}
-
-.rules{
+.rules , .rules h3{
 	background-color: #CAFF70;
 }
 
-.rules h3{
-	background-color: #CAFF70;
-}
-
-.vocabularies{
+.vocabularies , .vocabularies h3{
 	background-color: #ffe7cd;
 }
 
-.vocabularies h3{
-	background-color: #ffe7cd;
+.datasets , .datasets h3{
+	background-color: #cbbffd;
 }
+
 
 /** end color details **/
 

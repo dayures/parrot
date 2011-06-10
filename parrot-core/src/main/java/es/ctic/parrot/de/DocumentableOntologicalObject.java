@@ -56,16 +56,34 @@ public interface DocumentableOntologicalObject extends DocumentableObject,Compar
 	public abstract Collection<String> getCreators();
 	
 	/**
+	 * Returns the creator agents.
+	 * @return the creator agents.
+	 */
+	public abstract Collection<Agent> getCreatorAgents();
+	
+	/**
 	 * Returns the contributors.
 	 * @return the contributors.
 	 */
 	public abstract Collection<String> getContributors();
 	
 	/**
+	 * Returns the contributor agents.
+	 * @return the contributor agents.
+	 */
+	public abstract Collection<Agent> getContributorAgents();
+	
+	/**
 	 * Returns the publishers.
 	 * @return the publishers.
 	 */
 	public abstract Collection<String> getPublishers();
+	
+	/**
+	 * Returns the publisher agents.
+	 * @return the publisher agents.
+	 */
+	public abstract Collection<Agent> getPublisherAgents();
 	
 	/**
 	 * Returns information about the element rights.

@@ -105,3 +105,18 @@
 	<div class="details vocabularies">#parse("html/vocabulary-detail.vm")</div>
 	#end
 #end
+
+#if(!$document.datasetDetailViews.isEmpty())
+	<div class="toc" id="datasets">
+	<h2>Datasets</h2>
+	<p>
+	  #foreach($element in $document.datasetDetailViews)
+		<a href="#$element.Anchor">$element.Label</a>#if ($foreach.hasNext), #end
+	  #end
+	</p>
+	</div>
+	
+	#foreach($element in $document.datasetDetailViews)
+	<div class="details datasets">#parse("html/dataset-detail.vm")</div>
+	#end
+#end

@@ -66,5 +66,23 @@ public interface Vocabulary extends DocumentableObject {
 	 * @return the publishers.
 	 */
 	public abstract Collection<String> getPublishers();
+	
+	/**
+	 * Returns the creator agents.
+	 * @return the creator agents.
+	 */
+	public abstract Collection<Agent> getCreatorAgents();
+	
+	/**
+	 * Returns the contributor agents.
+	 * @return the contributor agents.
+	 */
+	public abstract Collection<Agent> getContributorAgents();
+	
+	/**
+	 * Returns the publisher agents.
+	 * @return the publisher agents.
+	 */
+	public abstract Collection<Agent> getPublisherAgents();
     
 }

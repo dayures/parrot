@@ -61,6 +61,24 @@
 </p>
 #end
 
+#if(!$document.vocabularyDetailViews.isEmpty())
+<p><span class="parrot-element-ref parrot-vocabulary-ref">Vocabularies (${document.vocabularyDetailViews.size()}):</span></p>
+<p>
+#foreach($element in $document.vocabularyDetailViews)
+	<a href="#$element.Anchor">$element.Label</a>#if ($foreach.hasNext), #end
+#end
+</p>
+#end
+
+#if(!$document.datasetDetailViews.isEmpty())
+<p><span class="parrot-element-ref parrot-dataset-ref">Rules (${document.datasetDetailViews.size()}):</span></p>
+<p>
+#foreach($element in $document.datasetDetailViews)
+	<a href="#$element.Anchor">$element.Label</a>#if ($foreach.hasNext), #end
+#end
+</p>
+#end
+
 <hr />
 
 #if(!$document.glossary.isEmpty())

@@ -7,22 +7,22 @@ import java.util.Locale;
 import org.apache.log4j.Logger;
 
 import es.ctic.parrot.de.Agent;
+import es.ctic.parrot.de.Dataset;
 import es.ctic.parrot.de.Identifier;
 import es.ctic.parrot.de.Label;
 import es.ctic.parrot.de.RelatedDocument;
-import es.ctic.parrot.de.Vocabulary;
 
 /**
- * A detailed view of a vocabulary.
+ * A detailed view of a dataset.
  * 
  * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
  * @version 1.0
  * @since 1.0
  *
  */
-public class VocabularyDetailView implements DetailView{
+public class DatasetDetailView implements DetailView{
 
-    private static final Logger logger = Logger.getLogger(VocabularyDetailView.class);
+    private static final Logger logger = Logger.getLogger(DatasetDetailView.class);
     private Identifier identifier;
 	private String uri;
 	private String uriFragment;
@@ -32,27 +32,25 @@ public class VocabularyDetailView implements DetailView{
 	private Collection<Label> synonyms;
 	private Collection<RelatedDocument> relatedDocuments;
     private String anchor;
-
-    private String preferredPrefix;
-	private String preferredNamespace;
-
-    private String modifiedDate;
     
+	private String date;
+	private String licenseLabel;
+	private String dataDump;
+	private String sparqlEndpoint;
+	private String homepage;
+	
 	private Collection<String> creators;
 	private Collection<String> contributors;
 	private Collection<String> publishers;
+	
 	private Collection<Agent> creatorAgents;
 	private Collection<Agent> contributorAgents;
-	private Collection<Agent> publisherAgents;	
-	private String homepage;
-	
-	private String classNumber;
-	private String propertyNumber;
-	
+	private Collection<Agent> publisherAgents;
+
 	/**
 	 * Constructs a vocabulary detail view (Suppress default constructor for noninstantiability).
 	 */
-	private VocabularyDetailView() {
+	private DatasetDetailView() {
         logger.debug("Created " + this.getClass());
     }
 
@@ -173,7 +171,7 @@ public class VocabularyDetailView implements DetailView{
 	 * Set the fragment of the URI.
 	 * @param uriFragment the fragment of the URI to set.
 	 */
-	public void setUriFragment(String uriFragment) {
+	private void setUriFragment(String uriFragment) {
 		this.uriFragment = uriFragment;
 	}
 
@@ -189,7 +187,7 @@ public class VocabularyDetailView implements DetailView{
 	 * Set the synonyms.
 	 * @param synonyms the synonyms to set
 	 */
-	protected void setSynonyms(Collection<Label> synonyms) {
+	private void setSynonyms(Collection<Label> synonyms) {
 		this.synonyms = synonyms;
 	}
 
@@ -201,37 +199,36 @@ public class VocabularyDetailView implements DetailView{
 		return Collections.unmodifiableCollection(synonyms);
 	}
 	
-	
 	/**
-	 * Set the preferred prefix.
-	 * @param preferredPrefix preferred prefix to set.
-	 */
-	private void setPreferredPrefix(String preferredPrefix) {
-		this.preferredPrefix = preferredPrefix;
+	 * Set the date.
+	 * @param date date to set.
+	 */	
+	private void setDate(String date) {
+		this.date = date;
 	}
 
 	/**
-	 * Returns the preferred prefix.
-	 * @return the preferred prefix.
+	 * Returns the date.
+	 * @return the date.
 	 */
-	public String getPreferredPrefix() {
-		return preferredPrefix;
+	public String getDate() {
+		return date;
 	}
 	
 	/**
-	 * Set the preferred namespace.
-	 * @param preferredNamespace preferred namespace to set.
+	 * Set the license's label.
+	 * @param licenseLabel the license's label to set.
 	 */
-	private void setPreferredNamespace(String preferredNamespace) {
-		this.preferredNamespace = preferredNamespace;
+	private void setLicenseLabel(String licenseLabel) {
+		this.licenseLabel = licenseLabel;
 	}
 
 	/**
-	 * Returns the preferred namespace.
-	 * @return the preferred namespace.
+	 * Returns the label for the license of this ontology.
+	 * @return the label for the license of this ontology.
 	 */
-	public String getPreferredNamespace() {
-		return preferredNamespace;
+	public String getLicenseLabel() {
+		return licenseLabel;
 	}
 	
 	/**
@@ -283,6 +280,93 @@ public class VocabularyDetailView implements DetailView{
 	}
 	
 	/**
+	 * @param dataDump the dataDump to set
+	 */
+    private void setDataDump(String dataDump) {
+		this.dataDump = dataDump;
+	}
+
+
+	/**
+	 * @return the dataDump
+	 */
+	public String getDataDump() {
+		return dataDump;
+	}
+
+
+	/**
+	 * @param sparqlEndpoint the sparqlEnpoint to set
+	 */
+	private void setSparqlEndpoint(String sparqlEndpoint) {
+		this.sparqlEndpoint = sparqlEndpoint;
+	}
+
+
+	/**
+	 * @return the sparqlEndpoint
+	 */
+	public String getSparqlEndpoint() {
+		return sparqlEndpoint;
+	}
+
+
+	/**
+	 * @param homepage the homepage to set
+	 */
+	private void setHomepage(String homepage) {
+		this.homepage = homepage;
+	}
+
+
+	/**
+	 * @return the homepage
+	 */
+	public String getHomepage() {
+		return homepage;
+	}
+	
+	/**
+	 * Returns a detailed view for the vocabulary given.
+	 * @param object the vocabulary.
+	 * @param locale the locale.
+	 * @return a detailed view for a vocabulary.
+	 */
+    public static DatasetDetailView createFromDataset(Dataset object, Locale locale) {
+    	
+	    DatasetDetailView details = new DatasetDetailView();
+	    details.setIdentifier(object.getIdentifier());
+		details.setUri(object.getURI());
+		details.setUriFragment(object.getUriFragment());
+		details.setLabel(object.getLabel(locale));
+		details.setComment(object.getComment(locale));
+		
+		details.setLabels(object.getLabels());
+		details.setSynonyms(object.getSynonyms());
+		
+        details.setAnchor(object.getLocalName());
+		details.setRelatedDocuments(object.getRelatedDocuments(locale));
+		
+		// Control version information
+		details.setCreators(object.getCreators());
+		details.setContributors(object.getContributors());
+		details.setPublishers(object.getPublishers());
+
+		details.setCreatorAgents(object.getCreatorAgents());
+		details.setContributorAgents(object.getContributorAgents());
+		details.setPublisherAgents(object.getPublisherAgents());
+
+		details.setDate(object.getDate());
+		details.setLicenseLabel(object.getLicenseLabel());
+		
+		details.setDataDump(object.getdataDump());
+		details.setSparqlEndpoint(object.getSparqlEndpoint());
+		details.setHomepage(object.getHomepage());
+		
+		return details;
+    }
+
+	/**
 	 * @param creatorAgents the creatorAgents to set
 	 */
 	protected void setCreatorAgents(Collection<Agent> creatorAgents) {
@@ -326,111 +410,7 @@ public class VocabularyDetailView implements DetailView{
 	}
 	
 
-	
-	/**
-	 * Returns a detailed view for the vocabulary given.
-	 * @param object the vocabulary.
-	 * @param locale the locale.
-	 * @return a detailed view for a vocabulary.
-	 */
-    public static VocabularyDetailView createFromVocabulary(Vocabulary object, Locale locale) {
-    	
-	    VocabularyDetailView details = new VocabularyDetailView();
-	    details.setIdentifier(object.getIdentifier());
-		details.setUri(object.getURI());
-		details.setUriFragment(object.getUriFragment());
-		details.setLabel(object.getLabel(locale));
-		details.setComment(object.getComment(locale));
-		
-		details.setLabels(object.getLabels());
-		details.setSynonyms(object.getSynonyms());
-		
-        details.setAnchor(object.getLocalName());
-		details.setRelatedDocuments(object.getRelatedDocuments(locale));
-		
-		details.setPreferredNamespace(object.getPreferredNamespace());
-		details.setPreferredPrefix(object.getPreferredPrefix());
-		
-		// Control version information
-		details.setModifiedDate(object.getModifiedDate());
-		details.setCreators(object.getCreators());
-		details.setContributors(object.getContributors());
-		details.setPublishers(object.getPublishers());
-		details.setCreatorAgents(object.getCreatorAgents());
-		details.setContributorAgents(object.getContributorAgents());
-		details.setPublisherAgents(object.getPublisherAgents());
 
 
-		details.setClassNumber(object.getClassNumber());
-		details.setPropertyNumber(object.getPropertyNumber());
-		
-		details.setHomepage(object.getHomepage());
-		
-		return details;
-    }
-
-
-	/**
-	 * @param modifiedDate the modifiedDate to set
-	 */
-	private void setModifiedDate(String modifiedDate) {
-		this.modifiedDate = modifiedDate;
-	}
-
-
-	/**
-	 * @return the modifiedDate
-	 */
-	public String getModifiedDate() {
-		return modifiedDate;
-	}
-
-
-	/**
-	 * @param classNumber the classNumber to set
-	 */
-	private void setClassNumber(String classNumber) {
-		this.classNumber = classNumber;
-	}
-
-
-	/**
-	 * @return the classNumber
-	 */
-	public String getClassNumber() {
-		return classNumber;
-	}
-
-
-	/**
-	 * @param propertyNumber the propertyNumber to set
-	 */
-	private void setPropertyNumber(String propertyNumber) {
-		this.propertyNumber = propertyNumber;
-	}
-
-
-	/**
-	 * @return the propertyNumber
-	 */
-	public String getPropertyNumber() {
-		return propertyNumber;
-	}
-
-
-	/**
-	 * @param homepage the homepage to set
-	 */
-	private void setHomepage(String homepage) {
-		this.homepage = homepage;
-	}
-
-
-	/**
-	 * @return the homepage
-	 */
-	public String getHomepage() {
-		return homepage;
-	}
     
 }

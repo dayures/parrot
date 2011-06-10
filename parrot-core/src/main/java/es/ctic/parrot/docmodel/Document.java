@@ -51,6 +51,7 @@ public class Document {
 	private final Set<RuleDetailView> ruleDetailViews = new HashSet<RuleDetailView>();
     private final Set<RuleSetDetailView> ruleSetDetailViews = new HashSet<RuleSetDetailView>();
     private final Set<VocabularyDetailView> vocabularyDetailViews = new HashSet<VocabularyDetailView>();
+    private final Set<DatasetDetailView> datasetDetailViews = new HashSet<DatasetDetailView>();
 
     private final Glossary glossary;
     private String prologueURL;
@@ -145,13 +146,23 @@ public class Document {
     }
     
 	/**
-	 * Returns the sorted collection of ontology views for this document. Elements are sorted alphabetically by label.
-	 * @return the sorted collection of ontology views for this document.
+	 * Returns the sorted collection of vocabulary views for this document. Elements are sorted alphabetically by label.
+	 * @return the sorted collection of vocabulary views for this document.
 	 */
 	public Collection<VocabularyDetailView> getVocabularyDetailViews() {
 		List<VocabularyDetailView> listVocabularyDetailsViews = new LinkedList<VocabularyDetailView>(this.vocabularyDetailViews);
 		Collections.sort(listVocabularyDetailsViews, new DetailViewComparator());
 		return listVocabularyDetailsViews;
+	}
+
+	/**
+	 * Returns the sorted collection of dataset views for this document. Elements are sorted alphabetically by label.
+	 * @return the sorted collection of dataset views for this document.
+	 */
+	public Collection<DatasetDetailView> getDatasetDetailViews() {
+		List<DatasetDetailView> listDatasetDetailsViews = new LinkedList<DatasetDetailView>(this.datasetDetailViews);
+		Collections.sort(listDatasetDetailsViews, new DetailViewComparator());
+		return listDatasetDetailsViews;
 	}
 	
     /** 
@@ -210,6 +221,14 @@ public class Document {
         this.vocabularyDetailViews.add(details);
     }
 
+    /** 
+     * Adds a given detailed dataset view into this document.
+     * @param details the detailed dataset view.
+     */
+    public void addDatasetDetailView(DatasetDetailView details) {
+        this.datasetDetailViews.add(details);
+    }
+    
 	/**
 	 * Returns the glossary.
 	 * @return the glossary.

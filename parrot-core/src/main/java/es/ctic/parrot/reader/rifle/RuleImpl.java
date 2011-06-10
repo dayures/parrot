@@ -18,6 +18,7 @@ import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 
 import es.ctic.parrot.de.AbstractDocumentableObject;
+import es.ctic.parrot.de.Agent;
 import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.de.DocumentableOntologicalObject;
@@ -260,6 +261,18 @@ public class RuleImpl extends AbstractDocumentableObject implements Rule {
 
     public String getKindString() {
         return Kind.RULE.toString();
+    }
+    
+    public Collection<Agent> getCreatorAgents() {
+    	return getAnnotationStrategy().getCreatorAgents(getOntResource());
+    }
+
+    public Collection<Agent> getContributorAgents() {
+    	return getAnnotationStrategy().getContributorAgents(getOntResource());
+    }
+
+    public Collection<Agent> getPublisherAgents() {
+    	return getAnnotationStrategy().getPublisherAgents(getOntResource());
     }
     
 }

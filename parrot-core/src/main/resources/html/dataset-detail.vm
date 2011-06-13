@@ -31,7 +31,7 @@
 #end
 
 <div class="term">
-   <h3 id="$element.Anchor">#if ($element.uriFragment) <a id="$element.uriFragment"></a>#end#if ($element.uriFragment) <a id="$element.uriFragment"></a>#end<span class="parrot-element-title parrot-vocabulary-title">$element.Label</span> (Vocabulary)
+   <h3 id="$element.Anchor">#if ($element.uriFragment) <a id="$element.uriFragment"></a>#end#if ($element.uriFragment) <a id="$element.uriFragment"></a>#end<span class="parrot-element-title parrot-dataset-title">$element.Label</span> (Dataset)
     #parse("html/detail-menu.vm")
   </h3>
   #parse("html/description.vm")

@@ -11,7 +11,7 @@ import java.util.Collection;
  * @since 1.0
  * 
  */
-public interface DocumentableOntologicalObject extends DocumentableObject,Comparable<DocumentableOntologicalObject>{
+public interface DocumentableOntologicalObject extends DocumentableObject,Comparable<DocumentableOntologicalObject>, Versionable{
 
 	/**
 	 * Sets a reference to a rule that use this ontological element.
@@ -36,65 +36,5 @@ public interface DocumentableOntologicalObject extends DocumentableObject,Compar
      * @return <code>true</code> if this ontological element is deprecated, otherwise <code>false</code>.
      */
 	public abstract boolean isDeprecated();
-	
-	/**
-	 * Returns the version.
-	 * @return the version.
-	 */
-	public abstract String getVersion();
-	
-	/**
-	 * Returns the date.
-	 * @return the date.
-	 */
-	public abstract String getDate();
-
-	/**
-	 * Returns the creators.
-	 * @return the creators.
-	 */	
-	public abstract Collection<String> getCreators();
-	
-	/**
-	 * Returns the creator agents.
-	 * @return the creator agents.
-	 */
-	public abstract Collection<Agent> getCreatorAgents();
-	
-	/**
-	 * Returns the contributors.
-	 * @return the contributors.
-	 */
-	public abstract Collection<String> getContributors();
-	
-	/**
-	 * Returns the contributor agents.
-	 * @return the contributor agents.
-	 */
-	public abstract Collection<Agent> getContributorAgents();
-	
-	/**
-	 * Returns the publishers.
-	 * @return the publishers.
-	 */
-	public abstract Collection<String> getPublishers();
-	
-	/**
-	 * Returns the publisher agents.
-	 * @return the publisher agents.
-	 */
-	public abstract Collection<Agent> getPublisherAgents();
-	
-	/**
-	 * Returns information about the element rights.
-	 * @return information about the element rights.
-	 */
-	public abstract String getRights();
-	
-	/**
-	 * Returns the label for the license of this element.
-	 * @return the label for the license of this element.
-	 */
-	public abstract String getLicenseLabel();
 	
 }

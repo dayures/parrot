@@ -1,8 +1,5 @@
 package es.ctic.parrot.de;
 
-import java.util.Collection;
-
-
 /**
  * A vocabulary to be documented by Parrot. 
  * 
@@ -11,7 +8,7 @@ import java.util.Collection;
  * @since 1.0
  * 
  */
-public interface Vocabulary extends DocumentableObject {
+public interface Vocabulary extends DocumentableObject, Versionable {
 
 	/**
 	 * Returns the preferred prefix.
@@ -48,41 +45,5 @@ public interface Vocabulary extends DocumentableObject {
 	 * @return the homepage.
 	 */
 	public abstract String getHomepage();
-	
-	/**
-	 * Returns the creators.
-	 * @return the creators.
-	 */	
-	public abstract Collection<String> getCreators();
-	
-	/**
-	 * Returns the contributors.
-	 * @return the contributors.
-	 */
-	public abstract Collection<String> getContributors();
-	
-	/**
-	 * Returns the publishers.
-	 * @return the publishers.
-	 */
-	public abstract Collection<String> getPublishers();
-	
-	/**
-	 * Returns the creator agents.
-	 * @return the creator agents.
-	 */
-	public abstract Collection<Agent> getCreatorAgents();
-	
-	/**
-	 * Returns the contributor agents.
-	 * @return the contributor agents.
-	 */
-	public abstract Collection<Agent> getContributorAgents();
-	
-	/**
-	 * Returns the publisher agents.
-	 * @return the publisher agents.
-	 */
-	public abstract Collection<Agent> getPublisherAgents();
     
 }

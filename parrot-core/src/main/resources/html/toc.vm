@@ -71,7 +71,7 @@
 #end
 
 #if(!$document.datasetDetailViews.isEmpty())
-<p><span class="parrot-element-ref parrot-dataset-ref">Rules (${document.datasetDetailViews.size()}):</span></p>
+<p><span class="parrot-element-ref parrot-dataset-ref">Datasets (${document.datasetDetailViews.size()}):</span></p>
 <p>
 #foreach($element in $document.datasetDetailViews)
 	<a href="#$element.Anchor">$element.Label</a>#if ($foreach.hasNext), #end

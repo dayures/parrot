@@ -18,8 +18,7 @@ import com.hp.hpl.jena.vocabulary.OWL;
 import com.hp.hpl.jena.vocabulary.RDF;
 import com.hp.hpl.jena.vocabulary.RDFS;
 
-import es.ctic.parrot.de.AbstractDocumentableObject;
-import es.ctic.parrot.de.Agent;
+import es.ctic.parrot.de.AbstractVersionable;
 import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.de.DocumentableOntologicalObject;
@@ -40,13 +39,11 @@ import es.ctic.parrot.de.UndefinedOntologyDocumentableObject;
  *
  */
 public abstract class AbstractJenaDocumentableObject extends
-		AbstractDocumentableObject implements DocumentableOntologicalObject {
+		AbstractVersionable implements DocumentableOntologicalObject {
 	
 	private static final Logger logger = Logger.getLogger(AbstractJenaDocumentableObject.class);
 	
-	private OntResource ontResource;
 	private Collection<Rule> inverseRuleReferences = new HashSet<Rule>();
-	private OntResourceAnnotationStrategy annotationStrategy;
 
 	/**
 	 * Constructs an abstract Jena documentable element, setting the ontResource, the annotation strategy and the register.
@@ -62,21 +59,6 @@ public abstract class AbstractJenaDocumentableObject extends
 		logger.debug("Created a documentable object for " + ontResource);
 	}
 	
-	/**
-	 * Returns the ontResource.
-	 * @return the ontResource.
-	 */
-	public OntResource getOntResource() {
-		return ontResource;
-	}
-	
-	/**
-	 * Sets the ontResource.
-	 * @param ontResource the ontResource to set.
-	 */
-	private void setOntResource(OntResource ontResource) {
-		this.ontResource = ontResource;
-	}
 	
 	public void addInverseRuleReference(Rule rule) {
 		inverseRuleReferences.add(rule);
@@ -86,21 +68,6 @@ public abstract class AbstractJenaDocumentableObject extends
 		return Collections.unmodifiableCollection(inverseRuleReferences);
 	}
 	
-	/**
-	 * Sets the annotation strategy.
-	 * @param annotationStrategy the annotation strategy to set.
-	 */
-	private void setAnnotationStrategy(OntResourceAnnotationStrategy annotationStrategy) {
-		this.annotationStrategy = annotationStrategy;
-	}
-
-	/**
-	 * Returns the annotation strategy.
-	 * @return the annotation strategy
-	 */
-	public OntResourceAnnotationStrategy getAnnotationStrategy() {
-		return annotationStrategy;
-	}
 	
 	/**
 	 * Returns the URI of this documentable element or <code>null</code> if it's a blank node.
@@ -256,46 +223,6 @@ public abstract class AbstractJenaDocumentableObject extends
 	
 	public boolean isDeprecated(){
 		return getAnnotationStrategy().isDeprecated(getOntResource());
-	}
-	
-	public String getVersion() {
-		return getAnnotationStrategy().getVersion(getOntResource());
-	}
-
-	public String getDate() {
-		return getAnnotationStrategy().getDate(getOntResource());
-	}
-
-	public Collection<String> getCreators() {
-		return getAnnotationStrategy().getCreators(getOntResource());
-	}
-	
-	public Collection<Agent> getCreatorAgents() {
-		return getAnnotationStrategy().getCreatorAgents(getOntResource());
-	}
-
-	public Collection<String> getContributors() {
-		return getAnnotationStrategy().getContributors(getOntResource());
-	}
-	
-	public Collection<Agent> getContributorAgents() {
-		return getAnnotationStrategy().getContributorAgents(getOntResource());
-	}
-	
-	public Collection<String> getPublishers() {
-		return getAnnotationStrategy().getPublishers(getOntResource());
-	}
-	
-	public Collection<Agent> getPublisherAgents() {
-		return getAnnotationStrategy().getPublisherAgents(getOntResource());
-	}
-	
-	public String getRights() {
-		return getAnnotationStrategy().getRights(getOntResource());
-	}
-	
-	public String getLicenseLabel() {
-		return getAnnotationStrategy().getLicenseLabel(getOntResource());
 	}
 	
 }

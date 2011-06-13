@@ -12,15 +12,13 @@ import java.util.TreeSet;
 import org.apache.log4j.Logger;
 
 import com.hp.hpl.jena.ontology.OntModel;
-import com.hp.hpl.jena.ontology.OntResource;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 
-import es.ctic.parrot.de.AbstractDocumentableObject;
-import es.ctic.parrot.de.Agent;
+import es.ctic.parrot.de.AbstractVersionable;
 import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.de.DocumentableOntologicalObject;
@@ -42,12 +40,10 @@ import es.ctic.parrot.transformers.TransformerException;
  * @since 1.0
  *
  */
-public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
+public class RuleSetImpl extends AbstractVersionable implements RuleSet {
 	
 	private net.sourceforge.rifle.ast.Group ruleSet;
 	private DocumentableObject parent;
-	private OntResource ontResource;
-    private OntResourceAnnotationStrategy annotationStrategy;
 
     private Identifier identifier;
 	
@@ -97,38 +93,6 @@ public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
 		return parent;
 	}
     
-	/**
-	 * Sets the annotation strategy.
-	 * @param annotationStrategy the annotation strategy to set.
-	 */
-	private void setAnnotationStrategy(OntResourceAnnotationStrategy annotationStrategy) {
-		this.annotationStrategy = annotationStrategy;
-	}
-
-	/**
-	 * Returns the annotation strategy.
-	 * @return the annotation strategy.
-	 */
-	public OntResourceAnnotationStrategy getAnnotationStrategy() {
-		return annotationStrategy;
-	}
-	
-	/**
-	 * Sets the ontResource.
-	 * @param ontResource the ontResource to set.
-	 */
-	private void setOntResource(OntResource ontResource) {
-		this.ontResource = ontResource;
-	}
-
-	/**
-	 * Returns the ontResource.
-	 * @return the ontResource.
-	 */
-	public OntResource getOntResource() {
-		return ontResource;
-	}
-	
 	public Object accept(DocumentableObjectVisitor visitor) throws TransformerException {
 		return visitor.visit(this);
 	}
@@ -267,46 +231,6 @@ public class RuleSetImpl extends AbstractDocumentableObject implements RuleSet {
 	public Collection<RelatedDocument> getRelatedDocuments(Locale locale) {
         return getAnnotationStrategy().getRelatedDocuments(getOntResource(), locale);
     }
-    
-	public String getVersion() {
-		return getAnnotationStrategy().getVersion(getOntResource());
-	}
-
-	public String getDate() {
-		return getAnnotationStrategy().getDate(getOntResource());
-	}
-
-	public Collection<String> getCreators() {
-		return getAnnotationStrategy().getCreators(getOntResource());
-	}
-
-	public Collection<String> getContributors() {
-		return getAnnotationStrategy().getContributors(getOntResource());
-	}
-	
-	public Collection<String> getPublishers() {
-		return getAnnotationStrategy().getPublishers(getOntResource());
-	}
-	
-	public String getRights() {
-		return getAnnotationStrategy().getRights(getOntResource());
-	}
-	
-	public String getLicenseLabel() {
-		return getAnnotationStrategy().getLicenseLabel(getOntResource());
-	}
-	
-	public Collection<Agent> getCreatorAgents() {
-		return getAnnotationStrategy().getCreatorAgents(getOntResource());
-	}
-
-	public Collection<Agent> getContributorAgents() {
-		return getAnnotationStrategy().getContributorAgents(getOntResource());
-	}
-
-	public Collection<Agent> getPublisherAgents() {
-		return getAnnotationStrategy().getPublisherAgents(getOntResource());
-	}
 
 }
 

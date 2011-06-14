@@ -49,17 +49,13 @@ to <strong>ontologies</strong>.</p>
       <td><em>dc:contributor</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>A contributor to the ontological element: a person or an organization.
-        Recommended best practice is to use a FOAF profile to describe a
-        contributor, although a literal is also allowed.</td>
+      <td>An entity responsible for making the ontological element: a person, an organization or a service. Typically, the name of a contributor should be used to indicate the entity.</td>
     </tr>
     <tr>
       <td><em>dc:creator</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>The creator of the ontological element: a person or an organization. Recommended
-        best practice is to use a FOAF profile to describe the creator,
-        although a literal is also allowed.</td>
+	  <td>An entity primarily responsible for making the ontological element: a person, an organization or a service. Typically, the name of a creator should be used to indicate the entity.</td>
     </tr>
     <tr>
       <td><em>dc:date</em></td>
@@ -78,10 +74,8 @@ to <strong>ontologies</strong>.</p>
       <td><em>dc:publisher</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>The entity responsible for making the ontological element available. Recommended
-        best practice is to use a FOAF profile to describe the publisher,
-        although a literal is also allowed.</td>
-    </tr>       
+	  <td>An entity responsible for making the ontological element available: a person, an organization or a service. Typically, the name of a publisher should be used to indicate the entity.</td>
+    </tr>   
     <tr>
       <td><em>dc:rights</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
@@ -95,6 +89,18 @@ to <strong>ontologies</strong>.</p>
       <td>See <em>label</em></td>
     </tr>
     <tr>
+      <td><em>dct:contributor</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td>An entity responsible for making the ontological element: a person, an organization or a service. Recommended best practice is to use a FOAF profile to describe a contributor.</td>
+    </tr>
+    <tr>
+      <td><em>dct:creator</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+	  <td>An entity primarily responsible for making the ontological element: a person, an organization or a service. Recommended best practice is to use a FOAF profile to describe a creator.</td>
+	</tr> 
+	<tr>
       <td><em>dct:description</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
@@ -108,7 +114,13 @@ to <strong>ontologies</strong>.</p>
         Recommended best practice is to use Creative Commons licenses and to
         describe them in RDF with the Creative Commons Rights Expression
         Language (CC REL). </td>
-    </tr>    
+    </tr>
+	<tr>
+      <td><em>dct:publisher</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+	  <td>An entity responsible for making the ontological element available: a person, an organization or a service. Recommended best practice is to use a FOAF profile to describe a publisher.</td>
+    </tr>
     <tr>
       <td><em>rdfs:comment</em></td>
       <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
@@ -219,23 +231,19 @@ to <strong>rules</strong>.</p>
       <td><em>dc:contributor</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>A contributor to the resource: a person or an organization. Recommended
-        best practice is to use a FOAF profile to describe a contributor,
-        although a literal is also allowed.</td>
+      <td>An entity responsible for making the rule/ruleset: a person, an organization or a service. Typically, the name of a contributor should be used to indicate the entity.</td>
     </tr>
     <tr>
       <td><em>dc:creator</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>The creator of the resource: a person or an organization. Recommended
-        best practice is to use a FOAF profile to describe the creator,
-        although a literal is also allowed.</td>
+	  <td>An entity primarily responsible for making the rule/ruleset: a person, an organization or a service. Typically, the name of a creator should be used to indicate the entity.</td>
     </tr>
     <tr>
       <td><em>dc:date</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>The date of creation or publication of the resource.
+      <td>The date of creation or publication of the rule/ruleset.
         Recommended best practice is to use the W3CDTF profile of ISO 8601.</td>
     </tr>
     <tr>
@@ -248,15 +256,13 @@ to <strong>rules</strong>.</p>
       <td><em>dc:publisher</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>The entity responsible for making the resource available. Recommended
-        best practice is to use a FOAF profile to describe the publisher,
-        although a literal is also allowed.</td>
+	  <td>An entity responsible for making the rule/ruleset available: a person, an organization or a service. Typically, the name of a publisher should be used to indicate the entity.</td>
     </tr>
     <tr>
       <td><em>dc:rights</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>Information about rights held in and over the resource.</td>
+      <td>Information about rights held in and over the rule/ruleset.</td>
     </tr>    
     <tr>
       <td><em>dc:title</em></td>
@@ -264,6 +270,18 @@ to <strong>rules</strong>.</p>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>See <em>label</em></td>
     </tr>
+    <tr>
+      <td><em>dct:contributor</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td>An entity responsible for making the rule/ruleset: a person, an organization or a service. Recommended best practice is to use a FOAF profile to describe a contributor.</td>
+    </tr>
+    <tr>
+      <td><em>dct:creator</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+	  <td>An entity primarily responsible for making the the ontological element: a person, an organization or a service. Recommended best practice is to use a FOAF profile to describe a creator.</td>
+	</tr>        
     <tr>
       <td><em>dct:description</em></td>
 	  <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
@@ -274,11 +292,17 @@ to <strong>rules</strong>.</p>
       <td><em>dct:license</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>A legal document describing the copyright license of the resource.
+      <td>A legal document describing the copyright license of the rule/ruleset.
         Recommended best practice is to use Creative Commons licenses and to
         describe them in RDF with the Creative Commons Rights Expression
         Language (CC REL). </td>
     </tr>     
+    <tr>
+      <td><em>dct:publisher</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+	  <td>An entity responsible for making the rule/ruleset available: a person, an organization or a service. Recommended best practice is to use a FOAF profile to describe a publisher.</td>
+    </tr>
     <tr>
       <td><em>dct:source</em></td>
 	  <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
@@ -289,21 +313,21 @@ to <strong>rules</strong>.</p>
       <td><em>rdfs:label</em></td>
       <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>The label of the resource. The range is a literal with a language
+      <td>The label of the rule/ruleset. The range is a literal with a language
       tag.</td>
     </tr>
     <tr>
       <td><em>rdfs:comment</em></td>
       <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>The description of the resource. The range is a literal with a
+      <td>The description of the rule/ruleset. The range is a literal with a
         language tag.</td>
     </tr>
     <tr>
       <td><em>skos:prefLabel</em></td>
       <td><a href="http://www.w3.org/TR/skos-reference/#overview">SKOS</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>The preferred label of a resource. The range is a literal with a
+      <td>The preferred label of a rule/ruleset. The range is a literal with a
         language tag. In some cases, it is assumed that <em>prefLabel</em>
         assumes the role of the <em>label</em> for presentation purposes.</td>
     </tr>
@@ -311,34 +335,34 @@ to <strong>rules</strong>.</p>
       <td><em>skos:altLabel</em></td>
       <td><a href="http://www.w3.org/TR/skos-reference/#overview">SKOS</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>An alternative label of a resource. The range is a literal with a
+      <td>An alternative label of a rule/ruleset. The range is a literal with a
         language tag.</td>
     </tr>
     <tr>
       <td><em>skosxl:prefLabel</em></td>
       <td><a href="http://www.w3.org/TR/skos-reference/#xl">SKOS-XL</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>The preferred label of a resource. The range of the property is an
+      <td>The preferred label of a rule/ruleset. The range of the property is an
         instance of the class LexicalLabel.</td>
     </tr>
     <tr>
-      <td><em>skosxl:altLabel*</em></td>
+      <td><em>skosxl:altLabel</em></td>
       <td><a href="http://www.w3.org/TR/skos-reference/#xl">SKOS-XL</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>An alternative label of a resource. The range of the property is an
+      <td>An alternative label of a rule/ruleset. The range of the property is an
         instance of the class LexicalLabel.</td>
     </tr>
     <tr>
       <td><em>foaf:depiction</em></td>
       <td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>An image associated with the resource. </td>
+      <td>An image associated with the rule/ruleset. </td>
     </tr>
     <tr>
       <td><em>og:video</em></td>
       <td><a href="http://ogp.me">OG</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>A video associated with the resource. </td>
+      <td>A video associated with the rule/ruleset. </td>
     </tr>
     <tr>
       <td><em>owl:versionInfo</em></td>
@@ -367,12 +391,12 @@ to <strong>vocabularies</strong>.</p>
     <tr>
       <td><em>dc:contributor</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
-      <td>An entity responsible for making the the ontological element: a person, an organization or a service. Typically, the name of a contributor should be used to indicate the entity.</td>
+      <td>An entity responsible for making the vocabulary: a person, an organization or a service. Typically, the name of a contributor should be used to indicate the entity.</td>
     </tr>
     <tr>
       <td><em>dc:creator</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
-	  <td>An entity primarily responsible for making the the ontological element: a person, an organization or a service. Typically, the name of a creator should be used to indicate the entity.</td>
+	  <td>An entity primarily responsible for making the vocabulary: a person, an organization or a service. Typically, the name of a creator should be used to indicate the entity.</td>
     </tr>
     <tr>
       <td><em>dc:description</em></td>
@@ -382,7 +406,7 @@ to <strong>vocabularies</strong>.</p>
     <tr>
       <td><em>dc:publisher</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
-	  <td>An entity responsible for making the resource available: a person, an organization or a service. Typically, the name of a publisher should be used to indicate the entity.</td>
+	  <td>An entity responsible for making the vocabulary available: a person, an organization or a service. Typically, the name of a publisher should be used to indicate the entity.</td>
     </tr>
     <tr>
       <td><em>dc:title</em></td>
@@ -392,12 +416,12 @@ to <strong>vocabularies</strong>.</p>
     <tr>
       <td><em>dct:contributor</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
-      <td>An entity responsible for making the the ontological element: a person, an organization or a service. Recommended best practice is to use a FOAF profile to describe a contributor.</td>
+      <td>An entity responsible for making the vocabulary: a person, an organization or a service. Recommended best practice is to use a FOAF profile to describe a contributor.</td>
     </tr>
     <tr>
       <td><em>dct:creator</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
-	  <td>An entity primarily responsible for making the the ontological element: a person, an organization or a service. Recommended best practice is to use a FOAF profile to describe a creator.</td>
+	  <td>An entity primarily responsible for making the vocabulary: a person, an organization or a service. Recommended best practice is to use a FOAF profile to describe a creator.</td>
 	</tr>    
     <tr>
       <td><em>dct:description</em></td>
@@ -413,18 +437,18 @@ to <strong>vocabularies</strong>.</p>
     <tr>
       <td><em>dct:publisher</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
-	  <td>An entity responsible for making the ontological element available: a person, an organization or a service. Recommended best practice is to use a FOAF profile to describe a publisher.</td>
+	  <td>An entity responsible for making the vocabulary available: a person, an organization or a service. Recommended best practice is to use a FOAF profile to describe a publisher.</td>
     </tr>
     <tr>
       <td><em>rdfs:comment</em></td>
       <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
-      <td>The description of the ontological element. The range is a literal with a
+      <td>The description of the vocabulary. The range is a literal with a
         language tag.</td>
     </tr>
     <tr>
       <td><em>rdfs:label</em></td>
       <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
-      <td>The label of the ontological element. The range is a literal with a language
+      <td>The label of the vocabulary. The range is a literal with a language
       tag.</td>
     </tr>    
     <tr>
@@ -436,19 +460,19 @@ to <strong>vocabularies</strong>.</p>
     <tr>
       <td><em>skosxl:prefLabel</em></td>
       <td><a href="http://www.w3.org/TR/skos-reference/#xl">SKOS-XL</a></td>
-      <td>The preferred label of a ontological element. The range of the property is an
+      <td>The preferred label of the vocabulary. The range of the property is an
         instance of the class LexicalLabel.</td>
     </tr>
     <tr>
       <td><em>skos:altLabel</em></td>
       <td><a href="http://www.w3.org/TR/skos-reference/#overview">SKOS</a></td>
-      <td>An alternative label of a ontological element. The range is a literal with a
+      <td>An alternative label of the vocabulary. The range is a literal with a
         language tag.</td>
     </tr>
     <tr>
       <td><em>skos:prefLabel</em></td>
       <td><a href="http://www.w3.org/TR/skos-reference/#overview">SKOS</a></td>
-      <td>The preferred label of a ontological element. The range is a literal with a
+      <td>The preferred label of the vocabulary. The range is a literal with a
         language tag. In some cases, it is assumed that <em>prefLabel</em>
         assumes the role of the <em>label</em> for presentation purposes.</td>
     </tr>

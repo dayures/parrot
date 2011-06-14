@@ -7,7 +7,7 @@
 #foreach($mapEntry in $glossary.glossaryEntries.entrySet() )
 <dt>$mapEntry.key</dt>
 #foreach($reference in $mapEntry.value)
-	<dd><span class="parrot-element-ref parrot-${reference.kindString}-ref"><a href="#$reference.localName">$reference.getLabel($document.getMainLanguage())</a></span></dd>
+	<dd><span class="parrot-element-ref parrot-${reference.kindString}-ref"><a href="#$reference.localName">$reference.getLabel()</a></span></dd>
 #end
 #end
 

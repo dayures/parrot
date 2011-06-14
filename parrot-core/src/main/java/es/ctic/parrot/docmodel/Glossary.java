@@ -1,14 +1,13 @@
 package es.ctic.parrot.docmodel;
 
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
-import com.ibm.icu.text.Collator;
+import org.apache.log4j.Logger;
 
 import es.ctic.parrot.de.DocumentableObject;
 
@@ -23,14 +22,19 @@ import es.ctic.parrot.de.DocumentableObject;
  */
 public class Glossary {
 
-    private final SortedMap<String, Set<DocumentableObject>> glossaryEntries;
+    private final SortedMap<String, Set<GlossaryEntry>> glossaryEntries;
+    private final Locale locale;
+    
+    private static final Logger logger = Logger.getLogger(Glossary.class);
+
     
     /**
      * Constructs a glossary for the given locale.
      * @param locale the locale.
      */
     public Glossary(Locale locale) {
-        glossaryEntries = new TreeMap<String, Set<DocumentableObject>>(new GlossaryEntryComparator(locale));
+    	this.locale = locale;
+        glossaryEntries = new TreeMap<String, Set<GlossaryEntry>>();
     }
     
     /**
@@ -39,19 +43,20 @@ public class Glossary {
      * @param documentableObject the documentable element to be referenced.
      */
     public void addReference(String term, DocumentableObject documentableObject) {
-        Set<DocumentableObject> references = glossaryEntries.get(term);
+        Set<GlossaryEntry> references = glossaryEntries.get(term);
+        
         if (references == null) {
-            references = new HashSet<DocumentableObject>();
+            references = new HashSet<GlossaryEntry>();
             glossaryEntries.put(term, references);
         }
-        references.add(documentableObject);
+        references.add(new GlossaryEntry(documentableObject.getLabel(locale), documentableObject.getLocalName(), documentableObject.getKindString()));
     }
     
     /**
      * Returns the glossary entries, sorted alphabetically.
      * @return the glossary entries, sorted alphabetically.
      */
-    public SortedMap<String, Set<DocumentableObject>> getGlossaryEntries() {
+    public SortedMap<String, Set<GlossaryEntry>> getGlossaryEntries() {
         return Collections.unmodifiableSortedMap(glossaryEntries);
     }
     
@@ -70,20 +75,4 @@ public class Glossary {
     public int size() {
         return glossaryEntries.size();
     }
-    
-}
-
-class GlossaryEntryComparator implements Comparator<String> {
-
-    private final Collator collator;
- 
-    public GlossaryEntryComparator(Locale locale) {
-        collator = Collator.getInstance(locale);
-    }
-    
-    public int compare(String arg0, String arg1) {
-        return collator.compare(arg0, arg1);
-    }
-    
-    
 }

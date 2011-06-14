@@ -65,7 +65,7 @@ to <strong>ontologies</strong>.</p>
       <td><em>dc:date</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>Expresses the date of creation or publication of the ontological element.
+      <td>The date of creation or publication of the ontological element.
         Recommended best practice is to use the W3CDTF profile of ISO 8601.</td>
     </tr>
     <tr>
@@ -235,7 +235,7 @@ to <strong>rules</strong>.</p>
       <td><em>dc:date</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>Expresses the date of creation or publication of the resource.
+      <td>The date of creation or publication of the resource.
         Recommended best practice is to use the W3CDTF profile of ISO 8601.</td>
     </tr>
     <tr>
@@ -352,20 +352,142 @@ to <strong>rules</strong>.</p>
 </table>
 
 
+<h2>Metadata for Vocabularies</h2>
+
+<p>This table describes the annotates properties relevant for adding metadata
+to <strong>vocabularies</strong>.</p>
+
+<table id="metadata-support-vocabularies">
+  <tbody>
+    <tr>
+      <th>Property</th>
+      <th>Vocabulary</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td><em>dc:contributor</em></td>
+      <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
+      <td>An entity responsible for making the the ontological element: a person, an organization or a service. Typically, the name of a contributor should be used to indicate the entity.</td>
+    </tr>
+    <tr>
+      <td><em>dc:creator</em></td>
+      <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
+	  <td>An entity primarily responsible for making the the ontological element: a person, an organization or a service. Typically, the name of a creator should be used to indicate the entity.</td>
+    </tr>
+    <tr>
+      <td><em>dc:description</em></td>
+      <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
+      <td>See <em>comment</em></td>
+    </tr>
+    <tr>
+      <td><em>dc:publisher</em></td>
+      <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
+	  <td>An entity responsible for making the resource available: a person, an organization or a service. Typically, the name of a publisher should be used to indicate the entity.</td>
+    </tr>
+    <tr>
+      <td><em>dc:title</em></td>
+      <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
+      <td>See <em>label</em></td>
+    </tr>
+    <tr>
+      <td><em>dct:contributor</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
+      <td>An entity responsible for making the the ontological element: a person, an organization or a service. Recommended best practice is to use a FOAF profile to describe a contributor.</td>
+    </tr>
+    <tr>
+      <td><em>dct:creator</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
+	  <td>An entity primarily responsible for making the the ontological element: a person, an organization or a service. Recommended best practice is to use a FOAF profile to describe a creator.</td>
+	</tr>    
+    <tr>
+      <td><em>dct:description</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
+      <td>See <em>comment</em></td>
+    </tr>
+    <tr>
+      <td><em>dct:modified</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
+      <td>The date on which the vocabulary was changed.
+        Recommended best practice is to use the W3CDTF profile of ISO 8601.</td>
+    </tr>
+    <tr>
+      <td><em>dct:publisher</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
+	  <td>An entity responsible for making the ontological element available: a person, an organization or a service. Recommended best practice is to use a FOAF profile to describe a publisher.</td>
+    </tr>
+    <tr>
+      <td><em>rdfs:comment</em></td>
+      <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
+      <td>The description of the ontological element. The range is a literal with a
+        language tag.</td>
+    </tr>
+    <tr>
+      <td><em>rdfs:label</em></td>
+      <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
+      <td>The label of the ontological element. The range is a literal with a language
+      tag.</td>
+    </tr>    
+    <tr>
+      <td><em>skosxl:altLabel</em></td>
+      <td><a href="http://www.w3.org/TR/skos-reference/#xl">SKOS-XL</a></td>
+      <td>An alternative label of a ontological element. The range of the property is an
+        instance of the class LexicalLabel.</td>
+    </tr>
+    <tr>
+      <td><em>skosxl:prefLabel</em></td>
+      <td><a href="http://www.w3.org/TR/skos-reference/#xl">SKOS-XL</a></td>
+      <td>The preferred label of a ontological element. The range of the property is an
+        instance of the class LexicalLabel.</td>
+    </tr>
+    <tr>
+      <td><em>skos:altLabel</em></td>
+      <td><a href="http://www.w3.org/TR/skos-reference/#overview">SKOS</a></td>
+      <td>An alternative label of a ontological element. The range is a literal with a
+        language tag.</td>
+    </tr>
+    <tr>
+      <td><em>skos:prefLabel</em></td>
+      <td><a href="http://www.w3.org/TR/skos-reference/#overview">SKOS</a></td>
+      <td>The preferred label of a ontological element. The range is a literal with a
+        language tag. In some cases, it is assumed that <em>prefLabel</em>
+        assumes the role of the <em>label</em> for presentation purposes.</td>
+    </tr>
+    <tr>
+      <td><em>vann:preferredNamespacePrefix</em></td>
+      <td><a href="http://vocab.org/vann">VANN</a></td>
+      <td>The preferred namespace prefix when using entities of a vocabulary.</td>
+    </tr>
+    <tr>
+      <td><em>vann:preferredNamespaceUri</em></td>
+      <td><a href="http://vocab.org/vann">VANN</a></td>
+      <td>The preferred namespace URI to use when using terms from a vocabulary.</td>
+    </tr>
+    <tr>
+      <td><em>voaf:classNumber</em></td>
+      <td><a href="http://labs.mondeca.com/vocab/voaf/index.html">VOAF</a></td>
+      <td>The number of classes defined in the vocabulary.</td>
+    </tr>    
+    <tr>
+      <td><em>voaf:propertyNumber</em></td>
+      <td><a href="http://labs.mondeca.com/vocab/voaf/index.html">VOAF</a></td>
+      <td>The number of properties defined in the vocabulary.</td>
+    </tr>   
+    <tr>
+      <td><em>foaf:homepage</em></td>
+      <td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td>
+      <td>The homepage (typically a Web page in HTML format) of the vocabulary.</td>
+    </tr>
+    </tbody>
+</table>
+
+
+
 <h2>Namespace references and prefixes</h2>
 <table id="prefix-legend">
   <tbody>
     <tr>
       <th>Prefix</th>
       <th>Namespace</th>
-    </tr>
-    <tr>
-      <td>skosxl</td>
-      <td>http://www.w3.org/2008/05/skos-xl#</td>
-    </tr>
-    <tr>
-      <td>skos</td>
-      <td>http://www.w3.org/2004/02/skos/core#</td>
     </tr>
     <tr>
       <td>dc</td>
@@ -376,24 +498,36 @@ to <strong>rules</strong>.</p>
       <td>http://purl.org/dc/terms/</td>
     </tr>
     <tr>
-      <td>rdfs</td>
-      <td>http://www.w3.org/2000/01/rdf-schema#</td>
-    </tr>
-    <tr>
-      <td>owl</td>
-      <td>http://www.w3.org/2002/07/owl#</td>
-    </tr>
-    <tr>
-      <td>vann</td>
-      <td>http://purl.org/vocab/vann/</td>
-    </tr>
-    <tr>
       <td>foaf</td>
       <td>http://xmlns.com/foaf/0.1/</td>
     </tr>
     <tr>
       <td>og</td>
       <td>http://ogp.me/ns#</td>
+    </tr>
+    <tr>
+      <td>owl</td>
+      <td>http://www.w3.org/2002/07/owl#</td>
+    </tr>
+    <tr>
+      <td>rdfs</td>
+      <td>http://www.w3.org/2000/01/rdf-schema#</td>
+    </tr>
+    <tr>
+      <td>skosxl</td>
+      <td>http://www.w3.org/2008/05/skos-xl#</td>
+    </tr>
+    <tr>
+      <td>skos</td>
+      <td>http://www.w3.org/2004/02/skos/core#</td>
+    </tr>
+    <tr>
+      <td>vann</td>
+      <td>http://purl.org/vocab/vann/</td>
+    </tr>
+    <tr>
+      <td>voaf</td>
+      <td>http://labs.mondeca.com/vocab/voaf#</td>
     </tr>
   </tbody>
 </table>

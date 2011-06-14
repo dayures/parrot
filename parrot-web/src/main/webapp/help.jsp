@@ -296,7 +296,7 @@ to <strong>rules</strong>.</p>
         Recommended best practice is to use Creative Commons licenses and to
         describe them in RDF with the Creative Commons Rights Expression
         Language (CC REL). </td>
-    </tr>     
+    </tr>
     <tr>
       <td><em>dct:publisher</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
@@ -454,7 +454,7 @@ to <strong>vocabularies</strong>.</p>
     <tr>
       <td><em>skosxl:altLabel</em></td>
       <td><a href="http://www.w3.org/TR/skos-reference/#xl">SKOS-XL</a></td>
-      <td>An alternative label of a ontological element. The range of the property is an
+      <td>An alternative label of the vocabulary. The range of the property is an
         instance of the class LexicalLabel.</td>
     </tr>
     <tr>
@@ -504,7 +504,131 @@ to <strong>vocabularies</strong>.</p>
     </tbody>
 </table>
 
+<h2>Metadata for Datasets</h2>
 
+<p>This table describes the annotates properties relevant for adding metadata
+to <strong>datasets</strong>.</p>
+
+<table id="metadata-support-datasets">
+  <tbody>
+    <tr>
+      <th>Property</th>
+      <th>Vocabulary</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td><em>dc:contributor</em></td>
+      <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
+      <td>An entity responsible for making the dataset: a person, an organization or a service. Typically, the name of a contributor should be used to indicate the entity.</td>
+    </tr>
+    <tr>
+      <td><em>dc:creator</em></td>
+      <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
+	  <td>An entity primarily responsible for making the dataset: a person, an organization or a service. Typically, the name of a creator should be used to indicate the entity.</td>
+    </tr>
+    <tr>
+      <td><em>dc:date</em></td>
+      <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
+      <td>The date of creation or publication of the dataset.
+        Recommended best practice is to use the W3CDTF profile of ISO 8601.</td>
+    </tr>    
+    <tr>
+      <td><em>dc:description</em></td>
+      <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
+      <td>See <em>comment</em></td>
+    </tr>
+    <tr>
+      <td><em>dc:publisher</em></td>
+      <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
+	  <td>An entity responsible for making the dataset available: a person, an organization or a service. Typically, the name of a publisher should be used to indicate the entity.</td>
+    </tr>
+    <tr>
+      <td><em>dc:title</em></td>
+      <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
+      <td>See <em>label</em></td>
+    </tr>
+    <tr>
+      <td><em>dct:contributor</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
+      <td>An entity responsible for making the dataset: a person, an organization or a service. Recommended best practice is to use a FOAF profile to describe a contributor.</td>
+    </tr>
+    <tr>
+      <td><em>dct:creator</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
+	  <td>An entity primarily responsible for making the dataset: a person, an organization or a service. Recommended best practice is to use a FOAF profile to describe a creator.</td>
+	</tr>    
+    <tr>
+      <td><em>dct:description</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
+      <td>See <em>comment</em></td>
+    </tr>
+    <tr>
+      <td><em>dct:license</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
+      <td>A legal document describing the copyright license of the dataset.
+        Recommended best practice is to use Creative Commons licenses and to
+        describe them in RDF with the Creative Commons Rights Expression
+        Language (CC REL). </td>
+    </tr>    
+    <tr>
+      <td><em>dct:publisher</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
+	  <td>An entity responsible for making the dataset available: a person, an organization or a service. Recommended best practice is to use a FOAF profile to describe a publisher.</td>
+    </tr>
+    <tr>
+      <td><em>rdfs:comment</em></td>
+      <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
+      <td>The description of the dataset. The range is a literal with a
+        language tag.</td>
+    </tr>
+    <tr>
+      <td><em>rdfs:label</em></td>
+      <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
+      <td>The label of the dataset. The range is a literal with a language
+      tag.</td>
+    </tr>    
+    <tr>
+      <td><em>skosxl:altLabel</em></td>
+      <td><a href="http://www.w3.org/TR/skos-reference/#xl">SKOS-XL</a></td>
+      <td>An alternative label of the dataset. The range of the property is an
+        instance of the class LexicalLabel.</td>
+    </tr>
+    <tr>
+      <td><em>skosxl:prefLabel</em></td>
+      <td><a href="http://www.w3.org/TR/skos-reference/#xl">SKOS-XL</a></td>
+      <td>The preferred label of the dataset. The range of the property is an
+        instance of the class LexicalLabel.</td>
+    </tr>
+    <tr>
+      <td><em>skos:altLabel</em></td>
+      <td><a href="http://www.w3.org/TR/skos-reference/#overview">SKOS</a></td>
+      <td>An alternative label of the dataset. The range is a literal with a
+        language tag.</td>
+    </tr>
+    <tr>
+      <td><em>skos:prefLabel</em></td>
+      <td><a href="http://www.w3.org/TR/skos-reference/#overview">SKOS</a></td>
+      <td>The preferred label of the dataset. The range is a literal with a
+        language tag. In some cases, it is assumed that <em>prefLabel</em>
+        assumes the role of the <em>label</em> for presentation purposes.</td>
+    </tr>  
+    <tr>
+      <td><em>void:dataDump</em></td>
+      <td><a href="http://vocab.deri.ie/void">VoID</a></td>
+      <td>An RDF dump, partial or complete, of the dataset.</td>
+    </tr>
+    <tr>
+      <td><em>void:sparqlEndpoint</em></td>
+      <td><a href="http://vocab.deri.ie/void">VoID</a></td>
+      <td>The SPARQL endpoint of the dataset.</td>
+    </tr>    
+    <tr>
+      <td><em>foaf:homepage</em></td>
+      <td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td>
+      <td>The homepage (typically a Web page in HTML format) of the dataset.</td>
+    </tr>
+    </tbody>
+</table>
 
 <h2>Namespace references and prefixes</h2>
 <table id="prefix-legend">
@@ -552,6 +676,10 @@ to <strong>vocabularies</strong>.</p>
     <tr>
       <td>voaf</td>
       <td>http://labs.mondeca.com/vocab/voaf#</td>
+    </tr>
+    <tr>
+      <td>void</td>
+      <td>http://rdfs.org/ns/void#</td>
     </tr>
   </tbody>
 </table>

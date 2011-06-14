@@ -26,8 +26,7 @@ title="go to parrot project home page">Parrot </a></h1>
 <h2>Metadata for Ontologies</h2>
 
 <p>This table describes the annotates properties relevant for adding metadata
-to <strong>ontologies</strong>. Notice that not all the properties are
-currently supported by Parrot.</p>
+to <strong>ontologies</strong>.</p>
 
 <table id="metadata-support-ontologies">
   <tbody>
@@ -197,8 +196,7 @@ currently supported by Parrot.</p>
 <h2>Metadata for Rules</h2>
 
 <p>This table describes the annotates properties relevant for adding metadata
-to <strong>rules</strong>. Notice that not all the properties are currently
-supported by Parrot.</p>
+to <strong>rules</strong>.</p>
 
 <p></p>
 
@@ -481,9 +479,10 @@ supported by Parrot.</p>
 <p>If you want to add a <strong>label</strong> to an element, the preferred property order to set it is:</p>
 <ol>
   <li>http://www.w3.org/2008/05/skos-xl#prefLabel</li>
-  <li>http://www.w3.org/2008/05/skos-xl#altLabel</li>
   <li>http://www.w3.org/2004/02/skos/core#prefLabel</li>
+  <li>http://www.w3.org/2008/05/skos-xl#altLabel</li>
   <li>http://www.w3.org/2004/02/skos/core#altLabel</li>
+  <li>http://purl.org/dc/terms/title</li>
   <li>http://purl.org/dc/elements/1.1/title</li>
   <li>http://www.w3.org/2000/01/rdf-schema#label</li>
 </ol>

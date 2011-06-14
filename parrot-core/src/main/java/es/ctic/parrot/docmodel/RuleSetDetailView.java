@@ -145,7 +145,7 @@ public class RuleSetDetailView extends AbstractVersionableDetailView {
         details.setUri(object.getURI());
 		details.setUriFragment(object.getUriFragment());
         details.setLabel(object.getLabel(locale));
-        details.setComment(object.getComment(locale));
+        details.setDescription(object.getDescription(locale));
         
 		// Control version information
 		details.setVersion(object.getVersion());

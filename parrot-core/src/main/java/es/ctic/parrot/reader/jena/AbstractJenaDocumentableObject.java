@@ -169,8 +169,8 @@ public abstract class AbstractJenaDocumentableObject extends
        	return !uri.startsWith(RDFS.getURI()) && !uri.startsWith(RDF.getURI()) && !uri.startsWith(OWL.getURI());
     }
 	
-    public String getComment(Locale locale) {
-		return getAnnotationStrategy().getComment(getOntResource(), locale);
+    public String getDescription(Locale locale) {
+		return getAnnotationStrategy().getDescription(getOntResource(), locale);
 	}
     
 	public Collection<Label> getLabels(Locale locale){

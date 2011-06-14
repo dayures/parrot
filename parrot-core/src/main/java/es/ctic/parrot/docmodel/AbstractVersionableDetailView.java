@@ -36,7 +36,8 @@ public abstract class AbstractVersionableDetailView implements DetailView, Versi
 	
 	private String uri;
 	private String uriFragment;
-	private String comment; // description
+	private String description;
+	
 	private Collection<Label> labels;
 	private Collection<Label> synonyms;
 	private Collection<RelatedDocument> relatedDocuments;
@@ -162,12 +163,12 @@ public abstract class AbstractVersionableDetailView implements DetailView, Versi
 		this.uri=uri;
 	}
 
-	public String getComment() {
-		return this.comment;
+	public String getDescription() {
+		return this.description;
 	}
 
-	protected void setComment(String comment) {
-		this.comment = comment;
+	protected void setDescription(String description) {
+		this.description = description;
 	}
 
 	protected void setLabels(Collection<Label> labels) {

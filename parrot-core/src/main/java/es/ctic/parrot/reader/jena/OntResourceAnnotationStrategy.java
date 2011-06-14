@@ -203,37 +203,37 @@ public class OntResourceAnnotationStrategy {
 	 * @param locale the locale.
 	 * @return the description or <code>null</code> if there is the resource has no description for that locale.
 	 */
-	public String getComment(OntResource ontResource, Locale locale) {
+	public String getDescription(OntResource ontResource, Locale locale) {
 
     	if (ontResource == null){
     		return null;
     	}
 
-		String comment = getLiteralPropertyValue(ontResource, DCT_DESCRIPTION, locale);
+		String description = getLiteralPropertyValue(ontResource, DCT_DESCRIPTION, locale);
 	
-		if (comment != null){
-    		return comment;
+		if (description != null){
+    		return description;
 		}
 
-		comment = getLiteralPropertyValue(ontResource, DCT_DESCRIPTION); //not language selected
+		description = getLiteralPropertyValue(ontResource, DCT_DESCRIPTION); //not language selected
 		
-		if (comment != null){
-    		return comment;
+		if (description != null){
+    		return description;
 		}
 		
-		comment = getLiteralPropertyValue(ontResource, DC_DESCRIPTION, locale);
-		if (comment != null){
-    		return comment;
+		description = getLiteralPropertyValue(ontResource, DC_DESCRIPTION, locale);
+		if (description != null){
+    		return description;
 		}
 
-		comment = getLiteralPropertyValue(ontResource, DC_DESCRIPTION); //not language selected
-		if (comment != null){
-    		return comment;
+		description = getLiteralPropertyValue(ontResource, DC_DESCRIPTION); //not language selected
+		if (description != null){
+    		return description;
 		}
 		
-		comment = getLiteralPropertyValue(ontResource, RDFS_COMMENT, locale);
-		if (comment != null){
-    		return comment;
+		description = getLiteralPropertyValue(ontResource, RDFS_COMMENT, locale);
+		if (description != null){
+    		return description;
 		}
 
 		return getLiteralPropertyValue(ontResource, RDFS_COMMENT); //not language selected

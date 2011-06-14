@@ -133,8 +133,8 @@ public class RuleImpl extends AbstractVersionable implements Rule {
 		}
 	}
 	
-    public String getComment(Locale locale) {
-    	return getAnnotationStrategy().getComment(getOntResource(), locale);
+    public String getDescription(Locale locale) {
+    	return getAnnotationStrategy().getDescription(getOntResource(), locale);
     }
     
     public Collection<Label> getLabels(){

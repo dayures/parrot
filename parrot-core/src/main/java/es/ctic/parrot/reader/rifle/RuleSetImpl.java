@@ -195,8 +195,8 @@ public class RuleSetImpl extends AbstractVersionable implements RuleSet {
     
     /****************************************************************************/
     
-    public String getComment(Locale locale) {
-    	return getAnnotationStrategy().getComment(getOntResource(), locale);
+    public String getDescription(Locale locale) {
+    	return getAnnotationStrategy().getDescription(getOntResource(), locale);
     }
     
     public Collection<Label> getLabels(){

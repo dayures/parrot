@@ -133,7 +133,7 @@ public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObj
 		//return null;
 	}
 
-	public String getComment(Locale locale) {
+	public String getDescription(Locale locale) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
 		//return null;

@@ -85,7 +85,7 @@ public class DatasetDetailView extends AbstractVersionableDetailView{
 		details.setUri(object.getURI());
 		details.setUriFragment(object.getUriFragment());
 		details.setLabel(object.getLabel(locale));
-		details.setComment(object.getComment(locale));
+		details.setDescription(object.getDescription(locale));
 		
 		details.setLabels(object.getLabels());
 		details.setSynonyms(object.getSynonyms());

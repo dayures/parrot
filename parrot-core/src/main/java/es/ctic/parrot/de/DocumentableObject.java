@@ -131,11 +131,11 @@ public interface DocumentableObject {
 	public abstract String getLabel();
 	
 	/**
-	 * Returns the comment or description associated with this documentable element with a specified locale. 
+	 * Returns the description associated with this documentable element with a specified locale. 
 	 * @param locale the locale.
-	 * @return the comment or description associated with this documentable element with a specified locale.
+	 * @return the description associated with this documentable element with a specified locale.
 	 */
-	public abstract String getComment(Locale locale);    
+	public abstract String getDescription(Locale locale);    
 	
 	/**
 	 * Returns the labels associated with this documentable element with a specified locale. 

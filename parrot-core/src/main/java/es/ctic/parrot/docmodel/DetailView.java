@@ -44,7 +44,7 @@ public interface DetailView {
 	 * Returns the description.
 	 * @return the description.
 	 */
-	public abstract String getComment();
+	public abstract String getDescription();
 
 	/**
 	 * Returns all labels.

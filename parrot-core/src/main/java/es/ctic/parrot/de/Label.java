@@ -14,7 +14,6 @@ public class Label {
 	
 	private static final String SKOS_XL_PREF_LABEL = "http://www.w3.org/2008/05/skos-xl#prefLabel";
 	private static final String SKOS_CORE_PREF_LABEL = "http://www.w3.org/2004/02/skos/core#prefLabel";
-	private static final String RDFS_LABEL = "http://www.w3.org/2000/01/rdf-schema#label";
 
 	private static final String SKOS_XL_ALT_LABEL = "http://www.w3.org/2008/05/skos-xl#altLabel";
 	private static final String SKOS_CORE_ALT_LABEL = "http://www.w3.org/2004/02/skos/core#altLabel";
@@ -106,12 +105,11 @@ public class Label {
 	 * <ul>
 	 * <li>http://www.w3.org/2008/05/skos-xl#prefLabel</li>
 	 * <li>http://www.w3.org/2004/02/skos/core#prefLabel</li>
-	 * <li>http://www.w3.org/2000/01/rdf-schema#label</li>
 	 * </ul>
 	 * @return <code>true</code> if the label is a preferred label, otherwise <code>false</code>
 	 */
 	public boolean isPrefLabel() {
-		if (this.getQualifier().equals(SKOS_XL_PREF_LABEL) || this.getQualifier().equals(SKOS_CORE_PREF_LABEL) || this.getQualifier().equals(RDFS_LABEL)){
+		if (this.getQualifier().equals(SKOS_XL_PREF_LABEL) || this.getQualifier().equals(SKOS_CORE_PREF_LABEL)){
 			return true;
 		} else {
 			return false;

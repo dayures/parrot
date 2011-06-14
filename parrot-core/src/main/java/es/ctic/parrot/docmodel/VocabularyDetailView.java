@@ -1,15 +1,9 @@
 package es.ctic.parrot.docmodel;
 
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Locale;
 
 import org.apache.log4j.Logger;
 
-import es.ctic.parrot.de.Agent;
-import es.ctic.parrot.de.Identifier;
-import es.ctic.parrot.de.Label;
-import es.ctic.parrot.de.RelatedDocument;
 import es.ctic.parrot.de.Vocabulary;
 
 /**
@@ -20,32 +14,13 @@ import es.ctic.parrot.de.Vocabulary;
  * @since 1.0
  *
  */
-public class VocabularyDetailView implements DetailView{
+public class VocabularyDetailView extends AbstractVersionableDetailView{
 
     private static final Logger logger = Logger.getLogger(VocabularyDetailView.class);
-    private Identifier identifier;
-	private String uri;
-	private String uriFragment;
-	private String label;
-	private String comment;
-	private Collection<Label> labels;
-	private Collection<Label> synonyms;
-	private Collection<RelatedDocument> relatedDocuments;
-    private String anchor;
 
     private String preferredPrefix;
 	private String preferredNamespace;
-
-    private String modifiedDate;
-    
-	private Collection<String> creators;
-	private Collection<String> contributors;
-	private Collection<String> publishers;
-	private Collection<Agent> creatorAgents;
-	private Collection<Agent> contributorAgents;
-	private Collection<Agent> publisherAgents;	
-	private String homepage;
-	
+    private String homepage;
 	private String classNumber;
 	private String propertyNumber;
 	
@@ -55,152 +30,6 @@ public class VocabularyDetailView implements DetailView{
 	private VocabularyDetailView() {
         logger.debug("Created " + this.getClass());
     }
-
-
-	/**
-	 * Set the identifier.
-	 * @param identifier the identifier to set.
-	 */
-	private void setIdentifier(Identifier identifier) {
-		this.identifier = identifier;
-	}
-
-	/**
-	 * Returns the identifier.
-	 * @return the identifier.
-	 */
-	public Identifier getIdentifier() {
-		return identifier;
-	}
-	
-	/**
-	 * Returns the URI.
-	 * @return the URI.
-	 */
-	public String getUri() {
-		return uri;
-	}
-
-	/**
-	 * Sets the URI.
-	 * @param uri the URI to set.
-	 */
-	private void setUri(String uri) {
-		this.uri=uri;
-	}
-
-	/**
-	 * Returns the label.
-	 * @return the label.
-	 */
-	public String getLabel() {
-		return this.label;
-	}
-
-	/**
-	 * Sets the label.
-	 * @param label the label to set.
-	 */
-	private void setLabel(String label) {
-		this.label = label;
-	}
-
-	/**
-	 * Returns the description.
-	 * @return the description.
-	 */
-	public String getComment() {
-		return this.comment;
-	}
-
-	/**
-	 * Sets the description.
-	 * @param comment the description to set.
-	 */	
-	private void setComment(String comment) {
-		this.comment = comment;
-	}
-
-	/**
-	 * Sets the anchor.
-	 * @param anchor the anchor to set
-	 */
-	private void setAnchor(String anchor) {
-		this.anchor = anchor;
-	}
-
-	/**
-	 * Returns the anchor.
-	 * @return the anchor.
-	 */
-	public String getAnchor() {
-		return anchor;
-	}
-	
-	/**
-	 * Set all labels.
-	 * @param labels all labels to set.
-	 */
-	private void setLabels(Collection<Label> labels) {
-		this.labels = labels;
-	}
-
-	/**
-	 * Returns all labels.
-	 * @return all labels.
-	 */
-	public Collection<Label> getLabels() {
-		return Collections.unmodifiableCollection(labels);
-	}
-	
-	/**
-	 * Sets the related documents to this ontological element.
-	 * @param relatedDocuments the related documents to this ontological element to set.
-	 */
-	private void setRelatedDocuments(Collection<RelatedDocument> relatedDocuments) {
-		this.relatedDocuments = relatedDocuments;
-	}
-
-	/**
-	 * Returns the related documents.
-	 * @return the related documents.
-	 */
-	public Collection<RelatedDocument> getRelatedDocuments() {
-		return relatedDocuments;
-	}
-	
-	/**
-	 * Set the fragment of the URI.
-	 * @param uriFragment the fragment of the URI to set.
-	 */
-	public void setUriFragment(String uriFragment) {
-		this.uriFragment = uriFragment;
-	}
-
-	/**
-	 * Returns the fragment of the URI.
-	 * @return the fragment of the URI.
-	 */
-	public String getUriFragment() {
-		return uriFragment;
-	}
-
-	/**
-	 * Set the synonyms.
-	 * @param synonyms the synonyms to set
-	 */
-	protected void setSynonyms(Collection<Label> synonyms) {
-		this.synonyms = synonyms;
-	}
-
-	/**
-	 * Returns the synonyms.
-	 * @return the synonyms.
-	 */
-	public Collection<Label> getSynonyms() {
-		return Collections.unmodifiableCollection(synonyms);
-	}
-	
 	
 	/**
 	 * Set the preferred prefix.
@@ -233,99 +62,48 @@ public class VocabularyDetailView implements DetailView{
 	public String getPreferredNamespace() {
 		return preferredNamespace;
 	}
-	
+
 	/**
-	 * Set the creators.
-	 * @param creators creators to set.
+	 * @param classNumber the classNumber to set
 	 */
-	protected void setCreators(Collection<String> creators) {
-		this.creators = creators;
+	private void setClassNumber(String classNumber) {
+		this.classNumber = classNumber;
 	}
 
 	/**
-	 * Returns the creators.
-	 * @return the creators.
-	 */	
-	public Collection<String> getCreators() {
-		return Collections.unmodifiableCollection(creators);
-	}
-	
-	/**
-	 * Set the contributors.
-	 * @param contributors contributors to set.
+	 * @return the classNumber
 	 */
-	protected void setContributors(Collection<String> contributors) {
-		this.contributors = contributors;
+	public String getClassNumber() {
+		return classNumber;
 	}
 
 	/**
-	 * Returns the contributors.
-	 * @return the contributors.
+	 * @param propertyNumber the propertyNumber to set
 	 */
-	public Collection<String> getContributors() {
-		return Collections.unmodifiableCollection(contributors);
+	private void setPropertyNumber(String propertyNumber) {
+		this.propertyNumber = propertyNumber;
 	}
 
 	/**
-	 * Set the publishers.
-	 * @param publishers publishers to set.
+	 * @return the propertyNumber
 	 */
-	protected void setPublishers(Collection<String> publishers) {
-		this.publishers = publishers;
+	public String getPropertyNumber() {
+		return propertyNumber;
 	}
 
 	/**
-	 * Returns the publishers.
-	 * @return the publishers.
+	 * @param homepage the homepage to set
 	 */
-	public Collection<String> getPublishers() {
-		return Collections.unmodifiableCollection(publishers);
-	}
-	
-	/**
-	 * @param creatorAgents the creatorAgents to set
-	 */
-	protected void setCreatorAgents(Collection<Agent> creatorAgents) {
-		this.creatorAgents = creatorAgents;
+	private void setHomepage(String homepage) {
+		this.homepage = homepage;
 	}
 
 	/**
-	 * @return the creatorAgents
+	 * @return the homepage
 	 */
-	public Collection<Agent> getCreatorAgents() {
-		return Collections.unmodifiableCollection(creatorAgents);
+	public String getHomepage() {
+		return homepage;
 	}
-
-	/**
-	 * @param contributorAgents the contributorAgents to set
-	 */
-	protected void setContributorAgents(Collection<Agent> contributorAgents) {
-		this.contributorAgents = contributorAgents;
-	}
-
-	/**
-	 * @return the contributorAgents
-	 */
-	public Collection<Agent> getContributorAgents() {
-		return Collections.unmodifiableCollection(contributorAgents);
-	}
-	
-	/**
-	 * @param publisherAgents the publisherAgents to set
-	 */
-	protected void setPublisherAgents(Collection<Agent> publisherAgents) {
-		this.publisherAgents = publisherAgents;
-	}
-
-
-	/**
-	 * @return the publisherAgents
-	 */
-	public Collection<Agent> getPublisherAgents() {
-		return Collections.unmodifiableCollection(publisherAgents);
-	}
-	
-
 	
 	/**
 	 * Returns a detailed view for the vocabulary given.
@@ -368,69 +146,5 @@ public class VocabularyDetailView implements DetailView{
 		
 		return details;
     }
-
-
-	/**
-	 * @param modifiedDate the modifiedDate to set
-	 */
-	private void setModifiedDate(String modifiedDate) {
-		this.modifiedDate = modifiedDate;
-	}
-
-
-	/**
-	 * @return the modifiedDate
-	 */
-	public String getModifiedDate() {
-		return modifiedDate;
-	}
-
-
-	/**
-	 * @param classNumber the classNumber to set
-	 */
-	private void setClassNumber(String classNumber) {
-		this.classNumber = classNumber;
-	}
-
-
-	/**
-	 * @return the classNumber
-	 */
-	public String getClassNumber() {
-		return classNumber;
-	}
-
-
-	/**
-	 * @param propertyNumber the propertyNumber to set
-	 */
-	private void setPropertyNumber(String propertyNumber) {
-		this.propertyNumber = propertyNumber;
-	}
-
-
-	/**
-	 * @return the propertyNumber
-	 */
-	public String getPropertyNumber() {
-		return propertyNumber;
-	}
-
-
-	/**
-	 * @param homepage the homepage to set
-	 */
-	private void setHomepage(String homepage) {
-		this.homepage = homepage;
-	}
-
-
-	/**
-	 * @return the homepage
-	 */
-	public String getHomepage() {
-		return homepage;
-	}
     
 }

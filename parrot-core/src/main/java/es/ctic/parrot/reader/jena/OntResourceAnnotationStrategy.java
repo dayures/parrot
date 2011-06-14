@@ -106,6 +106,89 @@ public class OntResourceAnnotationStrategy {
 	public OntResourceAnnotationStrategy() {
 		logger.debug("Created a OntResourceAnnotationStrategy");
 	}
+	
+	/**
+	 * Returns a collection of labels for this ontResource.
+	 * 
+ 	 * The preferred order for a label is:
+	 * <ol>
+	 * 	<li>http://www.w3.org/2008/05/skos-xl#prefLabel</li>
+	 *  <li>http://www.w3.org/2004/02/skos/core#prefLabel</li>
+	 * 	<li>http://www.w3.org/2008/05/skos-xl#altLabel</li>
+	 *  <li>http://www.w3.org/2004/02/skos/core#altLabel</li>
+	 *  <li>http://purl.org/dc/terms/title</li>
+	 *  <li>http://purl.org/dc/elements/1.1/title</li>
+	 *  <li>http://www.w3.org/2000/01/rdf-schema#label</li>
+	 * </ol>
+	 * 
+	 * @param ontResource the ontResource.
+	 * @return a collection of labels for this ontResource.
+	 */
+	public Collection<Label> getLabels(OntResource ontResource){
+   		return getLabels(ontResource, null);
+   	}
+
+	
+	/**
+	 * Returns a collection of labels for this ontResource, using the locale element if it is provided.
+	 * 
+ 	 * The preferred order for a label is:
+	 * <ol>
+	 * 	<li>http://www.w3.org/2008/05/skos-xl#prefLabel</li>
+	 *  <li>http://www.w3.org/2004/02/skos/core#prefLabel</li>
+	 * 	<li>http://www.w3.org/2008/05/skos-xl#altLabel</li>
+	 *  <li>http://www.w3.org/2004/02/skos/core#altLabel</li>
+	 *  <li>http://purl.org/dc/terms/title</li>
+	 *  <li>http://purl.org/dc/elements/1.1/title</li>
+	 *  <li>http://www.w3.org/2000/01/rdf-schema#label</li>
+	 * </ol>
+	 * 
+	 * @param locale the locale.
+	 * @param ontResource the ontResource.
+	 * @return a collection of labels for this ontResource.
+	 */
+	public Collection<Label> getLabels(OntResource ontResource, Locale locale){
+		
+		Collection<Label> labels = new HashSet<Label>();
+
+		Collection<Label> skosXLPrefLabels = getSkosxlLabels(ontResource, SKOS_XL_PREF_LABEL, locale);
+		if (skosXLPrefLabels.isEmpty() == false){
+			labels.addAll(skosXLPrefLabels);
+		}
+
+		Collection<Label> skosPrefLabels = getLiteralLabels(ontResource, SKOS_CORE_PREF_LABEL, locale);
+        if (skosPrefLabels.isEmpty() == false ){
+            labels.addAll(skosPrefLabels);
+        }
+
+		Collection<Label> skosXLAltLabels = getSkosxlLabels(ontResource, SKOS_XL_ALT_LABEL, locale);
+		if (skosXLAltLabels.isEmpty() == false){
+			labels.addAll(skosXLAltLabels);
+		}
+		
+		Collection<Label> skosAltLabels = getLiteralLabels(ontResource, SKOS_CORE_ALT_LABEL, locale);
+		if (skosAltLabels.isEmpty() == false && labels.isEmpty()) { // hidden by the previous labels
+			labels.addAll(skosAltLabels);
+		}
+
+		Collection<Label> dctermsTitleLabels = getLiteralLabels(ontResource, DCT_TITLE, locale);
+        if (dctermsTitleLabels.isEmpty() == false && labels.isEmpty()) { // hidden by the previous labels
+            labels.addAll(dctermsTitleLabels);
+        }
+        
+		Collection<Label> dcTitleLabels = getLiteralLabels(ontResource, DC_TITLE, locale);
+        if (dcTitleLabels.isEmpty() == false && labels.isEmpty()) { // hidden by the previous labels
+            labels.addAll(dcTitleLabels);
+        }
+
+        Collection<Label> rdfsLabels = getLiteralLabels(ontResource, RDF_SCHEMA_LABEL, locale);
+        if (rdfsLabels.isEmpty() == false && labels.isEmpty()) { // hidden by the previous labels
+            labels.addAll(rdfsLabels);
+        }
+		
+		return labels;
+	}
+
 
 	/**
 	 * Returns the description of a resource for a locale.
@@ -126,13 +209,6 @@ public class OntResourceAnnotationStrategy {
     		return null;
     	}
 
-		/* Preferred order:
-         * 
-         * http://purl.org/dc/terms/description
-         * http://purl.org/dc/elements/1.1/description
-         * http://www.w3.org/2000/01/rdf-schema#comment
-         * 
-         */
 		String comment = getLiteralPropertyValue(ontResource, DCT_DESCRIPTION, locale);
 	
 		if (comment != null){
@@ -165,16 +241,15 @@ public class OntResourceAnnotationStrategy {
 	}
 	
 	/**
-	 * Returns a collection of labels for this ontResource.
-	 * @param ontResource the ontResource.
-	 * @return a collection of labels for this ontResource.
-	 */
-	public Collection<Label> getLabels(OntResource ontResource){
-   		return getLabels(ontResource, null);
-   	}
-	
-	/**
-	 * Returns a collection of synonyms for this ontResource.
+	 * Returns a collection of synonyms for this ontResource (or <code>null</code> for an anonymous resource).
+	 * The order to obtain the synonyms is:
+	 * <ol>
+	 * 	<li>http://www.w3.org/2008/05/skos-xl#altLabel</li>
+	 *  <li>http://www.w3.org/2004/02/skos/core#altLabel</li>
+	 *  <li>http://purl.org/dc/terms/title</li>
+	 *  <li>http://purl.org/dc/elements/1.1/title</li>
+	 *  <li>http://www.w3.org/2000/01/rdf-schema#label</li>
+	 * </ol>
 	 * @param ontResource the ontResource.
 	 * @return a collection of synonyms for this ontResource.
 	 */	
@@ -183,7 +258,7 @@ public class OntResourceAnnotationStrategy {
 	}
 	
 	/**
-	 * Returns a collection of synonyms for this ontResource.
+	 * Returns a collection of synonyms for this ontResource, using the locale element if it is provided (or <code>null</code> for an anonymous resource).
 	 * The order to obtain the synonyms is:
 	 * <ol>
 	 * 	<li>http://www.w3.org/2008/05/skos-xl#altLabel</li>
@@ -227,58 +302,25 @@ public class OntResourceAnnotationStrategy {
 		return synonyms;
 	}
 	
-	/**
-	 * Returns a collection of labels for this ontResource for the given locale.
-	 * @param locale the locale.
-	 * @param ontResource the ontResource.
-	 * @return a collection of labels for this ontResource.
-	 */
-	public Collection<Label> getLabels(OntResource ontResource, Locale locale){
-		
-		Collection<Label> labels = new HashSet<Label>();
-
-		Collection<Label> skosXLPrefLabels = getSkosxlLabels(ontResource, SKOS_XL_PREF_LABEL, locale);
-		if (skosXLPrefLabels.isEmpty() == false){
-			labels.addAll(skosXLPrefLabels);
-		}
-
-		Collection<Label> skosXLAltLabels = getSkosxlLabels(ontResource, SKOS_XL_ALT_LABEL, locale);
-		if (skosXLAltLabels.isEmpty() == false){
-			labels.addAll(skosXLAltLabels);
-		}
-		
-		Collection<Label> skosPrefLabels = getLiteralLabels(ontResource, SKOS_CORE_PREF_LABEL, locale);
-        if (skosPrefLabels.isEmpty() == false ){
-            labels.addAll(skosPrefLabels);
-        }
-        
-		Collection<Label> skosAltLabels = getLiteralLabels(ontResource, SKOS_CORE_ALT_LABEL, locale);
-		if (skosAltLabels.isEmpty() == false && labels.isEmpty()) { // hidden by the previous labels
-			labels.addAll(skosAltLabels);
-		}
-
-		Collection<Label> dctermsTitleLabels = getLiteralLabels(ontResource, DCT_TITLE, locale);
-        if (dctermsTitleLabels.isEmpty() == false && labels.isEmpty()) { // hidden by the previous labels
-            labels.addAll(dctermsTitleLabels);
-        }
-        
-		Collection<Label> dcTitleLabels = getLiteralLabels(ontResource, DC_TITLE, locale);
-        if (dcTitleLabels.isEmpty() == false && labels.isEmpty()) { // hidden by the previous labels
-            labels.addAll(dcTitleLabels);
-        }
-
-        Collection<Label> rdfsLabels = getLiteralLabels(ontResource, RDF_SCHEMA_LABEL, locale);
-        if (rdfsLabels.isEmpty() == false && labels.isEmpty()) { // hidden by the previous labels
-            labels.addAll(rdfsLabels);
-        }
-		
-		return labels;
-	}
+	
 	
 	/**
-	 * Returns the best label associated.
+	 * Returns the best label associated (or <code>null</code> for an anonymous resource).
+	 * 
+ 	 * The preferred order for a label is:
+	 * <ol>
+	 * 	<li>http://www.w3.org/2008/05/skos-xl#prefLabel</li>
+	 *  <li>http://www.w3.org/2004/02/skos/core#prefLabel</li>
+	 * 	<li>http://www.w3.org/2008/05/skos-xl#altLabel</li>
+	 *  <li>http://www.w3.org/2004/02/skos/core#altLabel</li>
+	 *  <li>http://purl.org/dc/terms/title</li>
+	 *  <li>http://purl.org/dc/elements/1.1/title</li>
+	 *  <li>http://www.w3.org/2000/01/rdf-schema#label</li>
+	 *  <li>automatically generated</li>
+	 * </ol>
+	 * 
 	 * @param ontResource the ontology resource.
-	 * @return the best label associated.
+	 * @return the best label associated (using the locale element if it is provided) or <code>null</code> if the resource is an anonymous resource.
 	 */
     public String getLabel(OntResource ontResource) {
         return this.getLabel(ontResource, null);
@@ -290,15 +332,15 @@ public class OntResourceAnnotationStrategy {
  	 * The preferred order for a label is:
 	 * <ol>
 	 * 	<li>http://www.w3.org/2008/05/skos-xl#prefLabel</li>
-	 * 	<li>http://www.w3.org/2008/05/skos-xl#altLabel</li>
 	 *  <li>http://www.w3.org/2004/02/skos/core#prefLabel</li>
+	 * 	<li>http://www.w3.org/2008/05/skos-xl#altLabel</li>
 	 *  <li>http://www.w3.org/2004/02/skos/core#altLabel</li>
 	 *  <li>http://purl.org/dc/terms/title</li>
 	 *  <li>http://purl.org/dc/elements/1.1/title</li>
 	 *  <li>http://www.w3.org/2000/01/rdf-schema#label</li>
 	 *  <li>automatically generated</li>
 	 * </ol>
-
+	 * 
 	 * @param ontResource the ontology resource.
 	 * @param locale the locale.
 	 * @return the best label associated (using the locale element if it is provided) or <code>null</code> if the resource is an anonymous resource.
@@ -309,20 +351,14 @@ public class OntResourceAnnotationStrategy {
         
     	//logger.debug("locale="+locale+" labels="+labels);
     	
-        /* Preferred order:
-         * 
-         * http://www.w3.org/2008/05/skos-xl#prefLabel
-         * http://www.w3.org/2008/05/skos-xl#altLabel
-         * http://www.w3.org/2004/02/skos/core#prefLabel
-         * http://www.w3.org/2004/02/skos/core#altLabel
-         * http://purl.org/dc/terms/title
-         * http://purl.org/dc/elements/1.1/title
-         * http://www.w3.org/2000/01/rdf-schema#label
-         * 
-         */
-        
         for (Label label : labels){
         	if (label.getQualifier().equals(SKOS_XL_PREF_LABEL)) {
+        		return label.getText();
+        	}
+        }
+
+        for (Label label : labels){
+        	if (label.getQualifier().equals(SKOS_CORE_PREF_LABEL)) {
         		return label.getText();
         	}
         }
@@ -331,12 +367,6 @@ public class OntResourceAnnotationStrategy {
             if (label.getQualifier().equals(SKOS_XL_ALT_LABEL)) {
                 return label.getText();
             }
-        }
-        
-        for (Label label : labels){
-        	if (label.getQualifier().equals(SKOS_CORE_PREF_LABEL)) {
-        		return label.getText();
-        	}
         }
 
         for (Label label : labels){

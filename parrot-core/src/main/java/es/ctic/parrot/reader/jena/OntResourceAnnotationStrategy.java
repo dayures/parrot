@@ -108,28 +108,6 @@ public class OntResourceAnnotationStrategy {
 	}
 	
 	/**
-	 * Returns a collection of labels for this ontResource.
-	 * 
- 	 * The preferred order for a label is:
-	 * <ol>
-	 * 	<li>http://www.w3.org/2008/05/skos-xl#prefLabel</li>
-	 *  <li>http://www.w3.org/2004/02/skos/core#prefLabel</li>
-	 * 	<li>http://www.w3.org/2008/05/skos-xl#altLabel</li>
-	 *  <li>http://www.w3.org/2004/02/skos/core#altLabel</li>
-	 *  <li>http://purl.org/dc/terms/title</li>
-	 *  <li>http://purl.org/dc/elements/1.1/title</li>
-	 *  <li>http://www.w3.org/2000/01/rdf-schema#label</li>
-	 * </ol>
-	 * 
-	 * @param ontResource the ontResource.
-	 * @return a collection of labels for this ontResource.
-	 */
-	public Collection<Label> getLabels(OntResource ontResource){
-   		return getLabels(ontResource, null);
-   	}
-
-	
-	/**
 	 * Returns a collection of labels for this ontResource, using the locale element if it is provided.
 	 * 
  	 * The preferred order for a label is:
@@ -241,23 +219,6 @@ public class OntResourceAnnotationStrategy {
 	}
 	
 	/**
-	 * Returns a collection of synonyms for this ontResource (or <code>null</code> for an anonymous resource).
-	 * The order to obtain the synonyms is:
-	 * <ol>
-	 * 	<li>http://www.w3.org/2008/05/skos-xl#altLabel</li>
-	 *  <li>http://www.w3.org/2004/02/skos/core#altLabel</li>
-	 *  <li>http://purl.org/dc/terms/title</li>
-	 *  <li>http://purl.org/dc/elements/1.1/title</li>
-	 *  <li>http://www.w3.org/2000/01/rdf-schema#label</li>
-	 * </ol>
-	 * @param ontResource the ontResource.
-	 * @return a collection of synonyms for this ontResource.
-	 */	
-	public Collection<Label> getSynonyms(OntResource ontResource) {
-   		return getSynonyms(ontResource, null);
-	}
-	
-	/**
 	 * Returns a collection of synonyms for this ontResource, using the locale element if it is provided (or <code>null</code> for an anonymous resource).
 	 * The order to obtain the synonyms is:
 	 * <ol>
@@ -302,30 +263,7 @@ public class OntResourceAnnotationStrategy {
 		return synonyms;
 	}
 	
-	
-	
-	/**
-	 * Returns the best label associated (or <code>null</code> for an anonymous resource).
-	 * 
- 	 * The preferred order for a label is:
-	 * <ol>
-	 * 	<li>http://www.w3.org/2008/05/skos-xl#prefLabel</li>
-	 *  <li>http://www.w3.org/2004/02/skos/core#prefLabel</li>
-	 * 	<li>http://www.w3.org/2008/05/skos-xl#altLabel</li>
-	 *  <li>http://www.w3.org/2004/02/skos/core#altLabel</li>
-	 *  <li>http://purl.org/dc/terms/title</li>
-	 *  <li>http://purl.org/dc/elements/1.1/title</li>
-	 *  <li>http://www.w3.org/2000/01/rdf-schema#label</li>
-	 *  <li>automatically generated</li>
-	 * </ol>
-	 * 
-	 * @param ontResource the ontology resource.
-	 * @return the best label associated (using the locale element if it is provided) or <code>null</code> if the resource is an anonymous resource.
-	 */
-    public String getLabel(OntResource ontResource) {
-        return this.getLabel(ontResource, null);
-    }
-    
+   
 	/**
 	 * Returns the best label associated, using the locale element if it is provided (or <code>null</code> for an anonymous resource).
 	 * 

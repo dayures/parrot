@@ -137,6 +137,12 @@ public class VocabularyDetailView extends AbstractVersionableDetailView{
 		details.setCreatorAgents(object.getCreatorAgents());
 		details.setContributorAgents(object.getContributorAgents());
 		details.setPublisherAgents(object.getPublisherAgents());
+		
+		// Not used
+//		details.setLicenseLabel(object.getLicenseLabel());
+//		details.setRights(object.getRights());
+//		details.setVersion(object.getVersion());
+//		details.setDate(object.getDate());
 
 
 		details.setClassNumber(object.getClassNumber());

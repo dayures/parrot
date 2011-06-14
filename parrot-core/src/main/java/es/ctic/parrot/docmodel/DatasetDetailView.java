@@ -105,6 +105,10 @@ public class DatasetDetailView extends AbstractVersionableDetailView{
 		details.setDate(object.getDate());
 		details.setLicenseLabel(object.getLicenseLabel());
 		
+		// Not used
+//		details.setVersion(object.getVersion());
+
+		
 		details.setDataDump(object.getdataDump());
 		details.setSparqlEndpoint(object.getSparqlEndpoint());
 		details.setHomepage(object.getHomepage());

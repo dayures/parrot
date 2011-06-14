@@ -7,7 +7,7 @@ import com.hp.hpl.jena.ontology.OntResource;
 import es.ctic.parrot.reader.jena.OntResourceAnnotationStrategy;
 
 /**
- * An implementation of the XXX.
+ * An implementation of the Versionable interface..
  * 
  * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
  * @version 1.0

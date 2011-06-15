@@ -6,7 +6,6 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -29,7 +28,6 @@ import es.ctic.parrot.DocumentaryProject;
 import es.ctic.parrot.ParrotAppServ;
 import es.ctic.parrot.generators.HtmlOutputGenerator;
 import es.ctic.parrot.generators.OutputGenerator.Profile;
-import es.ctic.parrot.reader.Input;
 import es.ctic.parrot.reader.InputStreamInput;
 import es.ctic.parrot.reader.ReaderException;
 import es.ctic.parrot.reader.StringInput;
@@ -124,11 +122,7 @@ public class ServletParrot extends HttpServlet {
 	
 				// Read a previous report
 				if (reportURL != null){
-	                ParrotAppServ parrotAppServ = getParrotAppServ();
-	                Collection<Input> inputs = parrotAppServ.getInputsFromExistingReport(reportURL);
-	                dp.setPrologueURL(parrotAppServ.getPrologueURLFromExistingReport(reportURL));
-	                dp.setAppendixURL(parrotAppServ.getAppendixURLFromExistingReport(reportURL));
-	               	dp.addAllInput(inputs);
+	                getParrotAppServ().initializeDocumentaryProjectFromExistingReport(dp, reportURL);
 				}
 	
 				if (dp.getInputs().isEmpty()) {

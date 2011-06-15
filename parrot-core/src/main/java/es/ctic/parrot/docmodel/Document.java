@@ -25,6 +25,8 @@ import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
 
+import org.apache.log4j.Logger;
+import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.EntityResolver;
 import org.xml.sax.InputSource;
@@ -59,6 +61,9 @@ public class Document {
     private String reportURL;
     private Collection<String> languages;
     private String customizeCssUrl;
+    
+	private static final org.apache.log4j.Logger logger = Logger.getLogger(Document.class);
+
 
     /**
      * Constructs a document using the given locale.
@@ -324,7 +329,6 @@ public class Document {
 			String anchor = new URL(URL).getRef();
 
 			org.w3c.dom.Document doc = builder.parse(URL);
-
 			XPathFactory factory = XPathFactory.newInstance();
 			XPath xpath = factory.newXPath();
 			XPathExpression expr = xpath.compile("//*[@id='"+anchor+"']");
@@ -332,14 +336,25 @@ public class Document {
 			Object result = expr.evaluate(doc, XPathConstants.NODESET);
 			NodeList nodes = (NodeList) result;
 
+			if (nodes.getLength() == 0){
+				return null;
+			}
+
+			Element nodeId = (Element) nodes.item(0);
+			
+			nodeId.setAttribute("about", "#"+anchor);
+			nodeId.setAttribute("typeof", "foaf:Document");
+			//nodeId.setAttribute(name, value)
+			//rel="parrot:hasPrologue"
+			
 			TransformerFactory transFactory = TransformerFactory.newInstance();
 			Transformer transformer = transFactory.newTransformer();
 			StringWriter buffer = new StringWriter();
 			transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
-			transformer.transform(new DOMSource(nodes.item(0)), new StreamResult(buffer));
+			transformer.transform(new DOMSource(nodeId), new StreamResult(buffer));
 			return buffer.toString();
 		} catch (Exception e){
-			return null; //FIXME ashame code
+			return null; //FIXME ashamed code
 		}
 	}
 

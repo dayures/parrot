@@ -3,7 +3,7 @@
 	  #set($unescapehtml_Prologue = $document.getPrologue())
 	  $unescapehtml_Prologue
 	#else
-	  <div id="prologue" class="hidden">
+	  <div id="prologue" about="#prologue" typeof="foaf:Document" class="hidden">
 	  <h1>Prologue</h1>
 	  </div>
 	#end

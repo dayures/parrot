@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="application/xhtml+xml; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="custom-functions.tld" prefix="fn" %>
+<%@ taglib prefix="fn" uri="custom-functions.tld" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> 
 <head> 
@@ -101,7 +101,7 @@
 					<p id="addURI"><span id="addURILink">add another URI</span></p>
 					<jsp:include page="more-options.jsp"/>
 					<div class="buttons">
-						<button type="submit" class="positive"><img src="images/tick.png" alt=""/>Generate documentation</button>
+						<button type="submit" class="generate">Generate documentation</button>
 					</div>
 					
 					</form>
@@ -158,8 +158,9 @@
 				    <p id="addText"><span id="addTextLink">add another text</span></p>
 				    <jsp:include page="more-options.jsp"/>
 					<div class="buttons">
-						<button type="submit" class="positive"><img src="images/tick.png" alt=""/>Generate documentation</button>
+						<button type="submit" class="generate">Generate documentation</button>
 					</div>
+
 					</form>
 		        </div> 
 
@@ -182,8 +183,9 @@
 					    <p><button id="addFile">add another file</button></p>
 					    <jsp:include page="more-options.jsp"/>
 						<div class="buttons">
-							<button type="submit" class="positive"><img src="images/tick.png" alt=""/>Generate documentation</button>
+							<button type="submit" class="generate">Generate documentation</button>
 						</div>
+					    
 					</form>
 				</div> <!--  /tab3 -->
 				
@@ -201,8 +203,9 @@
 					
 					<jsp:include page="more-options.jsp"/>
 					<div class="buttons">
-						<button type="submit" class="positive"><img src="images/tick.png" alt=""/>Generate documentation</button>
+						<button type="submit" class="generate">Generate documentation</button>
 					</div>
+
 					</form>
 				</div> <!-- tab4 -->
 

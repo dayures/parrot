@@ -1,5 +1,11 @@
 jQuery(document).ready(function(){
 	$('#tabs').tabs();
+	
+	$("button.generate").button({
+        icons: {
+            primary: "ui-icon-check"
+        }
+    })
 
     $('.extra_opt_uri').click(function() {
     	if ($(this).attr("class") == "more-options-open")
@@ -16,7 +22,7 @@ jQuery(document).ready(function(){
     
     $('#addURI').button({
         icons: {
-            primary: "ui-icon-circle-plus"
+            primary: "ui-icon-plusthick"
         }}).click(function(){ 
             $('#tabs-1 form p:first.uri-input').clone(true).insertBefore($(this));
             $('#tabs-1 form p:last.uri-input input').val(''); // clear the textarea
@@ -36,7 +42,7 @@ jQuery(document).ready(function(){
     
     $('#addText').button({
         icons: {
-            primary: "ui-icon-circle-plus"
+            primary: "ui-icon-plusthick"
         }
     }).click(function() {
         $('#tabs-2 form div:first.direct-input').clone(true).insertBefore($(this));
@@ -52,7 +58,7 @@ jQuery(document).ready(function(){
     
     $('#addFile').button({
         icons: {
-            primary: "ui-icon-circle-plus"
+            primary: "ui-icon-plusthick"
         }
     }).click(function() {
         $('#tabs-3 form p:first').clone().insertBefore($(this));

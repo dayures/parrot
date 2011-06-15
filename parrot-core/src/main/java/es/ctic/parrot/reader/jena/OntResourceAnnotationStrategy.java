@@ -271,8 +271,6 @@ public class OntResourceAnnotationStrategy {
 	 * <ol>
 	 * 	<li>http://www.w3.org/2008/05/skos-xl#prefLabel</li>
 	 *  <li>http://www.w3.org/2004/02/skos/core#prefLabel</li>
-	 * 	<li>http://www.w3.org/2008/05/skos-xl#altLabel</li>
-	 *  <li>http://www.w3.org/2004/02/skos/core#altLabel</li>
 	 *  <li>http://purl.org/dc/terms/title</li>
 	 *  <li>http://purl.org/dc/elements/1.1/title</li>
 	 *  <li>http://www.w3.org/2000/01/rdf-schema#label</li>
@@ -287,8 +285,6 @@ public class OntResourceAnnotationStrategy {
 
     	Collection<Label> labels = getLabels(ontResource, locale);
         
-    	//logger.debug("locale="+locale+" labels="+labels);
-    	
         for (Label label : labels){
         	if (label.getQualifier().equals(SKOS_XL_PREF_LABEL)) {
         		return label.getText();
@@ -297,18 +293,6 @@ public class OntResourceAnnotationStrategy {
 
         for (Label label : labels){
         	if (label.getQualifier().equals(SKOS_CORE_PREF_LABEL)) {
-        		return label.getText();
-        	}
-        }
-
-        for (Label label : labels){
-            if (label.getQualifier().equals(SKOS_XL_ALT_LABEL)) {
-                return label.getText();
-            }
-        }
-
-        for (Label label : labels){
-        	if (label.getQualifier().equals(SKOS_CORE_ALT_LABEL)) {
         		return label.getText();
         	}
         }

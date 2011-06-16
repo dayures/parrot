@@ -181,14 +181,6 @@ public abstract class AbstractJenaDocumentableObject extends
    		return getAnnotationStrategy().getLabels(getOntResource(), null);
    	}
 
-	public Collection<Label> getSynonyms(Locale locale){
-   		return getAnnotationStrategy().getSynonyms(getOntResource(), locale);
-   	}
-	
-    public Collection<Label> getSynonyms(){
-   		return getAnnotationStrategy().getSynonyms(getOntResource(), null);
-   	}
-
     public String getLabel(String language) {
     	return getLabel(new Locale(language));
     }

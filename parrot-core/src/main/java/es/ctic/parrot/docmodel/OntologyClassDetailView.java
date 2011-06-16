@@ -169,7 +169,6 @@ public class OntologyClassDetailView extends AbstractOntologicalObjectDetailView
 		details.setIndividuals(DocumentableObjectReference.createReferences(object.getIndividuals(), locale));
 		
 		details.setLabels(object.getLabels());
-		details.setSynonyms(object.getSynonyms());
 
 		details.setRelatedDocuments(object.getRelatedDocuments(locale));
 

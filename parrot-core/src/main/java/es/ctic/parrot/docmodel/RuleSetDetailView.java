@@ -169,10 +169,11 @@ public class RuleSetDetailView extends AbstractVersionableDetailView {
         details.setStrategy(object.getStrategy());
         details.setParent(DocumentableObjectReference.createReference(object.getParent(), locale));
 
-		details.setLabels(object.getLabels());
-
         details.setAnchor(object.getLocalName());
+
+        details.setLexicalInformation(LexicalInformation.createFromLabels(object.getLabels(), details.getLabel(), locale));
         details.setRelatedDocuments(object.getRelatedDocuments(locale));        
+
         return details;
     }
 }

@@ -96,9 +96,10 @@ public class RuleDetailView extends AbstractVersionableDetailView{
 
 		details.setParent(DocumentableObjectReference.createReference(object.getParent(), locale));
 		details.setReferencedOntologicalObjects(DocumentableObjectReference.createReferences(object.getReferencedOntologicalObjects(), locale));
-		details.setLabels(object.getLabels());
-		
+
         details.setAnchor(object.getLocalName());
+
+		details.setLexicalInformation(LexicalInformation.createFromLabels(object.getLabels(), details.getLabel(), locale));
 		details.setRelatedDocuments(object.getRelatedDocuments(locale));
 		
 		return details;

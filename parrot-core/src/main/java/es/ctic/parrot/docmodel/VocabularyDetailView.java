@@ -119,10 +119,9 @@ public class VocabularyDetailView extends AbstractVersionableDetailView{
 		details.setUriFragment(object.getUriFragment());
 		details.setLabel(object.getLabel(locale));
 		details.setDescription(object.getDescription(locale));
-		
-		details.setLabels(object.getLabels());
-		
         details.setAnchor(object.getLocalName());
+		
+		details.setLexicalInformation(LexicalInformation.createFromLabels(object.getLabels(), details.getLabel(), locale));
 		details.setRelatedDocuments(object.getRelatedDocuments(locale));
 		
 		details.setPreferredNamespace(object.getPreferredNamespace());

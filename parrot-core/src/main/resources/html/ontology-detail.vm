@@ -28,12 +28,7 @@
   #set( $inuse = false )
 #end	
 
-#if ( (!$element.labels.isEmpty()) ||
-	  (!$element.relatedDocuments.isEmpty()) )
-  #set( $otherinfo = true )
-#else
-  #set( $otherinfo = false )
-#end	
+#parse("html/documentation-check.vm")
 
 
 <div class="term">

@@ -65,10 +65,4 @@ public interface DetailView {
 	 */
 	public abstract String getUriFragment();
 
-	/**
-	 * Returns the synonyms.
-	 * @return the synonyms.
-	 */
-	public abstract Collection<Label> getSynonyms();
-
 }

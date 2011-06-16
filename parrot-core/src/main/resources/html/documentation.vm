@@ -2,13 +2,10 @@
   <h4>Documentation</h4> 
 
   #if(!$element.labels.isEmpty())
-	<p>Labels: #parse("html/label.vm")</p>
+	<h5>Lexical Information</h5>
+	<p>#parse("html/label.vm")</p>
   #end
 
-  #if(!$element.synonyms.isEmpty())
-	<p>Synonyms: #parse("html/synonym.vm")</p>
-  #end
-    
   #if(!$element.relatedDocuments.isEmpty())
     #foreach($element in $element.relatedDocuments)
       #parse("html/relatedDocument-detail.vm")

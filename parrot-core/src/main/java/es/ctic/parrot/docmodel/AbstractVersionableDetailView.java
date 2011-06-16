@@ -39,7 +39,6 @@ public abstract class AbstractVersionableDetailView implements DetailView, Versi
 	private String description;
 	
 	private Collection<Label> labels;
-	private Collection<Label> synonyms;
 	private Collection<RelatedDocument> relatedDocuments;
 
 
@@ -193,14 +192,6 @@ public abstract class AbstractVersionableDetailView implements DetailView, Versi
 
 	public String getUriFragment() {
 		return uriFragment;
-	}
-
-	protected void setSynonyms(Collection<Label> synonyms) {
-		this.synonyms = synonyms;
-	}
-
-	public Collection<Label> getSynonyms() {
-		return Collections.unmodifiableCollection(synonyms);
 	}
 	
 }

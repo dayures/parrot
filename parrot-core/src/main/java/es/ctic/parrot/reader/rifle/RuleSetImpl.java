@@ -206,14 +206,6 @@ public class RuleSetImpl extends AbstractVersionable implements RuleSet {
     public Collection<Label> getLabels(Locale locale){
    		return getAnnotationStrategy().getLabels(getOntResource(), locale);
    	}
-    
-	public Collection<Label> getSynonyms() {
-   		return getAnnotationStrategy().getSynonyms(getOntResource(), null);
-
-	}
-    public Collection<Label> getSynonyms(Locale locale){
-   		return getAnnotationStrategy().getSynonyms(getOntResource(), locale);
-   	}
 
     public String getLabel() {
    		return getLabel(null);

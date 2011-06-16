@@ -47,12 +47,6 @@ public interface DetailView {
 	public abstract String getDescription();
 
 	/**
-	 * Returns all labels.
-	 * @return all labels.
-	 */
-	public abstract Collection<Label> getLabels();
-
-	/**
 	 * Returns the related documents.
 	 * @return the related documents.
 	 */
@@ -64,5 +58,11 @@ public interface DetailView {
 	 * @return the fragment of the URI.
 	 */
 	public abstract String getUriFragment();
+	
+	/**
+	 * Returns the lexical information.
+	 * @return the lexical information.
+	 */
+	public abstract LexicalInformation getLexicalInformation();
 
 }

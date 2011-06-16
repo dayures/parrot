@@ -1,0 +1,6 @@
+#if ( (!$element.lexicalInformation.getLocales().isEmpty()) ||
+  	  (!$element.relatedDocuments.isEmpty()) )
+  #set( $otherinfo = true )
+#else
+  #set( $otherinfo = false )
+#end

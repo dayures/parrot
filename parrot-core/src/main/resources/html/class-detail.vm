@@ -34,12 +34,8 @@
   #set( $inuse = false )
 #end	
 
-#if ( (!$element.labels.isEmpty()) ||
-  	  (!$element.relatedDocuments.isEmpty()) )
-  #set( $otherinfo = true )
-#else
-  #set( $otherinfo = false )
-#end	
+#parse("html/documentation-check.vm")
+	
 
 <div class="term">
   <h3 id="$element.Anchor">#if ($element.uriFragment) <a id="$element.uriFragment"></a>#end<span class="parrot-element-title parrot-class-title">$element.Label</span> (Class)
@@ -162,7 +158,6 @@
 	</table>
   </div>
   #end
-  
   
   #if ( $otherinfo )
   	#parse("html/documentation.vm")

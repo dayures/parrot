@@ -145,22 +145,22 @@ public class OntResourceAnnotationStrategy {
 		}
 		
 		Collection<Label> skosAltLabels = getLiteralLabels(ontResource, SKOS_CORE_ALT_LABEL, locale);
-		if (skosAltLabels.isEmpty() == false && labels.isEmpty()) { // hidden by the previous labels
+		if (skosAltLabels.isEmpty() == false){
 			labels.addAll(skosAltLabels);
 		}
 
 		Collection<Label> dctermsTitleLabels = getLiteralLabels(ontResource, DCT_TITLE, locale);
-        if (dctermsTitleLabels.isEmpty() == false && labels.isEmpty()) { // hidden by the previous labels
+        if (dctermsTitleLabels.isEmpty() == false){
             labels.addAll(dctermsTitleLabels);
         }
         
 		Collection<Label> dcTitleLabels = getLiteralLabels(ontResource, DC_TITLE, locale);
-        if (dcTitleLabels.isEmpty() == false && labels.isEmpty()) { // hidden by the previous labels
+        if (dcTitleLabels.isEmpty() == false){
             labels.addAll(dcTitleLabels);
         }
 
         Collection<Label> rdfsLabels = getLiteralLabels(ontResource, RDF_SCHEMA_LABEL, locale);
-        if (rdfsLabels.isEmpty() == false && labels.isEmpty()) { // hidden by the previous labels
+        if (rdfsLabels.isEmpty() == false){
             labels.addAll(rdfsLabels);
         }
 		
@@ -270,7 +270,7 @@ public class OntResourceAnnotationStrategy {
             }
         }
         
-        if (locale != null) { // if I hava asked for a locale
+        if (locale != null) { // if I have asked for a locale
         	// give a change without locale
         	return getLabel(ontResource, null);
         } else {

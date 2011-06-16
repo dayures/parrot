@@ -38,8 +38,8 @@ public abstract class AbstractVersionableDetailView implements DetailView, Versi
 	private String uriFragment;
 	private String description;
 	
-	private Collection<Label> labels;
 	private Collection<RelatedDocument> relatedDocuments;
+	private LexicalInformation lexicalInformation;
 
 
 	public String getLabel() {
@@ -170,14 +170,6 @@ public abstract class AbstractVersionableDetailView implements DetailView, Versi
 		this.description = description;
 	}
 
-	protected void setLabels(Collection<Label> labels) {
-		this.labels = labels;
-	}
-
-	public Collection<Label> getLabels() {
-		return Collections.unmodifiableCollection(labels);
-	}
-	
 	protected void setRelatedDocuments(Collection<RelatedDocument> relatedDocuments) {
 		this.relatedDocuments = relatedDocuments;
 	}
@@ -186,12 +178,20 @@ public abstract class AbstractVersionableDetailView implements DetailView, Versi
 		return relatedDocuments;
 	}
 	
-	public void setUriFragment(String uriFragment) {
+	protected void setUriFragment(String uriFragment) {
 		this.uriFragment = uriFragment;
 	}
 
 	public String getUriFragment() {
 		return uriFragment;
+	}
+
+	protected void setLexicalInformation(LexicalInformation lexicalInformation) {
+		this.lexicalInformation = lexicalInformation;
+	}
+
+	public LexicalInformation getLexicalInformation() {
+		return lexicalInformation;
 	}
 	
 }

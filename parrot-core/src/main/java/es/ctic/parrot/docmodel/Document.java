@@ -43,6 +43,7 @@ import es.ctic.parrot.reader.Input;
  *
  */
 public class Document {
+
 	private Locale locale;
 	private String title;
 	private final Collection<Input> inputs = new HashSet<Input>();
@@ -410,7 +411,15 @@ public class Document {
 	private void setLocale(Locale locale) {
 		this.locale = locale;
 	}
-
+	
+	/**
+	 * Returns the locale.
+	 * @return the locale.
+	 */
+	public Locale getLocale() {
+		return locale;
+	}
+	
 	/**
 	 * Returns the main language of the document.
 	 * @return the main language of the document

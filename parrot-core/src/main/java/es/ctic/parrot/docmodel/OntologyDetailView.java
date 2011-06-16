@@ -97,7 +97,7 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 		details.setPreferredNamespace(object.getPreferredNamespace());
 
 
-		details.setLabels(object.getLabels());
+		details.setLexicalInformation(LexicalInformation.createFromLabels(object.getLabels(), details.getLabel(), locale));
 		details.setRelatedDocuments(object.getRelatedDocuments(locale));
 		
 		details.setAnchor(object.getLocalName());

@@ -23,7 +23,24 @@ title="go to parrot project home page">Parrot </a></h1>
 <h2>a RIF and OWL documentation service (alpha version)</h2>
 </div>
 
-<h2>Metadata for Ontologies</h2>
+<h2>Table of contents</h2>
+<ul>
+<li><a href="#ontologies">Metadata for Ontologies</a></li>
+<li><a href="#rules">Metadata for Rules</a></li>
+<li><a href="#vocabularies">Metadata for Vocabularies</a></li>
+<li><a href="#datasets">Metadata for Datasets</a></li>
+<li><a href="#namespace-prefix">Namespace references and prefixes</a></li>
+<li><a href="#icons">Icons in Parrot</a></li>
+<li><a href="#tips">Tips</a>
+	<ul>
+	<li><a href="#tip-label">Label order</a></li>
+	<li><a href="#tip-description">Description order</a></li>
+	<li><a href="#tip-button-rdfa">Button RDFa</a></li>
+	</ul>
+</li>
+</ul>
+
+<h2 id="ontologies">Metadata for Ontologies</h2>
 
 <p>This table describes the annotates properties relevant for adding metadata
 to <strong>ontologies</strong>.</p>
@@ -211,7 +228,7 @@ to <strong>ontologies</strong>.</p>
 </table>
 
 
-<h2>Metadata for Rules</h2>
+<h2 id="rules">Metadata for Rules</h2>
 
 <p>This table describes the annotates properties relevant for adding metadata
 to <strong>rules</strong>.</p>
@@ -388,7 +405,7 @@ to <strong>rules</strong>.</p>
 </table>
 
 
-<h2>Metadata for Vocabularies</h2>
+<h2 id="vocabularies">Metadata for Vocabularies</h2>
 
 <p>This table describes the annotates properties relevant for adding metadata
 to <strong>vocabularies</strong>.</p>
@@ -521,7 +538,7 @@ to <strong>vocabularies</strong>.</p>
     </tbody>
 </table>
 
-<h2>Metadata for Datasets</h2>
+<h2 id="datasets">Metadata for Datasets</h2>
 
 <p>This table describes the annotates properties relevant for adding metadata
 to <strong>datasets</strong>.</p>
@@ -652,7 +669,7 @@ to <strong>datasets</strong>.</p>
     </tbody>
 </table>
 
-<h2>Namespace references and prefixes</h2>
+<h2 id="namespace-prefix">Namespace references and prefixes</h2>
 <table id="prefix-legend">
   <tbody>
     <tr>
@@ -706,9 +723,9 @@ to <strong>datasets</strong>.</p>
   </tbody>
 </table>
 
-<h2>Icons in Parrot</h2>
+<h2 id="icons">Icons in Parrot</h2>
 
-<table id="legend">
+<table>
   <tbody>
     <tr>
       <th>Icon</th>
@@ -774,16 +791,9 @@ to <strong>datasets</strong>.</p>
   </tbody>
 </table>
 
-<h2>Tips</h2>
-<h3>Description order</h3>
-<p>If you want to add a <strong>description</strong> to an element, the preferred property order to set it is:</p>
-<ol>
-  <li>http://purl.org/dc/terms/description</li>
-  <li>http://purl.org/dc/elements/1.1/description</li>
-  <li>http://www.w3.org/2000/01/rdf-schema#comment</li>
-</ol>
+<h2 id="tips">Tips</h2>
 
-<h3>Label order</h3>
+<h3 id="tip-label">Label order</h3>
 <p>If you want to add a <strong>label</strong> to an element, the preferred property order to set it is:</p>
 <ol>
   <li>http://www.w3.org/2008/05/skos-xl#prefLabel</li>
@@ -795,8 +805,15 @@ to <strong>datasets</strong>.</p>
   <li>http://www.w3.org/2000/01/rdf-schema#label</li>
 </ol>
 
+<h3 id="tip-description">Description order</h3>
+<p>If you want to add a <strong>description</strong> to an element, the preferred property order to set it is:</p>
+<ol>
+  <li>http://purl.org/dc/terms/description</li>
+  <li>http://purl.org/dc/elements/1.1/description</li>
+  <li>http://www.w3.org/2000/01/rdf-schema#comment</li>
+</ol>
 
-  <h3>Button RDFa</h3>
+  <h3 id="tip-button-rdfa">Button RDFa</h3>
   <p>You can <strong>create a report from a webpage with RDFa</strong>. Just add a button in your webpage in order to create a link to the Parrot report.</p>
   <img src="images/button-referer.png" alt="Document with Parrot"/>
   <p>

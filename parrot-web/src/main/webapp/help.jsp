@@ -318,7 +318,7 @@ to <strong>rules</strong>.</p>
     <tr>
       <td><em>dct:title</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
-      <td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>See <em>label</em></td>
     </tr>            
     <tr>
@@ -454,7 +454,6 @@ to <strong>vocabularies</strong>.</p>
     <tr>
       <td><em>dct:title</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
-      <td></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>See <em>label</em></td>
     </tr>    
     <tr>
@@ -596,7 +595,6 @@ to <strong>datasets</strong>.</p>
     <tr>
       <td><em>dct:title</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
-      <td></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>See <em>label</em></td>
     </tr>    
     <tr>

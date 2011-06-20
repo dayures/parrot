@@ -85,7 +85,7 @@ to <strong>ontologies</strong>.</p>
       <td><em>dc:description</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>See <em>comment</em></td>
+      <td>See <em>rdfs:comment</em></td>
     </tr>
     <tr>
       <td><em>dc:publisher</em></td>
@@ -103,7 +103,7 @@ to <strong>ontologies</strong>.</p>
       <td><em>dc:title</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>See <em>label</em></td>
+      <td>See <em>rdfs:label</em></td>
     </tr>
     <tr>
       <td><em>dct:contributor</em></td>
@@ -121,7 +121,7 @@ to <strong>ontologies</strong>.</p>
       <td><em>dct:description</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>See <em>comment</em></td>
+      <td>See <em>rdfs:comment</em></td>
     </tr>
     <tr>
       <td><em>dct:license</em></td>
@@ -142,7 +142,7 @@ to <strong>ontologies</strong>.</p>
       <td><em>dct:title</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>See <em>label</em></td>
+      <td>See <em>rdfs:label</em></td>
     </tr>    
     <tr>
       <td><em>rdfs:comment</em></td>
@@ -273,7 +273,7 @@ to <strong>rules</strong>.</p>
       <td><em>dc:description</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>See <em>comment</em></td>
+      <td>See <em>rdfs:comment</em></td>
     </tr>  
     <tr>
       <td><em>dc:publisher</em></td>
@@ -291,7 +291,7 @@ to <strong>rules</strong>.</p>
       <td><em>dc:title</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>See <em>label</em></td>
+      <td>See <em>rdfs:label</em></td>
     </tr>
     <tr>
       <td><em>dct:contributor</em></td>
@@ -309,7 +309,7 @@ to <strong>rules</strong>.</p>
       <td><em>dct:description</em></td>
 	  <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>See <em>comment</em></td>
+      <td>See <em>rdfs:comment</em></td>
     </tr>
     <tr>
       <td><em>dct:license</em></td>
@@ -336,7 +336,7 @@ to <strong>rules</strong>.</p>
       <td><em>dct:title</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>See <em>label</em></td>
+      <td>See <em>rdfs:label</em></td>
     </tr>            
     <tr>
       <td><em>rdfs:label</em></td>
@@ -388,6 +388,12 @@ to <strong>rules</strong>.</p>
       <td>An image associated with the rule/ruleset. </td>
     </tr>
     <tr>
+      <td><em>foaf:maker</em></td>
+      <td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td>
+      <td></td><td></td>
+      <td>See <em>dct:creator</em></td>
+    </tr>
+    <tr>
       <td><em>og:video</em></td>
       <td><a href="http://ogp.me">OG</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
@@ -430,7 +436,7 @@ to <strong>vocabularies</strong>.</p>
     <tr>
       <td><em>dc:description</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
-      <td>See <em>comment</em></td>
+      <td>See <em>rdfs:comment</em></td>
     </tr>
     <tr>
       <td><em>dc:publisher</em></td>
@@ -440,7 +446,7 @@ to <strong>vocabularies</strong>.</p>
     <tr>
       <td><em>dc:title</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
-      <td>See <em>label</em></td>
+      <td>See <em>rdfs:label</em></td>
     </tr>
     <tr>
       <td><em>dct:contributor</em></td>
@@ -455,7 +461,7 @@ to <strong>vocabularies</strong>.</p>
     <tr>
       <td><em>dct:description</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
-      <td>See <em>comment</em></td>
+      <td>See <em>rdfs:comment</em></td>
     </tr>
     <tr>
       <td><em>dct:modified</em></td>
@@ -471,7 +477,7 @@ to <strong>vocabularies</strong>.</p>
     <tr>
       <td><em>dct:title</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
-      <td>See <em>label</em></td>
+      <td>See <em>rdfs:label</em></td>
     </tr>    
     <tr>
       <td><em>rdfs:comment</em></td>
@@ -569,7 +575,7 @@ to <strong>datasets</strong>.</p>
     <tr>
       <td><em>dc:description</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
-      <td>See <em>comment</em></td>
+      <td>See <em>rdfs:comment</em></td>
     </tr>
     <tr>
       <td><em>dc:publisher</em></td>
@@ -579,7 +585,7 @@ to <strong>datasets</strong>.</p>
     <tr>
       <td><em>dc:title</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
-      <td>See <em>label</em></td>
+      <td>See <em>rdfs:label</em></td>
     </tr>
     <tr>
       <td><em>dct:contributor</em></td>
@@ -594,7 +600,7 @@ to <strong>datasets</strong>.</p>
     <tr>
       <td><em>dct:description</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
-      <td>See <em>comment</em></td>
+      <td>See <em>rdfs:comment</em></td>
     </tr>
     <tr>
       <td><em>dct:license</em></td>
@@ -612,7 +618,7 @@ to <strong>datasets</strong>.</p>
     <tr>
       <td><em>dct:title</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
-      <td>See <em>label</em></td>
+      <td>See <em>rdfs:label</em></td>
     </tr>    
     <tr>
       <td><em>rdfs:comment</em></td>

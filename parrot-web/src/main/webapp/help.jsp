@@ -122,6 +122,12 @@ to <strong>ontologies</strong>.</p>
 	  <td>An entity responsible for making the ontological element available: a person, an organization or a service. Recommended best practice is to use a FOAF profile to describe a publisher.</td>
     </tr>
     <tr>
+      <td><em>dct:title</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td>See <em>label</em></td>
+    </tr>    
+    <tr>
       <td><em>rdfs:comment</em></td>
       <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
@@ -308,7 +314,13 @@ to <strong>rules</strong>.</p>
 	  <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
       <td></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>The resources from which the rules are derived. Typically, they are documentary sources (as candidate rules), but diagrams, plans or pictures are also possible.</td>
-    </tr>    
+    </tr>
+    <tr>
+      <td><em>dct:title</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
+      <td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td>See <em>label</em></td>
+    </tr>            
     <tr>
       <td><em>rdfs:label</em></td>
       <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
@@ -439,6 +451,12 @@ to <strong>vocabularies</strong>.</p>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
 	  <td>An entity responsible for making the vocabulary available: a person, an organization or a service. Recommended best practice is to use a FOAF profile to describe a publisher.</td>
     </tr>
+    <tr>
+      <td><em>dct:title</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
+      <td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td>See <em>label</em></td>
+    </tr>    
     <tr>
       <td><em>rdfs:comment</em></td>
       <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
@@ -575,6 +593,12 @@ to <strong>datasets</strong>.</p>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
 	  <td>An entity responsible for making the dataset available: a person, an organization or a service. Recommended best practice is to use a FOAF profile to describe a publisher.</td>
     </tr>
+    <tr>
+      <td><em>dct:title</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
+      <td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td>See <em>label</em></td>
+    </tr>    
     <tr>
       <td><em>rdfs:comment</em></td>
       <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>

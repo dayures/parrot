@@ -345,6 +345,12 @@ to <strong>rules</strong>.</p>
       <td>See <em>rdfs:label</em></td>
     </tr>            
     <tr>
+      <td><em>rdfs:isDefinedBy</em></td>
+      <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td>Used to indicate where this rule/ruleset has been defining.</td>
+    </tr>
+    <tr>
       <td><em>rdfs:label</em></td>
       <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
@@ -396,7 +402,7 @@ to <strong>rules</strong>.</p>
     <tr>
       <td><em>foaf:maker</em></td>
       <td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td>
-      <td></td><td></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>See <em>dct:creator</em></td>
     </tr>
     <tr>
@@ -550,7 +556,6 @@ to <strong>vocabularies</strong>.</p>
     <tr>
       <td><em>foaf:maker</em></td>
       <td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td>
-      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>See <em>dct:creator</em>.</td>
     </tr>
     </tbody>
@@ -687,7 +692,6 @@ to <strong>datasets</strong>.</p>
     <tr>
       <td><em>foaf:maker</em></td>
       <td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td>
-      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>See <em>dct:creator</em>.</td>
     </tr>
     </tbody>

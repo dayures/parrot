@@ -703,7 +703,8 @@ public class OntResourceAnnotationStrategy {
 	 * @return the creator agents.
 	 */
 	public Collection<Agent> getCreatorAgents(OntResource ontResource) {
-		Collection<Agent> creators = getAgentsFromObjectProperty(ontResource, DCT_CREATOR);
+		Collection<Agent> creators = new HashSet<Agent>(); 
+		creators.addAll(getAgentsFromObjectProperty(ontResource, DCT_CREATOR));
 		creators.addAll(getAgentsFromObjectProperty(ontResource, FOAF_MAKER));
 		return creators;
 	}

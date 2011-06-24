@@ -2,6 +2,8 @@ package es.ctic.parrot.de;
 
 import java.util.Collection;
 
+import es.ctic.parrot.docmodel.DocumentableObjectReference;
+
 /**
  * The interface of elements that have version control information.
  * 
@@ -71,5 +73,11 @@ public interface Versionable {
 	 * @return the label for the license of this element.
 	 */
 	public abstract String getLicenseLabel();
+	
+	/**
+	 * Returns the reference where this element is defined.
+	 * @return the reference where this element is defined.
+	 */
+	public abstract DocumentableObject getIsDefinedBy();
 	
 }

@@ -3,7 +3,6 @@ package es.ctic.parrot.docmodel;
 import java.util.Collection;
 
 import es.ctic.parrot.de.Identifier;
-import es.ctic.parrot.de.Label;
 import es.ctic.parrot.de.RelatedDocument;
 
 /**

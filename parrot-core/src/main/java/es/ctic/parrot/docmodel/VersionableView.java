@@ -80,4 +80,10 @@ public interface VersionableView {
 	 * @return the label for the license of this ontology.
 	 */
 	public abstract String getLicenseLabel();
+	
+	/**
+	 * Returns the reference where this element is defined.
+	 * @return the reference where this element is defined.
+	 */
+	public abstract DocumentableObjectReference getIsDefinedBy();
 }

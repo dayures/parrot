@@ -198,6 +198,12 @@ to <strong>ontologies</strong>.</p>
       <td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>An image associated with the ontological element. </td>
+    </tr>    
+    <tr>
+      <td><em>foaf:maker</em></td>
+      <td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td>See <em>dct:creator</em>.</td>
     </tr>
     <tr>
       <td><em>og:video</em></td>
@@ -541,6 +547,12 @@ to <strong>vocabularies</strong>.</p>
       <td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td>
       <td>The homepage (typically a Web page in HTML format) of the vocabulary.</td>
     </tr>
+    <tr>
+      <td><em>foaf:maker</em></td>
+      <td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td>See <em>dct:creator</em>.</td>
+    </tr>
     </tbody>
 </table>
 
@@ -671,6 +683,12 @@ to <strong>datasets</strong>.</p>
       <td><em>foaf:homepage</em></td>
       <td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td>
       <td>The homepage (typically a Web page in HTML format) of the dataset.</td>
+    </tr>
+    <tr>
+      <td><em>foaf:maker</em></td>
+      <td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td>See <em>dct:creator</em>.</td>
     </tr>
     </tbody>
 </table>

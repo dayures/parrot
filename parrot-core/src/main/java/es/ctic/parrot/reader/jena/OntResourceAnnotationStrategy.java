@@ -85,6 +85,7 @@ public class OntResourceAnnotationStrategy {
 	private static final String FOAF_DEPICTION = "http://xmlns.com/foaf/0.1/depiction";
 	private static final String FOAF_NAME = "http://xmlns.com/foaf/0.1/name";
 	private static final String FOAF_HOMEPAGE = "http://xmlns.com/foaf/0.1/homepage";
+	private static final String FOAF_MAKER = "http://xmlns.com/foaf/0.1/maker";
 
 	private static final String DC_DCMITYPE_TEXT = "http://purl.org/dc/dcmitype/Text";
 	
@@ -702,7 +703,9 @@ public class OntResourceAnnotationStrategy {
 	 * @return the creator agents.
 	 */
 	public Collection<Agent> getCreatorAgents(OntResource ontResource) {
-		return getAgentsFromObjectProperty(ontResource, DCT_CREATOR);
+		Collection<Agent> creators = getAgentsFromObjectProperty(ontResource, DCT_CREATOR);
+		creators.addAll(getAgentsFromObjectProperty(ontResource, FOAF_MAKER));
+		return creators;
 	}
 
 	/**

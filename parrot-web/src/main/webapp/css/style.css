@@ -1,0 +1,364 @@
+@charset "utf-8";
+
+/* CSS style for reports of Vapour */
+body{
+	color: #333333;
+}
+
+body{
+	font:75% arial,helvetica,clean,sans-serif;*font-size:small;*font:x-small;}
+
+div#header {
+  background-color: #336699;
+  text-align: left;
+  vertical-align: top;
+  display: block;
+  padding: 0.3em 2em 1em 0.5em;
+  margin-bottom: 0.5em;
+  margin-top: 0.3em;
+  background-image: url(../images/ctic-white.png);
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  border: 1px solid white;
+  padding:3em;-moz-border-radius: 10px;-webkit-border-radius: 10px;
+}
+
+h1 {
+  font-size: 2.4em;
+  font-weight: bold;
+  color: #ffffff;
+  display: inline;
+}
+
+h1 a, h1 a:active, h1 a:hover, h1 a:visited {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+h1 a abbr {
+  border-bottom: 0;
+  text-transform: uppercase
+}
+
+h2, h3, h4, h5, h6 {
+  color: #5674bc;
+}
+
+div#header h2 {
+  font-size: 1.4em;
+  color: #dddddd;
+  display: inline;
+  padding-left: 0.4em;
+}
+
+img {
+  border: 0;
+}
+
+.all{
+	width:90%;
+	margin-left:5%;
+}
+
+form > p {
+  clear: left;
+  margin-bottom: 1em;
+}
+
+.inputData {
+  border: 1px #b0b0c0 solid;
+  padding: .6em;
+  background-color: #E6EFFF;
+  padding:1.5em;-moz-border-radius: 10px;-webkit-border-radius: 10px;
+}
+
+input, area. { 
+  border: 1px solid #bbb;
+  border-top: 1px solid #777;
+  border-bottom: 1px solid #ddd;
+  background: #fefefe;
+  padding: 0.2em 0.2em;
+  font-variant: normal;
+}
+
+input:hover {
+  background-color: #f0f0ff;
+}
+
+input.uri {
+  font-family: Monaco, "Courier New", Monospace;
+  font-size: 0.9em;
+  width: 75%;
+}
+
+label.uri {
+  text-align: left;
+  margin-right: 0.3em;
+}
+
+label.text{
+  text-align: left;
+  margin-right: 0.3em;
+}
+
+.uriHint {
+  display: block;
+  clear: left;
+  margin-left: 3em;
+}
+
+#example{
+  cursor:pointer;
+}
+
+p#addURI{
+	margin-top: 0em;
+}
+
+.removeURI, .removeText{
+  text-decoration:underline;
+  cursor:pointer;
+  margin-left:0.5em;
+  padding:0.3em;
+}
+
+span.removeURI:hover,  span.removeText:hover{
+	color:white;
+	background-color:red;
+}  /* mouse over link */
+
+div#footer {
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 2em;
+  border-top: 1px #5674bc solid;
+}
+
+div#footer p {
+  font-size: 0.7em;
+  color: #888888;
+  text-align: left;
+  padding-top: 1em;
+}
+
+div#footer p#logo {
+  float: left;
+  margin-right: 2em;
+  padding-top: 0;
+}
+
+.buttons{
+  padding: 1em;
+  text-align: center;
+}
+
+button.generate{
+    width:auto;
+}
+
+/* Report */
+
+#inputDataReport{
+	background-color: #FFF;
+	margin-top:1.5em;
+	margin-bottom:1.5em;
+}
+
+.inputDataReport{
+	padding-left:4em;
+}
+
+.inputData img{
+	padding-right:0.2em;
+}
+
+ul.error, ul.advice {
+  list-style-type:none !important;
+  padding-left: 0;
+  margin-left: 1em;
+}
+
+ul.error{
+  list-style-image:url("../images/cross.png");
+}
+
+ul.advice{
+  list-style-image:url("../images/information.png");
+}
+
+li.error, li.advice {
+  list-style-type:none !important;
+  padding-left: 0.25em;
+}
+
+li.error{
+  list-style-image:url("../images/cross.png");
+}
+
+li.advice{
+  list-style-image:url("../images/information.png");
+}
+
+li.error > span , li.error > span > a {  
+  color: red;
+  vertical-align: top;  
+}
+
+li.advice > span, li.advice > span >a {  
+  vertical-align: top;  
+}
+
+h2.error {
+  color: red;
+  padding: 0;
+  margin: 0;
+}
+
+p.error input[type="text"]{ 
+	border: 2px solid #ff0000;
+	background-color: #ffeeee; 
+}
+
+p.error label{
+	color:red;
+}
+
+p.error span.error{
+	color:red;
+	padding-left:3em;
+}
+
+p.direct-input{
+	padding-left:1em;
+}
+
+/* Hyperlinks */
+
+a:link, a:visited {
+    color: #3A78AD;
+}
+
+a:hover {
+    color: #3A78AD;
+    text-decoration:underline;
+}
+
+/* nice tables */
+
+table {
+    border-collapse:collapse;
+    border-style:none;
+    color:black;
+}
+ tr:hover {
+    -moz-background-clip:border;
+    -moz-background-inline-policy:continuous;
+    -moz-background-origin:padding;
+    background:#D8E3F1 none repeat scroll 0 0;
+}
+table th {
+    background-color:#336699;
+    color:#FFFFFF;
+    font-weight:bold;
+}
+table th a {
+    color:black;
+    text-decoration:none;
+}
+table th a.external {
+    color:black;
+    text-decoration:none;
+}
+table td, th {
+    border:1px solid #AAAAAA;
+    padding-left:0.3em;
+    padding-right:0.3em;
+}
+table {
+    border-collapse:separate;
+    border-spacing:0.2em;
+}
+table th {
+    border:medium none;
+}
+table td {
+    text-align:left;
+}
+
+.extra_opt_uri{
+	cursor:pointer;
+    background-repeat: no-repeat;
+    background-position: center left;
+    padding-left: 1em;
+}
+
+.more-options-closed{
+	background-image: url("../images/arrow-closed.png");
+}
+
+.more-options-open{
+	background-image: url("../images/arrow-open.png");
+}
+
+fieldset{
+	border:0em;
+}
+
+#tipOfTheDay{
+	background-color: #FAF9AF;
+	color: #333;
+	padding: 0.9em 1.7em;
+	margin: 1em 2em;
+	font: 1.5em/150% "palatino", "georgia", "times new roman", serif;
+	border: 3px solid #CCC;
+
+	background-image: url("../images/tip.png");
+	background-repeat: no-repeat;
+    background-position: 0.3em center;
+}
+
+.options{
+	padding: 0.5em;
+}
+
+div.options{
+	display:none;
+}
+
+#legend{
+	margin-left:auto; margin-right:auto;
+}
+#legend td:nth-child(1){
+	text-align:center;
+}
+
+#metadata-support-ontologies, #metadata-support-rules, #prefix-legend{
+	margin-left:auto; margin-right:auto;
+}
+
+
+#metadata-support-ontologies td, #metadata-support-rules td {
+	text-align:center;
+	padding-left:0.5em;
+	padding-right:0.5em;
+}
+
+#metadata-support-ontologies td:nth-child(2), #metadata-support-rules td:nth-child(2)  {
+	white-space: nowrap; 
+	overflow: hidden; 
+	text-overflow:ellipsis;
+}
+
+#metadata-support-ontologies td:nth-child(7),
+#metadata-support-rules td:nth-child(5)  {
+	text-align:left;
+}
+
+
+img.help {
+	vertical-align: bottom;
+}
+
+.moreoptions div {
+	padding: 0.5em 1.1em 0.5em 0em;
+}

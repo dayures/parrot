@@ -1,0 +1,82 @@
+    <div class="vci"> 
+    <h4>Version Control information</h4> 
+    <dl> 
+		#if($element.Version)
+		<dt>Version</dt>
+		<dd>$element.Version</dd>
+		#end
+		
+		#if($element.Date)
+		<dt>Date</dt>
+		<dd class="metadata-icon date">$element.Date</dd>
+		#end
+		
+		#if($element.ModifiedDate)
+		<dt>Last modified</dt>
+		<dd class="metadata-icon date">$element.ModifiedDate</dd>
+		#end
+	  
+		#if(!$element.creators.isEmpty() || !$element.creatorAgents.isEmpty())
+		<dt>Creators</dt>
+		#foreach($creator in $element.creators)
+		  <dd class="metadata-icon creator">$creator</dd>
+		#end
+		#foreach($agent in $element.creatorAgents)
+		  <dd class="metadata-icon creator">
+		  	#if($agent.homepage)
+		  		<a href="$agent.homepage">$agent.name</a>
+		  	#else
+		  		$agent.name
+		  	#end
+		  </dd>
+		#end
+		#end
+		
+		#if(!$element.contributors.isEmpty() || !$element.contributorAgents.isEmpty())
+		<dt>Contributors</dt>
+		#foreach($contributor in $element.contributors)
+		  <dd class="metadata-icon contributor">$contributor</dd>
+		#end
+
+		#foreach($agent in $element.contributorAgents)
+		  <dd class="metadata-icon contributor">
+		  	#if($agent.homepage)
+		  		<a href="$agent.homepage">$agent.name</a>
+		  	#else
+		  		$agent.name
+		  	#end
+		  </dd>
+		#end
+		#end
+		
+		#if(!$element.publishers.isEmpty() || !$element.publisherAgents.isEmpty())
+		<dt>Publishers</dt>
+		#foreach($publisher in $element.publishers)
+		  <dd class="metadata-icon publisher">$publisher</dd>
+		#end
+		
+		#foreach($agent in $element.publisherAgents)
+		  <dd class="metadata-icon publisher">
+		  	#if($agent.homepage)
+		  		<a href="$agent.homepage">$agent.name</a>
+		  	#else
+		  		$agent.name
+		  	#end
+		  </dd>
+		#end
+		#end
+		
+		#if($element.Rights)
+		<dt>Rights</dt>
+		<dd>$element.Rights</dd>
+		#end
+		
+		#if($element.LicenseLabel)
+		<dt>License</dt>
+		<dd><a href="$element.LicenseLabel">$element.LicenseLabel</a></dd>
+		#end
+		
+    </dl> 
+    </div>
+    
+    

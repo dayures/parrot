@@ -969,6 +969,31 @@ public class OntResourceAnnotationStrategy {
     	}
 	}
 	
+	/**
+	 * Returns a Collection of URI (<code>String</code>) of the resource associated to the ontResource using the property passed.
+	 * @param ontResource the ontResource.
+	 * @param property the URI of the property.
+	 * @return a Collection of URI (<code>String</code>)
+	 */
+	private Collection<String> getObjectPropertyCollectionURI(OntResource ontResource, String property) {
+		Collection<String> uris = new HashSet<String>(); 
+    	if (ontResource == null){
+    		return uris;
+    	} else {		
+
+			StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(property));
+			if (it.hasNext()){
+				Statement statement = it.nextStatement();
+				try{
+					uris.add(statement.getObject().asResource().getURI());
+				} catch (ResourceRequiredException e)  {
+					logger.warn("Ignore triple "+ statement +" because it is not a Object property");
+				}
+			}
+			return uris;
+    	}
+	}
+	
 //	/**
 //	 * Returns the collection of URIs or <code>null</code> if the resource has not this property associated.
 //	 * @param ontResource the ontResource.

@@ -203,16 +203,6 @@ public abstract class AbstractJenaDocumentableObject extends
         return getAnnotationStrategy().getRelatedDocuments(getOntResource(), locale);
     }
 	
-	public DocumentableObject getIsDefinedBy() {
-		String isDefinedBy = getAnnotationStrategy().getIsDefinedBy(getOntResource());
-		if (isDefinedBy != null) {
-			Identifier identifier = new URIIdentifier(isDefinedBy);
-			return this.getRegister().findDocumentableObject(identifier);	
-		} else {
-			return null;
-		}
-    }
-	
 	public boolean isDeprecated(){
 		return getAnnotationStrategy().isDeprecated(getOntResource());
 	}

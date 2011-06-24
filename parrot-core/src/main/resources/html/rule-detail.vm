@@ -22,7 +22,8 @@
 #end
 
 
-#if ( (!$element.referencedOntologicalObjects.isEmpty()) ||
+#if ( ($element.isDefinedBy) || 
+	  (!$element.referencedOntologicalObjects.isEmpty()) ||
   	  ($element.Parent) )
   #set( $inuse = true )
 #else
@@ -57,6 +58,10 @@
   #if ( $inuse )
   <div class="inuse"> 
   <h4>In use</h4> 
+    
+    #if($element.isDefinedBy)
+		<p>This rule is defined by <span class="parrot-element-ref parrot-${element.isDefinedBy.kindString}-ref"><a href="#$element.isDefinedBy.LocalName">$element.isDefinedBy.Label</a></span></p>
+	#end
   
     #if(!$element.referencedOntologicalObjects.isEmpty())
       <p>This rule references model objects such as

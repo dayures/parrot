@@ -5,7 +5,6 @@ import java.util.Collections;
 
 import es.ctic.parrot.de.Agent;
 import es.ctic.parrot.de.Identifier;
-import es.ctic.parrot.de.Label;
 import es.ctic.parrot.de.RelatedDocument;
 
 /**
@@ -33,6 +32,7 @@ public abstract class AbstractVersionableDetailView implements DetailView, Versi
 	private Collection<Agent> publisherAgents;
 	private String rights;
 	private String licenseLabel;
+	private DocumentableObjectReference isDefinedBy;
 	
 	private String uri;
 	private String uriFragment;
@@ -192,6 +192,14 @@ public abstract class AbstractVersionableDetailView implements DetailView, Versi
 
 	public LexicalInformation getLexicalInformation() {
 		return lexicalInformation;
+	}
+	
+	protected void setIsDefinedBy(DocumentableObjectReference isDefinedBy) {
+		this.isDefinedBy = isDefinedBy;
+	}
+
+	public DocumentableObjectReference getIsDefinedBy() {
+		return isDefinedBy;
 	}
 	
 }

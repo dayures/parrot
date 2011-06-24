@@ -26,12 +26,6 @@ public interface DocumentableOntologicalObject extends DocumentableObject,Compar
 	public abstract Collection<Rule> getInverseRuleReferences();
 	
 	/**
-	 * Returns the reference where this ontological element is defined.
-	 * @return the reference where this ontological element is defined.
-	 */
-	public abstract DocumentableObject getIsDefinedBy();
-	
-	/**
      * Returns <code>true</code> if, and only if, this ontological element is deprecated.
      * @return <code>true</code> if this ontological element is deprecated, otherwise <code>false</code>.
      */

@@ -162,6 +162,10 @@ public class RuleSetDetailView extends AbstractVersionableDetailView {
 		details.setRights(object.getRights());
 		details.setLicenseLabel(object.getLicenseLabel());
 		
+		details.setIsDefinedBy(DocumentableObjectReference.createReference(object.getIsDefinedBy(),locale));
+		
+		// Other info
+		
         details.setReferencedOntologicalObjects(DocumentableObjectReference.createReferences(object.getReferencedOntologicalObjects(), locale));
         details.setRules(DocumentableObjectReference.createReferences(object.getRules(), locale));
         details.setRuleSets(DocumentableObjectReference.createReferences(object.getRuleSets(), locale));

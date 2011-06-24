@@ -91,5 +91,15 @@ public abstract class AbstractVersionable extends AbstractDocumentableObject imp
     public Collection<Agent> getPublisherAgents() {
     	return getAnnotationStrategy().getPublisherAgents(getOntResource());
     }
+    
+	public DocumentableObject getIsDefinedBy() {
+		String isDefinedBy = getAnnotationStrategy().getIsDefinedBy(getOntResource());
+		if (isDefinedBy != null) {
+			Identifier identifier = new URIIdentifier(isDefinedBy);
+			return this.getRegister().findDocumentableObject(identifier);	
+		} else {
+			return null;
+		}
+    }
 
 }

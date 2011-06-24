@@ -15,7 +15,6 @@ import java.util.HashSet;
 public abstract class AbstractOntologicalObjectDetailView extends AbstractVersionableDetailView {
 
 	private Collection<DocumentableObjectReference> inverseRuleReferences = new HashSet<DocumentableObjectReference>();
-	private DocumentableObjectReference isDefinedBy;
 	private boolean deprecated;
 
 
@@ -33,22 +32,6 @@ public abstract class AbstractOntologicalObjectDetailView extends AbstractVersio
 	 */
 	public Collection<DocumentableObjectReference> getInverseRuleReferences() {
 		return Collections.unmodifiableCollection(inverseRuleReferences);
-	}
-
-	/**
-	 * Sets the reference where this ontological element is defined.
-	 * @param isDefinedBy the reference where this ontological element is defined.
-	 */
-	protected void setIsDefinedBy(DocumentableObjectReference isDefinedBy) {
-		this.isDefinedBy = isDefinedBy;
-	}
-
-	/**
-	 * Returns the reference where this ontological element is defined.
-	 * @return the reference where this ontological element is defined.
-	 */
-	public DocumentableObjectReference getIsDefinedBy() {
-		return isDefinedBy;
 	}
 
 	/**

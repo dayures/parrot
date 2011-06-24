@@ -69,7 +69,7 @@ public class RuleImpl extends AbstractVersionable implements Rule {
 			logger.debug("Added metadata for rule " + rule.getId());
 		}
 		
-    	// REMIND could set resource null
+    	// REMIND could be set to null
 		this.setOntResource(ontModel.getOntResource(getURI()));
 	}
 	

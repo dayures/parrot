@@ -1,9 +1,12 @@
 package es.ctic.parrot.reader.rifle;
 
+import java.util.Stack;
+
 import net.sourceforge.rifle.ast.Document;
 import net.sourceforge.rifle.ast.Group;
 import net.sourceforge.rifle.ast.Import;
 import net.sourceforge.rifle.ast.Rule;
+import net.sourceforge.rifle.ast.visitor.AbstractVisitor;
 import net.sourceforge.rifle.ast.visitor.ToPSVisitor;
 import net.sourceforge.rifle.ast.visitor.Visitor;
 
@@ -27,13 +30,15 @@ import es.ctic.parrot.reader.jena.OntResourceAnnotationStrategy;
  * @since 1.0
  *
  */
-public class RifleASTVisitor extends Visitor {
+public class RifleASTVisitor extends AbstractVisitor {
     
     private static final Logger logger = Logger.getLogger(RifleASTVisitor.class);
 	
 	private DocumentableObjectRegister register;
 	private OntResourceAnnotationStrategy annotationStrategy;
 	private OntModel ontModel;
+	
+	private Stack<DocumentableObject> stack = new Stack<DocumentableObject>();
 
 	/**
 	 * Constructs a rifle visitor.
@@ -50,51 +55,42 @@ public class RifleASTVisitor extends Visitor {
 
 	
 	@Override
-	public Object visit(Document document, Object o) {
+	public void visit(Document document) {
 		logger.debug("Visiting RIF document AST node: " + document);
 		if (logger.isDebugEnabled()) { // because the message is computationally expensive
 		    ToPSVisitor toPSVisitor = new ToPSVisitor();
-		    document.accept(toPSVisitor, o);
+		    document.accept(toPSVisitor);
 		    logger.debug("AST: " + toPSVisitor.getPS());
 		}
-		if (document.getGroup() != null) {
-			document.getGroup().accept(this, o);
-		}
-		return null;
+		descend(document);
 	}
 
 	@Override
-	public Object visit(Group group, Object parent) {
+	public void visit(Group group) {
 		logger.debug("Visiting RIF group AST node: " + group);
 		
 		RuleSetImpl ruleset = new RuleSetImpl(group, getRegister(), getAnnotationStrategy(), getOntModel());
 		
-		if (parent != null) {
-			DocumentableObject parentDocumentableObject = getRegister().findDocumentableObject(((RuleSet) parent).getIdentifier());
+		if (stack.empty() == false) {
+			DocumentableObject parentDocumentableObject = stack.peek();
 			logger.debug("Linking ruleset " + ruleset.getIdentifier() + " to his parent " + parentDocumentableObject);
 			ruleset.setParent(parentDocumentableObject);
 		}
 
 		getRegister().registerDocumentableObject(ruleset);
-
-		for(Rule rule : group.getRules()){
-			rule.accept(this, ruleset);
-		}
-		
-		for(Group g : group.getGroups()){
-			g.accept(this, ruleset);
-		}
-		return null;
+		stack.push(ruleset);
+		descend(group);
+		stack.pop();
 	}
 
 	@Override
-	public Object visit(Rule astRule, Object parent) {
+	public void visit(Rule astRule) {
 		logger.debug("Visiting RIF rule AST node: " + astRule);
 		
 		RuleImpl rule = new RuleImpl(astRule, getRegister(), getAnnotationStrategy(), getOntModel());
 		
-		if (parent != null) {
-			DocumentableObject parentDocumentableObject = getRegister().findDocumentableObject(((DocumentableObject) parent).getIdentifier());
+		if (stack.empty() == false) {
+			DocumentableObject parentDocumentableObject = stack.peek();
 			logger.debug("Linking rule " + rule.getIdentifier() + " to his parent " + parentDocumentableObject);
 			rule.setParent(parentDocumentableObject);
 		}
@@ -102,17 +98,8 @@ public class RifleASTVisitor extends Visitor {
 		getRegister().registerDocumentableObject(rule);
 //		if (astRule.getInnerRule() != null){
 //			astRule.getInnerRule().accept(this, rule);
-//		}
-		
-		
-		return null;
+//		}		
 	}
-
-    @Override
-    public Object visit(Import imp, Object o) {
-        // nothing to do, imports have been resolved before
-        return null;
-    }
 
 	/**
 	 * Sets the annotation strategy. 

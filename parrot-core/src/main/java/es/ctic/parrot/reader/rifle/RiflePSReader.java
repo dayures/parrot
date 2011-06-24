@@ -56,7 +56,7 @@ public class RiflePSReader extends ImportResolver implements DocumentReader {
 			      Document document = document_return.ret_document;
                   resolveImports(document, register);
 			      RifleASTVisitor visitor = new RifleASTVisitor(register, getOntologyReader().getAnnotationStrategy(), getOntologyReader().getOntModel());
-			      document.accept(visitor, null); // it's null because it is the root node
+			      document.accept(visitor);
 			} else {
                 throw new ReaderException("RIF PS document " + input + " cannot be parsed. There are " + parser.getNumberOfSyntaxErrors() + " syntax errors. First error is: " + errorReporter.getFirstError());
 			}

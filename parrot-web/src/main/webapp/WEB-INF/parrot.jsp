@@ -214,7 +214,7 @@
 		    <div id="tipOfTheDay">
 		    <span >Did you know ...</span>
 		    </div>
-		    <p><img src="images/help.png" alt="help" class="help" />Do you need <a href="help.jsp">help</a>?</p>
+		    <p><img src="images/help.png" alt="help" class="help" />Do you need <a href="help">help</a>?</p>
 	</div>    
 
     <div id="footer"> 

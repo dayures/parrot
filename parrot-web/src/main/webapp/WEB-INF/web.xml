@@ -10,9 +10,19 @@
 		<servlet-class>es.ctic.parrot.web.ServletParrot</servlet-class>
     </servlet>
 
+   <servlet>
+        <servlet-name>ServletHelp</servlet-name>
+		<servlet-class>es.ctic.parrot.web.ServletHelp</servlet-class>
+    </servlet>
+
     <servlet-mapping>
 	    <servlet-name>ServletParrot</servlet-name>
 	    <url-pattern>/parrot</url-pattern>
     </servlet-mapping>
 
+    <servlet-mapping>
+	    <servlet-name>ServletHelp</servlet-name>
+	    <url-pattern>/help</url-pattern>
+    </servlet-mapping>
+    
 </web-app>

@@ -163,6 +163,12 @@ to <strong>ontologies</strong>.</p>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>The label of the ontological element. The range is a literal with a language
       tag.</td>
+    </tr>
+    <tr>
+      <td><em>rdfs:seeAlso</em></td>
+      <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td>Specifies a resource that might provide additional information about the ontological element.</td>
     </tr>    
     <tr>
       <td><em>skosxl:altLabel</em></td>
@@ -345,6 +351,13 @@ to <strong>rules</strong>.</p>
       <td>See <em>rdfs:label</em></td>
     </tr>            
     <tr>
+      <td><em>rdfs:comment</em></td>
+      <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td>The description of the rule/ruleset. The range is a literal with a
+        language tag.</td>
+    </tr>
+    <tr>
       <td><em>rdfs:isDefinedBy</em></td>
       <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
@@ -358,12 +371,11 @@ to <strong>rules</strong>.</p>
       tag.</td>
     </tr>
     <tr>
-      <td><em>rdfs:comment</em></td>
+      <td><em>rdfs:seeAlso</em></td>
       <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>The description of the rule/ruleset. The range is a literal with a
-        language tag.</td>
-    </tr>
+      <td>Specifies a resource that might provide additional information about the rule/ruleset.</td>
+    </tr>       
     <tr>
       <td><em>skos:prefLabel</em></td>
       <td><a href="http://www.w3.org/TR/skos-reference/#overview">SKOS</a></td>
@@ -502,6 +514,11 @@ to <strong>vocabularies</strong>.</p>
       <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
       <td>The label of the vocabulary. The range is a literal with a language
       tag.</td>
+    </tr>
+    <tr>
+      <td><em>rdfs:seeAlso</em></td>
+      <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
+      <td>Specifies a resource that might provide additional information about the ontological element.</td>
     </tr>    
     <tr>
       <td><em>skosxl:altLabel</em></td>
@@ -648,6 +665,11 @@ to <strong>datasets</strong>.</p>
       <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
       <td>The label of the dataset. The range is a literal with a language
       tag.</td>
+    </tr>
+    <tr>
+      <td><em>rdfs:seeAlso</em></td>
+      <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
+      <td>Specifies a resource that might provide additional information about the ontological element.</td>
     </tr>    
     <tr>
       <td><em>skosxl:altLabel</em></td>

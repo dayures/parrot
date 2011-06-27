@@ -101,6 +101,7 @@ public class OntResourceAnnotationStrategy {
 
 	private static final String VOID_DATADUMP = "http://rdfs.org/ns/void#dataDump";
 	private static final String VOID_SPARQLENDPOINT = "http://rdfs.org/ns/void#sparqlEndpoint";
+	private static final String VOID_VOCABULARY = "http://rdfs.org/ns/void#vocabulary";
 
 	
 	/**
@@ -1236,6 +1237,16 @@ public class OntResourceAnnotationStrategy {
 	public String getSparqlEndpoint(OntResource ontResource) {
 		return getObjectPropertyURI(ontResource, VOID_SPARQLENDPOINT);
 	}
+	
+	/**
+	 * Returns the collection of vocabularies (represented by its URI) used in the dataset.  
+	 * @param ontResource
+	 * @return the collection of vocabularies (represented by its URI) used in the dataset.
+	 */
+	public Collection<String> getVocabularies(OntResource ontResource) {
+		return getObjectPropertyCollectionURI(ontResource, VOID_VOCABULARY);
+	}
+
 	
 }
 

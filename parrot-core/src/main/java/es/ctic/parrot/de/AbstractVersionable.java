@@ -3,6 +3,7 @@ package es.ctic.parrot.de;
 import java.util.Collection;
 
 import com.hp.hpl.jena.ontology.OntResource;
+import com.hp.hpl.jena.rdf.model.ModelFactory;
 
 import es.ctic.parrot.reader.jena.OntResourceAnnotationStrategy;
 
@@ -26,7 +27,7 @@ public abstract class AbstractVersionable extends AbstractDocumentableObject imp
 	protected void setOntResource(OntResource ontResource) {
 		this.ontResource = ontResource;
 	}
-
+	
 	/**
 	 * Sets the annotation strategy.
 	 * @param annotationStrategy the annotation strategy to set.
@@ -47,8 +48,12 @@ public abstract class AbstractVersionable extends AbstractDocumentableObject imp
 	 * Returns the ontResource.
 	 * @return the ontResource.
 	 */
-	public OntResource getOntResource() {
-		return ontResource;
+	protected OntResource getOntResource() {
+		if (this.ontResource != null) {
+			return ontResource;
+		} else {
+			return ModelFactory.createOntologyModel().createOntResource(null);
+		}
 	}
 	
 	public String getDate() {

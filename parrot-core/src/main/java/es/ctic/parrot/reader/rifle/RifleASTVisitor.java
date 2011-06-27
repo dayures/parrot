@@ -4,11 +4,9 @@ import java.util.Stack;
 
 import net.sourceforge.rifle.ast.Document;
 import net.sourceforge.rifle.ast.Group;
-import net.sourceforge.rifle.ast.Import;
 import net.sourceforge.rifle.ast.Rule;
 import net.sourceforge.rifle.ast.visitor.AbstractVisitor;
 import net.sourceforge.rifle.ast.visitor.ToPSVisitor;
-import net.sourceforge.rifle.ast.visitor.Visitor;
 
 import org.apache.log4j.Logger;
 
@@ -16,7 +14,6 @@ import com.hp.hpl.jena.ontology.OntModel;
 
 import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.DocumentableObjectRegister;
-import es.ctic.parrot.de.RuleSet;
 import es.ctic.parrot.reader.jena.OntResourceAnnotationStrategy;
 
 /**

@@ -129,6 +129,7 @@ public class VocabularyDetailView extends AbstractVersionableDetailView{
 		
 		// Control version information
 		details.setModifiedDate(object.getModifiedDate());
+		details.setIssuedDate(object.getIssuedDate());
 		details.setCreators(object.getCreators());
 		details.setContributors(object.getContributors());
 		details.setPublishers(object.getPublishers());

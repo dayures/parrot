@@ -1,0 +1,16 @@
+#if ( ($element.Version) ||
+	  ($element.Date) ||
+	  ($element.ModifiedDate) ||
+	  ($element.IssuedDate) ||
+	  (!$element.creators.isEmpty()) ||
+	  (!$element.contributors.isEmpty()) ||
+	  (!$element.publishers.isEmpty()) ||
+	  (!$element.creatorAgents.isEmpty()) ||
+	  (!$element.contributorAgents.isEmpty()) ||
+	  (!$element.publisherAgents.isEmpty()) ||
+	  ($element.Rights) ||
+	  ($element.LicenseLabel) )
+  #set( $vci = true )
+#else
+  #set( $vci = false )
+#end

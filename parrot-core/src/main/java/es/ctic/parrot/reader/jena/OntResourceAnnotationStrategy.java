@@ -81,7 +81,10 @@ public class OntResourceAnnotationStrategy {
 	private static final String DCT_CONTRIBUTOR = "http://purl.org/dc/terms/contributor";
 	private static final String DCT_PUBLISHER = "http://purl.org/dc/terms/publisher";
 	private static final String DCT_IS_PART_OF = "http://purl.org/dc/terms/isPartOf";
+	private static final String DCT_MODIFIED = "http://purl.org/dc/terms/modified";
+	private static final String DCT_ISSUED = "http://purl.org/dc/terms/issued";
 
+	
 	private static final String FOAF_DEPICTION = "http://xmlns.com/foaf/0.1/depiction";
 	private static final String FOAF_NAME = "http://xmlns.com/foaf/0.1/name";
 	private static final String FOAF_HOMEPAGE = "http://xmlns.com/foaf/0.1/homepage";
@@ -92,7 +95,6 @@ public class OntResourceAnnotationStrategy {
 	private static final String VANN_PREFERRED_PREFIX = "http://purl.org/vocab/vann/preferredNamespacePrefix";
 	private static final String VANN_PREFERRED_NAMESPACE = "http://purl.org/vocab/vann/preferredNamespaceUri";
 
-	private static final String DCTERMS_MODIFIED = "http://purl.org/dc/terms/modified";
 
 	private static final String VOAF_CLASSNUMBER = "http://labs.mondeca.com/vocab/voaf#classNumber";
 	private static final String VOAF_PROPERTYNUMBER = "http://labs.mondeca.com/vocab/voaf#propertyNumber";
@@ -1178,8 +1180,16 @@ public class OntResourceAnnotationStrategy {
 	 * @return the modified date.
 	 */
 	public String getModifiedDate(OntResource ontResource) {
-		return getLiteralPropertyValue(ontResource, DCTERMS_MODIFIED);
+		return getLiteralPropertyValue(ontResource, DCT_MODIFIED);
+	}
 
+	/**
+	 * Returns the issued date.
+	 * @param ontResource the ontResource.
+	 * @return the issued date.
+	 */
+	public String getIssuedDate(OntResource ontResource) {
+		return getLiteralPropertyValue(ontResource, DCT_ISSUED);
 	}
 
 	/**

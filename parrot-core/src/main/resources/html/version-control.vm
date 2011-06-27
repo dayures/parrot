@@ -15,7 +15,12 @@
 		<dt>Last modified</dt>
 		<dd class="metadata-icon date">$element.ModifiedDate</dd>
 		#end
-	  
+
+		#if($element.IssuedDate)
+		<dt>Issued</dt>
+		<dd class="metadata-icon date">$element.IssuedDate</dd>
+		#end
+			  
 		#if(!$element.creators.isEmpty() || !$element.creatorAgents.isEmpty())
 		<dt>Creators</dt>
 		#foreach($creator in $element.creators)

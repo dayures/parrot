@@ -216,11 +216,7 @@ public class RuleSetImpl extends AbstractVersionable implements RuleSet {
     	if (this.isAnonymous()){
     		return getKindString() + getIdentifier().toString();
     	} else {
-    		if (getOntResource().isAnon()){ // The rule has URI but the rule has not metadata in the jena model
-    			return getAnnotationStrategy().getLabel(ModelFactory.createOntologyModel().createOntResource(getURI()), locale);
-    		} else {
-    			return getAnnotationStrategy().getLabel(getOntResource(), locale);
-    		}
+   			return getAnnotationStrategy().getLabel(getOntResource(), locale);
     	}
     }
     

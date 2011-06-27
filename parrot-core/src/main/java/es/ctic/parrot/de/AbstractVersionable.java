@@ -52,7 +52,7 @@ public abstract class AbstractVersionable extends AbstractDocumentableObject imp
 		if (this.ontResource != null) {
 			return ontResource;
 		} else {
-			return ModelFactory.createOntologyModel().createOntResource(null);
+			return ModelFactory.createOntologyModel().createOntResource(getURI());
 		}
 	}
 	

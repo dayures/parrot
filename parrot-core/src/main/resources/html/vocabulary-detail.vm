@@ -1,15 +1,4 @@
-#if ( ($element.ModifiedDate) ||
-	  (!$element.creators.isEmpty()) ||
-	  (!$element.contributors.isEmpty()) ||
-	  (!$element.publishers.isEmpty()) ||
-	  (!$element.creatorAgents.isEmpty()) ||
-	  (!$element.contributorAgents.isEmpty()) ||
-	  (!$element.publisherAgents.isEmpty()) )
-  #set( $vci = true )
-#else
-  #set( $vci = false )
-#end
-
+#parse("html/version-control-check.vm")
 
 #if ( ($element.Uri) ||
 	  ($element.PreferredNamespace) ||

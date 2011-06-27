@@ -2,8 +2,6 @@ package es.ctic.parrot.de;
 
 import java.util.Collection;
 
-import es.ctic.parrot.docmodel.DocumentableObjectReference;
-
 /**
  * The interface of elements that have version control information.
  * 
@@ -25,6 +23,18 @@ public interface Versionable {
 	 * @return the date.
 	 */
 	public abstract String getDate();
+	
+	/**
+	 * Returns the modified date.
+	 * @return the modified date.
+	 */
+	public abstract String getModifiedDate();
+	
+	/**
+	 * Returns the issued date.
+	 * @return the issued date.
+	 */
+	public abstract String getIssuedDate();	
 
 	/**
 	 * Returns the creators.
@@ -79,5 +89,6 @@ public interface Versionable {
 	 * @return the reference where this element is defined.
 	 */
 	public abstract DocumentableObject getIsDefinedBy();
+
 	
 }

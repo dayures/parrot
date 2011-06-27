@@ -92,15 +92,18 @@ public class DatasetDetailView extends AbstractVersionableDetailView{
 		details.setRelatedDocuments(object.getRelatedDocuments(locale));
 		
 		// Control version information
+		
+		details.setDate(object.getDate());
+		details.setModifiedDate(object.getModifiedDate());
+		details.setIssuedDate(object.getIssuedDate());
+
 		details.setCreators(object.getCreators());
 		details.setContributors(object.getContributors());
 		details.setPublishers(object.getPublishers());
-
 		details.setCreatorAgents(object.getCreatorAgents());
 		details.setContributorAgents(object.getContributorAgents());
 		details.setPublisherAgents(object.getPublisherAgents());
 
-		details.setDate(object.getDate());
 		details.setLicenseLabel(object.getLicenseLabel());
 		
 		// Not used

@@ -150,12 +150,16 @@ public class RuleImpl extends AbstractVersionable implements Rule {
     }
 
     public String getLabel(Locale locale) {
-    	// Anonymous ruleset
-    	if (getOntResource().isAnon()){
+    	if (this.isAnonymous()){
     		return getKindString() + getIdentifier().toString();
     	} else {
-    		return getAnnotationStrategy().getLabel(getOntResource(), locale);
+    		if (getOntResource().isAnon()){ // The rule has URI but the rule has not metadata in the jena model
+    			return getAnnotationStrategy().getLabel(ModelFactory.createOntologyModel().createOntResource(getURI()), locale);
+    		} else {
+    			return getAnnotationStrategy().getLabel(getOntResource(), locale);
+    		}
     	}
+
     }
     
 	public Collection<RelatedDocument> getRelatedDocuments(Locale locale) {
@@ -190,6 +194,18 @@ public class RuleImpl extends AbstractVersionable implements Rule {
     public String getKindString() {
         return Kind.RULE.toString();
     }
+    
+	/**
+	 * Returns <code>true</code> if the rule is anonymous, otherwise returns <code>false</code>.
+	 * @return <code>true</code> if the rule is anonymous, otherwise returns <code>false</code>.
+	 */
+	private boolean isAnonymous(){
+    	if (this.getURI() == null){
+    		return true;
+    	} else {
+    		return false;
+    	}
+	}
     
 }
 

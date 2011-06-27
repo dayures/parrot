@@ -73,8 +73,8 @@ public class RuleSetImpl extends AbstractVersionable implements RuleSet {
 			StmtIterator listStatements = auxModel.listStatements(ResourceFactory.createResource(ruleSet.getId()), null, (RDFNode) null);
 			ontModel.add(listStatements ); // add metadata ONLY about this ruleset 
 		}
-		
-    	this.setOntResource(ontModel.getOntResource(getURI()));
+
+		this.setOntResource(ontModel.getOntResource(getURI()));
 	}
 	
 	/**
@@ -213,10 +213,14 @@ public class RuleSetImpl extends AbstractVersionable implements RuleSet {
 
     public String getLabel(Locale locale) {
     	// Anonymous ruleset
-    	if (getOntResource().isAnon()){
+    	if (this.isAnonymous()){
     		return getKindString() + getIdentifier().toString();
     	} else {
-    		return getAnnotationStrategy().getLabel(getOntResource(), locale);
+    		if (getOntResource().isAnon()){ // The rule has URI but the rule has not metadata in the jena model
+    			return getAnnotationStrategy().getLabel(ModelFactory.createOntologyModel().createOntResource(getURI()), locale);
+    		} else {
+    			return getAnnotationStrategy().getLabel(getOntResource(), locale);
+    		}
     	}
     }
     
@@ -224,5 +228,16 @@ public class RuleSetImpl extends AbstractVersionable implements RuleSet {
         return getAnnotationStrategy().getRelatedDocuments(getOntResource(), locale);
     }
 
+	/**
+	 * Returns <code>true</code> if the ruleset is anonymous, otherwise returns <code>false</code>.
+	 * @return <code>true</code> if the ruleset is anonymous, otherwise returns <code>false</code>.
+	 */
+	private boolean isAnonymous(){
+    	if (this.getURI() == null){
+    		return true;
+    	} else {
+    		return false;
+    	}
+	}
 }
 

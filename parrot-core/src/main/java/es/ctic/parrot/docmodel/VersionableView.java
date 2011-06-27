@@ -34,6 +34,12 @@ public interface VersionableView {
 	public abstract String getModifiedDate();
 	
 	/**
+	 * Returns the issued date.
+	 * @return the issued date.
+	 */
+	public abstract String getIssuedDate();
+	
+	/**
 	 * Returns the creators.
 	 * @return the creators.
 	 */	

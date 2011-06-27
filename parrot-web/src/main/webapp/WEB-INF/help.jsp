@@ -124,6 +124,13 @@ to <strong>ontologies</strong>.</p>
       <td>See <em>rdfs:comment</em></td>
     </tr>
     <tr>
+      <td><em>dct:issued</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td>Date of formal issuance (e.g., publication) of the ontological element.
+        Recommended best practice is to use the W3CDTF profile of ISO 8601.</td>
+    </tr>
+    <tr>
       <td><em>dct:license</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
@@ -132,6 +139,13 @@ to <strong>ontologies</strong>.</p>
         describe them in RDF with the Creative Commons Rights Expression
         Language (CC REL). </td>
     </tr>
+    <tr>
+      <td><em>dct:modified</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td>The date on which the ontological element was changed.
+        Recommended best practice is to use the W3CDTF profile of ISO 8601.</td>
+    </tr>    
 	<tr>
       <td><em>dct:publisher</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
@@ -324,6 +338,13 @@ to <strong>rules</strong>.</p>
       <td>See <em>rdfs:comment</em></td>
     </tr>
     <tr>
+      <td><em>dct:issued</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td>Date of formal issuance (e.g., publication) of the rule/ruleset.
+        Recommended best practice is to use the W3CDTF profile of ISO 8601.</td>
+    </tr>
+    <tr>
       <td><em>dct:license</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
@@ -332,6 +353,13 @@ to <strong>rules</strong>.</p>
         describe them in RDF with the Creative Commons Rights Expression
         Language (CC REL). </td>
     </tr>
+    <tr>
+      <td><em>dct:modified</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td>The date on which the rule/ruleset was changed.
+        Recommended best practice is to use the W3CDTF profile of ISO 8601.</td>
+    </tr>    
     <tr>
       <td><em>dct:publisher</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
@@ -488,6 +516,12 @@ to <strong>vocabularies</strong>.</p>
       <td>See <em>rdfs:comment</em></td>
     </tr>
     <tr>
+      <td><em>dct:issued</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
+      <td>Date of formal issuance (e.g., publication) of the vocabulary.
+        Recommended best practice is to use the W3CDTF profile of ISO 8601.</td>
+    </tr>    
+    <tr>
       <td><em>dct:modified</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
       <td>The date on which the vocabulary was changed.
@@ -637,12 +671,24 @@ to <strong>datasets</strong>.</p>
       <td>See <em>rdfs:comment</em></td>
     </tr>
     <tr>
+      <td><em>dct:issued</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
+      <td>Date of formal issuance (e.g., publication) of the dataset.
+        Recommended best practice is to use the W3CDTF profile of ISO 8601.</td>
+    </tr>    
+    <tr>
       <td><em>dct:license</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
       <td>A legal document describing the copyright license of the dataset.
         Recommended best practice is to use Creative Commons licenses and to
         describe them in RDF with the Creative Commons Rights Expression
         Language (CC REL). </td>
+    </tr>
+    <tr>
+      <td><em>dct:modified</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
+      <td>The date on which the dataset was changed.
+        Recommended best practice is to use the W3CDTF profile of ISO 8601.</td>
     </tr>    
     <tr>
       <td><em>dct:publisher</em></td>

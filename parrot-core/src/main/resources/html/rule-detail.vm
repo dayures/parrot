@@ -1,18 +1,4 @@
-#if ( ($element.Version) ||
-	  ($element.Date) ||
-	  ($element.ModifiedDate) ||
-	  (!$element.creators.isEmpty()) ||
-	  (!$element.contributors.isEmpty()) ||
-	  (!$element.publishers.isEmpty()) ||
-	  (!$element.creatorAgents.isEmpty()) ||
-	  (!$element.contributorAgents.isEmpty()) ||
-	  (!$element.publisherAgents.isEmpty()) ||
-	  ($element.Rights) ||
-	  ($element.LicenseLabel) )
-  #set( $vci = true )
-#else
-  #set( $vci = false )
-#end
+#parse("html/version-control-check.vm")
 
 
 #if ( ($element.Uri) )

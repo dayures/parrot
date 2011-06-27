@@ -213,7 +213,7 @@ public class RuleSetImpl extends AbstractVersionable implements RuleSet {
 
     public String getLabel(Locale locale) {
     	// Anonymous ruleset
-    	if (getOntResource() == null){
+    	if (getOntResource().isAnon()){
     		return getKindString() + getIdentifier().toString();
     	} else {
     		return getAnnotationStrategy().getLabel(getOntResource(), locale);

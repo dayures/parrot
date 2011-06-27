@@ -232,8 +232,8 @@
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
-<script type="text/javascript" src="http://3nhanced.com/examples/randomContent/js/jquery.randomContent.js"></script>
-<script type="text/javascript" src="https://github.com/malsup/corner/raw/master/jquery.corner.js"></script> 
+<script type="text/javascript" src="javascript/jquery.randomContent.js"></script>
+<script type="text/javascript" src="report/js/jquery.corner.js"></script> 
 
 <script type="text/javascript" src="javascript/scripts.js"></script>
 

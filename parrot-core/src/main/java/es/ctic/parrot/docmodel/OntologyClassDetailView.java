@@ -148,7 +148,11 @@ public class OntologyClassDetailView extends AbstractOntologicalObjectDetailView
 		
 		// Control version information
 		details.setVersion(object.getVersion());
+		
 		details.setDate(object.getDate());
+		details.setModifiedDate(object.getModifiedDate());
+		details.setIssuedDate(object.getIssuedDate());
+
 		details.setCreators(object.getCreators());
 		details.setContributors(object.getContributors());
 		details.setPublishers(object.getPublishers());
@@ -156,7 +160,6 @@ public class OntologyClassDetailView extends AbstractOntologicalObjectDetailView
 		details.setContributorAgents(object.getContributorAgents());
 		details.setPublisherAgents(object.getPublisherAgents());
 
-		
 		details.setRights(object.getRights());
 		details.setLicenseLabel(object.getLicenseLabel());
 		

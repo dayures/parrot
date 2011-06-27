@@ -24,6 +24,7 @@ public abstract class AbstractVersionableDetailView implements DetailView, Versi
 	private String version;
 	private String date;
     private String modifiedDate;
+    private String issuedDate;
 	private Collection<String> creators;
 	private Collection<String> contributors;
 	private Collection<String> publishers;
@@ -89,7 +90,15 @@ public abstract class AbstractVersionableDetailView implements DetailView, Versi
 	public String getModifiedDate() {
 		return modifiedDate;
 	}	
+	
+	protected void setIssuedDate(String issuedDate) {
+		this.issuedDate = issuedDate;
+	}
 
+	public String getIssuedDate() {
+		return issuedDate;
+	}
+	
 	protected void setCreators(Collection<String> creators) {
 		this.creators = creators;
 	}
@@ -201,5 +210,5 @@ public abstract class AbstractVersionableDetailView implements DetailView, Versi
 	public DocumentableObjectReference getIsDefinedBy() {
 		return isDefinedBy;
 	}
-	
+
 }

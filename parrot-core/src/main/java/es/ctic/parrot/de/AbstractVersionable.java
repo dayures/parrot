@@ -51,10 +51,17 @@ public abstract class AbstractVersionable extends AbstractDocumentableObject imp
 		return ontResource;
 	}
 	
-	
 	public String getDate() {
 		return getAnnotationStrategy().getDate(getOntResource());
 	}
+
+	public String getModifiedDate() {
+		return getAnnotationStrategy().getModifiedDate(getOntResource());
+	}
+	
+	public String getIssuedDate() {
+		return getAnnotationStrategy().getIssuedDate(getOntResource());
+	}	
     
 	public String getVersion() {
 		return getAnnotationStrategy().getVersion(getOntResource());

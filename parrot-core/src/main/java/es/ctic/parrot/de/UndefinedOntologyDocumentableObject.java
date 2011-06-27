@@ -388,5 +388,17 @@ public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObj
 		//return null;
 	}
 
+	public String getModifiedDate() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Method not implemented yet.");
+		//return null;
+	}
+
+	public String getIssuedDate() {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Method not implemented yet.");
+		//return null;
+	}
+
     
 }

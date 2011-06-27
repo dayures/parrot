@@ -68,12 +68,14 @@ public class OntologyIndividualDetailView extends AbstractOntologicalObjectDetai
 		
 		// Control version information
 		details.setVersion(object.getVersion());
+
 		details.setDate(object.getDate());
+		details.setModifiedDate(object.getModifiedDate());
+		details.setIssuedDate(object.getIssuedDate());
 
 		details.setCreators(object.getCreators());
 		details.setContributors(object.getContributors());
 		details.setPublishers(object.getPublishers());
-		
 		details.setCreatorAgents(object.getCreatorAgents());
 		details.setContributorAgents(object.getContributorAgents());
 		details.setPublisherAgents(object.getPublisherAgents());

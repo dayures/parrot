@@ -23,12 +23,6 @@ public interface Vocabulary extends DocumentableObject, Versionable {
 	public abstract String getPreferredNamespace();
 	
 	/**
-	 * Returns the modified date.
-	 * @return the modified date.
-	 */
-	public abstract String getModifiedDate();
-	
-	/**
 	 * Returns the number of classes.
 	 * @return the number of classes.
 	 */

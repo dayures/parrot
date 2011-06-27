@@ -1,5 +1,6 @@
 package es.ctic.parrot.docmodel;
 
+import java.util.Collection;
 import java.util.Locale;
 
 import org.apache.log4j.Logger;
@@ -21,6 +22,7 @@ public class DatasetDetailView extends AbstractVersionableDetailView{
 	private String dataDump;
 	private String sparqlEndpoint;
 	private String homepage;
+	private Collection<String> vocabularies;
 
 
 	/**
@@ -73,6 +75,20 @@ public class DatasetDetailView extends AbstractVersionableDetailView{
 	}
 	
 	/**
+	 * @param vocabularies the vocabularies to set
+	 */
+	private void setVocabularies(Collection<String> vocabularies) {
+		this.vocabularies = vocabularies;
+	}
+
+	/**
+	 * @return the vocabularies
+	 */
+	public Collection<String> getVocabularies() {
+		return vocabularies;
+	}
+	
+	/**
 	 * Returns a detailed view for the vocabulary given.
 	 * @param object the vocabulary.
 	 * @param locale the locale.
@@ -113,8 +129,11 @@ public class DatasetDetailView extends AbstractVersionableDetailView{
 		details.setDataDump(object.getdataDump());
 		details.setSparqlEndpoint(object.getSparqlEndpoint());
 		details.setHomepage(object.getHomepage());
+		details.setVocabularies(object.getVocabularies());
 		
 		return details;
     }
+
+
     
 }

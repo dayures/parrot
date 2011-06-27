@@ -1,5 +1,7 @@
 package es.ctic.parrot.reader.jena;
 
+import java.util.Collection;
+
 import com.hp.hpl.jena.ontology.OntResource;
 
 import es.ctic.parrot.de.Dataset;
@@ -34,6 +36,10 @@ public class DatasetJenaImpl extends AbstractJenaDocumentableObject implements D
 
 	public String getHomepage() {
 		return getAnnotationStrategy().getHomepage(getOntResource());
+	}
+	
+	public Collection<String> getVocabularies() {
+		return getAnnotationStrategy().getVocabularies(getOntResource());
 	}
 
 }

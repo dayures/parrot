@@ -1,5 +1,7 @@
 package es.ctic.parrot.de;
 
+import java.util.Collection;
+
 
 public interface Dataset extends DocumentableObject, Versionable{
 	
@@ -21,4 +23,9 @@ public interface Dataset extends DocumentableObject, Versionable{
 	 */
 	public abstract String getHomepage();
 
+	/**
+	 * Returns the collection of vocabularies (represented by its URI) used in the dataset.
+	 * @return the collection of vocabularies (represented by its URI) used in the dataset.
+	 */
+	public abstract Collection<String> getVocabularies();
 }

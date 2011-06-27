@@ -1,10 +1,10 @@
 #parse("html/version-control-check.vm")
 
 
-
 #if ( ($element.Uri) ||
 	  ($element.DataDump) ||
 	  ($element.Homepage) ||
+	  (!$element.vocaularies.isEmpty()) ||
 	  ($element.SparqlEndpoint) )
   #set( $ti = true )
 #else
@@ -38,19 +38,30 @@
 	#end
 
     #if($element.DataDump)
-		<p>The <strong>data dump </strong> is <span><a href ="$element.DataDump"><code>$element.DataDump</code></a></span></p>
+		<p>The <strong>data dump</strong> is <span><a href ="$element.DataDump"><code>$element.DataDump</code></a></span></p>
 		<hr />
 	#end	
 
     #if($element.SparqlEndpoint)
-		<p>The <strong>SPARQL endpoint </strong> is <span><a href="element.SparqlEndpoint"><code>$element.SparqlEndpoint</code></a></span></p>
+		<p>The <strong>SPARQL endpoint</strong> is <span><a href="element.SparqlEndpoint"><code>$element.SparqlEndpoint</code></a></span></p>
 		<hr />
 	#end	
 	
 	#if($element.Homepage)
-		<p>The <strong>home page </strong> is <span><a href="$element.Homepage"><code>$element.Homepage</code></a></span></p>
+		<p>The <strong>home page</strong> is <span><a href="$element.Homepage"><code>$element.Homepage</code></a></span></p>
 		<hr />
 	#end
+
+    #if(!$element.vocabularies.isEmpty())
+		<p>This dataset uses <strong>vocabularies</strong> such as
+		<ul>
+		#foreach($vocabulary in $element.vocabularies)
+	    	<li><a href="$vocabulary">$vocabulary</a></li>
+	    #end
+	    </ul>
+	    </p>
+    #end  
+
 
     </div>
   #end

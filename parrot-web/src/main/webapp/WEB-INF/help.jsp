@@ -753,6 +753,11 @@ to <strong>datasets</strong>.</p>
       <td>The SPARQL endpoint of the dataset.</td>
     </tr>    
     <tr>
+      <td><em>void:vocabulary</em></td>
+      <td><a href="http://vocab.deri.ie/void">VoID</a></td>
+      <td>A vocabulary or <em>owl:Ontology</em> whose classes or properties are used in the dataset.</td>
+    </tr>  
+    <tr>
       <td><em>foaf:homepage</em></td>
       <td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td>
       <td>The homepage (typically a Web page in HTML format) of the dataset.</td>

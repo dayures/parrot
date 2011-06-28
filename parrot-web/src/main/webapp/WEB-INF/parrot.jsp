@@ -192,14 +192,17 @@
 				<div id="tabs-4"> 
 		        	<h2>by existing report</h2> 
 					<form method="get" action="/parrot">
+					<p><label for="reportURL" title="URL of an existing Parrot report" class="uri">URL: </label>
 					<c:choose>  
 						<c:when test='${empty param.reportURL}'>
-							<p><label for="reportURL" title="URL of an existing Parrot report" class="uri">URL: </label><input id="reportURL" name="reportURL" value="" type="text" size="100" /></p>
+							<input id="reportURL" name="reportURL" value="" type="text" size="100" />
 						</c:when>
 						<c:otherwise>
-							<p><label for="reportURL" title="URL of an existing Parrot report" class="uri">URL: </label><input id="reportURL" name="reportURL" value="<c:out value="${param.reportURL}" />" type="text" size="100" /></p>
+							<input id="reportURL" name="reportURL" value="<c:out value="${param.reportURL}" />" type="text" size="100" />
 						</c:otherwise>
 					</c:choose>
+					<span class="uriHint">(for example: <tt id="example-report">http://ontorule-project.eu/resources/parrot/examples/previous-report-metadata.html</tt>)</span>
+					</p>
 					
 					<jsp:include page="more-options.jsp"/>
 					<div class="buttons">

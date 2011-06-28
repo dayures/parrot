@@ -230,11 +230,20 @@
     </div>
     </div> 
 
+	<!-- Feedback -->
+	<img src="images/feedback.png" width="30" height="100" alt="feedback" id="feedback" /> 
+	<div id="feedback-dialog" title="Give us some feedback">
+		<p><img src="images/bug.png" alt="bug"></img> <a href="https://sourceforge.net/tracker/?atid=1496063&amp;group_id=358378&amp;func=browse">Report a bug </a></p>
+		<p><img src="images/heart.png" alt="request"></img> <a href="https://sourceforge.net/tracker/?atid=1496066&amp;group_id=358378&amp;func=browse">Request a feature</a></p>
+		<p><img src="images/group.png" alt="mail list"></img> <a href="https://sourceforge.net/mailarchive/forum.php?forum_name=parrot-project-users">Join the user mail list</a></p>
+	</div>
+	
+
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
 <script type="text/javascript" src="javascript/jquery.randomContent.js"></script>
-<script type="text/javascript" src="report/js/jquery.corner.js"></script> 
-
+<script type="text/javascript" src="javascript/feedback.jQuery.js"></script>
+<script type="text/javascript" src="report/js/jquery.corner.js"></script>
 <script type="text/javascript" src="javascript/scripts.js"></script>
 
 <c:if test='${not empty paramValues.documentText}'>

@@ -618,13 +618,13 @@ public class OntResourceAnnotationStrategy {
 			}
 		}
 		
-		//add videos
+		//add videos (og:video)
 		relatedDocuments.addAll(getVideosRelated(ontResource));
 		
-		//add images
+		//add images (foaf:depiction)
 		relatedDocuments.addAll(getImagesRelated(ontResource));
 		
-		//add candidate rules
+		//add candidate rules (dct:source)
 		relatedDocuments.addAll(getCandidateRulesRelated(ontResource));
 		
 		//add uri links (seeAlso)
@@ -666,7 +666,7 @@ public class OntResourceAnnotationStrategy {
 	}
 	
 	/**
-	 * Returns the date.
+	 * Returns the date (dct:date or dc:date).
 	 * @param ontResource the ontResource.
 	 * @return the date.
 	 */

@@ -362,3 +362,7 @@ img.help {
 .moreoptions div {
 	padding: 0.5em 1.1em 0.5em 0em;
 }
+
+img#feedback{
+	cursor:pointer;
+}

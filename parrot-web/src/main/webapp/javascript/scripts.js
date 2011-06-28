@@ -1,6 +1,23 @@
 jQuery(document).ready(function(){
 	$('#tabs').tabs();
 	
+	$('#feedback').feedback({
+		'position': 'left',
+		'mouseoffColor': '#8470ff'
+	});
+	
+    $('#feedback-dialog').dialog({
+        autoOpen: false,
+		modal: true,
+		resizable: false,
+		draggable: false
+	});
+    $('#feedback').click(function() {
+        $('#feedback-dialog').dialog('open');
+        $('#feedback-dialog a').blur(); // remove manually the focus on a elements
+		return false;
+    });
+	
 	$("button.generate").button({
         icons: {
             primary: "ui-icon-check"

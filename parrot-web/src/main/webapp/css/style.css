@@ -107,7 +107,7 @@ label.text{
   margin-left: 3em;
 }
 
-#example{
+#example, #example-report{
   cursor:pointer;
 }
 

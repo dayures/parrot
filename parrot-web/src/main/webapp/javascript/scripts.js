@@ -57,6 +57,10 @@ jQuery(document).ready(function(){
     	$('#documentUri').val($('#example').html()); 
     });
     
+    $('#example-report').click(function() {
+    	$('#reportURL').val($('#example-report').html()); 
+    });
+    
     $('#addText').button({
         icons: {
             primary: "ui-icon-plusthick"

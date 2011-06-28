@@ -116,7 +116,14 @@ to <strong>ontologies</strong>.</p>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
 	  <td>An entity primarily responsible for making the ontological element: a person, an organization or a service. Recommended best practice is to use a FOAF profile to describe a creator.</td>
-	</tr> 
+	</tr>
+    <tr>
+      <td><em>dct:date</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td>The date of creation or publication of the ontological element.
+        Recommended best practice is to use the W3CDTF profile of ISO 8601.</td>
+    </tr>
 	<tr>
       <td><em>dct:description</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
@@ -330,7 +337,14 @@ to <strong>rules</strong>.</p>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
 	  <td>An entity primarily responsible for making the the ontological element: a person, an organization or a service. Recommended best practice is to use a FOAF profile to describe a creator.</td>
-	</tr>        
+	</tr>
+    <tr>
+      <td><em>dct:date</em></td>
+	  <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td>The date of creation or publication of the rule/ruleset.
+        Recommended best practice is to use the W3CDTF profile of ISO 8601.</td>
+    </tr>	
     <tr>
       <td><em>dct:description</em></td>
 	  <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
@@ -664,7 +678,13 @@ to <strong>datasets</strong>.</p>
       <td><em>dct:creator</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
 	  <td>An entity primarily responsible for making the dataset: a person, an organization or a service. Recommended best practice is to use a FOAF profile to describe a creator.</td>
-	</tr>    
+	</tr>
+    <tr>
+      <td><em>dct:date</em></td>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
+      <td>The date of creation or publication of the dataset.
+        Recommended best practice is to use the W3CDTF profile of ISO 8601.</td>
+    </tr>
     <tr>
       <td><em>dct:description</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>

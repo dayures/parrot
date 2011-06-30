@@ -13,8 +13,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     #parse("html/rdfa.vm")
     
-    <link rel="stylesheet" type="text/css" media="screen,projection" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/themes/cupertino/jquery-ui.css" /> 
-    <style type="text/css">
+    <link rel="stylesheet" type="text/css" media="screen,projection" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/themes/cupertino/jquery-ui.css" />
+    <style type="text/css" media="screen,projection">
 	    #include("css/base.css")
 	    #include("css/custom.css")
 		#include("css/SemEx.css")
@@ -35,7 +35,9 @@
     -->
 	#if($document.customizeCssUrl)
     	<link rel="stylesheet" type="text/css" media="screen,projection" href="$document.customizeCssUrl" />
-    #end    
+    #end
+    <link rel="stylesheet" type="text/css" media="print" href="report/css/print.css"> 
+        
   </head>
   <body>
   #parse("html/header.vm")

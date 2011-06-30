@@ -1,0 +1,75 @@
+#parse("html/version-control-check.vm")
+
+
+#if ( ($element.Uri) )
+  #set( $ti = true )
+#else
+  #set( $ti = false )
+#end
+
+
+#if ( ($element.isDefinedBy) || 
+	  (!$element.referencedOntologicalObjects.isEmpty()) ||
+  	  ($element.Parent) )
+  #set( $inuse = true )
+#else
+  #set( $inuse = false )
+#end
+
+#parse("html/documentation-check.vm")
+
+
+<div class="term">
+   <h3 id="$element.Anchor">#if ($element.uriFragment) <a id="$element.uriFragment"></a>#end<span class="parrot-element-title parrot-rule-title">$element.Label</span> (Rule)
+    #parse("html/detail-menu.vm")
+  </h3>
+  #parse("html/description.vm")
+  
+  <div>
+
+  #if ($vci)
+    #parse("html/version-control.vm")
+  #end
+    
+  
+  #if ( $ti )
+  <div class="ti"> 
+  <h4>Definition</h4> 
+	#if($element.Uri)
+		<p>The <strong>URI</strong> of this rule is <span><code>$element.Uri</code></span></p>
+	#end
+  </div>
+  #end
+  
+  #if ( $inuse )
+  <div class="inuse"> 
+  <h4>In use</h4> 
+    
+    #if($element.isDefinedBy)
+		<p>This rule is defined by <span class="parrot-element-ref parrot-${element.isDefinedBy.kindString}-ref"><a href="#$element.isDefinedBy.LocalName">$element.isDefinedBy.Label</a></span></p>
+	#end
+  
+    #if(!$element.referencedOntologicalObjects.isEmpty())
+      <p>This rule references model objects such as
+      #foreach($reference in $element.referencedOntologicalObjects)
+	    <span class="parrot-element-ref parrot-${reference.kindString}-ref"><a href="#$reference.localName">$reference.label</a></span>
+      #end
+      </p>
+    #end
+
+    #if($element.Parent)
+      <p>This rule is inside 
+	  <span class="parrot-element-ref parrot-${element.Parent.kindString}-ref"><a href="#$element.Parent.localName">$element.Parent.label</a></span>
+	  </p>
+    #end
+    
+  </div>
+  #end
+  
+  #if ( $otherinfo )
+  	#parse("html/documentation.vm")
+  #end
+  
+  </div>
+</div>
+  

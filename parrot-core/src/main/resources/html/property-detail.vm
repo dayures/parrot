@@ -1,0 +1,218 @@
+#parse("html/version-control-check.vm")
+
+
+#if ( ($element.Uri) || 
+  	  ($element.hasAnyAxiom()) ||
+  	  ($element.InverseOf) ||
+  	  ($element.Domain) ||
+  	  ($element.Range) ||
+      (!$element.SuperProperties.isEmpty()) ||
+      (!$element.SubProperties.isEmpty()) ||
+      (!$element.EquivalentProperties.isEmpty()) ||
+      (!$element.disjointProperties.isEmpty()) )
+  #set( $ti = true )
+#else
+  #set( $ti = false )
+#end
+
+
+#if ( ($element.isDefinedBy) ||
+	  (!$element.InverseReferences.isEmpty()) || 
+  	  ($element.occurrences != 0) ||
+  	  (!$element.inverseRuleReferences.isEmpty()) )
+  #set( $inuse = true )
+#else
+  #set( $inuse = false )
+#end	
+
+#parse("html/documentation-check.vm")
+
+
+<div class="term">
+  <h3 id="$element.Anchor">#if ($element.uriFragment) <a id="$element.uriFragment"></a>#end<span class="parrot-element-title parrot-property-title">$element.Label</span> (Property)
+  	#if($element.isDeprecated())<span class="deprecated">(Deprecated)</span>#end
+  	
+	#if($element.isDatatypeProperty())<img class="datatype-property-icon icon" src="images/datatype-property-24x24.png" alt="datatype property"/>#end
+	#if($element.isObjectProperty())<img class="object-property-icon icon" src="images/object-property-24x24.png" alt="object property"/>#end
+	#if($element.isAnnotationProperty())<img class="annotation-property-icon icon" src="images/annotation-property-24x24.png" alt="annotation property"/>#end
+
+	#if($element.isReflexiveProperty())<img class="reflexive-property-icon icon" src="images/reflexive-property.png"alt="reflexive property"/>#end    	
+	#if($element.isIrreflexiveProperty())<img class="irreflexive-property-icon icon" src="images/irreflexive-property.png" alt="irreflexive property"/>#end
+	#if($element.isSymmetricProperty())<img class="symmetric-property-icon icon" src="images/symmetric-property.png" alt="symmetric property"/>#end
+	#if($element.isAsymmetricProperty())<img class="asymmetric-property-icon icon" src="images/asymmetric-property.png" alt="asymmetric property"/>#end
+   	#if($element.isTransitiveProperty())<img class="transitive-property-icon icon" src="images/transitive-property.png" alt="transitive property"/>#end
+    #if($element.isFunctionalProperty())<img class="functional-property-icon icon" src="images/functional-property.png" alt="functional property"/>#end
+    #if($element.isInverseFunctionalProperty())<img class="inverse-functional-property-icon icon" src="images/inverse-functional-property.png" alt="inverse functional property"/>#end
+
+    #parse("html/detail-menu.vm")
+  </h3>
+
+  #parse("html/description.vm")
+  
+  <div>
+  
+  #if ($vci)
+    #parse("html/version-control.vm")
+  #end
+
+  #if ( $ti )
+  <div class="ti"> 
+  <h4>Definition</h4> 
+
+	#if($element.Uri)
+		<p>The <strong>URI</strong> of this property is <span><code>$element.Uri</code></span></p>
+	#end
+   
+    #if ($element.hasAnyAxiom())
+    	<p>This property is a  
+
+    	#if($element.isTransitiveProperty())
+    	<strong>transitive</strong>,       
+    	#end    	
+    	#if($element.isFunctionalProperty())
+    	<strong>functional</strong>,      
+    	#end    	
+    	#if($element.isInverseFunctionalProperty())
+    	<strong>inverse functional</strong>,      
+    	#end    	
+    	#if($element.isReflexiveProperty())
+    	<strong>reflexive</strong>,      
+    	#end    	
+    	#if($element.isIrreflexiveProperty())
+    	<strong>irreflexive</strong>,      
+    	#end        	
+    	#if($element.isSymmetricProperty())
+    	<strong>symmetric</strong>,      
+    	#end    	
+    	#if($element.isAsymmetricProperty())
+    	<strong>asymmetric</strong>,      
+    	#end
+    
+    	#if($element.isDatatypeProperty())
+    	<strong>data</strong> property.    
+    	#end
+    	#if($element.isObjectProperty())
+    	<strong>object</strong> property.  
+    	#end
+    	#if($element.isAnnotationProperty())
+    	<strong>annotation</strong> property. 
+    	#end
+    	</p>
+    	<hr />
+    #end
+
+    #if ( ($element.InverseOf) ||
+    	  ($element.Domain) ||
+    	  ($element.Range) ||
+    	  (!$element.SuperProperties.isEmpty()) ||
+    	  (!$element.SuperProperties.isEmpty()) ||
+    	  (!$element.EquivalentProperties.isEmpty()) ||
+    	  (!$element.disjointProperties.isEmpty()) )
+    <table>
+    #if($element.InverseOf)
+      <tr>
+      <td>This property is a inverse property of</td>
+      <td><span class="parrot-element-ref parrot-property-ref"><a href="#$element.InverseOf.LocalName">$element.InverseOf.Label</a></span></td>
+      </tr>
+    #end
+
+    #if($element.Domain)
+      <tr>
+      <td>The domain of this property is</td>
+      <td><span class="parrot-element-ref parrot-class-ref"><a href="#$element.Domain.LocalName">$element.Domain.Label</a></span></td>
+      </tr>
+    #end
+
+    #if($element.Range)
+      <tr>
+      <td>The range of this property is</td>
+      <td><span class="parrot-element-ref parrot-${element.Range.kindString}-ref"><a href="#$element.Range.LocalName">$element.Range.Label</a></span></td>
+      </tr>
+    #end
+   
+    #if(!$element.SuperProperties.isEmpty())
+      <tr>
+      <td>This property is a sub property of</td>
+      <td>
+      #foreach($superproperty in $element.SuperProperties)
+      <span class="parrot-element-ref parrot-property-ref"><a href="#$superproperty.LocalName">$superproperty.Label</a></span>
+      #end
+      </td>
+      </tr>
+    #end
+
+    #if(!$element.SubProperties.isEmpty())
+      <tr>
+      <td>This property is super property of</td>
+      <td>
+      #foreach($subproperty in $element.SubProperties)
+      <span class="parrot-element-ref parrot-property-ref"><a href="#$subproperty.LocalName">$subproperty.Label</a></span>
+      #end
+      </td>
+      </tr>
+    #end
+   
+    #if(!$element.EquivalentProperties.isEmpty())
+      <tr>
+      <td>This property is a equivalent property of</td>
+      <td>
+      #foreach($equivalentProperty in $element.EquivalentProperties)
+      <span class="parrot-element-ref parrot-property-ref"><a href="#$equivalentProperty.LocalName">$equivalentProperty.Label</a></span>
+      #end
+      </td>
+      </tr>
+    #end
+
+    #if(!$element.disjointProperties.isEmpty())
+      <tr>
+      <td>This property is a disjoint property of</td>
+      <td>
+      #foreach($property in $element.disjointProperties)
+      <span class="parrot-element-ref parrot-property-ref"><a href="#$property.LocalName">$property.Label</a></span>
+      #end
+      </td>
+      </tr>
+    #end
+    </table>
+    #end   
+   </div>
+  #end
+  
+  #if ( $inuse )
+    <div class="inuse">
+    <h4>In use</h4>
+    #if($element.isDefinedBy)
+		<p>This property is defined by <span class="parrot-element-ref parrot-${element.isDefinedBy.kindString}-ref"><a href="#$element.isDefinedBy.LocalName">$element.isDefinedBy.Label</a></span></p>
+	#end
+
+	#if($element.occurrences != 0)
+        <p>This property has $element.occurrences occurrences</p>
+    #end
+
+    #if ( (!$element.InverseReferences.isEmpty()) || (!$element.inverseRuleReferences.isEmpty()) )
+    <dl>
+      #if(!$element.InverseReferences.isEmpty())
+        <dt>Referenced from</dt>
+        #foreach($reference in $element.InverseReferences)
+        <dd><span class="parrot-element-ref><a href="#$reference.LocalName">$reference.Label</a></span></dd>
+        #end
+      #end
+
+      #if(!$element.inverseRuleReferences.isEmpty())
+        <dt>Referenced rules</dt>
+        #foreach($reference in $element.inverseRuleReferences)
+        <dd><span class="parrot-element-ref parrot-rule-ref"><a href="#$reference.LocalName">$reference.Label</a></span></dd>
+        #end
+      #end
+    </dl>
+    #end
+    </div>
+  #end
+  
+  #if ( $otherinfo )
+  	#parse("html/documentation.vm")
+  #end
+  
+    
+  </div>
+</div>   

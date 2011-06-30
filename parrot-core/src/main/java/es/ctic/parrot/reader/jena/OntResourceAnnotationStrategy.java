@@ -131,6 +131,8 @@ public class OntResourceAnnotationStrategy {
 	 */
 	public Collection<Label> getLabels(OntResource ontResource, Locale locale){
 		
+		//logger.debug("searching labels for locale="+locale);
+		
 		Collection<Label> labels = new HashSet<Label>();
 
 		Collection<Label> skosXLPrefLabels = getSkosxlLabels(ontResource, SKOS_XL_PREF_LABEL, locale);
@@ -168,6 +170,7 @@ public class OntResourceAnnotationStrategy {
             labels.addAll(rdfsLabels);
         }
 		
+        //logger.debug("labels"+labels);
 		return labels;
 	}
 

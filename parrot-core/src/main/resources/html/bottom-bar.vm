@@ -1,0 +1,48 @@
+<div id="bottom-bar"> 
+        <ul> 
+            <li title="Go to top"><a href="#"><img src="images/top.png" alt="Go to top" /></a></li> 
+        </ul> 
+        <span class="jx-separator-left"></span> 
+        <ul> 
+		#if(!$document.ontologyDetailViews.isEmpty())
+            <li title="Ontologies"><a href="#ontologies"><img src="images/icon-ontology-16.png" alt="Ontologies" /></a></li> 
+		#end
+		
+		#if(!$document.ontologyClassDetailViews.isEmpty())
+            <li title="Classes"><a href="#classes"><img src="images/icon-class-16.png" alt="Classes" /></a></li> 
+		#end
+		
+		#if(!$document.ontologyPropertyDetailViews.isEmpty())
+            <li title="Properties"><a href="#properties"><img src="images/icon-property-16.png" alt="Properties" /></a></li> 
+		#end
+		
+		#if(!$document.ontologyIndividualDetailViews.isEmpty())
+			<li title="Individuals"><a href="#individuals"><img src="images/icon-individual-16.png" alt="Individuals" /></a></li> 
+		#end
+		
+		#if(!$document.ruleSetDetailViews.isEmpty())
+			<li title="Rule sets"><a href="#rulesets"><img src="images/icon-ruleset-16.png" alt="Rule sets" /></a></li> 
+		#end
+		
+		#if(!$document.ruleDetailViews.isEmpty())
+			<li title="Rules"><a href="#rules"><img src="images/icon-rule-16.png" alt="Rules" /></a></li> 
+		#end
+        </ul> 
+        <span class="jx-separator-left"></span>        
+        <ul> 
+			<li title="Expand/Collapse all" ><a href="#" id="openCloseAll"><img src="images/block.png" alt="Expand/Collapse all"/></a></li> 
+        </ul> 
+        <span class="jx-separator-left"></span>
+        
+        <ul class="jx-bar-button-right">
+		    ## rename the variable in order to unescape the html content
+		    #if ($document.reportURL)
+				#set($unescapehtml_back-to-form = "$document.reportURL&amp;showform=true")
+			#else
+				#set($unescapehtml_back-to-form = "\")
+			#end
+	      <li title="Back to form"><a href="$unescapehtml_back-to-form"><img src="images/back.png" alt="Back to form" /></a></li>
+   		</ul>
+   		<span class="jx-separator-right"></span>
+    
+</div> 

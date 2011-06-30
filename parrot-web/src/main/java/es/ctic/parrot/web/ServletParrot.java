@@ -10,6 +10,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -56,6 +57,23 @@ public class ServletParrot extends HttpServlet {
 
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		
+		// begin logger.info
+		
+		logger.info("requestURL="+req.getRequestURL());
+		
+		Map<String, String []> parameterMap = req.getParameterMap();
+		for (Map.Entry<String,String []> entry : parameterMap.entrySet())
+		{
+			StringBuffer sb = new StringBuffer("parameter="+entry.getKey() + " -");
+		    
+		    for (String valuesArray : entry.getValue()){
+		    	sb.append(" value="+valuesArray);
+		    }
+		    logger.info(sb);
+		}
+		logger.info("referer="+req.getParameter("referer"));		
+		
+		// end logger.info
 		
 		String showForm = req.getParameter("showform");
 		if ( showForm != null && showForm.equalsIgnoreCase("true") && req.getMethod().equalsIgnoreCase("POST") == false){

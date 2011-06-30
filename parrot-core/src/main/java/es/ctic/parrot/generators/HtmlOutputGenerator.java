@@ -58,13 +58,15 @@ public class HtmlOutputGenerator implements OutputGenerator {
      * @return a URL without the <code>language</code> parameter (if exists).
      */
 	private String getNoLangURL(String url) {
-		if (url.matches(".*&language=.*?(?=[&]).*")){
-        	url = url.replaceFirst("&language=.*?(?=[&])", "");
-        } else if (url.matches(".*&language=.*$")) {
-        	url = url.replaceFirst("&language=.*$", "");
-        } else {
-        	//url = url ;
-        }
+		if (url != null){
+			if (url.matches(".*&language=.*?(?=[&]).*")){
+	        	url = url.replaceFirst("&language=.*?(?=[&])", "");
+	        } else if (url.matches(".*&language=.*$")) {
+	        	url = url.replaceFirst("&language=.*$", "");
+	        } else {
+	        	//url = url ;
+	        }
+		}
 		return url;
 	}
 

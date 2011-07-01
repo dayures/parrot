@@ -1,156 +1,158 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>es.ctic.parrot</groupId>
-		<artifactId>parrot</artifactId>
-		<version>1.0-SNAPSHOT</version>
-	</parent>
-	<groupId>es.ctic.parrot</groupId>
-	<artifactId>parrot-web</artifactId>
-	<packaging>war</packaging>
-	<version>1.0-SNAPSHOT</version>
-	<name>parrot-web Maven Webapp</name>
-	<description>Parrot Web Project</description>
-	<url>http://idi.fundacionctic.org/parrot</url>
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>es.ctic.parrot</groupId>
+    <artifactId>parrot</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <groupId>es.ctic.parrot</groupId>
+  <artifactId>parrot-web</artifactId>
+  <packaging>war</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>parrot-web Maven Webapp</name>
+  <description>Parrot Web Project</description>
+  <url>http://idi.fundacionctic.org/parrot</url>
 
-	<developers>
-		<developer>
-			<id>sergio</id>
-			<name>Sergio Fernández</name>
-			<email>sergio.fernandez@fundacionctic.org</email>
-			<url>http://www.wikier.org/</url>
-		</developer>
-		<developer>
-			<id>minguez</id>
-			<name>Iván Mínguez</name>
-			<email>ivan.minguez@fundacionctic.org</email>
-			<url>http://iminguez.com/</url>
-		</developer>
-		<developer>
-			<id>berrueta</id>
-			<name>Diego Berrueta Muñoz</name>
-			<email>diego.berrueta@fundacionctic.org</email>
-			<url>http://www.berrueta.net</url>
-		</developer>
-		<developer>
-			<id>tejo</id>
-			<name>Carlos Tejo Alonso</name>
-			<email>carlos.tejo@fundacionctic.org</email>
-			<url>http://dayures.net</url>
-		</developer>
-	</developers>
+  <developers>
+    <developer>
+      <id>sergio</id>
+      <name>Sergio Fernández</name>
+      <email>sergio.fernandez@fundacionctic.org</email>
+      <url>http://www.wikier.org/</url>
+    </developer>
+    <developer>
+      <id>minguez</id>
+      <name>Iván Mínguez</name>
+      <email>ivan.minguez@fundacionctic.org</email>
+      <url>http://iminguez.com/</url>
+    </developer>
+    <developer>
+      <id>berrueta</id>
+      <name>Diego Berrueta Muñoz</name>
+      <email>diego.berrueta@fundacionctic.org</email>
+      <url>http://www.berrueta.net</url>
+    </developer>
+    <developer>
+      <id>tejo</id>
+      <name>Carlos Tejo Alonso</name>
+      <email>carlos.tejo@fundacionctic.org</email>
+      <url>http://dayures.net</url>
+    </developer>
+  </developers>
 
-	<dependencies>
-		<dependency>
-			<groupId>es.ctic.parrot</groupId>
-			<artifactId>parrot-core</artifactId>
-			<version>1.0-SNAPSHOT</version>
-		</dependency>
-
+  <dependencies>
+    <dependency>
+      <groupId>es.ctic.parrot</groupId>
+      <artifactId>parrot-core</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
-    
     <dependency>
-	<groupId>log4j</groupId>
-	<artifactId>log4j</artifactId>
-	<version>1.2.14</version>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.14</version>
     </dependency>
-    
     <dependency>
-    		<groupId>com.sun.jersey</groupId>
-    		<artifactId>jersey-client</artifactId>
-    		<version>1.2</version>
+      <groupId>com.sun.jersey</groupId>
+      <artifactId>jersey-client</artifactId>
+      <version>1.2</version>
     </dependency>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>2.5</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-		   <groupId>javax.servlet.jsp</groupId>
-		   <artifactId>jsp-api</artifactId>
-		   <version>2.1</version>
-		   <scope>provided</scope>
-		 </dependency>
-		 <dependency>
-		   <groupId>javax.servlet</groupId>
-		   <artifactId>jstl</artifactId>
-		   <scope>runtime</scope>
-		   <version>1.2</version>
-		 </dependency>
-		 <dependency>
-		 	<groupId>commons-fileupload</groupId>
-		 	<artifactId>commons-fileupload</artifactId>
-		 	<version>1.2.1</version>
-		 	<type>jar</type>
-		 	<scope>compile</scope>
-		 </dependency>
-		 <dependency>
-		 	<groupId>commons-io</groupId>
-		 	<artifactId>commons-io</artifactId>
-		 	<version>1.4</version>
-		 	<type>jar</type>
-		 	<scope>compile</scope>
-		 </dependency>
-	</dependencies>
-	<build>
-		<finalName>parrot</finalName>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+      <version>2.5</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet.jsp</groupId>
+      <artifactId>jsp-api</artifactId>
+      <version>2.1</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>jstl</artifactId>
+      <scope>runtime</scope>
+      <version>1.2</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-fileupload</groupId>
+      <artifactId>commons-fileupload</artifactId>
+      <version>1.2.1</version>
+      <type>jar</type>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>1.4</version>
+      <type>jar</type>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-web</artifactId>
+      <version>3.0.5.RELEASE</version>
+    </dependency>
+  </dependencies>
 
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.1</version>
-				<configuration>
-					<source>1.5</source>
-					<target>1.5</target>
-					<encoding>utf-8</encoding>
-					<showDeprecation>true</showDeprecation>
-				</configuration>
-			</plugin>
-			<plugin>
-                <groupId>net.kindleit</groupId>
-                <artifactId>maven-gae-plugin</artifactId>
-                <version>0.8.2</version>
-                <dependencies>
-                  <dependency>
-                    <groupId>net.kindleit</groupId>
-                    <artifactId>gae-runtime</artifactId>
-                    <version>${gae.version}</version>
-                    <type>pom</type>
-                  </dependency>
-                </dependencies>
-                <configuration>
-                		<serverId>appengine.google.com</serverId>
-                </configuration>
-            </plugin>
-            <plugin>
-				<groupId>org.mortbay.jetty</groupId>
-				<artifactId>jetty-maven-plugin</artifactId>
-				<version>7.1.6.v20100715</version>
-				<configuration>
-					<scanIntervalSeconds>3</scanIntervalSeconds>
-				</configuration>
-			</plugin>			
-		</plugins>
+  <build>
+    <finalName>parrot</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.1</version>
+        <configuration>
+          <source>1.5</source>
+          <target>1.5</target>
+          <encoding>utf-8</encoding>
+          <showDeprecation>true</showDeprecation>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>net.kindleit</groupId>
+        <artifactId>maven-gae-plugin</artifactId>
+        <version>0.8.2</version>
+        <dependencies>
+          <dependency>
+            <groupId>net.kindleit</groupId>
+            <artifactId>gae-runtime</artifactId>
+            <version>${gae.version}</version>
+            <type>pom</type>
+          </dependency>
+        </dependencies>
+        <configuration>
+          <serverId>appengine.google.com</serverId>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.mortbay.jetty</groupId>
+        <artifactId>jetty-maven-plugin</artifactId>
+        <version>7.1.6.v20100715</version>
+        <configuration>
+          <scanIntervalSeconds>3</scanIntervalSeconds>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 
-	</build>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <gae.version>1.4.2</gae.version>
+  </properties>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <gae.version>1.4.2</gae.version>
-    </properties>
-    
-	  <repositories>
+  <repositories>
     <repository>
       <id>java.net</id>
       <url>http://download.java.net/maven/2</url>
     </repository>
   </repositories>
+
 </project>
 

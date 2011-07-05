@@ -32,8 +32,8 @@
         <ul> 
 			<li title="Expand/Collapse all" ><a href="#" id="openCloseAll"><img src="images/block.png" alt="Expand/Collapse all"/></a></li> 
         </ul> 
-        <span class="jx-separator-left"></span>
-        
+  		<span class="jx-separator-left"></span>
+                
         <ul class="jx-bar-button-right">
 		    ## rename the variable in order to unescape the html content
 		    #if ($document.reportURL)
@@ -43,6 +43,14 @@
 			#end
 	      <li title="Back to form"><a href="$unescapehtml_back-to-form"><img src="images/back.png" alt="Back to form" /></a></li>
    		</ul>
+
+  		<span class="jx-separator-right"></span>
+
+
+   		<ul class="jx-bar-button-right">
+		  <li title="Help"><a href="/help"><img src="images/help.png" alt="Help" /></a></li>
+        </ul>
+        
    		<span class="jx-separator-right"></span>
     
 </div> 

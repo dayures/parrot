@@ -14,8 +14,8 @@
 
 #parse("html/documentation-check.vm")
 
+#parse("html/md5.vm")
 
-<div class="term">
    <h3 id="$element.Anchor">#if ($element.uriFragment) <a id="$element.uriFragment"></a>#end#if ($element.uriFragment) <a id="$element.uriFragment"></a>#end<span class="parrot-element-title parrot-dataset-title">$element.Label</span> (Dataset)
     #parse("html/detail-menu.vm")
   </h3>

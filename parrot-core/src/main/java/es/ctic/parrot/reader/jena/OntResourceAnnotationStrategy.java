@@ -11,6 +11,7 @@ import com.hp.hpl.jena.datatypes.xsd.XSDDatatype;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.ontology.OntResource;
 import com.hp.hpl.jena.rdf.model.Literal;
+import com.hp.hpl.jena.rdf.model.LiteralRequiredException;
 import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.ResourceFactory;
@@ -184,44 +185,44 @@ public class OntResourceAnnotationStrategy {
 	 *  <li>http://www.w3.org/2000/01/rdf-schema#comment</li>
 	 * </ol>
 	 *  
-	 * @param ontResource the ontology resource.
+	 * @param resource the resource.
 	 * @param locale the locale.
 	 * @return the description or <code>null</code> if there is the resource has no description for that locale.
 	 */
-	public String getDescription(OntResource ontResource, Locale locale) {
+	public String getDescription(Resource resource, Locale locale) {
 
-    	if (ontResource == null){
+    	if (resource == null){
     		return null;
     	}
 
-		String description = getLiteralPropertyValue(ontResource, DCT_DESCRIPTION, locale);
+		String description = getLiteralPropertyValue(resource, DCT_DESCRIPTION, locale);
 	
 		if (description != null){
     		return description;
 		}
 
-		description = getLiteralPropertyValue(ontResource, DCT_DESCRIPTION); //not language selected
+		description = getLiteralPropertyValue(resource, DCT_DESCRIPTION); //not language selected
 		
 		if (description != null){
     		return description;
 		}
 		
-		description = getLiteralPropertyValue(ontResource, DC_DESCRIPTION, locale);
+		description = getLiteralPropertyValue(resource, DC_DESCRIPTION, locale);
 		if (description != null){
     		return description;
 		}
 
-		description = getLiteralPropertyValue(ontResource, DC_DESCRIPTION); //not language selected
+		description = getLiteralPropertyValue(resource, DC_DESCRIPTION); //not language selected
 		if (description != null){
     		return description;
 		}
 		
-		description = getLiteralPropertyValue(ontResource, RDFS_COMMENT, locale);
+		description = getLiteralPropertyValue(resource, RDFS_COMMENT, locale);
 		if (description != null){
     		return description;
 		}
 
-		return getLiteralPropertyValue(ontResource, RDFS_COMMENT); //not language selected
+		return getLiteralPropertyValue(resource, RDFS_COMMENT); //not language selected
 
 	}
 	
@@ -315,33 +316,40 @@ public class OntResourceAnnotationStrategy {
 			Statement statement = listStatements.next();
 			Label literalLabel = new Label();
 			literalLabel.setQualifier(uri);
-			//It cannot applied skosLabel.setUri()
-			literalLabel.setText(statement.getObject().asLiteral().getLexicalForm());
-			String LanguageTag = statement.getObject().asLiteral().getLanguage(); 
-			if (LanguageTag.length() != 0){ //The literal has language tag
-				String language = LanguageTag.split("-")[0]; 
-				literalLabel.setLocale(new Locale(language)); // FIXME do it more specified using Locale(String language, String country, String variant)
-			}
 			
-			// if there is not locale restriction
-			if (locale == null){
-				if (literalLabel.getLocale() == null){  //and there is not language tag for the literal
-					//logger.debug(literalLabel + " is " + uri + " for resource " + ontResource);
-					literalLabels.add(literalLabel);
+			//It cannot applied skosLabel.setUri()
+			try{
+				literalLabel.setText(statement.getObject().asLiteral().getLexicalForm());
+
+				String LanguageTag = statement.getObject().asLiteral().getLanguage(); 
+				if (LanguageTag.length() != 0){ //The literal has language tag
+					String language = LanguageTag.split("-")[0]; 
+					literalLabel.setLocale(new Locale(language)); // FIXME do it more specified using Locale(String language, String country, String variant)
+				}
+				
+				// if there is not locale restriction
+				if (locale == null){
+					if (literalLabel.getLocale() == null){  //and there is not language tag for the literal
+						//logger.debug(literalLabel + " is " + uri + " for resource " + ontResource);
+						literalLabels.add(literalLabel);
+					} else {
+						//logger.debug("Not add label  " + literalLabel + " for resource " + getOntResource() + " because it has language tag=" + literalLabel.getLocale());
+						literalLabels.add(literalLabel);
+					}
 				} else {
-					//logger.debug("Not add label  " + literalLabel + " for resource " + getOntResource() + " because it has language tag=" + literalLabel.getLocale());
-					literalLabels.add(literalLabel);
+					//compare locales
+					if (locale.equals(literalLabel.getLocale())) {
+						//logger.debug(literalLabel + " is " + uri + " for resource " + getOntResource());
+						literalLabels.add(literalLabel);
+					} else{
+						//logger.debug("Not add label  " + literalLabel + " for resource " + getOntResource() + " because its locale " + literalLabel.getLocale() + " does not match with required locale " + locale);
+					}
 				}
-			} else {
-				//compare locales
-				if (locale.equals(literalLabel.getLocale())) {
-					//logger.debug(literalLabel + " is " + uri + " for resource " + getOntResource());
-					literalLabels.add(literalLabel);
-				} else{
-					//logger.debug("Not add label  " + literalLabel + " for resource " + getOntResource() + " because its locale " + literalLabel.getLocale() + " does not match with required locale " + locale);
-				}
+			} catch (LiteralRequiredException e) {
+				logger.warn("A literal is required. Label="+statement.getObject());
 			}
-		}
+	
+			}
 		
 		return literalLabels;
 	}
@@ -370,114 +378,108 @@ public class OntResourceAnnotationStrategy {
 			Statement statement = listStatements.next();
 			Label skosxlLabel = new Label();
 			skosxlLabel.setQualifier(uri);
-			skosxlLabel.setUri(ontModel.getOntResource(statement.getObject().asResource()).getURI());
-			StmtIterator it = ontModel.listStatements(statement.getObject().asResource(), ResourceFactory.createProperty(SKOS_XL_LITERAL_FORM), (RDFNode) null);
-			while (it.hasNext()){
-				Statement st = it.next();
-				skosxlLabel.setText(st.getObject().asLiteral().getLexicalForm());
-				String LanguageTag = st.getObject().asLiteral().getLanguage(); 
-				if (LanguageTag.equals("") == false){
-					String language = LanguageTag.split("-")[0];
-					skosxlLabel.setLocale(new Locale(language));
-				}
-
-				if (locale != null) {
-					//compare locales
-					if (locale.equals(skosxlLabel.getLocale())) {
-						//logger.debug(skosxlLabel + " is " + uri + " for resource " + getOntResource());
-						skosxlLabels.add(skosxlLabel);
-					} else{
-						//logger.debug("Not add label  " + skosxlLabel + " for resource " + getOntResource() + " because its locale " + skosxlLabel.getLocale() + " does not match with required locale " + locale);
+			
+			try {
+				skosxlLabel.setUri(ontModel.getOntResource(statement.getObject().asResource()).getURI());
+				StmtIterator it = ontModel.listStatements(statement.getObject().asResource(), ResourceFactory.createProperty(SKOS_XL_LITERAL_FORM), (RDFNode) null);
+				while (it.hasNext()){
+					Statement st = it.next();
+					try {
+						skosxlLabel.setText(st.getObject().asLiteral().getLexicalForm());
+						String LanguageTag = st.getObject().asLiteral().getLanguage(); 
+						if (LanguageTag.equals("") == false){
+							String language = LanguageTag.split("-")[0];
+							skosxlLabel.setLocale(new Locale(language));
+						}
+		
+						if (locale != null) {
+							//compare locales
+							if (locale.equals(skosxlLabel.getLocale())) {
+								//logger.debug(skosxlLabel + " is " + uri + " for resource " + getOntResource());
+								skosxlLabels.add(skosxlLabel);
+							} else{
+								//logger.debug("Not add label  " + skosxlLabel + " for resource " + getOntResource() + " because its locale " + skosxlLabel.getLocale() + " does not match with required locale " + locale);
+							}
+						} else {
+							//logger.debug(skosxlLabel + " is " + uri + " for resource " + getOntResource());
+							skosxlLabels.add(skosxlLabel);
+						}
+					} catch (LiteralRequiredException e) {
+						logger.warn("A literal is required. SKOS-XL literal form="+statement.getObject());
 					}
-				} else {
-					//logger.debug(skosxlLabel + " is " + uri + " for resource " + getOntResource());
-					skosxlLabels.add(skosxlLabel);
 				}
+			} catch (ResourceRequiredException e) {
+				logger.warn("A resource is required. SKOS-XL Label="+statement.getObject());
 			}
+
 		}
 		
 		return skosxlLabels;
 	}
 	
 	/**
-	 * Returns a collection of videos related to the ontResource.
-	 * @param ontResource the ontResource.
-	 * @return a collection of videos related to the ontResource.
+	 * Returns a collection of videos related to the resource.
+	 * @param resource the resource.
+	 * @return a collection of videos related to the resource.
 	 */
-	private Collection<RelatedDocument> getVideosRelated(OntResource ontResource) {
+	private Collection<RelatedDocument> getVideosRelated(Resource resource) {
+		
 		Collection<RelatedDocument> videos = new ArrayList<RelatedDocument>();
-    	if (ontResource == null){
-    		return videos;
-    	} else {		
 
-			StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(OG_VIDEO));
-			while(it.hasNext()){
-				Statement statement = it.nextStatement();
-				try{
-					RelatedDocument video = new RelatedDocument();
-					video.setUri(statement.getObject().asResource().getURI());
-					video.setType(Type.VIDEO);
-					videos.add(video);
-				} catch (ResourceRequiredException e)  {
-					logger.warn("Ignore triple "+ statement +" because it is not a Object property");
-				}
+		if (resource != null){
+			for (String videoUri : getObjectPropertyCollectionURI(resource, OG_VIDEO)){				
+				RelatedDocument video = new RelatedDocument();
+				video.setUri(videoUri);
+				video.setType(Type.VIDEO);
+				videos.add(video);
 			}
-			return videos;
     	}
+    	
+    	return videos;
 	}
 	
 	/**
-	 * Returns a collection of URIs related to the ontResource.
-	 * @param ontResource the ontResource.
-	 * @return a collection of URIs related to the ontResource.
+	 * Returns a collection of URIs related to the resource.
+	 * @param resource the resource.
+	 * @return a collection of URIs related to the resource.
 	 */
-	private Collection<RelatedDocument> getUrisRelated(OntResource ontResource) {
-		Collection<RelatedDocument> videos = new ArrayList<RelatedDocument>();
-    	if (ontResource == null){
-    		return videos;
-    	} else {		
+	private Collection<RelatedDocument> getUrisRelated(Resource resource) {
+		
+		Collection<RelatedDocument> uriLinks = new ArrayList<RelatedDocument>();
+    	
+		if (resource != null){
 
-			StmtIterator it = ontResource.listProperties(RDFS.seeAlso);
-			while(it.hasNext()){
-				Statement statement = it.nextStatement();
-				try{
-					RelatedDocument uriLink = new RelatedDocument();
-					uriLink.setUri(statement.getObject().asResource().getURI());
-					uriLink.setType(Type.URI);
-					videos.add(uriLink);
-				} catch (ResourceRequiredException e)  {
-					logger.warn("Ignore triple "+ statement +" because it is not a Object property");
-				}
+			for (String videoUri : getObjectPropertyCollectionURI(resource, RDFS.seeAlso.getURI())){				
+				RelatedDocument uriLink = new RelatedDocument();
+				uriLink.setUri(videoUri);
+				uriLink.setType(Type.URI);
+				uriLinks.add(uriLink);
 			}
-			return videos;
+
     	}
+
+		return uriLinks;
 	}
 	
 	/**
-	 * Returns a collection of images related to the ontResource.
-	 * @param ontResource the ontResource.
-	 * @return a collection of images related to the ontResource.
+	 * Returns a collection of images related to the resource.
+	 * @param resource the resource.
+	 * @return a collection of images related to the resource.
 	 */
-	private Collection<RelatedDocument> getImagesRelated(OntResource ontResource) {
+	private Collection<RelatedDocument> getImagesRelated(Resource resource) {
+    	
 		Collection<RelatedDocument> images = new ArrayList<RelatedDocument>();
-    	if (ontResource == null){
-    		return images;
-    	} else {		
 
-			StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(FOAF_DEPICTION));
-			while(it.hasNext()){
-				Statement statement = it.nextStatement();
-				try{
-					RelatedDocument image = new RelatedDocument();
-					image.setUri(statement.getObject().asResource().getURI());
-					image.setType(Type.IMAGE);
-					images.add(image);
-				} catch (ResourceRequiredException e)  {
-					logger.warn("Ignore triple "+ statement +" because it is not a Object property");
-				}
+		if (resource != null){
+			for (String videoUri : getObjectPropertyCollectionURI(resource, FOAF_DEPICTION)){				
+				RelatedDocument image = new RelatedDocument();
+				image.setUri(videoUri);
+				image.setType(Type.IMAGE);
+				images.add(image);
 			}
-			return images;
     	}
+    	
+    	return images;
 	}
 	
 	/**
@@ -554,11 +556,11 @@ public class OntResourceAnnotationStrategy {
 			StmtIterator listStatements = model.listStatements(ResourceFactory.createResource(uri), ResourceFactory.createProperty(DCT_IS_PART_OF), (RDFNode) null );
 			if (listStatements.hasNext()){ // only one iteration
 				Statement statement = listStatements.next();
-				return getSourceDocumentUri(model, statement.getObject().asResource().getURI());
-			} else {
-				return null;
+				if (statement.getObject().isResource()) {
+					return getSourceDocumentUri(model, statement.getObject().asResource().getURI());
+				}
 			}
-
+			return null;
 		}
 		
 	}	
@@ -652,130 +654,137 @@ public class OntResourceAnnotationStrategy {
 
 	/**
 	 * Returns the preferred prefix.
-	 * @param ontResource the ontResource.
+	 * @param resource the resource.
 	 * @return the preferred prefix.
 	 */
-	public String getPreferredPrefix(OntResource ontResource) {
-		return getLiteralPropertyValue(ontResource, VANN_PREFERRED_PREFIX);
+	public String getPreferredPrefix(Resource resource) {
+		return getLiteralPropertyValue(resource, VANN_PREFERRED_PREFIX);
 	}
 
 	/**
 	 * Returns the preferred namespace.
-	 * @param ontResource the ontResource.
+	 * @param resource the resource.
 	 * @return the preferred namespace.
 	 */
-	public String getPreferredNamespace(OntResource ontResource) {
-		return getLiteralPropertyValue(ontResource, VANN_PREFERRED_NAMESPACE);
+	public String getPreferredNamespace(Resource resource) {
+		return getLiteralPropertyValue(resource, VANN_PREFERRED_NAMESPACE);
 	}
 	
 	/**
 	 * Returns the date (dct:date or dc:date).
-	 * @param ontResource the ontResource.
+	 * @param resource the resource.
 	 * @return the date.
 	 */
-	public String getDate(OntResource ontResource) {
-		//ontResource.getModel().write(System.out);
-		String date = getLiteralPropertyValue(ontResource, DCT_DATE);
-		//logger.debug("ontResource="+ontResource+" date DCT="+date);
+	public String getDate(Resource resource) {
+
+		String date = getLiteralPropertyValue(resource, DCT_DATE);
+
 		if (date != null){
 			return date;
 		} else {
-			//logger.debug("ontResource="+ontResource+" date DC="+date);
-			return getLiteralPropertyValue(ontResource, DC_DATE);
+			return getLiteralPropertyValue(resource, DC_DATE);
 		}
 	}
 
 	/**
 	 * Returns information about the rights.
-	 * @param ontResource the ontResource.
+	 * @param resource the resource.
 	 * @return information about the rights.
 	 */
-	public String getRights(OntResource ontResource) {
-		return getLiteralPropertyValue(ontResource, DC_RIGHTS);
+	public String getRights(Resource resource) {
+		return getLiteralPropertyValue(resource, DC_RIGHTS);
 	}
 	
 	/**
 	 * Returns the creators.
-	 * @param ontResource the ontResource.
+	 * @param resource the resource.
 	 * @return the creators.
 	 */	
-	public Collection<String> getCreators(OntResource ontResource) {
-		return getLiteralPropertyValues(ontResource, DC_CREATOR);
+	public Collection<String> getCreators(Resource resource) {
+		return getLiteralPropertyValues(resource, DC_CREATOR);
 	}
 	
 	/**
 	 * Returns the creator agents.
-	 * @param ontResource the ontResource.
+	 * @param resource the resource.
 	 * @return the creator agents.
 	 */
-	public Collection<Agent> getCreatorAgents(OntResource ontResource) {
+	public Collection<Agent> getCreatorAgents(Resource resource) {
 		Collection<Agent> creators = new HashSet<Agent>(); 
-		creators.addAll(getAgentsFromObjectProperty(ontResource, DCT_CREATOR));
-		creators.addAll(getAgentsFromObjectProperty(ontResource, FOAF_MAKER));
+		creators.addAll(getAgentsFromObjectProperty(resource, DCT_CREATOR));
+		creators.addAll(getAgentsFromObjectProperty(resource, FOAF_MAKER));
 		return creators;
 	}
 
 	/**
 	 * Returns the contributors.
-	 * @param ontResource the ontResource.
+	 * @param resource the resource.
 	 * @return the contributors.
 	 */
-	public Collection<String> getContributors(OntResource ontResource) {
-		return getLiteralPropertyValues(ontResource, DC_CONTRIBUTOR);
+	public Collection<String> getContributors(Resource resource) {
+		return getLiteralPropertyValues(resource, DC_CONTRIBUTOR);
 	}
 	
 	/**
 	 * Returns the contributor agents.
-	 * @param ontResource the ontResource.
+	 * @param resource the resource.
 	 * @return the contributor agents.
 	 */
-	public Collection<Agent> getContributorAgents(OntResource ontResource) {
-		return getAgentsFromObjectProperty(ontResource, DCT_CONTRIBUTOR);
+	public Collection<Agent> getContributorAgents(Resource resource) {
+		return getAgentsFromObjectProperty(resource, DCT_CONTRIBUTOR);
 	}
 	
 	/**
 	 * Returns the publishers.
-	 * @param ontResource the ontResource.
+	 * @param resource the resource.
 	 * @return the publishers.
 	 */
-	public Collection<String> getPublishers(OntResource ontResource) {
-		return getLiteralPropertyValues(ontResource, DC_PUBLISHER);
+	public Collection<String> getPublishers(Resource resource) {
+		return getLiteralPropertyValues(resource, DC_PUBLISHER);
 	}
 	
 	/**
 	 * Returns the publisher agents.
-	 * @param ontResource the ontResource.
+	 * @param resource the resource.
 	 * @return the publisher agents.
 	 */
-	public Collection<Agent> getPublisherAgents(OntResource ontResource) {
-		return getAgentsFromObjectProperty(ontResource, DCT_PUBLISHER);
+	public Collection<Agent> getPublisherAgents(Resource resource) {
+		return getAgentsFromObjectProperty(resource, DCT_PUBLISHER);
 	}
 	
-	private Collection<Agent> getAgentsFromObjectProperty(OntResource ontResource, String property) {
+	private Collection<Agent> getAgentsFromObjectProperty(Resource resource, String property) {
 		Collection<Agent> agents = new HashSet<Agent>();
-		StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(property));
+		StmtIterator it = resource.listProperties(ResourceFactory.createProperty(property));
 		while (it.hasNext()) {
-			
 			Statement st = it.next();
-			Resource object = st.getResource();
+			if (st.getObject().isResource()){
+				
+				Resource object = st.getObject().asResource();
+				
+				try { 
+					
+					String homepage = getObjectPropertyURI(object, FOAF_HOMEPAGE);
+					if (homepage == null) {
+						homepage= object.getURI();
+					}
 
-			String name = object.asResource().getURI();
-			String homepage = object.asResource().getURI();
-			
-			Statement homepageStatement = object.getProperty(ResourceFactory.createProperty(FOAF_HOMEPAGE));
-			if (homepageStatement != null){
-				homepage = homepageStatement.getObject().asResource().getURI();
-			}
+					String name = getLiteralPropertyValue(object, FOAF_NAME);
+					if (name == null){
+						name = object.getURI();
+					}
 
-			Statement nameStatement = object.getProperty(ResourceFactory.createProperty(FOAF_NAME));
-			if (nameStatement != null){
-				name = nameStatement.getObject().asLiteral().getLexicalForm();
-			}
-
-			if (name != null && homepage != null){
-				agents.add(new Agent(name, homepage));
+					if (name != null && homepage != null){
+						agents.add(new Agent(name, homepage));
+					} else {
+						logger.debug("not added "+property +" Agent for "+resource+" because it doen't have neither name or homepage");
+					}
+				} catch (ResourceRequiredException e)  {
+					logger.warn("A resource is required. Object="+object);
+				} catch (LiteralRequiredException e) {
+					logger.warn("A literal is required. Object="+object);
+				}
 			} else {
-				logger.debug("not added "+property +" Agent for "+ontResource+" because it doen't have neither name or homepage");
+				logger.warn("A resource is required for the property "+property+". Object="+st.getObject());
 			}
 		}
 		return agents;
@@ -783,43 +792,35 @@ public class OntResourceAnnotationStrategy {
 
 	/**
 	 * Returns the reference where this resource is defined.
-	 * @param ontResource the ontResource.
+	 * @param resource the resource.
 	 * @return the reference where this resource is defined.
 	 */
-	public String getIsDefinedBy(OntResource ontResource) {
-		return getObjectPropertyURI(ontResource, RDF_SCHEMA_IS_DEFINED_BY);
+	public String getIsDefinedBy(Resource resource) {
+		return getObjectPropertyURI(resource, RDF_SCHEMA_IS_DEFINED_BY);
 	}
 	
 	/**
 	 * Returns the URI of the license associated or <code>null</code> if there is no license URI associated.
-	 * @param ontResource the ontResource.	
+	 * @param resource the resource.	
 	 * @return the URI of the license associated or <code>null</code> if there is no license URI associated.
 	 */
-	public String getLicenseLabel(OntResource ontResource) {
-
-    	if (ontResource == null){
+	public String getLicenseLabel(Resource resource) {
+		
+    	if (resource == null){
     		return null;
     	}
     	
-		StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(DCT_LICENSE));
-		if(it.hasNext()){
-			Statement statement = it.nextStatement();
-			return statement.getObject().asResource().getURI();
-		}
-		
-		it = ontResource.listProperties(ResourceFactory.createProperty(CC_LICENSE));
-		if(it.hasNext()){
-			Statement statement = it.nextStatement();
-			return statement.getObject().asResource().getURI();
-		}
-		
-		it = ontResource.listProperties(ResourceFactory.createProperty(CC_LICENSE_DEPRECATED)); // deprecated 
-		if(it.hasNext()){
-			Statement statement = it.nextStatement();
-			return statement.getObject().asResource().getURI();
-		}
+    	String license = getObjectPropertyURI(resource, DCT_LICENSE);
+    	
+    	if (license == null){
+    		license = getObjectPropertyURI(resource, CC_LICENSE);
+    	}
+    	
+    	if (license == null){
+    		license = getObjectPropertyURI(resource, CC_LICENSE_DEPRECATED);
+    	}
 
-		return null;
+    	return license;
 		
 		
 //	while(it.hasNext()){
@@ -855,29 +856,29 @@ public class OntResourceAnnotationStrategy {
 	
 	/**
 	 * Returns a list of strings, the lexical values of the literal properties. 
-	 * @param ontResource the ontResource.
+	 * @param resource the resource.
 	 * @param property the URI of the property.
 	 * @return a list of strings, the lexical values of the literal properties.
 	 */
-	private Collection<String> getLiteralPropertyValues(OntResource ontResource, String property) {
-		return getLiteralPropertyValues(ontResource, property, null);
+	private Collection<String> getLiteralPropertyValues(Resource resource, String property) {
+		return getLiteralPropertyValues(resource, property, null);
 	}
 	
 	/**
 	 * Returns a list of strings, the lexical values of the literal properties. 
-	 * @param ontResource the ontResource.
+	 * @param resource the resource.
 	 * @param property the URI of the property.
 	 * @param locale the locale
 	 * @return a list of strings, the lexical values of the literal properties.
 	 */
-	private Collection<String> getLiteralPropertyValues(OntResource ontResource, String property, Locale locale) {
+	private Collection<String> getLiteralPropertyValues(Resource resource, String property, Locale locale) {
     	
-		if (ontResource == null){
+		if (resource == null){
     		return new ArrayList<String>();
     	}
 
 		ArrayList<String> values = new ArrayList<String>();
-		StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(property));
+		StmtIterator it = resource.listProperties(ResourceFactory.createProperty(property));
 		while(it.hasNext()){
 			Statement st = it.nextStatement();
 			if (st.getObject().isLiteral()) {
@@ -892,7 +893,8 @@ public class OntResourceAnnotationStrategy {
 					}
 				}
 			} else {
-				//logger.debug("As is not a literal, not added " + st.toString() );
+				// TODO add into the log
+				logger.warn("A literal was expected but object=" + st.toString() );
 			}
 		}
 		return values;
@@ -923,24 +925,24 @@ public class OntResourceAnnotationStrategy {
 
 	/**
 	 * Returns the value of the literal or <code>null</code> if the resource has not this property associated
-	 * @param ontResource the ontResource.
+	 * @param resource the resource.
 	 * @param property the URI of the property.
 	 * @return the value of the literal or <code>null</code> if the resource has not this property associated
 	 */
-	private String getLiteralPropertyValue(OntResource ontResource, String property) {
-		return getLiteralPropertyValue(ontResource, property, null);
+	private String getLiteralPropertyValue(Resource resource, String property) {
+		return getLiteralPropertyValue(resource, property, null);
 	}
 
 	/**
 	 * Returns the value of the literal or <code>null</code> if the resource has not this property associated
-	 * @param ontResource the ontResource.
+	 * @param resource the resource.
 	 * @param property the URI of the property.
 	 * @param locale the locale.
 	 * @return the value of the literal or <code>null</code> if the resource has not this property associated
 	 */
-	private String getLiteralPropertyValue(OntResource ontResource, String property, Locale locale) {
+	private String getLiteralPropertyValue(Resource resource, String property, Locale locale) {
         
-		Collection<String> literalPropertyValues = getLiteralPropertyValues(ontResource, property, locale);
+		Collection<String> literalPropertyValues = getLiteralPropertyValues(resource, property, locale);
 
         if (literalPropertyValues.isEmpty()){
         	return null;
@@ -952,17 +954,17 @@ public class OntResourceAnnotationStrategy {
 
 	/**
 	 * Returns the URI or <code>null</code> if the resource has not this property associated.
-	 * @param ontResource the ontResource.
+	 * @param resource the resource.
 	 * @param property the URI of the property.
 	 * @return the URI or <code>null</code> if the resource has not this property associated.
 	 */
-	private String getObjectPropertyURI(OntResource ontResource, String property) {
+	private String getObjectPropertyURI(Resource resource, String property) {
 		String uri = null;
-    	if (ontResource == null){
+    	if (resource == null){
     		return uri;
     	} else {		
 
-			StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(property));
+			StmtIterator it = resource.listProperties(ResourceFactory.createProperty(property));
 			if (it.hasNext()){
 				Statement statement = it.nextStatement();
 				try{
@@ -977,17 +979,17 @@ public class OntResourceAnnotationStrategy {
 	
 	/**
 	 * Returns a Collection of URI (<code>String</code>) of the resource associated to the ontResource using the property passed.
-	 * @param ontResource the ontResource.
+	 * @param resource the resource.
 	 * @param property the URI of the property.
 	 * @return a Collection of URI (<code>String</code>)
 	 */
-	private Collection<String> getObjectPropertyCollectionURI(OntResource ontResource, String property) {
+	private Collection<String> getObjectPropertyCollectionURI(Resource resource, String property) {
 		Collection<String> uris = new HashSet<String>(); 
-    	if (ontResource == null){
+    	if (resource == null){
     		return uris;
     	} else {		
 
-			StmtIterator it = ontResource.listProperties(ResourceFactory.createProperty(property));
+			StmtIterator it = resource.listProperties(ResourceFactory.createProperty(property));
 			if (it.hasNext()){
 				Statement statement = it.nextStatement();
 				try{
@@ -1180,74 +1182,74 @@ public class OntResourceAnnotationStrategy {
 
 	/**
 	 * Returns the modified date.
-	 * @param ontResource the ontResource.
+	 * @param resource the resource.
 	 * @return the modified date.
 	 */
-	public String getModifiedDate(OntResource ontResource) {
-		return getLiteralPropertyValue(ontResource, DCT_MODIFIED);
+	public String getModifiedDate(Resource resource) {
+		return getLiteralPropertyValue(resource, DCT_MODIFIED);
 	}
 
 	/**
 	 * Returns the issued date.
-	 * @param ontResource the ontResource.
+	 * @param resource the resource.
 	 * @return the issued date.
 	 */
-	public String getIssuedDate(OntResource ontResource) {
-		return getLiteralPropertyValue(ontResource, DCT_ISSUED);
+	public String getIssuedDate(Resource resource) {
+		return getLiteralPropertyValue(resource, DCT_ISSUED);
 	}
 
 	/**
 	 * Returns the number of classes defined in the vocabulary namespace.
-	 * @param ontResource the ontResource.
+	 * @param resource the resource.
 	 * @return the number of classes defined in the vocabulary namespace.
 	 */
-	public String getClassNumber(OntResource ontResource) {
-		return getLiteralPropertyValue(ontResource, VOAF_CLASSNUMBER);
+	public String getClassNumber(Resource resource) {
+		return getLiteralPropertyValue(resource, VOAF_CLASSNUMBER);
 	}
 
 	/**
 	 * Returns the number of properties defined in the vocabulary namespace.
-	 * @param ontResource the ontResource.
+	 * @param resource the resource.
 	 * @return the number of properties defined in the vocabulary namespace.
 	 */
-	public String getPropertyNumber(OntResource ontResource) {
-		return getLiteralPropertyValue(ontResource, VOAF_PROPERTYNUMBER);
+	public String getPropertyNumber(Resource resource) {
+		return getLiteralPropertyValue(resource, VOAF_PROPERTYNUMBER);
 	}
 
 	/**
 	 * Returns the homepage.
-	 * @param ontResource the ontResource.
+	 * @param resource the resource.
 	 * @return the homepage.
 	 */
-	public String getHomepage(OntResource ontResource) {
-		return getObjectPropertyURI(ontResource, FOAF_HOMEPAGE);
+	public String getHomepage(Resource resource) {
+		return getObjectPropertyURI(resource, FOAF_HOMEPAGE);
 	}
 
 	/**
 	 * Returns the dataDump.
-	 * @param ontResource the ontResource.
+	 * @param resource the resource.
 	 * @return the dataDump.
 	 */
-	public String getDataDump(OntResource ontResource) {
-		return getObjectPropertyURI(ontResource, VOID_DATADUMP);
+	public String getDataDump(Resource resource) {
+		return getObjectPropertyURI(resource, VOID_DATADUMP);
 	}
 	
 	/**
 	 * Returns the SPARQL endpoint.
-	 * @param ontResource the ontResource.
+	 * @param resource the resource.
 	 * @return the SPARQL endpoint.
 	 */
-	public String getSparqlEndpoint(OntResource ontResource) {
-		return getObjectPropertyURI(ontResource, VOID_SPARQLENDPOINT);
+	public String getSparqlEndpoint(Resource resource) {
+		return getObjectPropertyURI(resource, VOID_SPARQLENDPOINT);
 	}
 	
 	/**
 	 * Returns the collection of vocabularies (represented by its URI) used in the dataset.  
-	 * @param ontResource
+	 * @param resource the resource
 	 * @return the collection of vocabularies (represented by its URI) used in the dataset.
 	 */
-	public Collection<String> getVocabularies(OntResource ontResource) {
-		return getObjectPropertyCollectionURI(ontResource, VOID_VOCABULARY);
+	public Collection<String> getVocabularies(Resource resource) {
+		return getObjectPropertyCollectionURI(resource, VOID_VOCABULARY);
 	}
 
 	

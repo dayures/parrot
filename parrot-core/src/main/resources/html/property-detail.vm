@@ -27,8 +27,8 @@
 
 #parse("html/documentation-check.vm")
 
+#parse("html/md5.vm")
 
-<div class="term">
   <h3 id="$element.Anchor">#if ($element.uriFragment) <a id="$element.uriFragment"></a>#end<span class="parrot-element-title parrot-property-title">$element.Label</span> (Property)
   	#if($element.isDeprecated())<span class="deprecated">(Deprecated)</span>#end
   	

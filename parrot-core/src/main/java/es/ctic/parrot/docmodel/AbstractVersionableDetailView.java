@@ -1,5 +1,8 @@
 package es.ctic.parrot.docmodel;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -209,6 +212,34 @@ public abstract class AbstractVersionableDetailView implements DetailView, Versi
 
 	public DocumentableObjectReference getIsDefinedBy() {
 		return isDefinedBy;
+	}
+	
+	public String getAnchorFromUriMD5(){
+		String uri = this.getUri();
+		if (uri == null){
+			return null;
+		} else {
+			return "md5-"+getMD5(uri);
+		}
+	}
+	
+	/**
+	 * Returns the MD5 hash of a string, or <code>null</code> if there is a problem.
+	 * @param text the text to obtain the MD5 hash from. 
+	 * @return the MD5 hash of a string, or <code>null</code> if there is a problem.
+	 */
+	static private String getMD5(String text){
+		MessageDigest m;
+		try {
+			m = MessageDigest.getInstance("MD5");
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+			return null;
+		}
+
+		m.update(text.getBytes(), 0, text.length());
+
+		return new BigInteger(1, m.digest()).toString(16);
 	}
 
 }

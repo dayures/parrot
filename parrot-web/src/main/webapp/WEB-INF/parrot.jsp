@@ -195,7 +195,7 @@
 					<p><label for="reportURL" title="URL of an existing Parrot report" class="uri">URL: </label>
 					<c:choose>  
 						<c:when test='${empty param.reportURL}'>
-							<input id="reportURL" name="reportURL" value="" type="text" size="100" />
+							<input id="reportURL" name="reportURL" value="http://" type="text" size="100" />
 						</c:when>
 						<c:otherwise>
 							<input id="reportURL" name="reportURL" value="<c:out value="${param.reportURL}" />" type="text" size="100" />

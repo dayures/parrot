@@ -1,8 +1,20 @@
 package es.ctic.parrot;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+
+import com.hp.hpl.jena.rdf.model.Model;
+
+import es.ctic.parrot.de.DocumentableObjectRegister;
+import es.ctic.parrot.reader.Input;
+import es.ctic.parrot.reader.ReaderException;
+import es.ctic.parrot.reader.URLInput;
+import es.ctic.parrot.reader.jena.JenaOWLReader;
 
 /**
  * Unit test for simple App.
@@ -28,11 +40,26 @@ public class AppTest
         return new TestSuite( AppTest.class );
     }
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
+ 
+    public void testHeaders() throws MalformedURLException, IOException, ReaderException {
+    	JenaOWLReader reader = new JenaOWLReader();
+    	Input input = new URLInput(new URL("http://richard.cyganiak.de/2008/03/rdfbugs/accept.php"));
+    	DocumentableObjectRegister register = new DocumentableObjectRegister();
+    	reader.readDocumentableObjects(input, register);
+    	Model model = reader.getOntModel();
+		model.write(System.out, "RDF/XML-ABBREV");
+    	assertTrue(model.size() > 0);
     }
+    
+    public void testContentLocation() throws MalformedURLException, IOException, ReaderException {
+    	JenaOWLReader reader = new JenaOWLReader();
+    	Input input = new URLInput(new URL("http://purl.org/NET/scovo#"));
+    	DocumentableObjectRegister register = new DocumentableObjectRegister();
+    	reader.readDocumentableObjects(input, register);
+    	Model model = reader.getOntModel();
+		model.write(System.out, "RDF/XML-ABBREV");
+    	assertTrue(model.size() > 0);
+    }
+    
+    
 }

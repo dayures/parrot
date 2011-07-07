@@ -86,5 +86,15 @@ jQuery(document).ready(function(){
         $('#tabs-3 form p:last').html($('#tabs-3 form p:last').html()); // clear input file
     	return false;
     });
+    
+    $('#documentUri, #reportURL').focus(function(){
+	   if (this.value=='http://') { 
+		   this.value=''; 
+	   }	   
+    }).blur(function(){
+ 	   if (this.value=='') { 
+ 		   this.value='http://'; 
+ 	   }	   
+    });
 
 });

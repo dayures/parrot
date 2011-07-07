@@ -55,17 +55,20 @@ public class JenaOWLReader implements DocumentReader {
 	public void readDocumentableObjects(Input input, DocumentableObjectRegister register) throws IOException, ReaderException {
         
         try {
-        	logger.debug("Parsing " + getJenaFormat(input) + "  file");
+        	String jenaFormat = getJenaFormat(input);
+			logger.debug("Parsing " + jenaFormat + "  file");
         	
         	// Init java-rdfa in jena
 			Class.forName("net.rootdev.javardfa.jena.RDFaReader");
 
 	        String base = input.getBase();
 
-        	if (getJenaFormat(input).equals(XHTML) || getJenaFormat(input).equals(HTML)) {
-            	ontModel.read(input.openReader(), base == null ? "http://example.org/base#" : base, getJenaFormat(input)); // FIXME fix this adhoc url
+        	if (XHTML.equals(jenaFormat) || HTML.equals(jenaFormat)) {
+        		logger.debug("Requesting (X)HTML based on the mimetype detected (" + jenaFormat + ")");
+            	ontModel.read(input.openReader(), base == null ? "http://example.org/base#" : base, jenaFormat); // FIXME fix this adhoc url
             } else {
-            	ontModel.read(input.openReader(), base, getJenaFormat(input));
+            	logger.debug("Requesting any other type based on the mimetype detected (" + jenaFormat + ")");
+            	ontModel.read(input.openReader(), base, jenaFormat);
             }
         	
             loadOntology(ontModel, register);

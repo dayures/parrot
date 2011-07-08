@@ -47,10 +47,9 @@ public class ParrotAppServ {
     
     private static final Logger logger = Logger.getLogger(ParrotAppServ.class);
 
-	
-    private JenaOWLReader ontologyReader;
-    private DocumentReader ruleXmlReader;
-    private DocumentReader rifPSReader;
+    final private JenaOWLReader ontologyReader;
+    final private DocumentReader ruleXmlReader;
+    final private DocumentReader rifPSReader;
     
     /**
      * Constructs a parrot service.
@@ -69,9 +68,9 @@ public class ParrotAppServ {
 	 * 
      */
     public ParrotAppServ() {
-		setOntologyReader(new JenaOWLReader());
-		setRuleXmlReader(new RifleXmlReader(getOntologyReader()));
-		setRifPSReader(new RiflePSReader(getOntologyReader(), getRuleXmlReader()));
+    	ontologyReader = new JenaOWLReader();
+    	ruleXmlReader = new RifleXmlReader(getOntologyReader());
+    	rifPSReader = new RiflePSReader(getOntologyReader(), getRuleXmlReader());
     }
 
 	/**
@@ -186,13 +185,6 @@ public class ParrotAppServ {
         return document;
     }
 
-	/**
-	 * Set the ontology reader for this service.
-	 * @param ontologyReader the ontology reader to set.
-	 */
-	private void setOntologyReader(JenaOWLReader ontologyReader) {
-		this.ontologyReader = ontologyReader;
-	}
 
 	/**
 	 * Returns a reader for ontologies (OWl, RDF, RDFa).
@@ -202,13 +194,6 @@ public class ParrotAppServ {
 		return ontologyReader;
 	}
 
-	/**
-	 * Set the RIF XML reader for this service.
-	 * @param ruleXmlReader the RIF XML reader to set.
-	 */
-	private void setRuleXmlReader(DocumentReader ruleXmlReader) {
-		this.ruleXmlReader = ruleXmlReader;
-	}
 
 	/**
 	 * Returns the RIF XML Reader.
@@ -216,14 +201,6 @@ public class ParrotAppServ {
 	 */
 	private DocumentReader getRuleXmlReader() {
 		return ruleXmlReader;
-	}
-
-	/**
-	 * Set the RIF Presentation Syntax (PS) reader for this service.
-	 * @param rifPSReader the RIF Presentation Syntax (PS) reader to set.
-	 */
-	private void setRifPSReader(DocumentReader rifPSReader) {
-		this.rifPSReader = rifPSReader;
 	}
 
 	/**

@@ -2,6 +2,8 @@ package es.ctic.parrot.docmodel;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 import java.util.Locale;
 
 import es.ctic.parrot.de.DocumentableObject;
@@ -15,7 +17,7 @@ import es.ctic.parrot.de.DocumentableObject;
  * @since 1.0
  *
  */
-public class DocumentableObjectReference {
+public class DocumentableObjectReference implements Comparable<DocumentableObjectReference> {
     
     private final String label;
     private String localName;
@@ -33,16 +35,17 @@ public class DocumentableObjectReference {
     }
     
     /**
-     * Returns a collection of references to a documentable elements.
+     * Returns an ordered collection of references to a documentable elements (ordered by reference label).
      * @param documentableObjects the collection of documentable elements to reference.
      * @param locale the locale.
-     * @return a collection of references to a documentable elements.
+     * @return an ordered collection of references to a documentable elements (ordered by reference label).
      */
     public static Collection<DocumentableObjectReference> createReferences(Collection<? extends DocumentableObject> documentableObjects, Locale locale) {
-        Collection<DocumentableObjectReference> result = new ArrayList<DocumentableObjectReference>(documentableObjects.size());
+        List<DocumentableObjectReference> result = new ArrayList<DocumentableObjectReference>(documentableObjects.size());
         for (DocumentableObject documentableObject : documentableObjects) {
             result.add(DocumentableObjectReference.createReference(documentableObject, locale));
         }
+        Collections.sort(result);
         return result;
     }
     
@@ -82,6 +85,14 @@ public class DocumentableObjectReference {
 	 */
     public String getKindString() {
         return this.kindString;
+    }
+    
+    /**
+     * Compare using lower case.
+     * 
+     */
+    public int compareTo(DocumentableObjectReference o) {
+        return this.getLabel().toLowerCase().compareTo(o.getLabel().toLowerCase()) ;
     }
     
 }

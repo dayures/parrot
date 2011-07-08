@@ -36,9 +36,11 @@ title="go to parrot project home page">Parrot </a></h1>
 	<li><a href="#tip-label">Label order</a></li>
 	<li><a href="#tip-description">Description order</a></li>
 	<li><a href="#tip-button-rdfa">Button RDFa</a></li>
+	<li><a href="#tip-features">Other features</a></li>
 	</ul>
 </li>
 </ul>
+<br/>
 
 <h2 id="ontologies">Metadata for Ontologies</h2>
 
@@ -950,7 +952,22 @@ to <strong>datasets</strong>.</p>
           alt="Document with Parrot" /&gt;&lt;/a&gt;
     &lt;/p&gt;
   </pre> 
-   
+
+<h3 id="tip-features">Other features</h3>
+
+<p>If a resource has more than one <em>rdf:type</em>, this resource will be document in the report just once (with no priority to document the resource like a concrete <em>rdf:type</em>).</p>
+<p>For instance, if a resource is declared like:
+<pre><code>
+&lt;rdf:RDF xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
+	&lt;rdf:Description rdf:about=&quot;http://example.org/resource&quot;&gt;
+		&lt;rdf:type rdf:resource=&quot;http://www.w3.org/2002/07/owl#Ontology&quot;/&gt;
+		&lt;rdf:type rdf:resource=&quot;http://rdfs.org/ns/void#Dataset&quot;/&gt;
+	&lt;/rdf:Description&gt;
+&lt;/rdf:RDF&gt; 
+</code></pre>
+
+The documentation for the resource <em>http://example.org/resource</em> will only appears once (like an ontology or like a dataset).
+</p>
 
 <div id="footer">
 <p id="logo"><a href="http://www.fundacionctic.org/"><img src="images/ctic.png"

@@ -5,16 +5,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Locale;
 
-
-import es.ctic.parrot.appserv.ParrotAppServ;
+import es.ctic.parrot.DocumentaryProject;
+import es.ctic.parrot.ParrotAppServ;
 import es.ctic.parrot.generators.HtmlOutputGenerator;
-import es.ctic.parrot.reader.DocumentReader;
+import es.ctic.parrot.generators.OutputGenerator.Profile;
 import es.ctic.parrot.reader.ReaderException;
 import es.ctic.parrot.reader.StringInput;
-import es.ctic.parrot.reader.jena.JenaOWLReader;
-import es.ctic.parrot.reader.rifle.RifleXmlReader;
 import es.ctic.parrot.transformers.TransformerException;
-import es.ctic.parrot.DocumentaryProject;
 
 
 public class ParrotCoreWrapper {
@@ -29,10 +26,6 @@ public class ParrotCoreWrapper {
 	public String exec(String input, String contenttype){
 		System.out.println("Exec Parrot plugin"); // DEBUG
 		app = new ParrotAppServ();
-		JenaOWLReader ontologyWrapper = new JenaOWLReader();
-        DocumentReader ruleWrapper = new RifleXmlReader(ontologyWrapper);
-        app.setOntologyReader(ontologyWrapper);
-        app.setRuleXmlReader(ruleWrapper);
         template = Thread.currentThread().getContextClassLoader().getResourceAsStream("html/template.vm");
 		System.out.println("Parrot Core Input:" + input); // DEBUG
 		
@@ -42,7 +35,7 @@ public class ParrotCoreWrapper {
 		dp.addInput(new StringInput(input, contenttype));
 		
 		try {
-			app.createDocumentation(dp, generator);
+			app.createDocumentation(dp, generator, Profile.TECHNICAL); // FIXME this should be customize
 		} catch (ReaderException e) {
 			throw new RuntimeException(e);
 		} catch (IOException e) {

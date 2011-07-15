@@ -68,44 +68,64 @@ to <strong>ontologies</strong>.</p>
       <td><em>dc:contributor</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>An entity responsible for making the ontological element: a person, an organization or a service. Typically, the name of a contributor should be used to indicate the entity.</td>
+      <td>
+      	<p>An entity responsible for making the ontological element: a person, an organization or a service. Typically, the name of a contributor should be used to indicate the entity.</p>
+      	<p>For example: <code>&lt;dc:contributor&gt;Luis Polo&lt;/dc:contributor&gt;</code></p>
+      </td>
     </tr>
     <tr>
       <td><em>dc:creator</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-	  <td>An entity primarily responsible for making the ontological element: a person, an organization or a service. Typically, the name of a creator should be used to indicate the entity.</td>
+	  <td>
+	  	<p>An entity primarily responsible for making the ontological element: a person, an organization or a service. Typically, the name of a creator should be used to indicate the entity.</p>
+	  	<p>For example: <code>&lt;dc:creator&gt;Sergio Fernández&lt;/dc:creator&gt;</code></p>
+	  </td>
     </tr>
     <tr>
       <td><em>dc:date</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>The date of creation or publication of the ontological element.
-        Recommended best practice is to use the W3CDTF profile of ISO 8601.</td>
+      <td>
+      	<p>The date of creation or publication of the ontological element. Recommended best practice is to use the W3CDTF profile of ISO 8601.</p>
+        <p>For example: <code>&lt;dc:date&gt;1981-01-20&lt;/dc:date&gt;</code></p>
+      </td>
     </tr>
     <tr>
       <td><em>dc:description</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>See <em>rdfs:comment</em></td>
+      <td>
+      	<p>See <em>rdfs:comment</em></p>
+      	<p>For example: <code>&lt;dc:description&gt;The Friend of a Friend (FOAF) RDF vocabulary, described using W3C RDFS and OWL.&lt;/dc:description&gt;</code></p>
+      </td>
     </tr>
     <tr>
       <td><em>dc:publisher</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-	  <td>An entity responsible for making the ontological element available: a person, an organization or a service. Typically, the name of a publisher should be used to indicate the entity.</td>
+	  <td>
+	  	<p>An entity responsible for making the ontological element available: a person, an organization or a service. Typically, the name of a publisher should be used to indicate the entity.</p>
+        <p>For example: <code>&lt;dc:publisher&gt;O'Reilly&lt;/dc:publisher&gt;</code></p>
+	  </td>
     </tr>   
     <tr>
       <td><em>dc:rights</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>Information about rights held in and over the ontological element.</td>
+      <td>
+      	<p>Information about rights held in and over the ontological element.</p>
+        <p>For example: <code>&lt;dc:rights&gt;CTIC Foundation, some rights reserved&lt;/dc:rights&gt;</code></p>
+      </td>
     </tr>
     <tr>
       <td><em>dc:title</em></td>
       <td><a href="http://dublincore.org/documents/dces/">Dublin Core Elements</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>See <em>rdfs:label</em></td>
+      <td>
+      	<p>See <em>rdfs:label</em></p>
+        <p>For example: <code>&lt;dc:title&gt;Temperature defect&lt;/dc:title&gt;</code></p>
+      </td>
     </tr>
     <tr>
       <td><em>dct:contributor</em></td>

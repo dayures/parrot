@@ -366,3 +366,7 @@ img.help {
 img#feedback{
 	cursor:pointer;
 }
+
+div#generating-dialog{
+	text-align:center;
+}

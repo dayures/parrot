@@ -12,6 +12,7 @@ jQuery(document).ready(function(){
 		resizable: false,
 		draggable: false
 	});
+    
     $('#feedback').click(function() {
         $('#feedback-dialog').dialog('open');
         $('#feedback-dialog a').blur(); // remove manually the focus on a elements
@@ -95,6 +96,19 @@ jQuery(document).ready(function(){
  	   if (this.value=='') { 
  		   this.value='http://'; 
  	   }	   
+    });
+
+    $('#generating-dialog').dialog({
+        autoOpen: false,
+		modal: true,
+		resizable: false,
+		draggable: false
+	});
+    
+    // disable submit button after submit (prevent duplicate requests)
+    $("form").submit(function() {
+        $(":submit", this).attr("disabled", "disabled");
+        $('#generating-dialog').dialog('open');
     });
 
 });

@@ -241,6 +241,12 @@
 		<p><img src="images/group.png" alt="mail list"></img> <a href="https://sourceforge.net/mailarchive/forum.php?forum_name=parrot-project-users">Join the user mail list</a></p>
 	</div>
 	
+	<!-- Generating -->
+	<div id="generating-dialog" title="Thank you for using Parrot">
+		<p><img src="images/loading-spinner.gif" alt=""></img></p>
+		<p>Parrot is generating the report</p> 
+	</div> 
+	
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>

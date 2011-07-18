@@ -370,3 +370,12 @@ img#feedback{
 div#generating-dialog{
 	text-align:center;
 }
+
+p.code {
+    background: #eee;
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    font-family: monospace;
+    white-space: pre;
+    overflow: auto;
+}

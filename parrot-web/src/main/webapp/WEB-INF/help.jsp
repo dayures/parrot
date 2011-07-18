@@ -70,7 +70,7 @@ to <strong>ontologies</strong>.</p>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>
       	<p>An entity responsible for making the ontological element: a person, an organization or a service. Typically, the name of a contributor should be used to indicate the entity.</p>
-      	<p>For example: <code>&lt;dc:contributor&gt;Luis Polo&lt;/dc:contributor&gt;</code></p>
+      	<p>For example: <code>&lt;dc:contributor&gt;Diego Berrueta&lt;/dc:contributor&gt;</code></p>
       </td>
     </tr>
     <tr>
@@ -124,160 +124,216 @@ to <strong>ontologies</strong>.</p>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>
       	<p>See <em>rdfs:label</em></p>
-        <p>For example: <code>&lt;dc:title&gt;Temperature defect&lt;/dc:title&gt;</code></p>
+        <p>For example: <code>&lt;dc:title xml:lang="en"&gt;Temperature defect&lt;/dc:title&gt;</code></p>
       </td>
     </tr>
     <tr>
       <td><em>dct:contributor</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>An entity responsible for making the ontological element: a person, an organization or a service. Recommended best practice is to use a FOAF profile to describe a contributor.</td>
+      <td>
+      	<p>An entity responsible for making the ontological element: a person, an organization or a service. Recommended best practice is to use a FOAF profile to describe a contributor.</p>
+	  	<p>For example: <code>&lt;dct:contributor rdf:resource="http://berrueta.net/foaf.rdf#me" /&gt;</code></p>
+      </td>
     </tr>
     <tr>
       <td><em>dct:creator</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-	  <td>An entity primarily responsible for making the ontological element: a person, an organization or a service. Recommended best practice is to use a FOAF profile to describe a creator.</td>
+	  <td>
+	  	<p>An entity primarily responsible for making the ontological element: a person, an organization or a service. Recommended best practice is to use a FOAF profile to describe a creator.</p>
+	  	<p>For example: <code>&lt;dct:creator rdf:resource="http://www.wikier.org/foaf#wikier" /&gt;</code></p>
+	  </td>
 	</tr>
     <tr>
       <td><em>dct:date</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>The date of creation or publication of the ontological element.
-        Recommended best practice is to use the W3CDTF profile of ISO 8601.</td>
+      <td>
+      	<p>The date of creation or publication of the ontological element. Recommended best practice is to use the W3CDTF profile of ISO 8601.</p>
+        <p>For example: <code>&lt;dct:date&gt;1981-01-20&lt;/dct:date&gt;</code></p>
+      </td>
     </tr>
 	<tr>
       <td><em>dct:description</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>See <em>rdfs:comment</em></td>
+      <td>
+      	<p>See <em>rdfs:comment</em></p>
+		<p>For example: <code>&lt;dct:description xml:lang="en"&gt;It is a defect having to do with temperature issues.&lt;/dct:description&gt;</code></p>      	
+      </td>
     </tr>
     <tr>
       <td><em>dct:issued</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>Date of formal issuance (e.g., publication) of the ontological element.
-        Recommended best practice is to use the W3CDTF profile of ISO 8601.</td>
+      <td>
+      	<p>Date of formal issuance (e.g., publication) of the ontological element. Recommended best practice is to use the W3CDTF profile of ISO 8601.</p>
+        <p>For example: <code>&lt;dct:issued&gt;1979-03-23&lt;/dct:issued&gt;</code></p>
+      </td>
     </tr>
     <tr>
       <td><em>dct:license</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>A legal document describing the copyright license of the ontological element.
-        Recommended best practice is to use Creative Commons licenses and to
-        describe them in RDF with the Creative Commons Rights Expression
-        Language (CC REL). </td>
+      <td>
+      	<p>A legal document describing the copyright license of the ontological element. Recommended best practice is to use Creative Commons licenses and to describe them in RDF with the Creative Commons Rights Expression Language (CC REL).</p>
+	  	<p>For example: <code>&lt;dct:license rdf:resource="http://creativecommons.org/licenses/by/3.0/" /&gt;</code></p>
+	  </td>
     </tr>
     <tr>
       <td><em>dct:modified</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>The date on which the ontological element was changed.
-        Recommended best practice is to use the W3CDTF profile of ISO 8601.</td>
+      <td>
+      	<p>The date on which the ontological element was changed. Recommended best practice is to use the W3CDTF profile of ISO 8601.</p>
+        <p>For example: <code>&lt;dct:modified&gt;2010-07-11&lt;/dct:modified&gt;</code></p>
+      </td>
     </tr>    
 	<tr>
       <td><em>dct:publisher</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-	  <td>An entity responsible for making the ontological element available: a person, an organization or a service. Recommended best practice is to use a FOAF profile to describe a publisher.</td>
+	  <td>
+	  	<p>An entity responsible for making the ontological element available: a person, an organization or a service. Recommended best practice is to use a FOAF profile to describe a publisher.</p>
+	  	<p>For example: <code>&lt;dct:publisher rdf:resource="http://oreilly.com/" /&gt;</code></p>
+	  </td>
     </tr>
     <tr>
       <td><em>dct:title</em></td>
       <td><a href="http://dublincore.org/documents/dcmi-terms/">Dublin Core Terms</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>See <em>rdfs:label</em></td>
+      <td>
+      	<p>See <em>rdfs:label</em></p>
+        <p>For example: <code>&lt;dct:title xml:lang="en"&gt;Temperature defect&lt;/dct:title&gt;</code></p>
+      </td>
     </tr>    
     <tr>
       <td><em>rdfs:comment</em></td>
       <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>The description of the ontological element. The range is a literal with a
-        language tag.</td>
+      <td>
+      	<p>The description of the ontological element. The range is a literal with a language tag.</p>
+		<p>For example: <code>&lt;rdfs:comment xml:lang="en"&gt;It is a defect having to do with temperature issues.&lt;/rdfs:comment&gt;</code></p>      	
+      </td>
     </tr>
     <tr>
       <td><em>rdfs:isDefinedBy</em></td>
       <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>Used to indicate where this ontological element has been defining.</td>
+      <td>
+      	<p>Used to indicate where this ontological element has been defining.</p>
+	  	<p>For example: <code>&lt;rdfs:isDefinedBy rdf:resource="http://purl.org/vocab/vann/" /&gt;</code></p>
+      </td>
     </tr>
     <tr>
       <td><em>rdfs:label</em></td>
       <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>The label of the ontological element. The range is a literal with a language
-      tag.</td>
+      <td>
+      	<p>The label of the ontological element. The range is a literal with a language tag (optional).</p>
+        <p>For example: <code>&lt;rdfs:label xml:lang="en"&gt;Temperature defect&lt;/rdfs:label&gt;</code></p>
+      </td>
     </tr>
     <tr>
       <td><em>rdfs:seeAlso</em></td>
       <td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>Specifies a resource that might provide additional information about the ontological element.</td>
+      <td>
+      	<p>Specifies a resource that might provide additional information about the ontological element.</p>
+	  	<p>For example: <code>&lt;rdfs:seeAlso rdf:resource="http://www.ietf.org/rfc/rfc1766.txt" /&gt;</code></p>
+      </td>
     </tr>    
     <tr>
       <td><em>skosxl:altLabel</em></td>
       <td><a href="http://www.w3.org/TR/skos-reference/#xl">SKOS-XL</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>An alternative label of a ontological element. The range of the property is an
-        instance of the class LexicalLabel.</td>
+      <td>
+      	<p>An alternative label of a ontological element. The range of the property is an instance of the class LexicalLabel.</p>
+	  	<p>For example: <code>&lt;skosxl:altLabel rdf:resource="http://www.example.org/skos/temperature-fault" /&gt;</code></p>
+      </td>
     </tr>
     <tr>
       <td><em>skosxl:prefLabel</em></td>
       <td><a href="http://www.w3.org/TR/skos-reference/#xl">SKOS-XL</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>The preferred label of a ontological element. The range of the property is an
-        instance of the class LexicalLabel.</td>
+      <td>
+      	<p>The preferred label of a ontological element. The range of the property is an instance of the class LexicalLabel.</p>
+	  	<p>For example: <code>&lt;skosxl:prefLabel rdf:resource="http://www.example.org/skos/temperature-defect" /&gt;</code></p>
+      </td>
     </tr>
     <tr>
       <td><em>skos:altLabel</em></td>
       <td><a href="http://www.w3.org/TR/skos-reference/#overview">SKOS</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>An alternative label of a ontological element. The range is a literal with a
-        language tag.</td>
+      <td>
+      	<p>An alternative label of a ontological element. The range is a literal with a language tag.</p>
+        <p>For example: <code>&lt;skos:altLabel xml:lang="en"&gt;Temperature fault&lt;/skos:altLabel&gt;</code></p>
+      </td>
     </tr>
     <tr>
       <td><em>skos:prefLabel</em></td>
       <td><a href="http://www.w3.org/TR/skos-reference/#overview">SKOS</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>The preferred label of a ontological element. The range is a literal with a
-        language tag. In some cases, it is assumed that <em>prefLabel</em>
-        assumes the role of the <em>label</em> for presentation purposes.</td>
+      <td>
+      	<p>The preferred label of a ontological element. The range is a literal with a language tag (optional). In some cases, it is assumed that <em>prefLabel</em> assumes the role of the <em>label</em> for presentation purposes.</p>
+        <p>For example: <code>&lt;skos:prefLabel xml:lang="en"&gt;Temperature defect&lt;/skos:prefLabel&gt;</code></p>
+      </td>
     </tr>
     <tr>
       <td><em>foaf:depiction</em></td>
       <td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>An image associated with the ontological element. </td>
+      <td>
+      	<p>An image associated with the ontological element.</p>
+	  	<p>For example: <code>&lt;foaf:depiction rdf:resource="http://farm5.static.flickr.com/4014/4396193788_707ae6ec23.jpg" /&gt;</code></p>
+      </td>
     </tr>    
     <tr>
       <td><em>foaf:maker</em></td>
       <td><a href="http://xmlns.com/foaf/spec/">FOAF</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>See <em>dct:creator</em>.</td>
+      <td>
+      	<p>See <em>dct:creator</em>.</p>
+	  	<p>For example: <code>&lt;foaf:maker rdf:resource="http://berrueta.net/foaf.rdf#me" /&gt;</code></p>
+	  </td>
     </tr>
     <tr>
       <td><em>og:video</em></td>
       <td><a href="http://ogp.me">OG</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>A video associated with the ontological element. </td>
+      <td>
+      	<p>A video associated with the ontological element.</p>
+		<p>For example: <code>&lt;og:video rdf:resource="http://www.youtube.com/watch?v=5h10QHpA5EU" /&gt;</code></p>      	
+      </td>
     </tr>    
     <tr>
       <td><em>owl:versionInfo</em></td>
       <td><a
         href="http://www.w3.org/TR/2004/REC-owl-guide-20040210/#OntologyVersioning">OWL</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td>Provides a hook suitable for use by versioning systems.</td>
+      <td>
+      	<p>Provides a hook suitable for use by versioning systems.</p>
+        <p>For example: <code>&lt;owl:versionInfo&gt;1.17&lt;/owl:versionInfo&gt;</code></p>
+      </td>
     </tr>
     <tr>
       <td><em>vann:preferredNamespacePrefix</em></td>
       <td><a href="http://vocab.org/vann">VANN</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td></td><td></td><td></td>
-      <td>The preferred namespace prefix when using entities of a ontology.</td>
+      <td>
+      	<p>The preferred namespace prefix when using entities of a ontology.</p>
+        <p>For example: <code>&lt;vann:preferredNamespacePrefix&gt;whois&lt;/vann:preferredNamespacePrefix&gt;</code></p>
+      </td>
     </tr>
     <tr>
       <td><em>vann:preferredNamespaceUri</em></td>
       <td><a href="http://vocab.org/vann">VANN</a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td></td><td></td><td></td>
-      <td>The preferred namespace URI to use when using terms from a ontology.</td>
+      <td>
+      	<p>The preferred namespace URI to use when using terms from a ontology.</p>
+        <p>For example: <code>&lt;vann:preferredNamespaceUri&gt;http://www.kanzaki.com/ns/whois#&lt;/vann:preferredNamespaceUri&gt;</code></p>
+      </td>
     </tr>
     </tbody>
 </table>

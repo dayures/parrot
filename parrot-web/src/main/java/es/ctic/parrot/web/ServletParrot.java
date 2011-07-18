@@ -139,7 +139,7 @@ public class ServletParrot extends HttpServlet {
 				}
 	
 				// Read a previous report
-				if (reportURL != null){
+				if (checkURI(reportURL)){
 	                getParrotAppServ().initializeDocumentaryProjectFromExistingReport(dp, reportURL);
 				}
 	

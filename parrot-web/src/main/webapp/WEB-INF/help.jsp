@@ -31,6 +31,7 @@ title="go to parrot project home page">Parrot </a></h1>
 <li><a href="#datasets">Metadata for Datasets</a></li>
 <li><a href="#namespace-prefix">Namespace references and prefixes</a></li>
 <li><a href="#icons">Icons in Parrot</a></li>
+<li><a href="#rest">Use as a REST service</a></li>
 <li><a href="#tips">Tips</a>
 	<ul>
 	<li><a href="#tip-label">Label order</a></li>
@@ -989,6 +990,109 @@ to <strong>datasets</strong>.</p>
 
   </tbody>
 </table>
+
+<h2 id="rest">Use as a REST service</h2>
+
+<h3>Generate report from URI/s</h3> 
+<table> 
+    <tr><td>URL</td><td colspan="2">/parrot</td></tr> 
+    <tr><td>Method</td><td colspan="2">GET</td></tr> 
+    <tr><td rowspan="5">Querystring</td><td>documentUri=</td><td>URI of an input document</td></tr> 
+    <tr><td>mimetype=</td><td>Mimetype of the input document. Supported values are
+    							<ul>
+    								<li><tt>default</tt> Allow content negotiation</li> 
+    								<li><tt>application/owl+xml</tt> OWL ontology</li> 
+    								<li><tt>text/n3</tt> N3 ontology</li> 
+    								<li><tt>application/xhtml+xml</tt> XHTML+RDFa document</li> 
+    								<li><tt>text/html</tt> HTML+RDFa documentn</li> 
+    								<li><tt>application/rif+xml</tt> RIF XML document</li> 
+    								<li><tt>text/x-rif-ps</tt> RIF PS document</li> 
+								</ul> 
+    </td></tr> 
+    <tr><td>profile=</td><td>The profile for generate a customize report. Supported values are
+    							<ul>
+    								<li><tt>technical</tt></li>
+    								<li><tt>business</tt></li>
+    							</ul>
+    </td></tr> 
+    <tr><td>language=</td><td>The language uses to generate the report. The possible values are in the <a href="http://www.iana.org/assignments/language-subtag-registry">IANA registry of language tags</a>.</td></tr>
+    <tr><td>customizeCssUrl=</td><td>The URL of a customize <abbr title="Cascading Style Sheets"><span class="abbr" title="Cascading Style Sheets">CSS</span></abbr></td></tr> 
+    <tr><td rowspan="3">Returns</td><td colspan="2">200 OK</td></tr> 
+    <tr><td colspan="2">400 Illegal Request</td></tr>
+    <tr><td colspan="2">500 Unexpected error</td></tr> 
+</table>
+
+You can send multiple <tt>documentUri</tt> parameter values. In that case, each one should be accompanied by a <tt>mimetype</tt> parameter.
+
+
+<p>For example:</p>
+<p class="code">GET /parrot?documentUri=http://purl.org/dc/terms/&amp;mimetype=default&amp;profile=business&amp;language=en</p>
+<br />
+
+<h3>Generate report from direct input</h3> 
+<table> 
+    <tr><td>URL</td><td colspan="2">/parrot</td></tr> 
+    <tr><td>Method</td><td colspan="2">POST</td></tr> 
+    <tr><td rowspan="5">Request Body</td><td>documentText=</td><td>The input source text.</td></tr> 
+    <tr><td>mimetypeText=</td><td>Mimetype of the input source text. Supported values are
+    							<ul>
+    								<li><tt>application/owl+xml</tt> OWL ontology</li> 
+    								<li><tt>text/n3</tt> N3 ontology</li> 
+    								<li><tt>application/xhtml+xml</tt> XHTML+RDFa document</li> 
+    								<li><tt>text/html</tt> HTML+RDFa documentn</li> 
+    								<li><tt>application/rif+xml</tt> RIF XML document</li> 
+    								<li><tt>text/x-rif-ps</tt> RIF PS document</li> 
+								</ul> 
+    </td></tr> 
+    <tr><td>profile=</td><td>The profile for generate a customize report. Supported values are
+    							<ul>
+    								<li><tt>technical</tt></li>
+    								<li><tt>business</tt></li>
+    							</ul>
+    </td></tr> 
+    <tr><td>language=</td><td>The language uses to generate the report. The possible values are in the <a href="http://www.iana.org/assignments/language-subtag-registry">IANA registry of language tags</a>.</td></tr>
+    <tr><td>customizeCssUrl=</td><td>The URL of a customize <abbr title="Cascading Style Sheets"><span class="abbr" title="Cascading Style Sheets">CSS</span></abbr></td></tr> 
+    <tr><td rowspan="3">Returns</td><td colspan="2">200 OK</td></tr> 
+    <tr><td colspan="2">400 Illegal Request</td></tr>
+    <tr><td colspan="2">500 Unexpected error</td></tr> 
+</table>
+
+<p>For example:</p>
+<p class="code">POST /parrot
+	
+         documentText=&lt;rdf:RDF xmlns:owl=&quot;http://www.w3.org/2002/07/owl#&quot;
+                               xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
+                         &lt;owl:Ontology rdf:about=&quot;http://ontorule-project.eu/resources/steel-30&quot;&gt;
+                              &lt;rdfs:label xml:lang=&quot;en&quot;&gt;Steel Ontology&lt;/rdfs:label&gt;
+                         &lt;/owl:Ontology&gt;
+                      &lt;/rdf:RDF&gt;
+         mimetypeText=application/owl+xml
+         profile=business
+         language=en
+         customizeCssUrl=http://example.org/style.css</p>
+
+You can send multiple <tt>documentText</tt> parameter values. In that case, each one should be accompanied by a <tt>mimetype</tt> parameter.
+<br />
+<h3>Generate report from existing report</h3> 
+<table> 
+    <tr><td>URL</td><td colspan="2">/parrot</td></tr> 
+    <tr><td>Method</td><td colspan="2">GET</td></tr> 
+    <tr><td rowspan="4">Querystring</td><td>reportURL=</td><td>URL of the existing report</td></tr> 
+    <tr><td>profile=</td><td>The profile for generate a customize report. Supported values are
+    							<ul>
+    								<li><tt>technical</tt></li>
+    								<li><tt>business</tt></li>
+    							</ul>
+    </td></tr> 
+    <tr><td>language=</td><td>The language uses to generate the report. The possible values are in the <a href="http://www.iana.org/assignments/language-subtag-registry">IANA registry of language tags</a>.</td></tr>
+    <tr><td>customizeCssUrl=</td><td>The URL of a customize <abbr title="Cascading Style Sheets"><span class="abbr" title="Cascading Style Sheets">CSS</span></abbr></td></tr> 
+    <tr><td rowspan="3">Returns</td><td colspan="2">200 OK</td></tr> 
+    <tr><td colspan="2">400 Illegal Request</td></tr>
+    <tr><td colspan="2">500 Unexpected error</td></tr> 
+</table>
+
+<p>For example:</p>
+<p class="code">GET /parrot?reportURL=http://ontorule-project.eu/resources/parrot/examples/previous-report-metadata.html&amp;profile=business&amp;language=en</p>
 
 <h2 id="tips">Tips</h2>
 

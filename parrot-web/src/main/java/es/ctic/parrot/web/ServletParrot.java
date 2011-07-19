@@ -56,130 +56,130 @@ public class ServletParrot extends HttpServlet {
 	}
 
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		
+
 		// begin logger.info
-		
+
 		logger.info("requestURL="+req.getRequestURL());
-		
+
 		Map<String, String []> parameterMap = req.getParameterMap();
 		for (Map.Entry<String,String []> entry : parameterMap.entrySet())
 		{
 			StringBuffer sb = new StringBuffer("parameter="+entry.getKey() + " -");
-		    
-		    for (String valuesArray : entry.getValue()){
-		    	sb.append(" value="+valuesArray);
-		    }
-		    logger.info(sb);
+
+			for (String valuesArray : entry.getValue()){
+				sb.append(" value="+valuesArray);
+			}
+			logger.info(sb);
 		}
 		logger.info("referer="+req.getParameter("referer"));		
-		
+
 		// end logger.info
-		
+
 		String showForm = req.getParameter("showform");
 		if ( showForm != null && showForm.equalsIgnoreCase("true") && req.getMethod().equalsIgnoreCase("POST") == false){
 			forwardToForm(req, res);
-		} else {
-			ErrorBuffer errors = new ErrorBuffer();
-			List<String> advices = new ArrayList<String>();
-			req.setAttribute(ERRORS_GENERAL, errors.getErrorsNotAssociated());
-			req.setAttribute(ADVICES, advices);
-			
-			Locale locale = Locale.ENGLISH; // default Locale
-			
-			String language = req.getParameter("language");
-			if ( language != null && language.trim().length() != 0){
-				locale = new Locale(language);
-			}
-	
-			String profile_param = req.getParameter("profile");
-			
-			Profile profile = Profile.UNDEFINED;
-			
-			if (profile_param != null){
-			
-				profile_param = profile_param.toLowerCase();			
-			
-				if (profile_param.equals("business")){
-					profile = Profile.BUSINESS;
-				} 
-				
-				if (profile_param.equals("technical")){
-					profile = Profile.TECHNICAL;
-				}
-			}
-			
+			return ; // Finish the method
+		}
 		
-			String customizeCssUrl = req.getParameter("customizeCssUrl");
-			
-			String reportURL = req.getParameter("reportURL");
-			
-			try {
-				DocumentaryProject dp = new DocumentaryProject(locale);
-	
-				String queryString = req.getQueryString();
-				if (queryString != null){
-					dp.setReportURL(req.getRequestURL() + "?" + queryString);
-				} else {
-					dp.setReportURL(req.getRequestURL() + "?");
-				}
-				
-				if (customizeCssUrl != null && customizeCssUrl.trim().length() != 0){
-					dp.setCustomizeCssUrl(customizeCssUrl);
-				}
-				
-	
-				addFileUploadInput(dp, req);
-				
-				addDirectInputs(dp, req);
-	
-				addRefererInput(dp, req);
-				
-				if (dp.getInputs().isEmpty()){
-					addUriInputs(dp, req);
-				}
-	
-				// Read a previous report
-				if (checkURI(reportURL)){
-	                getParrotAppServ().initializeDocumentaryProjectFromExistingReport(dp, reportURL);
-				}
-	
-				if (dp.getInputs().isEmpty()) {
-					forwardToForm(req, res);
-				} else {
-				    InputStream template = getTemplateInputStream();
-				    ByteArrayOutputStream out = new ByteArrayOutputStream();
-	                HtmlOutputGenerator outputGenerator = new HtmlOutputGenerator(out, template);
-	                ParrotAppServ parrotAppServ = getParrotAppServ();
-				    parrotAppServ.createDocumentation(dp, outputGenerator, profile);
-	                res.setContentType("text/html");
-				    res.getOutputStream().write(out.toByteArray());
-				}
-		    } catch (MalformedURLException e) {
-		        logger.error("While generating documentation", e);
-		        errors.addError("Malformed URI: " + e.getMessage());
-		        forwardToForm(req, res);
-			} catch (ReaderException e) {
-			    logger.error("While generating documentation", e);
-			    errors.addError("Unable to read input document: " + e.getMessage());
-			    forwardToForm(req, res);
-			} catch (TransformerException e){
-			    logger.error("While processing documentation", e);
-			    errors.addError("Error while processing documentation: " + e.getMessage());
-			    forwardToForm(req, res);
-			} catch (IOException e) {
-			    logger.error("While generating documentation", e);
-			    errors.addError("I/O Error: " + e.getMessage());
-			    forwardToForm(req, res);
-			} catch (FileUploadException e) {
-				logger.error("While uploading file", e);
-				res.sendError(400);
-			} catch (IllegalArgumentException e) {
-			    logger.error("Illegal request: " + req, e);
-			    res.sendError(400);
-			} catch (RuntimeException e) {
-			    logger.error("Unexpected error while generating documentation", e);
-			    res.sendError(500);
+		ErrorBuffer errors = new ErrorBuffer();
+		List<String> advices = new ArrayList<String>();
+		req.setAttribute(ERRORS_GENERAL, errors.getErrorsNotAssociated());
+		req.setAttribute(ADVICES, advices);
+
+		Locale locale = Locale.ENGLISH; // default Locale
+
+		String language = req.getParameter("language");
+		if ( language != null && language.trim().length() != 0){
+			locale = new Locale(language);
+		}
+
+		Profile profile = Profile.UNDEFINED; // default profile
+		
+		String profile_param = req.getParameter("profile");
+
+		if (profile_param != null){
+
+			profile_param = profile_param.toLowerCase();			
+
+			if ("business".equals(profile_param)){
+				profile = Profile.BUSINESS;
+			} 
+
+			if ("technical".equals(profile_param)){
+				profile = Profile.TECHNICAL;
 			}
+		}
+
+
+		String customizeCssUrl = req.getParameter("customizeCssUrl");
+
+		String reportURL = req.getParameter("reportURL");
+
+		try {
+			DocumentaryProject dp = new DocumentaryProject(locale);
+
+			String queryString = req.getQueryString();
+			if (queryString != null){
+				dp.setReportURL(req.getRequestURL() + "?" + queryString);
+			} else {
+				dp.setReportURL(req.getRequestURL() + "?");
+			}
+
+			if (customizeCssUrl != null && customizeCssUrl.trim().length() != 0){
+				dp.setCustomizeCssUrl(customizeCssUrl);
+			}
+
+
+			addFileUploadInput(dp, req);
+
+			addDirectInputs(dp, req);
+
+			addRefererInput(dp, req);
+
+			if (dp.getInputs().isEmpty()){
+				addUriInputs(dp, req);
+			}
+
+			// Read a previous report
+			if (checkURI(reportURL)){
+				getParrotAppServ().initializeDocumentaryProjectFromExistingReport(dp, reportURL);
+			}
+
+			if (dp.getInputs().isEmpty()) {
+				forwardToForm(req, res);
+			} else {
+				InputStream template = getTemplateInputStream();
+				ByteArrayOutputStream out = new ByteArrayOutputStream();
+				HtmlOutputGenerator outputGenerator = new HtmlOutputGenerator(out, template);
+				getParrotAppServ().createDocumentation(dp, outputGenerator, profile);
+				res.setContentType("text/html");
+				res.getOutputStream().write(out.toByteArray());
+			}
+		} catch (MalformedURLException e) {
+			logger.error("While generating documentation", e);
+			errors.addError("Malformed URI: " + e.getMessage());
+			forwardToForm(req, res);
+		} catch (ReaderException e) {
+			logger.error("While generating documentation", e);
+			errors.addError("Unable to read input document: " + e.getMessage());
+			forwardToForm(req, res);
+		} catch (TransformerException e){
+			logger.error("While processing documentation", e);
+			errors.addError("Error while processing documentation: " + e.getMessage());
+			forwardToForm(req, res);
+		} catch (IOException e) {
+			logger.error("While generating documentation", e);
+			errors.addError("I/O Error: " + e.getMessage());
+			forwardToForm(req, res);
+		} catch (FileUploadException e) {
+			logger.error("While uploading file", e);
+			res.sendError(400);
+		} catch (IllegalArgumentException e) {
+			logger.error("Illegal request: " + req, e);
+			res.sendError(400);
+		} catch (RuntimeException e) {
+			logger.error("Unexpected error while generating documentation", e);
+			res.sendError(500);
 		}
 	}
 
@@ -189,11 +189,10 @@ public class ServletParrot extends HttpServlet {
 		if ( referer != null && referer.equalsIgnoreCase("true")){
 			dp.addInput(new URLInput(new URL(req.getHeader("Referer"))));
 		}
-		
+
 	}
 
-	private void forwardToForm(HttpServletRequest req, HttpServletResponse res)
-	throws ServletException, IOException {
+	private void forwardToForm(HttpServletRequest req, HttpServletResponse res)	throws ServletException, IOException {
 		// forward to form
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/parrot.jsp");
 		dispatcher.forward(req,res);
@@ -207,18 +206,18 @@ public class ServletParrot extends HttpServlet {
 		}
 	}
 
-    private ParrotAppServ getParrotAppServ() {
-        return new ParrotAppServ();
-    }
-	
-    private InputStream getTemplateInputStream() {
-        InputStream template = Thread.currentThread().getContextClassLoader().getResourceAsStream("html/template.vm");
+	private ParrotAppServ getParrotAppServ() {
+		return new ParrotAppServ();
+	}
+
+	private InputStream getTemplateInputStream() {
+		InputStream template = Thread.currentThread().getContextClassLoader().getResourceAsStream("html/template.vm");
 		if (template == null) {
-		    throw new RuntimeException("Failed to load resource");
+			throw new RuntimeException("Failed to load resource");
 		}
-        return template;
-    }
-	
+		return template;
+	}
+
 	private void addFileUploadInput(DocumentaryProject dp, HttpServletRequest req) throws FileUploadException, IOException {
 		if (ServletFileUpload.isMultipartContent(req)) {
 			FileItemFactory factory = new DiskFileItemFactory();
@@ -228,7 +227,7 @@ public class ServletParrot extends HttpServlet {
 			List<InputStream> inputStreams = new LinkedList<InputStream>();
 			List<String> providedContentTypes = new LinkedList<String>();
 			List<String> mimetypeFiles = new LinkedList<String>();
-			
+
 			while (iter.hasNext()) {
 				FileItem item = (FileItem) iter.next();
 
@@ -245,7 +244,7 @@ public class ServletParrot extends HttpServlet {
 					}
 				}
 			}
-			
+
 			Iterator<String> providedContentTypesIterator = providedContentTypes.iterator();
 			Iterator<String> mimetypeFilesIterator = mimetypeFiles.iterator();
 			for (InputStream is : inputStreams) {
@@ -265,7 +264,7 @@ public class ServletParrot extends HttpServlet {
 	private void addUriInputs(DocumentaryProject dp, HttpServletRequest req) throws MalformedURLException, IOException, ReaderException {
 		String[] uriInputs = req.getParameterValues(DOCUMENT_URI);
 		String[] uriInputMimetypes = req.getParameterValues(MIMETYPE);
-		
+
 		if (uriInputs == null) {
 			uriInputs = new String[0];
 		}
@@ -273,17 +272,17 @@ public class ServletParrot extends HttpServlet {
 		if (uriInputMimetypes == null) {
 			uriInputMimetypes = new String[0];
 		}
-		
+
 		for( int i=0 ; i<uriInputs.length ; i++) {
 			String uriInput = uriInputs[i];
 			if (checkURI(uriInput)) {
-			    if (uriInput.contains(":") == false) {
-			        PrefixCCClient prefixCCClient = new PrefixCCClient();
-			        String prefixCCResponse = prefixCCClient.resolvePrefix(uriInput);
-			        if (prefixCCResponse != null) {
-			            uriInput = prefixCCResponse;
-			        }
-			    }
+				if (uriInput.contains(":") == false) {
+					PrefixCCClient prefixCCClient = new PrefixCCClient();
+					String prefixCCResponse = prefixCCClient.resolvePrefix(uriInput);
+					if (prefixCCResponse != null) {
+						uriInput = prefixCCResponse;
+					}
+				}
 				logger.info("Trying to add valid input: " + uriInput);
 				if (uriInputMimetypes.length <= i || uriInputMimetypes[i].equals(AUTODETECT_MIMETYPE)) { // allow content negotiation
 					dp.addInput(new URLInput(new URL(uriInput)));
@@ -295,10 +294,10 @@ public class ServletParrot extends HttpServlet {
 	}
 
 	private void addDirectInputs(DocumentaryProject dp, HttpServletRequest req) {
-		
+
 		String[] directInputTexts = req.getParameterValues(DOCUMENT_TEXT);
 		String[] directInputMimetypes = req.getParameterValues(MIMETYPE_TEXT);
-		
+
 		if (directInputTexts == null) {
 			directInputTexts = new String[0];
 		}
@@ -309,16 +308,16 @@ public class ServletParrot extends HttpServlet {
 
 		for( int i=0 ; i<directInputTexts.length ; i++) {
 			String directInputText = directInputTexts[i];
-			
+
 			if (directInputText != null) {
 				directInputText = directInputText.trim();
 			}
 			if (directInputText != null && directInputText.length() > 0) {
-			    String directInputMimetype = directInputMimetypes[i];
-			    if (directInputMimetype == null) {
-			        throw new IllegalArgumentException("Mimetype specification is required for direct input");
-			    }
-			    dp.addInput(new StringInput(directInputText, directInputMimetype)); 
+				String directInputMimetype = directInputMimetypes[i];
+				if (directInputMimetype == null) {
+					throw new IllegalArgumentException("Mimetype specification is required for direct input");
+				}
+				dp.addInput(new StringInput(directInputText, directInputMimetype)); 
 			}
 		}
 	}

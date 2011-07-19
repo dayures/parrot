@@ -29,7 +29,6 @@ import es.ctic.parrot.reader.URLInput;
 
 public class Parrot {
 
-
 	private static final Logger logger = Logger.getLogger(Parrot.class);
     
     private static final OutputStream DEFAULT_OUT = System.out;
@@ -88,8 +87,8 @@ public class Parrot {
             
         }
         
-        if (cmd.getOptionValues('i').length == 0){
-            System.err.println("Please specify at least one input");
+        if (cmd.getOptionValues('i') == null || cmd.getOptionValues('i').length == 0){
+            printError("Please specify at least one input");
             return;
         }
         
@@ -106,7 +105,7 @@ public class Parrot {
                 }
             }
             if (dp.getInputs().isEmpty()) {
-                System.err.println("Please specify at least one input");
+            	printError("Please specify at least one input");
             } else {
                 OutputGenerator outputGenerator = new HtmlOutputGenerator(out, templateInputStream);
                 app.createDocumentation(dp, outputGenerator, profile);
@@ -116,7 +115,12 @@ public class Parrot {
         }
     }
 
-    private static InputStream openTemplateInputStream(String template) throws FileNotFoundException {
+    private static void printError(String message) {
+		//logger.error(message);
+		System.err.println("\n>>> ERROR: " + message + "\n");
+	}
+
+	private static InputStream openTemplateInputStream(String template) throws FileNotFoundException {
         if (template.startsWith("classpath:")) {
             String templateSuffix = template.substring("classpath:".length());
             logger.info("Reading template " + templateSuffix + " from classpath");

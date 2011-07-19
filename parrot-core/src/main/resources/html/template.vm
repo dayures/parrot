@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:parrot="http://vocab.ctic.es/parrot#" 
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:foaf="http://xmlns.com/foaf/0.1/" 
+	xmlns:dct="http://purl.org/dc/terms/" 
+	version="XHTML+RDFa 1.0" 
+>
+  <head typeof="parrot:Project">
+    <title>$document.Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    #parse("html/rdfa.vm")
+    
+    <link rel="stylesheet" type="text/css" media="screen,projection" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/themes/cupertino/jquery-ui.css" />
+    <style type="text/css" media="screen,projection">
+	    #include("css/base.css")
+	    #include("css/custom.css")
+		#include("css/SemEx.css")
+		#if (${profile} == "business")
+			#include("css/${profile}.css")
+		#end
+		#if (${profile} == "technical")
+			#include("css/${profile}.css")
+		#end
+    </style>
+ 
+    <link rel="stylesheet" type="text/css" media="screen,projection" href="report/jixedbar/jx.stylesheet.css" /> 
+    <link type="image/x-icon" href="images/favicon.ico" rel="shortcut icon" />
+	#if($document.customizeCssUrl)
+    	<link rel="stylesheet" type="text/css" media="screen,projection" href="$document.customizeCssUrl" />
+    #end
+    <link rel="stylesheet" type="text/css" media="print" href="report/css/print.css" /> 
+        
+  </head>
+  <body>
+  #parse("html/header.vm")
+  <div id="content">
+	#parse("html/languages.vm")
+	#parse("html/prologue.vm")
+	#parse("html/download.vm")
+	#parse("html/toc.vm")
+	#parse("html/details.vm")
+	#parse("html/glossary.vm")
+	#parse("html/appendix.vm")
+	#parse("html/footer.vm")
+  </div>
+  #parse("html/bottom-bar.vm")
+
+  
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script> 
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/jquery-ui.min.js"></script> 
+  <script type="text/javascript" src="report/js/jquery.corner.js"></script> 
+  <script type="text/javascript" src="report/jixedbar/jquery.jixedbar.min.js"></script> 
+  <script type="text/javascript" src="report/js/jquery.qtip-1.0.js"></script> 
+  <script type="text/javascript">
+	/* <![CDATA[ */
+
+  	#include("js/javascript.js")
+
+  	#if (${profile} == "business")
+		#include("js/${profile}.js")
+	#end
+
+	#if (${profile} == "technical")
+		#include("js/${profile}.js")
+	#end
+	/* ]]> */
+  </script>
+  
+  
+  <script type="text/javascript">
+	/* <![CDATA[ */
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-8820144-1']);
+	_gaq.push(['_trackPageview']);
+	
+	(function() {
+	  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+	/* ]]> */
+  </script>
+  </body>
+</html>

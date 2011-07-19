@@ -1,0 +1,6 @@
+#if($element.Uri)
+	<div class="term" id="$element.getAnchorFromUriMD5()">
+#else
+	<div class="term">
+#end
+

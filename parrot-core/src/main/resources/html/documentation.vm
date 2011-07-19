@@ -1,0 +1,14 @@
+<div class="otherinfo">
+  <h4>Documentation</h4> 
+
+  #if(!$element.lexicalInformation.getLocales().isEmpty())
+	<h5>Lexical Information</h5>
+	#parse("html/lexical-information.vm")
+  #end
+
+  #if(!$element.relatedDocuments.isEmpty())
+    #foreach($element in $element.relatedDocuments)
+      #parse("html/relatedDocument-detail.vm")
+    #end
+  #end
+</div>

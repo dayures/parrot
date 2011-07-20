@@ -40,6 +40,24 @@ public class HtmlOutputGenerator implements OutputGenerator {
     }
 
     /**
+     * Constructs a generator of <code>HTML</code> content
+     * @param out Stream where the output will be written.
+     * @param template The template for the output report.
+     */
+    public HtmlOutputGenerator(OutputStream out) {
+        this.out = out;
+        this.template = getDefaultTemplate();
+    }
+    
+    private InputStream getDefaultTemplate() {
+		InputStream template = Thread.currentThread().getContextClassLoader().getResourceAsStream("html/template.vm");
+		if (template == null) {
+			throw new RuntimeException("Failed to load resource");
+		}
+		return template;
+	}
+
+	/**
      * Generates an output.
      * @param document The source document.
      * @param profile The profile of the user that will read the report.

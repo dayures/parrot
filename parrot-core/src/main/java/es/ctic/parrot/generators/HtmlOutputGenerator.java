@@ -42,7 +42,6 @@ public class HtmlOutputGenerator implements OutputGenerator {
     /**
      * Constructs a generator of <code>HTML</code> content
      * @param out Stream where the output will be written.
-     * @param template The template for the output report.
      */
     public HtmlOutputGenerator(OutputStream out) {
         this.out = out;

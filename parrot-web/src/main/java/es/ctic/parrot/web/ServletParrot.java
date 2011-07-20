@@ -148,9 +148,8 @@ public class ServletParrot extends HttpServlet {
 			if (dp.getInputs().isEmpty()) {
 				forwardToForm(req, res);
 			} else {
-				InputStream template = getTemplateInputStream();
 				ByteArrayOutputStream out = new ByteArrayOutputStream();
-				HtmlOutputGenerator outputGenerator = new HtmlOutputGenerator(out, template);
+				HtmlOutputGenerator outputGenerator = new HtmlOutputGenerator(out);
 				getParrotAppServ().createDocumentation(dp, outputGenerator, profile);
 				res.setContentType("text/html");
 				res.getOutputStream().write(out.toByteArray());
@@ -208,14 +207,6 @@ public class ServletParrot extends HttpServlet {
 
 	private ParrotAppServ getParrotAppServ() {
 		return new ParrotAppServ();
-	}
-
-	private InputStream getTemplateInputStream() {
-		InputStream template = Thread.currentThread().getContextClassLoader().getResourceAsStream("html/template.vm");
-		if (template == null) {
-			throw new RuntimeException("Failed to load resource");
-		}
-		return template;
 	}
 
 	private void addFileUploadInput(DocumentaryProject dp, HttpServletRequest req) throws FileUploadException, IOException {

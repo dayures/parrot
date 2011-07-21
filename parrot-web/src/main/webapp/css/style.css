@@ -316,35 +316,29 @@ div.options{
 	display:none;
 }
 
-#legend{
+#metadata-support-all, #prefix-legend{
 	margin-left:auto; margin-right:auto;
 }
-#legend td:nth-child(1){
+
+#prefix-legend td:nth-child(1){
 	text-align:center;
 }
 
-#metadata-support-ontologies, #metadata-support-rules, #prefix-legend{
-	margin-left:auto; margin-right:auto;
-}
-
-
-#metadata-support-ontologies td, #metadata-support-rules td {
+#metadata-support-all td{
 	text-align:center;
 	padding-left:0.5em;
 	padding-right:0.5em;
 }
 
-#metadata-support-ontologies td:nth-child(2), #metadata-support-rules td:nth-child(2)  {
+#metadata-support-all td:nth-child(2){
 	white-space: nowrap; 
 	overflow: hidden; 
 	text-overflow:ellipsis;
 }
 
-#metadata-support-ontologies td:nth-child(7),
-#metadata-support-rules td:nth-child(5)  {
+#metadata-support-all td:nth-child(10){
 	text-align:left;
 }
-
 
 img.help {
 	vertical-align: bottom;

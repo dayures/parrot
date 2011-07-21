@@ -29,17 +29,28 @@ import es.ctic.parrot.reader.URLInput;
 public class DocumentaryProjectFactory {
     
 	/**
-	 * Initializes a documentary project from an existing report.
+	 * Creates a documentary project.
+	 * @param locale the locale.
+	 * @param customizeCssUrl the customize CSS URL.
+	 * @return a Documentary Project.
+	 */
+	static public DocumentaryProject createDocumentaryProject(Locale locale, String customizeCssUrl){
+		return new DocumentaryProjectImpl.Builder().locale(locale).customizeCssUrl(customizeCssUrl).build();
+	} 
+	
+	/**
+	 * Creates a documentary project.
 	 * @param locale the locale.
 	 * @param customizeCssUrl the customize CSS URL.
 	 * @param generatedReportUrl the generated report URL.
+	 * @return a Documentary Project.
 	 */
 	static public DocumentaryProject createDocumentaryProject(Locale locale, String customizeCssUrl, String generatedReportUrl){
 		return new DocumentaryProjectImpl.Builder().locale(locale).customizeCssUrl(customizeCssUrl).generatedReportUrl(generatedReportUrl).build();
 	} 
 
 	/**
-	 * Initializes a documentary project from an existing report.
+	 * Creates a documentary project from an existing report.
 	 * @param locale the locale.
 	 * @param previousReportUrl the previous report URL.
 	 * @param customizeCssUrl the customize CSS URL.
@@ -47,8 +58,9 @@ public class DocumentaryProjectFactory {
 	 * @throws MalformedURLException
 	 * @throws IOException
 	 * @throws ReaderException
+	 * @return a Documentary Project.
 	 */
-	static public DocumentaryProject createDocumentaryProjectFromExistingReport(Locale locale, String previousReportUrl, String customizeCssUrl, String generatedReportUrl) throws MalformedURLException, IOException, ReaderException {
+	static public DocumentaryProject createDocumentaryProjectFromExistingReport(Locale locale, String customizeCssUrl, String generatedReportUrl, String previousReportUrl) throws MalformedURLException, IOException, ReaderException {
 
 		Model model = ModelFactory.createDefaultModel();
 	    

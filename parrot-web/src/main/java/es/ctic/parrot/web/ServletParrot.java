@@ -306,7 +306,7 @@ public class ServletParrot extends HttpServlet {
 		// Read a previous report
 		String previousReportUrl = req.getParameter("reportURL");
 		if (checkURI(previousReportUrl)){
-			dp = DocumentaryProjectFactory.createDocumentaryProjectFromExistingReport(locale, previousReportUrl, customizeCssUrl, generatedReportUrl);
+			dp = DocumentaryProjectFactory.createDocumentaryProjectFromExistingReport(locale, customizeCssUrl, generatedReportUrl, previousReportUrl);
 		}
 
 		return dp;

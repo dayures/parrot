@@ -28,22 +28,28 @@ import es.ctic.parrot.reader.URLInput;
  */
 public class DocumentaryProjectFactory {
     
-	static public DocumentaryProject createDocumentaryProject(Locale locale){
-		return new DocumentaryProject(locale);
+	/**
+	 * Initializes a documentary project from an existing report.
+	 * @param locale the locale.
+	 * @param customizeCssUrl the customize CSS URL.
+	 * @param generatedReportUrl the generated report URL.
+	 */
+	static public DocumentaryProject createDocumentaryProject(Locale locale, String customizeCssUrl, String generatedReportUrl){
+		return new DocumentaryProjectImpl.Builder().locale(locale).customizeCssUrl(customizeCssUrl).generatedReportUrl(generatedReportUrl).build();
 	} 
 
 	/**
 	 * Initializes a documentary project from an existing report.
-	 * @param dp the documentary project to initialize.
-	 * @param reportURL the report URL.
+	 * @param locale the locale.
+	 * @param previousReportUrl the previous report URL.
+	 * @param customizeCssUrl the customize CSS URL.
+	 * @param generatedReportUrl the generated report URL.
 	 * @throws MalformedURLException
 	 * @throws IOException
 	 * @throws ReaderException
 	 */
-	static public DocumentaryProject createDocumentaryProjectFromExistingReport(Locale locale, String reportURL) throws MalformedURLException, IOException, ReaderException {
+	static public DocumentaryProject createDocumentaryProjectFromExistingReport(Locale locale, String previousReportUrl, String customizeCssUrl, String generatedReportUrl) throws MalformedURLException, IOException, ReaderException {
 
-		DocumentaryProject dp = DocumentaryProjectFactory.createDocumentaryProject(locale);
-		
 		Model model = ModelFactory.createDefaultModel();
 	    
 		// Init java-rdfa in jena
@@ -53,7 +59,7 @@ public class DocumentaryProjectFactory {
 			throw new RuntimeException(e);
 		}
 
-		Input input = new URLInput(new URL(reportURL), "application/xhtml+xml");
+		Input input = new URLInput(new URL(previousReportUrl), "application/xhtml+xml");
 		String base = input.getBase();
 		try {
 			model.read(input.openReader(), base == null ? "http://example.org/base#" : base, "XHTML");
@@ -62,8 +68,11 @@ public class DocumentaryProjectFactory {
 			throw new ReaderException(e);
 		}
 
-		dp.setPrologueURL(getPrologueURLFromExistingReport(model));
-        dp.setAppendixURL(getAppendixURLFromExistingReport(model));
+		String prologueUrl = getPrologueURLFromExistingReport(model);
+		String appendixUrl = getAppendixURLFromExistingReport(model);
+
+		DocumentaryProject dp = new DocumentaryProjectImpl.Builder().locale(locale).generatedReportUrl(generatedReportUrl).customizeCssUrl(customizeCssUrl).prologueURL(prologueUrl).appendixURL(appendixUrl).build();
+		
         dp.addAllInput(getInputsFromExistingReport(model));
         
         return dp;
@@ -148,7 +157,6 @@ public class DocumentaryProjectFactory {
 	 */
 	private static String getAppendixURLFromExistingReport(Model model) throws MalformedURLException, IOException, ReaderException {
 
-
 		NodeIterator iterator = model.listObjectsOfProperty(ResourceFactory.createProperty("http://vocab.ctic.es/parrot#hasAppendix"));
 		
 		for (RDFNode node : iterator.toList()){
@@ -156,9 +164,6 @@ public class DocumentaryProjectFactory {
 		}
 		
 		return null;
-
 	}
-
-
 	
 }

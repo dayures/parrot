@@ -279,18 +279,6 @@ public class ServletParrot extends HttpServlet {
 	private DocumentaryProject getDocumentaryProject(HttpServletRequest req) throws FileUploadException, IOException, ReaderException{
 		
 		DocumentaryProject dp = createDocumentaryProject(req);
-		
-		String customizeCssUrl = req.getParameter("customizeCssUrl");
-		if (customizeCssUrl != null && customizeCssUrl.trim().length() != 0){
-			dp.setCustomizeCssUrl(customizeCssUrl);
-		}
-		
-		String queryString = req.getQueryString();
-		if (queryString != null){
-			dp.setReportURL(req.getRequestURL() + "?" + queryString);
-		} else {
-			dp.setReportURL(req.getRequestURL() + "?");
-		}
 
 		addFileUploadInput(dp, req);
 
@@ -309,15 +297,32 @@ public class ServletParrot extends HttpServlet {
 		
 		Locale locale = getLocale(req);
 		
-		DocumentaryProject dp = DocumentaryProjectFactory.createDocumentaryProject(locale);
+		String customizeCssUrl = getCustomizeCssUrl(req);
+		
+		String generatedReportUrl = getGeneratedReportUrl(req);
+		
+		DocumentaryProject dp = DocumentaryProjectFactory.createDocumentaryProject(locale, customizeCssUrl, generatedReportUrl);
 		
 		// Read a previous report
-		String reportURL = req.getParameter("reportURL");
-		if (checkURI(reportURL)){
-			dp = DocumentaryProjectFactory.createDocumentaryProjectFromExistingReport(locale, reportURL);
+		String previousReportUrl = req.getParameter("reportURL");
+		if (checkURI(previousReportUrl)){
+			dp = DocumentaryProjectFactory.createDocumentaryProjectFromExistingReport(locale, previousReportUrl, customizeCssUrl, generatedReportUrl);
 		}
 
 		return dp;
+	}
+
+	private String getGeneratedReportUrl(HttpServletRequest req) {
+		String queryString = req.getQueryString();
+		if (queryString != null){
+			return req.getRequestURL() + "?" + queryString;
+		} else {
+			return req.getRequestURL() + "?";
+		}
+	}
+
+	private String getCustomizeCssUrl(HttpServletRequest req) {
+		return req.getParameter("customizeCssUrl");
 	}
 
 	private Locale getLocale(HttpServletRequest req) {

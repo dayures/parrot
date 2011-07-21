@@ -1,8 +1,6 @@
 package es.ctic.parrot;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Locale;
@@ -10,11 +8,7 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
-import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.rdf.model.NodeIterator;
 import com.hp.hpl.jena.rdf.model.RDFNode;
-import com.hp.hpl.jena.rdf.model.ResourceFactory;
 
 import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.DocumentableObjectRegister;
@@ -24,7 +18,6 @@ import es.ctic.parrot.generators.OutputGenerator.Profile;
 import es.ctic.parrot.reader.DocumentReader;
 import es.ctic.parrot.reader.Input;
 import es.ctic.parrot.reader.ReaderException;
-import es.ctic.parrot.reader.URLInput;
 import es.ctic.parrot.reader.jena.JenaOWLReader;
 import es.ctic.parrot.reader.rifle.RiflePSReader;
 import es.ctic.parrot.reader.rifle.RifleXmlReader;
@@ -87,7 +80,7 @@ public class ParrotAppServ {
 		readAndRegisterDocumentableObjects(dp.getInputs(), register);
 		resolveInternalReferences(register);
 		resolveCrossReferences(register);
-		Document document = transformToDocument(register.getDocumentableObjects(), dp.getLocale(), dp.getInputs(), dp.getPrologueURL(), dp.getAppendixURL(), dp.getReportURL(), getLanguagesInModel(), dp.getCustomizeCssUrl());
+		Document document = transformToDocument(register.getDocumentableObjects(), dp.getLocale(), dp.getInputs(), dp.getPrologueURL(), dp.getAppendixURL(), dp.getGeneratedReportURL(), getLanguagesInModel(), dp.getCustomizeCssUrl());
 		outputGenerator.generateOutput(document, profile);
 	}
 

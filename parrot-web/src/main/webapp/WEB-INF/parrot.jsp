@@ -30,14 +30,7 @@
 					<c:forEach var="line" items="${errorsGeneral}">
 		         		<li class="error"><span><c:out value="${line}"/></span></li>
 		      		</c:forEach>
-				</ul> 
-				<c:if test="${ ! empty advices}">
-		    	<ul class="advice">
-					<c:forEach var="line" items="${advices}">
-		         		<li class="advice"><span><c:out value="${line}"/></span></li>
-		      		</c:forEach>
 				</ul>
-				</c:if>
 			</div>
 		</div>
 		</c:if>

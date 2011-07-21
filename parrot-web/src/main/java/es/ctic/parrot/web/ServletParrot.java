@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -26,6 +25,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.log4j.Logger;
 
 import es.ctic.parrot.DocumentaryProject;
+import es.ctic.parrot.DocumentaryProjectFactory;
 import es.ctic.parrot.ParrotAppServ;
 import es.ctic.parrot.generators.HtmlOutputGenerator;
 import es.ctic.parrot.generators.OutputGenerator.Profile;
@@ -45,7 +45,6 @@ public class ServletParrot extends HttpServlet {
 	private static final String DOCUMENT_TEXT = "documentText";
 	private static final String MIMETYPE = "mimetype";
 	private static final String MIMETYPE_TEXT = "mimetypeText";
-	private static final String ADVICES = "advices";
 
 	private static final org.apache.log4j.Logger logger = Logger.getLogger(ServletParrot.class);
 
@@ -57,99 +56,27 @@ public class ServletParrot extends HttpServlet {
 
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-		// begin logger.info
-
-		logger.info("requestURL="+req.getRequestURL());
-
-		Map<String, String []> parameterMap = req.getParameterMap();
-		for (Map.Entry<String,String []> entry : parameterMap.entrySet())
-		{
-			StringBuffer sb = new StringBuffer("parameter="+entry.getKey() + " -");
-
-			for (String valuesArray : entry.getValue()){
-				sb.append(" value="+valuesArray);
-			}
-			logger.info(sb);
-		}
-		logger.info("referer="+req.getParameter("referer"));		
-
-		// end logger.info
+		logRequest(req);
 
 		String showForm = req.getParameter("showform");
 		if ( showForm != null && showForm.equalsIgnoreCase("true") && req.getMethod().equalsIgnoreCase("POST") == false){
 			forwardToForm(req, res);
 			return ; // Finish the method
 		}
-		
+
 		ErrorBuffer errors = new ErrorBuffer();
-		List<String> advices = new ArrayList<String>();
 		req.setAttribute(ERRORS_GENERAL, errors.getErrorsNotAssociated());
-		req.setAttribute(ADVICES, advices);
-
-		Locale locale = Locale.ENGLISH; // default Locale
-
-		String language = req.getParameter("language");
-		if ( language != null && language.trim().length() != 0){
-			locale = new Locale(language);
-		}
-
-		Profile profile = Profile.UNDEFINED; // default profile
-		
-		String profile_param = req.getParameter("profile");
-
-		if (profile_param != null){
-
-			profile_param = profile_param.toLowerCase();			
-
-			if ("business".equals(profile_param)){
-				profile = Profile.BUSINESS;
-			} 
-
-			if ("technical".equals(profile_param)){
-				profile = Profile.TECHNICAL;
-			}
-		}
-
-
-		String customizeCssUrl = req.getParameter("customizeCssUrl");
-
-		String reportURL = req.getParameter("reportURL");
 
 		try {
-			DocumentaryProject dp = new DocumentaryProject(locale);
 
-			String queryString = req.getQueryString();
-			if (queryString != null){
-				dp.setReportURL(req.getRequestURL() + "?" + queryString);
-			} else {
-				dp.setReportURL(req.getRequestURL() + "?");
-			}
-
-			if (customizeCssUrl != null && customizeCssUrl.trim().length() != 0){
-				dp.setCustomizeCssUrl(customizeCssUrl);
-			}
-
-
-			addFileUploadInput(dp, req);
-
-			addDirectInputs(dp, req);
-
-			addRefererInput(dp, req);
-
-			if (dp.getInputs().isEmpty()){
-				addUriInputs(dp, req);
-			}
-
-			// Read a previous report
-			if (checkURI(reportURL)){
-				getParrotAppServ().initializeDocumentaryProjectFromExistingReport(dp, reportURL);
-			}
+			final DocumentaryProject dp = getDocumentaryProject(req);
 
 			if (dp.getInputs().isEmpty()) {
 				forwardToForm(req, res);
 			} else {
 				ByteArrayOutputStream out = new ByteArrayOutputStream();
 				HtmlOutputGenerator outputGenerator = new HtmlOutputGenerator(out);
+				Profile profile = getProfile(req);
 				getParrotAppServ().createDocumentation(dp, outputGenerator, profile);
 				res.setContentType("text/html");
 				res.getOutputStream().write(out.toByteArray());
@@ -180,6 +107,42 @@ public class ServletParrot extends HttpServlet {
 			logger.error("Unexpected error while generating documentation", e);
 			res.sendError(500);
 		}
+	}
+
+	private Profile getProfile(HttpServletRequest req) {
+		Profile profile = Profile.UNDEFINED; // default profile
+		String profile_param = req.getParameter("profile");
+		if (profile_param != null){
+
+			profile_param = profile_param.toLowerCase();			
+
+			if ("business".equals(profile_param)){
+				profile = Profile.BUSINESS;
+			} 
+
+			if ("technical".equals(profile_param)){
+				profile = Profile.TECHNICAL;
+			}
+		}
+		return profile;
+	}
+
+	private void logRequest(HttpServletRequest req) {
+
+		logger.info("requestURL="+req.getRequestURL());
+
+		Map<String, String []> parameterMap = req.getParameterMap();
+		for (Map.Entry<String,String []> entry : parameterMap.entrySet())
+		{
+			StringBuffer sb = new StringBuffer("parameter="+entry.getKey() + " -");
+
+			for (String valuesArray : entry.getValue()){
+				sb.append(" value="+valuesArray);
+			}
+			logger.info(sb);
+		}
+		logger.info("referer="+req.getParameter("referer"));		
+
 	}
 
 
@@ -311,6 +274,59 @@ public class ServletParrot extends HttpServlet {
 				dp.addInput(new StringInput(directInputText, directInputMimetype)); 
 			}
 		}
+	}
+	
+	private DocumentaryProject getDocumentaryProject(HttpServletRequest req) throws FileUploadException, IOException, ReaderException{
+		
+		DocumentaryProject dp = createDocumentaryProject(req);
+		
+		String customizeCssUrl = req.getParameter("customizeCssUrl");
+		if (customizeCssUrl != null && customizeCssUrl.trim().length() != 0){
+			dp.setCustomizeCssUrl(customizeCssUrl);
+		}
+		
+		String queryString = req.getQueryString();
+		if (queryString != null){
+			dp.setReportURL(req.getRequestURL() + "?" + queryString);
+		} else {
+			dp.setReportURL(req.getRequestURL() + "?");
+		}
+
+		addFileUploadInput(dp, req);
+
+		addDirectInputs(dp, req);
+
+		addRefererInput(dp, req);
+
+		if (dp.getInputs().isEmpty()){
+			addUriInputs(dp, req);
+		}
+		
+		return dp;
+	}
+
+	private DocumentaryProject createDocumentaryProject(HttpServletRequest req) throws MalformedURLException, IOException, ReaderException {
+		
+		Locale locale = getLocale(req);
+		
+		DocumentaryProject dp = DocumentaryProjectFactory.createDocumentaryProject(locale);
+		
+		// Read a previous report
+		String reportURL = req.getParameter("reportURL");
+		if (checkURI(reportURL)){
+			dp = DocumentaryProjectFactory.createDocumentaryProjectFromExistingReport(locale, reportURL);
+		}
+
+		return dp;
+	}
+
+	private Locale getLocale(HttpServletRequest req) {
+		Locale locale = Locale.ENGLISH; // default Locale
+		String language = req.getParameter("language");
+		if ( language != null && language.trim().length() != 0){
+			locale = new Locale(language);
+		}
+		return locale;
 	}
 
 }

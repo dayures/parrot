@@ -172,7 +172,7 @@ button.generate{
 	padding-right:0.2em;
 }
 
-ul.error, ul.advice {
+ul.error {
   list-style-type:none !important;
   padding-left: 0;
   margin-left: 1em;
@@ -182,11 +182,9 @@ ul.error{
   list-style-image:url("../images/cross.png");
 }
 
-ul.advice{
-  list-style-image:url("../images/information.png");
-}
 
-li.error, li.advice {
+
+li.error {
   list-style-type:none !important;
   padding-left: 0.25em;
 }
@@ -195,16 +193,9 @@ li.error{
   list-style-image:url("../images/cross.png");
 }
 
-li.advice{
-  list-style-image:url("../images/information.png");
-}
 
 li.error > span , li.error > span > a {  
   color: red;
-  vertical-align: top;  
-}
-
-li.advice > span, li.advice > span >a {  
   vertical-align: top;  
 }
 

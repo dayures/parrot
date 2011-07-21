@@ -20,6 +20,7 @@ import org.apache.commons.cli.PosixParser;
 import org.apache.log4j.Logger;
 
 import es.ctic.parrot.DocumentaryProject;
+import es.ctic.parrot.DocumentaryProjectFactory;
 import es.ctic.parrot.ParrotAppServ;
 import es.ctic.parrot.generators.HtmlOutputGenerator;
 import es.ctic.parrot.generators.OutputGenerator;
@@ -32,7 +33,7 @@ public class Parrot {
 	private static final Logger logger = Logger.getLogger(Parrot.class);
     
     private static final OutputStream DEFAULT_OUT = System.out;
-    private static final String DEFAULT_LANG = "en";
+    private static final Locale DEFAULT_LOCALE = Locale.ENGLISH;
     private static final String DEFAULT_TEMPLATE = "classpath:html/template.vm";
     private static final String TECHNICAL_PROFILE = "technical";
     private static final String BUSINESS_PROFILE = "business";
@@ -45,9 +46,10 @@ public class Parrot {
 
         // default values
         OutputStream out = DEFAULT_OUT;
-        String lang = DEFAULT_LANG;
+        Locale locale = DEFAULT_LOCALE;
         String template = DEFAULT_TEMPLATE;
         Profile profile = Profile.TECHNICAL;
+        String customizeCssUrl = null;
         
         // process options
         if (cmd.hasOption("h")) {
@@ -56,8 +58,9 @@ public class Parrot {
             		"java -jar parrot-jar-with-dependencies.jar " +
             		"-i http://ontorule-project.eu/resources/m24dem/CAx_M24_ontology.owl " +
             		"-i http://ontorule-project.eu/resources/m24dem/CAx_M24_rules_parrot.rifps " +
-            		"-o documentation-generated.html", true); 
-            // EXAMPLE java -jar target/parrot-jar-with-dependencies.jar -i http://ontorule-project.eu/resources/m24dem/CAx_M24_ontology.owl -i http://ontorule-project.eu/resources/m24dem/CAx_M24_rules_parrot.rifps -o a.html
+            		"-o documentation-generated.html" +
+            		"-s http://idi.fundacionctic.org/semantica/parrot/style.css", true); 
+            // EXAMPLE java -jar target/parrot-jar-with-dependencies.jar -i http://ontorule-project.eu/resources/m24dem/CAx_M24_ontology.owl -i http://ontorule-project.eu/resources/m24dem/CAx_M24_rules_parrot.rifps -s http://idi.fundacionctic.org/semantica/parrot/style.css -o a.html
             return;
         }
         
@@ -66,11 +69,16 @@ public class Parrot {
         }
         
         if (cmd.hasOption("l")) {
-            lang = cmd.getOptionValue("l");
+            String lang = cmd.getOptionValue("l");
+            locale = new Locale(lang);
         }
         
         if (cmd.hasOption("t")) {
             template = cmd.getOptionValue("t");
+        }
+        
+        if (cmd.hasOption("s")) {
+        	customizeCssUrl = cmd.getOptionValue("s");
         }
         
         // profile
@@ -96,7 +104,7 @@ public class Parrot {
 
         try {
             InputStream templateInputStream = openTemplateInputStream(template);
-            DocumentaryProject dp = new DocumentaryProject(new Locale(lang));
+            DocumentaryProject dp = DocumentaryProjectFactory.createDocumentaryProject(locale, customizeCssUrl);
             for ( String inputFilename : cmd.getOptionValues('i') ) {
                 if (inputFilename.startsWith("http:")) {
                     dp.addInput(new URLInput(new URL(inputFilename)));
@@ -148,8 +156,8 @@ public class Parrot {
         options.addOption("o", "output", true, "output file");
         options.addOption("h", "help", false, "print help");
         options.addOption("p", "profile", true, "profile ( valid vules: 'technical' [default] or 'business')");        
-        options.addOption("l", "lang", true, "language using language subtag registry from IANA (default: " + DEFAULT_LANG + ")");
-        
+        options.addOption("l", "lang", true, "language using language subtag registry from IANA (default: " + DEFAULT_LOCALE.getLanguage() + ")");
+        options.addOption("s", "css", true, "customize Cascading Style Sheet URL");
         Option inputFile   = OptionBuilder.withArgName("file")
         .hasArg(true)
         .withDescription("input document")

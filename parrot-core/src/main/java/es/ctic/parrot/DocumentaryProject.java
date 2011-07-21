@@ -29,7 +29,7 @@ public class DocumentaryProject {
     /** Constructs a new Documentary project with the specified locale. 
      * @param locale A locale (language) to be set.
      */
-    public DocumentaryProject(Locale locale) {
+    DocumentaryProject(Locale locale) {
         this.setLocale(locale);
     }
 

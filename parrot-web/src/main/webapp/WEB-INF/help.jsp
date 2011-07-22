@@ -53,12 +53,11 @@ title="go to parrot home page">Parrot </a></h1>
 <table id="metadata-support-all">
   <tbody>
     <tr>
-      <th>Property</th>
+      <th rowspan="2">Property</th>
       <th colspan="8">Scope</th>
-      <th>Description</th>
+      <th rowspan="2">Description</th>
     </tr>
     <tr>
-      <th></th>
       <th>Ontology</th>
       <th>Class</th>
       <th>Property</th>
@@ -67,7 +66,6 @@ title="go to parrot home page">Parrot </a></h1>
       <th>Rule</th>
       <th>Vocabulary</th>
       <th>Dataset</th>
-      <th></th>
     </tr>
     <tr>
       <td><a href="http://dublincore.org/documents/dces/#contributor"><em>dc:contributor</em></a></td>
@@ -156,6 +154,18 @@ title="go to parrot home page">Parrot </a></h1>
       	<p>See <em>rdfs:comment</em></p>
 		<p>For example: <code>&lt;dct:description xml:lang="en"&gt;It is a defect having to do with temperature issues.&lt;/dct:description&gt;</code></p>      	
       </td>
+    </tr>
+    <tr>
+      <th>Property</th>
+      <th>Ontology</th>
+      <th>Class</th>
+      <th>Property</th>
+      <th>Individual</th>
+      <th>Rule Set</th>
+      <th>Rule</th>
+      <th>Vocabulary</th>
+      <th>Dataset</th>
+      <th>Description</th>
     </tr>
     <tr>
       <td><a href="http://dublincore.org/documents/dcmi-terms/#terms-issued"><em>dct:issued</em></a></td>
@@ -262,6 +272,18 @@ title="go to parrot home page">Parrot </a></h1>
       </td>
     </tr>
     <tr>
+      <th>Property</th>
+      <th>Ontology</th>
+      <th>Class</th>
+      <th>Property</th>
+      <th>Individual</th>
+      <th>Rule Set</th>
+      <th>Rule</th>
+      <th>Vocabulary</th>
+      <th>Dataset</th>
+      <th>Description</th>
+    </tr>
+    <tr>
       <td><a href="http://xmlns.com/foaf/spec/#term_maker"><em>foaf:maker</em></a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td>
@@ -364,7 +386,7 @@ title="go to parrot home page">Parrot </a></h1>
       	<p>A vocabulary or <em>owl:Ontology</em> whose classes or properties are used in the dataset.</p>
       	<p>For example: <code>&lt;void:vocabulary rdf:resource="http://xmlns.com/foaf/0.1/" /&gt;</code></p>      	
       </td>
-    </tr>    
+    </tr>
     </tbody>
 </table>
 

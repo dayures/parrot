@@ -710,7 +710,8 @@ public class OntResourceAnnotationStrategy {
 	 * @return the creator agents.
 	 */
 	public Collection<Agent> getCreatorAgents(Resource resource) {
-		Collection<Agent> creators = new HashSet<Agent>(); 
+		Collection<Agent> creators = new HashSet<Agent>();
+		creators.addAll(getAgentsFromObjectProperty(resource, DC_CREATOR));
 		creators.addAll(getAgentsFromObjectProperty(resource, DCT_CREATOR));
 		creators.addAll(getAgentsFromObjectProperty(resource, FOAF_MAKER));
 		return creators;
@@ -731,7 +732,10 @@ public class OntResourceAnnotationStrategy {
 	 * @return the contributor agents.
 	 */
 	public Collection<Agent> getContributorAgents(Resource resource) {
-		return getAgentsFromObjectProperty(resource, DCT_CONTRIBUTOR);
+		Collection<Agent> contributors = new HashSet<Agent>();
+		contributors.addAll(getAgentsFromObjectProperty(resource, DC_CONTRIBUTOR));
+		contributors.addAll(getAgentsFromObjectProperty(resource, DCT_CONTRIBUTOR));
+		return contributors;
 	}
 	
 	/**
@@ -749,7 +753,10 @@ public class OntResourceAnnotationStrategy {
 	 * @return the publisher agents.
 	 */
 	public Collection<Agent> getPublisherAgents(Resource resource) {
-		return getAgentsFromObjectProperty(resource, DCT_PUBLISHER);
+		Collection<Agent> publishers = new HashSet<Agent>();
+		publishers.addAll(getAgentsFromObjectProperty(resource, DC_PUBLISHER));
+		publishers.addAll(getAgentsFromObjectProperty(resource, DCT_PUBLISHER));
+		return publishers;
 	}
 	
 	private Collection<Agent> getAgentsFromObjectProperty(Resource resource, String property) {

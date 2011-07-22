@@ -17,8 +17,8 @@
 	<div class="all"> 
 
 	<div id="header">
-	<h1><a href="http://ontorule-project.eu/parrot"
-		title="go to parrot project home page">Parrot </a></h1>
+	<h1><a href="/parrot"
+		title="go to parrot home page">Parrot </a></h1>
 	<h2>a RIF and OWL documentation service (alpha version)</h2>
 	</div>
 

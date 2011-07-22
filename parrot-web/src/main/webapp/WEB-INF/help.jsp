@@ -17,8 +17,8 @@
 <div class="all">
 
 <div id="header">
-<h1><a href="http://ontorule-project.eu/parrot"
-title="go to parrot project home page">Parrot </a></h1>
+<h1><a href="/parrot"
+title="go to parrot home page">Parrot </a></h1>
 
 <h2>a RIF and OWL documentation service (alpha version)</h2>
 </div>
@@ -635,7 +635,7 @@ You can send multiple <tt>documentText</tt> parameter values. In that case, each
 <h3 id="tip-features">Other features</h3>
 
 <p>If a resource has more than one <em>rdf:type</em>, this resource will be document in the report just once (with no priority to document the resource like a concrete <em>rdf:type</em>).</p>
-<p>For instance, if a resource is declared like:
+<p>For instance, if a resource is declared like:</p>
 <pre><code>
 &lt;rdf:RDF xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;&gt;
 	&lt;rdf:Description rdf:about=&quot;http://example.org/resource&quot;&gt;
@@ -645,8 +645,7 @@ You can send multiple <tt>documentText</tt> parameter values. In that case, each
 &lt;/rdf:RDF&gt; 
 </code></pre>
 
-The documentation for the resource <em>http://example.org/resource</em> will only appears once (like an ontology or like a dataset).
-</p>
+<p>The documentation for the resource <em>http://example.org/resource</em> will only appears once (like an ontology or like a dataset).</p>
 
 <div id="footer">
 <p id="logo"><a href="http://www.fundacionctic.org/"><img src="images/ctic.png"

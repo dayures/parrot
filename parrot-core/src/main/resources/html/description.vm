@@ -1,6 +1,6 @@
   #if($element.Description)
     <p>$element.Description</p>
   #else
-      <p><em>{{No description available}}</em> <img class="icon-info-description" src="images/info.png" alt="info"/></p> 
+      <p><em>{{No description available}}</em> <img class="icon-info-description" src="report/images/info.png" alt="info"/></p> 
   
   #end

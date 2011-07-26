@@ -12,26 +12,23 @@
     <title>$document.Title</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     #parse("html/rdfa.vm")
+
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
     
     <link rel="stylesheet" type="text/css" media="screen,projection" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/themes/cupertino/jquery-ui.css" />
-    <style type="text/css" media="screen,projection">
-	    #include("css/base.css")
-	    #include("css/custom.css")
-		#include("css/SemEx.css")
-		#if (${profile} == "business")
-			#include("css/${profile}.css")
-		#end
-		#if (${profile} == "technical")
-			#include("css/${profile}.css")
-		#end
-    </style>
- 
+    <link rel="stylesheet" type="text/css" media="screen,projection" href="report/css/base.css" /> 
+    <link rel="stylesheet" type="text/css" media="screen,projection" href="report/css/custom.css" /> 
+    <link rel="stylesheet" type="text/css" media="screen,projection" href="report/css/SemEx.css" /> 
     <link rel="stylesheet" type="text/css" media="screen,projection" href="report/jixedbar/jx.stylesheet.css" /> 
-    <link type="image/x-icon" href="images/favicon.ico" rel="shortcut icon" />
-	#if($document.customizeCssUrl)
-    	<link rel="stylesheet" type="text/css" media="screen,projection" href="$document.customizeCssUrl" />
-    #end
     <link rel="stylesheet" type="text/css" media="print" href="report/css/print.css" /> 
+
+  	#if (${profile} == "business" || ${profile} == "technical")
+	    <link rel="stylesheet" type="text/css" media="screen,projection" href="report/css/${profile}.css" /> 
+  	#end
+  
+	#if($document.customizeCssUrl)
+    	<link rel="stylesheet" type="text/css" href="$document.customizeCssUrl" />
+    #end
         
   </head>
   <body>

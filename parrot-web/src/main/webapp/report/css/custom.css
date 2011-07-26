@@ -76,55 +76,55 @@ dt{
 }
 
 .parrot-ontology-ref {
-	background-image: url("images/icon-ontology-16.png");
+	background-image: url("../images/icon-ontology-16.png");
 }
 
 .parrot-ontology-title {
-	background-image: url("images/icon-ontology-24.png");
+	background-image: url("../images/icon-ontology-24.png");
 }
 
 .parrot-class-ref {
-	background-image: url("images/icon-class-16.png");
+	background-image: url("../images/icon-class-16.png");
 }
 
 .parrot-class-title {
-	background-image: url("images/icon-class-24.png");
+	background-image: url("../images/icon-class-24.png");
 }
 
 .parrot-property-ref {
-	background-image: url("images/icon-property-16.png");
+	background-image: url("../images/icon-property-16.png");
 }
 
 .parrot-property-title {
-	background-image: url("images/icon-property-24.png");
+	background-image: url("../images/icon-property-24.png");
 }
 
 .parrot-individual-ref {
-	background-image: url("images/icon-individual-16.png");
+	background-image: url("../images/icon-individual-16.png");
 }
 
 .parrot-individual-title {
-	background-image: url("images/icon-individual-24.png");
+	background-image: url("../images/icon-individual-24.png");
 }
 
 .parrot-rule-ref {
-	background-image: url("images/icon-rule-16.png");
+	background-image: url("../images/icon-rule-16.png");
 }
 
 .parrot-rule-title {
-	background-image: url("images/icon-rule-24.png");
+	background-image: url("../images/icon-rule-24.png");
 }
 
 .parrot-ruleset-ref {
-	background-image: url("images/icon-ruleset-16.png");
+	background-image: url("../images/icon-ruleset-16.png");
 }
 
 .parrot-ruleset-title {
-	background-image: url("images/icon-ruleset-24.png");
+	background-image: url("../images/icon-ruleset-24.png");
 }
 
 .parrot-datatype-ref {
-	background-image: url("images/icon-datatype-16.png");
+	background-image: url("../images/icon-datatype-16.png");
 }
 
 .parrot-label-locale {
@@ -186,7 +186,7 @@ div#header {
   vertical-align: top;
   display: block;
   margin: 0.3em 10em 0em 10em;
-  background-image: url(images/ctic-white.png);
+  background-image: url(../images/ctic-white.png);
   background-repeat: no-repeat;
   background-position: bottom right;
   border: 1px solid white;
@@ -276,19 +276,19 @@ h1 a[href]:hover { background-color: transparent; }
 }
 
 .date{
-	background-image: url("images/date.png");
+	background-image: url("../images/date.png");
 }
 
 .creator{
-	background-image: url("images/user.png");
+	background-image: url("../images/user.png");
 }
 
 .contributor{
-	background-image: url("images/user_gray.png");
+	background-image: url("../images/user-gray.png");
 }
 
 .publisher{
-	background-image: url("images/user_suit.png");
+	background-image: url("../images/user-suit.png");
 }
 
 /** end metadata icons ***/

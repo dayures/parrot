@@ -54,22 +54,12 @@
   <script type="text/javascript" src="report/js/jquery.corner.js"></script> 
   <script type="text/javascript" src="report/jixedbar/jquery.jixedbar.min.js"></script> 
   <script type="text/javascript" src="report/js/jquery.qtip-1.0.js"></script> 
-  <script type="text/javascript">
-	/* <![CDATA[ */
+  <script type="text/javascript" src="report/js/javascript.js"></script> 
 
-  	#include("js/javascript.js")
+  #if (${profile} == "business" || ${profile} == "technical")
+	<script type="text/javascript" src="report/js/${profile}.js"></script> 
+  #end
 
-  	#if (${profile} == "business")
-		#include("js/${profile}.js")
-	#end
-
-	#if (${profile} == "technical")
-		#include("js/${profile}.js")
-	#end
-	/* ]]> */
-  </script>
-  
-  
   <script type="text/javascript">
 	/* <![CDATA[ */
 	var _gaq = _gaq || [];

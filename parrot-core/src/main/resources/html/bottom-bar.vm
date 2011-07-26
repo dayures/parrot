@@ -33,7 +33,9 @@
 			<li title="Expand/Collapse all" ><a href="#" id="openCloseAll"><img src="${uri_base}report/images/block.png" alt="Expand/Collapse all"/></a></li> 
         </ul> 
   		<span class="jx-separator-left"></span>
-                
+
+		## if uri base is equals to "" means that the page is resolved in a deployed server. 
+		#if (${uri_base} == "")                
         <ul class="jx-bar-button-right">
 		    ## rename the variable in order to unescape the html content
 		    #if ($document.reportURL)
@@ -43,6 +45,7 @@
 			#end
 	      <li title="Back to form"><a href="$unescapehtml_back-to-form"><img src="${uri_base}report/images/back.png" alt="Back to form" /></a></li>
    		</ul>
+   		#end
 
   		<span class="jx-separator-right"></span>
 

@@ -6,19 +6,19 @@
      #end
      
      #if($element.type == "application/pdf")
-       <a href="$element.Uri"><img class="related-document-icon" src="report/images/pdf-icon.png" alt="pdf icon" /></a>
+       <a href="$element.Uri"><img class="related-document-icon" src="${uri_base}report/images/pdf-icon.png" alt="pdf icon" /></a>
      #end
      #if($element.type == "text/plain")
-       <a href="$element.Uri"><img class="related-document-icon" src="report/images/text-icon.png" alt="text icon" /></a>
+       <a href="$element.Uri"><img class="related-document-icon" src="${uri_base}report/images/text-icon.png" alt="text icon" /></a>
      #end
      #if($element.type == "application/vnd.ms-powerpoint")
-       <a href="$element.Uri"><img class="related-document-icon" src="report/images/ppt-icon.png" alt="ppt icon" /></a>
+       <a href="$element.Uri"><img class="related-document-icon" src="${uri_base}report/images/ppt-icon.png" alt="ppt icon" /></a>
      #end
      #if($element.type == "text/html")
-       <a href="$element.Uri"><img class="related-document-icon" src="report/images/candidate-rule-icon.png" alt="candidate-rule icon" /></a>
+       <a href="$element.Uri"><img class="related-document-icon" src="${uri_base}report/images/candidate-rule-icon.png" alt="candidate-rule icon" /></a>
      #end
      #if($element.type == "uri")
-       <a href="$element.Uri"><img class="related-document-icon" src="report/images/hyperlink-icon.png" alt="hyperlink icon" /></a>
+       <a href="$element.Uri"><img class="related-document-icon" src="${uri_base}report/images/hyperlink-icon.png" alt="hyperlink icon" /></a>
      #end
 
      #if($element.type == "video/mpeg")

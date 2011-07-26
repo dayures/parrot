@@ -1,6 +1,7 @@
 package es.ctic.parrot.generators;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -25,36 +26,65 @@ public class HtmlOutputGenerator implements OutputGenerator {
     private static final String PROFILE = "profile";
 	private static final String DOCUMENT = "document";
 	private static final String REPORTURL_NOLANG = "reportUrl_NoLang";
-	
+	private static final String URI_BASE = "uri_base";
+	private static final String DEFAULT_URI_BASE = "";
+
 	private final OutputStream out;
     private InputStream template;
-
-    /**
-     * Constructs a generator of <code>HTML</code> content
-     * @param out Stream where the output will be written.
-     * @param template The template for the output report.
-     */
-    public HtmlOutputGenerator(OutputStream out, InputStream template) {
-        this.out = out;
-        this.template = template;
-    }
-
-    /**
-     * Constructs a generator of <code>HTML</code> content
-     * @param out Stream where the output will be written.
-     */
-    public HtmlOutputGenerator(OutputStream out) {
-        this.out = out;
-        this.template = getDefaultTemplate();
-    }
+    private String uriBase;
     
-    private InputStream getDefaultTemplate() {
-		InputStream template = Thread.currentThread().getContextClassLoader().getResourceAsStream("html/template.vm");
-		if (template == null) {
-			throw new RuntimeException("Failed to load resource");
+    
+    
+	public static class Builder {
+		// Optional parameters - initialized to default values
+		private OutputStream out = getDefaultOutputStream();
+	    private InputStream template = getDefaultTemplate();
+	    private String uriBase = DEFAULT_URI_BASE;		
+
+		public Builder() {
+			// Required parameters
 		}
-		return template;
+
+		public Builder out(OutputStream val){
+			out = val;
+			return this;
+		}
+
+		public Builder template(InputStream val){
+			template = val;
+			return this;
+		}
+
+		public Builder uriBase(String val){
+			uriBase = val;
+			return this;
+		}
+		
+		public HtmlOutputGenerator build() {
+			return new HtmlOutputGenerator(this);
+		}
+		
+	    private InputStream getDefaultTemplate() {
+			InputStream template = Thread.currentThread().getContextClassLoader().getResourceAsStream("html/template.vm");
+			if (template == null) {
+				throw new RuntimeException("Failed to load resource");
+			}
+			return template;
+		}
+	    
+	    private OutputStream getDefaultOutputStream(){
+	    	return new ByteArrayOutputStream();
+	    }
+
+
 	}
+
+	private HtmlOutputGenerator(Builder builder) {
+		out = builder.out;
+		template = builder.template;
+		uriBase = builder.uriBase;
+	}
+	
 
 	/**
      * Generates an output.
@@ -66,6 +96,8 @@ public class HtmlOutputGenerator implements OutputGenerator {
         ctx.put(DOCUMENT, document);
         ctx.put(PROFILE, profile);
         ctx.put(REPORTURL_NOLANG, getNoLangURL(document.getReportURL()));
+        //ctx.put(URI_BASE, "");
+        ctx.put(URI_BASE, uriBase);
         fillTemplate(out, ctx, template);
     }
 

@@ -1,36 +1,36 @@
 <div id="bottom-bar"> 
         <ul> 
-            <li title="Go to top"><a href="#"><img src="report/images/top.png" alt="Go to top" /></a></li> 
+            <li title="Go to top"><a href="#"><img src="${uri_base}report/images/top.png" alt="Go to top" /></a></li> 
         </ul> 
         <span class="jx-separator-left"></span> 
         <ul> 
 		#if(!$document.ontologyDetailViews.isEmpty())
-            <li title="Ontologies"><a href="#ontologies"><img src="report/images/icon-ontology-16.png" alt="Ontologies" /></a></li> 
+            <li title="Ontologies"><a href="#ontologies"><img src="${uri_base}report/images/icon-ontology-16.png" alt="Ontologies" /></a></li> 
 		#end
 		
 		#if(!$document.ontologyClassDetailViews.isEmpty())
-            <li title="Classes"><a href="#classes"><img src="report/images/icon-class-16.png" alt="Classes" /></a></li> 
+            <li title="Classes"><a href="#classes"><img src="${uri_base}report/images/icon-class-16.png" alt="Classes" /></a></li> 
 		#end
 		
 		#if(!$document.ontologyPropertyDetailViews.isEmpty())
-            <li title="Properties"><a href="#properties"><img src="report/images/icon-property-16.png" alt="Properties" /></a></li> 
+            <li title="Properties"><a href="#properties"><img src="${uri_base}report/images/icon-property-16.png" alt="Properties" /></a></li> 
 		#end
 		
 		#if(!$document.ontologyIndividualDetailViews.isEmpty())
-			<li title="Individuals"><a href="#individuals"><img src="report/images/icon-individual-16.png" alt="Individuals" /></a></li> 
+			<li title="Individuals"><a href="#individuals"><img src="${uri_base}report/images/icon-individual-16.png" alt="Individuals" /></a></li> 
 		#end
 		
 		#if(!$document.ruleSetDetailViews.isEmpty())
-			<li title="Rule sets"><a href="#rulesets"><img src="report/images/icon-ruleset-16.png" alt="Rule sets" /></a></li> 
+			<li title="Rule sets"><a href="#rulesets"><img src="${uri_base}report/images/icon-ruleset-16.png" alt="Rule sets" /></a></li> 
 		#end
 		
 		#if(!$document.ruleDetailViews.isEmpty())
-			<li title="Rules"><a href="#rules"><img src="report/images/icon-rule-16.png" alt="Rules" /></a></li> 
+			<li title="Rules"><a href="#rules"><img src="${uri_base}report/images/icon-rule-16.png" alt="Rules" /></a></li> 
 		#end
         </ul> 
         <span class="jx-separator-left"></span>        
         <ul> 
-			<li title="Expand/Collapse all" ><a href="#" id="openCloseAll"><img src="report/images/block.png" alt="Expand/Collapse all"/></a></li> 
+			<li title="Expand/Collapse all" ><a href="#" id="openCloseAll"><img src="${uri_base}report/images/block.png" alt="Expand/Collapse all"/></a></li> 
         </ul> 
   		<span class="jx-separator-left"></span>
                 
@@ -41,14 +41,14 @@
 			#else
 				#set($unescapehtml_back-to-form = "\")
 			#end
-	      <li title="Back to form"><a href="$unescapehtml_back-to-form"><img src="report/images/back.png" alt="Back to form" /></a></li>
+	      <li title="Back to form"><a href="$unescapehtml_back-to-form"><img src="${uri_base}report/images/back.png" alt="Back to form" /></a></li>
    		</ul>
 
   		<span class="jx-separator-right"></span>
 
 
    		<ul class="jx-bar-button-right">
-		  <li title="Help"><a href="/help"><img src="report/images/help.png" alt="Help" /></a></li>
+		  <li title="Help"><a href="/help"><img src="${uri_base}report/images/help.png" alt="Help" /></a></li>
         </ul>
         
    		<span class="jx-separator-right"></span>

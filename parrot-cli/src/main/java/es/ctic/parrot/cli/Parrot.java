@@ -38,6 +38,8 @@ public class Parrot {
     private static final String TECHNICAL_PROFILE = "technical";
     private static final String BUSINESS_PROFILE = "business";
     private static final String DEFAULT_PROFILE = TECHNICAL_PROFILE;
+	private static final String DEFAULT_PARROT_URI_BASE = "http://ontorule-project.eu/parrot/"; 
+
     
     public static void main( String[] args ) throws Exception {
     	
@@ -50,16 +52,18 @@ public class Parrot {
         String template = DEFAULT_TEMPLATE;
         Profile profile = Profile.TECHNICAL;
         String customizeCssUrl = null;
+        String base = DEFAULT_PARROT_URI_BASE;
         
         // process options
         if (cmd.hasOption("h")) {
             HelpFormatter formatter = new HelpFormatter();
-            formatter.printHelp(250,"java -jar target/parrot-jar-with-dependencies.jar","options" ,options, "Example of usage: \n" +
+            formatter.printHelp(320,"java -jar target/parrot-jar-with-dependencies.jar","options" ,options, "\nExample of usage: \n" +
             		"java -jar parrot-jar-with-dependencies.jar " +
             		"-i http://ontorule-project.eu/resources/m24dem/CAx_M24_ontology.owl " +
             		"-i http://ontorule-project.eu/resources/m24dem/CAx_M24_rules_parrot.rifps " +
-            		"-o documentation-generated.html" +
-            		"-s http://idi.fundacionctic.org/semantica/parrot/style.css", true); 
+            		"-o documentation-generated.html " +
+            		"-s http://idi.fundacionctic.org/semantica/parrot/style.css " +
+            		"-b http://ontorule-project.eu/parrot/", true); 
             // EXAMPLE java -jar target/parrot-jar-with-dependencies.jar -i http://ontorule-project.eu/resources/m24dem/CAx_M24_ontology.owl -i http://ontorule-project.eu/resources/m24dem/CAx_M24_rules_parrot.rifps -s http://idi.fundacionctic.org/semantica/parrot/style.css -o a.html
             return;
         }
@@ -99,7 +103,12 @@ public class Parrot {
             printError("Please specify at least one input");
             return;
         }
-        
+
+        // URI base
+        if (cmd.hasOption("b")) {
+        	base = cmd.getOptionValue("b");
+        }
+
         ParrotAppServ app = new ParrotAppServ();
 
         try {
@@ -115,7 +124,7 @@ public class Parrot {
             if (dp.getInputs().isEmpty()) {
             	printError("Please specify at least one input");
             } else {
-                OutputGenerator outputGenerator = new HtmlOutputGenerator(out, templateInputStream);
+                OutputGenerator outputGenerator = new HtmlOutputGenerator.Builder().out(out).template(templateInputStream).uriBase(base).build();
                 app.createDocumentation(dp, outputGenerator, profile);
             }
         } catch (FileNotFoundException e) {
@@ -158,6 +167,7 @@ public class Parrot {
         options.addOption("p", "profile", true, "profile ( valid vules: 'technical' [default] or 'business')");        
         options.addOption("l", "lang", true, "language using language subtag registry from IANA (default: " + DEFAULT_LOCALE.getLanguage() + ")");
         options.addOption("s", "css", true, "customize Cascading Style Sheet URL");
+        options.addOption("b", "base", true, "URI base to resolve the external resources");
         Option inputFile   = OptionBuilder.withArgName("file")
         .hasArg(true)
         .withDescription("input document")

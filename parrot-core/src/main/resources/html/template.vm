@@ -13,17 +13,17 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     #parse("html/rdfa.vm")
 
-    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="${uri_base}images/favicon.ico" />
     
     <link rel="stylesheet" type="text/css" media="screen,projection" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/themes/cupertino/jquery-ui.css" />
-    <link rel="stylesheet" type="text/css" media="screen,projection" href="report/css/base.css" /> 
-    <link rel="stylesheet" type="text/css" media="screen,projection" href="report/css/custom.css" /> 
-    <link rel="stylesheet" type="text/css" media="screen,projection" href="report/css/SemEx.css" /> 
-    <link rel="stylesheet" type="text/css" media="screen,projection" href="report/jixedbar/jx.stylesheet.css" /> 
-    <link rel="stylesheet" type="text/css" media="print" href="report/css/print.css" /> 
+    <link rel="stylesheet" type="text/css" media="screen,projection" href="${uri_base}report/css/base.css" /> 
+    <link rel="stylesheet" type="text/css" media="screen,projection" href="${uri_base}report/css/custom.css" /> 
+    <link rel="stylesheet" type="text/css" media="screen,projection" href="${uri_base}report/css/SemEx.css" /> 
+    <link rel="stylesheet" type="text/css" media="screen,projection" href="${uri_base}report/jixedbar/jx.stylesheet.css" /> 
+    <link rel="stylesheet" type="text/css" media="print" href="${uri_base}report/css/print.css" /> 
 
   	#if (${profile} == "business" || ${profile} == "technical")
-	    <link rel="stylesheet" type="text/css" media="screen,projection" href="report/css/${profile}.css" /> 
+	    <link rel="stylesheet" type="text/css" media="screen,projection" href="${uri_base}report/css/${profile}.css" /> 
   	#end
   
 	#if($document.customizeCssUrl)
@@ -48,13 +48,13 @@
   
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script> 
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/jquery-ui.min.js"></script> 
-  <script type="text/javascript" src="report/js/jquery.corner.js"></script> 
-  <script type="text/javascript" src="report/jixedbar/jquery.jixedbar.min.js"></script> 
-  <script type="text/javascript" src="report/js/jquery.qtip-1.0.js"></script> 
-  <script type="text/javascript" src="report/js/javascript.js"></script> 
+  <script type="text/javascript" src="${uri_base}report/js/jquery.corner.js"></script> 
+  <script type="text/javascript" src="${uri_base}report/jixedbar/jquery.jixedbar.min.js"></script> 
+  <script type="text/javascript" src="${uri_base}report/js/jquery.qtip-1.0.js"></script> 
+  <script type="text/javascript" src="${uri_base}report/js/javascript.js"></script> 
 
   #if (${profile} == "business" || ${profile} == "technical")
-	<script type="text/javascript" src="report/js/${profile}.js"></script> 
+	<script type="text/javascript" src="${uri_base}report/js/${profile}.js"></script> 
   #end
 
   <script type="text/javascript">

@@ -75,7 +75,7 @@ public class ServletParrot extends HttpServlet {
 				forwardToForm(req, res);
 			} else {
 				ByteArrayOutputStream out = new ByteArrayOutputStream();
-				HtmlOutputGenerator outputGenerator = new HtmlOutputGenerator(out);
+				HtmlOutputGenerator outputGenerator = new HtmlOutputGenerator.Builder().out(out).build();
 				Profile profile = getProfile(req);
 				getParrotAppServ().createDocumentation(dp, outputGenerator, profile);
 				res.setContentType("text/html");

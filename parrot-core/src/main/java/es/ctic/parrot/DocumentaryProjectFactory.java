@@ -27,7 +27,17 @@ import es.ctic.parrot.reader.URLInput;
  *
  */
 public class DocumentaryProjectFactory {
-    
+
+	/**
+	 * Creates a documentary project.
+	 * @param locale the locale.
+	 * @param customizeCssUrl the customize CSS URL.
+	 * @return a Documentary Project.
+	 */
+	static public DocumentaryProject createDocumentaryProject(Locale locale){
+		return new DocumentaryProjectImpl.Builder().locale(locale).build();
+	} 
+	
 	/**
 	 * Creates a documentary project.
 	 * @param locale the locale.

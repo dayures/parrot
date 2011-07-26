@@ -455,57 +455,57 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>
     <tr>
       <td><img alt="data property"
-        src="images/datatype-property-24x24.png" width="24" height="24" /></td>
+        src="report/images/datatype-property-24.png" width="24" height="24" /></td>
       <td>A <a href="http://www.w3.org/TR/owl2-syntax#Data_Properties" target="_blank">data property</a> is used to describe attributes of resources, such as the height of a person or the population of a country.</td>
     </tr>
     <tr>
       <td><img alt="object property"
-        src="images/object-property-24x24.png" width="24" height="24" /></td>
+        src="report/images/object-property-24.png" width="24" height="24" /></td>
       <td>An <a href="http://www.w3.org/TR/owl2-syntax#Object_Properties" target="_blank">object property</a> is used to describe relations to other resources, such as the mother of a person or the capital of a country.</td>
     </tr>
 
     <tr>
       <td><img alt="annotation property"
-        src="images/annotation-property-24x24.png" width="24" height="24" /></td>
+        src="report/images/annotation-property-24.png" width="24" height="24" /></td>
       <td>An <a href="http://www.w3.org/TR/owl2-syntax#Annotation_Properties" target="_blank">annotation property</a> is used to give more information of resources.</td>
     </tr>
 
     <tr>
       <td><img alt="reflexive object property"
-        src="images/reflexive-property.png" width="24" height="24" /></td>
+        src="report/images/reflexive-property.png" width="24" height="24" /></td>
       <td>A <a href="http://www.w3.org/TR/owl2-syntax/#Reflexive_Object_Properties" target="_blank">reflexive property</a> describes a relation where every resource is related to itself.</td>
     </tr>
 
     <tr>
       <td><img alt="irreflexive object property"
-        src="images/irreflexive-property.png" width="26" height="24" /></td>
+        src="report/images/irreflexive-property.png" width="26" height="24" /></td>
       <td>A <a href="http://www.w3.org/TR/owl2-syntax/#Irreflexive_Object_Properties" target="_blank">irreflexive property</a> describes a relation where none resource is related to itself.</td>
     </tr>
 
     <tr>
       <td><img alt="symmetric object property"
-        src="images/symmetric-property.png" width="45" height="24" /></td>
+        src="report/images/symmetric-property.png" width="45" height="24" /></td>
       <td><a href="http://www.w3.org/TR/owl2-syntax/#Symmetric_Object_Properties" target="_blank">Symmetric property</a></td>
     </tr>
 
     <tr>
       <td><img alt="asymmetric object property"
-        src="images/asymmetric-property.png" width="40" height="24" /></td>
+        src="report/images/asymmetric-property.png" width="40" height="24" /></td>
       <td><a href="http://www.w3.org/TR/owl2-syntax/#Asymmetric_Object_Properties" target="_blank">Asymmetric property</a></td>
     </tr>
 
     <tr>
-     <td><img alt="transitive object property" src="images/transitive-property.png" width="61" height="24" /></td>
+     <td><img alt="transitive object property" src="report/images/transitive-property.png" width="61" height="24" /></td>
       <td><a href="http://www.w3.org/TR/owl2-syntax/#Transitive_Object_Properties" target="_blank">Transitive property</a></td>
     </tr>
     
     <tr>
-     <td><img alt="functional object property" src="images/functional-property.png" width="33" height="24" /></td>
+     <td><img alt="functional object property" src="report/images/functional-property.png" width="33" height="24" /></td>
       <td><a href="http://www.w3.org/TR/owl2-syntax/#Functional_Object_Properties" target="_blank">Functional property</a></td>
     </tr>
     
     <tr>
-     <td><img alt="inverse functional object property" src="images/inverse-functional-property.png" width="33" height="24" /></td>
+     <td><img alt="inverse functional object property" src="report/images/inverse-functional-property.png" width="33" height="24" /></td>
       <td><a href="http://www.w3.org/TR/owl2-syntax/#Inverse-Functional_Object_Properties" target="_blank">Inverse functional property</a></td>
     </tr>
 

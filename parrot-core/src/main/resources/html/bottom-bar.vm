@@ -48,7 +48,7 @@
 
 
    		<ul class="jx-bar-button-right">
-		  <li title="Help"><a href="/help"><img src="${uri_base}report/images/help.png" alt="Help" /></a></li>
+		  <li title="Help"><a href="${uri_base}help"><img src="${uri_base}report/images/help.png" alt="Help" /></a></li>
         </ul>
         
    		<span class="jx-separator-right"></span>

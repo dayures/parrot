@@ -41,8 +41,8 @@ public class Parrot {
 	private static final String DEFAULT_PARROT_URI_BASE = "http://ontorule-project.eu/parrot/"; 
 
     
-    public static void main( String[] args ) throws Exception {
-    	
+    public static void main( String[] args ) {
+      try{
         Options options = createOptions();
         CommandLine cmd = parseCommandLine(args, options);
 
@@ -69,7 +69,7 @@ public class Parrot {
         }
         
         if (cmd.hasOption("o")) {
-            out = new FileOutputStream(cmd.getOptionValue("o"));
+				out = new FileOutputStream(cmd.getOptionValue("o"));
         }
         
         if (cmd.hasOption("l")) {
@@ -111,43 +111,44 @@ public class Parrot {
 
         ParrotAppServ app = new ParrotAppServ();
 
-        try {
-            InputStream templateInputStream = openTemplateInputStream(template);
-            DocumentaryProject dp = DocumentaryProjectFactory.createDocumentaryProject(locale, customizeCssUrl);
-            for ( String inputFilename : cmd.getOptionValues('i') ) {
-                if (inputFilename.startsWith("http:")) {
-                    dp.addInput(new URLInput(new URL(inputFilename)));
-                } else {
-                    dp.addInput(new FileInput(new File(inputFilename)));
-                }
-            }
-            if (dp.getInputs().isEmpty()) {
-            	printError("Please specify at least one input");
+        InputStream templateInputStream = openTemplateInputStream(template);
+        DocumentaryProject dp = DocumentaryProjectFactory.createDocumentaryProject(locale, customizeCssUrl);
+        for ( String inputFilename : cmd.getOptionValues('i') ) {
+            if (inputFilename.startsWith("http:")) {
+                dp.addInput(new URLInput(new URL(inputFilename)));
             } else {
-                OutputGenerator outputGenerator = new HtmlOutputGenerator.Builder().out(out).template(templateInputStream).uriBase(base).build();
-                app.createDocumentation(dp, outputGenerator, profile);
+                dp.addInput(new FileInput(new File(inputFilename)));
             }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
         }
+        if (dp.getInputs().isEmpty()) {
+        	printError("Please specify at least one input");
+        } else {
+            OutputGenerator outputGenerator = new HtmlOutputGenerator.Builder().out(out).template(templateInputStream).uriBase(base).build();
+        	logger.info("Generating the report for ...");
+            app.createDocumentation(dp, outputGenerator, profile);
+            logger.info("Finished to generate the report...");
+        }
+      } catch (Exception e) {
+    	  printError(e.getMessage());
+      }
     }
 
-    private static void printError(String message) {
-		//logger.error(message);
-		System.err.println("\n>>> ERROR: " + message + "\n");
+	private static void printError(String message) {
+		logger.error(">>> ERROR: " + message);
+		//System.err.println("\n>>> ERROR: " + message + "\n");
 	}
 
 	private static InputStream openTemplateInputStream(String template) throws FileNotFoundException {
         if (template.startsWith("classpath:")) {
             String templateSuffix = template.substring("classpath:".length());
-            logger.info("Reading template " + templateSuffix + " from classpath");
+            logger.debug("Reading template " + templateSuffix + " from classpath");
             InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(templateSuffix);
             if (is == null) {
                 throw new FileNotFoundException(template);
             }
             return is;
         } else {
-            logger.info("Reading template " + template + " from filesystem");
+            logger.debug("Reading template " + template + " from filesystem");
             return new FileInputStream(template);
         }
     }

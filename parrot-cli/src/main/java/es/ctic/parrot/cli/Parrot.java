@@ -162,12 +162,12 @@ public class Parrot {
     @SuppressWarnings("static-access")
 	private static Options createOptions() {
         Options options = new Options();
-        options.addOption("o", "output", true, "output file");
+        options.addOption("o", "output", true, "output file (default output: console)");
         options.addOption("h", "help", false, "print help");
-        options.addOption("p", "profile", true, "profile ( valid vules: 'technical' [default] or 'business')");        
+        options.addOption("p", "profile", true, "profile ( valid values: '"+TECHNICAL_PROFILE+"' [default] or '"+BUSINESS_PROFILE+"')");        
         options.addOption("l", "lang", true, "language using language subtag registry from IANA (default: " + DEFAULT_LOCALE.getLanguage() + ")");
-        options.addOption("s", "css", true, "customize Cascading Style Sheet URL");
-        options.addOption("b", "base", true, "URI base to resolve the external resources");
+        options.addOption("s", "css", true, "customize Cascading Style Sheet URL (default: none)");
+        options.addOption("b", "base", true, "URI base to resolve the external resources  (default: " + DEFAULT_PARROT_URI_BASE + ")");
         Option inputFile   = OptionBuilder.withArgName("file")
         .hasArg(true)
         .withDescription("input document")

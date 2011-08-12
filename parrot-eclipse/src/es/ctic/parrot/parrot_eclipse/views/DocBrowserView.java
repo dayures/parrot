@@ -27,13 +27,6 @@ public class DocBrowserView extends ViewPart {
 		}
 	}
 	
-	// FIXME
-	public void browserBack(){
-		if (browser != null && browser.isBackEnabled()) {
-			browser.back();
-		}
-	}
-	
 	@Override
 	public void createPartControl(Composite parent) {
 		this.createBrowser(parent);
@@ -53,19 +46,7 @@ public class DocBrowserView extends ViewPart {
 //		this.setBrowserHTML(initialHTML);
 	}
 	
-	// TODO: Back and forward buttons enabling/disabling
 	private void setLocationListener() {
-		/*
-		LocationListener locationListener = new LocationListener() {
-		      public void changed(LocationEvent event) {
-		            Browser browser = (Browser)event.widget;
-		            back.setEnabled(browser.isBackEnabled());
-		            forward.setEnabled(browser.isForwardEnabled());
-		         }
-		      public void changing(LocationEvent event) {
-		         }
-		      };
-		   browser.addLocationListener(locationListener); */
 	}
 	
 	@Override

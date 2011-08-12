@@ -84,5 +84,28 @@
             restorable="true">
       </view>
    </extension>
+   <extension point="org.eclipse.core.contenttype.contentTypes">
+	   <content-type base-type="org.eclipse.core.runtime.xml"
+	                 file-extensions="rif,xml"
+	                 id="es.ctic.parrot.rif.xml.content-type"
+	                 name="RIF/XML (Rule Interchange Format XML)">
+			<describer class="org.eclipse.core.runtime.content.XMLRootElementContentDescriber2">
+			  <parameter name="element" value="{http://www.w3.org/2007/rif#}Document"/>
+			</describer>	                 
+	   </content-type>
+	   <content-type base-type="org.eclipse.core.runtime.text"
+	                 file-extensions="rifps"
+	                 id="es.ctic.parrot.rifps.text.content-type"
+	                 name="RIF PS (Rule Interchange Format Presentation Syntax)">
+	   </content-type>
+	   <content-type base-type="org.eclipse.core.runtime.xml"
+	                 file-extensions="owl,rdf,xml"
+	                 id="es.ctic.parrot.rdf.xml.content-type"
+	                 name="RDF/XML">
+			<describer class="org.eclipse.core.runtime.content.XMLRootElementContentDescriber2">
+			  <parameter name="element" value="{http://www.w3.org/1999/02/22-rdf-syntax-ns#}RDF"/>
+			</describer>	                 
+	   </content-type>
+   </extension>
 
 </plugin>

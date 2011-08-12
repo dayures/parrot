@@ -84,20 +84,5 @@
             restorable="true">
       </view>
    </extension>
-   <extension
-         point="org.eclipse.ui.viewActions">
-      <viewContribution
-            id="es.ctic.parrot.parrot-eclipse.DocBrowserViewContribution"
-            targetID="es.ctic.parrot.parrot-eclipse.browser">
-         <action
-               class="es.ctic.parrot.parrot_eclipse.delegates.BackActionDelegate"
-               icon="icons/sample.gif"
-               id="es.ctic.parrot.parrot-eclipse.back"
-               label="Back"
-               style="push"
-               toolbarPath="navigation">
-         </action>
-      </viewContribution>
-   </extension>
 
 </plugin>

@@ -87,7 +87,11 @@
 			<visibleWhen>
 				<iterate operator="and" ifEmpty="false">
 					<adapt type="org.eclipse.core.resources.IResource">
+					<or>
 						<test property="org.eclipse.core.resources.contentTypeId" value="es.ctic.parrot.rif.xml.content-type"/>
+						<test property="org.eclipse.core.resources.contentTypeId" value="es.ctic.parrot.rifps.text.content-type"/>
+						<test property="org.eclipse.core.resources.contentTypeId" value="es.ctic.parrot.rdf.xml.content-type"/>
+					</or>
 					</adapt>
 				</iterate>
 			</visibleWhen>

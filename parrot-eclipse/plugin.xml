@@ -77,7 +77,6 @@
          </toolbar>
       </menuContribution>
       <menuContribution
-            allPopups="false"
             locationURI="popup:org.eclipse.ui.popup.any?after=additions">
          <command
                commandId="es.ctic.parrot.parrot_eclipse.commands.ProcFile"
@@ -85,6 +84,8 @@
                label="Generate documentation with Parrot"
                style="push">
 			<visibleWhen>
+				<and>
+				<count value="+"></count>
 				<iterate operator="and" ifEmpty="false">
 					<adapt type="org.eclipse.core.resources.IResource">
 					<or>
@@ -94,6 +95,7 @@
 					</or>
 					</adapt>
 				</iterate>
+				</and>
 			</visibleWhen>
          </command>
       </menuContribution>

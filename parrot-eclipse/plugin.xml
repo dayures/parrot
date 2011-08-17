@@ -68,6 +68,23 @@
             </command>
          </toolbar>
       </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <command
+               commandId="es.ctic.parrot.parrot_eclipse.commands.ProcRIF"
+               icon="icons/parrot_rif.png"
+               label="Generate documentation with Parrot"
+               style="push">
+			<visibleWhen>
+				<iterate operator="and" ifEmpty="false">
+					<adapt type="org.eclipse.core.resources.IResource">
+						<test property="org.eclipse.core.resources.contentTypeId" value="es.ctic.parrot.rif.xml.content-type"/>
+					</adapt>
+				</iterate>
+			</visibleWhen>
+         </command>
+      </menuContribution>
    </extension>
    <extension
          point="org.eclipse.ui.views">

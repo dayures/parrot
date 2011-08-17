@@ -19,7 +19,7 @@
 	<div id="header">
 	<h1><a href="/parrot"
 		title="go to parrot home page">Parrot </a></h1>
-	<h2>a RIF and OWL documentation service (alpha version)</h2>
+	<h2>a RIF and OWL documentation service</h2>
 	</div>
 
 		<c:if test="${ ! empty errorsGeneral}" >    	

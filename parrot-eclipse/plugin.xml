@@ -12,6 +12,10 @@
             id="es.ctic.parrot.parrot_eclipse.commands.ProcRIF"
             name="Process RIF">
       </command>
+      <command
+            id="es.ctic.parrot.parrot_eclipse.commands.ProcFile"
+            name="Process File">
+      </command>      
    </extension>
    <extension
          point="org.eclipse.ui.handlers">
@@ -22,6 +26,10 @@
       <handler
             class="es.ctic.parrot.parrot_eclipse.handlers.ProcRIFHandler"
             commandId="es.ctic.parrot.parrot_eclipse.commands.ProcRIF">
+      </handler>
+      <handler
+            class="es.ctic.parrot.parrot_eclipse.handlers.ProcFileHandler"
+            commandId="es.ctic.parrot.parrot_eclipse.commands.ProcFile">
       </handler>
    </extension>
    <extension
@@ -72,7 +80,7 @@
             allPopups="false"
             locationURI="popup:org.eclipse.ui.popup.any?after=additions">
          <command
-               commandId="es.ctic.parrot.parrot_eclipse.commands.ProcRIF"
+               commandId="es.ctic.parrot.parrot_eclipse.commands.ProcFile"
                icon="icons/parrot_rif.png"
                label="Generate documentation with Parrot"
                style="push">

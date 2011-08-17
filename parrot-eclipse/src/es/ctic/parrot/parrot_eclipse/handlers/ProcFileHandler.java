@@ -53,19 +53,25 @@ public class ProcFileHandler extends ProcHandler {
 	}
 
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		IWorkbenchPage page = getActiveWorkbenchPage(event);
-
-		IStructuredSelection selection = (IStructuredSelection) HandlerUtil.getCurrentSelectionChecked(event);
-		IFile ifile = (IFile) selection.getFirstElement();
 		
-		String contentType;
-		try {
-			contentType = MAP_EXTENSION_MIMETYPE.get(ifile.getContentDescription().getContentType().getId());
-		} catch (CoreException e) {
-			throw new RuntimeException(e);
+		
+		IWorkbenchPage page = getActiveWorkbenchPage(event);
+		IStructuredSelection selection = (IStructuredSelection) HandlerUtil.getCurrentSelectionChecked(event);
+
+		Map <File, String> files = new HashMap<File, String>();
+		for (Object element: selection.toList()){
+			IFile ifile = (IFile) element;	
+			String contentType;
+			try {
+				contentType = MAP_EXTENSION_MIMETYPE.get(ifile.getContentDescription().getContentType().getId());
+			} catch (CoreException e) {
+				throw new RuntimeException(e);
+			}
+			File file = ifile.getLocation().toFile();
+			files.put(file, contentType);
 		}
-		File file = ifile.getLocation().toFile();
-		String documentationPage = ParrotEclipsePlugin.getDefault().parrotCore.exec(file, contentType);
+		
+		String documentationPage = ParrotEclipsePlugin.getDefault().parrotCore.exec(files);
 		
 		// Render HTML output
 		getParrotBrowserView(page).setBrowserHTML(documentationPage);		

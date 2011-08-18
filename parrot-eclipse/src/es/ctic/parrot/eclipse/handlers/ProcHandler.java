@@ -1,4 +1,4 @@
-package es.ctic.parrot.parrot_eclipse.handlers;
+package es.ctic.parrot.eclipse.handlers;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -12,8 +12,8 @@ import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.ui.texteditor.IDocumentProvider;
 import org.eclipse.ui.texteditor.ITextEditor;
 
-import es.ctic.parrot.parrot_eclipse.ParrotEclipsePlugin;
-import es.ctic.parrot.parrot_eclipse.views.DocBrowserView;
+import es.ctic.parrot.eclipse.Activator;
+import es.ctic.parrot.eclipse.views.DocBrowserView;
 
 public abstract class ProcHandler extends AbstractHandler {
 
@@ -50,7 +50,7 @@ public abstract class ProcHandler extends AbstractHandler {
 			
 			// Ask Parrot Core
 	//		System.out.println("Antes de llamar al Parrot Core");
-			String documentationPage = ParrotEclipsePlugin.getDefault().parrotCore.exec(doc.get(), 
+			String documentationPage = Activator.getDefault().parrotCore.exec(doc.get(), 
 					contenttype);
 		//	System.out.println(documentationPage);
 			
@@ -59,8 +59,8 @@ public abstract class ProcHandler extends AbstractHandler {
 		}
 		else {
 			String msg = "No active editor, please select one";
-			Status status = new Status(Status.ERROR, ParrotEclipsePlugin.PLUGIN_ID, msg);
-			ParrotEclipsePlugin.getDefault().getLog().log(status);
+			Status status = new Status(Status.ERROR, Activator.PLUGIN_ID, msg);
+			Activator.getDefault().getLog().log(status);
 		}
 		
 		return null;

@@ -1,21 +1,21 @@
-package es.ctic.parrot.parrot_eclipse;
+package es.ctic.parrot.eclipse;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
-import es.ctic.parrot.parrot_eclipse.utils.*;
+import es.ctic.parrot.eclipse.utils.*;
 
 /**
  * The activator class controls the plug-in life cycle
  */
-public class ParrotEclipsePlugin extends AbstractUIPlugin {
+public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "es.ctic.parrot.parrot_eclipse";
+	public static final String PLUGIN_ID = "es.ctic.parrot.eclipse";
 
 	// The shared instance
-	private static ParrotEclipsePlugin plugin;
+	private static Activator plugin;
 	
 	// Parrot core binding
 	public ParrotCoreWrapper parrotCore;
@@ -23,7 +23,7 @@ public class ParrotEclipsePlugin extends AbstractUIPlugin {
 	/**
 	 * The constructor
 	 */
-	public ParrotEclipsePlugin() {
+	public Activator() {
 	}
 
 	/*
@@ -50,7 +50,7 @@ public class ParrotEclipsePlugin extends AbstractUIPlugin {
 	 *
 	 * @return the shared instance
 	 */
-	public static ParrotEclipsePlugin getDefault() {
+	public static Activator getDefault() {
 		return plugin;
 	}
 

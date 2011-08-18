@@ -1,4 +1,4 @@
-package es.ctic.parrot.parrot_eclipse.utils;
+package es.ctic.parrot.eclipse.utils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

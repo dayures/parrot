@@ -1,9 +1,10 @@
-package es.ctic.parrot.parrot_eclipse.handlers;
+package es.ctic.parrot.eclipse.handlers;
 
 
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import es.ctic.parrot.parrot_eclipse.handlers.ProcHandler;
+
+import es.ctic.parrot.eclipse.handlers.ProcHandler;
 
 public class ProcRIFHandler extends ProcHandler {
 

@@ -5,31 +5,31 @@
    <extension
          point="org.eclipse.ui.commands">
       <command
-            id="es.ctic.parrot.parrot_eclipse.commands.ProcOWL"
+            id="es.ctic.parrot.eclipse.commands.ProcOWL"
             name="Process OWL">
       </command>
       <command
-            id="es.ctic.parrot.parrot_eclipse.commands.ProcRIF"
+            id="es.ctic.parrot.eclipse.commands.ProcRIF"
             name="Process RIF">
       </command>
       <command
-            id="es.ctic.parrot.parrot_eclipse.commands.ProcFile"
+            id="es.ctic.parrot.eclipse.commands.ProcFile"
             name="Process File">
       </command>      
    </extension>
    <extension
          point="org.eclipse.ui.handlers">
       <handler
-            class="es.ctic.parrot.parrot_eclipse.handlers.ProcOWLHandler"
-            commandId="es.ctic.parrot.parrot_eclipse.commands.ProcOWL">
+            class="es.ctic.parrot.eclipse.handlers.ProcOWLHandler"
+            commandId="es.ctic.parrot.eclipse.commands.ProcOWL">
       </handler>
       <handler
-            class="es.ctic.parrot.parrot_eclipse.handlers.ProcRIFHandler"
-            commandId="es.ctic.parrot.parrot_eclipse.commands.ProcRIF">
+            class="es.ctic.parrot.eclipse.handlers.ProcRIFHandler"
+            commandId="es.ctic.parrot.eclipse.commands.ProcRIF">
       </handler>
       <handler
-            class="es.ctic.parrot.parrot_eclipse.handlers.ProcFileHandler"
-            commandId="es.ctic.parrot.parrot_eclipse.commands.ProcFile">
+            class="es.ctic.parrot.eclipse.handlers.ProcFileHandler"
+            commandId="es.ctic.parrot.eclipse.commands.ProcFile">
       </handler>
    </extension>
    <extension
@@ -39,18 +39,18 @@
          <menu
                label="Parrot"
                mnemonic="M"
-               id="es.ctic.parrot.parrot_eclipse.menus.mainMenu">
+               id="es.ctic.parrot.eclipse.menus.mainMenu">
             <command
-                  commandId="es.ctic.parrot.parrot_eclipse.commands.ProcOWL"
+                  commandId="es.ctic.parrot.eclipse.commands.ProcOWL"
                   icon="icons/parrot_owl.png"
-                  id="es.ctic.parrot.parrot_eclipse.menus.ProcOWL"
+                  id="es.ctic.parrot.eclipse.menus.ProcOWL"
                   label="Process OWL"
                   style="push">
             </command>
             <command
-                  commandId="es.ctic.parrot.parrot_eclipse.commands.ProcRIF"
+                  commandId="es.ctic.parrot.eclipse.commands.ProcRIF"
                   icon="icons/parrot_rif.png"
-                  id="es.ctic.parrot.parrot_eclipse.menus.ProcRIF"
+                  id="es.ctic.parrot.eclipse.menus.ProcRIF"
                   label="Process RIF"
                   style="push">
             </command>
@@ -59,18 +59,18 @@
       <menuContribution
             locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
          <toolbar
-               id="es.ctic.parrot.parrot_eclipse.toolbars.sampleToolbar">
+               id="es.ctic.parrot.eclipse.toolbars.sampleToolbar">
             <command
-                  commandId="es.ctic.parrot.parrot_eclipse.commands.ProcOWL"
+                  commandId="es.ctic.parrot.eclipse.commands.ProcOWL"
                   icon="icons/parrot_owl.png"
-                  id="es.ctic.parrot.parrot_eclipse.menus.ProcOWL"
+                  id="es.ctic.parrot.eclipse.menus.ProcOWL"
                   label="Process OWL"
                   style="push">
             </command>
             <command
-                  commandId="es.ctic.parrot.parrot_eclipse.commands.ProcRIF"
+                  commandId="es.ctic.parrot.eclipse.commands.ProcRIF"
                   icon="icons/parrot_rif.png"
-                  id="es.ctic.parrot.parrot_eclipse.menus.ProcRIF"
+                  id="es.ctic.parrot.eclipse.menus.ProcRIF"
                   label="Process RIF"
                   style="push">
             </command>
@@ -79,7 +79,7 @@
       <menuContribution
             locationURI="popup:org.eclipse.ui.popup.any?after=additions">
          <command
-               commandId="es.ctic.parrot.parrot_eclipse.commands.ProcFile"
+               commandId="es.ctic.parrot.eclipse.commands.ProcFile"
                icon="icons/parrot_rif.png"
                label="Generate documentation with Parrot"
                style="push">
@@ -108,7 +108,7 @@
       </category>
       <view
             category="es.ctic.parrot.parrot-eclipse.view-category"
-            class="es.ctic.parrot.parrot_eclipse.views.DocBrowserView"
+            class="es.ctic.parrot.eclipse.views.DocBrowserView"
             icon="icons/parrot_owl.png"
             id="es.ctic.parrot.parrot-eclipse.browser"
             name="Parrot Browser"

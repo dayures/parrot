@@ -1,4 +1,4 @@
-package es.ctic.parrot.parrot_eclipse.views;
+package es.ctic.parrot.eclipse.views;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.SWTError;
@@ -8,7 +8,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.core.runtime.Status;
 
-import es.ctic.parrot.parrot_eclipse.ParrotEclipsePlugin;
+import es.ctic.parrot.eclipse.Activator;
 
 
 public class DocBrowserView extends ViewPart {
@@ -39,8 +39,8 @@ public class DocBrowserView extends ViewPart {
 		}
 		catch(SWTError e){
 			String msg = "Unable to create browser instance";
-			Status status = new Status(Status.ERROR, ParrotEclipsePlugin.PLUGIN_ID, msg);
-			ParrotEclipsePlugin.getDefault().getLog().log(status);
+			Status status = new Status(Status.ERROR, Activator.PLUGIN_ID, msg);
+			Activator.getDefault().getLog().log(status);
 			return; 
 		}
 //		this.setBrowserHTML(initialHTML);

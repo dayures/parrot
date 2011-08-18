@@ -1,4 +1,4 @@
-package es.ctic.parrot.parrot_eclipse.handlers;
+package es.ctic.parrot.eclipse.handlers;
 
 
 import java.io.File;
@@ -15,8 +15,8 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.handlers.HandlerUtil;
 
-import es.ctic.parrot.parrot_eclipse.ParrotEclipsePlugin;
-import es.ctic.parrot.parrot_eclipse.views.DocBrowserView;
+import es.ctic.parrot.eclipse.Activator;
+import es.ctic.parrot.eclipse.views.DocBrowserView;
 
 public class ProcFileHandler extends ProcHandler {
 
@@ -71,7 +71,7 @@ public class ProcFileHandler extends ProcHandler {
 			files.put(file, contentType);
 		}
 		
-		String documentationPage = ParrotEclipsePlugin.getDefault().parrotCore.exec(files);
+		String documentationPage = Activator.getDefault().parrotCore.exec(files);
 		
 		// Render HTML output
 		getParrotBrowserView(page).setBrowserHTML(documentationPage);		

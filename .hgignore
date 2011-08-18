@@ -12,3 +12,11 @@ parrot-cli/.settings
 parrot-cli/target
 syntax: glob
 parrot_web.log
+syntax: regexp
+^parrot-eclipse/update-site/features$
+syntax: regexp
+^parrot-eclipse/update-site/plugins$
+syntax: regexp
+^parrot-eclipse/update-site/artifacts\.jar$
+syntax: regexp
+^parrot-eclipse/update-site/content\.jar$

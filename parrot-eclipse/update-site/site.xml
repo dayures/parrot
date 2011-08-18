@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <description name="eclipse update site for Parrot" url="http://parrot-project.sourceforge.net/eclipse">
+      The main eclipse update site for Parrot
+   </description>
+   <feature url="features/es.ctic.parrot.eclipse.feature_1.0.0.201108181131.jar" id="es.ctic.parrot.eclipse.feature" version="1.0.0.201108181131">
+      <category name="es.ctic.parrot.category"/>
+   </feature>
+   <category-def name="es.ctic.parrot.category" label="Parrot">
+      <description>
+         Parrot
+      </description>
+   </category-def>
+</site>

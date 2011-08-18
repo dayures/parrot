@@ -242,11 +242,6 @@ more than one year after the cause of action arose. Each party waives
 its rights to a jury trial in any resulting litigation.
    </license>
 
-   <url>
-      <discovery label="Parrot project main site" url="http://sourceforge.net/projects/parrot-project/"/>
-      <discovery label="Parrot online version" url="http://ontorule-project.eu/parrot/"/>
-   </url>
-
    <plugin
          id="es.ctic.parrot.eclipse"
          download-size="0"

@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFile;
@@ -18,7 +19,7 @@ import org.eclipse.ui.handlers.HandlerUtil;
 import es.ctic.parrot.eclipse.Activator;
 import es.ctic.parrot.eclipse.views.DocBrowserView;
 
-public class ProcFileHandler extends ProcHandler {
+public class ProcFileHandler extends AbstractHandler {
 
     private static final Map<String,String> MAP_EXTENSION_MIMETYPE = createMapExtensionMimeytpe();
     private static Map<String, String> createMapExtensionMimeytpe() {

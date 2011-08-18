@@ -42,14 +42,14 @@
                id="es.ctic.parrot.eclipse.menus.mainMenu">
             <command
                   commandId="es.ctic.parrot.eclipse.commands.ProcOWL"
-                  icon="icons/parrot_owl.png"
+                  icon="icons/parrot.png"
                   id="es.ctic.parrot.eclipse.menus.ProcOWL"
                   label="Process OWL"
                   style="push">
             </command>
             <command
                   commandId="es.ctic.parrot.eclipse.commands.ProcRIF"
-                  icon="icons/parrot_rif.png"
+                  icon="icons/parrot.png"
                   id="es.ctic.parrot.eclipse.menus.ProcRIF"
                   label="Process RIF"
                   style="push">
@@ -62,14 +62,14 @@
                id="es.ctic.parrot.eclipse.toolbars.sampleToolbar">
             <command
                   commandId="es.ctic.parrot.eclipse.commands.ProcOWL"
-                  icon="icons/parrot_owl.png"
+                  icon="icons/parrot.png"
                   id="es.ctic.parrot.eclipse.menus.ProcOWL"
                   label="Process OWL"
                   style="push">
             </command>
             <command
                   commandId="es.ctic.parrot.eclipse.commands.ProcRIF"
-                  icon="icons/parrot_rif.png"
+                  icon="icons/parrot.png"
                   id="es.ctic.parrot.eclipse.menus.ProcRIF"
                   label="Process RIF"
                   style="push">
@@ -80,7 +80,7 @@
             locationURI="popup:org.eclipse.ui.popup.any?after=additions">
          <command
                commandId="es.ctic.parrot.eclipse.commands.ProcFile"
-               icon="icons/parrot_rif.png"
+               icon="icons/parrot.png"
                label="Generate documentation with Parrot"
                style="push">
 			<visibleWhen>
@@ -109,7 +109,7 @@
       <view
             category="es.ctic.parrot.parrot-eclipse.view-category"
             class="es.ctic.parrot.eclipse.views.DocBrowserView"
-            icon="icons/parrot_owl.png"
+            icon="icons/parrot.png"
             id="es.ctic.parrot.parrot-eclipse.browser"
             name="Parrot Browser"
             restorable="true">

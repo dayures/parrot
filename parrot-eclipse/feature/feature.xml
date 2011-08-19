@@ -2,7 +2,8 @@
 <feature
       id="es.ctic.parrot.eclipse.feature"
       label="Parrot"
-      version="1.0.0.qualifier">
+      version="1.0.0.qualifier"
+      provider-name="Fundación CTIC">
 
    <description url="http://parrot-project.sf.net">
       Using the tools from the Parrot project, users can automatically generate reference documentation for RIF rules and OWL ontologies.
@@ -244,9 +245,7 @@ its rights to a jury trial in any resulting litigation.
 
    <plugin
          id="es.ctic.parrot.eclipse"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
+         version="1.0.0.qualifier"
          unpack="false"/>
 
 </feature>

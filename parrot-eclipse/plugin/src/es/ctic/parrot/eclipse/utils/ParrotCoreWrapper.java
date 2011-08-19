@@ -18,6 +18,7 @@ import es.ctic.parrot.transformers.TransformerException;
 
 public class ParrotCoreWrapper {
 	
+	private static final String CUSTOMIZE_CSS_URL = "http://ontorule-project.eu/parrot/report/css/eclipse.css";
 	private static final String DEFAULT_URI_BASE = "http://ontorule-project.eu/parrot/";
 	private static final Locale DEFAULT_LOCALE = Locale.ENGLISH;
 	private ParrotAppServ app;
@@ -41,7 +42,7 @@ public class ParrotCoreWrapper {
 		}
 
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
-		DocumentaryProject dp = DocumentaryProjectFactory.createDocumentaryProject(DEFAULT_LOCALE);
+		DocumentaryProject dp = DocumentaryProjectFactory.createDocumentaryProject(DEFAULT_LOCALE, CUSTOMIZE_CSS_URL);
 		HtmlOutputGenerator generator = new HtmlOutputGenerator.Builder().out(out).uriBase(DEFAULT_URI_BASE).build();
 		try {
 			for (File file : mapFileContentType.keySet()){

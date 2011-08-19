@@ -21,5 +21,7 @@ syntax: regexp
 syntax: regexp
 ^parrot-eclipse/update-site/content\.jar$
 syntax: regexp
-^parrot-eclipse/plugin/bin$
+^parrot-eclipse/plugins/ui/bin$
+syntax: regexp
+^parrot-eclipse/plugins/core/bin$
 

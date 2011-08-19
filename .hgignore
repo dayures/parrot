@@ -20,3 +20,6 @@ syntax: regexp
 ^parrot-eclipse/update-site/artifacts\.jar$
 syntax: regexp
 ^parrot-eclipse/update-site/content\.jar$
+syntax: regexp
+^parrot-eclipse/plugin/bin$
+

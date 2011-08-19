@@ -23,7 +23,7 @@
          <command
                commandId="es.ctic.parrot.eclipse.commands.ProcFile"
                icon="icons/parrot.png"
-               label="Generate documentation with Parrot"
+               label="Generate documentation"
                style="push">
 			<visibleWhen>
 				<and>

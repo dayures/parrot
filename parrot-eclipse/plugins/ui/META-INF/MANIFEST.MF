@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Parrot
-Bundle-SymbolicName: es.ctic.parrot.eclipse;singleton:=true
+Bundle-SymbolicName: es.ctic.parrot.eclipse.ui;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: es.ctic.parrot.eclipse.Activator
 Require-Bundle: org.eclipse.ui;bundle-version="3.5.2",
@@ -13,5 +13,5 @@ Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-Vendor: Fundación CTIC
 Import-Package: org.eclipse.jface.text,
  org.eclipse.ui.texteditor
-Bundle-ClassPath: .,
- lib/parrot-core-1.0-SNAPSHOT-jar-with-dependencies.jar
+Bundle-ClassPath: .
+

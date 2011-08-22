@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Parrot Core
 Bundle-SymbolicName: es.ctic.parrot.eclipse.core
-Bundle-Version: 1.0.0
+Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: parrot-core-1.0-SNAPSHOT-jar-with-dependencies.jar
 Bundle-Vendor: Fundación CTIC
 Export-Package: antlr,

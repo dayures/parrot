@@ -244,8 +244,12 @@ its rights to a jury trial in any resulting litigation.
    </license>
 
    <plugin
-         id="es.ctic.parrot.eclipse"
-         version="1.0.0.qualifier"
+         id="es.ctic.parrot.eclipse.core"
+         version="0.0.0"/>
+
+   <plugin
+         id="es.ctic.parrot.eclipse.ui"
+         version="0.0.0"
          unpack="false"/>
 
 </feature>

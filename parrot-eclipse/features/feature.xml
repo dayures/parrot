@@ -245,7 +245,8 @@ its rights to a jury trial in any resulting litigation.
 
    <plugin
          id="es.ctic.parrot.eclipse.core"
-         version="0.0.0"/>
+         version="0.0.0"
+         unpack="false"/>
 
    <plugin
          id="es.ctic.parrot.eclipse.ui"

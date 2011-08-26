@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="es.ctic.parrot.eclipse.feature"
-      label="Parrot"
+      label="Parrot for Eclipse"
       version="1.0.0.qualifier"
       provider-name="Fundación CTIC">
 
@@ -243,6 +243,10 @@ more than one year after the cause of action arose. Each party waives
 its rights to a jury trial in any resulting litigation.
    </license>
 
+   <url>
+      <discovery label="Neon Toolkit 2.5 Update site" url="http://neon-toolkit.org/plugins/2.5"/>
+   </url>
+
    <plugin
          id="es.ctic.parrot.eclipse.core"
          download-size="0"
@@ -252,13 +256,6 @@ its rights to a jury trial in any resulting litigation.
 
    <plugin
          id="es.ctic.parrot.eclipse.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="es.ctic.parrot.eclipse.neontoolkit.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"

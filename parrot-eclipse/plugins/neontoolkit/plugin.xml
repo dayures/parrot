@@ -24,7 +24,7 @@
          <command
                commandId="es.ctic.parrot.eclipse.commands.ProcNeon"
                icon="icons/parrot.png"
-               label="Generate documentation NEON"
+               label="Generate documentation"
                style="push">
 			<visibleWhen>
 				<and>

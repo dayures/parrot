@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Parrot for Neon Toolkit
+Bundle-SymbolicName: es.ctic.parrot.eclipse.neontoolkit.ui; singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: es.ctic.parrot.eclipse.neontoolkit.ui.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ com.ontoprise.ontostudio.owl.gui,
+ com.ontoprise.ontostudio.owl.model,
+ es.ctic.parrot.eclipse.core;bundle-version="1.0.0",
+ org.neontoolkit.core
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-Vendor: Fundación CTIC
+Bundle-ClassPath: .
+

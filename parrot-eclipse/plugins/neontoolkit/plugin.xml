@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="com.ontoprise.ontostudio.owl.gui.navigator.ontology.OntologyTreeElement"
+            id="es.ctic.parrot.eclipse.neontoolkit.ui.contribution">
+         <action
+               label="Generate Documentation"
+               class="es.ctic.parrot.eclipse.neontoolkit.ui.popup.actions.Action"
+               enablesFor="1"
+               id="es.ctic.parrot.eclipse.neontoolkit.ui.Action">
+         </action>
+      </objectContribution>
+   </extension>
+   
+      <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="es.ctic.parrot.parrot-eclipse.view-category"
+            name="Parrot">
+      </category>
+      <view
+            category="es.ctic.parrot.parrot-eclipse.view-category"
+            class="es.ctic.parrot.eclipse.neontoolkit.views.DocBrowserView"
+            id="es.ctic.parrot.parrot-eclipse.browser"
+            name="Parrot Browser"
+            restorable="true">
+      </view>
+   </extension>
+
+
+</plugin>

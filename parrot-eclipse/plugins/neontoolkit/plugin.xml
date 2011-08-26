@@ -39,6 +39,14 @@
                icon="icons/parrot.png"
                label="Generate documentation NEON"
                style="push">
+			<visibleWhen>
+				<and>
+				<count value="+"></count>
+			        <iterate ifEmpty="false">
+			            <instanceof value="com.ontoprise.ontostudio.owl.gui.navigator.ontology.OntologyTreeElement"/>
+			        </iterate>
+				</and>
+			</visibleWhen>               
          </command>
       </menuContribution>
    </extension>

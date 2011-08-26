@@ -24,4 +24,6 @@ syntax: regexp
 ^parrot-eclipse/plugins/ui/bin$
 syntax: regexp
 ^parrot-eclipse/plugins/core/bin$
+syntax: regexp
+^parrot-eclipse/plugins/neontoolkit/bin$
 

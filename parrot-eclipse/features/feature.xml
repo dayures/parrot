@@ -245,11 +245,22 @@ its rights to a jury trial in any resulting litigation.
 
    <plugin
          id="es.ctic.parrot.eclipse.core"
+         download-size="0"
+         install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
          id="es.ctic.parrot.eclipse.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.ctic.parrot.eclipse.neontoolkit.ui"
+         download-size="0"
+         install-size="0"
          version="0.0.0"
          unpack="false"/>
 

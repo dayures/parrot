@@ -110,7 +110,7 @@ public class ServletParrot extends HttpServlet {
 	}
 
 	private Profile getProfile(HttpServletRequest req) {
-		Profile profile = Profile.UNDEFINED; // default profile
+		Profile profile = Profile.TECHNICAL; // default profile
 		String profile_param = req.getParameter("profile");
 		if (profile_param != null){
 

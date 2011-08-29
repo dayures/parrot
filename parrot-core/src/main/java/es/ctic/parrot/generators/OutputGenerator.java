@@ -21,11 +21,6 @@ public interface OutputGenerator {
      */
     public enum Profile {
     	
-    	/**
-    	 * an undefinied element.
-    	 */
-        UNDEFINED("undefined"),
-        
         /**
          * an ontology.
          */

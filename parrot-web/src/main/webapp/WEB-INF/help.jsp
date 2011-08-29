@@ -518,8 +518,8 @@ title="go to parrot home page">Parrot </a></h1>
 <table> 
     <tr><td>URL</td><td colspan="2">/parrot</td></tr> 
     <tr><td>Method</td><td colspan="2">GET</td></tr> 
-    <tr><td rowspan="5">Querystring</td><td>documentUri=</td><td>URI of an input document</td></tr> 
-    <tr><td>mimetype=</td><td>Mimetype of the input document. Supported values are
+    <tr><td rowspan="5">Querystring</td><td>documentUri</td><td>URI of an input document</td></tr> 
+    <tr><td>mimetype</td><td>Mimetype of the input document. Supported values are
     							<ul>
     								<li><tt>default</tt> Allow content negotiation</li> 
     								<li><tt>application/owl+xml</tt> OWL ontology</li> 
@@ -530,14 +530,15 @@ title="go to parrot home page">Parrot </a></h1>
     								<li><tt>text/x-rif-ps</tt> RIF PS document</li> 
 								</ul> 
     </td></tr> 
-    <tr><td>profile=</td><td>The profile for generate a customize report. Supported values are
+    <tr><td>profile <span class="optional">(optional)</span></td><td>The profile for generate a customize report. Supported values are
     							<ul>
     								<li><tt>technical</tt></li>
     								<li><tt>business</tt></li>
     							</ul>
+    							Default value is <tt>technical</tt>.
     </td></tr> 
-    <tr><td>language=</td><td>The language uses to generate the report. The possible values are in the <a href="http://www.iana.org/assignments/language-subtag-registry">IANA registry of language tags</a>.</td></tr>
-    <tr><td>customizeCssUrl=</td><td>The URL of a customize <abbr title="Cascading Style Sheets"><span class="abbr" title="Cascading Style Sheets">CSS</span></abbr></td></tr> 
+    <tr><td>language <span class="optional">(optional)</span></td><td>The language uses to generate the report. The possible values are in the <a href="http://www.iana.org/assignments/language-subtag-registry">IANA registry of language tags</a>. Default value is <tt>en</tt> (English).</td></tr>
+    <tr><td>customizeCssUrl  <span class="optional">(optional)</span></td><td>The URL of a customize <abbr title="Cascading Style Sheets"><span class="abbr" title="Cascading Style Sheets">CSS</span></abbr></td></tr> 
     <tr><td rowspan="3">Returns</td><td colspan="2">200 OK</td></tr> 
     <tr><td colspan="2">400 Illegal Request</td></tr>
     <tr><td colspan="2">500 Unexpected error</td></tr> 
@@ -554,8 +555,8 @@ You can send multiple <tt>documentUri</tt> parameter values. In that case, each 
 <table> 
     <tr><td>URL</td><td colspan="2">/parrot</td></tr> 
     <tr><td>Method</td><td colspan="2">POST</td></tr> 
-    <tr><td rowspan="5">Request Body</td><td>documentText=</td><td>The input source text.</td></tr> 
-    <tr><td>mimetypeText=</td><td>Mimetype of the input source text. Supported values are
+    <tr><td rowspan="5">Request Body</td><td>documentText</td><td>The input source text.</td></tr> 
+    <tr><td>mimetypeText</td><td>Mimetype of the input source text. Supported values are
     							<ul>
     								<li><tt>application/owl+xml</tt> OWL ontology</li> 
     								<li><tt>text/n3</tt> N3 ontology</li> 
@@ -565,14 +566,15 @@ You can send multiple <tt>documentUri</tt> parameter values. In that case, each 
     								<li><tt>text/x-rif-ps</tt> RIF PS document</li> 
 								</ul> 
     </td></tr> 
-    <tr><td>profile=</td><td>The profile for generate a customize report. Supported values are
+    <tr><td>profile <span class="optional">(optional)</span></td><td>The profile for generate a customize report. Supported values are
     							<ul>
     								<li><tt>technical</tt></li>
     								<li><tt>business</tt></li>
     							</ul>
+    							Default value is <tt>technical</tt>.
     </td></tr> 
-    <tr><td>language=</td><td>The language uses to generate the report. The possible values are in the <a href="http://www.iana.org/assignments/language-subtag-registry">IANA registry of language tags</a>.</td></tr>
-    <tr><td>customizeCssUrl=</td><td>The URL of a customize <abbr title="Cascading Style Sheets"><span class="abbr" title="Cascading Style Sheets">CSS</span></abbr></td></tr> 
+    <tr><td>language <span class="optional">(optional)</span></td><td>The language uses to generate the report. The possible values are in the <a href="http://www.iana.org/assignments/language-subtag-registry">IANA registry of language tags</a>. Default value is <tt>en</tt> (English).</td></tr>
+    <tr><td>customizeCssUrl <span class="optional">(optional)</span></td><td>The URL of a customize <abbr title="Cascading Style Sheets"><span class="abbr" title="Cascading Style Sheets">CSS</span></abbr></td></tr> 
     <tr><td rowspan="3">Returns</td><td colspan="2">200 OK</td></tr> 
     <tr><td colspan="2">400 Illegal Request</td></tr>
     <tr><td colspan="2">500 Unexpected error</td></tr> 
@@ -598,15 +600,16 @@ You can send multiple <tt>documentText</tt> parameter values. In that case, each
 <table> 
     <tr><td>URL</td><td colspan="2">/parrot</td></tr> 
     <tr><td>Method</td><td colspan="2">GET</td></tr> 
-    <tr><td rowspan="4">Querystring</td><td>reportURL=</td><td>URL of the existing report</td></tr> 
-    <tr><td>profile=</td><td>The profile for generate a customize report. Supported values are
+    <tr><td rowspan="4">Querystring</td><td>reportURL</td><td>URL of the existing report</td></tr> 
+    <tr><td>profile <span class="optional">(optional)</span></td><td>The profile for generate a customize report. Supported values are
     							<ul>
     								<li><tt>technical</tt></li>
     								<li><tt>business</tt></li>
     							</ul>
+    							Default value is <tt>technical</tt>.
     </td></tr> 
-    <tr><td>language=</td><td>The language uses to generate the report. The possible values are in the <a href="http://www.iana.org/assignments/language-subtag-registry">IANA registry of language tags</a>.</td></tr>
-    <tr><td>customizeCssUrl=</td><td>The URL of a customize <abbr title="Cascading Style Sheets"><span class="abbr" title="Cascading Style Sheets">CSS</span></abbr></td></tr> 
+    <tr><td>language <span class="optional">(optional)</span></td><td>The language uses to generate the report. The possible values are in the <a href="http://www.iana.org/assignments/language-subtag-registry">IANA registry of language tags</a>. Default value is <tt>en</tt> (English).</td></tr>
+    <tr><td>customizeCssUrl <span class="optional">(optional)</span></td><td>The URL of a customize <abbr title="Cascading Style Sheets"><span class="abbr" title="Cascading Style Sheets">CSS</span></abbr></td></tr> 
     <tr><td rowspan="3">Returns</td><td colspan="2">200 OK</td></tr> 
     <tr><td colspan="2">400 Illegal Request</td></tr>
     <tr><td colspan="2">500 Unexpected error</td></tr> 

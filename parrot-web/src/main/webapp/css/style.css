@@ -364,3 +364,7 @@ p.code {
     white-space: pre;
     overflow: auto;
 }
+
+span.optional{
+	color:grey;
+}

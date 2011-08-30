@@ -1,4 +1,4 @@
-package es.ctic.parrot.eclipse.neontoolkit.views;
+package es.ctic.parrot.neontoolkit.views;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.SWTError;
@@ -7,14 +7,14 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
 import org.eclipse.core.runtime.Status;
 
-import es.ctic.parrot.eclipse.neontoolkit.ui.Activator;
+import es.ctic.parrot.neontoolkit.ui.Activator;
 
 
 public class DocBrowserView extends ViewPart {
 	
 	private Browser browser;
 	
-	public static final String ViewID = "es.ctic.parrot.parrot-eclipse.browser";
+	public static final String ViewID = "es.ctic.parrot.neontoolkit.browser";
 
 	public DocBrowserView() {	
 	}

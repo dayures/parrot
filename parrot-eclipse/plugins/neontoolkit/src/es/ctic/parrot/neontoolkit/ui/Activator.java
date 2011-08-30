@@ -1,10 +1,10 @@
-package es.ctic.parrot.eclipse.neontoolkit.ui;
+package es.ctic.parrot.neontoolkit.ui;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
-import es.ctic.parrot.eclipse.neontoolkit.utils.ParrotCoreWrapper;
+import es.ctic.parrot.neontoolkit.utils.ParrotCoreWrapper;
 
 /**
  * The activator class controls the plug-in life cycle

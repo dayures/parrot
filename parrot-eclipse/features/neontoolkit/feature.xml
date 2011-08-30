@@ -249,7 +249,7 @@ its rights to a jury trial in any resulting litigation.
          unpack="false"/>
 
    <plugin
-         id="es.ctic.parrot.eclipse.neontoolkit.ui"
+         id="es.ctic.parrot.neontoolkit.ui"
          version="0.0.0"
          unpack="false"/>
 

@@ -1,4 +1,4 @@
-package es.ctic.parrot.eclipse.handlers;
+package es.ctic.parrot.neontoolkit.handlers;
 
 
 import java.io.File;
@@ -20,8 +20,8 @@ import com.ontoprise.ontostudio.owl.gui.navigator.ontology.OntologyTreeElement;
 import com.ontoprise.ontostudio.owl.model.OWLModel;
 import com.ontoprise.ontostudio.owl.model.OWLModelFactory;
 
-import es.ctic.parrot.eclipse.neontoolkit.ui.Activator;
-import es.ctic.parrot.eclipse.neontoolkit.views.DocBrowserView;
+import es.ctic.parrot.neontoolkit.ui.Activator;
+import es.ctic.parrot.neontoolkit.views.DocBrowserView;
 
 
 public class ProcNeonHandler extends AbstractHandler {

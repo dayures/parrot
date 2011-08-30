@@ -1,4 +1,4 @@
-package es.ctic.parrot.eclipse.neontoolkit.utils;
+package es.ctic.parrot.neontoolkit.utils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

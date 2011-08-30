@@ -6,15 +6,15 @@
    <extension
          point="org.eclipse.ui.commands">
       <command
-            id="es.ctic.parrot.eclipse.commands.ProcNeon"
+            id="es.ctic.parrot.neontoolkit.commands.ProcNeon"
             name="Process Neon Ontology">
       </command>      
    </extension>
    <extension
          point="org.eclipse.ui.handlers">
       <handler
-            class="es.ctic.parrot.eclipse.handlers.ProcNeonHandler"
-            commandId="es.ctic.parrot.eclipse.commands.ProcNeon">
+            class="es.ctic.parrot.neontoolkit.handlers.ProcNeonHandler"
+            commandId="es.ctic.parrot.neontoolkit.commands.ProcNeon">
       </handler>
    </extension>
    <extension
@@ -22,7 +22,7 @@
       <menuContribution
             locationURI="popup:org.eclipse.ui.popup.any?after=additions">
          <command
-               commandId="es.ctic.parrot.eclipse.commands.ProcNeon"
+               commandId="es.ctic.parrot.neontoolkit.commands.ProcNeon"
                icon="icons/parrot.png"
                label="Generate documentation"
                style="push">
@@ -40,14 +40,14 @@
    <extension
          point="org.eclipse.ui.views">
       <category
-            id="es.ctic.parrot.parrot-eclipse.view-category"
+            id="es.ctic.parrot.neontoolkit.view-category"
             name="Parrot">
       </category>
       <view
-            category="es.ctic.parrot.parrot-eclipse.view-category"
-            class="es.ctic.parrot.eclipse.neontoolkit.views.DocBrowserView"
+            category="es.ctic.parrot.neontoolkit.view-category"
+            class="es.ctic.parrot.neontoolkit.views.DocBrowserView"
             icon="icons/parrot.png"
-            id="es.ctic.parrot.parrot-eclipse.browser"
+            id="es.ctic.parrot.neontoolkit.browser"
             name="Parrot Browser"
             restorable="true">
       </view>

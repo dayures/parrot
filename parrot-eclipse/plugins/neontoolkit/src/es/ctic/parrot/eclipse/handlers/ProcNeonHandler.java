@@ -2,6 +2,7 @@ package es.ctic.parrot.eclipse.handlers;
 
 
 import java.io.File;
+import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,6 +11,7 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.handlers.HandlerUtil;
@@ -45,7 +47,8 @@ public class ProcNeonHandler extends AbstractHandler {
 	}
 
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		
+
+		Shell shell = HandlerUtil.getActiveWorkbenchWindowChecked(event).getShell();
 		IWorkbenchPage page = getActiveWorkbenchPage(event);
 		IStructuredSelection selection = (IStructuredSelection) HandlerUtil.getCurrentSelectionChecked(event);
 
@@ -55,18 +58,28 @@ public class ProcNeonHandler extends AbstractHandler {
 			try{
 				OntologyTreeElement ontology = (OntologyTreeElement) element;
 	            OWLModel model = OWLModelFactory.getOWLModel(ontology.getOntologyUri(), ontology.getProjectName());
-				File file = null;
-	
+
+	            // IMPORTANT: model.getPhysicalURI() returns an URI, but in string format (for example uses %20 instead of space).
 	            if (model != null) {
-					file = new File(model.getPhysicalURI().replace("file:", "")); // FIXME update this replace
+	            	File file = new File(new URI(model.getPhysicalURI()));
+
+	            	if ((file == null) || ((file != null) && (file.exists() == false))){
+						MessageDialog.openInformation(
+								shell,
+								"Warning",
+								"The file with path "+model.getPhysicalURI()+" cannot be retrieved");
+					}
+					
+	            	if ((file != null) && (file.exists())){
+		            	String contentType = "application/rdf+xml"; //TODO Hardcored code
+						files.put(file, contentType);
+	            	}
+					
 	            }
-	            
-				String contentType = "application/rdf+xml"; //TODO Hardcored code
-				files.put(file, contentType);
 			} catch (Exception e){
 				MessageDialog.openInformation(
-						HandlerUtil.getActiveWorkbenchWindowChecked(event).getShell(),
-						"Ui",
+						shell,
+						"Exception",
 						"Exception="+e);
 
 			}

@@ -48,7 +48,7 @@
             class="es.ctic.parrot.neontoolkit.views.DocBrowserView"
             icon="icons/parrot.png"
             id="es.ctic.parrot.neontoolkit.browser"
-            name="Parrot Browser"
+            name="Parrot Report"
             restorable="true">
       </view>
    </extension>

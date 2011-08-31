@@ -53,7 +53,7 @@
             class="es.ctic.parrot.eclipse.views.DocBrowserView"
             icon="icons/parrot.png"
             id="es.ctic.parrot.parrot-eclipse.browser"
-            name="Parrot Browser"
+            name="Parrot Report"
             restorable="true">
       </view>
    </extension>

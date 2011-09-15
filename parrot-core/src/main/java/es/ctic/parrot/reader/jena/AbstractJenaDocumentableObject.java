@@ -207,4 +207,9 @@ public abstract class AbstractJenaDocumentableObject extends
 		return getAnnotationStrategy().isDeprecated(getOntResource());
 	}
 	
+	public String getStatus(){
+		return getAnnotationStrategy().getStatus(getOntResource());
+	}
+	
+	
 }

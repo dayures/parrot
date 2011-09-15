@@ -1,6 +1,11 @@
     <div class="vci"> 
     <h4>Version Control information</h4> 
     <dl> 
+    	#if($element.Status)
+		<dt>Status</dt>
+		<dd>$element.Status</dd>
+		#end
+		
 		#if($element.Version)
 		<dt>Version</dt>
 		<dd>$element.Version</dd>

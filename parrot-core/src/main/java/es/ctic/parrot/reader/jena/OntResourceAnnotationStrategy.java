@@ -917,18 +917,17 @@ public class OntResourceAnnotationStrategy {
 	private static String extractLiteral(Literal literal, Locale locale) {
 		if (locale == null){
 			//if getLanguage is an empty string means that it has not language associated
-			if (literal.getLanguage().length() == 0){
+			if (literal.getLanguage().length() != 0){
+				logger.debug("Extracted "+ literal.getLexicalForm() + "@"+literal.getLanguage());
+			}
+			return literal.getLexicalForm();
+		} else {
+			if (locale.toString().equals(literal.getLanguage())){
 				return literal.getLexicalForm();
-			} else {
-				logger.debug("Not extracted "+ literal.getLexicalForm());
+			} else { 
 				return null;
 			}
 		}
-		
-		if (locale.toString().equals(literal.getLanguage())){
-			return literal.getLexicalForm();
-		} 
-		return null;	
 	}
 
 	/**

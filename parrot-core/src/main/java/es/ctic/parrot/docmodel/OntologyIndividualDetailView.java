@@ -97,6 +97,8 @@ public class OntologyIndividualDetailView extends AbstractOntologicalObjectDetai
 		details.setTriplesAsSubject(object.getTriplesAsSubject());
 		details.setTriplesAsObject(object.getTriplesAsObject());
 		
+		details.setStatus(object.getStatus());
+		
 		return details;
 	}
 

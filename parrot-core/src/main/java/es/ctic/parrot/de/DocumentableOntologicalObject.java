@@ -31,4 +31,10 @@ public interface DocumentableOntologicalObject extends DocumentableObject,Compar
      */
 	public abstract boolean isDeprecated();
 	
+	/**
+	 * Returns the status.
+	 * @return the status.
+	 */
+	public abstract String getStatus();
+	
 }

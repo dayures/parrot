@@ -300,6 +300,14 @@ title="go to parrot home page">Parrot </a></h1>
       </td>
     </tr>    
     <tr>
+      <td><a href="http://www.w3.org/2003/06/sw-vocab-status/note.html#vocab"><em>vs:term_status</em></a></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td><td></td><td></td>
+      <td>
+      	<p>Status of a term, expressed as a short symbolic string; known values include 'unstable','testing', 'stable' and 'archaic'.</p>
+		<p>For example: <code>&lt;vs:term_status&gt;testing&lt;/vs:term_status&gt;</code></p>      	
+      </td>
+    </tr>    
+    <tr>
       <td><a href="http://ogp.me/#video"><em>og:video</em></a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td>
       <td>
@@ -440,6 +448,10 @@ title="go to parrot home page">Parrot </a></h1>
     <tr>
       <td>void</td>
       <td>http://rdfs.org/ns/void#</td>
+    </tr>
+    <tr>
+      <td>vs</td>
+      <td>http://www.w3.org/2003/06/sw-vocab-status/ns#</td>
     </tr>
   </tbody>
 </table>

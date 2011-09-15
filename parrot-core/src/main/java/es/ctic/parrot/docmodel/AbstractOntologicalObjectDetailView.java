@@ -16,6 +16,7 @@ public abstract class AbstractOntologicalObjectDetailView extends AbstractVersio
 
 	private Collection<DocumentableObjectReference> inverseRuleReferences = new HashSet<DocumentableObjectReference>();
 	private boolean deprecated;
+	private String status;
 
 
 	/**
@@ -48,6 +49,22 @@ public abstract class AbstractOntologicalObjectDetailView extends AbstractVersio
      */
 	public boolean isDeprecated() {
 		return deprecated;
+	}
+
+	/**
+	 * Sets the status.
+	 * @param termStatus the status to set
+	 */
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	/**
+	 * Returns the status.
+	 * @return the status.
+	 */
+	public String getStatus() {
+		return status;
 	}
 
 }

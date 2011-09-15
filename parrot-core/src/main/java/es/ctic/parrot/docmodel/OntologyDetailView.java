@@ -109,6 +109,8 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 		
 		details.setDefines(DocumentableObjectReference.createReferences(object.getDefines(),locale));
 		
+		details.setStatus(object.getStatus());
+		
 		return details;
 
     }

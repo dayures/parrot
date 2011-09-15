@@ -179,6 +179,8 @@ public class OntologyClassDetailView extends AbstractOntologicalObjectDetailView
 		details.setIdentifier(object.getIdentifier());
 		details.setIsDefinedBy(DocumentableObjectReference.createReference(object.getIsDefinedBy(),locale));
 		details.setDeprecated(object.isDeprecated());
+		
+		details.setStatus(object.getStatus());
 
 		return details;
 

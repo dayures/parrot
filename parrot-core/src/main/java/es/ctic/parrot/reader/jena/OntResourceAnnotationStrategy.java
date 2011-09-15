@@ -103,6 +103,7 @@ public class OntResourceAnnotationStrategy {
 	private static final String VOID_DATADUMP = "http://rdfs.org/ns/void#dataDump";
 	private static final String VOID_SPARQLENDPOINT = "http://rdfs.org/ns/void#sparqlEndpoint";
 	private static final String VOID_VOCABULARY = "http://rdfs.org/ns/void#vocabulary";
+	private static final String VS_TERM_STATUS ="http://www.w3.org/2003/06/sw-vocab-status/ns#term_status";
 
 	
 	/**
@@ -1259,6 +1260,16 @@ public class OntResourceAnnotationStrategy {
 		return getObjectPropertyCollectionURI(resource, VOID_VOCABULARY);
 	}
 
+	/**
+	 * Returns the status of a term.
+	 * @param resource the resource.
+	 * @return the status of a term (possible values <tt>unstable</tt>, <tt>testing</tt>, <tt>stable</tt>, <tt>archaic</tt>).
+	 * @see <a href="http://www.w3.org/2003/06/sw-vocab-status/note.html#vocab">Vocabulary Status Vocabulary</a>
+	 */
+	public String getStatus(Resource resource) {
+		return getLiteralPropertyValue(resource, VS_TERM_STATUS);
+	}
+	
 	
 }
 

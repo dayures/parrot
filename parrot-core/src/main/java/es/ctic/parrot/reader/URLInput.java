@@ -110,10 +110,10 @@ public class URLInput implements Input {
             if (this.mimeType == null){
                 this.mimeType = getCleanMimeType(connection.getContentType());
                 if (STRICT_MIMETYPES.contains(this.mimeType)){ 
-                    logger.info("Found content-type: " + this.mimeType + " for URL " + this.url);
+                    logger.debug("Found content-type: " + this.mimeType + " for URL " + this.url);
                 } else if (MAP_EXTENSION_MIMETYPE.get(extension) != null){
                     this.mimeType = MAP_EXTENSION_MIMETYPE.get(extension);
-                	logger.info("Use extension "+ extension + " to fix content-type: " + this.mimeType + " for URL " + this.url);
+                	logger.debug("Use extension "+ extension + " to fix content-type: " + this.mimeType + " for URL " + this.url);
                 }else {
                     logger.error("mimeType not valid: " + this.mimeType + " for URL " + this.url);
                     throw new ReaderException("invalid mimeType \"" + this.mimeType + "\" (returned by URI "+ this.url + ") for parrot");
@@ -137,7 +137,7 @@ public class URLInput implements Input {
     public Reader openReader() throws IOException {
         URLConnection conn = url.openConnection();
 
-        logger.info("MimeType: " + this.getMimeType());
+        logger.debug("MimeType: " + this.getMimeType());
         if (STRICT_MIMETYPES.contains(this.getMimeType())){
             conn.setRequestProperty("Accept", this.getMimeType());	
         }

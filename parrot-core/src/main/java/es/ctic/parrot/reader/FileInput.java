@@ -33,7 +33,7 @@ public class FileInput implements Input {
     public FileInput(File file) {
         this.file = file;
         this.mimeType = mimeTypesMap.getContentType(this.file);
-        logger.info("The mimetype " + this.mimeType + " has been guessed for file " + this.file);
+        logger.debug("The mimetype " + this.mimeType + " has been guessed for file " + this.file);
     }
 
     public String getMimeType() {

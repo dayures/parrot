@@ -88,9 +88,8 @@
   #if ( $inuse )
   <div class="inuse">
   <h4>In use</h4>
-    #if($element.isDefinedBy)
-		<p>This individual is defined by <span class="parrot-element-ref parrot-${element.isDefinedBy.kindString}-ref"><a href="#$element.isDefinedBy.LocalName">$element.isDefinedBy.Label</a></span></p>
-	#end
+
+  	#isDefinedBy("individual")
   
   <dl>
   	  #if(!$element.inverseRuleReferences.isEmpty())

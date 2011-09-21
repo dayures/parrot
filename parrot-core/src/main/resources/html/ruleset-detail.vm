@@ -60,9 +60,8 @@
   <div class="inuse"> 
   <h4>In use</h4> 
   
-    #if($element.isDefinedBy)
-		<p>This ruleset is defined by <span class="parrot-element-ref parrot-${element.isDefinedBy.kindString}-ref"><a href="#$element.isDefinedBy.LocalName">$element.isDefinedBy.Label</a></span></p>
-	#end
+  	#isDefinedBy("ruleset")
+
   
     #if(!$element.rules.isEmpty())
       <p>This ruleset contains rules such as...

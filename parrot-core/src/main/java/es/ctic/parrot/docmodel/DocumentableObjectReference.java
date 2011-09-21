@@ -22,6 +22,7 @@ public class DocumentableObjectReference implements Comparable<DocumentableObjec
     private final String label;
     private String localName;
     private String kindString;
+    private String uri;
     
     /**
      * Constructs a reference to a documentable element. 
@@ -32,6 +33,7 @@ public class DocumentableObjectReference implements Comparable<DocumentableObjec
         this.label = documentableObject.getLabel(locale);
         this.localName = documentableObject.getLocalName();
         this.kindString = documentableObject.getKindString();
+        this.uri = documentableObject.getURI();
     }
     
     /**
@@ -85,6 +87,14 @@ public class DocumentableObjectReference implements Comparable<DocumentableObjec
 	 */
     public String getKindString() {
         return this.kindString;
+    }
+    
+	/**
+	 * Returns the URI for the referenced documentable element. 
+	 * @return the URI for the referenced documentable element.
+	 */
+    public String getUri() {
+        return this.uri;
     }
     
     /**

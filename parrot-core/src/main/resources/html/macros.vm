@@ -1,7 +1,7 @@
 #macro( isDefinedBy $type )
 
 #if($element.isDefinedBy)
-	<p>This $type is defined by <span class="parrot-element-ref parrot-${element.isDefinedBy.kindString}-ref"><a href="#$element.isDefinedBy.LocalName">$element.isDefinedBy.Label</a></span></p>
+	<p>This $type is defined by <span rel="rdfs:isDefinedBy" href="${element.isDefinedBy.getUri()}" class="parrot-element-ref parrot-${element.isDefinedBy.kindString}-ref"><a href="#$element.isDefinedBy.LocalName">$element.isDefinedBy.Label</a></span></p>
 #end
 
 #end

@@ -38,7 +38,16 @@
 
 #parse("html/md5.vm")
 
-  <h3 id="$element.Anchor">#if ($element.uriFragment) <a id="$element.uriFragment"></a>#end<span class="parrot-element-title parrot-class-title">$element.Label</span> (Class)
+  <h3 id="$element.Anchor">#if ($element.uriFragment) <a id="$element.uriFragment"></a>#end<span class="parrot-element-title parrot-class-title">$element.Label</span>
+
+	#if($element.isRdfsClass())
+	  	<span>(RDFS Class)</span>
+	#elseif($element.isOwlClass())
+		<span>(OWL Class)</span> 
+	#else
+		<span>(Class)</span> 		
+	#end
+
   #if($element.isDeprecated())<span class="deprecated">(Deprecated)</span>#end
 
   #parse("html/detail-menu.vm")

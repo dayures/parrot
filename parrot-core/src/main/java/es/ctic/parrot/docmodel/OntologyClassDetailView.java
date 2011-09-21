@@ -21,6 +21,8 @@ public class OntologyClassDetailView extends AbstractOntologicalObjectDetailView
 	
     private static final Logger logger = Logger.getLogger(OntologyClassDetailView.class);
 
+    private OntologyClass ontologyClass;
+
 	private Collection<DocumentableObjectReference> superClasses = new LinkedList<DocumentableObjectReference>();
 	private Collection<DocumentableObjectReference> subClasses = new LinkedList<DocumentableObjectReference>();
 	private Collection<DocumentableObjectReference> equivalentClasses;
@@ -33,6 +35,22 @@ public class OntologyClassDetailView extends AbstractOntologicalObjectDetailView
 	 */
 	private OntologyClassDetailView(){
         logger.debug("Created " + this.getClass());
+	}
+
+	/**
+	 * Set the ontology class (documentable element).
+	 * @param ontologyClass the ontologyClass to set.
+	 */
+	public void setOntologyClass(OntologyClass ontologyClass) {
+		this.ontologyClass = ontologyClass;
+	}
+
+	/**
+	 * Returns the ontology class.
+	 * @return the ontology class.
+	 */
+	public OntologyClass getOntologyClass() {
+		return ontologyClass;
 	}
 	
 	/**
@@ -131,6 +149,22 @@ public class OntologyClassDetailView extends AbstractOntologicalObjectDetailView
 		this.subClasses = subClasses;
 	}
 	
+    /**
+     * Returns <code>true</code> if, and only if, this class is an OWL class.
+     * @return <code>true</code> if this class is an OWL class, otherwise <code>false</code>.
+     */
+	public boolean isOwlClass() {
+		return getOntologyClass().isOwlClass();
+	}
+	
+    /**
+     * Returns <code>true</code> if, and only if, this class is an RDFS class.
+     * @return <code>true</code> if this class is an RDFS class, otherwise <code>false</code>.
+     */
+	public boolean isRdfsClass() {
+		return getOntologyClass().isRdfsClass();
+	}
+	
 	/**
 	 * Returns a detailed view for the ontology class given.
 	 * @param object the ontology class.
@@ -141,6 +175,8 @@ public class OntologyClassDetailView extends AbstractOntologicalObjectDetailView
     	
     	OntologyClassDetailView details = new OntologyClassDetailView();
     	
+    	details.setOntologyClass(object);
+
 		details.setUri(object.getURI());
 		details.setUriFragment(object.getUriFragment());
 		details.setLabel(object.getLabel(locale));

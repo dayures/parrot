@@ -65,5 +65,18 @@ public interface OntologyClass extends DocumentableOntologicalObject {
 	 * @param disjointClasses the disjoint classes to set to this detailed view.
 	 */
 	public abstract void setDisjointClasses(Collection<OntologyClass> disjointClasses);
+	
+    /**
+     * Returns <code>true</code> if, and only if, this class is an OWL class.
+     * @return <code>true</code> if this class is an OWL class, otherwise <code>false</code>.
+     */
+    public abstract boolean isOwlClass();
+
+    /**
+     * Returns <code>true</code> if, and only if, this class is an RDFS class.
+     * @return <code>true</code> if this class is an RDFS class, otherwise <code>false</code>.
+     */
+    public abstract boolean isRdfsClass();
+
 
 }

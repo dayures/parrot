@@ -20,7 +20,7 @@
 #parse("html/md5.vm")
 
 
-   <h3 id="$element.Anchor">#if ($element.uriFragment) <a id="$element.uriFragment"></a>#end<span class="parrot-element-title parrot-ontology-title">Ontology: $element.Label</span>
+   <h3 id="$element.Anchor">#if ($element.uriFragment && (!$element.uriFragment.length()==0)) <a id="$element.uriFragment"></a>#end<span class="parrot-element-title parrot-ontology-title">Ontology: $element.Label</span>
   #if($element.isDeprecated())<span class="deprecated">(Deprecated)</span>#end
   #parse("html/detail-menu.vm")
   </h3>
@@ -42,7 +42,8 @@
 		<p>The <strong>URI</strong> of this ontology is <span><code>$element.Uri</code></span></p>
 		<hr />
 	#end
-	
+
+	#if(($element.PreferredNamespace) || ($element.PreferredPrefix))
     <table> 
 		#if($element.PreferredNamespace)
 		<tr>
@@ -57,6 +58,7 @@
 		</tr>
 		#end
 	</table>
+	#end
     </div>
   #end
 

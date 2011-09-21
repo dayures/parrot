@@ -107,7 +107,7 @@
     	  ($element.Domain) ||
     	  ($element.Range) ||
     	  (!$element.SuperProperties.isEmpty()) ||
-    	  (!$element.SuperProperties.isEmpty()) ||
+    	  (!$element.SubProperties.isEmpty()) ||
     	  (!$element.EquivalentProperties.isEmpty()) ||
     	  (!$element.disjointProperties.isEmpty()) )
     <table>

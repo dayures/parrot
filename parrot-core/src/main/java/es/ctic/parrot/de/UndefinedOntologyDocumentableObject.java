@@ -61,349 +61,239 @@ public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObj
     }
 
 	public void addInverseRuleReference(Rule rule) {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//
 	}
 
 	public Collection<Rule> getInverseRuleReferences() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
 	}
 
 	public DocumentableObject getIsDefinedBy() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
 	}
 
 	public boolean isDeprecated() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return false;
 	}
 
 	public String getVersion() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
 	}
 
 	public String getDate() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
 	}
 
 	public Collection<String> getCreators() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
 	}
 
 	public Collection<String> getContributors() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
 	}
 
 	public Collection<String> getPublishers() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
 	}
 
 	public String getRights() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
 	}
 
 	public String getLicenseLabel() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
 	}
 
-	public Object accept(DocumentableObjectVisitor visitor)
-			throws TransformerException {
-		// TODO Auto-generated method stub
+	public Object accept(DocumentableObjectVisitor visitor)	throws TransformerException {
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
 	}
 
 	public String getDescription(Locale locale) {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
 	}
 
 	public Collection<Label> getLabels(Locale locale) {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
 	}
 
 	public Collection<Label> getLabels() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
 	}
 
 	public Collection<RelatedDocument> getRelatedDocuments(Locale locale) {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
 	}
 
 	public int compareTo(DocumentableOntologicalObject arg0) {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return 0;
 	}
 
 	public Collection<OntologyClass> getSuperClasses() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
 	}
 
 	public void setSuperClasses(Collection<OntologyClass> superClasses) {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//
 	}
 
 	public Collection<OntologyClass> getSubClasses() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
 	}
 
 	public void setSubClasses(Collection<OntologyClass> subClasses) {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//
 	}
 
 	public Collection<OntologyIndividual> getIndividuals() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
 	}
 
 	public Collection<OntologyClass> getEquivalentClasses() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
 	}
 
 	public void setEquivalentClasses(Collection<OntologyClass> equivalentClasses) {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//
 	}
 
 	public Collection<OntologyClass> getDisjointClasses() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
 	}
 
 	public void setDisjointClasses(Collection<OntologyClass> disjointClasses) {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//
 	}
 
 	public DocumentableObject getRange() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
 	}
 
 	public void setRange(DocumentableObject range) {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//
 	}
 
 	public DocumentableObject getDomain() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
 	}
 
 	public void setDomain(DocumentableObject domain) {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//
 	}
 
 	public int getOccurrences() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return 0;
 	}
 
 	public Collection<DocumentableObject> getSuperProperties() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
 	}
 
-	public void setSuperProperties(
-			Collection<DocumentableObject> superProperties) {
-		// TODO Auto-generated method stub
+	public void setSuperProperties(Collection<DocumentableObject> superProperties) {
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//
 	}
 
 	public Collection<DocumentableObject> getSubProperties() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
 	}
 
 	public void setSubProperties(Collection<DocumentableObject> subProperties) {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//
 	}
 
 	public Collection<DocumentableObject> getEquivalentProperties() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
 	}
 
-	public void setEquivalentProperties(
-			Collection<DocumentableObject> equivalentProperties) {
-		// TODO Auto-generated method stub
+	public void setEquivalentProperties(Collection<DocumentableObject> equivalentProperties) {
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//
 	}
 
 	public Collection<DocumentableObject> getDisjointProperties() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
 	}
 
-	public void setDisjointProperties(
-			Collection<DocumentableObject> disjointProperties) {
-		// TODO Auto-generated method stub
+	public void setDisjointProperties(Collection<DocumentableObject> disjointProperties) {
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//
 	}
 
 	public DocumentableObject getInverseOf() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
 	}
 
 	public boolean isDatatypeProperty() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return false;
 	}
 
 	public boolean isObjectProperty() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return false;
 	}
 
 	public boolean isAnnotationProperty() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return false;
 	}
 
 	public boolean isTransitiveProperty() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return false;
 	}
 
 	public boolean isSymmetricProperty() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return false;
 	}
 
 	public boolean isFunctionalProperty() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return false;
 	}
 
 	public boolean isInverseFunctionalProperty() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return false;
 	}
 
 	public boolean isReflexiveProperty() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return false;
 	}
 
 	public boolean isIrreflexiveProperty() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return false;
 	}
 
 	public boolean isAsymmetricProperty() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return false;
 	}
 
 	public String getUriFragment() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
 	}
 
 	public Collection<Agent> getPublisherAgents() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
 	}
 
 	public Collection<Agent> getCreatorAgents() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
 	}
 
 	public Collection<Agent> getContributorAgents() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
 	}
 
 	public String getModifiedDate() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
 	}
 
 	public String getIssuedDate() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
 	}
 
 	public String getStatus() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
+	}
+
+	public boolean isOwlClass() {
+		throw new UnsupportedOperationException("Method not implemented yet.");
+	}
+
+	public boolean isRdfsClass() {
+		throw new UnsupportedOperationException("Method not implemented yet.");
 	}
 
     

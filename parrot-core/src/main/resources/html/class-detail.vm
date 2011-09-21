@@ -41,9 +41,9 @@
   <h3 id="$element.Anchor">#if ($element.uriFragment) <a id="$element.uriFragment"></a>#end<span class="parrot-element-title parrot-class-title">$element.Label</span>
 
 	#if($element.isRdfsClass())
-	  	<span>(RDFS Class)</span>
+	  	<span rel="rdf:type" href="http://www.w3.org/2000/01/rdf-schema#Class">(RDFS Class)</span>
 	#elseif($element.isOwlClass())
-		<span>(OWL Class)</span> 
+		<span rel="rdf:type" href="http://www.w3.org/2002/07/owl#Class">(OWL Class)</span> 
 	#else
 		<span>(Class)</span> 		
 	#end
@@ -127,9 +127,7 @@
   #if ( $inuse )
   <div class="inuse">
   <h4>In use</h4>
-    #if($element.isDefinedBy)
-		<p>This class is defined by <span class="parrot-element-ref parrot-${element.isDefinedBy.kindString}-ref"><a href="#$element.isDefinedBy.LocalName">$element.isDefinedBy.Label</a></span></p>
-	#end
+  	#isDefinedBy("class")
   
    	#if( (!$element.InverseReferences.isEmpty()) || (!$element.individuals.isEmpty()) || (!$element.inverseRuleReferences.isEmpty()) )
     <table>

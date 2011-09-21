@@ -32,17 +32,19 @@
   <h3 id="$element.Anchor">#if ($element.uriFragment) <a id="$element.uriFragment"></a>#end<span class="parrot-element-title parrot-property-title">$element.Label</span> (Property)
   	#if($element.isDeprecated())<span class="deprecated">(Deprecated)</span>#end
   	
-	#if($element.isDatatypeProperty())<img class="datatype-property-icon icon" src="${uri_base}report/images/datatype-property-24.png" alt="datatype property"/>#end
-	#if($element.isObjectProperty())<img class="object-property-icon icon" src="${uri_base}report/images/object-property-24.png" alt="object property"/>#end
-	#if($element.isAnnotationProperty())<img class="annotation-property-icon icon" src="${uri_base}report/images/annotation-property-24.png" alt="annotation property"/>#end
+	#if($element.isDatatypeProperty())<span rel="rdf:type" href="http://www.w3.org/2002/07/owl#DatatypeProperty"></span><img class="datatype-property-icon icon" src="${uri_base}report/images/datatype-property-24.png" alt="datatype property"/>#end
+	#if($element.isObjectProperty())<span rel="rdf:type" href="http://www.w3.org/2002/07/owl#ObjectProperty"></span><img class="object-property-icon icon" src="${uri_base}report/images/object-property-24.png" alt="object property"/>#end
+	#if($element.isAnnotationProperty())<span rel="rdf:type" href="http://www.w3.org/2002/07/owl#AnnotationProperty"></span><img class="annotation-property-icon icon" src="${uri_base}report/images/annotation-property-24.png" alt="annotation property"/>#end
 
-	#if($element.isReflexiveProperty())<img class="reflexive-property-icon icon" src="${uri_base}report/images/reflexive-property.png"alt="reflexive property"/>#end    	
-	#if($element.isIrreflexiveProperty())<img class="irreflexive-property-icon icon" src="${uri_base}report/images/irreflexive-property.png" alt="irreflexive property"/>#end
-	#if($element.isSymmetricProperty())<img class="symmetric-property-icon icon" src="${uri_base}report/images/symmetric-property.png" alt="symmetric property"/>#end
-	#if($element.isAsymmetricProperty())<img class="asymmetric-property-icon icon" src="${uri_base}report/images/asymmetric-property.png" alt="asymmetric property"/>#end
-   	#if($element.isTransitiveProperty())<img class="transitive-property-icon icon" src="${uri_base}report/images/transitive-property.png" alt="transitive property"/>#end
-    #if($element.isFunctionalProperty())<img class="functional-property-icon icon" src="${uri_base}report/images/functional-property.png" alt="functional property"/>#end
-    #if($element.isInverseFunctionalProperty())<img class="inverse-functional-property-icon icon" src="${uri_base}report/images/inverse-functional-property.png" alt="inverse functional property"/>#end
+	#if($element.isReflexiveProperty())<span rel="rdf:type" href="http://www.w3.org/2002/07/owl#ReflexiveProperty"></span><img class="reflexive-property-icon icon" src="${uri_base}report/images/reflexive-property.png"alt="reflexive property"/>#end    	
+	#if($element.isIrreflexiveProperty())<span rel="rdf:type" href="http://www.w3.org/2002/07/owl#IrreflexiveProperty"></span><img class="irreflexive-property-icon icon" src="${uri_base}report/images/irreflexive-property.png" alt="irreflexive property"/>#end
+	
+	#if($element.isSymmetricProperty())<span rel="rdf:type" href="http://www.w3.org/2002/07/owl#SymmetricProperty"></span><img class="symmetric-property-icon icon" src="${uri_base}report/images/symmetric-property.png" alt="symmetric property"/>#end
+	#if($element.isAsymmetricProperty())<span rel="rdf:type" href="http://www.w3.org/2002/07/owl#AsymmetricProperty"></span><img class="asymmetric-property-icon icon" src="${uri_base}report/images/asymmetric-property.png" alt="asymmetric property"/>#end
+   	
+   	#if($element.isTransitiveProperty())<span rel="rdf:type" href="http://www.w3.org/2002/07/owl#TransitiveProperty"></span><img class="transitive-property-icon icon" src="${uri_base}report/images/transitive-property.png" alt="transitive property"/>#end
+    #if($element.isFunctionalProperty())<span rel="rdf:type" href="http://www.w3.org/2002/07/owl#FunctionalProperty"></span><img class="functional-property-icon icon" src="${uri_base}report/images/functional-property.png" alt="functional property"/>#end
+    #if($element.isInverseFunctionalProperty())<span rel="rdf:type" href="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"></span><img class="inverse-functional-property-icon icon" src="${uri_base}report/images/inverse-functional-property.png" alt="inverse functional property"/>#end
 
     #parse("html/detail-menu.vm")
   </h3>
@@ -181,10 +183,8 @@
   #if ( $inuse )
     <div class="inuse">
     <h4>In use</h4>
-    #if($element.isDefinedBy)
-		<p>This property is defined by <span class="parrot-element-ref parrot-${element.isDefinedBy.kindString}-ref"><a href="#$element.isDefinedBy.LocalName">$element.isDefinedBy.Label</a></span></p>
-	#end
-
+    #isDefinedBy("property")
+    
 	#if($element.occurrences != 0)
         <p>This property has $element.occurrences occurrences</p>
     #end

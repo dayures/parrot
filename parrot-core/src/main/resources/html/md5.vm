@@ -1,5 +1,5 @@
 #if($element.Uri)
-	<div class="term" id="$element.getAnchorFromUriMD5()">
+	<div class="term" id="$element.getAnchorFromUriMD5()" about="$element.Uri">
 #else
 	<div class="term">
 #end

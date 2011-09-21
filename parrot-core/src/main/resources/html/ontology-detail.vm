@@ -20,7 +20,8 @@
 #parse("html/md5.vm")
 
 
-   <h3 id="$element.Anchor">#if ($element.uriFragment && (!$element.uriFragment.length()==0)) <a id="$element.uriFragment"></a>#end<span class="parrot-element-title parrot-ontology-title">Ontology: $element.Label</span>
+   <h3 id="$element.Anchor">#if ($element.uriFragment && (!$element.uriFragment.length()==0)) <a id="$element.uriFragment"></a>#end<span class="parrot-element-title parrot-ontology-title">$element.Label</span>
+   <span rel="rdf:type" href="http://www.w3.org/2002/07/owl#Ontology">(Ontology)</span>
   #if($element.isDeprecated())<span class="deprecated">(Deprecated)</span>#end
   #parse("html/detail-menu.vm")
   </h3>
@@ -66,9 +67,7 @@
   #if ( $inuse )
   <div class="inuse">
   <h4>In use</h4>
-  	#if($element.isDefinedBy)
-		<p>This ontology is defined by <span class="parrot-element-ref parrot-${element.isDefinedBy.kindString}-ref"><a href="#$element.isDefinedBy.LocalName">$element.isDefinedBy.Label</a></span></p>
-	#end
+    #isDefinedBy("ontology")
 
     #if(!$element.defines.isEmpty())
 		<p>This ontology defines elements such as

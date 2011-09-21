@@ -131,6 +131,7 @@
 		<p>This class is defined by <span class="parrot-element-ref parrot-${element.isDefinedBy.kindString}-ref"><a href="#$element.isDefinedBy.LocalName">$element.isDefinedBy.Label</a></span></p>
 	#end
   
+   	#if( (!$element.InverseReferences.isEmpty()) || (!$element.individuals.isEmpty()) || (!$element.inverseRuleReferences.isEmpty()) )
     <table>
 	  	#if(!$element.InverseReferences.isEmpty())
 		  <tr>
@@ -165,6 +166,7 @@
 		  </tr>
 		#end
 	</table>
+	#end
   </div>
   #end
   

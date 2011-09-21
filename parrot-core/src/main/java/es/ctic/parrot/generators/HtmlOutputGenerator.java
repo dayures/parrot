@@ -131,6 +131,7 @@ public class HtmlOutputGenerator implements OutputGenerator {
         // FIXME: this code is not reentrant!
         try {
             Properties p = new Properties();
+            p.setProperty("velocimacro.library", "html/macros.vm");
             p.setProperty("resource.loader", "class,file");
             p.setProperty("class.resource.loader.class","org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
             p.setProperty("file.resource.loader.class","org.apache.velocity.runtime.resource.loader.FileResourceLoader");

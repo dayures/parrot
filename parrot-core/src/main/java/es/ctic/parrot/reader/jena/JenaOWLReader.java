@@ -134,7 +134,7 @@ public class JenaOWLReader implements DocumentReader {
 		while(resIterator.hasNext()){
 			Resource resource=resIterator.next();
 			if (isDomainSpecific(resource.getURI())) {
-				OntClass ontclass = model.createClass(resource.getURI());
+				OntClass ontclass = model.createClass(resource.getURI()); // Important. This method add the triple URI rdf:type owl:Class in the model if it is not present.
 				OntologyClassJenaImpl docObject=new OntologyClassJenaImpl(ontclass, register, getAnnotationStrategy());
 			    register.registerDocumentableObject(docObject);
 			}

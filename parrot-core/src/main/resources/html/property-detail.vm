@@ -114,21 +114,21 @@
     #if($element.InverseOf)
       <tr>
       <td>This property is a inverse property of</td>
-      <td><span class="parrot-element-ref parrot-property-ref"><a href="#$element.InverseOf.LocalName">$element.InverseOf.Label</a></span></td>
+      <td><span class="parrot-element-ref parrot-property-ref" rel="owl:inverseOf" href="${element.InverseOf.getUri()}"><a href="#$element.InverseOf.LocalName">$element.InverseOf.Label</a></span></td>
       </tr>
     #end
 
     #if($element.Domain)
       <tr>
       <td>The domain of this property is</td>
-      <td><span class="parrot-element-ref parrot-class-ref"><a href="#$element.Domain.LocalName">$element.Domain.Label</a></span></td>
+      <td><span class="parrot-element-ref parrot-class-ref" rel="rdfs:domain" href="${element.Domain.getUri()}"><a href="#$element.Domain.LocalName">$element.Domain.Label</a></span></td>
       </tr>
     #end
 
     #if($element.Range)
       <tr>
       <td>The range of this property is</td>
-      <td><span class="parrot-element-ref parrot-${element.Range.kindString}-ref"><a href="#$element.Range.LocalName">$element.Range.Label</a></span></td>
+      <td><span class="parrot-element-ref parrot-class-ref" rel="rdfs:range" href="${element.Range.getUri()}"><a href="#$element.Range.LocalName">$element.Range.Label</a></span></td>
       </tr>
     #end
    
@@ -137,7 +137,7 @@
       <td>This property is a sub property of</td>
       <td>
       #foreach($superproperty in $element.SuperProperties)
-      <span class="parrot-element-ref parrot-property-ref"><a href="#$superproperty.LocalName">$superproperty.Label</a></span>
+      <span class="parrot-element-ref parrot-property-ref" rel="rdfs:subPropertyOf" href="${superproperty.getUri()}"><a href="#$superproperty.LocalName">$superproperty.Label</a></span>
       #end
       </td>
       </tr>
@@ -148,7 +148,7 @@
       <td>This property is super property of</td>
       <td>
       #foreach($subproperty in $element.SubProperties)
-      <span class="parrot-element-ref parrot-property-ref"><a href="#$subproperty.LocalName">$subproperty.Label</a></span>
+      <span class="parrot-element-ref parrot-property-ref" rev="rdfs:subPropertyOf" href="${subproperty.getUri()}"><a href="#$subproperty.LocalName">$subproperty.Label</a></span>
       #end
       </td>
       </tr>
@@ -159,7 +159,7 @@
       <td>This property is a equivalent property of</td>
       <td>
       #foreach($equivalentProperty in $element.EquivalentProperties)
-      <span class="parrot-element-ref parrot-property-ref"><a href="#$equivalentProperty.LocalName">$equivalentProperty.Label</a></span>
+      <span class="parrot-element-ref parrot-property-ref" rel="owl:equivalentProperty" href="${equivalentProperty.getUri()}"><a href="#$equivalentProperty.LocalName">$equivalentProperty.Label</a></span>
       #end
       </td>
       </tr>
@@ -170,7 +170,7 @@
       <td>This property is a disjoint property of</td>
       <td>
       #foreach($property in $element.disjointProperties)
-      <span class="parrot-element-ref parrot-property-ref"><a href="#$property.LocalName">$property.Label</a></span>
+      <span class="parrot-element-ref parrot-property-ref" rel="owl:propertyDisjointWith" href="${property.getUri()}"><a href="#$property.LocalName">$property.Label</a></span>
       #end
       </td>
       </tr>

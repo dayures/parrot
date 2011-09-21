@@ -17,6 +17,7 @@ import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.shared.JenaException;
 import com.hp.hpl.jena.vocabulary.OWL2;
 import com.hp.hpl.jena.vocabulary.RDF;
+import com.hp.hpl.jena.vocabulary.RDFS;
 
 import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.de.OntologyClass;
@@ -192,4 +193,12 @@ public class OntologyClassJenaImpl extends AbstractJenaDocumentableObject implem
         return Kind.ONTOLOGY_CLASS.toString();
     }
 	
+    public boolean isOwlClass(){
+    	return getOntResource().hasRDFType(OWL2.Class,true);
+    }
+
+    public boolean isRdfsClass(){
+    	return getOntResource().hasRDFType(RDFS.Class,true);
+    }
+
 }

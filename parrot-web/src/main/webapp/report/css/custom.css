@@ -344,3 +344,7 @@ div#languages{
 .hidden {
 	display: none;
 }
+
+div.term p.description{
+	white-space:pre-line;
+}

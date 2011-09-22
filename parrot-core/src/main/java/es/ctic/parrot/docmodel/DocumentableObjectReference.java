@@ -6,6 +6,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
+import org.apache.log4j.Logger;
+
 import es.ctic.parrot.de.DocumentableObject;
 
 /**
@@ -19,10 +21,13 @@ import es.ctic.parrot.de.DocumentableObject;
  */
 public class DocumentableObjectReference implements Comparable<DocumentableObjectReference> {
     
+    private static final Logger logger = Logger.getLogger(DocumentableObjectReference.class);
+
     private final String label;
     private String localName;
     private String kindString;
     private String uri;
+    private boolean externalLink;
     
     /**
      * Constructs a reference to a documentable element. 
@@ -34,6 +39,7 @@ public class DocumentableObjectReference implements Comparable<DocumentableObjec
         this.localName = documentableObject.getLocalName();
         this.kindString = documentableObject.getKindString();
         this.uri = documentableObject.getURI();
+        this.externalLink = setExternalLink(documentableObject);
     }
     
     /**
@@ -104,5 +110,19 @@ public class DocumentableObjectReference implements Comparable<DocumentableObjec
     public int compareTo(DocumentableObjectReference o) {
         return this.getLabel().toLowerCase().compareTo(o.getLabel().toLowerCase()) ;
     }
+
+    private boolean setExternalLink(DocumentableObject documentableObject){
+        if (documentableObject.getRegister() != null && documentableObject.getRegister().containsIdentifier(documentableObject.getIdentifier())){
+        	logger.debug("Internal link="+documentableObject.getIdentifier());
+        	return false;
+        } else {
+        	logger.debug("External link="+documentableObject.getIdentifier());
+        	return true;
+        }
+    }
     
+    public boolean isExternalLink(){
+    	return externalLink;
+    }
+
 }

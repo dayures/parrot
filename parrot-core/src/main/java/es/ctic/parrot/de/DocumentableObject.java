@@ -174,5 +174,16 @@ public interface DocumentableObject {
 	 * @return the documentable elements that references this documentable element.
 	 */
 	public abstract Collection<DocumentableObject> getInternalReferences();
+	
+	/**
+	 * Set the register to this documentable element.
+	 * @param register the register to set
+	 */
+	public abstract void setRegister(DocumentableObjectRegister register);
+	/**
+	 * Returns the register.
+	 * @return the register.
+	 */
+	public abstract DocumentableObjectRegister getRegister();
 
 }

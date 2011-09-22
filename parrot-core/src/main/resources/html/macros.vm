@@ -1,7 +1,13 @@
 #macro( isDefinedBy $type )
-
-#if($element.isDefinedBy)
-	<p>This $type is defined by <span rel="rdfs:isDefinedBy" href="${element.isDefinedBy.getUri()}" class="parrot-element-ref parrot-${element.isDefinedBy.kindString}-ref"><a href="#$element.isDefinedBy.LocalName">$element.isDefinedBy.Label</a></span></p>
+	#if($element.isDefinedBy)
+		<p>This $type is defined by <span rel="rdfs:isDefinedBy" href="${element.isDefinedBy.getUri()}" class="parrot-element-ref parrot-${element.isDefinedBy.kindString}-ref"><a href="#$element.isDefinedBy.LocalName">$element.isDefinedBy.Label</a></span></p>
+	#end
 #end
 
+#macro( generateLink $reference )
+      #if (${reference.isExternalLink()})
+        <a class="external-link" href="${uri_base}?documentUri=${reference.getUri()}">$reference.Label</a>
+      #else
+      	<a href="#${reference.LocalName}">$reference.Label</a>
+      #end
 #end

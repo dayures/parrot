@@ -49,7 +49,7 @@
 	<td>The type of the individual is</td>
 	<td>
 	#foreach($type in $element.types)
-    	<span class="parrot-element-ref parrot-class-ref"><a href="#$type.LocalName">$type.Label</a></span>
+    	<span class="parrot-element-ref parrot-class-ref">#generateLink(${type})</span>
     #end
 	</td>
 	</tr> 

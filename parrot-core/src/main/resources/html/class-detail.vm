@@ -79,8 +79,8 @@
 	  <tr>
 	  <td>This class is a sub class of</td>
 	  <td> 
-	  #foreach($superclass in $element.SuperClasses)
-	  <span class="parrot-element-ref parrot-class-ref" rel="rdfs:subClassOf" href="${superclass.getUri()}"><a href="#$superclass.LocalName">$superclass.Label</a></span>
+	  #foreach($superClass in $element.SuperClasses)
+	  <span class="parrot-element-ref parrot-class-ref" rel="rdfs:subClassOf" href="${superClass.getUri()}">#generateLink(${superClass})</span>
 	  #end
 	  </td>
 	  </tr>
@@ -90,8 +90,8 @@
 	  <tr>
 	  <td>This class is a super class of</td>
 	  <td> 	  
-	  #foreach($subclass in $element.SubClasses)
-	  <span class="parrot-element-ref parrot-class-ref" rev="rdfs:subClassOf" href="${subclass.getUri()}"><a href="#$subclass.LocalName">$subclass.Label</a></span>
+	  #foreach($subClass in $element.SubClasses)
+	  <span class="parrot-element-ref parrot-class-ref" rev="rdfs:subClassOf" href="${subClass.getUri()}">#generateLink(${subClass})</span>
 	  #end
 	  </td>
 	  </tr>
@@ -102,7 +102,7 @@
 	  <td>This class is an equivalent class of</td>
 	  <td> 
 	  #foreach($equivalent in $element.EquivalentClasses)
-	  <span class="parrot-element-ref parrot-class-ref" rel="owl:equivalentClass" href="${equivalent.getUri()}"><a href="#$equivalent.LocalName">$equivalent.Label</a></span>
+	  <span class="parrot-element-ref parrot-class-ref" rel="owl:equivalentClass" href="${equivalent.getUri()}">#generateLink(${equivalent})</span>
 	  #end
 	  </td>
 	  </tr>
@@ -113,7 +113,7 @@
 	  <td>This class is a disjoint class of</td>
 	  <td> 
 	  #foreach($disjoint in $element.DisjointClasses)
-	  <span class="parrot-element-ref parrot-class-ref" rel="owl:disjointWith" href="${disjoint.getUri()}"><a href="#$disjoint.LocalName">$disjoint.Label</a></span>
+	  <span class="parrot-element-ref parrot-class-ref" rel="owl:disjointWith" href="${disjoint.getUri()}">#generateLink(${disjoint})</span>
 	  #end
 	  </td>
 	  </tr>

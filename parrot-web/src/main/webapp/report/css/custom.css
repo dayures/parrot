@@ -348,3 +348,8 @@ div#languages{
 div.term p.description{
 	white-space:pre-line;
 }
+a.external-link:link
+{
+	background: url("../images/external-link.png") no-repeat 100% 0;
+	padding: 0 15px 0 0;
+} 

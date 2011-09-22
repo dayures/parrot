@@ -63,39 +63,27 @@ public class DataType extends AbstractDocumentableObject {
 
 	public Object accept(DocumentableObjectVisitor visitor)
 			throws TransformerException {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
 	}
 
 	public String getDescription(Locale locale) {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
 	}
 
 	public Collection<RelatedDocument> getRelatedDocuments(Locale locale) {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
 	}
 
 	public Collection<Label> getLabels(Locale locale) {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
 	}
 
 	public Collection<Label> getLabels() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
 	}
 
 	public String getUriFragment() {
-		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Method not implemented yet.");
-		//return null;
 	}
 
 }

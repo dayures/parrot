@@ -44,13 +44,22 @@ public class DocumentableObjectRegister {
     public DocumentableObject findDocumentableObject(Identifier identifier) {
         return documentableObjects.get(identifier);
     }
-
+    
     /**
      * Returns the documentable elements stored in the register.
      * @return the documentable elements stored in the register.
      */
     public Collection<DocumentableObject> getDocumentableObjects() {
         return documentableObjects.values();
+    }
+
+    /**
+     * Returns <code>true</code> if the identifier is present in the register, otherwise <code>false</code>.
+     * @param identifier Identifier of the documentable element.
+     * @return <code>true</code> if the identifier is present in the register, otherwise <code>false</code>.
+     */
+    public boolean containsIdentifier(Identifier identifier) {
+        return documentableObjects.containsKey(identifier);
     }
 
 }

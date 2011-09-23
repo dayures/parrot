@@ -13,12 +13,13 @@ public class PrefixCCClient {
     
     private static final String SERVICE_REQUEST_URL_SUFFIX = ".file.txt";
     private static final String SERVICE_REQUEST_BASE_URL = "http://prefix.cc/";
+    private static final String PARROT_USER_AGENT = "Parrot/1.0";    
     private static final Logger logger = Logger.getLogger(PrefixCCClient.class);
     
     public String resolvePrefix(String prefix) throws IOException {
         Client client = Client.create();
         WebResource webResource = client.resource(getRequestUrl(prefix));
-        ClientResponse response = webResource.accept("text/plain").get(ClientResponse.class);
+        ClientResponse response = webResource.accept("text/plain").header("User-Agent", PARROT_USER_AGENT).get(ClientResponse.class);
         if (response.getStatus() == HttpURLConnection.HTTP_OK) {
             String fullUri = parseResponse(response.getEntity(String.class));
             logger.info("Prefix '" + prefix + "' resolved to <" + fullUri + ">");

@@ -23,8 +23,9 @@ public final class CurieUtils {
 
 	private static final String DELIMITER = "=";
 	private static final String PREFIX_NAMESPACE_FILE_PATH = "prefix/prefix-namespace.txt";
-    private static final String SERVICE_REQUEST_BASE_URL = "http://prefix.cc/reverse?uri=";
+    private static final String REVERSE_LOOKUP_SERVICE_REQUEST_BASE_URL = "http://prefix.cc/reverse?uri=";
     private static final String DEFAULT_URI_ENCODING = "UTF-8";
+    private static final String PARROT_USER_AGENT = "Parrot/1.0";    
 	private static final Logger logger = Logger.getLogger(CurieUtils.class);
 	private static final Map<String, String> prefixMap = loadNamespacePrefixMap();
 
@@ -97,9 +98,9 @@ public final class CurieUtils {
     public static String getCurieFromPrefixCc(String uri) {
         Client client = Client.create();
         client.setFollowRedirects(false);
-        WebResource webResource = client.resource(getRequestUrl(uri));
-        logger.debug("Requested URI="+getRequestUrl(uri));
-        ClientResponse response = webResource.get(ClientResponse.class);
+        WebResource webResource = client.resource(getlReverseLookupRequestUrl(uri));
+        logger.debug("Requested URI="+getlReverseLookupRequestUrl(uri));
+        ClientResponse response = webResource.header("User-Agent", PARROT_USER_AGENT).get(ClientResponse.class);
         if ( (response.getStatus() == HttpURLConnection.HTTP_MOVED_TEMP) && response.getLocation() != null) {
     		String curie = response.getLocation().getPath().substring(1);
     		logger.info("URI '" + uri + "' resolved to [" + curie + "]");
@@ -116,11 +117,11 @@ public final class CurieUtils {
      * @param uriParameter the URI that will be the parameter.
      * @return the request URL.
      */
-    private static String getRequestUrl(String uriParameter) {
+    private static String getlReverseLookupRequestUrl(String uriParameter) {
         try {
-			return SERVICE_REQUEST_BASE_URL + java.net.URLEncoder.encode(uriParameter,DEFAULT_URI_ENCODING);
+			return REVERSE_LOOKUP_SERVICE_REQUEST_BASE_URL + java.net.URLEncoder.encode(uriParameter,DEFAULT_URI_ENCODING);
 		} catch (UnsupportedEncodingException e) {
-			return SERVICE_REQUEST_BASE_URL + uriParameter;
+			return REVERSE_LOOKUP_SERVICE_REQUEST_BASE_URL + uriParameter;
 		}
     }
 

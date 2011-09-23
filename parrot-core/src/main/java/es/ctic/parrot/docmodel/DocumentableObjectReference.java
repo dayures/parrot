@@ -9,6 +9,7 @@ import java.util.Locale;
 import org.apache.log4j.Logger;
 
 import es.ctic.parrot.de.DocumentableObject;
+import es.ctic.parrot.utils.CurieUtils;
 
 /**
  * 
@@ -21,9 +22,9 @@ import es.ctic.parrot.de.DocumentableObject;
  */
 public class DocumentableObjectReference implements Comparable<DocumentableObjectReference> {
     
-    private static final Logger logger = Logger.getLogger(DocumentableObjectReference.class);
+	private static final Logger logger = Logger.getLogger(DocumentableObjectReference.class);
 
-    private final String label;
+    private String label;
     private String localName;
     private String kindString;
     private String uri;
@@ -35,11 +36,13 @@ public class DocumentableObjectReference implements Comparable<DocumentableObjec
      * @param locale the locale.
      */
     private DocumentableObjectReference(DocumentableObject documentableObject, Locale locale) {
-        this.label = documentableObject.getLabel(locale);
+
+        setExternalLink(documentableObject);
+
+        setLabel(documentableObject, locale);
         this.localName = documentableObject.getLocalName();
         this.kindString = documentableObject.getKindString();
         this.uri = documentableObject.getURI();
-        this.externalLink = setExternalLink(documentableObject);
     }
     
     /**
@@ -111,18 +114,33 @@ public class DocumentableObjectReference implements Comparable<DocumentableObjec
         return this.getLabel().toLowerCase().compareTo(o.getLabel().toLowerCase()) ;
     }
 
-    private boolean setExternalLink(DocumentableObject documentableObject){
+    private void  setExternalLink(DocumentableObject documentableObject){
         if (documentableObject.getRegister() != null && documentableObject.getRegister().containsIdentifier(documentableObject.getIdentifier())){
         	logger.debug("Internal link="+documentableObject.getIdentifier());
-        	return false;
+        	this.externalLink = false;
         } else {
         	logger.debug("External link="+documentableObject.getIdentifier());
-        	return true;
+            this.externalLink = true;
         }
     }
     
     public boolean isExternalLink(){
     	return externalLink;
     }
+    
+    private void setLabel(DocumentableObject documentableObject, Locale locale){
+
+    	if (isExternalLink()){
+    		String curie = CurieUtils.getCurie(documentableObject.getURI());
+    		if (curie != null){
+    			this.label = curie;
+        	} else {
+        		this.label = documentableObject.getLabel(locale);
+        	}
+    	} else {
+    		this.label = documentableObject.getLabel(locale);
+    	}
+    }
+
 
 }

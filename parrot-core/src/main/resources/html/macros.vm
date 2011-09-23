@@ -6,7 +6,7 @@
 
 #macro( generateLink $reference )
       #if (${reference.isExternalLink()})
-        <a class="external-link" href="${uri_base}?documentUri=${reference.getUri()}">$reference.Label</a>
+        <a class="external-link" href="${uri_base}?documentUri=${reference.getEncodedUri()}#${reference.getLocalName()}">$reference.Label</a>
       #else
       	<a href="#${reference.LocalName}">$reference.Label</a>
       #end

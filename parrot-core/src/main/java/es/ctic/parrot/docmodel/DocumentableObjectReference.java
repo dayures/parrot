@@ -1,5 +1,6 @@
 package es.ctic.parrot.docmodel;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -104,6 +105,19 @@ public class DocumentableObjectReference implements Comparable<DocumentableObjec
 	 */
     public String getUri() {
         return this.uri;
+    }
+    
+	/**
+	 * Returns the URLencode URI for the referenced documentable element. 
+	 * @return the URLencode URI for the referenced documentable element.
+	 */
+    public String getEncodedUri() {
+        try {
+			return java.net.URLEncoder.encode(this.uri,"UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			return this.uri;
+		}
+
     }
     
     /**

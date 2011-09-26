@@ -1,6 +1,4 @@
 <?xml version="1.0"?>
-
-
 <rdf:RDF xmlns="http://vocab.ctic.es/parrot"
      xml:base="http://vocab.ctic.es/parrot"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
@@ -35,20 +33,6 @@
 	    <dc:publisher>Fundación CTIC</dc:publisher>
         <rdfs:isDefinedBy rdf:resource="http://vocab.ctic.es/parrot" />
     </owl:Class>
-
-    <owl:ObjectProperty rdf:about="http://vocab.ctic.es/parrot#documents">
-        <skos:preflabel xml:lang="en">document</skos:preflabel>
-	    <dct:description xml:lang="en" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">An input to document for Parrot service</dct:description>
-	    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">First draft (2011-04-11)</owl:versionInfo>
-        <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2011-04-11</dc:date>
-	    <dc:creator>Carlos Tejo</dc:creator>
-	    <dc:creator>Diego Berrueta</dc:creator>
-	    <dc:contributor>Luis Polo</dc:contributor>
-	    <dc:contributor>Emilio Rubiera</dc:contributor>
-	    <dc:publisher>Fundación CTIC</dc:publisher>
-        <rdfs:isDefinedBy rdf:resource="http://vocab.ctic.es/parrot" />
-        <rdfs:domain rdf:resource="http://vocab.ctic.es/parrot#Project"/>
-    </owl:ObjectProperty>
 
     <owl:ObjectProperty rdf:about="http://vocab.ctic.es/parrot#hasPrologue">
         <skos:preflabel xml:lang="en">has prologue</skos:preflabel>
@@ -105,10 +89,17 @@
         <rdfs:isDefinedBy rdf:resource="http://vocab.ctic.es/parrot" />
     </owl:ObjectProperty>
 
-    <owl:ObjectProperty rdf:about="http://vocab.ctic.es/parrot#readAsRDFaOntology">
+    <owl:ObjectProperty rdf:about="http://vocab.ctic.es/parrot#readAsXHTMLRDFaOntology">
         <rdfs:subPropertyOf rdf:resource="http://vocab.ctic.es/parrot#readAs"/>
-        <skos:preflabel xml:lang="en">read as RDFa ontology</skos:preflabel>
-	    <dct:description xml:lang="en" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Indicates to read the resource as an RDFa ontology</dct:description>
+        <skos:preflabel xml:lang="en">read as XHTML RDFa ontology</skos:preflabel>
+	    <dct:description xml:lang="en" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Indicates to read the resource as an RDFa ontology (from XHTML)</dct:description>
+        <rdfs:isDefinedBy rdf:resource="http://vocab.ctic.es/parrot" />
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="http://vocab.ctic.es/parrot#readAsHTMLRDFaOntology">
+        <rdfs:subPropertyOf rdf:resource="http://vocab.ctic.es/parrot#readAs"/>
+        <skos:preflabel xml:lang="en">read as HTML RDFa ontology</skos:preflabel>
+	    <dct:description xml:lang="en" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Indicates to read the resource as an RDFa ontology (from HTML)</dct:description>
         <rdfs:isDefinedBy rdf:resource="http://vocab.ctic.es/parrot" />
     </owl:ObjectProperty>
 

@@ -111,37 +111,37 @@ public class DocumentaryProjectFactory {
 	private static Collection<Input> getInputsFromExistingReport(Model model) throws MalformedURLException, IOException, ReaderException{
 	    Collection<Input> inputs = new HashSet<Input>();
 		
-		NodeIterator iterator = model.listObjectsOfProperty(ResourceFactory.createProperty("http://vocab.ctic.es/parrot#documents"));
+		NodeIterator iterator = model.listObjectsOfProperty(ResourceFactory.createProperty("http://vocab.ctic.es/parrot#readAs"));
 		for (RDFNode node : iterator.toList()){
 			inputs.add(new URLInput(new URL(node.asResource().getURI())));
 		}
 
-		iterator = model.listObjectsOfProperty(ResourceFactory.createProperty("http://vocab.ctic.es/parrot#documentsRDFOWLOntology"));
+		iterator = model.listObjectsOfProperty(ResourceFactory.createProperty("http://vocab.ctic.es/parrot#readAsRDFOWLOntology"));
 		for (RDFNode node : iterator.toList()){
 			inputs.add(new URLInput(new URL(node.asResource().getURI()),"application/owl+xml"));
 		}
 
-		iterator = model.listObjectsOfProperty(ResourceFactory.createProperty("http://vocab.ctic.es/parrot#documentsN3OWLOntology"));
+		iterator = model.listObjectsOfProperty(ResourceFactory.createProperty("http://vocab.ctic.es/parrot#readAsN3OWLOntology"));
 		for (RDFNode node : iterator.toList()){
 			inputs.add(new URLInput(new URL(node.asResource().getURI()),"text/n3"));
 		}
 
-		iterator = model.listObjectsOfProperty(ResourceFactory.createProperty("http://vocab.ctic.es/parrot#documentsHTMLRDFaOntology"));
+		iterator = model.listObjectsOfProperty(ResourceFactory.createProperty("http://vocab.ctic.es/parrot#readAsXHTMLRDFaOntology"));
 		for (RDFNode node : iterator.toList()){
 			inputs.add(new URLInput(new URL(node.asResource().getURI()),"application/xhtml+xml"));
 		}
 
-		iterator = model.listObjectsOfProperty(ResourceFactory.createProperty("http://vocab.ctic.es/parrot#documentsXHTMLRDFaOntology"));
+		iterator = model.listObjectsOfProperty(ResourceFactory.createProperty("http://vocab.ctic.es/parrot#readAsHTMLRDFaOntology"));
 		for (RDFNode node : iterator.toList()){
 			inputs.add(new URLInput(new URL(node.asResource().getURI()),"text/html"));
 		}
 
-		iterator = model.listObjectsOfProperty(ResourceFactory.createProperty("http://vocab.ctic.es/parrot#documentsRIFXMLDocument"));
+		iterator = model.listObjectsOfProperty(ResourceFactory.createProperty("http://vocab.ctic.es/parrot#readAsRIFXMLDocument"));
 		for (RDFNode node : iterator.toList()){
 			inputs.add(new URLInput(new URL(node.asResource().getURI()),"application/rif+xml"));
 		}
 		
-		iterator = model.listObjectsOfProperty(ResourceFactory.createProperty("http://vocab.ctic.es/parrot#documentsRIFPSDocument"));
+		iterator = model.listObjectsOfProperty(ResourceFactory.createProperty("http://vocab.ctic.es/parrot#readAsRIFPSDocument"));
 		for (RDFNode node : iterator.toList()){
 			inputs.add(new URLInput(new URL(node.asResource().getURI()),"text/x-rif-ps"));
 		}

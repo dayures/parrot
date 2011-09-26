@@ -63,6 +63,7 @@
     </owl:ObjectProperty>
 
     <owl:ObjectProperty rdf:about="http://vocab.ctic.es/parrot#readAs">
+    	<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#seeAlso"/>
         <skos:preflabel xml:lang="en">read as</skos:preflabel>
 	    <dct:description xml:lang="en" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Indicate how to read a document</dct:description>
 	    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">First draft (2011-04-11)</owl:versionInfo>

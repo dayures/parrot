@@ -118,7 +118,7 @@
       <plugin>
         <groupId>net.kindleit</groupId>
         <artifactId>maven-gae-plugin</artifactId>
-        <version>0.8.2</version>
+        <version>0.9.1</version>
         <dependencies>
           <dependency>
             <groupId>net.kindleit</groupId>
@@ -144,7 +144,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <gae.version>1.4.2</gae.version>
+    <gae.version>1.5.4</gae.version>
+    <!-- <gae.home>/home/user/development/appengine-java-sdk-1.5.4</gae.home>-->
   </properties>
 
   <repositories>

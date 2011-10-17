@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import es.ctic.parrot.utils.HttpUtils;
+
 public class ServletHelp extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -21,6 +23,7 @@ public class ServletHelp extends HttpServlet {
 			throws ServletException, IOException {
 		RequestDispatcher dispatcher = req.getRequestDispatcher("WEB-INF/help.jsp");
 		if (dispatcher != null) {
+			HttpUtils.applyIENastyPatch(req, res);
 			dispatcher.forward(req, res);
 		}
 	}

@@ -25,7 +25,6 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.log4j.Logger;
 
 import es.ctic.parrot.DocumentaryProject;
-import es.ctic.parrot.DocumentaryProjectFactory;
 import es.ctic.parrot.ParrotAppServ;
 import es.ctic.parrot.generators.HtmlOutputGenerator;
 import es.ctic.parrot.generators.OutputGenerator.Profile;
@@ -35,6 +34,7 @@ import es.ctic.parrot.reader.StringInput;
 import es.ctic.parrot.reader.URLInput;
 import es.ctic.parrot.transformers.TransformerException;
 import es.ctic.parrot.utils.ErrorBuffer;
+import es.ctic.parrot.utils.HttpUtils;
 
 
 public class ServletParrot extends HttpServlet {
@@ -57,6 +57,8 @@ public class ServletParrot extends HttpServlet {
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
 		logRequest(req);
+		
+		HttpUtils.applyIENastyPatch(req, res);
 
 		String showForm = req.getParameter("showform");
 		if ( showForm != null && showForm.equalsIgnoreCase("true") && req.getMethod().equalsIgnoreCase("POST") == false){

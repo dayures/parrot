@@ -25,6 +25,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.log4j.Logger;
 
 import es.ctic.parrot.DocumentaryProject;
+import es.ctic.parrot.DocumentaryProjectFactory;
 import es.ctic.parrot.ParrotAppServ;
 import es.ctic.parrot.generators.HtmlOutputGenerator;
 import es.ctic.parrot.generators.OutputGenerator.Profile;

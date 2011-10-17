@@ -59,7 +59,7 @@ jQuery(document).ready(function(){
     $.fn.qtip.styles.parrot = { 
             border: {
                width:1,
-               radius: 5,
+               radius: 5
             },
             padding: 10, 
             textAlign: 'center',

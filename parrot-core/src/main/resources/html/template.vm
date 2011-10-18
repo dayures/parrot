@@ -14,7 +14,8 @@
     #parse("html/rdfa.vm")
 
     <link rel="shortcut icon" type="image/x-icon" href="${uri_base}images/favicon.ico" />
-    
+    <!-- standalone --> 
+    <!--  <link rel="stylesheet" type="text/css" media="screen,projection" href="${uri_base}standalone/ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/themes/cupertino/jquery-ui.css" />  -->
     <link rel="stylesheet" type="text/css" media="screen,projection" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/themes/cupertino/jquery-ui.css" />
     <link rel="stylesheet" type="text/css" media="screen,projection" href="${uri_base}report/css/base.css" /> 
     <link rel="stylesheet" type="text/css" media="screen,projection" href="${uri_base}report/css/custom.css" /> 
@@ -45,7 +46,9 @@
   </div>
   #parse("html/bottom-bar.vm")
 
-  
+  <!-- standalone --> 
+  <!-- <script type="text/javascript" src="${uri_base}standalone/ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script> --> 
+  <!-- <script type="text/javascript" src="${uri_base}standalone/ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script> --> 
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script> 
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/jquery-ui.min.js"></script> 
   <script type="text/javascript" src="${uri_base}report/js/jquery.corner.js"></script> 

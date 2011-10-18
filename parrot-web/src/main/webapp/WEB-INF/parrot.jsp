@@ -9,6 +9,8 @@
 <meta name="description" content="parrot" /> 
 <meta name="keywords" content="parrot, documentation, tool, rif, rdf" /> 
 <link rel="shortcut icon" type="image/png" href="images/favicon.ico"  />
+<!-- standalone -->
+<!-- <link rel="stylesheet" type="text/css" media="screen,projection" href="standalone/ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/themes/cupertino/jquery-ui.css" /> -->
 <link rel="stylesheet" type="text/css" media="screen,projection" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/themes/cupertino/jquery-ui.css" /> 
 <link rel="stylesheet" type="text/css" href="css/style.css"	media="screen,projection,print" /> 
 </head> 
@@ -240,9 +242,12 @@
 		<p>Parrot is generating the report</p> 
 	</div> 
 	
-
+<!-- standalone -->
+<!-- <script type="text/javascript" src="standalone/ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script> -->
+<!-- <script type="text/javascript" src="standalone/ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script> -->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
+
 <script type="text/javascript" src="javascript/jquery.randomContent.js"></script>
 <script type="text/javascript" src="javascript/feedback.jQuery.js"></script>
 <script type="text/javascript" src="report/js/jquery.corner.js"></script>

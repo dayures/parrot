@@ -11,3 +11,11 @@
       	<a href="#${reference.LocalName}">$reference.Label</a>
       #end
 #end
+
+#macro( generateImportLink $reference )
+      #if (${reference.isExternalLink()})
+        <a class="external-link" href="${uri_base}?documentUri=${reference.getEncodedUri()}#${reference.getLocalName()}">$reference.Uri</a>
+      #else
+      	<a href="#${reference.LocalName}">$reference.Label</a>
+      #end
+#end

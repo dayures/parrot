@@ -30,5 +30,10 @@ public interface Ontology extends DocumentableOntologicalObject {
 	 * @return the collection of documentable object references.
 	 */
 	public abstract Collection<DocumentableObject> getDefines();
-	
+
+	/**
+	 * Returns the collection of imports.
+	 * @return the collection of imports.
+	 */
+	public abstract Collection<DocumentableObject> getImports();
 }

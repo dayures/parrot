@@ -4,8 +4,11 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 
+import org.apache.log4j.Logger;
+
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.ontology.OntResource;
+import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.rdf.model.Statement;
@@ -27,9 +30,12 @@ import es.ctic.parrot.transformers.TransformerException;
  */
 public class OntologyJenaImpl extends AbstractJenaDocumentableObject implements es.ctic.parrot.de.Ontology {
 
+	private static final Logger logger = Logger.getLogger(OntologyJenaImpl.class);
+
 	private static final String RDF_SCHEMA_IS_DEFINED_BY = "http://www.w3.org/2000/01/rdf-schema#isDefinedBy";
 
 	private Collection<DocumentableObject> defines;
+	private Collection<DocumentableObject> imports;
 
 	/**
 	 * Constructs an ontology.
@@ -81,6 +87,29 @@ public class OntologyJenaImpl extends AbstractJenaDocumentableObject implements 
 			defines = resourceIteratorToDocumentableObjectList(df.iterator());
 		}
 		return Collections.unmodifiableCollection(defines);
+	}
+	
+    /**
+     * Returns the imports of this ontology.
+	 * @return the imports of this ontology.
+	 */
+	public Collection<DocumentableObject> getImports() {
+		
+		OntModel ontModel = getOntResource().getOntModel();
+		Collection <Resource> _imports = new HashSet<Resource>();
+		
+		if(imports == null){
+			
+			StmtIterator listStatements = ontModel.listStatements(getOntResource(), ontModel.getProfile().IMPORTS(), (RDFNode) null);
+			while (listStatements.hasNext()){
+				Statement statement = listStatements.next();
+				_imports.add(ontModel.getOntResource(statement.getObject().asResource()));
+	            logger.debug(getOntResource().getURI()+"<imports>"+ statement.getResource().getURI());
+			}
+			
+			imports = resourceIteratorToDocumentableObjectList(_imports.iterator());
+		}
+		return Collections.unmodifiableCollection(imports);
 	}
 
 }

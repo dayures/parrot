@@ -129,7 +129,7 @@ public class DocumentableObjectReference implements Comparable<DocumentableObjec
     }
 
     private void  setExternalLink(DocumentableObject documentableObject){
-        if (documentableObject.getRegister() != null && documentableObject.getRegister().containsIdentifier(documentableObject.getIdentifier())){
+        if ((documentableObject.getRegister() != null && documentableObject.getRegister().containsIdentifier(documentableObject.getIdentifier())) || (documentableObject.getURI() == null)){
         	logger.debug("Internal link="+documentableObject.getIdentifier());
         	this.externalLink = false;
         } else {
@@ -144,7 +144,7 @@ public class DocumentableObjectReference implements Comparable<DocumentableObjec
     
     private void setLabel(DocumentableObject documentableObject, Locale locale){
 
-    	if (isExternalLink()){
+    	if (isExternalLink() && (documentableObject.getURI() != null) ){ // if documentableObject.getURI() == null, the object is anonymous
     		String curie = CurieUtils.getCurie(documentableObject.getURI());
     		if (curie != null){
     			this.label = curie;

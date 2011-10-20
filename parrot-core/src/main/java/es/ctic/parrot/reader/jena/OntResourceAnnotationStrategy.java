@@ -286,7 +286,7 @@ public class OntResourceAnnotationStrategy {
         	// no more chances. do your best.
         	String reference = URIUtils.getReference(ontResource.getURI());
     		if (reference != null) {
-    			return replaceUnderscore(splitCamelCase(reference));
+    			return getLabelAutomatically(reference);
     		} else {
     			return ontResource.getURI();
     		}
@@ -1085,13 +1085,31 @@ public class OntResourceAnnotationStrategy {
 		}
 
 	/**
+	 * Replaces all hyphens '_' to blank space ' '.
+	 * @param s The string to convert.
+	 * @return The result string.
+	 */
+	private static String replaceHyphen(String s) {
+		   return s.replace('-' , ' ');
+	}
+	
+	/**
 	 * Replaces all underscore '_' to blank space ' '.
 	 * @param s The string to convert.
 	 * @return The result string.
 	 */
 	private static String replaceUnderscore(String s) {
 		   return s.replace('_' , ' ');
-		}
+	}
+	
+	/**
+	 * Returns a label generated automatically.
+	 * @param reference the reference
+	 * @return the label generated automatically.
+	 */
+	public static String getLabelAutomatically (String reference){
+		return splitCamelCase(replaceUnderscore(replaceHyphen(reference))).replaceAll("\\s+", " "); // the replaceAll remove the double spaces 
+	}
 
 	public Collection<Triple> getTriplesAsSubject(OntResource ontResource) {
 		Collection<Triple> triples = new HashSet<Triple>();

@@ -345,11 +345,14 @@ div#languages{
 	display: none;
 }
 
-div.term p.description{
+div.term p.description {
 	white-space:pre-line;
 }
-a.external-link:link
-{
+a.external-link:link {
 	background: url("../images/external-link.png") no-repeat 100% 0;
 	padding: 0 15px 0 0;
-} 
+}
+
+.imports{
+	list-style-type: none;
+}

@@ -22,6 +22,7 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 	private String preferredPrefix;
 	private String preferredNamespace;
 	private Collection<DocumentableObjectReference> defines;
+	private Collection<DocumentableObjectReference> imports;
 
 
 	/**
@@ -108,6 +109,7 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 		details.setDeprecated(object.isDeprecated());
 		
 		details.setDefines(DocumentableObjectReference.createReferences(object.getDefines(),locale));
+		details.setImports(DocumentableObjectReference.createReferences(object.getImports(),locale));
 		
 		details.setStatus(object.getStatus());
 		
@@ -127,6 +129,20 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 	 */
 	public Collection<DocumentableObjectReference> getDefines() {
 		return defines;
+	}
+
+	/**
+	 * @param imports the imports to set
+	 */
+	public void setImports(Collection<DocumentableObjectReference> imports) {
+		this.imports = imports;
+	}
+
+	/**
+	 * @return the imports
+	 */
+	public Collection<DocumentableObjectReference> getImports() {
+		return imports;
 	}
 
 }

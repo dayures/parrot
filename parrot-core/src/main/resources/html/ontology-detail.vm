@@ -9,7 +9,8 @@
 #end
 
 #if ( ($element.isDefinedBy) ||
-	  (!$element.defines.isEmpty())	)
+	  (!$element.defines.isEmpty()) ||
+	  (!$element.imports.isEmpty()) )
   #set( $inuse = true )
 #else
   #set( $inuse = false )
@@ -72,10 +73,20 @@
     #if(!$element.defines.isEmpty())
 		<p>This ontology defines elements such as
 		#foreach($reference in $element.defines)
-	    	<span class="parrot-element-ref parrot-${reference.kindString}-ref"><a href="#$reference.LocalName">$reference.Label</a></span>
+	    	<span class="parrot-element-ref parrot-${reference.kindString}-ref" href="${reference.getUri()}">#generateLink(${reference})</span>
 	    #end
 	    </p>
     #end  
+    #if(!$element.imports.isEmpty())
+		<div><span>This ontology imports</span>
+		<ul class="imports">
+		#foreach($reference in $element.imports)
+	    	<li><span class="parrot-element-ref parrot-ontology-ref" href="${reference.getUri()}">#generateImportLink(${reference})</span></li>
+	    #end
+	    </ul>
+	    </div>
+    #end  
+
   </div>
   #end
   

@@ -137,6 +137,9 @@
         <version>7.1.6.v20100715</version>
         <configuration>
           <scanIntervalSeconds>3</scanIntervalSeconds>
+          <webAppConfig>
+		  	<contextPath>/parrot</contextPath>
+		  </webAppConfig>
         </configuration>
       </plugin>
     </plugins>

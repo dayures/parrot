@@ -254,28 +254,22 @@
 <script type="text/javascript" src="javascript/scripts.js"></script>
 
 <c:if test='${not empty paramValues.documentText}'>
-<script type="text/javascript">
-<![CDATA[ 
+<script type="text/javascript">//<![CDATA[ 
 jQuery(document).ready(function(){
 	$("#tabs").tabs("select", 1);
 });
-]]>         
-</script>
+//]]></script>
 </c:if>
 
-
 <c:if test='${not empty param.reportURL}'>
-<script type="text/javascript">
-<![CDATA[ 
+<script type="text/javascript">//<![CDATA[ 
 jQuery(document).ready(function(){
 	$("#tabs").tabs("select", 3);
 });
-]]>         
-</script>
+//]]></script>
 </c:if>
 
-<script type="text/javascript">
-<![CDATA[ 
+<script type="text/javascript">//<![CDATA[ 
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-8820144-1']);
 _gaq.push(['_trackPageview']);
@@ -285,8 +279,7 @@ _gaq.push(['_trackPageview']);
   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
-]]>         
-</script>
+//]]></script>
 </body> 
 
 </html> 

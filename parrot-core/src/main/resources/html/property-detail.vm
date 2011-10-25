@@ -194,7 +194,7 @@
       #if(!$element.InverseReferences.isEmpty())
         <dt>Referenced from</dt>
         #foreach($reference in $element.InverseReferences)
-        <dd><span class="parrot-element-ref><a href="#$reference.LocalName">$reference.Label</a></span></dd>
+        <dd><span class="parrot-element-ref"><a href="#$reference.LocalName">$reference.Label</a></span></dd>
         #end
       #end
 

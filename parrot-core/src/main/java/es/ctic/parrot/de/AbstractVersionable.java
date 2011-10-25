@@ -108,7 +108,7 @@ public abstract class AbstractVersionable extends AbstractDocumentableObject imp
 		String isDefinedBy = getAnnotationStrategy().getIsDefinedBy(getOntResource());
 		if (isDefinedBy != null) {
 			Identifier identifier = new URIIdentifier(isDefinedBy);
-			return this.getRegister().findDocumentableObject(identifier);	
+			return this.getRegister().getDocumentableObject(identifier);	
 		} else {
 			return null;
 		}

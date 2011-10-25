@@ -25,6 +25,17 @@ public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObj
      * Constructs an undefined ontology element for the given URI
      * @param uri the URI.
      */
+	public UndefinedOntologyDocumentableObject(Identifier identifier) {
+		super();
+		if (identifier instanceof URIIdentifier){ // FIXME ahsamed code
+			this.uri = ((URIIdentifier) identifier).getUri();
+		}
+	}
+	
+	/**
+     * Constructs an undefined ontology element for the given URI
+     * @param uri the URI.
+     */
 	public UndefinedOntologyDocumentableObject(String uri) {
 		super();
 		this.uri = uri;

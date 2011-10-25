@@ -45,6 +45,14 @@ public class DocumentableObjectRegister {
         return documentableObjects.get(identifier);
     }
     
+    public DocumentableObject getDocumentableObject(Identifier identifier){
+    	if (this.containsIdentifier(identifier)) {
+    		return findDocumentableObject(identifier);
+    	} else {
+    		return new UndefinedOntologyDocumentableObject(identifier);
+    	}
+    }
+    
     /**
      * Returns the documentable elements stored in the register.
      * @return the documentable elements stored in the register.

@@ -356,3 +356,25 @@ a.external-link:link {
 .imports{
 	list-style-type: none;
 }
+
+/* begin feedback */
+
+img#feedback{
+	cursor:pointer;
+}
+
+#feedback-dialog a:link, #feedback-dialog a:visited {
+	color: #3A78AD;
+}
+
+#feedback-dialog p {
+	font: 75% arial,helvetica,clean,sans-serif;
+}
+
+#ui-dialog-title-feedback-dialog {
+	font: 75% arial,helvetica,clean,sans-serif;
+	color: #222;
+	font-weight: bold;
+}
+
+/* end feedback */

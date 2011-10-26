@@ -9,7 +9,7 @@ package es.ctic.parrot.de;
  * 
  */
 
-public class URIIdentifier implements Identifier {
+public class URIIdentifier implements NamedIdentifier {
 
     private final String uri;
     

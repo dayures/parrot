@@ -27,7 +27,7 @@ public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObj
      */
 	public UndefinedOntologyDocumentableObject(Identifier identifier) {
 		super();
-		if (identifier instanceof URIIdentifier){ // FIXME ahsamed code
+		if (identifier instanceof NamedIdentifier){ // FIXME ahsamed code
 			this.uri = ((URIIdentifier) identifier).getUri();
 		}
 	}

@@ -176,6 +176,8 @@ public class RuleImpl extends AbstractVersionable implements Rule {
 				DocumentableOntologicalObject documentableOntologicalObject = (DocumentableOntologicalObject) this.getRegister().findDocumentableObject(uriIdentifier);
 				if (documentableOntologicalObject != null){ 
 					referencedOntologicalObjects.add(documentableOntologicalObject);
+				} else {
+					logger.debug("Not presented in the register URI="+uriIdentifier);
 				}
 			} catch (ClassCastException e){
 				// Ignore references to not Ontological objects 

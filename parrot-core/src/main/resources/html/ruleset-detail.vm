@@ -60,7 +60,7 @@
   <div class="inuse"> 
   <h4>In use</h4> 
   
-  	#isDefinedBy("ruleset")
+  	#isDefinedBy("ruleset" ${element.isDefinedBy})
 
   
     #if(!$element.rules.isEmpty())

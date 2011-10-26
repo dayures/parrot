@@ -127,7 +127,7 @@
   #if ( $inuse )
   <div class="inuse">
   <h4>In use</h4>
-  	#isDefinedBy("class")
+  	#isDefinedBy("class" ${element.isDefinedBy})
   
    	#if( (!$element.InverseReferences.isEmpty()) || (!$element.individuals.isEmpty()) || (!$element.inverseRuleReferences.isEmpty()) )
     <table>

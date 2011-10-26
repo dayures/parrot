@@ -89,7 +89,7 @@
   <div class="inuse">
   <h4>In use</h4>
 
-  	#isDefinedBy("individual")
+  	#isDefinedBy("individual" ${element.isDefinedBy})
   
   <dl>
   	  #if(!$element.inverseRuleReferences.isEmpty())

@@ -183,7 +183,7 @@
   #if ( $inuse )
     <div class="inuse">
     <h4>In use</h4>
-    #isDefinedBy("property")
+    #isDefinedBy("property" ${element.isDefinedBy})
     
 	#if($element.occurrences != 0)
         <p>This property has $element.occurrences occurrences</p>

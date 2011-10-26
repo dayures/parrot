@@ -68,7 +68,7 @@
   #if ( $inuse )
   <div class="inuse">
   <h4>In use</h4>
-    #isDefinedBy("ontology")
+    #isDefinedBy("ontology" ${element.isDefinedBy})
 
     #if(!$element.defines.isEmpty())
 		<p>This ontology defines elements such as

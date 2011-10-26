@@ -44,7 +44,7 @@
   #if ( $inuse )
   <div class="inuse"> 
   <h4>In use</h4> 
-    #isDefinedBy("rule")
+    #isDefinedBy("rule" ${element.isDefinedBy})
     
     #if(!$element.referencedOntologicalObjects.isEmpty())
       <p>This rule references model objects such as

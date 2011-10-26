@@ -9,7 +9,7 @@ import es.ctic.parrot.transformers.DocumentableObjectVisitor;
 import es.ctic.parrot.transformers.TransformerException;
 
 /**
- * An undefined ontology element to be documented by Parrot. 
+ * An external element to be documented by Parrot. 
  * 
  * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
  * @version 1.0
@@ -17,15 +17,15 @@ import es.ctic.parrot.transformers.TransformerException;
  * 
  */
 
-public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObject implements OntologyProperty, OntologyClass{
+public class ExternalDocumentableObject extends AbstractDocumentableObject implements OntologyProperty, OntologyClass{
 
-	private static final Logger logger = Logger.getLogger(UndefinedOntologyDocumentableObject.class);
+	private static final Logger logger = Logger.getLogger(ExternalDocumentableObject.class);
     
 	/**
      * Constructs an undefined ontology element for the given URI
      * @param uri the URI.
      */
-	public UndefinedOntologyDocumentableObject(Identifier identifier) {
+	public ExternalDocumentableObject(Identifier identifier) {
 		super();
 		if (identifier instanceof NamedIdentifier){ // FIXME ahsamed code
 			this.uri = ((URIIdentifier) identifier).getUri();
@@ -36,7 +36,7 @@ public class UndefinedOntologyDocumentableObject extends AbstractDocumentableObj
      * Constructs an undefined ontology element for the given URI
      * @param uri the URI.
      */
-	public UndefinedOntologyDocumentableObject(String uri) {
+	public ExternalDocumentableObject(String uri) {
 		super();
 		this.uri = uri;
 	}

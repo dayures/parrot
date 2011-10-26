@@ -27,7 +27,7 @@ import es.ctic.parrot.de.Label;
 import es.ctic.parrot.de.RelatedDocument;
 import es.ctic.parrot.de.Rule;
 import es.ctic.parrot.de.URIIdentifier;
-import es.ctic.parrot.de.UndefinedOntologyDocumentableObject;
+import es.ctic.parrot.de.ExternalDocumentableObject;
 
 
 /**
@@ -148,7 +148,7 @@ public abstract class AbstractJenaDocumentableObject extends
 					logger.debug("Not added in the list the anon resource: " + resource.getId());
 				}else {
 					if (isDomainSpecific(resource.getURI())) {
-						_resource = (TR) new UndefinedOntologyDocumentableObject(resource.getURI());
+						_resource = (TR) new ExternalDocumentableObject(resource.getURI());
 						documentableObjectList.add(_resource);
 					} else {
 						logger.debug("Not added in the list the resource " + identifier + " (not domain specific)");

@@ -80,7 +80,7 @@ public class ParrotAppServ {
 		readAndRegisterDocumentableObjects(dp.getInputs(), register);
 		resolveInternalReferences(register);
 		resolveCrossReferences(register);
-		Document document = transformToDocument(register.getDocumentableObjects(), dp.getLocale(), dp.getInputs(), dp.getPrologueURL(), dp.getAppendixURL(), dp.getGeneratedReportURL(), getLanguagesInModel(), dp.getCustomizeCssUrl());
+		Document document = transformToDocument(register.getAllRegisteredDocumentableObjects(), dp.getLocale(), dp.getInputs(), dp.getPrologueURL(), dp.getAppendixURL(), dp.getGeneratedReportURL(), getLanguagesInModel(), dp.getCustomizeCssUrl());
 		outputGenerator.generateOutput(document, profile);
 	}
 

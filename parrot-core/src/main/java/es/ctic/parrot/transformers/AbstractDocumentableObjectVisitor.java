@@ -65,7 +65,7 @@ public class AbstractDocumentableObjectVisitor implements
      */
     public Object visit(DocumentableObjectRegister register) throws TransformerException{
         // default implementation: visit all the objects in the register
-        for ( DocumentableObject documentableObject : register.getDocumentableObjects() ) {
+        for ( DocumentableObject documentableObject : register.getAllRegisteredDocumentableObjects() ) {
             documentableObject.accept(this);
         }
         return null;

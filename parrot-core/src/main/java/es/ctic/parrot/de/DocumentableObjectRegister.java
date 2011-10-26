@@ -45,11 +45,19 @@ public class DocumentableObjectRegister {
         return documentableObjects.get(identifier);
     }
     
+    /**
+     * Returns the documentable object for that identifier.
+     * @return the documentable object for that identifier.
+     */
     public DocumentableObject getDocumentableObject(Identifier identifier){
     	if (this.containsIdentifier(identifier)) {
     		return findDocumentableObject(identifier);
     	} else {
-   			return new ExternalDocumentableObject(identifier);
+    		if (identifier instanceof NamedIdentifier){
+    			return new ExternalDocumentableObject((NamedIdentifier) identifier);
+    		}
+    		logger.info("Corner Case. identifier="+identifier);
+    		return new ExternalDocumentableObject((NamedIdentifier) identifier); // FIXME corner case
     	}
     }
     

@@ -32,7 +32,7 @@ public class URIIdentifier implements NamedIdentifier {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((getUri() == null) ? 0 : getUri().hashCode());
+        result = prime * result + ((getName() == null) ? 0 : getName().hashCode());
         return result;
     }
 
@@ -45,10 +45,10 @@ public class URIIdentifier implements NamedIdentifier {
         if (getClass() != obj.getClass())
             return false;
         URIIdentifier other = (URIIdentifier) obj;
-        if (getUri() == null) {
-            if (other.getUri() != null)
+        if (getName() == null) {
+            if (other.getName() != null)
                 return false;
-        } else if (!getUri().equals(other.getUri()))
+        } else if (!getName().equals(other.getName()))
             return false;
         return true;
     }
@@ -57,7 +57,7 @@ public class URIIdentifier implements NamedIdentifier {
      * Returns the URI.
      * @return the URI.
      */
-    public String getUri() {
+    public String getName() {
         return uri;
     }
     

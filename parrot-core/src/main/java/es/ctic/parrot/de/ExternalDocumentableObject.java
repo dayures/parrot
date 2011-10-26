@@ -20,17 +20,17 @@ import es.ctic.parrot.transformers.TransformerException;
 public class ExternalDocumentableObject extends AbstractDocumentableObject implements OntologyProperty, OntologyClass{
 
 	private static final Logger logger = Logger.getLogger(ExternalDocumentableObject.class);
+	private NamedIdentifier identifier; 
     
 	/**
-     * Constructs an undefined ontology element for the given URI
-     * @param uri the URI.
+     * Constructs an undefined ontology element for the given NamedIdentifier
+     * @param identifier the named identifier.
      */
-	public ExternalDocumentableObject(Identifier identifier) {
+	public ExternalDocumentableObject(NamedIdentifier identifier) {
 		super();
-		if (identifier instanceof NamedIdentifier){ // FIXME ahsamed code
-			this.uri = ((URIIdentifier) identifier).getUri();
-		}
+		this.identifier = identifier;
 	}
+
 	
 	/**
      * Constructs an undefined ontology element for the given URI
@@ -38,17 +38,15 @@ public class ExternalDocumentableObject extends AbstractDocumentableObject imple
      */
 	public ExternalDocumentableObject(String uri) {
 		super();
-		this.uri = uri;
+		this.identifier = new URIIdentifier(uri); // FIXME ?
 	}
 
-	private String uri;
-	
 	public Identifier getIdentifier() {
-		return new URIIdentifier(this.getURI());
+		return identifier;
 	}
 
 	public String getURI() {
-		return uri;
+		return identifier.getName();
 	}
 
 	public String getLabel(Locale locale) {

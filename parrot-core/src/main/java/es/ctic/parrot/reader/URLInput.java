@@ -94,13 +94,21 @@ public class URLInput implements Input {
             HttpURLConnection connection = (HttpURLConnection) this.url.openConnection();
             connection.setRequestMethod("HEAD"); 
             connection.addRequestProperty("Accept", ACCEPT_HEADER_VALUES);
-
             connection.connect();
 
             logger.debug("HTTP Status Response code: " + connection.getResponseCode() + " for URL " + this.url);
 
             String extension = url.getPath().substring(url.getPath().lastIndexOf(extensionSeparator) + 1);
 
+            // Reconnect if HEAD method is not allowed by the requested server
+            if (connection.getResponseCode() == java.net.HttpURLConnection.HTTP_BAD_METHOD) {
+            	logger.debug("HTTP-405 Method not allowed. Try to request a GET for URL="+url);
+            	connection = (HttpURLConnection) this.url.openConnection();
+            	connection.setRequestMethod("GET"); 
+                connection.addRequestProperty("Accept", ACCEPT_HEADER_VALUES);
+                connection.connect();
+            }
+            
             if (isValidResponseCode(connection.getResponseCode()) == false ){
                 logger.error("URI " + this.url + " not accesible. HTTP Status code: " + connection.getResponseCode());
                 throw new ReaderException("URI "+ this.url +" not accesible. HTTP Status code: " + connection.getResponseCode());

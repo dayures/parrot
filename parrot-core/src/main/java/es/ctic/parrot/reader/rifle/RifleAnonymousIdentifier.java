@@ -2,7 +2,7 @@ package es.ctic.parrot.reader.rifle;
 
 import org.apache.log4j.Logger;
 
-import es.ctic.parrot.de.Identifier;
+import es.ctic.parrot.de.AnonymousIdentifier;
 
 /**
  * An identifier for a rule or rule set that is anonymous (it has not ID).
@@ -12,7 +12,7 @@ import es.ctic.parrot.de.Identifier;
  * @since 1.0
  * 
  */
-public class RifleAnonymousIdentifier implements Identifier {
+public class RifleAnonymousIdentifier implements AnonymousIdentifier {
 	
     private static final Logger logger = Logger.getLogger(RifleAnonymousIdentifier.class);
 	

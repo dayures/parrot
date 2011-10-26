@@ -4,7 +4,7 @@ import org.apache.log4j.Logger;
 
 import com.hp.hpl.jena.rdf.model.AnonId;
 
-import es.ctic.parrot.de.Identifier;
+import es.ctic.parrot.de.AnonymousIdentifier;
 
 /**
  * An identifier for a Jena node that is anonymous (it has not URI).
@@ -14,7 +14,7 @@ import es.ctic.parrot.de.Identifier;
  * @since 1.0
  * 
  */
-public class JenaAnonymousIdentifier implements Identifier {
+public class JenaAnonymousIdentifier implements AnonymousIdentifier {
 
     private static final Logger logger = Logger.getLogger(JenaAnonymousIdentifier.class);
 	

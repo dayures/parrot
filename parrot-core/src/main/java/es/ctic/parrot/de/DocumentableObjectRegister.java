@@ -49,7 +49,7 @@ public class DocumentableObjectRegister {
     	if (this.containsIdentifier(identifier)) {
     		return findDocumentableObject(identifier);
     	} else {
-    		return new UndefinedOntologyDocumentableObject(identifier);
+   			return new ExternalDocumentableObject(identifier);
     	}
     }
     

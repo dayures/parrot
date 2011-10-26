@@ -65,7 +65,7 @@ public class DocumentableObjectRegister {
      * Returns the documentable elements stored in the register.
      * @return the documentable elements stored in the register.
      */
-    public Collection<DocumentableObject> getDocumentableObjects() {
+    public Collection<DocumentableObject> getAllRegisteredDocumentableObjects() {
         return documentableObjects.values();
     }
 

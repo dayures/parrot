@@ -1,7 +1,7 @@
 package es.ctic.parrot.de;
 
 /**
- * An identifier for an element that is named (it has URI).
+ * An identifier for a named element.
  * 
  * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
  * @version 1.0
@@ -9,5 +9,11 @@ package es.ctic.parrot.de;
  * 
  */
 public interface NamedIdentifier extends Identifier {
+	
+	/**
+	 * Returns the name.
+	 * @return the name.
+	 */
+	public abstract String getName();
     
 }

@@ -47,9 +47,9 @@
     #isDefinedBy("rule" ${element.isDefinedBy})
     
     #if(!$element.referencedOntologicalObjects.isEmpty())
-      <p>This rule references model objects such as
+      <p>This rule references model objects such as 
       #foreach($reference in $element.referencedOntologicalObjects)
-	    <span class="parrot-element-ref parrot-${reference.kindString}-ref"><a href="#$reference.localName">$reference.label</a></span>
+		<span class="parrot-element-ref parrot-${reference.kindString}-ref">#generateLink(${reference})</span>#if ($foreach.hasNext), #end 
       #end
       </p>
     #end

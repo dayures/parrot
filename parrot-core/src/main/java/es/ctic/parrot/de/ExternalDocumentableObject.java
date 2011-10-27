@@ -17,7 +17,7 @@ import es.ctic.parrot.transformers.TransformerException;
  * 
  */
 
-public class ExternalDocumentableObject extends AbstractDocumentableObject implements OntologyProperty, OntologyClass{
+public class ExternalDocumentableObject extends AbstractDocumentableObject implements OntologyProperty, OntologyClass, DocumentableOntologicalObject{
 
 	private static final Logger logger = Logger.getLogger(ExternalDocumentableObject.class);
 	private NamedIdentifier identifier; 
@@ -70,7 +70,7 @@ public class ExternalDocumentableObject extends AbstractDocumentableObject imple
     }
 
 	public void addInverseRuleReference(Rule rule) {
-		throw new UnsupportedOperationException("Method not implemented yet.");
+		//do nothing
 	}
 
 	public Collection<Rule> getInverseRuleReferences() {

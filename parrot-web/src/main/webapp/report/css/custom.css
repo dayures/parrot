@@ -75,6 +75,10 @@ dt{
 	padding-left: 26px;
 }
 
+.parrot-undefined-ref{
+	padding-left: 0px;
+}
+
 .parrot-ontology-ref {
 	background-image: url("../images/icon-ontology-16.png");
 }

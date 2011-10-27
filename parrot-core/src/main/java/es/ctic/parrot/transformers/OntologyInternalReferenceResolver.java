@@ -38,7 +38,7 @@ public class OntologyInternalReferenceResolver extends AbstractDocumentableObjec
 	}
 
     /**
-     * Adds reference from the ontological elements referenced by a property to that property.
+     * Link ontology properties to ontological elements and viceversa, using the register.
      * The references checked are:
      * <ul>
      * <li>range</li>
@@ -54,25 +54,21 @@ public class OntologyInternalReferenceResolver extends AbstractDocumentableObjec
     	
 		logger.debug("Resolving internal references of property "+property);
 
-    	// set domain (and create an inverse reference)
-		DocumentableObject domain = property.getDomain();
-	    if(domain != null){
-	        domain=register.findDocumentableObject(domain.getIdentifier());
-	        if (domain != null){
-	        	property.setDomain(domain);
-	        	domain.addReference(property);
-	        }
+	    // link domain to the registered documentable object (and create the inverse reference)
+	    DocumentableObject domain = property.getDomain();
+	    if ( (domain != null) && (register.containsIdentifier(domain.getIdentifier())) ){
+	    	DocumentableObject domainInRegister = register.findDocumentableObject(domain.getIdentifier());
+        	property.setDomain(domainInRegister); // link to a register Documentable Object
+        	domainInRegister.addReference(property);
 	    }
 	    
 	    
-	    // set range (and create an inverse reference)
+	    // link range to the registered documentable object (and create the inverse reference)
 	    DocumentableObject range = property.getRange();
-	    if(range != null){
-	        range=register.findDocumentableObject(range.getIdentifier());
-	        if (range != null){
-	        	property.setRange(range);
-	        	range.addReference(property);
-	        }
+	    if ( (range != null) && (register.containsIdentifier(range.getIdentifier())) ){
+	    	DocumentableObject rangeInRegister = register.findDocumentableObject(range.getIdentifier());
+        	property.setRange(rangeInRegister); // link to a register Documentable Object
+        	rangeInRegister.addReference(property);
 	    }
 	    
 	    
@@ -87,8 +83,8 @@ public class OntologyInternalReferenceResolver extends AbstractDocumentableObjec
 	    	}
 	    }
 	    property.setSuperProperties(cleanSuperProperties);
-
 	    
+    
 	    //set subproperties
 	    Collection<DocumentableObject> subProperties = property.getSubProperties();
 	    Collection<DocumentableObject> cleanSubProperties = new HashSet<DocumentableObject>();
@@ -105,7 +101,7 @@ public class OntologyInternalReferenceResolver extends AbstractDocumentableObjec
 	}
     
     /**
-     * Adds reference from the ontological elements referenced by a property to that property.
+     * Link ontology classes to ontological elements and viceversa, using the register.
      * The references checked are:
      * <ul>
      * <li>super classes</li>

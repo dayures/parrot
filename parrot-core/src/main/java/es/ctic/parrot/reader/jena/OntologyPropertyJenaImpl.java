@@ -60,6 +60,8 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 	 */
     public OntologyPropertyJenaImpl(OntProperty ontProperty, DocumentableObjectRegister register, OntResourceAnnotationStrategy annotationStrategy) {
     	super(ontProperty, register, annotationStrategy);
+    	this.setDomain(retrieveDomain());
+    	this.setRange(retrieveRange());
     }
 
 	public Object accept(DocumentableObjectVisitor visitor) throws TransformerException {
@@ -71,13 +73,6 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
     }
 
 	public DocumentableObject getDomain() {
-    	if (domain == null){
-    		OntResource _domain = getOntProperty().getDomain();
-    		if(_domain != null && _domain.isClass() && _domain.isAnon() == false){
-    			domain = new OntologyClassJenaImpl(_domain.asClass(), this.getRegister(), getAnnotationStrategy());
-    		}
-    	}
-    	
     	return domain;
 
 	}
@@ -85,25 +80,44 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 	public void setDomain(DocumentableObject domain){
 		this.domain=domain;
 	}
+	
+	private DocumentableObject retrieveDomain() {
+		DocumentableObject retrievedDomain = null;
+		
+		OntResource _domain = getOntProperty().getDomain();
+		if(_domain != null && _domain.isClass() && _domain.isAnon() == false){
+			retrievedDomain = new OntologyClassJenaImpl(_domain.asClass(), this.getRegister(), getAnnotationStrategy());
+		}
+		
+		return retrievedDomain;
+	}
+	
+
 
 	public DocumentableObject getRange() {
-    	if (range == null){
-    		OntResource _range = getOntProperty().getRange();
-    		
-    		if(_range != null && _range.isAnon() == false) {
-        		if (getOntProperty().isDatatypeProperty()){
-        			range = new DataType(_range.getURI());	
-        		} else {
-        			range = new OntologyClassJenaImpl(_range.asClass(), this.getRegister(), getAnnotationStrategy());
-        		}
-    		}
-    	}
-    	return range;
+		return range;
 	}
-
+	
 	public void setRange(DocumentableObject range) {
 		this.range=range;
 	}
+
+	private DocumentableObject retrieveRange() {
+		DocumentableObject retrievedRange = null;
+
+		OntResource _range = getOntProperty().getRange();
+		if(_range != null && _range.isAnon() == false) {
+    		if (getOntProperty().isDatatypeProperty()){
+    			retrievedRange = new DataType(_range.getURI());	
+    		} else {
+    			retrievedRange = new OntologyClassJenaImpl(_range.asClass(), this.getRegister(), getAnnotationStrategy());
+    		}
+		}
+		
+		return retrievedRange;
+	}
+
+
 
 	public int getOccurrences() {
 		return getOntProperty().getModel().listStatements(null, this.getOntProperty(), (RDFNode) null).toList().size();

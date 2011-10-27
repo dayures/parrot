@@ -13,8 +13,8 @@ import java.util.Collection;
 public interface OntologyProperty extends DocumentableOntologicalObject {
 	
 	/**
-	 * Returns the reference to the range class of this property.
-	 * @return the reference to the range class of this property.
+	 * Returns the reference to the range class of this property or <code>null</code> if not exists.
+	 * @return the reference to the range class of this property or <code>null</code> if not exists.
 	 */
 	public abstract DocumentableObject getRange();
 	
@@ -25,8 +25,8 @@ public interface OntologyProperty extends DocumentableOntologicalObject {
 	public abstract void setRange(DocumentableObject range);
 	
 	/**
-	 * Returns the reference to the domain class of this property.
-	 * @return the reference to the domain class of this property.
+	 * Returns the reference to the domain class of this property or <code>null</code> if not exists.
+	 * @return the reference to the domain class of this property or <code>null</code> if not exists.
 	 */
 	public abstract DocumentableObject getDomain();
 	

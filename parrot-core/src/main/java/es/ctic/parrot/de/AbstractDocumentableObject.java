@@ -14,15 +14,15 @@ import java.util.HashSet;
  */
 public abstract class AbstractDocumentableObject implements DocumentableObject {
 
-    private Collection<DocumentableObject> references = new HashSet<DocumentableObject>();
+    private Collection<DocumentableObject> internalReferences = new HashSet<DocumentableObject>();
     private DocumentableObjectRegister register;
     
     public void addReference(DocumentableObject documentableObject) {
-        references.add(documentableObject);
+        internalReferences.add(documentableObject);
     }
     
     public Collection<DocumentableObject> getInternalReferences() {
-        return Collections.unmodifiableCollection(references);
+        return Collections.unmodifiableCollection(internalReferences);
     }
     
     @Override

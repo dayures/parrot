@@ -189,23 +189,22 @@
         <p>This property has $element.occurrences occurrences</p>
     #end
 
-    #if ( (!$element.InverseReferences.isEmpty()) || (!$element.inverseRuleReferences.isEmpty()) )
-    <dl>
-      #if(!$element.InverseReferences.isEmpty())
-        <dt>Referenced from</dt>
-        #foreach($reference in $element.InverseReferences)
-        <dd><span class="parrot-element-ref"><a href="#$reference.LocalName">$reference.Label</a></span></dd>
-        #end
+    #if(!$element.InverseReferences.isEmpty())
+      <p>This property is referenced from 
+      #foreach($reference in $element.InverseReferences)
+		<span class="parrot-element-ref parrot-${reference.kindString}-ref">#generateLink(${reference})</span>#if ($foreach.hasNext), #end 
       #end
-
-      #if(!$element.inverseRuleReferences.isEmpty())
-        <dt>Referenced rules</dt>
-        #foreach($reference in $element.inverseRuleReferences)
-        <dd><span class="parrot-element-ref parrot-rule-ref"><a href="#$reference.LocalName">$reference.Label</a></span></dd>
-        #end
-      #end
-    </dl>
+      </p>
     #end
+    
+    #if(!$element.inverseRuleReferences.isEmpty())
+      <p>This property is referenced in rules such as 
+      #foreach($reference in $element.inverseRuleReferences)
+		<span class="parrot-element-ref parrot-rule-ref"><a href="#$reference.LocalName">$reference.Label</a></span>#if ($foreach.hasNext), #end 
+      #end
+      </p>
+    #end
+
     </div>
   #end
   

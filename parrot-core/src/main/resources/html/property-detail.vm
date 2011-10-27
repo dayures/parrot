@@ -145,7 +145,7 @@
 
     #if(!$element.SubProperties.isEmpty())
       <tr>
-      <td>This property is super property of</td>
+      <td>This property is a super property of</td>
       <td>
       #foreach($subProperty in $element.SubProperties)
       <span class="parrot-element-ref parrot-property-ref" rev="rdfs:subPropertyOf" href="${subProperty.getUri()}">#generateLink(${subProperty})</span>

@@ -73,7 +73,7 @@
     #if(!$element.defines.isEmpty())
 		<p>This ontology defines elements such as
 		#foreach($reference in $element.defines)
-	    	<span class="parrot-element-ref parrot-${reference.kindString}-ref" href="${reference.getUri()}">#generateLink(${reference})</span>
+	    	<span class="parrot-element-ref parrot-${reference.kindString}-ref" rev="rdfs:isDefinedBy" href="${reference.getUri()}">#generateLink(${reference})</span>#if ($foreach.hasNext), #end
 	    #end
 	    </p>
     #end  
@@ -81,7 +81,7 @@
 		<div><span>This ontology imports</span>
 		<ul class="imports">
 		#foreach($reference in $element.imports)
-	    	<li><span class="parrot-element-ref parrot-ontology-ref" href="${reference.getUri()}">#generateImportLink(${reference})</span></li>
+	    	<li><span class="parrot-element-ref parrot-ontology-ref" rel="owl:imports" href="${reference.getUri()}">#generateImportLink(${reference})</span></li>
 	    #end
 	    </ul>
 	    </div>

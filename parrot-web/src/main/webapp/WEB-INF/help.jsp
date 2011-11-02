@@ -206,6 +206,24 @@ title="go to parrot home page">Parrot </a></h1>
       	<p>A legal document describing the copyright license of the element. Recommended best practice is to use Creative Commons licenses and to describe them in RDF with the Creative Commons Rights Expression Language (CC REL).</p>
 	  	<p>For example: <code>&lt;dct:license rdf:resource="http://creativecommons.org/licenses/by/3.0/" /&gt;</code></p>
 	  </td>
+    </tr>    
+    <tr>
+      <td><a href="http://creativecommons.org/ns"><em>cc:license</em></a></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td><img alt="place" src="images/page.png"/></td><td></td><td></td><td></td>
+      <td>
+      	<p>A legal document describing the copyright license of the element. Recommended best practice is to use Creative Commons licenses and to describe them in RDF with the Creative Commons Rights Expression Language (CC REL).</p>
+	  	<p>For example: <code>&lt;cc:license rdf:resource="http://creativecommons.org/licenses/by/3.0/" /&gt;</code></p>
+	  </td>
+    </tr>
+    <tr>
+      <td><a href="http://web.resource.org/rss/1.0/modules/cc/"><em>cc-deprecated:license</em></a></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td><img alt="place" src="images/page.png"/></td><td></td><td></td><td></td>
+      <td>
+      	<p>A legal document describing the copyright license of the element. Recommended best practice is to use Creative Commons licenses and to describe them in RDF with the Creative Commons Rights Expression Language (CC REL).</p>
+	  	<p>For example: <code>&lt;cc-deprecated:license rdf:resource="http://creativecommons.org/licenses/by/3.0/" /&gt;</code></p>
+	  </td>
     </tr>
     <tr>
       <td><a href="http://dublincore.org/documents/dcmi-terms/#terms-modified"><em>dct:modified</em></a></td>
@@ -469,6 +487,14 @@ title="go to parrot home page">Parrot </a></h1>
     <tr>
       <th>Prefix</th>
       <th>Namespace</th>
+    </tr>
+    <tr>
+      <td>cc</td>
+      <td>http://creativecommons.org/ns#</td>
+    </tr>
+    <tr>
+      <td>cc-deprecated</td>
+      <td>http://web.resource.org/cc/</td>
     </tr>
     <tr>
       <td>dc</td>

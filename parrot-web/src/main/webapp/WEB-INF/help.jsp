@@ -57,6 +57,7 @@ title="go to parrot home page">Parrot </a></h1>
     <tr>
       <th rowspan="2">Property</th>
       <th colspan="8">Scope</th>
+      <th colspan="4">Place</th>
       <th rowspan="2">Description</th>
     </tr>
     <tr>
@@ -68,10 +69,15 @@ title="go to parrot home page">Parrot </a></h1>
       <th>Rule</th>
       <th>Vocabulary</th>
       <th>Dataset</th>
+      <th><abbr title="Version Control Information">VC</abbr></th>
+      <th>Definition</th><!-- TI -->
+      <th>In use</th>
+      <th>Documentation</th> <!-- Other information -->
     </tr>
     <tr>
       <td><a href="http://dublincore.org/documents/dces/#contributor"><em>dc:contributor</em></a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td><img alt="place" src="images/page.png"/></td><td></td><td></td><td></td>
       <td>
       	<p>An entity responsible for making the element: a person, an organization or a service. Typically, the name of a contributor should be used to indicate the entity.</p>
       	<p>For example: <code>&lt;dc:contributor&gt;Diego Berrueta&lt;/dc:contributor&gt;</code></p>
@@ -80,6 +86,7 @@ title="go to parrot home page">Parrot </a></h1>
     <tr>
       <td><a href="http://dublincore.org/documents/dces/#creator"><em>dc:creator</em></a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+	  <td><img alt="place" src="images/page.png"/></td><td></td><td></td><td></td>
 	  <td>
 	  	<p>An entity primarily responsible for making the element: a person, an organization or a service. Typically, the name of a creator should be used to indicate the entity.</p>
 	  	<p>For example: <code>&lt;dc:creator&gt;Sergio Fernández&lt;/dc:creator&gt;</code></p>
@@ -88,6 +95,7 @@ title="go to parrot home page">Parrot </a></h1>
     <tr>
       <td><a href="http://dublincore.org/documents/dces/#date"><em>dc:date</em></a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td><img alt="place" src="images/page.png"/></td><td></td><td></td><td></td>
       <td>
       	<p>The date of creation or publication of the element. Recommended best practice is to use the W3CDTF profile of ISO 8601.</p>
         <p>For example: <code>&lt;dc:date&gt;1981-01-20&lt;/dc:date&gt;</code></p>
@@ -96,6 +104,7 @@ title="go to parrot home page">Parrot </a></h1>
     <tr>
       <td><a href="http://dublincore.org/documents/dces/#description"><em>dc:description</em></a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td></td><td></td><td></td>
       <td>
       	<p>See <em>rdfs:comment</em></p>
       	<p>For example: <code>&lt;dc:description&gt;The Friend of a Friend (FOAF) RDF vocabulary, described using W3C RDFS and OWL.&lt;/dc:description&gt;</code></p>
@@ -104,6 +113,7 @@ title="go to parrot home page">Parrot </a></h1>
     <tr>
       <td><a href="http://dublincore.org/documents/dces/#publisher"><em>dc:publisher</em></a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+	  <td><img alt="place" src="images/page.png"/></td><td></td><td></td><td></td>
 	  <td>
 	  	<p>An entity responsible for making the element available: a person, an organization or a service. Typically, the name of a publisher should be used to indicate the entity.</p>
         <p>For example: <code>&lt;dc:publisher&gt;O'Reilly&lt;/dc:publisher&gt;</code></p>
@@ -112,6 +122,7 @@ title="go to parrot home page">Parrot </a></h1>
     <tr>
       <td><a href="http://dublincore.org/documents/dces/#rights"><em>dc:rights</em></a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td>
+      <td><img alt="place" src="images/page.png"/></td><td></td><td></td><td></td>
       <td>
       	<p>Information about rights held in and over the element.</p>
         <p>For example: <code>&lt;dc:rights&gt;CTIC Foundation, some rights reserved&lt;/dc:rights&gt;</code></p>
@@ -120,6 +131,7 @@ title="go to parrot home page">Parrot </a></h1>
     <tr>
       <td><a href="http://dublincore.org/documents/dces/#title"><em>dc:title</em></a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td></td><td></td><td><img alt="supported" src="images/page.png"/></td>
       <td>
       	<p>See <em>rdfs:label</em></p>
         <p>For example: <code>&lt;dc:title xml:lang="en"&gt;Temperature defect&lt;/dc:title&gt;</code></p>
@@ -128,6 +140,7 @@ title="go to parrot home page">Parrot </a></h1>
     <tr>
       <td><a href="http://dublincore.org/documents/dcmi-terms/#terms-contributor"><em>dct:contributor</em></a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td><img alt="place" src="images/page.png"/></td><td></td><td></td><td></td>
       <td>
       	<p>An entity responsible for making the element: a person, an organization or a service. Recommended best practice is to use a FOAF profile to describe a contributor.</p>
 	  	<p>For example: <code>&lt;dct:contributor rdf:resource="http://berrueta.net/foaf.rdf#me" /&gt;</code></p>
@@ -136,6 +149,7 @@ title="go to parrot home page">Parrot </a></h1>
     <tr>
       <td><a href="http://dublincore.org/documents/dcmi-terms/#terms-creator"><em>dct:creator</em></a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+	  <td><img alt="place" src="images/page.png"/></td><td></td><td></td><td></td>
 	  <td>
 	  	<p>An entity primarily responsible for making the element: a person, an organization or a service. Recommended best practice is to use a FOAF profile to describe a creator.</p>
 	  	<p>For example: <code>&lt;dct:creator rdf:resource="http://www.wikier.org/foaf#wikier" /&gt;</code></p>
@@ -144,6 +158,7 @@ title="go to parrot home page">Parrot </a></h1>
     <tr>
       <td><a href="http://dublincore.org/documents/dcmi-terms/#terms-date"><em>dct:date</em></a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td><img alt="place" src="images/page.png"/></td><td></td><td></td><td></td>
       <td>
       	<p>The date of creation or publication of the element. Recommended best practice is to use the W3CDTF profile of ISO 8601.</p>
         <p>For example: <code>&lt;dct:date&gt;1981-01-20&lt;/dct:date&gt;</code></p>
@@ -152,6 +167,7 @@ title="go to parrot home page">Parrot </a></h1>
 	<tr>
       <td><a href="http://dublincore.org/documents/dcmi-terms/#terms-description"><em>dct:description</em></a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td></td><td></td><td></td>
       <td>
       	<p>See <em>rdfs:comment</em></p>
 		<p>For example: <code>&lt;dct:description xml:lang="en"&gt;It is a defect having to do with temperature issues.&lt;/dct:description&gt;</code></p>      	
@@ -167,11 +183,16 @@ title="go to parrot home page">Parrot </a></h1>
       <th>Rule</th>
       <th>Vocabulary</th>
       <th>Dataset</th>
+      <th><abbr title="Version Control Information">VC</abbr></th>
+      <th>Definition</th><!-- TI -->
+      <th>In use</th>
+      <th>Documentation</th> <!-- Other information -->
       <th>Description</th>
     </tr>
     <tr>
       <td><a href="http://dublincore.org/documents/dcmi-terms/#terms-issued"><em>dct:issued</em></a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td><img alt="place" src="images/page.png"/></td><td></td><td></td><td></td>
       <td>
       	<p>Date of formal issuance (e.g., publication) of the element. Recommended best practice is to use the W3CDTF profile of ISO 8601.</p>
         <p>For example: <code>&lt;dct:issued&gt;1979-03-23&lt;/dct:issued&gt;</code></p>
@@ -180,6 +201,7 @@ title="go to parrot home page">Parrot </a></h1>
     <tr>
       <td><a href="http://dublincore.org/documents/dcmi-terms/#terms-license"><em>dct:license</em></a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td><img alt="place" src="images/page.png"/></td><td></td><td></td><td></td>
       <td>
       	<p>A legal document describing the copyright license of the element. Recommended best practice is to use Creative Commons licenses and to describe them in RDF with the Creative Commons Rights Expression Language (CC REL).</p>
 	  	<p>For example: <code>&lt;dct:license rdf:resource="http://creativecommons.org/licenses/by/3.0/" /&gt;</code></p>
@@ -188,6 +210,7 @@ title="go to parrot home page">Parrot </a></h1>
     <tr>
       <td><a href="http://dublincore.org/documents/dcmi-terms/#terms-modified"><em>dct:modified</em></a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td><img alt="place" src="images/page.png"/></td><td></td><td></td><td></td>
       <td>
       	<p>The date on which the element was changed. Recommended best practice is to use the W3CDTF profile of ISO 8601.</p>
         <p>For example: <code>&lt;dct:modified&gt;2010-07-11&lt;/dct:modified&gt;</code></p>
@@ -196,6 +219,7 @@ title="go to parrot home page">Parrot </a></h1>
 	<tr>
       <td><a href="http://dublincore.org/documents/dcmi-terms/#terms-publisher"><em>dct:publisher</em></a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+	  <td><img alt="place" src="images/page.png"/></td><td></td><td></td><td></td>
 	  <td>
 	  	<p>An entity responsible for making the element available: a person, an organization or a service. Recommended best practice is to use a FOAF profile to describe a publisher.</p>
 	  	<p>For example: <code>&lt;dct:publisher rdf:resource="http://oreilly.com/" /&gt;</code></p>
@@ -204,6 +228,7 @@ title="go to parrot home page">Parrot </a></h1>
     <tr>
       <td><a href="http://dublincore.org/documents/dcmi-terms/#terms-title"><em>dct:title</em></a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td></td><td></td><td><img alt="supported" src="images/page.png"/></td>
       <td>
       	<p>See <em>rdfs:label</em></p>
         <p>For example: <code>&lt;dct:title xml:lang="en"&gt;Temperature defect&lt;/dct:title&gt;</code></p>
@@ -212,6 +237,7 @@ title="go to parrot home page">Parrot </a></h1>
     <tr>
       <td><a href="http://www.w3.org/TR/rdf-schema/#ch_comment"><em>rdfs:comment</em></a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td></td><td></td><td></td>
       <td>
       	<p>The description of the element. The range is a literal with a language tag.</p>
 		<p>For example: <code>&lt;rdfs:comment xml:lang="en"&gt;It is a defect having to do with temperature issues.&lt;/rdfs:comment&gt;</code></p>      	
@@ -220,6 +246,7 @@ title="go to parrot home page">Parrot </a></h1>
     <tr>
       <td><a href="http://www.w3.org/TR/rdf-schema/#ch_isdefinedby"><em>rdfs:isDefinedBy</em></a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td>
+      <td></td><td></td><td><img alt="place" src="images/page.png"/></td><td></td>
       <td>
       	<p>Used to indicate where this element has been defining.</p>
 	  	<p>For example: <code>&lt;rdfs:isDefinedBy rdf:resource="http://purl.org/vocab/vann/" /&gt;</code></p>
@@ -228,6 +255,7 @@ title="go to parrot home page">Parrot </a></h1>
     <tr>
       <td><a href="http://www.w3.org/TR/rdf-schema/#ch_label"><em>rdfs:label</em></a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td></td><td></td><td><img alt="supported" src="images/page.png"/></td>
       <td>
       	<p>The label of the element. The range is a literal with a language tag (optional).</p>
         <p>For example: <code>&lt;rdfs:label xml:lang="en"&gt;Temperature defect&lt;/rdfs:label&gt;</code></p>
@@ -236,6 +264,7 @@ title="go to parrot home page">Parrot </a></h1>
     <tr>
       <td><a href="http://www.w3.org/TR/rdf-schema/#ch_seealso"><em>rdfs:seeAlso</em></a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td></td><td></td><td><img alt="supported" src="images/page.png"/></td>
       <td>
       	<p>Specifies a resource that might provide additional information about the element.</p>
 	  	<p>For example: <code>&lt;rdfs:seeAlso rdf:resource="http://www.ietf.org/rfc/rfc1766.txt" /&gt;</code></p>
@@ -244,6 +273,7 @@ title="go to parrot home page">Parrot </a></h1>
     <tr>
       <td><a href="http://www.w3.org/TR/skos-reference/#xl-altLabel"><em>skosxl:altLabel</em></a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td></td><td></td><td><img alt="supported" src="images/page.png"/></td>
       <td>
       	<p>An alternative label of a element. The range of the property is an instance of the class LexicalLabel.</p>
 	  	<p>For example: <code>&lt;skosxl:altLabel rdf:resource="http://www.example.org/skos/temperature-fault" /&gt;</code></p>
@@ -252,6 +282,7 @@ title="go to parrot home page">Parrot </a></h1>
     <tr>
       <td><a href="http://www.w3.org/TR/skos-reference/#xl-prefLabel"><em>skosxl:prefLabel</em></a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td></td><td></td><td><img alt="supported" src="images/page.png"/></td>
       <td>
       	<p>The preferred label of a element. The range of the property is an instance of the class LexicalLabel.</p>
 	  	<p>For example: <code>&lt;skosxl:prefLabel rdf:resource="http://www.example.org/skos/temperature-defect" /&gt;</code></p>
@@ -260,6 +291,7 @@ title="go to parrot home page">Parrot </a></h1>
     <tr>
       <td><a href="http://www.w3.org/TR/skos-reference/#altLabel"><em>skos:altLabel</em></a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td></td><td></td><td><img alt="supported" src="images/page.png"/></td>
       <td>
       	<p>An alternative label of a element. The range is a literal with a language tag.</p>
         <p>For example: <code>&lt;skos:altLabel xml:lang="en"&gt;Temperature fault&lt;/skos:altLabel&gt;</code></p>
@@ -268,6 +300,7 @@ title="go to parrot home page">Parrot </a></h1>
     <tr>
       <td><a href="http://www.w3.org/TR/skos-reference/#prefLabel"><em>skos:prefLabel</em></a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td></td><td></td><td><img alt="supported" src="images/page.png"/></td>
       <td>
       	<p>The preferred label of a element. The range is a literal with a language tag (optional). In some cases, it is assumed that <em>prefLabel</em> assumes the role of the <em>label</em> for presentation purposes.</p>
         <p>For example: <code>&lt;skos:prefLabel xml:lang="en"&gt;Temperature defect&lt;/skos:prefLabel&gt;</code></p>
@@ -283,11 +316,16 @@ title="go to parrot home page">Parrot </a></h1>
       <th>Rule</th>
       <th>Vocabulary</th>
       <th>Dataset</th>
+      <th><abbr title="Version Control Information">VC</abbr></th>
+      <th>Definition</th><!-- TI -->
+      <th>In use</th>
+      <th>Documentation</th> <!-- Other information -->
       <th>Description</th>
     </tr>
     <tr>
       <td><a href="http://xmlns.com/foaf/spec/#term_maker"><em>foaf:maker</em></a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td><img alt="supported" src="images/page.png"/></td><td></td><td></td><td></td>
       <td>
       	<p>See <em>dct:creator</em>.</p>
 	  	<p>For example: <code>&lt;foaf:maker rdf:resource="http://berrueta.net/foaf.rdf#me" /&gt;</code></p>
@@ -296,6 +334,7 @@ title="go to parrot home page">Parrot </a></h1>
     <tr>
       <td><a href="http://xmlns.com/foaf/spec/#term_depiction"><em>foaf:depiction</em></a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td>
+      <td></td><td></td><td></td><td><img alt="supported" src="images/page.png"/></td>
       <td>
       	<p>An image associated with the element.</p>
 	  	<p>For example: <code>&lt;foaf:depiction rdf:resource="http://farm5.static.flickr.com/4014/4396193788_707ae6ec23.jpg" /&gt;</code></p>
@@ -304,6 +343,7 @@ title="go to parrot home page">Parrot </a></h1>
     <tr>
       <td><a href="http://www.w3.org/2003/06/sw-vocab-status/note.html#vocab"><em>vs:term_status</em></a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td><td></td><td></td>
+      <td><img alt="place" src="images/page.png"/></td><td></td><td></td><td></td>
       <td>
       	<p>Status of a term, expressed as a short symbolic string; known values include 'unstable','testing', 'stable' and 'archaic'.</p>
 		<p>For example: <code>&lt;vs:term_status&gt;testing&lt;/vs:term_status&gt;</code></p>      	
@@ -312,6 +352,7 @@ title="go to parrot home page">Parrot </a></h1>
     <tr>
       <td><a href="http://ogp.me/#video"><em>og:video</em></a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td>
+      <td></td><td></td><td></td><td><img alt="supported" src="images/page.png"/></td>
       <td>
       	<p>A video associated with the element.</p>
 		<p>For example: <code>&lt;og:video rdf:resource="http://www.youtube.com/watch?v=5h10QHpA5EU" /&gt;</code></p>      	
@@ -320,14 +361,28 @@ title="go to parrot home page">Parrot </a></h1>
     <tr>
       <td><a href="http://www.w3.org/TR/2004/REC-owl-ref-20040210/#versionInfo-def"><em>owl:versionInfo</em></a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td>
+      <td><img alt="place" src="images/page.png"/></td><td></td><td></td><td></td>
       <td>
       	<p>Provides a hook suitable for use by versioning systems.</p>
         <p>For example: <code>&lt;owl:versionInfo&gt;1.17&lt;/owl:versionInfo&gt;</code></p>
       </td>
     </tr>
+
+    <tr>
+      <td><a href="http://www.w3.org/TR/2009/REC-owl2-syntax-20091027/#a_deprecated"><em>owl:deprecated</em></a></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td><td></td><td></td>
+      <td></td><td></td><td></td><td></td>
+      <td>
+      	<p>An annotation with the owl:deprecated annotation property and the value equal to <code>"true"^^xsd:boolean</code> can be used to specify that an IRI is deprecated.
+      	There are other ways to mark as deprecated an ontology or a class, using <code>owl:DeprecatedProperty</code>, <code>owl:DeprecatedClass</code></p>
+        <p>For example: <code>&lt;owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"&gt;true&lt;/owl:deprecated&gt;</code></p>
+      </td>
+    </tr>
+    
     <tr>
       <td><a href="http://dublincore.org/documents/dcmi-terms/#terms-source"><em>dct:source</em></a></td>
       <td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td>
+      <td></td><td></td><td></td><td><img alt="place" src="images/page.png"/></td>
       <td>
       	<p>The resources from which the rules are derived. Typically, they are documentary sources (as candidate rules), but diagrams, plans or pictures are also possible.</p>
         <p>For example: <code>&lt;dct:source rdf:resource="http://example.org/candidate-rule" /&gt;</code></p>      	
@@ -336,6 +391,7 @@ title="go to parrot home page">Parrot </a></h1>
     <tr>
       <td><a href="http://vocab.org/vann/.html#preferredNamespacePrefix"><em>vann:preferredNamespacePrefix</em></a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td></td>
+      <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
       <td>
       	<p>The preferred namespace prefix when using entities of an ontology or a vocabulary.</p>
         <p>For example: <code>&lt;vann:preferredNamespacePrefix&gt;whois&lt;/vann:preferredNamespacePrefix&gt;</code></p>
@@ -344,6 +400,7 @@ title="go to parrot home page">Parrot </a></h1>
     <tr>
       <td><a href="http://vocab.org/vann/.html#preferredNamespaceUri"><em>vann:preferredNamespaceUri</em></a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td></td>
+      <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
       <td>
       	<p>The preferred namespace URI to use when using terms from an ontology or a vocabulary.</p>
         <p>For example: <code>&lt;vann:preferredNamespaceUri&gt;http://www.kanzaki.com/ns/whois#&lt;/vann:preferredNamespaceUri&gt;</code></p>
@@ -352,6 +409,7 @@ title="go to parrot home page">Parrot </a></h1>
     <tr>
       <td><a href="http://labs.mondeca.com/vocab/voaf/#classNumber"><em>voaf:classNumber</em></a></td>
       <td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td></td>
+      <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
       <td>
       	<p>The number of classes defined in the vocabulary.</p>
       	<p>For example: <code>&lt;voaf:classNumber&gt;42&lt;/voaf:classNumber&gt;</code></p>
@@ -360,6 +418,7 @@ title="go to parrot home page">Parrot </a></h1>
     <tr>
       <td><a href="http://labs.mondeca.com/vocab/voaf/#propertyNumber"><em>voaf:propertyNumber</em></a></td>
       <td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td></td>
+      <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
       <td>
       	<p>The number of properties defined in the vocabulary.</p>
       	<p>For example: <code>&lt;voaf:propertyNumber&gt;55&lt;/voaf:propertyNumber&gt;</code></p>
@@ -368,6 +427,7 @@ title="go to parrot home page">Parrot </a></h1>
     <tr>
       <td><a href="http://xmlns.com/foaf/spec/#term_homepage"><em>foaf:homepage</em></a></td>
       <td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
       <td>
       	<p>The homepage (typically a Web page in HTML format) of the vocabulary.</p>
       	<p>For example: <code>&lt;foaf:homepage rdf:resource="http://rdfs.org/sioc/spec/" /&gt;</code></p>      	
@@ -376,6 +436,7 @@ title="go to parrot home page">Parrot </a></h1>
     <tr>
       <td><a href="http://rdfs.org/ns/void#dataDump"><em>void:dataDump</em></a></td>
       <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
       <td>
       	<p>An RDF dump, partial or complete, of the dataset.</p>
       	<p>For example: <code>&lt;void:dataDump rdf:resource="http://ec.europa.eu/eurostat/ramon/rdfdata/migs.rdf" /&gt;</code></p>
@@ -384,6 +445,7 @@ title="go to parrot home page">Parrot </a></h1>
     <tr>
       <td><a href="http://vocab.deri.ie/void#sparqlEndpoint"><em>void:sparqlEndpoint</em></a></td>
       <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
       <td>
       	<p>The SPARQL endpoint of the dataset.</p>
       	<p>For example: <code>&lt;void:sparqlEndpoint rdf:resource="http://risp.asturias.es/sparql" /&gt;</code></p>      	
@@ -392,6 +454,7 @@ title="go to parrot home page">Parrot </a></h1>
     <tr>
       <td><a href="http://vocab.deri.ie/void#vocabulary"><em>void:vocabulary</em></a></td>
       <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
       <td>
       	<p>A vocabulary or <em>owl:Ontology</em> whose classes or properties are used in the dataset.</p>
       	<p>For example: <code>&lt;void:vocabulary rdf:resource="http://xmlns.com/foaf/0.1/" /&gt;</code></p>      	

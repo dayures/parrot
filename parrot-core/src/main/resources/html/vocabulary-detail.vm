@@ -4,8 +4,8 @@
 	  ($element.PreferredNamespace) ||
 	  ($element.PreferredPrefix) ||
 	  ($element.ClassNumber) ||
-	  ($element.HomePage) ||
-	  ($element.PropertyNumber))
+	  ($element.PropertyNumber) ||
+	  ($element.HomePage))
   #set( $ti = true )
 #else
   #set( $ti = false )

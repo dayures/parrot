@@ -2,5 +2,4 @@
     <p class="description">$element.Description</p>
   #else
       <p><em>{{No description available}}</em> <img class="icon-info-description" src="${uri_base}report/images/info.png" alt="info"/></p> 
-  
   #end

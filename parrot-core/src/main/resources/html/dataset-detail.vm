@@ -4,7 +4,7 @@
 #if ( ($element.Uri) ||
 	  ($element.DataDump) ||
 	  ($element.Homepage) ||
-	  (!$element.vocaularies.isEmpty()) ||
+	  (!$element.vocabularies.isEmpty()) ||
 	  ($element.SparqlEndpoint) )
   #set( $ti = true )
 #else

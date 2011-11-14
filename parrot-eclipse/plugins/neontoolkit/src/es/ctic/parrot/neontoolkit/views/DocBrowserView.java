@@ -33,7 +33,11 @@ public class DocBrowserView extends ViewPart {
 
 	private void createBrowser(Composite parent){
 		try {
+//			browser = new Browser(parent, SWT.MOZILLA);
 			browser = new Browser(parent, SWT.None);
+			String msg = "Create browser instance="+browser.getStyle() + "--"+browser.getBrowserType();
+			Status status = new Status(Status.INFO, Activator.PLUGIN_ID, msg);
+			Activator.getDefault().getLog().log(status);
 		}
 		catch(SWTError e){
 			String msg = "Unable to create browser instance";

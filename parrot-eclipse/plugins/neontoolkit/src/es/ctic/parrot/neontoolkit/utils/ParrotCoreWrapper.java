@@ -18,8 +18,11 @@ import es.ctic.parrot.transformers.TransformerException;
 
 public class ParrotCoreWrapper {
 	
+//	private static final String CUSTOMIZE_CSS_URL = "http://localhost:8080/parrot/report/css/eclipse.css";
+//	private static final String DEFAULT_URI_BASE = "http://localhost:8080/parrot/";
 	private static final String CUSTOMIZE_CSS_URL = "http://ontorule-project.eu/parrot/report/css/eclipse.css";
 	private static final String DEFAULT_URI_BASE = "http://ontorule-project.eu/parrot/";
+	
 	private static final Locale DEFAULT_LOCALE = Locale.ENGLISH;
 	private ParrotAppServ app;
 	

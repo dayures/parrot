@@ -51,7 +51,9 @@ public class DocBrowserView extends ViewPart {
 	
 	@Override
 	public void setFocus() {
-		browser.setFocus();
+		if (browser != null) {
+			browser.setFocus();
+		}
 	}
 
 }

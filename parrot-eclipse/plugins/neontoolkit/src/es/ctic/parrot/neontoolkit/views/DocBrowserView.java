@@ -40,7 +40,8 @@ public class DocBrowserView extends ViewPart {
 			Activator.getDefault().getLog().log(status);
 		}
 		catch(SWTError e){
-			String msg = "Unable to create browser instance";
+			e.printStackTrace();
+			String msg = "Unable to create browser instance."+e.getMessage();
 			Status status = new Status(Status.ERROR, Activator.PLUGIN_ID, msg);
 			Activator.getDefault().getLog().log(status);
 			return; 
@@ -52,7 +53,9 @@ public class DocBrowserView extends ViewPart {
 	
 	@Override
 	public void setFocus() {
-		browser.setFocus();
+		if (browser != null) {
+			browser.setFocus();
+		}
 	}
 
 }

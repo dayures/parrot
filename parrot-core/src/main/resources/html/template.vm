@@ -20,7 +20,7 @@
     <link rel="stylesheet" type="text/css" media="screen,projection" href="${uri_base}report/css/base.css" /> 
     <link rel="stylesheet" type="text/css" media="screen,projection" href="${uri_base}report/css/custom.css" /> 
     <link rel="stylesheet" type="text/css" media="screen,projection" href="${uri_base}report/css/SemEx.css" /> 
-    <link rel="stylesheet" type="text/css" media="screen,projection" href="${uri_base}report/jixedbar/jx.stylesheet.css" /> 
+    <link rel="stylesheet" type="text/css" media="screen,projection" href="${uri_base}report/jixedbar/jx.bar.css" /> 
     <link rel="stylesheet" type="text/css" media="print" href="${uri_base}report/css/print.css" /> 
 
   	#if (${profile} == "business" || ${profile} == "technical")

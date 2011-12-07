@@ -213,7 +213,7 @@ div#header {
   padding-left: 0.4em;
 }
 
-h1 a, h1 a:active, h1 a:hover, h1 a:visited {
+h1 a:link, h1 a:active, h1 a:hover, h1 a:visited {
   color: #ffffff;
   text-decoration: none;
 }

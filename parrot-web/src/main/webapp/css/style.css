@@ -19,8 +19,8 @@ div#header {
   background-image: url(../images/ctic-white.png);
   background-repeat: no-repeat;
   background-position: bottom right;
-  border: 1px solid white;
-  padding:3em;-moz-border-radius: 10px;-webkit-border-radius: 10px;
+  border: 1px solid #369;
+  padding:3em;
 }
 
 h1 {
@@ -30,7 +30,7 @@ h1 {
   display: inline;
 }
 
-h1 a, h1 a:active, h1 a:hover, h1 a:visited {
+h1 a:link, h1 a:active, h1 a:hover, h1 a:visited {
   color: #ffffff;
   text-decoration: none;
 }
@@ -69,7 +69,7 @@ form > p {
   border: 1px #b0b0c0 solid;
   padding: .6em;
   background-color: #E6EFFF;
-  padding:1.5em;-moz-border-radius: 10px;-webkit-border-radius: 10px;
+  padding:1.5em;
 }
 
 input, area. { 

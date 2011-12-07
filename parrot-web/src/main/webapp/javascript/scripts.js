@@ -1,4 +1,5 @@
 jQuery(document).ready(function(){
+
 	$('#tabs').tabs();
 	
 	$('#feedback').feedback({
@@ -110,5 +111,8 @@ jQuery(document).ready(function(){
         $(":submit", this).attr("disabled", "disabled");
         $('#generating-dialog').dialog('open');
     });
+
+    $('#header').corner();
+    $('.inputData').corner();
 
 });

@@ -162,7 +162,6 @@ public class ParrotAppServ {
      */
     private Document transformToDocument(Collection<DocumentableObject> documentableObjects, Locale locale, Collection<Input> inputs, String prologueURL, String appendixURL, String reportURL, Collection<String> languages, String customizeCssUrl) throws TransformerException {
         Document document = new Document(locale);
-		document.setTitle("Parrot Report"); // FIXME
 		document.setInputs(inputs);
 		document.setPrologueURL(prologueURL);
 		document.setAppendixURL(appendixURL);

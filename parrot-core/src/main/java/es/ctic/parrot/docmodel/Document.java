@@ -80,17 +80,13 @@ public class Document {
      * @return the title of this document.
      */
 	public String getTitle() {
+		if (this.title == null) {
+			this.title = generateTitle();
+		}
+		
 		return this.title;
 	}
 
-	/**
-	 * Set the title.
-	 * @param title the title to set.
-	 */
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	
 	/**
 	 * Returns the sorted collection of ontology views for this document. Elements are sorted alphabetically by label.
 	 * @return the sorted collection of ontology views for this document.
@@ -452,6 +448,24 @@ public class Document {
 	 */
 	public String getCustomizeCssUrl() {
 		return customizeCssUrl;
+	}
+	
+	/**
+	 * Return a generated title for the document
+	 * @return the generated title.
+	 */
+	private String generateTitle() {
+		if ( ontologyDetailViews.size() == 1 && ruleSetDetailViews.isEmpty() && vocabularyDetailViews.isEmpty() && datasetDetailViews.isEmpty()){
+			return "Ontology "+ontologyDetailViews.iterator().next().getLabel();
+		} else if ( ontologyDetailViews.isEmpty() && ruleSetDetailViews.size() == 1 && vocabularyDetailViews.isEmpty() && datasetDetailViews.isEmpty()){
+			return "Ruleset "+ruleSetDetailViews.iterator().next().getLabel();
+		} else if  ( ontologyDetailViews.isEmpty() && ruleSetDetailViews.isEmpty() && vocabularyDetailViews.size() == 1 && datasetDetailViews.isEmpty()){
+			return "Vocabulary "+vocabularyDetailViews.iterator().next().getLabel();
+		} else if  ( ontologyDetailViews.isEmpty() && ruleSetDetailViews.isEmpty() && vocabularyDetailViews.isEmpty() && datasetDetailViews.size() == 1){
+			return "Dataset "+datasetDetailViews.iterator().next().getLabel();
+		} else {
+			return "Report for several artifacts";
+		}
 	}
 
 }

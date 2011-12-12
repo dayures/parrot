@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> 
 <head> 
-<title>Parrot, RIF and OWL documentation service</title> 
+<title>Parrot, a RIF and OWL documentation service</title> 
 <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" /> 
 <meta name="description" content="parrot" /> 
 <meta name="keywords" content="parrot, documentation, tool, rif, rdf" /> 
@@ -20,8 +20,8 @@
 
 	<div id="header">
 	<h1><a href="/parrot"
-		title="go to parrot home page">Parrot </a></h1>
-	<h2>a RIF and OWL documentation service</h2>
+		title="go to parrot home page">Parrot</a></h1>
+	<h2>: a RIF and OWL documentation service</h2>
 	</div>
 
 		<c:if test="${ ! empty errorsGeneral}" >    	

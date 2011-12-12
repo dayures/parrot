@@ -455,14 +455,19 @@ public class Document {
 	 * @return the generated title.
 	 */
 	private String generateTitle() {
-		if ( ontologyDetailViews.size() == 1 && ruleSetDetailViews.isEmpty() && vocabularyDetailViews.isEmpty() && datasetDetailViews.isEmpty()){
-			return "Ontology "+ontologyDetailViews.iterator().next().getLabel();
-		} else if ( ontologyDetailViews.isEmpty() && ruleSetDetailViews.size() == 1 && vocabularyDetailViews.isEmpty() && datasetDetailViews.isEmpty()){
-			return "Ruleset "+ruleSetDetailViews.iterator().next().getLabel();
-		} else if  ( ontologyDetailViews.isEmpty() && ruleSetDetailViews.isEmpty() && vocabularyDetailViews.size() == 1 && datasetDetailViews.isEmpty()){
-			return "Vocabulary "+vocabularyDetailViews.iterator().next().getLabel();
-		} else if  ( ontologyDetailViews.isEmpty() && ruleSetDetailViews.isEmpty() && vocabularyDetailViews.isEmpty() && datasetDetailViews.size() == 1){
-			return "Dataset "+datasetDetailViews.iterator().next().getLabel();
+//		logger.debug("ontology="+ontologyDetailViews.size());
+//		logger.debug("vocabulary="+vocabularyDetailViews.size());
+//		logger.debug("ruleSet="+ruleSetDetailViews.size());
+//		logger.debug("dataset="+datasetDetailViews.size());
+		
+		if ( ontologyDetailViews.size() == 1 && vocabularyDetailViews.isEmpty() && ruleSetDetailViews.isEmpty() &&  datasetDetailViews.isEmpty()){
+			return ontologyDetailViews.iterator().next().getLabel();
+		} else if  ( ontologyDetailViews.isEmpty() && vocabularyDetailViews.size() == 1 && ruleSetDetailViews.isEmpty() && datasetDetailViews.isEmpty()){
+			return vocabularyDetailViews.iterator().next().getLabel();
+		} else if ( ontologyDetailViews.isEmpty() && vocabularyDetailViews.isEmpty() && ruleSetDetailViews.size() == 1 && datasetDetailViews.isEmpty()){
+			return ruleSetDetailViews.iterator().next().getLabel();
+		} else if  ( ontologyDetailViews.isEmpty() && vocabularyDetailViews.isEmpty() && ruleSetDetailViews.isEmpty() && datasetDetailViews.size() == 1){
+			return datasetDetailViews.iterator().next().getLabel();
 		} else {
 			return "Report for several artifacts";
 		}

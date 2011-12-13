@@ -137,19 +137,19 @@ public class ExternalDocumentableObject extends AbstractDocumentableObject imple
 		throw new UnsupportedOperationException("Method not implemented yet.");
 	}
 
-	public Collection<OntologyClass> getSuperClasses() {
+	public Collection<DocumentableObject> getSuperClasses() {
 		throw new UnsupportedOperationException("Method not implemented yet.");
 	}
 
-	public void setSuperClasses(Collection<OntologyClass> superClasses) {
+	public void setSuperClasses(Collection<DocumentableObject> superClasses) {
 		throw new UnsupportedOperationException("Method not implemented yet.");
 	}
 
-	public Collection<OntologyClass> getSubClasses() {
+	public Collection<DocumentableObject> getSubClasses() {
 		throw new UnsupportedOperationException("Method not implemented yet.");
 	}
 
-	public void setSubClasses(Collection<OntologyClass> subClasses) {
+	public void setSubClasses(Collection<DocumentableObject> subClasses) {
 		throw new UnsupportedOperationException("Method not implemented yet.");
 	}
 

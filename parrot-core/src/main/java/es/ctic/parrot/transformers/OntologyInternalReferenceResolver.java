@@ -115,20 +115,20 @@ public class OntologyInternalReferenceResolver extends AbstractDocumentableObjec
     	logger.debug("Resolving internal references of class "+clazz);
 		
     	// set subclasses
-    	Collection<OntologyClass> subClasses = clazz.getSubClasses();
-	    List<OntologyClass> _subClasses = new LinkedList<OntologyClass>();
-	    for(OntologyClass subclass:subClasses){
-	        OntologyClass registerClass=(OntologyClass)register.getDocumentableObject(subclass.getIdentifier());
+    	Collection<DocumentableObject> subClasses = clazz.getSubClasses();
+	    List<DocumentableObject> _subClasses = new LinkedList<DocumentableObject>();
+	    for(DocumentableObject subclass:subClasses){
+	    	DocumentableObject registerClass = register.getDocumentableObject(subclass.getIdentifier());
             _subClasses.add(registerClass);
 	    }
 	    clazz.setSubClasses(_subClasses);
 
 	    
 	    // set superclasses
-	    Collection<OntologyClass> superClasses = clazz.getSuperClasses();
-	    List<OntologyClass> _superClasses = new LinkedList<OntologyClass>();
-	    for(OntologyClass superclass:superClasses){
-	        OntologyClass registerClass=(OntologyClass)register.getDocumentableObject(superclass.getIdentifier());
+	    Collection<DocumentableObject> superClasses = clazz.getSuperClasses();
+	    List<DocumentableObject> _superClasses = new LinkedList<DocumentableObject>();
+	    for(DocumentableObject superclass:superClasses){
+	    	DocumentableObject registerClass = register.getDocumentableObject(superclass.getIdentifier());
             _superClasses.add(registerClass);
 	    }
 	    clazz.setSuperClasses(_superClasses);

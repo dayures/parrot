@@ -16,25 +16,25 @@ public interface OntologyClass extends DocumentableOntologicalObject {
 	 * Returns the super classes.
 	 * @return the super classes.
 	 */	
-    public abstract Collection<OntologyClass> getSuperClasses();
+    public abstract Collection<DocumentableObject> getSuperClasses();
     
 	/**
 	 * Set the super classes to this detailed view.
 	 * @param superClasses the super classes to set to this detailed view.
 	 */
-    public abstract void setSuperClasses(Collection<OntologyClass> superClasses);
+    public abstract void setSuperClasses(Collection<DocumentableObject> superClasses);
     
 	/**
 	 * Returns the sub classes.
 	 * @return the sub classes.
 	 */
-    public abstract Collection<OntologyClass> getSubClasses();
+    public abstract Collection<DocumentableObject> getSubClasses();
     
 	/**
 	 * Set the sub classes to this detailed view.
 	 * @param subClasses the sub classes to set to this detailed view.
 	 */
-    public abstract void setSubClasses(Collection<OntologyClass> subClasses); 
+    public abstract void setSubClasses(Collection<DocumentableObject> subClasses); 
 	
 	/**
 	 * Returns the individuals.

@@ -19,6 +19,7 @@ import com.hp.hpl.jena.vocabulary.OWL2;
 import com.hp.hpl.jena.vocabulary.RDF;
 import com.hp.hpl.jena.vocabulary.RDFS;
 
+import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.de.OntologyClass;
 import es.ctic.parrot.de.OntologyIndividual;
@@ -37,8 +38,8 @@ public class OntologyClassJenaImpl extends AbstractJenaDocumentableObject implem
 
 	private static final Logger logger = Logger.getLogger(OntologyClassJenaImpl.class);
 	
-    private Collection<OntologyClass> superClasses;
-	private Collection<OntologyClass> subClasses;
+    private Collection<DocumentableObject> superClasses;
+	private Collection<DocumentableObject> subClasses;
 	private Collection<OntologyClass> equivalentClasses;
 	private Collection<OntologyClass> disjointClasses;
 	private Collection<OntologyIndividual> individuals;
@@ -65,14 +66,14 @@ public class OntologyClassJenaImpl extends AbstractJenaDocumentableObject implem
 		return  getOntResource().asClass();
 	}
 
-	public Collection<OntologyClass> getSuperClasses(){
+	public Collection<DocumentableObject> getSuperClasses(){
 		if(superClasses==null){
 			superClasses = resourceIteratorToDocumentableObjectList(getOntClass().listSuperClasses());
 		}
 		return superClasses;
 	}
 
-	public Collection<OntologyClass> getSubClasses() {
+	public Collection<DocumentableObject> getSubClasses() {
 		if(subClasses==null){
 			subClasses = resourceIteratorToDocumentableObjectList(getOntClass().listSubClasses());
 		}
@@ -104,11 +105,11 @@ public class OntologyClassJenaImpl extends AbstractJenaDocumentableObject implem
 		}
 	}
 
-	public void setSubClasses(Collection<OntologyClass> classes) {
+	public void setSubClasses(Collection<DocumentableObject> classes) {
 		this.subClasses=classes;
 	}
 
-	public void setSuperClasses(Collection<OntologyClass> classes) {
+	public void setSuperClasses(Collection<DocumentableObject> classes) {
 		this.superClasses=classes;
 	}
 

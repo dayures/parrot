@@ -66,7 +66,7 @@
 	  <td>This class is a sub class of</td>
 	  <td> 
 	  #foreach($superClass in $element.SuperClasses)
-	  <span class="parrot-element-ref parrot-class-ref" rel="rdfs:subClassOf" href="${superClass.getUri()}">#generateLink(${superClass})</span>
+	  <span class="parrot-element-ref parrot-${superClass.kindString}-ref" rel="rdfs:subClassOf" href="${superClass.getUri()}">#generateLink(${superClass})</span>
 	  #end
 	  </td>
 	  </tr>
@@ -77,7 +77,7 @@
 	  <td>This class is a super class of</td>
 	  <td> 	  
 	  #foreach($subClass in $element.SubClasses)
-	  <span class="parrot-element-ref parrot-class-ref" rev="rdfs:subClassOf" href="${subClass.getUri()}">#generateLink(${subClass})</span>
+	  <span class="parrot-element-ref parrot-${subClass.kindString}-ref" rev="rdfs:subClassOf" href="${subClass.getUri()}">#generateLink(${subClass})</span>
 	  #end
 	  </td>
 	  </tr>

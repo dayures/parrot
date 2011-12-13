@@ -70,7 +70,7 @@ public final class CurieUtils {
 			}
 		} else {
 			int lastIndexOf = uri.lastIndexOf('/');
-			if (lastIndexOf == -1) { // corner case. An URI without /
+			if (lastIndexOf == -1) { // corner case. An URI passed as parameter has no '/' character
 				return uri;
 			} else {
 				mainUri = uri.substring(0, lastIndexOf)+"/";

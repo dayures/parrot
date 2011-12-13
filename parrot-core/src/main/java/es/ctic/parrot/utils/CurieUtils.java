@@ -57,6 +57,8 @@ public final class CurieUtils {
 		String mainUri;
 		String fragment;
 
+		logger.debug("uri="+uri);
+		
 		if (uri.contains("#")){
 			String[] uriParts = uri.split("#");
 			if (uriParts.length == 2){
@@ -68,9 +70,13 @@ public final class CurieUtils {
 			}
 		} else {
 			int lastIndexOf = uri.lastIndexOf('/');
-			mainUri = uri.substring(0, lastIndexOf)+"/";
-			fragment = uri.substring(lastIndexOf+1);
-			return getCurieFromMap(mainUri,fragment);
+			if (lastIndexOf == -1) { // corner case. An URI without /
+				return uri;
+			} else {
+				mainUri = uri.substring(0, lastIndexOf)+"/";
+				fragment = uri.substring(lastIndexOf+1);
+				return getCurieFromMap(mainUri,fragment);
+			}
 		}
     }
     

@@ -57,7 +57,7 @@ public final class CurieUtils {
 		String mainUri;
 		String fragment;
 
-		logger.debug("uri="+uri);
+		//logger.debug("uri="+uri);
 		
 		if (uri.contains("#")){
 			String[] uriParts = uri.split("#");
@@ -71,6 +71,7 @@ public final class CurieUtils {
 		} else {
 			int lastIndexOf = uri.lastIndexOf('/');
 			if (lastIndexOf == -1) { // corner case. An URI passed as parameter has no '/' character
+				logger.info("Corner case. The URI passed as parameter has no '/' character. URI="+uri);
 				return uri;
 			} else {
 				mainUri = uri.substring(0, lastIndexOf)+"/";

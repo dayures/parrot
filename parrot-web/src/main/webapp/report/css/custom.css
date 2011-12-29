@@ -3,7 +3,7 @@ body {
 }
 
 div#content {
-    padding: 0em 20% 4em 20%;
+    padding: 0em 5% 4em 5%;
 }
 
 div#footer {
@@ -56,7 +56,7 @@ div.toc , div#prologue , div#appendix{
 	padding: 0em 1em 1em 1em;
 	border: solid #5674BC;
 	background-color: transparent;
-    margin: 1em -15% 0em -15%;
+    margin: 1em -2em 0em -2em;
 }
 
 dt{
@@ -188,7 +188,7 @@ div#header {
   background-color: #336699;
   text-align: left;
   vertical-align: top;
-  margin: 0.3em 10em 0em 10em;
+  margin: 0.3em;
   background-image: url(../images/ctic-white.png);
   background-repeat: no-repeat;
   background-position: bottom right;

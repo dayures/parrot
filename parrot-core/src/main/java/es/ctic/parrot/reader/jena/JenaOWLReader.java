@@ -179,22 +179,34 @@ public class JenaOWLReader implements DocumentReader {
      * @param register the register.
 	 */
 	private void loadOntIndividuals(OntModel model, DocumentableObjectRegister register) {
+
+		// Add the triple (res, rdf:type, owl:thing) to all resources which has an rdf type.
+		ResIterator iter = model.listResourcesWithProperty(RDF.type);
+        while (iter.hasNext()) {
+        	Resource res = iter.next();
+        	model.add(res, RDF.type, OWL.Thing);
+        }
+
 	    Iterator<Individual> it = model.listIndividuals();
 	    while (it.hasNext()) {
 	    	Individual individual = it.next();
-	    	if (individual.isAnon()){
-        		logger.debug("Included anonymous individual: " + individual.getId().toString());
-        		OntologyIndividualJenaImpl docObject = new OntologyIndividualJenaImpl(individual, register, getAnnotationStrategy());
-	        	register.registerDocumentableObject(docObject);
-	    	}
-	    	else {
-		    	if (isDomainSpecific(individual.getURI()) && isClassDomainSpecific(individual)) {
-		        	OntologyIndividualJenaImpl docObject = new OntologyIndividualJenaImpl(individual, register, getAnnotationStrategy());
+	    	
+	    	if (isClassDomainSpecific(individual) == false) {
+	    		logger.debug("Not included individual: " + individual.getURI() +" because is not class domain specific.");
+	    	} else {
+		    	if (individual.isAnon()){ // is anonymous
+	        		logger.debug("Included anonymous individual: " + individual.getId().toString());
+	        		OntologyIndividualJenaImpl docObject = new OntologyIndividualJenaImpl(individual, register, getAnnotationStrategy());
 		        	register.registerDocumentableObject(docObject);
-		        } else {
-	        		logger.debug("Not included individual: " + individual.getURI() +" because is not domain specific.");
-	        	}
-	        }
+		    	} else { // has URI (not anonymous)
+			    	if (isClassDomainSpecific(individual) == false) {
+			    		logger.debug("Not included individual: " + individual.getURI() +" because is not class domain specific.");		    		
+			    	} else {
+			        	OntologyIndividualJenaImpl docObject = new OntologyIndividualJenaImpl(individual, register, getAnnotationStrategy());
+			        	register.registerDocumentableObject(docObject);
+		        	}
+		        }
+	    	}
 	    }
 	}
 	

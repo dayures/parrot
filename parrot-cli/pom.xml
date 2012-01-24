@@ -115,6 +115,19 @@
 
 	</build>
 
+    <distributionManagement>
+        <repository>
+            <id>ctic-nexus</id>
+            <name>CTIC nexus</name>
+            <url>dav:http://wopr.fundacionctic.org:8081/nexus/content/repositories/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>ctic-nexus</id>
+            <name>CTIC nexus</name>
+            <url>dav:http://wopr.fundacionctic.org:8081/nexus/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+    
 	<pluginRepositories>
 	  <pluginRepository>
 	    <id>onejar-maven-plugin.googlecode.com</id>

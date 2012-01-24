@@ -1,0 +1,98 @@
+#parse("html/version-control-check.vm")
+
+#if ( ($element.Uri) ||
+	  ($element.PreferredNamespace) ||
+	  ($element.PreferredPrefix))
+  #set( $ti = true )
+#else
+  #set( $ti = false )
+#end
+
+#if ( ($element.isDefinedBy) ||
+	  (!$element.defines.isEmpty()) ||
+	  (!$element.imports.isEmpty()) )
+  #set( $inuse = true )
+#else
+  #set( $inuse = false )
+#end	
+
+#parse("html/documentation-check.vm")
+
+#parse("html/md5.vm")
+
+
+   <h3 id="$element.Anchor">#if ($element.uriFragment && (!$element.uriFragment.length()==0)) <a id="$element.uriFragment"></a>#end<span class="parrot-element-title parrot-ontology-title">$element.Label</span>
+   <span rel="rdf:type" href="http://www.w3.org/2002/07/owl#Ontology">(Ontology)</span>
+  #if($element.isDeprecated())<span class="deprecated">(Deprecated)</span>#end
+  #parse("html/detail-menu.vm")
+  </h3>
+  
+  #parse("html/description.vm")
+
+  <div> 
+
+    #if ($vci)
+      #parse("html/version-control.vm")
+    #end
+  
+  
+    #if ($ti)
+    <div class="ti"> 
+    <h4>Definition</h4> 
+    
+    #if($element.Uri)
+		<p>The <strong>URI</strong> of this ontology is <span><code>$element.Uri</code></span></p>
+		<hr />
+	#end
+
+	#if(($element.PreferredNamespace) || ($element.PreferredPrefix))
+    <table> 
+		#if($element.PreferredNamespace)
+		<tr>
+		    <td><strong>Preferred Namespace URI</strong></td>
+		    <td><pre><code>$element.PreferredNamespace</code></pre></td>
+		</tr>
+		#end
+		#if($element.PreferredPrefix)
+		<tr>
+		    <td><strong>Preferred Prefix</strong></td>
+		    <td><pre><code>$element.PreferredPrefix</code></pre></td>
+		</tr>
+		#end
+	</table>
+	#end
+    </div>
+  #end
+
+  
+  #if ( $inuse )
+  <div class="inuse">
+  <h4>In use</h4>
+    #isDefinedBy("ontology" ${element.isDefinedBy})
+
+    #if(!$element.defines.isEmpty())
+		<p>This ontology defines elements such as
+		#foreach($reference in $element.defines)
+	    	<span class="parrot-element-ref parrot-${reference.kindString}-ref" rev="rdfs:isDefinedBy" href="${reference.getUri()}">#generateLink(${reference})</span>#if ($foreach.hasNext), #end
+	    #end
+	    </p>
+    #end  
+    #if(!$element.imports.isEmpty())
+		<div><span>This ontology imports</span>
+		<ul class="imports">
+		#foreach($reference in $element.imports)
+	    	<li><span class="parrot-element-ref parrot-ontology-ref" rel="owl:imports" href="${reference.getUri()}">#generateImportLink(${reference})</span></li>
+	    #end
+	    </ul>
+	    </div>
+    #end  
+
+  </div>
+  #end
+  
+  #if ( $otherinfo )
+  	#parse("html/documentation.vm")
+  #end
+
+  </div>
+</div>

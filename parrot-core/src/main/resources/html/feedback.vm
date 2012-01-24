@@ -1,0 +1,7 @@
+	<!-- Feedback -->
+	<img id="feedback" src="${uri_base}images/feedback.png" width="30" height="100" alt="feedback" /> 
+	<div id="feedback-dialog" title="Give us some feedback">
+		<p><img src="${uri_base}images/bug.png" alt="bug"></img> <a href="https://sourceforge.net/tracker/?atid=1496063&amp;group_id=358378&amp;func=browse">Report a bug </a></p>
+		<p><img src="${uri_base}images/heart.png" alt="request"></img> <a href="https://sourceforge.net/tracker/?atid=1496066&amp;group_id=358378&amp;func=browse">Request a feature</a></p>
+		<p><img src="${uri_base}images/group.png" alt="mail list"></img> <a href="https://sourceforge.net/mailarchive/forum.php?forum_name=parrot-project-users">Join the user mail list</a></p>
+	</div>

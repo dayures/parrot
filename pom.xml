@@ -1,0 +1,68 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>es.ctic.parrot</groupId>
+	<artifactId>parrot</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<name>Parrot</name>
+	<description>Parrot Project</description>
+	<url>http://parrot-project.sourceforge.net/</url>
+
+	<licenses>
+		<license>
+			<name>Eclipse Public License</name>
+	  		<url>http://www.eclipse.org/legal/epl-v10.html</url>
+			<distribution>repo</distribution>
+			<comments>A business-friendly OSS license</comments>		
+		</license>
+	</licenses>
+
+	<organization>
+		<name>Fundación CTIC</name>
+		<url>http://www.fundacionctic.org/</url>
+	</organization>
+
+	<developers>
+		<developer>
+			<id>tejo</id>
+			<name>Carlos Tejo Alonso</name>
+			<email>carlos.tejo@fundacionctic.org</email>
+			<url>http://dayures.net</url>
+		</developer>
+		<developer>
+			<id>berrueta</id>
+			<name>Diego Berrueta Muñoz</name>
+			<email>diego.berrueta@fundacionctic.org</email>
+			<url>http://www.berrueta.net</url>
+		</developer>
+		<developer>
+			<id>sergio</id>
+			<name>Sergio Fernández</name>
+			<email>sergio.fernandez@fundacionctic.org</email>
+			<url>http://www.wikier.org/</url>
+		</developer>
+		<developer>
+			<id>minguez</id>
+			<name>Iván Mínguez</name>
+			<email>ivan.minguez@fundacionctic.org</email>
+			<url>http://iminguez.com/</url>
+		</developer>
+	</developers>
+   
+	<profiles>
+		<profile>
+			<id>release</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<modules>
+				<module>parrot-core</module>
+				<module>parrot-cli</module>
+				<!--<module>parrot-eclipse</module>-->
+				<module>parrot-web</module>
+            </modules>
+        </profile>
+    </profiles>
+
+</project>
+

@@ -1,0 +1,256 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>es.ctic.parrot</groupId>
+		<artifactId>parrot</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+	<groupId>es.ctic.parrot</groupId>
+	<artifactId>parrot-core</artifactId>
+	<packaging>jar</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<name>parrot-core</name>
+	<description>Core functionality of Parrot</description>
+	<url>http://parrot-project.sourceforge.net/</url>
+
+	<issueManagement>
+		<system>Tracker</system>
+		<url>http://sourceforge.net/tracker/?group_id=358378&amp;atid=1496063</url>
+	</issueManagement>
+
+	<mailingLists>
+		<mailingList>
+			<name>Parrot Project User List</name>
+			<archive>https://sourceforge.net/mailarchive/forum.php?forum_name=parrot-project-users</archive>
+		</mailingList>
+	</mailingLists>
+
+	<licenses>
+		<license>
+			<name>Eclipse Public License</name>
+			<url>http://www.eclipse.org/legal/epl-v10.html</url>
+			<distribution>repo</distribution>
+			<comments>A business-friendly OSS license</comments>
+		</license>
+	</licenses>
+
+	<organization>
+		<name>Fundación CTIC</name>
+		<url>http://www.fundacionctic.org/</url>
+	</organization>
+
+	<scm>
+		<connection>scm:hg:http://parrot-project.hg.sourceforge.net:8000/hgroot/parrot-project/parrot-project</connection>
+		<developerConnection>scm:hg:http://parrot-project.hg.sourceforge.net:8000/hgroot/parrot-project/parrot-project</developerConnection>
+		<url>http://parrot-project.hg.sourceforge.net/hgweb/parrot-project</url>
+	</scm>
+
+	<developers>
+		<developer>
+			<id>sergio</id>
+			<name>Sergio Fernández</name>
+			<email>sergio.fernandez@fundacionctic.org</email>
+			<url>http://www.wikier.org/</url>
+		</developer>
+		<developer>
+			<id>minguez</id>
+			<name>Iván Mínguez</name>
+			<email>ivan.minguez@fundacionctic.org</email>
+			<url>http://iminguez.com/</url>
+		</developer>
+		<developer>
+			<id>berrueta</id>
+			<name>Diego Berrueta Muñoz</name>
+			<email>diego.berrueta@fundacionctic.org</email>
+			<url>http://berrueta.net</url>
+		</developer>
+		<developer>
+			<id>tejo</id>
+			<name>Carlos Tejo Alonso</name>
+			<email>carlos.tejo@fundacionctic.org</email>
+			<url>http://dayures.net</url>
+		</developer>
+	</developers>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+					<encoding>utf-8</encoding>
+					<showDeprecation>true</showDeprecation>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.2.1</version>
+				<configuration>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					<descriptors>
+					</descriptors>
+				</configuration>
+                <executions>
+                  <execution>
+                    <id>make-assembly</id> <!-- this is used for inheritance merges -->
+                    <phase>package</phase> <!-- bind to the packaging phase -->
+                    <goals>
+                      <goal>single</goal>
+                    </goals>
+                  </execution>
+                </executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-doap-plugin</artifactId>
+				<version>1.1</version>
+				<configuration>
+					<doapFile>doap.rdf</doapFile>
+				</configuration>
+				<executions>
+					<execution>
+						<id>site</id>
+						<phase>site</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+		<extensions>
+       	    <extension>
+       	      <groupId>org.apache.maven.wagon</groupId>
+       	      <artifactId>wagon-webdav-jackrabbit</artifactId>
+       	      <version>1.0</version> 
+       	    </extension>
+       	</extensions>
+	</build>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.7</version>
+			</plugin>
+		</plugins>
+	</reporting>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>central</id>
+			<name>Maven Repository</name>
+			<url>http://repo1.maven.org/maven2</url>
+		</repository>
+		<repository>
+			<id>jena</id>
+			<name>Jena Maven Repository</name>
+			<url>http://openjena.org/repo</url>
+		</repository>
+	</repositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.14</version>
+		</dependency>
+		<dependency>
+			<groupId>com.hp.hpl.jena</groupId>
+			<artifactId>jena</artifactId>
+			<version>2.6.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.hp.hpl.jena</groupId>
+			<artifactId>arq</artifactId>
+			<version>2.8.0</version>
+			<exclusions>
+			<exclusion>
+				<groupId>stax</groupId>
+				<artifactId>stax-api</artifactId>
+			</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>net.rootdev</groupId>
+			<artifactId>java-rdfa</artifactId>
+			<version>0.4.2-RC2</version>
+		</dependency>
+		<dependency>
+			<groupId>net.rootdev</groupId>
+			<artifactId>java-rdfa-htmlparser</artifactId>
+			<version>0.4.2-RC2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity</artifactId>
+			<version>1.7</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity-tools</artifactId>
+			<version>2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.4</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.activation</groupId>
+			<artifactId>activation</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sourceforge.rifle</groupId>
+			<artifactId>rifle-psparser</artifactId>
+			<version>1.0</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.sourceforge.rifle</groupId>
+			<artifactId>rifle-prd-xml</artifactId>
+			<version>1.0</version>
+		</dependency>
+	    <dependency>
+	      <groupId>com.sun.jersey</groupId>
+	      <artifactId>jersey-client</artifactId>
+	      <version>1.2</version>
+	    </dependency>		
+	</dependencies>
+	
+	<distributionManagement>
+        <repository>
+            <id>ctic-nexus</id>
+            <name>CTIC nexus</name>
+            <url>dav:http://wopr.fundacionctic.org:8081/nexus/content/repositories/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>ctic-nexus</id>
+            <name>CTIC nexus</name>
+            <url>dav:http://wopr.fundacionctic.org:8081/nexus/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+    
+</project>

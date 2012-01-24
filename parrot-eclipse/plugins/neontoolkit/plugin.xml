@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="es.ctic.parrot.neontoolkit.commands.ProcNeon"
+            name="Process Neon Ontology">
+      </command>      
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="es.ctic.parrot.neontoolkit.handlers.ProcNeonHandler"
+            commandId="es.ctic.parrot.neontoolkit.commands.ProcNeon">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <command
+               commandId="es.ctic.parrot.neontoolkit.commands.ProcNeon"
+               icon="icons/parrot.png"
+               label="Generate documentation"
+               style="push">
+			<visibleWhen>
+				<and>
+				<count value="+"></count>
+			        <iterate ifEmpty="false">
+			            <instanceof value="com.ontoprise.ontostudio.owl.gui.navigator.ontology.OntologyTreeElement"/>
+			        </iterate>
+				</and>
+			</visibleWhen>               
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="es.ctic.parrot.neontoolkit.view-category"
+            name="Parrot">
+      </category>
+      <view
+            category="es.ctic.parrot.neontoolkit.view-category"
+            class="es.ctic.parrot.neontoolkit.views.DocBrowserView"
+            icon="icons/parrot.png"
+            id="es.ctic.parrot.neontoolkit.browser"
+            name="Parrot Report"
+            restorable="true">
+      </view>
+   </extension>
+
+
+</plugin>

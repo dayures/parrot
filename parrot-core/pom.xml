@@ -126,6 +126,13 @@
 			</plugin>
 
 		</plugins>
+		<extensions>
+       	    <extension>
+       	      <groupId>org.apache.maven.wagon</groupId>
+       	      <artifactId>wagon-webdav-jackrabbit</artifactId>
+       	      <version>1.0</version> 
+       	    </extension>
+       	</extensions>
 	</build>
 
 	<reporting>
@@ -217,14 +224,14 @@
 		<dependency>
 			<groupId>net.sourceforge.rifle</groupId>
 			<artifactId>rifle-psparser</artifactId>
-			<version>1.0-SNAPSHOT</version>
+			<version>1.0</version>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>net.sourceforge.rifle</groupId>
 			<artifactId>rifle-prd-xml</artifactId>
-			<version>1.0-SNAPSHOT</version>
+			<version>1.0</version>
 		</dependency>
 	    <dependency>
 	      <groupId>com.sun.jersey</groupId>
@@ -232,4 +239,18 @@
 	      <version>1.2</version>
 	    </dependency>		
 	</dependencies>
+	
+	<distributionManagement>
+        <repository>
+            <id>ctic-nexus</id>
+            <name>CTIC nexus</name>
+            <url>dav:http://wopr.fundacionctic.org:8081/nexus/content/repositories/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>ctic-nexus</id>
+            <name>CTIC nexus</name>
+            <url>dav:http://wopr.fundacionctic.org:8081/nexus/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+    
 </project>

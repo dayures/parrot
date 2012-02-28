@@ -104,7 +104,7 @@
 			
 		        <div id="tabs-2"> 
 		        	<h2>by direct input</h2> 
-					<form method="post" action="">
+					<form method="post" action="?">
 					
 		        	<c:choose>
     					
@@ -161,7 +161,7 @@
 
 		        <div id="tabs-3"> 
 		        	<h2>by file upload</h2> 
-					<form method="post" action="" enctype="multipart/form-data">
+					<form method="post" action="?" enctype="multipart/form-data">
 						<p>
 						<label title="File to be documented">File: </label><input type="file" name="datafile" size="40"/>
 						This file is a: 

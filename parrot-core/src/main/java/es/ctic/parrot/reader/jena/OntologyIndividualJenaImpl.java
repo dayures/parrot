@@ -4,6 +4,8 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+import org.apache.log4j.Logger;
+
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.shared.JenaException;
@@ -30,6 +32,8 @@ import es.ctic.parrot.transformers.TransformerException;
  */
 public class OntologyIndividualJenaImpl extends AbstractJenaDocumentableObject
 		implements OntologyIndividual {
+
+    private static final Logger logger = Logger.getLogger(OntologyIndividualJenaImpl.class);
 
 	/**
 	 * Constructs an ontology individual.
@@ -73,19 +77,24 @@ public class OntologyIndividualJenaImpl extends AbstractJenaDocumentableObject
 		Collection<OntologyClass> ontologyClassList = new LinkedList<OntologyClass>();
 		
 		while(it.hasNext()){
+			
 			OntClass clazz=it.next();
 			
-			Identifier identifier = null;
-			
-			if (clazz.isAnon() == false){
-				identifier = new URIIdentifier(clazz.getURI());
-			} else {
-				identifier = new JenaAnonymousIdentifier(clazz.getId());
-			}
-
-			OntologyClass _class = (OntologyClass) this.getRegister().findDocumentableObject(identifier); 
-			if (_class != null) { // do not add null elements in the list 
-				ontologyClassList.add(_class);
+			if (clazz.isIndividual() == true){
+				logger.debug("Resource="+clazz +" is a subclass but it is an individual");
+			} else { // is not an individual
+				Identifier identifier = null;
+				
+				if (clazz.isAnon() == false){
+					identifier = new URIIdentifier(clazz.getURI());
+				} else {
+					identifier = new JenaAnonymousIdentifier(clazz.getId());
+				}
+	
+				OntologyClass _class = (OntologyClass) this.getRegister().findDocumentableObject(identifier); 
+				if (_class != null) { // do not add null elements in the list 
+					ontologyClassList.add(_class);
+				}
 			}
 		}
 		return ontologyClassList;

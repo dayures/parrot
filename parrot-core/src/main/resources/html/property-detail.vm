@@ -1,0 +1,220 @@
+#parse("html/version-control-check.vm")
+
+
+#if ( ($element.Uri) || 
+  	  ($element.hasAnyAxiom()) ||
+  	  ($element.InverseOf) ||
+  	  ($element.Domain) ||
+  	  ($element.Range) ||
+      (!$element.SuperProperties.isEmpty()) ||
+      (!$element.SubProperties.isEmpty()) ||
+      (!$element.EquivalentProperties.isEmpty()) ||
+      (!$element.disjointProperties.isEmpty()) )
+  #set( $ti = true )
+#else
+  #set( $ti = false )
+#end
+
+
+#if ( ($element.isDefinedBy) ||
+	  (!$element.InverseReferences.isEmpty()) || 
+  	  ($element.occurrences != 0) ||
+  	  (!$element.inverseRuleReferences.isEmpty()) )
+  #set( $inuse = true )
+#else
+  #set( $inuse = false )
+#end	
+
+#parse("html/documentation-check.vm")
+
+#parse("html/md5.vm")
+
+  <h3 id="$element.Anchor">#if ($element.uriFragment) <a id="$element.uriFragment"></a>#end<span class="parrot-element-title parrot-property-title">$element.Label</span> (Property)
+  	#if($element.isDeprecated())<span class="deprecated">(Deprecated)</span>#end
+  	
+	#if($element.isDatatypeProperty())<span rel="rdf:type" href="http://www.w3.org/2002/07/owl#DatatypeProperty"></span><img class="datatype-property-icon icon" src="${uri_base}report/images/datatype-property-24.png" alt="datatype property"/>#end
+	#if($element.isObjectProperty())<span rel="rdf:type" href="http://www.w3.org/2002/07/owl#ObjectProperty"></span><img class="object-property-icon icon" src="${uri_base}report/images/object-property-24.png" alt="object property"/>#end
+	#if($element.isAnnotationProperty())<span rel="rdf:type" href="http://www.w3.org/2002/07/owl#AnnotationProperty"></span><img class="annotation-property-icon icon" src="${uri_base}report/images/annotation-property-24.png" alt="annotation property"/>#end
+
+	#if($element.isReflexiveProperty())<span rel="rdf:type" href="http://www.w3.org/2002/07/owl#ReflexiveProperty"></span><img class="reflexive-property-icon icon" src="${uri_base}report/images/reflexive-property.png"alt="reflexive property"/>#end    	
+	#if($element.isIrreflexiveProperty())<span rel="rdf:type" href="http://www.w3.org/2002/07/owl#IrreflexiveProperty"></span><img class="irreflexive-property-icon icon" src="${uri_base}report/images/irreflexive-property.png" alt="irreflexive property"/>#end
+	
+	#if($element.isSymmetricProperty())<span rel="rdf:type" href="http://www.w3.org/2002/07/owl#SymmetricProperty"></span><img class="symmetric-property-icon icon" src="${uri_base}report/images/symmetric-property.png" alt="symmetric property"/>#end
+	#if($element.isAsymmetricProperty())<span rel="rdf:type" href="http://www.w3.org/2002/07/owl#AsymmetricProperty"></span><img class="asymmetric-property-icon icon" src="${uri_base}report/images/asymmetric-property.png" alt="asymmetric property"/>#end
+   	
+   	#if($element.isTransitiveProperty())<span rel="rdf:type" href="http://www.w3.org/2002/07/owl#TransitiveProperty"></span><img class="transitive-property-icon icon" src="${uri_base}report/images/transitive-property.png" alt="transitive property"/>#end
+    #if($element.isFunctionalProperty())<span rel="rdf:type" href="http://www.w3.org/2002/07/owl#FunctionalProperty"></span><img class="functional-property-icon icon" src="${uri_base}report/images/functional-property.png" alt="functional property"/>#end
+    #if($element.isInverseFunctionalProperty())<span rel="rdf:type" href="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"></span><img class="inverse-functional-property-icon icon" src="${uri_base}report/images/inverse-functional-property.png" alt="inverse functional property"/>#end
+
+    #parse("html/detail-menu.vm")
+  </h3>
+
+  #parse("html/description.vm")
+  
+  <div>
+  
+  #if ($vci)
+    #parse("html/version-control.vm")
+  #end
+
+  #if ( $ti )
+  <div class="ti"> 
+  <h4>Definition</h4> 
+
+	#if($element.Uri)
+		<p>The <strong>URI</strong> of this property is <span><code>$element.Uri</code></span></p>
+	#end
+   
+    #if ($element.hasAnyAxiom())
+    	<p>This property is a  
+
+    	#if($element.isTransitiveProperty())
+    	<strong>transitive</strong>,       
+    	#end    	
+    	#if($element.isFunctionalProperty())
+    	<strong>functional</strong>,      
+    	#end    	
+    	#if($element.isInverseFunctionalProperty())
+    	<strong>inverse functional</strong>,      
+    	#end    	
+    	#if($element.isReflexiveProperty())
+    	<strong>reflexive</strong>,      
+    	#end    	
+    	#if($element.isIrreflexiveProperty())
+    	<strong>irreflexive</strong>,      
+    	#end        	
+    	#if($element.isSymmetricProperty())
+    	<strong>symmetric</strong>,      
+    	#end    	
+    	#if($element.isAsymmetricProperty())
+    	<strong>asymmetric</strong>,      
+    	#end
+    
+    	#if($element.isDatatypeProperty())
+    	<strong>data</strong> property.    
+    	#end
+    	#if($element.isObjectProperty())
+    	<strong>object</strong> property.  
+    	#end
+    	#if($element.isAnnotationProperty())
+    	<strong>annotation</strong> property. 
+    	#end
+    	#if((!$element.isObjectProperty()) && (!$element.isDatatypeProperty()) && (!$element.isAnnotationProperty()))
+    	property.
+    	#end
+    	</p>
+    	<hr />
+    #end
+
+    #if ( ($element.InverseOf) ||
+    	  ($element.Domain) ||
+    	  ($element.Range) ||
+    	  (!$element.SuperProperties.isEmpty()) ||
+    	  (!$element.SubProperties.isEmpty()) ||
+    	  (!$element.EquivalentProperties.isEmpty()) ||
+    	  (!$element.disjointProperties.isEmpty()) )
+    <table>
+    #if($element.InverseOf)
+      <tr>
+      <td>This property is a inverse property of</td>
+      <td><span class="parrot-element-ref parrot-property-ref" rel="owl:inverseOf" href="${element.InverseOf.getUri()}">#generateLink(${element.InverseOf})</span></td>
+      </tr>
+    #end
+
+    #if($element.Domain)
+      <tr>
+      <td>The domain of this property is</td>
+      <td><span class="parrot-element-ref parrot-class-ref" rel="rdfs:domain" href="${element.Domain.getUri()}">#generateLink(${element.Domain})</span></td>
+      </tr>
+    #end
+
+    #if($element.Range)
+      <tr>
+      <td>The range of this property is</td>
+      <td><span class="parrot-element-ref parrot-class-ref" rel="rdfs:range" href="${element.Range.getUri()}">#generateLink(${element.Range})</span></td>
+      </tr>
+    #end
+   
+    #if(!$element.SuperProperties.isEmpty())
+      <tr>
+      <td>This property is a sub property of</td>
+      <td>
+      #foreach($superProperty in $element.SuperProperties)
+      <span class="parrot-element-ref parrot-property-ref" rel="rdfs:subPropertyOf" href="${superProperty.getUri()}">#generateLink(${superProperty})</span>
+      #end
+      </td>
+      </tr>
+    #end
+
+    #if(!$element.SubProperties.isEmpty())
+      <tr>
+      <td>This property is a super property of</td>
+      <td>
+      #foreach($subProperty in $element.SubProperties)
+      <span class="parrot-element-ref parrot-property-ref" rev="rdfs:subPropertyOf" href="${subProperty.getUri()}">#generateLink(${subProperty})</span>
+      #end
+      </td>
+      </tr>
+    #end
+   
+    #if(!$element.EquivalentProperties.isEmpty())
+      <tr>
+      <td>This property is a equivalent property of</td>
+      <td>
+      #foreach($equivalentProperty in $element.EquivalentProperties)
+      <span class="parrot-element-ref parrot-property-ref" rel="owl:equivalentProperty" href="${equivalentProperty.getUri()}">#generateLink(${equivalentProperty})</span>
+      #end
+      </td>
+      </tr>
+    #end
+
+    #if(!$element.disjointProperties.isEmpty())
+      <tr>
+      <td>This property is a disjoint property of</td>
+      <td>
+      #foreach($disjointProperty in $element.disjointProperties)
+      <span class="parrot-element-ref parrot-property-ref" rel="owl:propertyDisjointWith" href="${disjointProperty.getUri()}">#generateLink(${disjointPropertyy})</span>
+      #end
+      </td>
+      </tr>
+    #end
+    </table>
+    #end   
+   </div>
+  #end
+  
+  #if ( $inuse )
+    <div class="inuse">
+    <h4>In use</h4>
+    #isDefinedBy("property" ${element.isDefinedBy})
+    
+	#if($element.occurrences != 0)
+        <p>This property has $element.occurrences occurrences</p>
+    #end
+
+    #if(!$element.InverseReferences.isEmpty())
+      <p>This property is referenced from 
+      #foreach($reference in $element.InverseReferences)
+		<span class="parrot-element-ref parrot-${reference.kindString}-ref">#generateLink(${reference})</span>#if ($foreach.hasNext), #end 
+      #end
+      </p>
+    #end
+    
+    #if(!$element.inverseRuleReferences.isEmpty())
+      <p>This property is referenced in rules such as 
+      #foreach($reference in $element.inverseRuleReferences)
+		<span class="parrot-element-ref parrot-rule-ref"><a href="#$reference.LocalName">$reference.Label</a></span>#if ($foreach.hasNext), #end 
+      #end
+      </p>
+    #end
+
+    </div>
+  #end
+  
+  #if ( $otherinfo )
+  	#parse("html/documentation.vm")
+  #end
+  
+    
+  </div>
+</div>   

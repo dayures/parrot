@@ -1,0 +1,163 @@
+#parse("html/version-control-check.vm")
+
+
+#if ( ($element.Uri) || 
+  	  (!$element.SuperClasses.isEmpty()) || 
+  	  (!$element.SubClasses.isEmpty()) || 
+  	  (!$element.EquivalentClasses.isEmpty()) || 
+  	  (!$element.DisjointClasses.isEmpty()) ) 
+  #set( $ti = true )
+#else
+  #set( $ti = false )
+#end
+
+#if ( ($element.isDefinedBy) || 
+  	  (!$element.InverseReferences.isEmpty()) || 
+  	  (!$element.inverseRuleReferences.isEmpty()) || 
+  	  (!$element.individuals.isEmpty()) )
+  #set( $inuse = true )
+#else
+  #set( $inuse = false )
+#end	
+
+#parse("html/documentation-check.vm")
+
+#parse("html/md5.vm")
+
+  <h3 id="$element.Anchor">#if ($element.uriFragment) <a id="$element.uriFragment"></a>#end<span class="parrot-element-title parrot-class-title">$element.Label</span>
+
+	#if($element.isRdfsClass())
+	  	<span rel="rdf:type" href="http://www.w3.org/2000/01/rdf-schema#Class">(RDFS Class)</span>
+	#elseif($element.isOwlClass())
+		<span rel="rdf:type" href="http://www.w3.org/2002/07/owl#Class">(OWL Class)</span> 
+	#else
+		<span>(Class)</span> 		
+	#end
+
+  #if($element.isDeprecated())<span class="deprecated">(Deprecated)</span>#end
+
+  #parse("html/detail-menu.vm")
+
+  </h3>
+  
+  #parse("html/description.vm")
+  
+  <div>
+  
+  #if ($vci)
+    #parse("html/version-control.vm")
+  #end
+
+  #if ( $ti )
+  <div class="ti"> 
+  <h4>Definition</h4> 
+	#if($element.Uri)
+		<p>The <strong>URI</strong> of this class is <span><code>$element.Uri</code></span></p>
+		<hr />
+	#end
+
+	#if ( (!$element.SuperClasses.isEmpty()) ||
+		  (!$element.SubClasses.isEmpty()) ||
+		  (!$element.EquivalentClasses.isEmpty()) ||
+		  (!$element.DisjointClasses.isEmpty()) )
+	<table>
+	#if(!$element.SuperClasses.isEmpty())
+	  <tr>
+	  <td>This class is a sub class of</td>
+	  <td> 
+	  #foreach($superClass in $element.SuperClasses)
+	  <span class="parrot-element-ref parrot-${superClass.kindString}-ref" rel="rdfs:subClassOf" href="${superClass.getUri()}">#generateLink(${superClass})</span>
+	  #end
+	  </td>
+	  </tr>
+	#end
+
+	#if(!$element.SubClasses.isEmpty())
+	  <tr>
+	  <td>This class is a super class of</td>
+	  <td> 	  
+	  #foreach($subClass in $element.SubClasses)
+	  <span class="parrot-element-ref parrot-${subClass.kindString}-ref" rev="rdfs:subClassOf" href="${subClass.getUri()}">#generateLink(${subClass})</span>
+	  #end
+	  </td>
+	  </tr>
+	#end
+	
+	#if(!$element.EquivalentClasses.isEmpty())
+	  <tr>
+	  <td>This class is an equivalent class of</td>
+	  <td> 
+	  #foreach($equivalent in $element.EquivalentClasses)
+	  <span class="parrot-element-ref parrot-class-ref" rel="owl:equivalentClass" href="${equivalent.getUri()}">#generateLink(${equivalent})</span>
+	  #end
+	  </td>
+	  </tr>
+	#end
+	
+	#if(!$element.DisjointClasses.isEmpty())
+	  <tr>
+	  <td>This class is a disjoint class of</td>
+	  <td> 
+	  #foreach($disjoint in $element.DisjointClasses)
+	  <span class="parrot-element-ref parrot-class-ref" rel="owl:disjointWith" href="${disjoint.getUri()}">#generateLink(${disjoint})</span>
+	  #end
+	  </td>
+	  </tr>
+	#end
+	</table>
+	#end
+	    
+  </div>
+  #end
+
+  #if ( $inuse )
+  <div class="inuse">
+  <h4>In use</h4>
+  	#isDefinedBy("class" ${element.isDefinedBy})
+  
+   	#if( (!$element.InverseReferences.isEmpty()) || (!$element.individuals.isEmpty()) || (!$element.inverseRuleReferences.isEmpty()) )
+    <table>
+	  	#if(!$element.InverseReferences.isEmpty())
+		  <tr>
+		  <td>This class is used in</td>
+		  <td> 	  
+		  #foreach($reference in $element.InverseReferences)
+		  <span class="parrot-element-ref parrot-property-ref"><a href="#$reference.LocalName">$reference.Label</a></span>
+		  #end
+		  </td>
+		  </tr>
+		#end
+		
+		#if(!$element.individuals.isEmpty())
+		  <tr>
+		  <td>This class has individuals such as</td>
+		  <td>	  
+		  #foreach($individual in $element.individuals)
+		  <span class="parrot-element-ref parrot-individual-ref"><a href="#$individual.LocalName">$individual.Label</a></span>
+		  #end
+		  </td>
+		  </tr>
+		#end
+	
+		#if(!$element.inverseRuleReferences.isEmpty())
+		  <tr>
+		  <td>This class is referenced in rules such as</td>
+		  <td>
+		  #foreach($reference in $element.inverseRuleReferences)
+		  <span class="parrot-element-ref parrot-rule-ref"><a href="#$reference.LocalName">$reference.Label</a></span>
+		  #end
+		  </td>
+		  </tr>
+		#end
+	</table>
+	#end
+  </div>
+  #end
+  
+  #if ( $otherinfo )
+  	#parse("html/documentation.vm")
+  #end
+  
+  </div>
+</div> 
+  

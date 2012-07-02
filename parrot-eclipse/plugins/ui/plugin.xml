@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="es.ctic.parrot.eclipse.commands.ProcFile"
+            name="Process File">
+      </command>      
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="es.ctic.parrot.eclipse.handlers.ProcFileHandler"
+            commandId="es.ctic.parrot.eclipse.commands.ProcFile">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <command
+               commandId="es.ctic.parrot.eclipse.commands.ProcFile"
+               icon="icons/parrot.png"
+               label="Generate documentation"
+               style="push">
+			<visibleWhen>
+				<and>
+				<count value="+"></count>
+				<iterate operator="and" ifEmpty="false">
+					<adapt type="org.eclipse.core.resources.IResource">
+					<or>
+						<test property="org.eclipse.core.resources.contentTypeId" value="es.ctic.parrot.rif.xml.content-type"/>
+						<test property="org.eclipse.core.resources.contentTypeId" value="es.ctic.parrot.rifps.text.content-type"/>
+						<test property="org.eclipse.core.resources.contentTypeId" value="es.ctic.parrot.rdf.xml.content-type"/>
+					</or>
+					</adapt>
+				</iterate>
+				</and>
+			</visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="es.ctic.parrot.parrot-eclipse.view-category"
+            name="Parrot">
+      </category>
+      <view
+            category="es.ctic.parrot.parrot-eclipse.view-category"
+            class="es.ctic.parrot.eclipse.views.DocBrowserView"
+            icon="icons/parrot.png"
+            id="es.ctic.parrot.parrot-eclipse.browser"
+            name="Parrot Report"
+            restorable="true">
+      </view>
+   </extension>
+   <extension point="org.eclipse.core.contenttype.contentTypes">
+	   <content-type base-type="org.eclipse.core.runtime.xml"
+	                 file-extensions="rif,xml"
+	                 id="es.ctic.parrot.rif.xml.content-type"
+	                 name="RIF/XML (Rule Interchange Format XML)">
+			<describer class="org.eclipse.core.runtime.content.XMLRootElementContentDescriber2">
+			  <parameter name="element" value="{http://www.w3.org/2007/rif#}Document"/>
+			</describer>	                 
+	   </content-type>
+	   <content-type base-type="org.eclipse.core.runtime.text"
+	                 file-extensions="rifps"
+	                 id="es.ctic.parrot.rifps.text.content-type"
+	                 name="RIF PS (Rule Interchange Format Presentation Syntax)">
+	   </content-type>
+	   <content-type base-type="org.eclipse.core.runtime.xml"
+	                 file-extensions="owl,rdf,xml"
+	                 id="es.ctic.parrot.rdf.xml.content-type"
+	                 name="RDF/XML">
+			<describer class="org.eclipse.core.runtime.content.XMLRootElementContentDescriber2">
+			  <parameter name="element" value="{http://www.w3.org/1999/02/22-rdf-syntax-ns#}RDF"/>
+			</describer>	                 
+	   </content-type>
+   </extension>
+
+</plugin>

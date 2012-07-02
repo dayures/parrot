@@ -99,6 +99,9 @@
     	#if($element.isAnnotationProperty())
     	<strong>annotation</strong> property. 
     	#end
+    	#if((!$element.isObjectProperty()) && (!$element.isDatatypeProperty()) && (!$element.isAnnotationProperty()))
+    	property.
+    	#end
     	</p>
     	<hr />
     #end

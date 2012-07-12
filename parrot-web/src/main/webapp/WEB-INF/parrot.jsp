@@ -212,8 +212,10 @@
 		    <div id="tipOfTheDay">
 		    <span >Did you know ...</span>
 		    </div>
+		    <div id="video"><span ><a href="http://www.youtube.com/watch?v=uN2XQA6TVRc">Watch a video demo of Parrot on YouTube</a></span></div>
 		    <p><img src="images/help.png" alt="help" class="help" />Do you need <a href="help">help</a>?</p>
 	</div>    
+
 
     <div id="footer"> 
       <p id="logo"> 

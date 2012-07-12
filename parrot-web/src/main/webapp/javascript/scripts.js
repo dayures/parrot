@@ -115,4 +115,6 @@ jQuery(document).ready(function(){
     $('#header').corner();
     $('.inputData').corner();
 
+    $('#video').corner();
+    
 });

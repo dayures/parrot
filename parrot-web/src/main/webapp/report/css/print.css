@@ -1,4 +1,4 @@
-div#bottom-bar, span.menu , .hidden {
+div#bottom-bar, span.menu , .hidden , img#feedback {
    visibility:hidden; 
    display: none; 
 }

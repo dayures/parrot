@@ -1,3 +1,4 @@
+.DS_Store
 parrot-core/target
 parrot-web/target
 parrot-core/.classpath

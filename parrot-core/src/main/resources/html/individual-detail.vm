@@ -63,7 +63,7 @@
 	<tr>
 	<td>$element.label</td>
 	<td>$triple.predicate</td>
-	<td>$triple.object</td>
+	<td>$triple.object #if($triple.objectLang && $triple.objectLang != "")<span class="lang">@$triple.objectLang</span> #end </td>
 	</tr> 
 	#end
 	</table>

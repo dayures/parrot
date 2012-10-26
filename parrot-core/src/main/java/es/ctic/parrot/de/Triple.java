@@ -13,8 +13,17 @@ public class Triple {
 	private String subject;
 	private String predicate;
 	private String object;
+	private String objectLang="";
 	
 	
+	public String getObjectLang() {
+		return objectLang;
+	}
+
+	public void setObjectLang(String objectLang) {
+		this.objectLang = objectLang;
+	}
+
 	/**
 	 * Constructs a triple.
 	 * @param subject a subject to set.
@@ -27,7 +36,21 @@ public class Triple {
 		setPredicate(predicate);
 		setObject(object);
 	}
-	
+
+	/**
+	 * Constructs a triple (the object is a literal with language tag).
+	 * @param subject a subject to set.
+	 * @param predicate as predicate to set.
+	 * @param object a object to set.
+	 */
+	public Triple(String subject, String predicate, String object, String objectLang) {
+		super();
+		setSubject(subject);
+		setPredicate(predicate);
+		setObject(object);
+		setObjectLang(objectLang);
+	}
+
 	/**
 	 * @param subject the subject to set
 	 */

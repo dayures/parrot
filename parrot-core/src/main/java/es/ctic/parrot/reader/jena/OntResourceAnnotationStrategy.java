@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Locale;
 
+import org.apache.commons.logging.Log;
 import org.apache.log4j.Logger;
 
 import com.hp.hpl.jena.datatypes.xsd.XSDDatatype;
@@ -1128,17 +1129,23 @@ public class OntResourceAnnotationStrategy {
 			String subject = ontResource.getURI();
 			String predicate = statement.getPredicate().getURI();
 			String object = "";
+			String objectLang = "";
 			RDFNode ob = statement.getObject();
 			if (ob.isResource()){
 				object = ob.asResource().getURI();
 			} else if (ob.isLiteral()){
 				object = ob.asLiteral().getLexicalForm();
+				objectLang = ob.asLiteral().getLanguage();
 			} else {
 				object = "";
 			}
 			// no rdf:type
 			if (isWellKnown(predicate) == false ){
-				triples.add(new Triple(subject, predicate, object));
+				if (objectLang.equals("")){
+					triples.add(new Triple(subject, predicate, object));
+				} else {
+					triples.add(new Triple(subject, predicate, object, objectLang));
+				}
 				logger.debug("added triple ["+subject+", "+predicate+", "+object+"]");
 			} else {
 				logger.debug("NO added triple ["+subject+", "+predicate+", "+object+"]");

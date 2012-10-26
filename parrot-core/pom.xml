@@ -12,19 +12,12 @@
 	<version>1.0-SNAPSHOT</version>
 	<name>parrot-core</name>
 	<description>Core functionality of Parrot</description>
-	<url>http://parrot-project.sourceforge.net/</url>
+	<url>https://bitbucket.org/fundacionctic/parrot</url>
 
 	<issueManagement>
 		<system>Tracker</system>
-		<url>http://sourceforge.net/tracker/?group_id=358378&amp;atid=1496063</url>
+		<url>https://bitbucket.org/fundacionctic/parrot/issues</url>
 	</issueManagement>
-
-	<mailingLists>
-		<mailingList>
-			<name>Parrot Project User List</name>
-			<archive>https://sourceforge.net/mailarchive/forum.php?forum_name=parrot-project-users</archive>
-		</mailingList>
-	</mailingLists>
 
 	<licenses>
 		<license>
@@ -41,9 +34,9 @@
 	</organization>
 
 	<scm>
-		<connection>scm:hg:http://parrot-project.hg.sourceforge.net:8000/hgroot/parrot-project/parrot-project</connection>
-		<developerConnection>scm:hg:http://parrot-project.hg.sourceforge.net:8000/hgroot/parrot-project/parrot-project</developerConnection>
-		<url>http://parrot-project.hg.sourceforge.net/hgweb/parrot-project</url>
+		<connection>scm:hg:https://bitbucket.org/fundacionctic/parrot</connection>
+		<developerConnection>scm:hg:https://bitbucket.org/fundacionctic/parrott</developerConnection>
+		<url>https://bitbucket.org/fundacionctic/parrot</url>
 	</scm>
 
 	<developers>

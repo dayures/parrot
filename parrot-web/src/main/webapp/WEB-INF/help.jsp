@@ -870,7 +870,7 @@ src="images/ontorule.png" alt="ONTORULE Project"/></a> </p>
 
 <p><a href="http://ontorule-project.eu/parrot">Parrot</a> is a RIF and OWL
 documentation service developed <a href="http://ct.ctic.es">Fundación
-CTIC</a>. <a href="http://sourceforge.net/projects/parrot-project/">Source code is available</a>.</p>
+CTIC</a>. <a href="https://bitbucket.org/fundacionctic/parrot">Source code is available</a>.</p>
 
 <p>This work has been partially funded by <a href="http://ontorule-project.eu"
 title="ONTORULE Web site">ONTORULE Project (FP7-ICT-2008-3, project reference

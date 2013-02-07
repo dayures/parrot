@@ -25,7 +25,6 @@ public final class CurieUtils {
 	private static final String PREFIX_NAMESPACE_FILE_PATH = "prefix/prefix-namespace.txt";
     private static final String REVERSE_LOOKUP_SERVICE_REQUEST_BASE_URL = "http://prefix.cc/reverse?uri=";
     private static final String DEFAULT_URI_ENCODING = "UTF-8";
-    private static final String PARROT_USER_AGENT = "Parrot/1.0";    
 	private static final Logger logger = Logger.getLogger(CurieUtils.class);
 	private static final Map<String, String> prefixMap = loadNamespacePrefixMap();
 
@@ -107,7 +106,7 @@ public final class CurieUtils {
         client.setFollowRedirects(false);
         WebResource webResource = client.resource(getlReverseLookupRequestUrl(uri));
         logger.debug("Requested URI="+getlReverseLookupRequestUrl(uri));
-        ClientResponse response = webResource.header("User-Agent", PARROT_USER_AGENT).get(ClientResponse.class);
+        ClientResponse response = webResource.header("User-Agent", HTTPUtils.PARROT_USER_AGENT).get(ClientResponse.class);
         if ( (response.getStatus() == HttpURLConnection.HTTP_MOVED_TEMP) && response.getLocation() != null) {
     		String curie = response.getLocation().getPath().substring(1);
     		logger.info("URI '" + uri + "' resolved to [" + curie + "]");

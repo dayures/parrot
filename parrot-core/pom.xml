@@ -144,14 +144,12 @@
 
 	<repositories>
 		<repository>
-			<id>central</id>
-			<name>Maven Repository</name>
-			<url>http://repo1.maven.org/maven2</url>
-		</repository>
-		<repository>
-			<id>jena</id>
-			<name>Jena Maven Repository</name>
-			<url>http://openjena.org/repo</url>
+		  <id>apache-repo-releases</id>
+		  <url>https://repository.apache.org/content/repositories/releases</url>
+		  <releases>
+		   <enabled>true</enabled>
+		   <updatePolicy>always</updatePolicy>
+		  </releases>
 		</repository>
 	</repositories>
 
@@ -168,14 +166,9 @@
 			<version>1.2.14</version>
 		</dependency>
 		<dependency>
-			<groupId>com.hp.hpl.jena</groupId>
-			<artifactId>jena</artifactId>
-			<version>2.6.3</version>
-		</dependency>
-		<dependency>
-			<groupId>com.hp.hpl.jena</groupId>
-			<artifactId>arq</artifactId>
-			<version>2.8.0</version>
+			<groupId>org.apache.jena</groupId>
+			<artifactId>jena-arq</artifactId>
+			<version>2.9.1</version>
 			<exclusions>
 			<exclusion>
 				<groupId>stax</groupId>

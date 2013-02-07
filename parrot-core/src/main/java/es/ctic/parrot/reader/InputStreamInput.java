@@ -51,4 +51,12 @@ public class InputStreamInput implements Input {
 		return false;
 	}
 
+	public boolean isReaderProof() {
+		return false;
+	}
+
+	public InputStream getInputStream() throws IOException {
+		return is;
+	}
+
 }

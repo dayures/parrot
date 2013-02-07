@@ -65,10 +65,18 @@ public class JenaOWLReader implements DocumentReader {
 
         	if (XHTML.equals(jenaFormat) || HTML.equals(jenaFormat)) {
         		logger.debug("Requesting (X)HTML based on the mimetype detected (" + jenaFormat + ")");
-            	ontModel.read(input.openReader(), base == null ? "http://example.org/base#" : base, jenaFormat); // FIXME fix this adhoc url
+        		if (input.isReaderProof()) {
+        			ontModel.read(input.openReader(), base == null ? "http://example.org/base#" : base, jenaFormat); // FIXME fix this adhoc url
+        		} else {
+        			ontModel.read(input.getInputStream(), base == null ? "http://example.org/base#" : base, jenaFormat); // FIXME fix this adhoc url
+        		}        			
             } else {
             	logger.debug("Requesting any other type based on the mimetype detected (" + jenaFormat + ")");
-            	ontModel.read(input.openReader(), base, jenaFormat);
+            	if (input.isReaderProof()) {
+            		ontModel.read(input.openReader(), base, jenaFormat);
+            	} else {
+            		ontModel.read(input.getInputStream(), base, jenaFormat);
+            	}
             }
         	
             loadOntology(ontModel, register);

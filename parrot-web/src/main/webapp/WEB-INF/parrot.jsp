@@ -58,7 +58,7 @@
 							<select name="mimetype">
 								<option value="default" <c:if test="${paramValues.mimetype[uriStatus.index] eq 'default'}">selected="selected"</c:if>>Allow content negotiation</option>
 								<option value="application/owl+xml" <c:if test="${paramValues.mimetype[uriStatus.index] eq 'application/owl+xml'}">selected="selected"</c:if>>It is a OWL ontology</option>
-								<option value="text/n3" <c:if test="${paramValues.mimetype[uriStatus.index] eq 'text/n3'}">selected="selected"</c:if>>It is a N3 ontology</option>
+								<option value="text/n3" <c:if test="${paramValues.mimetype[uriStatus.index] eq 'text/n3'}">selected="selected"</c:if>>It is a N3/Turtle/N-triples ontology</option>
 								<option value="application/xhtml+xml" <c:if test="${paramValues.mimetype[uriStatus.index] eq 'application/xhtml+xml'}">selected="selected"</c:if>>It is a XHTML+RDFa document</option>
 								<option value="text/html" <c:if test="${paramValues.mimetype[uriStatus.index] eq 'text/html'}">selected="selected"</c:if>>It is a HTML+RDFa document</option>
 								<option value="application/rif+xml" <c:if test="${paramValues.mimetype[uriStatus.index] eq 'application/rif+xml'}">selected="selected"</c:if>>It is a RIF XML document</option>
@@ -81,7 +81,7 @@
 							<select name="mimetype">
 								<option value="default" selected="selected">Allow content negotiation</option>
 								<option value="application/owl+xml">It is a OWL ontology</option>
-								<option value="text/n3">It is a N3 ontology</option>
+								<option value="text/n3">It is a N3/Turtle/N-triples ontology</option>
 								<option value="application/xhtml+xml">It is a XHTML+RDFa document</option>
 								<option value="text/html">It is a HTML+RDFa document</option>
 								<option value="application/rif+xml">It is a RIF XML document</option>
@@ -117,7 +117,7 @@
 								<p><span class="direct-input">This is an : 
 								<select name="mimetypeText">
 									<option value="application/owl+xml" <c:if test="${paramValues.mimetypeText[textStatus.index] eq 'application/owl+xml'}">selected="selected"</c:if>>It is a OWL ontology</option>
-									<option value="text/n3" <c:if test="${paramValues.mimetypeText[textStatus.index] eq 'text/n3'}">selected="selected"</c:if>>It is a N3 ontology</option>
+									<option value="text/n3" <c:if test="${paramValues.mimetypeText[textStatus.index] eq 'text/n3'}">selected="selected"</c:if>>It is a N3/Turtle/N-triples ontology</option>
 									<option value="application/xhtml+xml" <c:if test="${paramValues.mimetypeText[textStatus.index] eq 'application/xhtml+xml'}">selected="selected"</c:if>>It is a XHTML+RDFa document</option>
 									<option value="text/html" <c:if test="${paramValues.mimetypeText[textStatus.index] eq 'text/html'}">selected="selected"</c:if>>It is a HTML+RDFa document</option>
 									<option value="application/rif+xml" <c:if test="${paramValues.mimetypeText[textStatus.index] eq 'application/rif+xml'}">selected="selected"</c:if>>It is a RIF XML document</option>
@@ -137,7 +137,7 @@
 							<p><span class="direct-input">This is an : 
 							  <select name="mimetypeText">
 							    <option value="application/owl+xml">OWL ontology</option>
-							    <option value="text/n3">N3 ontology</option>
+							    <option value="text/n3">N3/Turtle/N-triples ontology</option>
 							    <option value="application/xhtml+xml">XHTML+RDFa document</option>
 							    <option value="text/html">HTML+RDFa document</option>
 							    <option value="application/rif+xml">RIF XML document</option>
@@ -168,7 +168,7 @@
 						<select name="mimetypeFile">
 							<option value="default" selected="selected">Autodetect (if possible)</option>
 						    <option value="application/owl+xml">OWL ontology</option>
-						    <option value="text/n3">N3 ontology</option>
+						    <option value="text/n3">N3/Turtle/N-triples ontology</option>
 						    <option value="application/xhtml+xml">XHTML+RDFa document</option>
 						    <option value="text/html">HTML+RDFa document</option>
 						    <option value="application/rif+xml">RIF XML document</option>

@@ -16,6 +16,8 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
+import es.ctic.parrot.utils.HTTPUtils;
+
 /**
  * A web input document, anything that can be referenced by a URL.
  * 
@@ -34,8 +36,8 @@ public class URLInput implements Input {
     // application/owl+xml : http://www.w3.org/TR/2009/REC-owl2-xml-serialization-20091027/#Appendix:_Internet_Media_Type.2C_File_Extension.2C_and_Macintosh_File_Type
 
     //private static final String ACCEPT_HEADER_VALUES = "application/rdf+xml,application/xml,application/rif+xml,application/owl+xml,text/x-rif-ps,application/xhtml+xml,text/n3,text/rdf+n3,text/html,*/*"; // FIXME: add other mimetypes
-    private static final String ACCEPT_HEADER_VALUES = "application/rdf+xml,application/xml,application/rif+xml,application/owl+xml,text/x-rif-ps,application/xhtml+xml;q=0.8,text/n3,text/rdf+n3,text/html;q=0.8,*/*;q=0.1"; // FIXME: add other mimetypes
-    private static final Set<String> STRICT_MIMETYPES = new HashSet<String>(Arrays.asList("application/rdf+xml","application/xml","application/rif+xml","application/owl+xml","text/x-rif-ps", "application/xhtml+xml", "text/n3", "text/rdf+n3", "text/html"));
+    private static final String ACCEPT_HEADER_VALUES = "application/rdf+xml,application/xml,application/rif+xml,application/owl+xml,text/x-rif-ps,application/xhtml+xml;q=0.8,text/n3,text/rdf+n3,text/turtle,text/html;q=0.8,*/*;q=0.1"; // FIXME: add other mimetypes
+    private static final Set<String> STRICT_MIMETYPES = new HashSet<String>(Arrays.asList("application/rdf+xml","application/xml","application/rif+xml","application/owl+xml","text/x-rif-ps", "application/xhtml+xml", "text/n3", "text/rdf+n3", "text/turtle", "text/html"));
 
     private static final Map<String,String> MAP_EXTENSION_MIMETYPE = createMapExtensionMimeytpe();
     private static Map<String, String> createMapExtensionMimeytpe() {
@@ -47,6 +49,7 @@ public class URLInput implements Input {
         result.put("rifps", "text/x-rif-ps");
         result.put("xhtml", "application/xhtml+xml");
         result.put("n3", "text/n3");
+        result.put("ttl", "text/turtle");
         result.put("html", "text/html");
         return Collections.unmodifiableMap(result);
     }
@@ -95,6 +98,7 @@ public class URLInput implements Input {
             HttpURLConnection connection = (HttpURLConnection) this.url.openConnection();
             connection.setRequestMethod("HEAD"); 
             connection.addRequestProperty("Accept", ACCEPT_HEADER_VALUES);
+            connection.addRequestProperty("User-Agent", HTTPUtils.PARROT_USER_AGENT);
             connection.connect();
 
             logger.debug("HTTP Status Response code: " + connection.getResponseCode() + " for URL " + this.url);

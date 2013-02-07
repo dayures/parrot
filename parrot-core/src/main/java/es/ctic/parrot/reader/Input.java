@@ -1,6 +1,7 @@
 package es.ctic.parrot.reader;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.Reader;
 
 /**
@@ -14,7 +15,11 @@ import java.io.Reader;
  */
 public interface Input {
 
-    /**
+    public abstract boolean isReaderProof();
+
+    public abstract InputStream getInputStream() throws IOException;
+    
+	/**
      * Returns a reader to read the contents of this input document.
      * @return a reader to read the contents of this input document.
      * @throws IOException if a failed or interrupted I/O operation occurs.

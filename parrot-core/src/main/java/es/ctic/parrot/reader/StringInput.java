@@ -1,6 +1,7 @@
 package es.ctic.parrot.reader;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.Reader;
 import java.io.StringReader;
 
@@ -41,6 +42,14 @@ public class StringInput implements Input {
 
 	public boolean isPersistent() {
 		return false;
+	}
+
+	public boolean isReaderProof() {
+		return true;
+	}
+
+	public InputStream getInputStream() {
+		throw new UnsupportedOperationException();
 	}
     
 }

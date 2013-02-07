@@ -1,6 +1,7 @@
 package es.ctic.parrot.reader;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.HttpURLConnection;
@@ -218,4 +219,21 @@ public class URLInput implements Input {
 	public boolean isPersistent() {
 		return true;
 	}
+
+
+	public boolean isReaderProof() {
+		return false;
+	}
+
+
+	public InputStream getInputStream() throws IOException {
+        URLConnection conn = url.openConnection();
+
+        logger.debug("MimeType: " + this.getMimeType());
+        if (STRICT_MIMETYPES.contains(this.getMimeType())){
+            conn.setRequestProperty("Accept", this.getMimeType());	
+        }
+
+        return conn.getInputStream();
+    }
 }

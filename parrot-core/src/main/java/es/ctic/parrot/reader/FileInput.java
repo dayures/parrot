@@ -1,8 +1,9 @@
 package es.ctic.parrot.reader;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.InputStream;
 import java.io.Reader;
 
 import javax.activation.MimetypesFileTypeMap;
@@ -40,8 +41,8 @@ public class FileInput implements Input {
         return mimeType;
     }
 
-    public Reader openReader() throws FileNotFoundException {
-        return new FileReader(file);
+    public Reader openReader() {
+		throw new UnsupportedOperationException();        
     }
     
 	public String getBase() {
@@ -55,6 +56,14 @@ public class FileInput implements Input {
 
 	public boolean isPersistent() {
 		return true;
+	}
+
+	public boolean isReaderProof() {
+		return false;
+	}
+
+	public InputStream getInputStream() throws FileNotFoundException {
+		return new FileInputStream(file);
 	}
 
 }

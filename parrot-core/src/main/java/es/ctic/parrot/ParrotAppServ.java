@@ -54,6 +54,7 @@ public class ParrotAppServ {
 	 *  <li><code>application/xhtml+xml</code></li>
 	 *  <li><code>text/html</code></li>
 	 *  <li><code>text/n3</code></li>
+	 *  <li><code>text/turtle</code></li>
 	 *  <li><code>text/rdf+n3</code></li>
   	 * 	<li><code>text/x-rif-ps</code></li>
 	 * 	<li><code>application/rif+xml</code></li>
@@ -214,6 +215,7 @@ public class ParrotAppServ {
 	 *  <li>text/html</li>
 	 *  <li>text/n3</li>
 	 *  <li>text/rdf+n3</li>
+	 *  <li><code>text/n3</code></li>
 	 * </ul>
 	 * @param mimetype the MIME type.
 	 * @return true if the MIME type is supported.
@@ -224,6 +226,7 @@ public class ParrotAppServ {
     	 || "application/owl+xml".equals(mimetype)
     	 || "application/xhtml+xml".equals(mimetype)
     	 || "text/html".equals(mimetype)
+     	 || "text/turtle".equals(mimetype)
      	 || "text/n3".equals(mimetype)
     	 || "text/rdf+n3".equals(mimetype)){
 			return true;

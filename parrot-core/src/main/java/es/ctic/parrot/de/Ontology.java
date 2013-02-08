@@ -36,4 +36,10 @@ public interface Ontology extends DocumentableOntologicalObject {
 	 * @return the collection of imports.
 	 */
 	public abstract Collection<DocumentableObject> getImports();
+	
+	/**
+	 * Returns the version IRI.
+	 * @return the version IRI.
+	 */
+	public abstract String getVersionIRI();
 }

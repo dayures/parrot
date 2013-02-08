@@ -21,6 +21,7 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 
 	private String preferredPrefix;
 	private String preferredNamespace;
+	private String versionIRI;
 	private Collection<DocumentableObjectReference> defines;
 	private Collection<DocumentableObjectReference> imports;
 
@@ -30,38 +31,6 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 	 */
 	private OntologyDetailView(){
 		logger.debug("Created " + this.getClass());
-	}
-	
-	/**
-	 * Set the preferred prefix.
-	 * @param preferredPrefix preferred prefix to set.
-	 */
-	private void setPreferredPrefix(String preferredPrefix) {
-		this.preferredPrefix = preferredPrefix;
-	}
-
-	/**
-	 * Returns the preferred prefix.
-	 * @return the preferred prefix.
-	 */
-	public String getPreferredPrefix() {
-		return preferredPrefix;
-	}
-	
-	/**
-	 * Set the preferred namespace.
-	 * @param preferredNamespace preferred namespace to set.
-	 */
-	private void setPreferredNamespace(String preferredNamespace) {
-		this.preferredNamespace = preferredNamespace;
-	}
-
-	/**
-	 * Returns the preferred namespace.
-	 * @return the preferred namespace.
-	 */
-	public String getPreferredNamespace() {
-		return preferredNamespace;
 	}
 
 	/**
@@ -98,6 +67,7 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 
 		details.setPreferredPrefix(object.getPreferredPrefix());
 		details.setPreferredNamespace(object.getPreferredNamespace());
+		details.setVersionIRI(object.getVersionIRI());
 
 
 		details.setLexicalInformation(LexicalInformation.createFromLabels(object.getLabels(), details.getLabel(), locale));
@@ -144,5 +114,52 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 	public Collection<DocumentableObjectReference> getImports() {
 		return imports;
 	}
+	
+	/**
+	 * Returns the version IRI.
+	 * @return the version IRI.
+	 */
+	public String getVersionIRI() {
+		return versionIRI;
+	}
 
+	/**
+	 * Set the version IRI.
+	 * @param versionIRI version IRI to set.
+	 */
+	private void setVersionIRI(String versionIRI) {
+		this.versionIRI = versionIRI;
+	}
+
+	/**
+	 * Set the preferred prefix.
+	 * @param preferredPrefix preferred prefix to set.
+	 */
+	private void setPreferredPrefix(String preferredPrefix) {
+		this.preferredPrefix = preferredPrefix;
+	}
+
+	/**
+	 * Returns the preferred prefix.
+	 * @return the preferred prefix.
+	 */
+	public String getPreferredPrefix() {
+		return preferredPrefix;
+	}
+	
+	/**
+	 * Set the preferred namespace.
+	 * @param preferredNamespace preferred namespace to set.
+	 */
+	private void setPreferredNamespace(String preferredNamespace) {
+		this.preferredNamespace = preferredNamespace;
+	}
+
+	/**
+	 * Returns the preferred namespace.
+	 * @return the preferred namespace.
+	 */
+	public String getPreferredNamespace() {
+		return preferredNamespace;
+	}
 }

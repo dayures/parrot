@@ -1298,6 +1298,15 @@ public class OntResourceAnnotationStrategy {
 		return getLiteralPropertyValue(resource, VS_TERM_STATUS);
 	}
 	
+	/**
+	 * Returns the version IRI of an ontology (resource).
+	 * @param resource the resource.
+	 * @return the version IRI of an ontology.
+	 */
+	public String getVersionIRI(Resource resource) {
+		return getObjectPropertyURI(resource, OWL2.versionIRI.getURI());
+	}
+	
 	
 }
 

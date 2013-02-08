@@ -306,6 +306,10 @@ h1 a[href]:hover, h2 a[href]:hover { background-color: transparent; }
 	background-image: url("../images/user-suit.png");
 }
 
+.download{
+	background-image: url("../images/download.png");
+}
+
 /** end metadata icons ***/
 
 h3 img.icon {

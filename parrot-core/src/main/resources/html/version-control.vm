@@ -10,6 +10,11 @@
 		<dt>Version</dt>
 		<dd>$element.Version</dd>
 		#end
+
+		#if($element.VersionIRI)
+		<dt>Download</dt>
+		<dd class="metadata-icon download"><a href="$element.VersionIRI">Download it!</a></dd>
+		#end
 		
 		#if($element.Date)
 		<dt>Date</dt>

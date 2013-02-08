@@ -32,8 +32,12 @@ public class DocumentableObjectRegister {
      * @param documentableObject the documentable element to register. 
      */
     public void registerDocumentableObject(DocumentableObject documentableObject) {
-        logger.debug("Registering documentable object [" +documentableObject.getClass().getSimpleName() + "] " + documentableObject);
-        documentableObjects.put(documentableObject.getIdentifier(), documentableObject);
+        if (documentableObjects.containsKey(documentableObject.getIdentifier())){
+        	logger.debug("Duplicate. Not registered documentable object [" +documentableObject.getClass().getSimpleName() + "] " + documentableObject);
+        } else{
+            logger.debug("Registering documentable object [" +documentableObject.getClass().getSimpleName() + "] " + documentableObject);
+        	documentableObjects.put(documentableObject.getIdentifier(), documentableObject);
+        }
     }
     
     /**

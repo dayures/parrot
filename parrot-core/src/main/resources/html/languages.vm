@@ -11,7 +11,7 @@
 	  <div id="languages">
 	  <p>* Read the report in another languages such as:
   	    ## rename the variable in order to unescape the html content
-		#set($unescapehtml_language = "${reportUrl_NoLang}&language=")
+		#set($unescapehtml_language = "${reportUrl_NoLang}&amp;language=")
 	  
 		#foreach($lang in $document.getLanguages())
 		<span class="parrot-language"><a href="$unescapehtml_language$lang">$lang</a></span>#if ($foreach.hasNext), #end

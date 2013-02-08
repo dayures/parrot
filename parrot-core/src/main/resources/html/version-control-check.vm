@@ -1,6 +1,7 @@
 #if ( ($element.Status) ||
 	  ($element.Version) ||
 	  ($element.VersionIRI) ||
+	  ($element.PriorVersion) ||
 	  ($element.Date) ||
 	  ($element.ModifiedDate) ||
 	  ($element.IssuedDate) ||

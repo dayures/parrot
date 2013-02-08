@@ -66,6 +66,10 @@ public class OntologyJenaImpl extends AbstractJenaDocumentableObject implements 
 	public String getVersionIRI() {
 		return getAnnotationStrategy().getVersionIRI(getOntResource());
 	}
+
+	public String getPriorVersion() {
+		return getAnnotationStrategy().getPriorVersion(getOntResource());
+	}
 	
     public String getKindString() {
         return Kind.ONTOLOGY.toString();

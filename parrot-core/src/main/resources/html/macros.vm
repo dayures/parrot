@@ -19,3 +19,7 @@
       	<a href="#${reference.LocalName}">$reference.Label</a>
       #end
 #end
+
+#macro( generateToParrotLink $uri )
+      <a class="external-link" href="${uri_base}?documentUri=${uri}">${uri}</a>
+#end

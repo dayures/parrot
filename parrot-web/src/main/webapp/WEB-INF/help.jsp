@@ -557,7 +557,7 @@ title="go to parrot home page">Parrot </a></h1>
       	<p>For example: <code>&lt;void:vocabulary rdf:resource="http://xmlns.com/foaf/0.1/" /&gt;</code></p>      	
       </td>
     </tr>
-     <tr>
+    <tr>
       <td><a href="http://www.w3.org/TR/rdf-schema/#ch_isdefinedby"><em>rdfs:isDefinedBy</em></a></td>
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td>
       <td></td><td></td><td><img alt="place" src="images/page.png"/></td><td></td>
@@ -565,7 +565,16 @@ title="go to parrot home page">Parrot </a></h1>
       	<p>Used to indicate where this element has been defining.</p>
 	  	<p>For example: <code>&lt;rdfs:isDefinedBy rdf:resource="http://purl.org/vocab/vann/" /&gt;</code></p>
       </td>
-    </tr>    
+    </tr> 
+    <tr>
+      <td><a href="http://www.w3.org/TR/owl2-syntax/#Ontology_IRI_and_Version_IRI"><em>owl:versionIRI</em></a></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      <td><img alt="place" src="images/page.png"/></td><td></td><td></td><td></td>
+      <td>
+      	<p>Identifies the version IRI of an ontology.</p>
+	  	<p>For example: <code>&lt;owl:versionIRI rdf:resource="http://www.lingvoj.org/ontology_v2.0.ttl" /&gt;</code></p>
+      </td>
+    </tr>  
     </tbody>
 </table>
 

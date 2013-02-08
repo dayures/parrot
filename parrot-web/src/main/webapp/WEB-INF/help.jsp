@@ -500,7 +500,7 @@ title="go to parrot home page">Parrot </a></h1>
       <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
       <td>
       	<p>The preferred namespace URI to use when using terms from an ontology or a vocabulary.</p>
-        <p>For example: <code>&lt;vann:preferredNamespaceUri&gt;http://www.kanzaki.com/ns/whois#&lt;/vann:preferredNamespaceUri&gt;</code></p>
+        <p>For example: <code>&lt;vann:preferredNamespaceUri&gt;http://www.kanzaki.com/ns/whois#&lt;/vann:preferredNamespaceUri&gt;</code> or <code>&lt;vann:preferredNamespaceUri rdf:resource="http://www.kanzaki.com/ns/whois#"/&gt;</code> </p>
       </td>
     </tr>
     <tr>

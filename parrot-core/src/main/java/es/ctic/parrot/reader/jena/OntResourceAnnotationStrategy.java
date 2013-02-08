@@ -5,7 +5,6 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Locale;
 
-import org.apache.commons.logging.Log;
 import org.apache.log4j.Logger;
 
 import com.hp.hpl.jena.datatypes.xsd.XSDDatatype;
@@ -669,7 +668,12 @@ public class OntResourceAnnotationStrategy {
 	 * @return the preferred namespace.
 	 */
 	public String getPreferredNamespace(Resource resource) {
-		return getLiteralPropertyValue(resource, VANN_PREFERRED_NAMESPACE);
+		String uri = getObjectPropertyURI(resource, VANN_PREFERRED_NAMESPACE);
+		if (uri == null){
+			return getLiteralPropertyValue(resource, VANN_PREFERRED_NAMESPACE);
+		} else {
+			return uri;
+		}
 	}
 	
 	/**

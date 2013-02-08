@@ -2,6 +2,7 @@
 	  ($element.Version) ||
 	  ($element.VersionIRI) ||
 	  ($element.PriorVersion) ||
+	  ($element.IncompatibleWith) ||
 	  ($element.Date) ||
 	  ($element.ModifiedDate) ||
 	  ($element.IssuedDate) ||

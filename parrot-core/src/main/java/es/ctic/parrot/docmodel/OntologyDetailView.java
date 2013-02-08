@@ -22,6 +22,7 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 	private String preferredPrefix;
 	private String preferredNamespace;
 	private String versionIRI;
+	private String priorVersion;
 	private Collection<DocumentableObjectReference> defines;
 	private Collection<DocumentableObjectReference> imports;
 
@@ -68,6 +69,7 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 		details.setPreferredPrefix(object.getPreferredPrefix());
 		details.setPreferredNamespace(object.getPreferredNamespace());
 		details.setVersionIRI(object.getVersionIRI());
+		details.setPriorVersion(object.getPriorVersion());
 
 
 		details.setLexicalInformation(LexicalInformation.createFromLabels(object.getLabels(), details.getLabel(), locale));
@@ -161,5 +163,21 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 	 */
 	public String getPreferredNamespace() {
 		return preferredNamespace;
+	}
+	
+	/**
+	 * Returns the prior version IRI.
+	 * @return the prior version IRI.
+	 */
+	public String getPriorVersion() {
+		return priorVersion;
+	}
+	
+	/**
+	 * Set the prior version IRI.
+	 * @param priorVersion prior version IRI to set.
+	 */
+	private void setPriorVersion(String priorVersion) {
+		this.priorVersion = priorVersion;
 	}
 }

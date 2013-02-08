@@ -1307,6 +1307,14 @@ public class OntResourceAnnotationStrategy {
 		return getObjectPropertyURI(resource, OWL2.versionIRI.getURI());
 	}
 	
+	/**
+	 * Returns the prior version IRI of an ontology (resource).
+	 * @param resource the resource.
+	 * @return the prior version IRI of an ontology.
+	 */
+	public String getPriorVersion(Resource resource) {
+		return getObjectPropertyURI(resource, OWL2.priorVersion.getURI());
+	}
 	
 }
 

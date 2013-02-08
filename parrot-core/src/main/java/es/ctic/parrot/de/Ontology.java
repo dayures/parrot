@@ -42,4 +42,10 @@ public interface Ontology extends DocumentableOntologicalObject {
 	 * @return the version IRI.
 	 */
 	public abstract String getVersionIRI();
+
+	/**
+	 * Returns the prior version IRI.
+	 * @return the prior version IRI.
+	 */
+	public abstract String getPriorVersion();	
 }

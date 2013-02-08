@@ -575,6 +575,15 @@ title="go to parrot home page">Parrot </a></h1>
 	  	<p>For example: <code>&lt;owl:versionIRI rdf:resource="http://www.lingvoj.org/ontology_v2.0.ttl" /&gt;</code></p>
       </td>
     </tr>  
+    <tr>
+      <td><a href="http://www.w3.org/TR/owl-ref/#priorVersion-def"><em>owl:priorVersion</em></a></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      <td><img alt="place" src="images/page.png"/></td><td></td><td></td><td></td>
+      <td>
+      	<p>Indicates the predecessor ontology of a given ontology.</p>
+	  	<p>For example: <code>&lt;owl:priorVersion rdf:resource="http://datos.bcn.cl/ontologies/bcn-biographies/1.2/bcn-biographies.rdf" /&gt;</code></p>
+      </td>
+    </tr>  
     </tbody>
 </table>
 

@@ -15,6 +15,11 @@
 		<dt>Download</dt>
 		<dd class="metadata-icon download"><a href="$element.VersionIRI">Download it!</a></dd>
 		#end
+
+		#if($element.PriorVersion)
+		<dt>Prior version</dt>
+		<dd><span class="parrot-element-ref parrot-ontology-ref" rel="owl:priorVersion" href="${element.PriorVersion}">#generateToParrotLink(${element.PriorVersion})</span></dd>
+		#end
 		
 		#if($element.Date)
 		<dt>Date</dt>

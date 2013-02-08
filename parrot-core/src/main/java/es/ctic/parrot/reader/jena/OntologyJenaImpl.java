@@ -71,6 +71,10 @@ public class OntologyJenaImpl extends AbstractJenaDocumentableObject implements 
 		return getAnnotationStrategy().getPriorVersion(getOntResource());
 	}
 	
+	public String getIncompatibleWith() {
+		return getAnnotationStrategy().getIncompatibleWith(getOntResource());
+	}
+	
     public String getKindString() {
         return Kind.ONTOLOGY.toString();
     }

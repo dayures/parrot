@@ -48,4 +48,11 @@ public interface Ontology extends DocumentableOntologicalObject {
 	 * @return the prior version IRI.
 	 */
 	public abstract String getPriorVersion();	
+	
+	/**
+	 * Returns the URI of an ontology incompatible with this version.
+	 * @return the URI of an ontology incompatible with this version.
+	 */
+	public abstract String getIncompatibleWith();
+	 
 }

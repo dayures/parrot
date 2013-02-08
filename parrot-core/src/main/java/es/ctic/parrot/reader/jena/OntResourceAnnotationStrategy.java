@@ -1316,5 +1316,13 @@ public class OntResourceAnnotationStrategy {
 		return getObjectPropertyURI(resource, OWL2.priorVersion.getURI());
 	}
 	
+	/**
+	 * Returns the URI of an ontology incompatible with this version (resource).
+	 * @param resource the resource.
+	 * @return the URI of an ontology incompatible with this version .
+	 */
+	public String getIncompatibleWith(Resource resource) {
+		return getObjectPropertyURI(resource, OWL2.incompatibleWith.getURI());
+	}
 }
 

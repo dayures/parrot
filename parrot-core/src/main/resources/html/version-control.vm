@@ -20,6 +20,11 @@
 		<dt>Prior version</dt>
 		<dd><span class="parrot-element-ref parrot-ontology-ref" rel="owl:priorVersion" href="${element.PriorVersion}">#generateToParrotLink(${element.PriorVersion})</span></dd>
 		#end
+
+		#if($element.IncompatibleWith)
+		<dt>Incompatible with</dt>
+		<dd><span class="parrot-element-ref parrot-ontology-ref" rel="owl:incompatibleWith" href="${element.IncompatibleWith}">#generateToParrotLink(${element.IncompatibleWith})</span></dd>
+		#end
 		
 		#if($element.Date)
 		<dt>Date</dt>

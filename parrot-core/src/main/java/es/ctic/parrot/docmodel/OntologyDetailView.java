@@ -23,6 +23,7 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 	private String preferredNamespace;
 	private String versionIRI;
 	private String priorVersion;
+	private String incompatibleWith;
 	private Collection<DocumentableObjectReference> defines;
 	private Collection<DocumentableObjectReference> imports;
 
@@ -70,6 +71,7 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 		details.setPreferredNamespace(object.getPreferredNamespace());
 		details.setVersionIRI(object.getVersionIRI());
 		details.setPriorVersion(object.getPriorVersion());
+		details.setIncompatibleWith(object.getIncompatibleWith());
 
 
 		details.setLexicalInformation(LexicalInformation.createFromLabels(object.getLabels(), details.getLabel(), locale));
@@ -179,5 +181,21 @@ public class OntologyDetailView extends AbstractOntologicalObjectDetailView impl
 	 */
 	private void setPriorVersion(String priorVersion) {
 		this.priorVersion = priorVersion;
+	}
+
+	/**
+	 * Returns the URI of an ontology incompatible with this version.
+	 * @returns the URI of an ontology incompatible with this version.
+	 */
+	public String getIncompatibleWith() {
+		return incompatibleWith;
+	}
+
+	/**
+	 * Set the URI of an ontology incompatible with this version.
+	 * @param incompatibleWith the URI of an ontology incompatible with this version.
+	 */
+	private void setIncompatibleWith(String incompatibleWith) {
+		this.incompatibleWith = incompatibleWith;
 	}
 }

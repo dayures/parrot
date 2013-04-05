@@ -11,7 +11,6 @@
   <version>1.0-SNAPSHOT</version>
   <name>parrot-web Maven Webapp</name>
   <description>Parrot Web Project</description>
-  <url>http://idi.fundacionctic.org/parrot</url>
 
   <developers>
     <developer>
@@ -143,13 +142,6 @@
         </configuration>
       </plugin>
     </plugins>
-    <extensions>
-   	    <extension>
-   	      <groupId>org.apache.maven.wagon</groupId>
-   	      <artifactId>wagon-webdav-jackrabbit</artifactId>
-   	      <version>1.0</version> 
-   	    </extension>
-   	</extensions>
   </build>
 
   <properties>
@@ -158,36 +150,6 @@
     <!-- <gae.home>/home/user/development/appengine-java-sdk-1.5.4</gae.home>-->
   </properties>
 
-  <repositories>
-    <repository>
-      <id>java.net</id>
-      <url>http://download.java.net/maven/2</url>
-    </repository>
-	   <repository>
-	       <id>CTIC-Nexus-releases</id>
-	       <name>CTIC Nexus Releases</name>
-	       <url>http://wopr.fundacionctic.org:8081/nexus/content/repositories/releases</url>
-	   </repository>
-	   <repository>
-	       <id>CTIC-Nexus-snapshots</id>
-	       <name>CTIC Nexus Snapshots</name>
-	       <url>http://wopr.fundacionctic.org:8081/nexus/content/repositories/snapshots</url>
-	   </repository>
-	</repositories>
-
-
-  <distributionManagement>
-      <repository>
-          <id>ctic-nexus</id>
-          <name>CTIC nexus</name>
-          <url>dav:http://wopr.fundacionctic.org:8081/nexus/content/repositories/releases</url>
-      </repository>
-      <snapshotRepository>
-          <id>ctic-nexus</id>
-          <name>CTIC nexus</name>
-          <url>dav:http://wopr.fundacionctic.org:8081/nexus/content/repositories/snapshots</url>
-      </snapshotRepository>
-  </distributionManagement>
 
 </project>
 

@@ -173,7 +173,7 @@
       <td>This property is a disjoint property of</td>
       <td>
       #foreach($disjointProperty in $element.disjointProperties)
-      <span class="parrot-element-ref parrot-property-ref" rel="owl:propertyDisjointWith" href="${disjointProperty.getUri()}">#generateLink(${disjointPropertyy})</span>
+      <span class="parrot-element-ref parrot-property-ref" rel="owl:propertyDisjointWith" href="${disjointProperty.getUri()}">#generateLink(${disjointProperty})</span>
       #end
       </td>
       </tr>

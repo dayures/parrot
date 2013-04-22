@@ -529,6 +529,7 @@ fab=http://purl.org/fab/ns#
 tei=http://www.tei-c.org/ns/1.0/
 payment=http://reference.data.gov.uk/def/payment#
 voaf=http://mondeca.com/foaf/voaf#
+voaf=http://purl.org/vocommons/voaf#
 sco=http://purl.org/ontology/sco#
 commons=http://commons.psi.enakting.org/def/
 disease=http://www.agfa.com/w3c/2009/humanDisorder#

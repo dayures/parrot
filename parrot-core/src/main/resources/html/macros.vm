@@ -23,3 +23,11 @@
 #macro( generateToParrotLink $uri )
       <a class="external-link" href="${uri_base}?documentUri=${uri}">${uri}</a>
 #end
+
+#macro( generateToParrotLinkWithLabel $uri $label)
+      <a class="external-link" href="${uri_base}?documentUri=${uri}">${label}</a>
+#end
+
+#macro( generateToParrotLinkWithIcon $uri)
+      <a href="${uri_base}?documentUri=${uri}"><img src="${uri_base}report/images/parrot.png" alt="Parrot" /></a>
+#end

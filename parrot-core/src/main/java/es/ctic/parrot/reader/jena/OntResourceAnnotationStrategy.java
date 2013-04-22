@@ -1134,18 +1134,25 @@ public class OntResourceAnnotationStrategy {
 			String predicate = statement.getPredicate().getURI();
 			String object = "";
 			String objectLang = "";
+			boolean isResourceObject = false;
+
 			RDFNode ob = statement.getObject();
 			if (ob.isResource()){
 				object = ob.asResource().getURI();
+				isResourceObject = true;
 			} else if (ob.isLiteral()){
 				object = ob.asLiteral().getLexicalForm();
 				objectLang = ob.asLiteral().getLanguage();
 			} else {
 				object = "";
 			}
+
 			// no rdf:type
 			if (isWellKnown(predicate) == false ){
-				if (objectLang.equals("")){
+				if (isResourceObject) {
+					triples.add(Triple.createTripleOR(subject, predicate, object, ob.isAnon()));
+				}
+				else if (objectLang.equals("")){
 					triples.add(new Triple(subject, predicate, object));
 				} else {
 					triples.add(new Triple(subject, predicate, object, objectLang));

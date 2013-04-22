@@ -1,5 +1,7 @@
 package es.ctic.parrot.de;
 
+import es.ctic.parrot.utils.CurieUtils;
+
 /**
  * A triple.
  * 
@@ -12,10 +14,12 @@ public class Triple {
 	
 	private String subject;
 	private String predicate;
+	private String predicateLabel;
 	private String object;
 	private String objectLang="";
-	
-	
+	private boolean isObjectResource = false;
+	private boolean isObjectBlank = false;
+
 	public String getObjectLang() {
 		return objectLang;
 	}
@@ -24,6 +28,14 @@ public class Triple {
 		this.objectLang = objectLang;
 	}
 
+	
+	public static Triple createTripleOR (String subject, String predicate, String object, boolean isObjectBlank) {
+		Triple triple = new Triple(subject, predicate, object);
+		triple.isObjectResource = true;
+		triple.isObjectBlank = isObjectBlank;
+		return triple;
+	}
+	
 	/**
 	 * Constructs a triple.
 	 * @param subject a subject to set.
@@ -68,6 +80,14 @@ public class Triple {
 	 */
 	private void setPredicate(String predicate) {
 		this.predicate = predicate;
+		
+		String curie = CurieUtils.getCurie(this.getPredicate());
+		if (curie != null){
+			this.setPredicateLabel(curie);
+    	} else {
+    		this.setPredicateLabel(this.getPredicate());
+    	}
+
 	}
 	/**
 	 * @return the predicate
@@ -87,4 +107,25 @@ public class Triple {
 	public String getObject() {
 		return object;
 	}
+
+	public String getPredicateLabel() {
+		return predicateLabel;
+	}
+
+	private void setPredicateLabel(String predicateLabel) {
+		this.predicateLabel = predicateLabel;
+	}
+	
+	public boolean isObjectResource(){
+		return this.isObjectResource;
+	}
+
+	public boolean isObjectBlank() {
+		return isObjectBlank;
+	}
+
+	private void setObjectBlank(boolean isObjectBlank) {
+		this.isObjectBlank = isObjectBlank;
+	}
+	
 }

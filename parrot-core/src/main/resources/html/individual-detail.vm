@@ -38,9 +38,8 @@
 	<h4>Definition</h4> 
 	
 	#if($element.Uri)
-		<p>The <strong>URI</strong> of this individual is <span><code>$element.Uri</code></span></p>
+		<p>The <strong>URI</strong> of this individual is <span><code>$element.Uri</code></span> #generateToParrotLinkWithIcon($element.Uri)</p> 
 	#end
-
 	
 	#if(!$element.types.isEmpty())
 	<hr />
@@ -61,9 +60,13 @@
 	<table>
 	#foreach($triple in $element.triplesAsSubject)
 	<tr>
-	<td>$element.label</td>
-	<td>$triple.predicate</td>
-	<td>$triple.object #if($triple.objectLang && $triple.objectLang != "")<span class="lang">@$triple.objectLang</span> #end </td>
+	<td><a href="#$element.Anchor">$element.label</a></td>
+	<td>#generateToParrotLinkWithLabel($triple.predicate, $triple.predicateLabel)</td>
+	<td>
+	#if ($triple.isObjectResource() && !($triple.isObjectBlank())) #generateToParrotLink($triple.object) 
+	#elseif ($triple.isObjectResource() && $triple.isObjectBlank()) FIXME
+	#else $triple.object #end
+	#if($triple.objectLang && $triple.objectLang != "")<span class="lang">@$triple.objectLang</span> #end </td>
 	</tr> 
 	#end
 	</table>
@@ -74,9 +77,9 @@
 	<table>
 	#foreach($triple in $element.triplesAsObject)
 	<tr>
-	<td>$triple.subject</td>
-	<td>$triple.predicate</td>
-	<td>$element.label</td>
+	<td>#generateToParrotLink($triple.subject)</td>
+	<td>#generateToParrotLinkWithLabel($triple.predicate, $triple.predicateLabel)</td>
+	<td><a href="#$element.Anchor">$element.label</a></td>
 	</tr> 
 	#end
 	</table>

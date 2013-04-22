@@ -1,7 +1,7 @@
 <parrot>
 	<tip>you can generate reports from ontologies expressed in multiple formats (RDF/XML, N3, RDFa).</tip>
 	<tip>you can generate reports from rule documents expressed in multiple formats (RIF/XML and RIF PS).</tip>
-	<tip>there is a &lt;a href=&quot;help.jsp&quot;&gt;help page&lt;/a&gt; that describes which meta-data properties are supported by Parrot.</tip>
+	<tip>there is a &lt;a href=&quot;help&quot;&gt;help page&lt;/a&gt; that describes which meta-data properties are supported by Parrot.</tip>
 	<tip>with Parrot you can generate a report uploading a file.</tip>
 	<tip>you can simply paste your OWL or RIF document into the 'Direct input' tab.</tip>
 	<tip>there is RDFa embedded into the Parrot reports.</tip>

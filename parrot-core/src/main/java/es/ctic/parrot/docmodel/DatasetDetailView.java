@@ -22,9 +22,10 @@ public class DatasetDetailView extends AbstractVersionableDetailView{
 	private String dataDump;
 	private String sparqlEndpoint;
 	private String homepage;
+	private Collection<String> vocabularies;
 	private String dcIdentifier;
 	private String landingPage;
-	private Collection<String> vocabularies;
+	private Collection<String> keywords;
 
 
 	/**
@@ -120,6 +121,20 @@ public class DatasetDetailView extends AbstractVersionableDetailView{
 	}
 	
 	/**
+	 * @return the keywords.
+	 */
+	public Collection<String> getKeywords() {
+		return keywords;
+	}
+
+	/**
+	 * @param keywords the keywords to set.
+	 */
+	private void setKeywords(Collection<String> keywords) {
+		this.keywords = keywords;
+	}
+	
+	/**
 	 * Returns a detailed view for the vocabulary given.
 	 * @param object the vocabulary.
 	 * @param locale the locale.
@@ -162,6 +177,8 @@ public class DatasetDetailView extends AbstractVersionableDetailView{
 		details.setVocabularies(object.getVocabularies());
 		details.setDcIdentifier(object.getDcIdentifier());
 		details.setLandingPage(object.getLandingPage());
+		details.setKeywords(object.getKeywords());
+
 		return details;
     }
     

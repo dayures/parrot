@@ -40,5 +40,11 @@ public interface Dataset extends DocumentableObject, Versionable{
 	 * @return the landing page.
 	 */
 	public abstract String getLandingPage();
+	
+	/**
+	 * Returns the collection of keywords of the dataset.
+	 * @return the collection of keywords of the dataset.
+	 */
+	public abstract Collection<String> getKeywords();
 
 }

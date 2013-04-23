@@ -7,7 +7,8 @@
 	  (!$element.vocabularies.isEmpty()) ||
 	  ($element.SparqlEndpoint) ||
 	  ($element.DcIdentifier) ||
-	  ($element.LandingPage) )
+	  ($element.LandingPage) || 
+	  (!$element.keywords.isEmpty()) )
   #set( $ti = true )
 #else
   #set( $ti = false )
@@ -75,6 +76,14 @@
 	    </p>
     #end  
 
+    #if(!$element.keywords.isEmpty())
+		<p>This dataset uses <strong>keywords</strong> such as
+		#foreach($keyword in $element.keywords) 
+		<span class="parrot-keyword">$keyword</span>
+		#if ($foreach.hasNext), #end
+		#end
+		</p>
+	#end
 
     </div>
   #end

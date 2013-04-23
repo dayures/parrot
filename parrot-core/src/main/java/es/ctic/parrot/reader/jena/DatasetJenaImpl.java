@@ -51,5 +51,9 @@ public class DatasetJenaImpl extends AbstractJenaDocumentableObject implements D
 	public String getLandingPage(){
 		return getAnnotationStrategy().getLandingPage(getOntResource());
 	}
+	
+	public Collection<String> getKeywords() {
+		return getAnnotationStrategy().getKeywords(getOntResource());
+	}
 
 }

@@ -34,5 +34,11 @@ public interface Dataset extends DocumentableObject, Versionable{
 	 * @return the Dublin Core identifier.
 	 */
 	public abstract String getDcIdentifier();
+	
+	/**
+	 * Returns the landing page.
+	 * @return the landing page.
+	 */
+	public abstract String getLandingPage();
 
 }

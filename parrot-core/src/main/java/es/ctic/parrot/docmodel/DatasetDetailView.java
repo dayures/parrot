@@ -23,6 +23,7 @@ public class DatasetDetailView extends AbstractVersionableDetailView{
 	private String sparqlEndpoint;
 	private String homepage;
 	private String dcIdentifier;
+	private String landingPage;
 	private Collection<String> vocabularies;
 
 
@@ -90,7 +91,7 @@ public class DatasetDetailView extends AbstractVersionableDetailView{
 	}
 	
 	/**
-	 * @return the dct:identifier
+	 * @return the Dublin Core identifier.
 	 */
 
 	public String getDcIdentifier() {
@@ -102,6 +103,20 @@ public class DatasetDetailView extends AbstractVersionableDetailView{
 	 */
 	private void setDcIdentifier(String dcIdentifier) {
 		this.dcIdentifier = dcIdentifier;
+	}
+	
+	/**
+	 * @return the URL of the landing page.
+	 */
+	public String getLandingPage() {
+		return landingPage;
+	}
+	
+	/**
+	 * @param landingPage the landing page to set.
+	 */
+	private void setLandingPage(String landingPage) {
+		this.landingPage = landingPage;
 	}
 	
 	/**
@@ -141,18 +156,13 @@ public class DatasetDetailView extends AbstractVersionableDetailView{
 		// Not used
 //		details.setVersion(object.getVersion());
 
-		
 		details.setDataDump(object.getdataDump());
 		details.setSparqlEndpoint(object.getSparqlEndpoint());
 		details.setHomepage(object.getHomepage());
 		details.setVocabularies(object.getVocabularies());
 		details.setDcIdentifier(object.getDcIdentifier());
-		
+		details.setLandingPage(object.getLandingPage());
 		return details;
     }
-
-
-
-
     
 }

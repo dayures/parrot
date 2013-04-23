@@ -6,7 +6,8 @@
 	  ($element.Homepage) ||
 	  (!$element.vocabularies.isEmpty()) ||
 	  ($element.SparqlEndpoint) ||
-	  ($element.DcIdentifier) )
+	  ($element.DcIdentifier) ||
+	  ($element.LandingPage) )
   #set( $ti = true )
 #else
   #set( $ti = false )
@@ -57,6 +58,12 @@
 		<p>The <strong>identifier</strong> is <span><code>$element.DcIdentifier</code></span></p>
 		<hr />
 	#end
+	
+	#if($element.LandingPage)
+		<p>The <strong>landing page</strong> is <span><a href="$element.LandingPage"><code>$element.LandingPage</code></a></span></p>
+		<hr />
+	#end
+	
 	
     #if(!$element.vocabularies.isEmpty())
 		<p>This dataset uses <strong>vocabularies</strong> such as

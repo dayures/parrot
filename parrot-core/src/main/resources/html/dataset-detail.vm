@@ -5,7 +5,8 @@
 	  ($element.DataDump) ||
 	  ($element.Homepage) ||
 	  (!$element.vocabularies.isEmpty()) ||
-	  ($element.SparqlEndpoint) )
+	  ($element.SparqlEndpoint) ||
+	  ($element.DcIdentifier) )
   #set( $ti = true )
 #else
   #set( $ti = false )
@@ -52,6 +53,11 @@
 		<hr />
 	#end
 
+	#if($element.DcIdentifier)
+		<p>The <strong>identifier</strong> is <span><code>$element.DcIdentifier</code></span></p>
+		<hr />
+	#end
+	
     #if(!$element.vocabularies.isEmpty())
 		<p>This dataset uses <strong>vocabularies</strong> such as
 		<ul>

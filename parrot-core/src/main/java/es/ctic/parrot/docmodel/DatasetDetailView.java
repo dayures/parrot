@@ -22,6 +22,7 @@ public class DatasetDetailView extends AbstractVersionableDetailView{
 	private String dataDump;
 	private String sparqlEndpoint;
 	private String homepage;
+	private String dcIdentifier;
 	private Collection<String> vocabularies;
 
 
@@ -89,6 +90,21 @@ public class DatasetDetailView extends AbstractVersionableDetailView{
 	}
 	
 	/**
+	 * @return the dct:identifier
+	 */
+
+	public String getDcIdentifier() {
+		return dcIdentifier;
+	}
+
+	/**
+	 * @param dcIdentifier the Dublin Core identifier to set.
+	 */
+	private void setDcIdentifier(String dcIdentifier) {
+		this.dcIdentifier = dcIdentifier;
+	}
+	
+	/**
 	 * Returns a detailed view for the vocabulary given.
 	 * @param object the vocabulary.
 	 * @param locale the locale.
@@ -130,9 +146,12 @@ public class DatasetDetailView extends AbstractVersionableDetailView{
 		details.setSparqlEndpoint(object.getSparqlEndpoint());
 		details.setHomepage(object.getHomepage());
 		details.setVocabularies(object.getVocabularies());
+		details.setDcIdentifier(object.getDcIdentifier());
 		
 		return details;
     }
+
+
 
 
     

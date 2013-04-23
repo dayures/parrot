@@ -106,7 +106,8 @@ public class OntResourceAnnotationStrategy {
 	private static final String VS_TERM_STATUS ="http://www.w3.org/2003/06/sw-vocab-status/ns#term_status";
 	private static final String DCT_IDENTIFIER = "http://purl.org/dc/terms/identifier";
 	private static final String DC_IDENTIFIER = "http://purl.org/dc/elements/1.1/identifier";
-
+	private static final String DCAT_LANDINGPAGE = "http://www.w3.org/ns/dcat#landingPage";
+	
 	
 	/**
 	 * Constructs a register (Suppress default constructor for noninstantiability).
@@ -1345,6 +1346,15 @@ public class OntResourceAnnotationStrategy {
 			identifier = getLiteralPropertyValue(resource, DC_IDENTIFIER);
 		}
 		return identifier;
+	}
+	
+	/**
+	 * Returns the landing page.
+	 * @param resource the resource.
+	 * @return the landing page.
+	 */
+	public String getLandingPage(Resource resource) {
+		return getObjectPropertyURI(resource, DCAT_LANDINGPAGE);
 	}
 }
 

@@ -47,5 +47,9 @@ public class DatasetJenaImpl extends AbstractJenaDocumentableObject implements D
 	public String getDcIdentifier(){
 		return getAnnotationStrategy().getDcIdentifier(getOntResource());
 	}
+	
+	public String getLandingPage(){
+		return getAnnotationStrategy().getLandingPage(getOntResource());
+	}
 
 }

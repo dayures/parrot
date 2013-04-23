@@ -28,4 +28,11 @@ public interface Dataset extends DocumentableObject, Versionable{
 	 * @return the collection of vocabularies (represented by its URI) used in the dataset.
 	 */
 	public abstract Collection<String> getVocabularies();
+	
+	/**
+	 * Returns the Dublin Core identifier.
+	 * @return the Dublin Core identifier.
+	 */
+	public abstract String getDcIdentifier();
+
 }

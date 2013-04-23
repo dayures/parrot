@@ -104,6 +104,8 @@ public class OntResourceAnnotationStrategy {
 	private static final String VOID_SPARQLENDPOINT = "http://rdfs.org/ns/void#sparqlEndpoint";
 	private static final String VOID_VOCABULARY = "http://rdfs.org/ns/void#vocabulary";
 	private static final String VS_TERM_STATUS ="http://www.w3.org/2003/06/sw-vocab-status/ns#term_status";
+	private static final String DCT_IDENTIFIER = "http://purl.org/dc/terms/identifier";
+	private static final String DC_IDENTIFIER = "http://purl.org/dc/elements/1.1/identifier";
 
 	
 	/**
@@ -1330,6 +1332,19 @@ public class OntResourceAnnotationStrategy {
 	 */
 	public String getIncompatibleWith(Resource resource) {
 		return getObjectPropertyURI(resource, OWL2.incompatibleWith.getURI());
+	}
+	
+	/**
+	 * Returns the Dublin Core identifier of a resource. First, it searches dct:identifier. If it is not present, it searches dc:identifiers.  
+	 * @param resource the resource.
+	 * @return the Dublin Core identifier of a resource.
+	 */
+	public String getDcIdentifier(Resource resource) {
+		String identifier = getLiteralPropertyValue(resource, DCT_IDENTIFIER);
+		if (identifier == null){
+			identifier = getLiteralPropertyValue(resource, DC_IDENTIFIER);
+		}
+		return identifier;
 	}
 }
 

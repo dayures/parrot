@@ -82,9 +82,9 @@ public class JenaOWLReader implements DocumentReader {
             loadOntology(ontModel, register);
             loadOntClasses(ontModel, register);
             loadOntProperties(ontModel, register);
-            loadOntIndividuals(ontModel, register);
             loadVocabularies(ontModel, register);
             loadDatasets(ontModel, register);
+            loadOntIndividuals(ontModel, register);
         } catch (JenaException e) {
             if (e.getCause() != null && e.getCause() instanceof SAXParseException) {
                 throw new ReaderException(input.getMimeType() + " parse error: " + e.getCause().getMessage(), e);
@@ -230,6 +230,18 @@ public class JenaOWLReader implements DocumentReader {
 		ExtendedIterator<Individual> datasetIterator = model.listIndividuals(ResourceFactory.createResource(DatasetJenaImpl.VOID_NS + "Dataset"));
 		while (datasetIterator.hasNext()) {
 	        OntResource datasetInstance = datasetIterator.next();
+	        register.registerDocumentableObject(new DatasetJenaImpl(datasetInstance, register, getAnnotationStrategy()));
+	    }
+
+		ExtendedIterator<Individual> datasetDcatIterator = model.listIndividuals(ResourceFactory.createResource(DatasetJenaImpl.DCAT_NS + "Dataset"));
+		while (datasetDcatIterator.hasNext()) {
+	        OntResource datasetInstance = datasetDcatIterator.next();
+	        register.registerDocumentableObject(new DatasetJenaImpl(datasetInstance, register, getAnnotationStrategy()));
+	    }
+		
+		ExtendedIterator<Individual> datasetDcatDeriIterator = model.listIndividuals(ResourceFactory.createResource(DatasetJenaImpl.DCAT_DERI_NS + "Dataset"));
+		while (datasetDcatDeriIterator.hasNext()) {
+	        OntResource datasetInstance = datasetDcatDeriIterator.next();
 	        register.registerDocumentableObject(new DatasetJenaImpl(datasetInstance, register, getAnnotationStrategy()));
 	    }
 	}

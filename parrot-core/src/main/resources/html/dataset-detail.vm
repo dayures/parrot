@@ -8,7 +8,8 @@
 	  ($element.SparqlEndpoint) ||
 	  ($element.DcIdentifier) ||
 	  ($element.LandingPage) || 
-	  (!$element.keywords.isEmpty()) )
+	  (!$element.keywords.isEmpty()) ||
+	  (!$element.Catalogs.isEmpty()) )
   #set( $ti = true )
 #else
   #set( $ti = false )
@@ -84,6 +85,21 @@
 		#end
 		</p>
 	#end
+
+
+	#if(!$element.Catalogs.isEmpty())
+	<table>	
+	  <tr>
+	  <td>This dataset is in catalog:</td>
+	  <td> 
+	  #foreach($catalog in $element.Catalogs)
+	  <span class="parrot-element-ref parrot-catalog-ref" href="${catalog.getUri()}">#generateLink(${catalog})</span>
+	  #end
+	  </td>
+	  </tr>
+	</table>
+	#end
+
 
     </div>
   #end

@@ -47,4 +47,9 @@ public interface Dataset extends DocumentableObject, Versionable{
 	 */
 	public abstract Collection<String> getKeywords();
 
+	/**
+	 * Returns the catalogs.
+	 * @return the catalogs.
+	 */	
+    public abstract Collection<DocumentableObject> getCatalogs();
 }

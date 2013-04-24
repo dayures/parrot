@@ -1,5 +1,7 @@
 package es.ctic.parrot.de;
 
+import java.util.Collection;
+
 public interface Catalog extends DocumentableObject, Versionable{
 	
 	/**
@@ -7,6 +9,13 @@ public interface Catalog extends DocumentableObject, Versionable{
 	 * @return the homepage.
 	 */
 	public abstract String getHomepage();
+	
+	/**
+	 * Returns the datasets.
+	 * @return the datasets.
+	 */	
+    public abstract Collection<DocumentableObject> getDatasets();
+ 
 
 
 }

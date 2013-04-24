@@ -1,0 +1,45 @@
+#parse("html/version-control-check.vm")
+
+#if ( ($element.Homepage) )
+  #set( $ti = true )
+#else
+  #set( $ti = false )
+#end
+
+
+#parse("html/documentation-check.vm")
+
+#parse("html/md5.vm")
+
+   <h3 id="$element.Anchor">#if ($element.uriFragment) <a id="$element.uriFragment"></a>#end#if ($element.uriFragment) <a id="$element.uriFragment"></a>#end<span class="parrot-element-title parrot-dataset-title">$element.Label</span> (Dataset)
+    #parse("html/detail-menu.vm")
+  </h3>
+  #parse("html/description.vm")
+  
+  <div>
+
+  #if ($vci)
+    #parse("html/version-control.vm")
+  #end
+
+
+  #if ($ti)
+    <div class="ti"> 
+    <h4>Definition</h4> 
+    	
+	#if($element.Homepage)
+		<p>The <strong>home page</strong> is <span><a href="$element.Homepage"><code>$element.Homepage</code></a></span></p>
+		<hr />
+	#end
+	
+    </div>
+  #end
+  
+  
+  #if ( $otherinfo )
+  	#parse("html/documentation.vm")
+  #end
+  
+  </div>
+</div>
+  

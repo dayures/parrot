@@ -55,6 +55,7 @@ public class Document {
     private final Set<RuleSetDetailView> ruleSetDetailViews = new HashSet<RuleSetDetailView>();
     private final Set<VocabularyDetailView> vocabularyDetailViews = new HashSet<VocabularyDetailView>();
     private final Set<DatasetDetailView> datasetDetailViews = new HashSet<DatasetDetailView>();
+    private final Set<CatalogDetailView> catalogDetailViews = new HashSet<CatalogDetailView>();
 
     private final Glossary glossary;
     private String prologueURL;
@@ -166,6 +167,16 @@ public class Document {
 		Collections.sort(listDatasetDetailsViews, new DetailViewComparator());
 		return listDatasetDetailsViews;
 	}
+
+	/**
+	 * Returns the sorted collection of catalog views for this document. Elements are sorted alphabetically by label.
+	 * @return the sorted collection of catalog views for this document.
+	 */
+	public Collection<CatalogDetailView> getCatalogDetailViews() {
+		List<CatalogDetailView> listCatalogDetailsViews = new LinkedList<CatalogDetailView>(this.catalogDetailViews);
+		Collections.sort(listCatalogDetailsViews, new DetailViewComparator());
+		return listCatalogDetailsViews;
+	}
 	
     /** 
      * Adds a given detailed ontology view into this document.
@@ -229,6 +240,14 @@ public class Document {
      */
     public void addDatasetDetailView(DatasetDetailView details) {
         this.datasetDetailViews.add(details);
+    }
+    
+    /** 
+     * Adds a given detailed catalog view into this document.
+     * @param details the detailed catalog view.
+     */
+    public void addCatalogDetailView(CatalogDetailView details) {
+        this.catalogDetailViews.add(details);
     }
     
 	/**

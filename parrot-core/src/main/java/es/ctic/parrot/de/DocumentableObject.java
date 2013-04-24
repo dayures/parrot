@@ -73,7 +73,12 @@ public interface DocumentableObject {
         /**
          * a vocabulary.
          */
-        VOCABULARY("vocabulary");
+        VOCABULARY("vocabulary"),
+        
+         /**
+         * a catalog.
+         */
+        CATALOG("catalog"),;
         
         
         private final String name;

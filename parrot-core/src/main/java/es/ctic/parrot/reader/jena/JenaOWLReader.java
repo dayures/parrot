@@ -84,6 +84,7 @@ public class JenaOWLReader implements DocumentReader {
             loadOntProperties(ontModel, register);
             loadVocabularies(ontModel, register);
             loadDatasets(ontModel, register);
+            loadCatalogs(ontModel, register);
             loadOntIndividuals(ontModel, register);
         } catch (JenaException e) {
             if (e.getCause() != null && e.getCause() instanceof SAXParseException) {
@@ -245,6 +246,22 @@ public class JenaOWLReader implements DocumentReader {
 	        register.registerDocumentableObject(new DatasetJenaImpl(datasetInstance, register, getAnnotationStrategy()));
 	    }
 	}
+	
+	
+	private void loadCatalogs(OntModel model, DocumentableObjectRegister register) {
+
+		ExtendedIterator<Individual> catalogDcatIterator = model.listIndividuals(ResourceFactory.createResource(CatalogJenaImpl.DCAT_NS + "Catalog"));
+		while (catalogDcatIterator.hasNext()) {
+	        OntResource catalogInstance = catalogDcatIterator.next();
+	        register.registerDocumentableObject(new CatalogJenaImpl(catalogInstance, register, getAnnotationStrategy()));
+	    }
+		
+		ExtendedIterator<Individual> catalogDcatDeriIterator = model.listIndividuals(ResourceFactory.createResource(CatalogJenaImpl.DCAT_DERI_NS + "Catalog"));
+		while (catalogDcatDeriIterator.hasNext()) {
+	        OntResource catalogInstance = catalogDcatDeriIterator.next();
+	        register.registerDocumentableObject(new CatalogJenaImpl(catalogInstance, register, getAnnotationStrategy()));
+	    }
+	}	
 	
 	/**
      * Returns <code>true</code> if, and only if, the URI is domain specified.

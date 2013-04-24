@@ -1,6 +1,7 @@
 package es.ctic.parrot.docmodel;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Locale;
 
 import org.apache.log4j.Logger;
@@ -26,6 +27,8 @@ public class DatasetDetailView extends AbstractVersionableDetailView{
 	private String dcIdentifier;
 	private String landingPage;
 	private Collection<String> keywords;
+	
+    private Collection<DocumentableObjectReference> catalogs;
 
 
 	/**
@@ -135,6 +138,23 @@ public class DatasetDetailView extends AbstractVersionableDetailView{
 	}
 	
 	/**
+	 * Returns the catalogs.
+	 * @return the catalogs.
+	 */
+	public Collection<DocumentableObjectReference> getCatalogs() {
+		return Collections.unmodifiableCollection(this.catalogs);
+	}
+	
+	/**
+	 * Set the catalogs to this detailed view.
+	 * @param catalogs the catalogs to set to this detailed view.
+	 */
+	private void setCatalogs(Collection<DocumentableObjectReference> catalogs) {
+		this.catalogs = catalogs;
+	}
+
+	
+	/**
 	 * Returns a detailed view for the vocabulary given.
 	 * @param object the vocabulary.
 	 * @param locale the locale.
@@ -178,6 +198,8 @@ public class DatasetDetailView extends AbstractVersionableDetailView{
 		details.setDcIdentifier(object.getDcIdentifier());
 		details.setLandingPage(object.getLandingPage());
 		details.setKeywords(object.getKeywords());
+		
+        details.setCatalogs(DocumentableObjectReference.createReferences(object.getCatalogs(),locale));
 
 		return details;
     }

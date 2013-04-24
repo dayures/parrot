@@ -1,5 +1,7 @@
 package es.ctic.parrot.docmodel;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Locale;
 import org.apache.log4j.Logger;
 import es.ctic.parrot.de.Catalog;
@@ -17,6 +19,9 @@ public class CatalogDetailView extends AbstractVersionableDetailView{
     private static final Logger logger = Logger.getLogger(CatalogDetailView.class);
     
 	private String homepage;
+	
+	private Collection<DocumentableObjectReference> datasets;
+
 
 	/**
 	 * Constructs a vocabulary detail view (Suppress default constructor for noninstantiability).
@@ -39,6 +44,22 @@ public class CatalogDetailView extends AbstractVersionableDetailView{
 		return homepage;
 	}
 	
+	
+	/**
+	 * Returns the datasets.
+	 * @return the datasets.
+	 */
+	public Collection<DocumentableObjectReference> getDatasets() {
+		return Collections.unmodifiableCollection(this.datasets);
+	}
+	
+	/**
+	 * Set the datasets to this detailed view.
+	 * @param datasets the datasets to set to this detailed view.
+	 */
+	private void setDatasets(Collection<DocumentableObjectReference> datasets) {
+		this.datasets = datasets;
+	}
 	
 	/**
 	 * Returns a detailed view for the vocabulary given.
@@ -79,6 +100,7 @@ public class CatalogDetailView extends AbstractVersionableDetailView{
 
 
 		details.setHomepage(object.getHomepage());
+		details.setDatasets(DocumentableObjectReference.createReferences(object.getDatasets(),locale));
 
 
 		return details;

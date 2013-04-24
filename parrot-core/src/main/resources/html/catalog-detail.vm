@@ -1,6 +1,7 @@
 #parse("html/version-control-check.vm")
 
-#if ( ($element.Homepage) )
+#if ( ($element.Homepage) || 
+  	  (!$element.Datasets.isEmpty()) )
   #set( $ti = true )
 #else
   #set( $ti = false )
@@ -31,6 +32,22 @@
 		<p>The <strong>home page</strong> is <span><a href="$element.Homepage"><code>$element.Homepage</code></a></span></p>
 		<hr />
 	#end
+	
+
+	#if(!$element.Datasets.isEmpty())
+	<table>	
+	  <tr>
+	  <td>This catalog has as dataset:</td>
+	  <td> 
+	  #foreach($dataset in $element.Datasets)
+	  <span class="parrot-element-ref parrot-dataset-ref" rel="dcat:dataset" href="${dataset.getUri()}">#generateLink(${dataset})</span>
+	  #end
+	  </td>
+	  </tr>
+	</table>
+	#end
+	
+	
 	
     </div>
   #end

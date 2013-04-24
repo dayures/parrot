@@ -4,6 +4,7 @@ import java.util.Locale;
 
 import org.apache.log4j.Logger;
 
+import es.ctic.parrot.de.Catalog;
 import es.ctic.parrot.de.Dataset;
 import es.ctic.parrot.de.Ontology;
 import es.ctic.parrot.de.OntologyClass;
@@ -12,6 +13,7 @@ import es.ctic.parrot.de.OntologyProperty;
 import es.ctic.parrot.de.Rule;
 import es.ctic.parrot.de.RuleSet;
 import es.ctic.parrot.de.Vocabulary;
+import es.ctic.parrot.docmodel.CatalogDetailView;
 import es.ctic.parrot.docmodel.DatasetDetailView;
 import es.ctic.parrot.docmodel.Document;
 import es.ctic.parrot.docmodel.OntologyClassDetailView;
@@ -136,7 +138,7 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 	
     /**
      * Visits the <code>vocabulary</code>.
-     * @param object the rule.
+     * @param object the vocabulary.
      * @return the details view generated.
      *  
      */
@@ -150,7 +152,7 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 
     /**
      * Visits the <code>dataset</code>.
-     * @param object the rule.
+     * @param object the dataset.
      * @return the details view generated.
      *  
      */
@@ -159,6 +161,20 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 	    logger.debug("Visiting dataset " + object);
 	    DatasetDetailView details = DatasetDetailView.createFromDataset(object, locale);		
 		document.addDatasetDetailView(details);
+		return details;
+	}
+	
+    /**
+     * Visits the <code>catalog</code>.
+     * @param object the catalog.
+     * @return the details view generated.
+     *  
+     */
+	@Override
+	public Object visit(Catalog object) throws TransformerException {
+	    logger.debug("Visiting catalog " + object);
+	    CatalogDetailView details = CatalogDetailView.createFromCatalog(object, locale);		
+		document.addCatalogDetailView(details);
 		return details;
 	}
 }

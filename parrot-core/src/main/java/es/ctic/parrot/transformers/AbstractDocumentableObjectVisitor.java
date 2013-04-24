@@ -1,5 +1,6 @@
 package es.ctic.parrot.transformers;
 
+import es.ctic.parrot.de.Catalog;
 import es.ctic.parrot.de.Dataset;
 import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.DocumentableObjectRegister;
@@ -122,6 +123,17 @@ public class AbstractDocumentableObjectVisitor implements
      * @return always null.
      */
     public Object visit(Vocabulary object) throws TransformerException{
+        // default implementation: do nothing
+		return null;        
+    }
+    
+    /**
+     * Does nothing.
+     * @param object the <code>catalog</code> to visit.
+     * @throws TransformerException if a failed transformation operation occurs.
+     * @return always null.
+     */
+    public Object visit(Catalog object) throws TransformerException{
         // default implementation: do nothing
 		return null;        
     }

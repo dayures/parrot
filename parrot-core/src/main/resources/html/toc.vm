@@ -79,6 +79,15 @@
 </p>
 #end
 
+#if(!$document.catalogDetailViews.isEmpty())
+<p><span class="parrot-element-ref parrot-catalog-ref">Catalogs (${document.catalogDetailViews.size()}):</span></p>
+<p>
+#foreach($element in $document.catalogDetailViews)
+	<a href="#$element.Anchor">$element.Label</a>#if ($foreach.hasNext), #end
+#end
+</p>
+#end
+
 <hr />
 
 #if(!$document.glossary.isEmpty())

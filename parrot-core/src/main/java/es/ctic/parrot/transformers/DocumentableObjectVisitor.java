@@ -2,6 +2,7 @@ package es.ctic.parrot.transformers;
 
 import es.ctic.parrot.de.Catalog;
 import es.ctic.parrot.de.Dataset;
+import es.ctic.parrot.de.Distribution;
 import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.de.Ontology;
 import es.ctic.parrot.de.OntologyClass;
@@ -87,6 +88,13 @@ public interface DocumentableObjectVisitor {
      * @throws TransformerException if a failed transformation operation occurs.
      */
     public abstract Object visit(Catalog catalog) throws TransformerException;
+
+    /**
+     * Visits the given <code>distribution</code>.
+     * @param dataset the <code>distribution</code> to visit.
+     * @throws TransformerException if a failed transformation operation occurs.
+     */
+    public abstract Object visit(Distribution distribution) throws TransformerException;
 
     /**
      * Visits the given <code>register</code>.

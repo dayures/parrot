@@ -10,6 +10,7 @@
 	  ($element.LandingPage) || 
 	  (!$element.keywords.isEmpty()) ||
 	  (!$element.Catalogs.isEmpty()) ||
+	  (!$element.Distributions.isEmpty()) ||
 	  ($element.Spatial) )
   #set( $ti = true )
 #else
@@ -91,6 +92,15 @@
 		#end
 		</p>
 	#end
+	
+	#if(!$element.Distributions.isEmpty())
+		<p>This dataset uses <strong>Distributions</strong> such as
+		#foreach($distribution in $element.Distributions)
+	    	#set( $element = $distribution )
+	    	#parse("html/distribution-detail.vm")
+	    #end
+	    </p>
+    #end  
 
 
 	#if(!$element.Catalogs.isEmpty())

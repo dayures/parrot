@@ -2,11 +2,13 @@ package es.ctic.parrot.docmodel;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Locale;
 
 import org.apache.log4j.Logger;
 
 import es.ctic.parrot.de.Dataset;
+import es.ctic.parrot.de.Distribution;
 
 /**
  * A detailed view of a dataset.
@@ -29,6 +31,7 @@ public class DatasetDetailView extends AbstractVersionableDetailView{
 	private Collection<String> keywords;
     private Collection<DocumentableObjectReference> catalogs;
 	private String spatial;
+    private Collection<DistributionDetailView> distributionDetailViews = new HashSet<DistributionDetailView>();
 
 	/**
 	 * Constructs a vocabulary detail view (Suppress default constructor for noninstantiability).
@@ -160,7 +163,21 @@ public class DatasetDetailView extends AbstractVersionableDetailView{
 		this.spatial = spatial;
 	}
 
+	public Collection<DistributionDetailView> getDistributions() {
+		return Collections.unmodifiableCollection(distributionDetailViews);
+	}
 	
+    /** 
+     * Adds a given detailed ontology view into this document.
+     * @param details the detailed ontology view.
+     */
+    public void addDistributionDetailView(DistributionDetailView details) {
+        if (details != null){
+        	this.distributionDetailViews.add(details);
+        	logger.debug("Added distribution  details view"+details);
+        }
+    }
+    
 	/**
 	 * Returns a detailed view for the vocabulary given.
 	 * @param object the vocabulary.

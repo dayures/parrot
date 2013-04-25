@@ -1,0 +1,23 @@
+    <div> 
+    <h4>Distribution $element.Label #if($element.Description) ($element.Description)#end</h4> 
+    <dl> 
+		
+		#if($element.ModifiedDate)
+		<dt>Last modified</dt>
+		<dd class="metadata-icon date">$element.ModifiedDate</dd>
+		#end
+
+		#if($element.IssuedDate)
+		<dt>Issued</dt>
+		<dd class="metadata-icon date">$element.IssuedDate</dd>
+		#end
+			  		
+		#if($element.LicenseLabel)
+		<dt>License</dt>
+		<dd><a href="$element.LicenseLabel">$element.LicenseLabel</a></dd>
+		#end
+		
+    </dl> 
+    </div>
+    
+    

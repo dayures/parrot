@@ -4,14 +4,18 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 
+import org.apache.log4j.Logger;
+
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.ontology.OntResource;
+import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 
 import es.ctic.parrot.de.Dataset;
+import es.ctic.parrot.de.Distribution;
 import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.transformers.DocumentableObjectVisitor;
@@ -26,10 +30,19 @@ public class DatasetJenaImpl extends AbstractJenaDocumentableObject implements D
 	private static final String DCAT_DATASET_PROPERTY = "http://www.w3.org/ns/dcat#dataset";
 	private static final String DCAT_DERI_DATASET_PROPERTY = "http://vocab.deri.ie/dcat#dataset";
 
+	private static final String DCAT_DISTRIBUTION_PROPERTY = "http://www.w3.org/ns/dcat#distribution";
+	private static final String DCAT_DERI_DISTRIBUTION_PROPERTY = "http://vocab.deri.ie/dcat#distribution";
+
+    private static final Logger logger = Logger.getLogger(DatasetJenaImpl.class);
+
+	
     private Collection<DocumentableObject> catalogs;
+    private Collection<Distribution> distributions = new HashSet<Distribution>();
+
     
     public DatasetJenaImpl(OntResource resource, DocumentableObjectRegister register, OntResourceAnnotationStrategy annotationStrategy) {
         super(resource, register, annotationStrategy);
+        setDistributions();
     }
     
     public Object accept(DocumentableObjectVisitor visitor)
@@ -100,5 +113,38 @@ public class DatasetJenaImpl extends AbstractJenaDocumentableObject implements D
 	public String getSpatial(){
 		return getAnnotationStrategy().getSpatial(getOntResource());
 	}
+	
+	public Collection<Distribution> getDistributions() {
+		return Collections.unmodifiableCollection(distributions);
+	}
+
+	public void setDistributions() {
+	
+		OntModel ontModel = getOntResource().getOntModel();
+		Collection <OntResource> cs = new HashSet<OntResource>();
+		logger.debug("[init]number of distributions="+cs.size());
+	
+		StmtIterator listStatements = ontModel.listStatements(getOntResource(), ResourceFactory.createProperty(DCAT_DISTRIBUTION_PROPERTY), (RDFNode) null);
+		while (listStatements.hasNext()){
+			Statement statement = listStatements.next();
+			cs.add(ontModel.getOntResource(statement.getObject().asResource()));
+		}
+		
+		listStatements = ontModel.listStatements(getOntResource(), ResourceFactory.createProperty(DCAT_DERI_DISTRIBUTION_PROPERTY), (RDFNode) null);
+		while (listStatements.hasNext()){
+			Statement statement = listStatements.next();
+			cs.add(ontModel.getOntResource(statement.getObject().asResource()));
+		}	
+		logger.debug("[final]number of distributions="+cs.size());
+		
+		for (OntResource resource : cs) {
+			logger.debug("resource="+resource);
+			DistributionJenaImpl distributionJenaImpl = new DistributionJenaImpl(resource, getAnnotationStrategy());
+			logger.debug("distributionJenaImpl.getIssuedDate()="+distributionJenaImpl.getIssuedDate());
+		    distributions.add(new DistributionJenaImpl(resource, getAnnotationStrategy()));
+		}
+	    
+	}
+
 
 }

@@ -58,4 +58,10 @@ public interface Dataset extends DocumentableObject, Versionable{
 	 * @return the spatial coverage.
 	 */
 	public abstract String getSpatial();
+
+	/**
+	 * Returns the distributions.
+	 * @return the distributions.
+	 */	
+	public abstract Collection<Distribution> getDistributions();
 }

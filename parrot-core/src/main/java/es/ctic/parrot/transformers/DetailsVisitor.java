@@ -6,6 +6,7 @@ import org.apache.log4j.Logger;
 
 import es.ctic.parrot.de.Catalog;
 import es.ctic.parrot.de.Dataset;
+import es.ctic.parrot.de.Distribution;
 import es.ctic.parrot.de.Ontology;
 import es.ctic.parrot.de.OntologyClass;
 import es.ctic.parrot.de.OntologyIndividual;
@@ -15,6 +16,7 @@ import es.ctic.parrot.de.RuleSet;
 import es.ctic.parrot.de.Vocabulary;
 import es.ctic.parrot.docmodel.CatalogDetailView;
 import es.ctic.parrot.docmodel.DatasetDetailView;
+import es.ctic.parrot.docmodel.DistributionDetailView;
 import es.ctic.parrot.docmodel.Document;
 import es.ctic.parrot.docmodel.OntologyClassDetailView;
 import es.ctic.parrot.docmodel.OntologyDetailView;
@@ -159,7 +161,11 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 	@Override
 	public Object visit(Dataset object) throws TransformerException {
 	    logger.debug("Visiting dataset " + object);
-	    DatasetDetailView details = DatasetDetailView.createFromDataset(object, locale);		
+	    DatasetDetailView details = DatasetDetailView.createFromDataset(object, locale);
+	    for(Distribution distribution : object.getDistributions()){
+	    	logger.debug(distribution);
+	    	details.addDistributionDetailView((DistributionDetailView)distribution.accept(this));
+	    }
 		document.addDatasetDetailView(details);
 		return details;
 	}
@@ -176,5 +182,20 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 	    CatalogDetailView details = CatalogDetailView.createFromCatalog(object, locale);		
 		document.addCatalogDetailView(details);
 		return details;
+	}
+	
+    /**
+     * Visits the <code>distribution</code>.
+     * @param object the distribution.
+     * @return the details view generated.
+     *  
+     */
+	@Override
+	public Object visit(Distribution object) throws TransformerException {
+		logger.debug("Visiting distribution " + object);
+		DistributionDetailView details = DistributionDetailView.createFromDistribution(object, locale);
+		logger.debug("details.getIssuedDate()="+details.getIssuedDate());
+		return details;
+
 	}
 }

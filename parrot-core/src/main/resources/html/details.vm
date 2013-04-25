@@ -119,6 +119,9 @@
 	#foreach($element in $document.datasetDetailViews)
 	<div class="details datasets">#parse("html/dataset-detail.vm")</div>
 	#end
+	
+
+	
 #end
 
 #if(!$document.catalogDetailViews.isEmpty())

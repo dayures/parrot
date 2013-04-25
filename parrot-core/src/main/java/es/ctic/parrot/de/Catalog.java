@@ -15,6 +15,13 @@ public interface Catalog extends DocumentableObject, Versionable{
 	 * @return the datasets.
 	 */	
     public abstract Collection<DocumentableObject> getDatasets();
+    
+	/**
+	 * Returns the spatial coverage.
+	 * @return the spatial coverage.
+	 */
+	public abstract String getSpatial();
+
  
 
 

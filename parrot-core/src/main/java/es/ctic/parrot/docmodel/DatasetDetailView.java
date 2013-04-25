@@ -27,9 +27,8 @@ public class DatasetDetailView extends AbstractVersionableDetailView{
 	private String dcIdentifier;
 	private String landingPage;
 	private Collection<String> keywords;
-	
     private Collection<DocumentableObjectReference> catalogs;
-
+	private String spatial;
 
 	/**
 	 * Constructs a vocabulary detail view (Suppress default constructor for noninstantiability).
@@ -152,6 +151,14 @@ public class DatasetDetailView extends AbstractVersionableDetailView{
 	private void setCatalogs(Collection<DocumentableObjectReference> catalogs) {
 		this.catalogs = catalogs;
 	}
+	
+	public String getSpatial() {
+		return spatial;
+	}
+
+	private void setSpatial(String spatial) {
+		this.spatial = spatial;
+	}
 
 	
 	/**
@@ -198,10 +205,12 @@ public class DatasetDetailView extends AbstractVersionableDetailView{
 		details.setDcIdentifier(object.getDcIdentifier());
 		details.setLandingPage(object.getLandingPage());
 		details.setKeywords(object.getKeywords());
-		
         details.setCatalogs(DocumentableObjectReference.createReferences(object.getCatalogs(),locale));
+		details.setSpatial(object.getSpatial());
 
 		return details;
     }
+
+
     
 }

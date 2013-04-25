@@ -9,7 +9,8 @@
 	  ($element.DcIdentifier) ||
 	  ($element.LandingPage) || 
 	  (!$element.keywords.isEmpty()) ||
-	  (!$element.Catalogs.isEmpty()) )
+	  (!$element.Catalogs.isEmpty()) ||
+	  ($element.Spatial) )
   #set( $ti = true )
 #else
   #set( $ti = false )
@@ -63,6 +64,11 @@
 	
 	#if($element.LandingPage)
 		<p>The <strong>landing page</strong> is <span><a href="$element.LandingPage"><code>$element.LandingPage</code></a></span></p>
+		<hr />
+	#end
+	
+	#if($element.Spatial)
+		<p>The <strong>spatial coverage</strong> is <span><a href="$element.Spatial"><code>$element.Spatial</code></a></span></p>
 		<hr />
 	#end
 	

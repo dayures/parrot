@@ -1,7 +1,8 @@
 #parse("html/version-control-check.vm")
 
 #if ( ($element.Homepage) || 
-  	  (!$element.Datasets.isEmpty()) )
+  	  (!$element.Datasets.isEmpty()) ||
+  	  ($element.Spatial) )
   #set( $ti = true )
 #else
   #set( $ti = false )
@@ -32,6 +33,13 @@
 		<p>The <strong>home page</strong> is <span><a href="$element.Homepage"><code>$element.Homepage</code></a></span></p>
 		<hr />
 	#end
+	
+		#if($element.Spatial)
+		<p>The <strong>spatial coverage</strong> is <span><a href="$element.Spatial"><code>$element.Spatial</code></a></span></p>
+		<hr />
+	#end
+	
+	
 	
 
 	#if(!$element.Datasets.isEmpty())

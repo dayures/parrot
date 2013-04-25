@@ -107,8 +107,11 @@ public class OntResourceAnnotationStrategy {
 	private static final String DCT_IDENTIFIER = "http://purl.org/dc/terms/identifier";
 	private static final String DC_IDENTIFIER = "http://purl.org/dc/elements/1.1/identifier";
 	private static final String DCAT_LANDINGPAGE = "http://www.w3.org/ns/dcat#landingPage";
+	private static final String DCAT_DERI_LANDINGPAGE = "http://vocab.deri.ie/dcat#landingPage";
 	private static final String DCAT_KEYWORD = "http://www.w3.org/ns/dcat#keyword";
+	private static final String DCAT_DERI_KEYWORD = "http://vocab.deri.ie/dcat#keyword";
 	private static final String DCT_SPATIAL = "http://purl.org/dc/terms/spatial";
+	
 	
 	/**
 	 * Constructs a register (Suppress default constructor for noninstantiability).
@@ -1355,7 +1358,11 @@ public class OntResourceAnnotationStrategy {
 	 * @return the landing page.
 	 */
 	public String getLandingPage(Resource resource) {
-		return getObjectPropertyURI(resource, DCAT_LANDINGPAGE);
+		String landingPage = getObjectPropertyURI(resource, DCAT_LANDINGPAGE);
+		if (landingPage == null){
+			landingPage = getObjectPropertyURI(resource, DCAT_DERI_LANDINGPAGE);
+		}
+		return landingPage;
 	}
 	
 	/**
@@ -1364,7 +1371,10 @@ public class OntResourceAnnotationStrategy {
 	 * @return the collection of keywords.
 	 */
 	public Collection<String> getKeywords(Resource resource) {
-		return getLiteralPropertyValues(resource, DCAT_KEYWORD);
+		Collection<String> keywords = new HashSet<String>();
+		keywords.addAll(getLiteralPropertyValues(resource, DCAT_KEYWORD));
+		keywords.addAll(getLiteralPropertyValues(resource, DCAT_DERI_KEYWORD));
+		return keywords;
 	}
 	
 	/**

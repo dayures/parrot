@@ -52,4 +52,10 @@ public interface Dataset extends DocumentableObject, Versionable{
 	 * @return the catalogs.
 	 */	
     public abstract Collection<DocumentableObject> getCatalogs();
+    
+	/**
+	 * Returns the spatial coverage.
+	 * @return the spatial coverage.
+	 */
+	public abstract String getSpatial();
 }

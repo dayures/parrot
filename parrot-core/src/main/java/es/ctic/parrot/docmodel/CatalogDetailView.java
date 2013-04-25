@@ -18,10 +18,9 @@ public class CatalogDetailView extends AbstractVersionableDetailView{
 
     private static final Logger logger = Logger.getLogger(CatalogDetailView.class);
     
-	private String homepage;
-	
+	private String homepage;	
 	private Collection<DocumentableObjectReference> datasets;
-
+    private String spatial;
 
 	/**
 	 * Constructs a vocabulary detail view (Suppress default constructor for noninstantiability).
@@ -60,6 +59,15 @@ public class CatalogDetailView extends AbstractVersionableDetailView{
 	private void setDatasets(Collection<DocumentableObjectReference> datasets) {
 		this.datasets = datasets;
 	}
+	
+	public String getSpatial() {
+		return spatial;
+	}
+
+	private void setSpatial(String spatial) {
+		this.spatial = spatial;
+	}
+
 	
 	/**
 	 * Returns a detailed view for the vocabulary given.
@@ -101,7 +109,7 @@ public class CatalogDetailView extends AbstractVersionableDetailView{
 
 		details.setHomepage(object.getHomepage());
 		details.setDatasets(DocumentableObjectReference.createReferences(object.getDatasets(),locale));
-
+        details.setSpatial(object.getSpatial());
 
 		return details;
     }

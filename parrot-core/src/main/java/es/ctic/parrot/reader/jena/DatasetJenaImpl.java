@@ -96,5 +96,9 @@ public class DatasetJenaImpl extends AbstractJenaDocumentableObject implements D
 		}
 		return Collections.unmodifiableCollection(catalogs);
 	}
+	
+	public String getSpatial(){
+		return getAnnotationStrategy().getSpatial(getOntResource());
+	}
 
 }

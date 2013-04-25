@@ -74,6 +74,10 @@ public class CatalogJenaImpl extends AbstractJenaDocumentableObject implements C
 		return Collections.unmodifiableCollection(datasets);
 	}
 	
+	public String getSpatial(){
+		return getAnnotationStrategy().getSpatial(getOntResource());
+	}
+
 	
 	
 }

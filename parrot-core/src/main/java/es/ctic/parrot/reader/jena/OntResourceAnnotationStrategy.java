@@ -108,7 +108,7 @@ public class OntResourceAnnotationStrategy {
 	private static final String DC_IDENTIFIER = "http://purl.org/dc/elements/1.1/identifier";
 	private static final String DCAT_LANDINGPAGE = "http://www.w3.org/ns/dcat#landingPage";
 	private static final String DCAT_KEYWORD = "http://www.w3.org/ns/dcat#keyword";
-	
+	private static final String DCT_SPATIAL = "http://purl.org/dc/terms/spatial";
 	
 	/**
 	 * Constructs a register (Suppress default constructor for noninstantiability).
@@ -1365,6 +1365,15 @@ public class OntResourceAnnotationStrategy {
 	 */
 	public Collection<String> getKeywords(Resource resource) {
 		return getLiteralPropertyValues(resource, DCAT_KEYWORD);
+	}
+	
+	/**
+	 * Returns the landing page.
+	 * @param resource the resource.
+	 * @return the landing page.
+	 */
+	public String getSpatial(Resource resource) {
+		return getObjectPropertyURI(resource, DCT_SPATIAL);
 	}
 }
 

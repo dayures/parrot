@@ -1,4 +1,4 @@
-    <div> 
+    <div class="distribution"> 
     <h4>Distribution $distribution.Label #if($distribution.Description) ($distribution.Description)#end</h4> 
     <dl> 
 		

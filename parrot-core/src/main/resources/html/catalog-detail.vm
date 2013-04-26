@@ -13,7 +13,7 @@
 
 #parse("html/md5.vm")
 
-   <h3 id="$element.Anchor">#if ($element.uriFragment) <a id="$element.uriFragment"></a>#end#if ($element.uriFragment) <a id="$element.uriFragment"></a>#end<span class="parrot-element-title parrot-catalog-title">$element.Label</span> (Dataset)
+   <h3 id="$element.Anchor">#if ($element.uriFragment) <a id="$element.uriFragment"></a>#end#if ($element.uriFragment) <a id="$element.uriFragment"></a>#end<span class="parrot-element-title parrot-catalog-title">$element.Label</span> (Catalog)
     #parse("html/detail-menu.vm")
   </h3>
   #parse("html/description.vm")

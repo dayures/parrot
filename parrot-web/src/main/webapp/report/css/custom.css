@@ -45,7 +45,7 @@ div.term > div{
     margin-right:1em;
 }
 
-.vci, .ti , .inuse , .otherinfo{
+.vci, .ti , .inuse , .otherinfo, .distribution{
    border: 1px solid White;
    padding-left: 1em;
    margin-top: 1em;
@@ -385,11 +385,16 @@ div#languages{
 div.term p.description {
 	white-space:pre-line;
 }
+
 a.external-link:link {
 	background: url("../images/external-link.png") no-repeat 100% 0;
 	padding: 0 15px 0 0;
 }
 
+a.parrot-link:link {
+	background: url("../images/parrot.png") no-repeat 100% 0;
+	padding: 0 20px 0 0;
+}
 .imports{
 	list-style-type: none;
 }

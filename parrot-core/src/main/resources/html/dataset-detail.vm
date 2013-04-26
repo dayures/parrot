@@ -97,15 +97,14 @@
 	</p>
 	#end
 
+    </div>
+  #end
+  
 	#if(!$element.Distributions.isEmpty())
 		#foreach($distribution in $element.Distributions)
 	    	#parse("html/distribution-detail.vm")
 	    #end
     #end  
-
-    </div>
-  #end
-  
   
   #if ( $otherinfo )
   	#parse("html/documentation.vm")

@@ -9,6 +9,7 @@ jQuery(document).ready(function(){
     $('.inuse').corner();
     $('.otherinfo').corner();
     $('.menu span').corner();
+    $('.distribution').corner();
 
     
     $('.term h3 span span.vci-menu').click(function() {

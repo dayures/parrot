@@ -18,6 +18,9 @@ public class DistributionDetailView extends AbstractVersionableDetailView{
 
     private static final Logger logger = Logger.getLogger(DistributionDetailView.class);
     
+	private String accessURL;
+	private String downloadURL;
+
 
 	/**
 	 * Constructs a vocabulary detail view (Suppress default constructor for noninstantiability).
@@ -26,6 +29,37 @@ public class DistributionDetailView extends AbstractVersionableDetailView{
         logger.debug("Created " + this.getClass());
     }	
 
+	/**
+	 * Returns the access URL.
+	 * @return the access URL.
+	 */
+	public String getAccessURL() {
+		return accessURL;
+	}
+
+
+	/**
+	 * @param accessURL the access URL to set
+	 */
+	private void setAccessURL(String accessURL) {
+		this.accessURL = accessURL;
+	}
+	
+	/**
+	 * Returns the download URL.
+	 * @return the download URL.
+	 */
+	public String getDownloadURL() {
+		return downloadURL;
+	}
+
+	/**
+	 * Set the download URL
+	 * @param downloadURL the download URL.
+	 */
+	private void setDownloadURL(String downloadURL) {
+		this.downloadURL = downloadURL;
+	}
 
 	
 	/**
@@ -55,11 +89,18 @@ public class DistributionDetailView extends AbstractVersionableDetailView{
 		details.setPublisherAgents(object.getPublisherAgents());
 
 		details.setLicenseLabel(object.getLicenseLabel());
+		details.setAccessURL(object.getAccessURL());
+		details.setDownloadURL(object.getDownloadURL());
 		
 		// Not used
 //		details.setVersion(object.getVersion());
 
 		return details;
     }
+
+
+
+
+
     
 }

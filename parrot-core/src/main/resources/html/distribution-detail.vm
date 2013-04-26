@@ -17,6 +17,16 @@
 		<dd><a href="$distribution.LicenseLabel">$distribution.LicenseLabel</a></dd>
 		#end
 		
+		#if($distribution.AccessURL)
+		<dt>Access URL</dt>
+		<dd><a href="$distribution.AccessURL">$distribution.AccessURL</a></dd>
+		#end
+
+		#if($distribution.DownloadURL)
+		<dt>Download URL</dt>
+		<dd><a href="$distribution.DownloadURL">$distribution.DownloadURL</a></dd>
+		#end
+		
     </dl> 
     </div>
     

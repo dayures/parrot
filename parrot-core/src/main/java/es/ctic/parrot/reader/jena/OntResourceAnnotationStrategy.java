@@ -111,6 +111,12 @@ public class OntResourceAnnotationStrategy {
 	private static final String DCAT_KEYWORD = "http://www.w3.org/ns/dcat#keyword";
 	private static final String DCAT_DERI_KEYWORD = "http://vocab.deri.ie/dcat#keyword";
 	private static final String DCT_SPATIAL = "http://purl.org/dc/terms/spatial";
+	private static final String DCAT_ACCESSURL = "http://www.w3.org/ns/dcat#accessURL";
+	private static final String DCAT_DERI_ACCESSURL = "http://vocab.deri.ie/dcat#accessURL";
+	private static final String DCAT_DOWNLOADURL = "http://www.w3.org/ns/dcat#downloadURL";
+	private static final String DCAT_DERI_DOWNLOADURL = "http://vocab.deri.ie/dcat#downloadURL";
+	
+	
 	
 	
 	/**
@@ -1378,12 +1384,38 @@ public class OntResourceAnnotationStrategy {
 	}
 	
 	/**
-	 * Returns the landing page.
+	 * Returns the spatial coverage.
 	 * @param resource the resource.
-	 * @return the landing page.
+	 * @return the spatial coverage.
 	 */
 	public String getSpatial(Resource resource) {
 		return getObjectPropertyURI(resource, DCT_SPATIAL);
+	}
+	
+	/**
+	 * Returns the access URL.
+	 * @param resource the resource.
+	 * @return the access URL.
+	 */
+	public String getAccessURL(Resource resource) {
+		String accessURL = getObjectPropertyURI(resource, DCAT_ACCESSURL);
+		if (accessURL == null){
+			accessURL = getObjectPropertyURI(resource, DCAT_DERI_ACCESSURL);
+		}
+		return accessURL;
+	}
+	
+	/**
+	 * Returns the download URL.
+	 * @param resource the resource.
+	 * @return the download URL.
+	 */
+	public String getDownloadURL(Resource resource) {
+		String downloadURL = getObjectPropertyURI(resource, DCAT_DOWNLOADURL);
+		if (downloadURL == null){
+			downloadURL = getObjectPropertyURI(resource, DCAT_DERI_DOWNLOADURL);
+		}
+		return downloadURL;
 	}
 }
 

@@ -27,6 +27,12 @@ public class DistributionJenaImpl extends AbstractJenaDocumentableObject impleme
         return visitor.visit(this);
 	}
 
-
+	public String getAccessURL(){
+		return getAnnotationStrategy().getAccessURL(getOntResource());
+	}
+	
+	public String getDownloadURL(){
+		return getAnnotationStrategy().getDownloadURL(getOntResource());
+	}
 
 }

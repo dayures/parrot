@@ -93,14 +93,7 @@
 		</p>
 	#end
 	
-	#if(!$element.Distributions.isEmpty())
-		<p>This dataset uses <strong>Distributions</strong> such as
-		#foreach($distribution in $element.Distributions)
-	    	#set( $element = $distribution )
-	    	#parse("html/distribution-detail.vm")
-	    #end
-	    </p>
-    #end  
+
 
 
 	#if(!$element.Catalogs.isEmpty())
@@ -116,6 +109,11 @@
 	</table>
 	#end
 
+	#if(!$element.Distributions.isEmpty())
+		#foreach($distribution in $element.Distributions)
+	    	#parse("html/distribution-detail.vm")
+	    #end
+    #end  
 
     </div>
   #end

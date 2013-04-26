@@ -107,6 +107,9 @@ public class DatasetJenaImpl extends AbstractJenaDocumentableObject implements D
 			
 			catalogs = resourceIteratorToDocumentableObjectList(cs.iterator());
 		}
+		
+		logger.debug(getOntResource()+" is in ("+catalogs.size()+") catalogs");
+		
 		return Collections.unmodifiableCollection(catalogs);
 	}
 	
@@ -122,7 +125,6 @@ public class DatasetJenaImpl extends AbstractJenaDocumentableObject implements D
 	
 		OntModel ontModel = getOntResource().getOntModel();
 		Collection <OntResource> cs = new HashSet<OntResource>();
-		logger.debug("[init]number of distributions="+cs.size());
 	
 		StmtIterator listStatements = ontModel.listStatements(getOntResource(), ResourceFactory.createProperty(DCAT_DISTRIBUTION_PROPERTY), (RDFNode) null);
 		while (listStatements.hasNext()){
@@ -135,13 +137,13 @@ public class DatasetJenaImpl extends AbstractJenaDocumentableObject implements D
 			Statement statement = listStatements.next();
 			cs.add(ontModel.getOntResource(statement.getObject().asResource()));
 		}	
-		logger.debug("[final]number of distributions="+cs.size());
+		
+		logger.debug(getOntResource()+" has ("+cs.size()+") distributions");
 		
 		for (OntResource resource : cs) {
-			logger.debug("resource="+resource);
-			DistributionJenaImpl distributionJenaImpl = new DistributionJenaImpl(resource, getAnnotationStrategy());
-			logger.debug("distributionJenaImpl.getIssuedDate()="+distributionJenaImpl.getIssuedDate());
-		    distributions.add(new DistributionJenaImpl(resource, getAnnotationStrategy()));
+		    DistributionJenaImpl distributionJenaImpl = new DistributionJenaImpl(resource, getRegister(), getAnnotationStrategy());
+		    getRegister().registerDocumentableObject(distributionJenaImpl);
+		    distributions.add(distributionJenaImpl);		    
 		}
 	    
 	}

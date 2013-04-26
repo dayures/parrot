@@ -4,7 +4,6 @@ import java.util.Locale;
 
 import org.apache.log4j.Logger;
 
-import es.ctic.parrot.de.Catalog;
 import es.ctic.parrot.de.Distribution;
 
 /**

@@ -13,7 +13,7 @@
 
 #parse("html/md5.vm")
 
-   <h3 id="$element.Anchor">#if ($element.uriFragment) <a id="$element.uriFragment"></a>#end#if ($element.uriFragment) <a id="$element.uriFragment"></a>#end<span class="parrot-element-title parrot-dataset-title">$element.Label</span> (Dataset)
+   <h3 id="$element.Anchor">#if ($element.uriFragment) <a id="$element.uriFragment"></a>#end#if ($element.uriFragment) <a id="$element.uriFragment"></a>#end<span class="parrot-element-title parrot-catalog-title">$element.Label</span> (Dataset)
     #parse("html/detail-menu.vm")
   </h3>
   #parse("html/description.vm")
@@ -30,32 +30,22 @@
     <h4>Definition</h4> 
     	
 	#if($element.Homepage)
-		<p>The <strong>home page</strong> is <span><a href="$element.Homepage"><code>$element.Homepage</code></a></span></p>
+		<p>The <strong>home page</strong> is <span><a href="$element.Homepage"  class="external-link"><code>$element.Homepage</code></a></span></p>
 		<hr />
 	#end
 	
 		#if($element.Spatial)
-		<p>The <strong>spatial coverage</strong> is <span><a href="$element.Spatial"><code>$element.Spatial</code></a></span></p>
+		<p>The <strong>spatial coverage</strong> is <span><a href="$element.Spatial"  class="external-link"><code>$element.Spatial</code></a></span></p>
 		<hr />
 	#end
-	
-	
-	
 
 	#if(!$element.Datasets.isEmpty())
-	<table>	
-	  <tr>
-	  <td>This catalog has as dataset:</td>
-	  <td> 
+	  <p>This catalog has as dataset:
 	  #foreach($dataset in $element.Datasets)
 	  <span class="parrot-element-ref parrot-dataset-ref" rel="dcat:dataset" href="${dataset.getUri()}">#generateLink(${dataset})</span>
 	  #end
-	  </td>
-	  </tr>
-	</table>
+	  </p>
 	#end
-	
-	
 	
     </div>
   #end

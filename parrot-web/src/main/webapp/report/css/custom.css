@@ -131,6 +131,21 @@ dt{
 	background-image: url("../images/icon-datatype-16.png");
 }
 
+.parrot-catalog-title {
+	background-image: url("../images/icon-catalog-24.png");
+}
+.parrot-catalog-ref {
+	background-image: url("../images/icon-catalog-16.png");
+}
+
+.parrot-dataset-title {
+	background-image: url("../images/icon-dataset-24.png");
+}
+
+.parrot-dataset-ref {
+	background-image: url("../images/icon-dataset-16.png");
+}
+
 .parrot-label-locale {
 	color: green;
 }
@@ -267,6 +282,9 @@ h1 a[href]:hover, h2 a[href]:hover { background-color: transparent; }
 	background-color: #cbbffd;
 }
 
+.catalogs , .catalogs h3{
+	background-color: #FFCCCC;
+}
 
 /** end color details **/
 

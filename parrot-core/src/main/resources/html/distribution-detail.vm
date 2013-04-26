@@ -9,22 +9,22 @@
 
 		#if($distribution.IssuedDate)
 		<dt>Issued</dt>
-		<dd class="metadata-icon date">$distribution.IssuedDate</dd>
+		<dd class="metadata-icon date" >$distribution.IssuedDate</dd>
 		#end
 			  		
 		#if($distribution.LicenseLabel)
 		<dt>License</dt>
-		<dd><a href="$distribution.LicenseLabel">$distribution.LicenseLabel</a></dd>
+		<dd><a href="$distribution.LicenseLabel" class="external-link">$distribution.LicenseLabel</a></dd>
 		#end
 		
 		#if($distribution.AccessURL)
 		<dt>Access URL</dt>
-		<dd><a href="$distribution.AccessURL">$distribution.AccessURL</a></dd>
+		<dd><a href="$distribution.AccessURL" class="external-link">$distribution.AccessURL</a></dd>
 		#end
 
 		#if($distribution.DownloadURL)
 		<dt>Download URL</dt>
-		<dd><a href="$distribution.DownloadURL">$distribution.DownloadURL</a></dd>
+		<dd><a href="$distribution.DownloadURL" class="external-link">$distribution.DownloadURL</a></dd>
 		#end
 		
 		#if($distribution.ByteSize)
@@ -34,7 +34,7 @@
 		
 		#if($distribution.Mimetype)
 		<dt>MIME type</dt>
-		<dd>$distribution.Mimetype.Label ($distribution.Mimetype.Value) </dd>
+		<dd>$distribution.Mimetype.Label (<code>$distribution.Mimetype.Value</code>) </dd>
 		#end
 		
     </dl> 

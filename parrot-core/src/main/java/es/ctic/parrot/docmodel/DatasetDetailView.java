@@ -33,27 +33,30 @@ public class DatasetDetailView extends AbstractVersionableDetailView{
     private Collection<DistributionDetailView> distributionDetailViews = new HashSet<DistributionDetailView>();
 
 	/**
-	 * Constructs a vocabulary detail view (Suppress default constructor for noninstantiability).
+	 * Constructs a dataset detail view (Suppress default constructor for noninstantiability).
 	 */
 	private DatasetDetailView() {
         logger.debug("Created " + this.getClass());
     }
 	
 	/**
-	 * @param dataDump the dataDump to set
+	 * Set the data dump.
+	 * @param dataDump the dataDump to set.
 	 */
     private void setDataDump(String dataDump) {
 		this.dataDump = dataDump;
 	}
 
 	/**
-	 * @return the dataDump
+	 * Returns the dataDump.
+	 * @return the dataDump.
 	 */
 	public String getDataDump() {
 		return dataDump;
 	}
 
 	/**
+	 * Set the SPARQL endpoint.
 	 * @param sparqlEndpoint the sparqlEnpoint to set
 	 */
 	private void setSparqlEndpoint(String sparqlEndpoint) {
@@ -61,41 +64,47 @@ public class DatasetDetailView extends AbstractVersionableDetailView{
 	}
 
 	/**
-	 * @return the sparqlEndpoint
+	 * Returns the sparqlEndpoint.
+	 * @return the sparqlEndpoint.
 	 */
 	public String getSparqlEndpoint() {
 		return sparqlEndpoint;
 	}
 
 	/**
-	 * @param homepage the homepage to set
+	 * Set the homepage.
+	 * @param homepage the homepage to set.
 	 */
 	private void setHomepage(String homepage) {
 		this.homepage = homepage;
 	}
 
 	/**
-	 * @return the homepage
+	 * Returns the homepage.
+	 * @return the homepage.
 	 */
 	public String getHomepage() {
 		return homepage;
 	}
 	
 	/**
-	 * @param vocabularies the vocabularies to set
+	 * Set the vocabularies.
+	 * @param vocabularies the vocabularies to set.
 	 */
 	private void setVocabularies(Collection<String> vocabularies) {
 		this.vocabularies = vocabularies;
 	}
 
 	/**
-	 * @return the vocabularies
+	 * Returns the vocabularies.
+	 * @return the vocabularies.
 	 */
 	public Collection<String> getVocabularies() {
 		return vocabularies;
 	}
 	
 	/**
+	 * Returns the Dublin Core identifier.
 	 * @return the Dublin Core identifier.
 	 */
 
@@ -104,6 +113,7 @@ public class DatasetDetailView extends AbstractVersionableDetailView{
 	}
 
 	/**
+	 * Set the Dublin Core identifier.
 	 * @param dcIdentifier the Dublin Core identifier to set.
 	 */
 	private void setDcIdentifier(String dcIdentifier) {
@@ -111,6 +121,7 @@ public class DatasetDetailView extends AbstractVersionableDetailView{
 	}
 	
 	/**
+	 * Returns the URL of the landing page.
 	 * @return the URL of the landing page.
 	 */
 	public String getLandingPage() {
@@ -118,6 +129,7 @@ public class DatasetDetailView extends AbstractVersionableDetailView{
 	}
 	
 	/**
+	 * Set the landing page.
 	 * @param landingPage the landing page to set.
 	 */
 	private void setLandingPage(String landingPage) {
@@ -125,6 +137,7 @@ public class DatasetDetailView extends AbstractVersionableDetailView{
 	}
 	
 	/**
+	 * Returns the keywords.
 	 * @return the keywords.
 	 */
 	public Collection<String> getKeywords() {
@@ -132,6 +145,7 @@ public class DatasetDetailView extends AbstractVersionableDetailView{
 	}
 
 	/**
+	 * Set the keywords.
 	 * @param keywords the keywords to set.
 	 */
 	private void setKeywords(Collection<String> keywords) {
@@ -154,21 +168,33 @@ public class DatasetDetailView extends AbstractVersionableDetailView{
 		this.catalogs = catalogs;
 	}
 	
+	/**
+	 * Returns the spatial coverage.
+	 * @return the spatial coverage.
+	 */
 	public String getSpatial() {
 		return spatial;
 	}
 
+	/**
+	 * Set the spatial coverage.
+	 * @param spatial the spatial coverage to set.
+	 */
 	private void setSpatial(String spatial) {
 		this.spatial = spatial;
 	}
 
+	/**
+	 * Returns the distributions.
+	 * @return the distributions.
+	 */
 	public Collection<DistributionDetailView> getDistributions() {
 		return Collections.unmodifiableCollection(distributionDetailViews);
 	}
 	
     /** 
-     * Adds a given detailed ontology view into this document.
-     * @param details the detailed ontology view.
+     * Adds a given detailed distribution view into this document.
+     * @param details the detailed distribution view.
      */
     public void addDistributionDetailView(DistributionDetailView details) {
         if (details != null){
@@ -178,10 +204,10 @@ public class DatasetDetailView extends AbstractVersionableDetailView{
     }
     
 	/**
-	 * Returns a detailed view for the vocabulary given.
-	 * @param object the vocabulary.
+	 * Returns a detailed view for the dataset given.
+	 * @param object the dataset.
 	 * @param locale the locale.
-	 * @return a detailed view for a vocabulary.
+	 * @return a detailed view for a dataset.
 	 */
     public static DatasetDetailView createFromDataset(Dataset object, Locale locale) {
     	

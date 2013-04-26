@@ -23,26 +23,27 @@ public class CatalogDetailView extends AbstractVersionableDetailView{
     private String spatial;
 
 	/**
-	 * Constructs a vocabulary detail view (Suppress default constructor for noninstantiability).
+	 * Constructs a catalog detail view (Suppress default constructor for noninstantiability).
 	 */
 	private CatalogDetailView() {
         logger.debug("Created " + this.getClass());
     }	
 
 	/**
-	 * @param homepage the homepage to set
+	 * Set the homepage.
+	 * @param homepage the homepage to set.
 	 */
 	private void setHomepage(String homepage) {
 		this.homepage = homepage;
 	}
 
 	/**
-	 * @return the homepage
+	 * Returns the homepage.
+	 * @return the homepage.
 	 */
 	public String getHomepage() {
 		return homepage;
 	}
-	
 	
 	/**
 	 * Returns the datasets.
@@ -60,20 +61,28 @@ public class CatalogDetailView extends AbstractVersionableDetailView{
 		this.datasets = datasets;
 	}
 	
+	/**
+	 * Returns the spatial coverage.
+	 * @return the spatial coverage.
+	 */
 	public String getSpatial() {
 		return spatial;
 	}
 
+	/**
+	 * Set the spatial coverage.
+	 * @param spatial the spatial coverage to set.
+	 */
 	private void setSpatial(String spatial) {
 		this.spatial = spatial;
 	}
 
 	
 	/**
-	 * Returns a detailed view for the vocabulary given.
-	 * @param object the vocabulary.
+	 * Returns a detailed view for the catalog given.
+	 * @param object the catalog.
 	 * @param locale the locale.
-	 * @return a detailed view for a vocabulary.
+	 * @return a detailed view for a catalog.
 	 */
     public static CatalogDetailView createFromCatalog(Catalog object, Locale locale) {
     	

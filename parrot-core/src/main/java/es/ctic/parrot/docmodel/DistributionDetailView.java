@@ -26,7 +26,7 @@ public class DistributionDetailView extends AbstractVersionableDetailView{
 
 
 	/**
-	 * Constructs a vocabulary detail view (Suppress default constructor for noninstantiability).
+	 * Constructs a distribution detail view (Suppress default constructor for noninstantiability).
 	 */
 	private DistributionDetailView() {
         logger.debug("Created " + this.getClass());
@@ -98,10 +98,10 @@ public class DistributionDetailView extends AbstractVersionableDetailView{
 	}
 	
 	/**
-	 * Returns a detailed view for the vocabulary given.
-	 * @param object the vocabulary.
+	 * Returns a detailed view for the distribution given.
+	 * @param object the distribution.
 	 * @param locale the locale.
-	 * @return a detailed view for a vocabulary.
+	 * @return a detailed view for a distribution.
 	 */
     public static DistributionDetailView createFromDistribution(Distribution object, Locale locale) {
     	

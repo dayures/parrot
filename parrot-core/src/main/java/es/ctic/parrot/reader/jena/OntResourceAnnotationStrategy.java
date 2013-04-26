@@ -115,6 +115,8 @@ public class OntResourceAnnotationStrategy {
 	private static final String DCAT_DERI_ACCESSURL = "http://vocab.deri.ie/dcat#accessURL";
 	private static final String DCAT_DOWNLOADURL = "http://www.w3.org/ns/dcat#downloadURL";
 	private static final String DCAT_DERI_DOWNLOADURL = "http://vocab.deri.ie/dcat#downloadURL";
+	private static final String DCAT_BYTESIZE = "http://www.w3.org/ns/dcat#byteSize";
+	private static final String DCAT_DERI_BYTESIZE = "http://vocab.deri.ie/dcat#byteSize";
 	
 	
 	
@@ -1416,6 +1418,19 @@ public class OntResourceAnnotationStrategy {
 			downloadURL = getObjectPropertyURI(resource, DCAT_DERI_DOWNLOADURL);
 		}
 		return downloadURL;
+	}
+	
+	/**
+	 * Returns the byte size of the distribution.
+	 * @param resource the resource.
+	 * @return the byte size of the distribution.
+	 */
+	public String getByteSize(Resource resource) {		
+		String byteSize = getLiteralPropertyValue(resource, DCAT_BYTESIZE);
+		if (byteSize == null){
+			byteSize = getLiteralPropertyValue(resource, DCAT_DERI_BYTESIZE);
+		}
+		return byteSize;
 	}
 }
 

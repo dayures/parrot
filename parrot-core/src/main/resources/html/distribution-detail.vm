@@ -27,6 +27,11 @@
 		<dd><a href="$distribution.DownloadURL">$distribution.DownloadURL</a></dd>
 		#end
 		
+		#if($distribution.ByteSize)
+		<dt>Byte size URL</dt>
+		<dd>$distribution.ByteSize</dd>
+		#end
+		
     </dl> 
     </div>
     

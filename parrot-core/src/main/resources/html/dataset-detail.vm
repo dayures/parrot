@@ -40,37 +40,30 @@
     
     #if($element.Uri)
 		<p>The <strong>URI</strong> of this dataset is <span><code>$element.Uri</code></span></p>
-		<hr />
 	#end
-
-    #if($element.DataDump)
-		<p>The <strong>data dump</strong> is <span><a href ="$element.DataDump"><code>$element.DataDump</code></a></span></p>
-		<hr />
-	#end	
-
-    #if($element.SparqlEndpoint)
-		<p>The <strong>SPARQL endpoint</strong> is <span><a href="element.SparqlEndpoint"><code>$element.SparqlEndpoint</code></a></span></p>
-		<hr />
-	#end	
 	
-	#if($element.Homepage)
-		<p>The <strong>home page</strong> is <span><a href="$element.Homepage"><code>$element.Homepage</code></a></span></p>
-		<hr />
-	#end
-
 	#if($element.DcIdentifier)
 		<p>The <strong>identifier</strong> is <span><code>$element.DcIdentifier</code></span></p>
-		<hr />
+	#end
+
+	#if($element.Homepage)
+		<p>The <strong>home page</strong> is <span><a href="$element.Homepage" class="external-link"><code>$element.Homepage</code></a></span></p>
 	#end
 	
 	#if($element.LandingPage)
-		<p>The <strong>landing page</strong> is <span><a href="$element.LandingPage"><code>$element.LandingPage</code></a></span></p>
-		<hr />
+		<p>The <strong>landing page</strong> is <span><a href="$element.LandingPage" class="external-link"><code>$element.LandingPage</code></a></span></p>
 	#end
+
+    #if($element.DataDump)
+		<p>The <strong>data dump</strong> is <span><a href ="$element.DataDump" class="external-link"><code>$element.DataDump</code></a></span></p>
+	#end	
+
+    #if($element.SparqlEndpoint)
+		<p>The <strong>SPARQL endpoint</strong> is <span><a href="element.SparqlEndpoint" class="external-link"><code>$element.SparqlEndpoint</code></a></span></p>
+	#end	
 	
 	#if($element.Spatial)
-		<p>The <strong>spatial coverage</strong> is <span><a href="$element.Spatial"><code>$element.Spatial</code></a></span></p>
-		<hr />
+		<p>The <strong>spatial coverage</strong> is <span><a href="$element.Spatial" class="external-link"><code>$element.Spatial</code></a></span></p>
 	#end
 	
 	
@@ -97,16 +90,11 @@
 
 
 	#if(!$element.Catalogs.isEmpty())
-	<table>	
-	  <tr>
-	  <td>This dataset is in catalog:</td>
-	  <td> 
+	  <p>This dataset is in catalog:
 	  #foreach($catalog in $element.Catalogs)
 	  <span class="parrot-element-ref parrot-catalog-ref" href="${catalog.getUri()}">#generateLink(${catalog})</span>
 	  #end
-	  </td>
-	  </tr>
-	</table>
+	</p>
 	#end
 
 	#if(!$element.Distributions.isEmpty())

@@ -106,6 +106,21 @@
 	#end
 #end
 
+#if(!$document.catalogDetailViews.isEmpty())
+	<div class="toc" id="catalogs">
+	<h2>Catalogs</h2>
+	<p>
+	  #foreach($element in $document.catalogDetailViews)
+		<a href="#$element.Anchor">$element.Label</a>#if ($foreach.hasNext), #end
+	  #end
+	</p>
+	</div>
+	
+	#foreach($element in $document.catalogDetailViews)
+	<div class="details catalogs">#parse("html/catalog-detail.vm")</div>
+	#end
+#end
+
 #if(!$document.datasetDetailViews.isEmpty())
 	<div class="toc" id="datasets">
 	<h2>Datasets</h2>
@@ -124,17 +139,3 @@
 	
 #end
 
-#if(!$document.catalogDetailViews.isEmpty())
-	<div class="toc" id="catalogs">
-	<h2>Catalogs</h2>
-	<p>
-	  #foreach($element in $document.catalogDetailViews)
-		<a href="#$element.Anchor">$element.Label</a>#if ($foreach.hasNext), #end
-	  #end
-	</p>
-	</div>
-	
-	#foreach($element in $document.catalogDetailViews)
-	<div class="details catalogs">#parse("html/catalog-detail.vm")</div>
-	#end
-#end

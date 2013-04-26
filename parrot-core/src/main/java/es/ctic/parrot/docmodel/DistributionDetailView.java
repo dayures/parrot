@@ -20,6 +20,7 @@ public class DistributionDetailView extends AbstractVersionableDetailView{
     
 	private String accessURL;
 	private String downloadURL;
+	private String byteSize;
 
 
 	/**
@@ -39,7 +40,8 @@ public class DistributionDetailView extends AbstractVersionableDetailView{
 
 
 	/**
-	 * @param accessURL the access URL to set
+	 * Set the access URL.
+	 * @param accessURL the access URL to set.
 	 */
 	private void setAccessURL(String accessURL) {
 		this.accessURL = accessURL;
@@ -61,6 +63,21 @@ public class DistributionDetailView extends AbstractVersionableDetailView{
 		this.downloadURL = downloadURL;
 	}
 
+    /**
+     * Returns the byte size.
+     * @return the byte size.
+     */
+	public String getByteSize() {
+		return byteSize;
+	}
+
+	/**
+	 * Set the byte size.
+	 * @param byteSize the byte size to set. 
+	 */
+	private void setByteSize(String byteSize) {
+		this.byteSize = byteSize;
+	}
 	
 	/**
 	 * Returns a detailed view for the vocabulary given.
@@ -94,13 +111,10 @@ public class DistributionDetailView extends AbstractVersionableDetailView{
 		
 		// Not used
 //		details.setVersion(object.getVersion());
+		
+		details.setByteSize(object.getByteSize());
 
 		return details;
     }
-
-
-
-
-
-    
+	
 }

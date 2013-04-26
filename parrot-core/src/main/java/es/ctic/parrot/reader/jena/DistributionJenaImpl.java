@@ -34,5 +34,8 @@ public class DistributionJenaImpl extends AbstractJenaDocumentableObject impleme
 	public String getDownloadURL(){
 		return getAnnotationStrategy().getDownloadURL(getOntResource());
 	}
+	public String getByteSize(){
+		return getAnnotationStrategy().getByteSize(getOntResource());
+	}
 
 }

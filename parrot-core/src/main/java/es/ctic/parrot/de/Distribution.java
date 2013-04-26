@@ -15,4 +15,10 @@ public interface Distribution extends DocumentableObject, Versionable{
 	 * @return the download URL.
 	 */
 	public abstract String getDownloadURL();
+	
+	/**
+	 * Returns the byte size.
+	 * @return the byte size.
+	 */
+	public abstract String getByteSize();
 }

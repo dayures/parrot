@@ -21,4 +21,10 @@ public interface Distribution extends DocumentableObject, Versionable{
 	 * @return the byte size.
 	 */
 	public abstract String getByteSize();
+	
+	/**
+	 * Returns the MIME type.
+	 * @return the MIME type.
+	 */
+	public abstract MIMEType getMIMEType();
 }

@@ -32,6 +32,11 @@
 		<dd>$distribution.ByteSize</dd>
 		#end
 		
+		#if($distribution.Mimetype)
+		<dt>MIME type</dt>
+		<dd>$distribution.Mimetype.Label ($distribution.Mimetype.Value) </dd>
+		#end
+		
     </dl> 
     </div>
     

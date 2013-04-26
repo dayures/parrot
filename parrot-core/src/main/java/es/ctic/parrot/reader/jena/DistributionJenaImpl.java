@@ -4,6 +4,7 @@ import com.hp.hpl.jena.ontology.OntResource;
 
 import es.ctic.parrot.de.Distribution;
 import es.ctic.parrot.de.DocumentableObjectRegister;
+import es.ctic.parrot.de.MIMEType;
 import es.ctic.parrot.transformers.DocumentableObjectVisitor;
 import es.ctic.parrot.transformers.TransformerException;
 
@@ -34,8 +35,12 @@ public class DistributionJenaImpl extends AbstractJenaDocumentableObject impleme
 	public String getDownloadURL(){
 		return getAnnotationStrategy().getDownloadURL(getOntResource());
 	}
+
 	public String getByteSize(){
 		return getAnnotationStrategy().getByteSize(getOntResource());
 	}
 
+	public MIMEType getMIMEType(){
+		return getAnnotationStrategy().getMIMEType(getOntResource());
+	}
 }

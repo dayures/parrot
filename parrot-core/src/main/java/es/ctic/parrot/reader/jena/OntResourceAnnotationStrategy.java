@@ -25,6 +25,7 @@ import com.hp.hpl.jena.vocabulary.RDFS;
 
 import es.ctic.parrot.de.Agent;
 import es.ctic.parrot.de.Label;
+import es.ctic.parrot.de.MIMEType;
 import es.ctic.parrot.de.RelatedDocument;
 import es.ctic.parrot.de.RelatedDocument.Type;
 import es.ctic.parrot.de.Triple;
@@ -117,7 +118,8 @@ public class OntResourceAnnotationStrategy {
 	private static final String DCAT_DERI_DOWNLOADURL = "http://vocab.deri.ie/dcat#downloadURL";
 	private static final String DCAT_BYTESIZE = "http://www.w3.org/ns/dcat#byteSize";
 	private static final String DCAT_DERI_BYTESIZE = "http://vocab.deri.ie/dcat#byteSize";
-	
+	private static final String DCT_FORMAT = "http://purl.org/dc/terms/format";
+
 	
 	
 	
@@ -1431,6 +1433,48 @@ public class OntResourceAnnotationStrategy {
 			byteSize = getLiteralPropertyValue(resource, DCAT_DERI_BYTESIZE);
 		}
 		return byteSize;
+	}
+	
+	/**
+	 * Returns the MIME type.
+	 * @param resource the resource.
+	 * @return the MIME type.
+	 */
+	public MIMEType getMIMEType(Resource resource) {
+		return getMIMETypeFromObjectProperty(resource, DCT_FORMAT);
+	}
+	
+	private MIMEType getMIMETypeFromObjectProperty(Resource resource, String property) {
+		MIMEType format = null;
+		StmtIterator it = resource.listProperties(ResourceFactory.createProperty(property));
+		while (it.hasNext()) {
+			Statement st = it.next();
+			if (st.getObject().isResource()){
+				Resource imt = st.getObject().asResource(); // the IMT
+				try { 
+					String label = getLiteralPropertyValue(imt, RDFS.label.getURI());
+					if (label == null){
+						label = imt.getURI();
+					}
+
+					String value = getLiteralPropertyValue(imt, RDF.value.getURI());
+					if (value == null) {
+						value= imt.getURI();
+					}
+
+					if (label != null && value != null){
+						format = new MIMEType(label, value);
+					} else {
+						logger.debug("not added "+property +" format for "+resource+" because it doen't have neither rdfs:label or rdf:value");
+					}
+				} catch (LiteralRequiredException e) {
+					logger.warn("A literal is required. Object="+imt);
+				}
+			} else {
+				logger.warn("A resource is required for the property "+property+". Object="+st.getObject());
+			}
+		}
+		return format;
 	}
 }
 

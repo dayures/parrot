@@ -6,7 +6,7 @@
 
 #macro( generateLink $reference )
       #if (${reference.isExternalLink()})
-        <a class="external-link" href="${uri_base}?documentUri=${reference.getEncodedUri()}#${reference.getLocalName()}">$reference.Label</a>
+        <a class="parrot-link" href="${uri_base}?documentUri=${reference.getEncodedUri()}#${reference.getLocalName()}">$reference.Label</a>
       #else
       	<a href="#${reference.LocalName}">$reference.Label</a>
       #end
@@ -14,18 +14,18 @@
 
 #macro( generateImportLink $reference )
       #if (${reference.isExternalLink()})
-        <a class="external-link" href="${uri_base}?documentUri=${reference.getEncodedUri()}#${reference.getLocalName()}">$reference.Uri</a>
+        <a class="parrot-link" href="${uri_base}?documentUri=${reference.getEncodedUri()}#${reference.getLocalName()}">$reference.Uri</a>
       #else
       	<a href="#${reference.LocalName}">$reference.Label</a>
       #end
 #end
 
 #macro( generateToParrotLink $uri )
-      <a class="external-link" href="${uri_base}?documentUri=${uri}">${uri}</a>
+      <a class="parrot-link" href="${uri_base}?documentUri=${uri}">${uri}</a>
 #end
 
 #macro( generateToParrotLinkWithLabel $uri $label)
-      <a class="external-link" href="${uri_base}?documentUri=${uri}">${label}</a>
+      <a class="parrot-link" href="${uri_base}?documentUri=${uri}">${label}</a>
 #end
 
 #macro( generateToParrotLinkWithIcon $uri)

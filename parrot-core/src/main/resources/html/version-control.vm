@@ -49,7 +49,7 @@
 		#foreach($agent in $element.creatorAgents)
 		  <dd class="metadata-icon creator">
 		  	#if($agent.homepage)
-		  		<a href="$agent.homepage">$agent.name</a>
+		  		<a href="$agent.homepage" class="external-link">$agent.name</a>
 		  	#else
 		  		$agent.name
 		  	#end
@@ -66,7 +66,7 @@
 		#foreach($agent in $element.contributorAgents)
 		  <dd class="metadata-icon contributor">
 		  	#if($agent.homepage)
-		  		<a href="$agent.homepage">$agent.name</a>
+		  		<a href="$agent.homepage" class="external-link">$agent.name</a>
 		  	#else
 		  		$agent.name
 		  	#end
@@ -83,7 +83,7 @@
 		#foreach($agent in $element.publisherAgents)
 		  <dd class="metadata-icon publisher">
 		  	#if($agent.homepage)
-		  		<a href="$agent.homepage">$agent.name</a>
+		  		<a href="$agent.homepage" class="external-link">$agent.name</a>
 		  	#else
 		  		$agent.name
 		  	#end
@@ -98,7 +98,7 @@
 		
 		#if($element.LicenseLabel)
 		<dt>License</dt>
-		<dd><a href="$element.LicenseLabel">$element.LicenseLabel</a></dd>
+		<dd><a href="$element.LicenseLabel" class="external-link">$element.LicenseLabel</a></dd>
 		#end
 		
     </dl> 

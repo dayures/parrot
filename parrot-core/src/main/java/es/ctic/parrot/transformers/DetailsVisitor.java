@@ -163,7 +163,6 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 	    logger.debug("Visiting dataset " + object);
 	    DatasetDetailView details = DatasetDetailView.createFromDataset(object, locale);
 	    for(Distribution distribution : object.getDistributions()){
-	    	logger.debug(distribution);
 	    	details.addDistributionDetailView((DistributionDetailView)distribution.accept(this));
 	    }
 		document.addDatasetDetailView(details);
@@ -179,7 +178,7 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 	@Override
 	public Object visit(Catalog object) throws TransformerException {
 	    logger.debug("Visiting catalog " + object);
-	    CatalogDetailView details = CatalogDetailView.createFromCatalog(object, locale);		
+	    CatalogDetailView details = CatalogDetailView.createFromCatalog(object, locale);
 		document.addCatalogDetailView(details);
 		return details;
 	}
@@ -194,8 +193,6 @@ public class DetailsVisitor extends AbstractDocumentableObjectVisitor {
 	public Object visit(Distribution object) throws TransformerException {
 		logger.debug("Visiting distribution " + object);
 		DistributionDetailView details = DistributionDetailView.createFromDistribution(object, locale);
-		logger.debug("details.getIssuedDate()="+details.getIssuedDate());
 		return details;
-
 	}
 }

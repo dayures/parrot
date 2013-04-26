@@ -78,7 +78,13 @@ public interface DocumentableObject {
          /**
          * a catalog.
          */
-        CATALOG("catalog"),;
+        CATALOG("catalog"),
+        
+
+        /**
+        * a catalog.
+        */
+       DISTRIBUTION("distribution");
         
         
         private final String name;

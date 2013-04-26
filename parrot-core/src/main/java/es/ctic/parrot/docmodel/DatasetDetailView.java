@@ -8,7 +8,6 @@ import java.util.Locale;
 import org.apache.log4j.Logger;
 
 import es.ctic.parrot.de.Dataset;
-import es.ctic.parrot.de.Distribution;
 
 /**
  * A detailed view of a dataset.

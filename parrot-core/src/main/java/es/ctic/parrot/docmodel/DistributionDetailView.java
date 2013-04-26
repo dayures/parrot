@@ -5,6 +5,7 @@ import java.util.Locale;
 import org.apache.log4j.Logger;
 
 import es.ctic.parrot.de.Distribution;
+import es.ctic.parrot.de.MIMEType;
 
 /**
  * A detailed view of a distribution.
@@ -21,6 +22,7 @@ public class DistributionDetailView extends AbstractVersionableDetailView{
 	private String accessURL;
 	private String downloadURL;
 	private String byteSize;
+	private MIMEType mimetype;
 
 
 	/**
@@ -80,6 +82,22 @@ public class DistributionDetailView extends AbstractVersionableDetailView{
 	}
 	
 	/**
+	 * Returns the MIME type.
+	 * @return the MIME type.
+	 */
+	public MIMEType getMimetype() {
+		return mimetype;
+	}
+
+	/**
+	 * Set the MIME type.
+	 * @param mimetype the MIME type to set.
+	 */
+	private void setMimetype(MIMEType mimetype) {
+		this.mimetype = mimetype;
+	}
+	
+	/**
 	 * Returns a detailed view for the vocabulary given.
 	 * @param object the vocabulary.
 	 * @param locale the locale.
@@ -113,8 +131,10 @@ public class DistributionDetailView extends AbstractVersionableDetailView{
 //		details.setVersion(object.getVersion());
 		
 		details.setByteSize(object.getByteSize());
+		details.setMimetype(object.getMIMEType());
 
 		return details;
     }
+
 	
 }

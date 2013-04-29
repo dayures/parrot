@@ -3,7 +3,8 @@
 #if ( ($element.Uri) || 
 	  ($element.Homepage) || 
   	  (!$element.Datasets.isEmpty()) ||
-  	  ($element.Spatial) )
+  	  ($element.Spatial) ||
+  	  ($element.Language) )
   #set( $ti = true )
 #else
   #set( $ti = false )
@@ -32,17 +33,18 @@
 
 	#if($element.Uri)
 		<p>The <strong>URI</strong> of this catalog is <span><code>$element.Uri</code></span></p>
-		<hr />
 	#end
     	
 	#if($element.Homepage)
 		<p>The <strong>home page</strong> is <span><a href="$element.Homepage"  class="external-link"><code>$element.Homepage</code></a></span></p>
-		<hr />
 	#end
 	
-		#if($element.Spatial)
+	#if($element.Spatial)
 		<p>The <strong>spatial coverage</strong> is <span><a href="$element.Spatial"  class="external-link"><code>$element.Spatial</code></a></span></p>
-		<hr />
+	#end
+
+	#if($element.Language)
+		<p>The <strong>language</strong> is <code>$element.Language</code></p>
 	#end
 
 	#if(!$element.Datasets.isEmpty())

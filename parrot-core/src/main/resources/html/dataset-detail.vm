@@ -11,7 +11,8 @@
 	  (!$element.keywords.isEmpty()) ||
 	  (!$element.Catalogs.isEmpty()) ||
 	  (!$element.Distributions.isEmpty()) ||
-	  ($element.Spatial) )
+	  ($element.Spatial) ||
+	  ($element.Language) )
   #set( $ti = true )
 #else
   #set( $ti = false )
@@ -65,7 +66,10 @@
 	#if($element.Spatial)
 		<p>The <strong>spatial coverage</strong> is <span><a href="$element.Spatial" class="external-link"><code>$element.Spatial</code></a></span></p>
 	#end
-	
+
+	#if($element.Language)
+		<p>The <strong>language</strong> is <code>$element.Language</code></p>
+	#end	
 	
     #if(!$element.vocabularies.isEmpty())
 		<p>This dataset uses <strong>vocabularies</strong> such as
@@ -85,9 +89,6 @@
 		#end
 		</p>
 	#end
-	
-
-
 
 	#if(!$element.Catalogs.isEmpty())
 	  <p>This dataset is in catalog:

@@ -21,6 +21,7 @@ public class CatalogDetailView extends AbstractVersionableDetailView{
 	private String homepage;	
 	private Collection<DocumentableObjectReference> datasets;
     private String spatial;
+    private String language;
 
 	/**
 	 * Constructs a catalog detail view (Suppress default constructor for noninstantiability).
@@ -77,7 +78,22 @@ public class CatalogDetailView extends AbstractVersionableDetailView{
 		this.spatial = spatial;
 	}
 
-	
+	/**
+	 * Returns the language.
+	 * @return the language. 
+	 */
+	public String getLanguage() {
+		return language;
+	}
+
+	/**
+	 * Set the language.
+	 * @param language The language to set.
+	 */
+	private void setLanguage(String language) {
+		this.language = language;
+	}
+
 	/**
 	 * Returns a detailed view for the catalog given.
 	 * @param object the catalog.
@@ -112,13 +128,10 @@ public class CatalogDetailView extends AbstractVersionableDetailView{
 
 		details.setLicenseLabel(object.getLicenseLabel());
 		
-		// Not used
-//		details.setVersion(object.getVersion());
-
-
 		details.setHomepage(object.getHomepage());
 		details.setDatasets(DocumentableObjectReference.createReferences(object.getDatasets(),locale));
         details.setSpatial(object.getSpatial());
+        details.setLanguage(object.getLanguage());
 
 		return details;
     }

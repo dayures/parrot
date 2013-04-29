@@ -22,7 +22,10 @@ public interface Catalog extends DocumentableObject, Versionable{
 	 */
 	public abstract String getSpatial();
 
- 
-
+	/**
+	 * Returns the language.
+	 * @return the language.
+	 */
+	public abstract String getLanguage();
 
 }

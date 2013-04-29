@@ -31,6 +31,7 @@ public class DatasetDetailView extends AbstractVersionableDetailView{
     private Collection<DocumentableObjectReference> catalogs;
 	private String spatial;
     private Collection<DistributionDetailView> distributionDetailViews = new HashSet<DistributionDetailView>();
+    private String language;
 
 	/**
 	 * Constructs a dataset detail view (Suppress default constructor for noninstantiability).
@@ -204,6 +205,23 @@ public class DatasetDetailView extends AbstractVersionableDetailView{
     }
     
 	/**
+	 * Returns the language.
+	 * @return the language. 
+	 */
+	public String getLanguage() {
+		return language;
+	}
+
+	/**
+	 * Set the language.
+	 * @param language The language to set.
+	 */
+	private void setLanguage(String language) {
+		this.language = language;
+	}
+
+    
+	/**
 	 * Returns a detailed view for the dataset given.
 	 * @param object the dataset.
 	 * @param locale the locale.
@@ -249,6 +267,7 @@ public class DatasetDetailView extends AbstractVersionableDetailView{
 		details.setKeywords(object.getKeywords());
         details.setCatalogs(DocumentableObjectReference.createReferences(object.getCatalogs(),locale));
 		details.setSpatial(object.getSpatial());
+        details.setLanguage(object.getLanguage());
 
 		return details;
     }

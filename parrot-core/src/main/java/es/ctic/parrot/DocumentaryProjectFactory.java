@@ -118,7 +118,7 @@ public class DocumentaryProjectFactory {
 
 		iterator = model.listObjectsOfProperty(ResourceFactory.createProperty("http://vocab.ctic.es/parrot#readAsRDFOWLOntology"));
 		for (RDFNode node : iterator.toList()){
-			inputs.add(new URLInput(new URL(node.asResource().getURI()),"application/owl+xml"));
+			inputs.add(new URLInput(new URL(node.asResource().getURI()),"application/rdf+xml"));
 		}
 
 		iterator = model.listObjectsOfProperty(ResourceFactory.createProperty("http://vocab.ctic.es/parrot#readAsN3OWLOntology"));

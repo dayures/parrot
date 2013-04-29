@@ -108,7 +108,7 @@ title="go to parrot home page">Parrot </a></h1>
   <tbody>
     <tr>
       <th rowspan="2">Property</th>
-      <th colspan="8">Scope</th>
+      <th colspan="10">Scope</th>
       <th colspan="4">Place</th>
       <th rowspan="2">Description</th>
     </tr>
@@ -121,6 +121,8 @@ title="go to parrot home page">Parrot </a></h1>
       <th>Rule</th>
       <th>Vocabulary</th>
       <th>Dataset</th>
+      <th>Catalog</th>
+      <th>Distribution</th>
       <th><abbr title="Version Control Information">VC</abbr></th>
       <th>Definition</th><!-- TI -->
       <th>In use</th>
@@ -128,7 +130,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>
     <tr>
       <td><a href="http://www.w3.org/TR/rdf-schema/#ch_label"><em>rdfs:label</em></a></td>
-      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td></td><td></td><td></td><td><img alt="supported" src="images/page.png"/></td>
       <td>
       	<p>The label of the element. The range is a literal with a language tag (optional).</p>
@@ -137,7 +139,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>
     <tr>
       <td><a href="http://dublincore.org/documents/dcmi-terms/#terms-title"><em>dct:title</em></a></td>
-      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td></td><td></td><td></td><td><img alt="supported" src="images/page.png"/></td>
       <td>
       	<p>See <em>rdfs:label</em></p>
@@ -146,7 +148,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>
     <tr>
       <td><a href="http://dublincore.org/documents/dces/#title"><em>dc:title</em></a></td>
-      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td></td><td></td><td></td><td><img alt="supported" src="images/page.png"/></td>
       <td>
       	<p>See <em>rdfs:label</em></p>
@@ -155,7 +157,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>
     <tr>
       <td><a href="http://www.w3.org/TR/skos-reference/#xl-altLabel"><em>skosxl:altLabel</em></a></td>
-      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td></td><td></td><td></td><td><img alt="supported" src="images/page.png"/></td>
       <td>
       	<p>An alternative label of a element. The range of the property is an instance of the class LexicalLabel.</p>
@@ -164,7 +166,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>
     <tr>
       <td><a href="http://www.w3.org/TR/skos-reference/#xl-prefLabel"><em>skosxl:prefLabel</em></a></td>
-      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td></td><td></td><td></td><td><img alt="supported" src="images/page.png"/></td>
       <td>
       	<p>The preferred label of a element. The range of the property is an instance of the class LexicalLabel.</p>
@@ -173,7 +175,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>
     <tr>
       <td><a href="http://www.w3.org/TR/skos-reference/#altLabel"><em>skos:altLabel</em></a></td>
-      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td></td><td></td><td></td><td><img alt="supported" src="images/page.png"/></td>
       <td>
       	<p>An alternative label of a element. The range is a literal with a language tag.</p>
@@ -182,7 +184,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>
     <tr>
       <td><a href="http://www.w3.org/TR/skos-reference/#prefLabel"><em>skos:prefLabel</em></a></td>
-      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td></td><td></td><td></td><td><img alt="supported" src="images/page.png"/></td>
       <td>
       	<p>The preferred label of a element. The range is a literal with a language tag (optional). In some cases, it is assumed that <em>prefLabel</em> assumes the role of the <em>label</em> for presentation purposes.</p>
@@ -191,7 +193,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>
     <tr>
       <th rowspan="2">Property</th>
-      <th colspan="8">Scope</th>
+      <th colspan="10">Scope</th>
       <th colspan="4">Place</th>
       <th rowspan="2">Description</th>
     </tr>
@@ -204,14 +206,16 @@ title="go to parrot home page">Parrot </a></h1>
       <th>Rule</th>
       <th>Vocabulary</th>
       <th>Dataset</th>
+      <th>Catalog</th>
+      <th>Distribution</th>
       <th><abbr title="Version Control Information">VC</abbr></th>
       <th>Definition</th><!-- TI -->
       <th>In use</th>
       <th>Documentation</th> <!-- Other information -->
-    </tr>
+   </tr>
    <tr>
       <td><a href="http://www.w3.org/TR/rdf-schema/#ch_comment"><em>rdfs:comment</em></a></td>
-      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td></td><td></td><td></td><td></td>
       <td>
       	<p>The description of the element. The range is a literal with a language tag.</p>
@@ -220,7 +224,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>
 	<tr>
       <td><a href="http://dublincore.org/documents/dcmi-terms/#terms-description"><em>dct:description</em></a></td>
-      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td></td><td></td><td></td><td></td>
       <td>
       	<p>See <em>rdfs:comment</em></p>
@@ -229,7 +233,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>    
     <tr>
       <td><a href="http://dublincore.org/documents/dces/#description"><em>dc:description</em></a></td>
-      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td></td><td></td><td></td><td></td>
       <td>
       	<p>See <em>rdfs:comment</em></p>
@@ -239,7 +243,7 @@ title="go to parrot home page">Parrot </a></h1>
    
     <tr>
       <th rowspan="2">Property</th>
-      <th colspan="8">Scope</th>
+      <th colspan="10">Scope</th>
       <th colspan="4">Place</th>
       <th rowspan="2">Description</th>
     </tr>
@@ -252,6 +256,8 @@ title="go to parrot home page">Parrot </a></h1>
       <th>Rule</th>
       <th>Vocabulary</th>
       <th>Dataset</th>
+      <th>Catalog</th>
+      <th>Distribution</th>
       <th><abbr title="Version Control Information">VC</abbr></th>
       <th>Definition</th><!-- TI -->
       <th>In use</th>
@@ -259,7 +265,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>
     <tr>
       <td><a href="http://dublincore.org/documents/dcmi-terms/#terms-creator"><em>dct:creator</em></a></td>
-      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
 	  <td><img alt="place" src="images/page.png"/></td><td></td><td></td><td></td>
 	  <td>
 	  	<p>An entity primarily responsible for making the element: a person, an organization or a service. Recommended best practice is to use a FOAF profile to describe a creator.</p>
@@ -268,7 +274,7 @@ title="go to parrot home page">Parrot </a></h1>
 	</tr>
     <tr>
       <td><a href="http://dublincore.org/documents/dces/#creator"><em>dc:creator</em></a></td>
-      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
 	  <td><img alt="place" src="images/page.png"/></td><td></td><td></td><td></td>
 	  <td>
 	  	<p>An entity primarily responsible for making the element: a person, an organization or a service. Typically, the name of a creator should be used to indicate the entity.</p>
@@ -277,7 +283,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>    
     <tr>
       <td><a href="http://dublincore.org/documents/dcmi-terms/#terms-contributor"><em>dct:contributor</em></a></td>
-      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td><img alt="place" src="images/page.png"/></td><td></td><td></td><td></td>
       <td>
       	<p>An entity responsible for making the element: a person, an organization or a service. Recommended best practice is to use a FOAF profile to describe a contributor.</p>
@@ -286,7 +292,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>
     <tr>
       <td><a href="http://dublincore.org/documents/dces/#contributor"><em>dc:contributor</em></a></td>
-      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td><img alt="place" src="images/page.png"/></td><td></td><td></td><td></td>
       <td>
       	<p>An entity responsible for making the element: a person, an organization or a service. Typically, the name of a contributor should be used to indicate the entity.</p>
@@ -295,7 +301,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>
 	<tr>
       <td><a href="http://dublincore.org/documents/dcmi-terms/#terms-publisher"><em>dct:publisher</em></a></td>
-      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
 	  <td><img alt="place" src="images/page.png"/></td><td></td><td></td><td></td>
 	  <td>
 	  	<p>An entity responsible for making the element available: a person, an organization or a service. Recommended best practice is to use a FOAF profile to describe a publisher.</p>
@@ -304,7 +310,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>
     <tr>
       <td><a href="http://dublincore.org/documents/dces/#publisher"><em>dc:publisher</em></a></td>
-      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
 	  <td><img alt="place" src="images/page.png"/></td><td></td><td></td><td></td>
 	  <td>
 	  	<p>An entity responsible for making the element available: a person, an organization or a service. Typically, the name of a publisher should be used to indicate the entity.</p>
@@ -313,7 +319,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>
     <tr>
       <td><a href="http://xmlns.com/foaf/spec/#term_maker"><em>foaf:maker</em></a></td>
-      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td><img alt="supported" src="images/page.png"/></td><td></td><td></td><td></td>
       <td>
       	<p>See <em>dct:creator</em>.</p>
@@ -322,7 +328,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>
     <tr>
       <th rowspan="2">Property</th>
-      <th colspan="8">Scope</th>
+      <th colspan="10">Scope</th>
       <th colspan="4">Place</th>
       <th rowspan="2">Description</th>
     </tr>
@@ -335,6 +341,8 @@ title="go to parrot home page">Parrot </a></h1>
       <th>Rule</th>
       <th>Vocabulary</th>
       <th>Dataset</th>
+      <th>Catalog</th>
+      <th>Distribution</th>
       <th><abbr title="Version Control Information">VC</abbr></th>
       <th>Definition</th><!-- TI -->
       <th>In use</th>
@@ -342,7 +350,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>
     <tr>
       <td><a href="http://dublincore.org/documents/dcmi-terms/#terms-date"><em>dct:date</em></a></td>
-      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td><img alt="place" src="images/page.png"/></td><td></td><td></td><td></td>
       <td>
       	<p>The date of creation or publication of the element. Recommended best practice is to use the W3CDTF profile of ISO 8601.</p>
@@ -351,7 +359,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>    
     <tr>
       <td><a href="http://dublincore.org/documents/dces/#date"><em>dc:date</em></a></td>
-      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td><img alt="place" src="images/page.png"/></td><td></td><td></td><td></td>
       <td>
       	<p>The date of creation or publication of the element. Recommended best practice is to use the W3CDTF profile of ISO 8601.</p>
@@ -360,7 +368,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>
     <tr>
       <td><a href="http://dublincore.org/documents/dcmi-terms/#terms-issued"><em>dct:issued</em></a></td>
-      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td><img alt="place" src="images/page.png"/></td><td></td><td></td><td></td>
       <td>
       	<p>Date of formal issuance (e.g., publication) of the element. Recommended best practice is to use the W3CDTF profile of ISO 8601.</p>
@@ -369,7 +377,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>
     <tr>
       <td><a href="http://dublincore.org/documents/dcmi-terms/#terms-modified"><em>dct:modified</em></a></td>
-      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td><img alt="place" src="images/page.png"/></td><td></td><td></td><td></td>
       <td>
       	<p>The date on which the element was changed. Recommended best practice is to use the W3CDTF profile of ISO 8601.</p>
@@ -378,7 +386,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>    
     <tr>
       <th rowspan="2">Property</th>
-      <th colspan="8">Scope</th>
+      <th colspan="10">Scope</th>
       <th colspan="4">Place</th>
       <th rowspan="2">Description</th>
     </tr>
@@ -391,15 +399,16 @@ title="go to parrot home page">Parrot </a></h1>
       <th>Rule</th>
       <th>Vocabulary</th>
       <th>Dataset</th>
+      <th>Catalog</th>
+      <th>Distribution</th>
       <th><abbr title="Version Control Information">VC</abbr></th>
       <th>Definition</th><!-- TI -->
       <th>In use</th>
       <th>Documentation</th> <!-- Other information -->
     </tr>
-
     <tr>
       <td><a href="http://dublincore.org/documents/dcmi-terms/#terms-license"><em>dct:license</em></a></td>
-      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td><img alt="place" src="images/page.png"/></td><td></td><td></td><td></td>
       <td>
       	<p>A legal document describing the copyright license of the element. Recommended best practice is to use Creative Commons licenses and to describe them in RDF with the Creative Commons Rights Expression Language (CC REL).</p>
@@ -408,7 +417,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>    
     <tr>
       <td><a href="http://creativecommons.org/ns"><em>cc:license</em></a></td>
-      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td><img alt="place" src="images/page.png"/></td><td></td><td></td><td></td>
       <td>
       	<p>A legal document describing the copyright license of the element. Recommended best practice is to use Creative Commons licenses and to describe them in RDF with the Creative Commons Rights Expression Language (CC REL).</p>
@@ -417,7 +426,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>
     <tr>
       <td><a href="http://web.resource.org/rss/1.0/modules/cc/"><em>cc-deprecated:license</em></a></td>
-      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td><img alt="place" src="images/page.png"/></td><td></td><td></td><td></td>
       <td>
       	<p>A legal document describing the copyright license of the element. Recommended best practice is to use Creative Commons licenses and to describe them in RDF with the Creative Commons Rights Expression Language (CC REL).</p>
@@ -426,7 +435,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>
     <tr>
       <td><a href="http://dublincore.org/documents/dces/#rights"><em>dc:rights</em></a></td>
-      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td><td></td><td></td>
       <td><img alt="place" src="images/page.png"/></td><td></td><td></td><td></td>
       <td>
       	<p>Information about rights held in and over the element.</p>
@@ -435,7 +444,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>
     <tr>
       <th rowspan="2">Property</th>
-      <th colspan="8">Scope</th>
+      <th colspan="10">Scope</th>
       <th colspan="4">Place</th>
       <th rowspan="2">Description</th>
     </tr>
@@ -448,6 +457,8 @@ title="go to parrot home page">Parrot </a></h1>
       <th>Rule</th>
       <th>Vocabulary</th>
       <th>Dataset</th>
+      <th>Catalog</th>
+      <th>Distribution</th>
       <th><abbr title="Version Control Information">VC</abbr></th>
       <th>Definition</th><!-- TI -->
       <th>In use</th>
@@ -455,7 +466,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>
     <tr>
       <td><a href="http://www.w3.org/TR/2004/REC-owl-ref-20040210/#versionInfo-def"><em>owl:versionInfo</em></a></td>
-      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td><td></td><td></td>
       <td><img alt="place" src="images/page.png"/></td><td></td><td></td><td></td>
       <td>
       	<p>Provides a hook suitable for use by versioning systems.</p>
@@ -464,7 +475,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>
     <tr>
       <td><a href="http://www.w3.org/2003/06/sw-vocab-status/note.html#vocab"><em>vs:term_status</em></a></td>
-      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td><td></td><td></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td><td></td><td></td><td></td><td></td>
       <td><img alt="place" src="images/page.png"/></td><td></td><td></td><td></td>
       <td>
       	<p>Status of a term, expressed as a short symbolic string; known values include 'unstable','testing', 'stable' and 'archaic'.</p>
@@ -473,7 +484,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>    
     <tr>
       <td><a href="http://www.w3.org/TR/2009/REC-owl2-syntax-20091027/#a_deprecated"><em>owl:deprecated</em></a></td>
-      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td><td></td><td></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td><td></td><td></td><td></td><td></td>
       <td></td><td></td><td></td><td></td>
       <td>
       	<p>An annotation with the owl:deprecated annotation property and the value equal to <code>"true"^^xsd:boolean</code> can be used to specify that an IRI is deprecated.
@@ -483,7 +494,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>
     <tr>
       <td><a href="http://xmlns.com/foaf/spec/#term_depiction"><em>foaf:depiction</em></a></td>
-      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td><td></td><td></td>
       <td></td><td></td><td></td><td><img alt="supported" src="images/page.png"/></td>
       <td>
       	<p>An image associated with the element.</p>
@@ -492,7 +503,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>    
     <tr>
       <td><a href="http://ogp.me/#video"><em>og:video</em></a></td>
-      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td><td></td><td></td>
       <td></td><td></td><td></td><td><img alt="supported" src="images/page.png"/></td>
       <td>
       	<p>A video associated with the element.</p>
@@ -501,7 +512,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>    
     <tr>
       <td><a href="http://www.w3.org/TR/rdf-schema/#ch_seealso"><em>rdfs:seeAlso</em></a></td>
-      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td></td>
       <td></td><td></td><td></td><td><img alt="supported" src="images/page.png"/></td>
       <td>
       	<p>Specifies a resource that might provide additional information about the element.</p>
@@ -510,7 +521,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>    
     <tr>
       <td><a href="http://dublincore.org/documents/dcmi-terms/#terms-source"><em>dct:source</em></a></td>
-      <td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td>
+      <td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td><td></td><td></td>
       <td></td><td></td><td></td><td><img alt="place" src="images/page.png"/></td>
       <td>
       	<p>The resources from which the rules are derived. Typically, they are documentary sources (as candidate rules), but diagrams, plans or pictures are also possible.</p>
@@ -519,7 +530,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>
     <tr>
       <th rowspan="2">Property</th>
-      <th colspan="8">Scope</th>
+      <th colspan="10">Scope</th>
       <th colspan="4">Place</th>
       <th rowspan="2">Description</th>
     </tr>
@@ -532,6 +543,8 @@ title="go to parrot home page">Parrot </a></h1>
       <th>Rule</th>
       <th>Vocabulary</th>
       <th>Dataset</th>
+      <th>Catalog</th>
+      <th>Distribution</th>
       <th><abbr title="Version Control Information">VC</abbr></th>
       <th>Definition</th><!-- TI -->
       <th>In use</th>
@@ -539,7 +552,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>
     <tr>
       <td><a href="http://vocab.org/vann/.html#preferredNamespacePrefix"><em>vann:preferredNamespacePrefix</em></a></td>
-      <td><img alt="supported" src="images/tick.png"/></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td><td></td>
       <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
       <td>
       	<p>The preferred namespace prefix when using entities of an ontology or a vocabulary.</p>
@@ -548,7 +561,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>
     <tr>
       <td><a href="http://vocab.org/vann/.html#preferredNamespaceUri"><em>vann:preferredNamespaceUri</em></a></td>
-      <td><img alt="supported" src="images/tick.png"/></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td><td></td>
       <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
       <td>
       	<p>The preferred namespace URI to use when using terms from an ontology or a vocabulary.</p>
@@ -557,7 +570,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>
     <tr>
       <td><a href="http://labs.mondeca.com/vocab/voaf/#classNumber"><em>voaf:classNumber</em></a></td>
-      <td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td><td></td>
       <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
       <td>
       	<p>The number of classes defined in the vocabulary.</p>
@@ -566,7 +579,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>    
     <tr>
       <td><a href="http://labs.mondeca.com/vocab/voaf/#propertyNumber"><em>voaf:propertyNumber</em></a></td>
-      <td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td><td></td>
       <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
       <td>
       	<p>The number of properties defined in the vocabulary.</p>
@@ -575,7 +588,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>   
     <tr>
       <td><a href="http://xmlns.com/foaf/spec/#term_homepage"><em>foaf:homepage</em></a></td>
-      <td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td></td>
       <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
       <td>
       	<p>The homepage (typically a Web page in HTML format) of the vocabulary.</p>
@@ -584,7 +597,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>
     <tr>
       <td><a href="http://vocab.deri.ie/void#vocabulary"><em>void:vocabulary</em></a></td>
-      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td>
       <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
       <td>
       	<p>A vocabulary or <em>owl:Ontology</em> whose classes or properties are used in the dataset.</p>
@@ -593,7 +606,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>
     <tr>
       <td><a href="http://www.w3.org/TR/rdf-schema/#ch_isdefinedby"><em>rdfs:isDefinedBy</em></a></td>
-      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td><td></td><td></td>
       <td></td><td></td><td><img alt="place" src="images/page.png"/></td><td></td>
       <td>
       	<p>Used to indicate where this element has been defining.</p>
@@ -602,7 +615,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr> 
     <tr>
       <td><a href="http://www.w3.org/TR/owl2-syntax/#Ontology_IRI_and_Version_IRI"><em>owl:versionIRI</em></a></td>
-      <td><img alt="supported" src="images/tick.png"/></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
       <td><img alt="place" src="images/page.png"/></td><td></td><td></td><td></td>
       <td>
       	<p>Identifies the version IRI of an ontology.</p>
@@ -611,7 +624,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>  
     <tr>
       <td><a href="http://www.w3.org/TR/owl-ref/#priorVersion-def"><em>owl:priorVersion</em></a></td>
-      <td><img alt="supported" src="images/tick.png"/></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
       <td><img alt="place" src="images/page.png"/></td><td></td><td></td><td></td>
       <td>
       	<p>Indicates the predecessor ontology of a given ontology.</p>
@@ -620,7 +633,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>  
     <tr>
       <td><a href="http://www.w3.org/TR/owl-ref/#incompatibleWith-def"><em>owl:incompatibleWith</em></a></td>
-      <td><img alt="supported" src="images/tick.png"/></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      <td><img alt="supported" src="images/tick.png"/></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
       <td><img alt="place" src="images/page.png"/></td><td></td><td></td><td></td>
       <td>
       	<p>Indicates that a given ontology is incompatible with another ontology.</p>
@@ -629,7 +642,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>
     <tr>
       <th rowspan="2">Property</th>
-      <th colspan="8">Scope</th>
+      <th colspan="10">Scope</th>
       <th colspan="4">Place</th>
       <th rowspan="2">Description</th>
     </tr>
@@ -642,6 +655,8 @@ title="go to parrot home page">Parrot </a></h1>
       <th>Rule</th>
       <th>Vocabulary</th>
       <th>Dataset</th>
+      <th>Catalog</th>
+      <th>Distribution</th>
       <th><abbr title="Version Control Information">VC</abbr></th>
       <th>Definition</th><!-- TI -->
       <th>In use</th>
@@ -649,7 +664,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>
 	<tr>
       <td><a href="http://rdfs.org/ns/void#dataDump"><em>void:dataDump</em></a></td>
-      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td>
       <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
       <td>
       	<p>An RDF dump, partial or complete, of the dataset.</p>
@@ -658,7 +673,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>
     <tr>
       <td><a href="http://vocab.deri.ie/void#sparqlEndpoint"><em>void:sparqlEndpoint</em></a></td>
-      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td>
       <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
       <td>
       	<p>The SPARQL endpoint of the dataset.</p>
@@ -667,7 +682,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>    
     <tr>
       <td><a href="http://dublincore.org/documents/dcmi-terms/#terms-identifier"><em>dct:identifier</em></a></td>
-      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td>
       <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
       <td>
       	<p>A unique identifier of the dataset.</p>
@@ -676,7 +691,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>    
     <tr>
       <td><a href="http://dublincore.org/documents/dcmi-terms/#terms-language"><em>dct:language</em></a></td>
-      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td></td>
       <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
       <td>
       	<p>This refers to the language used in the textual metadata describing titles, descriptions, etc. of the element.</p>
@@ -685,7 +700,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>    
     <tr>
       <td><a href="http://dublincore.org/documents/dcmi-terms/#elements-language"><em>dc:language</em></a></td>
-      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td></td>
       <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
       <td>
       	<p>The language used in the textual metadata describing titles, descriptions, etc. of the element (Recommended best practice is to use a controlled vocabulary such as RFC 4646).</p>
@@ -694,7 +709,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>
     <tr>
       <td><a href="http://dublincore.org/documents/dcmi-terms/#terms-spatial"><em>dct:spatial</em></a></td>
-      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td></td>
       <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
       <td>
       	<p>The geographical area covered by the element.</p>
@@ -703,7 +718,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>
     <tr>
       <td><a href="http://www.w3.org/TR/vocab-dcat/#Property:dataset_keyword"><em>dcat:keyword</em></a></td>
-      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td>
       <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
       <td>
       	<p>A keyword or tag describing the element.</p>
@@ -712,7 +727,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>
     <tr>
       <td><a href="http://vocab.deri.ie/dcat"><em>dcat_deri:keyword</em></a></td>
-      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td>
       <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
       <td>
       	<p>A keyword or tag describing the element.</p>
@@ -721,7 +736,7 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>
     <tr>
       <td><a href="http://www.w3.org/TR/vocab-dcat/#Property:dataset_landingpage"><em>dcat:landingPage</em></a></td>
-      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td>
       <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
       <td>
       	<p>A Web page that can be navigated to in a Web browser to gain access to the element.</p>
@@ -730,27 +745,99 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>
     <tr>
       <td><a href="http://vocab.deri.ie/dcat"><em>dcat_deri:landingPage</em></a></td>
-      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td>
       <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
       <td>
       	<p>A Web page that can be navigated to in a Web browser to gain access to the element.</p>
       	<p>For example: <code>&lt;dcat_deri:landingPage rdf:resource="http://example.org/dataset3_1.html" /&gt;</code></p>      	
       </td>
     </tr>
-     <tr>
+    <tr>
       <td><a href="http://www.w3.org/TR/vocab-dcat/#Property:dataset_distribution"><em>dcat:distribution</em></a></td>
-      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td>
       <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
       <td>
       	<p>Connects a element to its available distributions.</p>
-      	<p>For example: <code>&lt;dcat:distribution rdf:resource="http://example.org/distribution4_13" /&gt;</code></p>      	
+      	<p>For example: <code>&lt;dcat:distribution rdf:resource="http://example.org/distribution4_79" /&gt;</code></p>      	
       </td>
     </tr>
-    
-    
-
-    
-     
+    <tr>
+      <td><a href="http://vocab.deri.ie/dcat"><em>dcat_deri:distribution</em></a></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td>
+      <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
+      <td>
+      	<p>Connects a element to its available distributions.</p>
+      	<p>For example: <code>&lt;dcat_deri:distribution rdf:resource="http://example.org/distribution4_79" /&gt;</code></p>      	
+      </td>
+    </tr>
+    <tr>
+      <td><a href="http://www.w3.org/TR/vocab-dcat/#Property:catalog_dataset"><em>dcat:dataset</em></a></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td></td>
+      <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
+      <td>
+      	<p>A dataset that is part of the element.</p>
+      	<p>For example: <code>&lt;dcat:dataset rdf:resource="http://example.org/dataset3_1" /&gt;</code></p>      	
+      </td>
+    </tr>
+    <tr>
+      <td><a href="http://vocab.deri.ie/dcat"><em>dcat_deri:dataset</em></a></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td></td>
+      <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
+      <td>
+      	<p>A dataset that is part of the element.</p>
+      	<p>For example: <code>&lt;dcat_deri:dataset rdf:resource="http://example.org/dataset3_1" /&gt;</code></p>      	
+      </td>
+    </tr>
+    <tr>
+      <td><a href="http://www.w3.org/TR/vocab-dcat/#Property:distribution_accessurl"><em>dcat:accessURL</em></a></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
+      <td>
+      	<p>Could be any kind of URL that gives access to a distribution of the element. E.g. landing page, download, feed URL, SPARQL endpoint.</p>
+      	<p>For example: <code>&lt;dcat:accessURL rdf:resource="http://example.org/dataset3_1/sparql" /&gt;</code></p>      	
+      </td>
+    </tr>
+    <tr>
+      <td><a href="http://vocab.deri.ie/dcat"><em>dcat_deri:accessURL</em></a></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
+      <td>
+      	<p>Could be any kind of URL that gives access to a distribution of the element. E.g. landing page, download, feed URL, SPARQL endpoint.</p>
+      	<p>For example: <code>&lt;dcat_deri:accessURL rdf:resource="http://example.org/dataset3_1/sparql" /&gt;</code></p>      	
+      </td>
+    </tr>
+    <tr>
+      <td><a href="http://www.w3.org/TR/vocab-dcat/#Property:distribution_downloadurl"><em>dcat:downloadURL</em></a></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
+      <td>
+      	<p>This is a direct link to a downloadable file in a given format (e.g. CSV file or RDF file)</p>
+      	<p>For example: <code>&lt;dcat:accessURL rdf:resource="http://example.org/dataset3_1.csv" /&gt;</code></p>      	
+      </td>
+    </tr>
+    <tr>
+      <td><a href="http://www.w3.org/TR/vocab-dcat/#Property:_size"><em>dcat:byteSize</em></a></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
+      <td>
+      	<p>The size of a element in bytes.</p>
+      	<p>For example: <code>&lt;dcat:byteSize&gt;5020&lt;/dcat:byteSize&gt;</code></p>      	
+      </td>
+    </tr>
+    <tr>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/#terms-format"><em>dct:format</em></a></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
+      <td>
+      	<p>The file format of the element.For example:
+<pre>&lt;dct:format&gt;
+  &lt;dct:IMT&gt;
+    &lt;rdf:value&gt;text/csv&lt;/rdf:value&gt;
+    &lt;rdfs:label&gt;CSV&lt;/rdfs:label&gt;
+  &lt;/dct:IMT&gt;
+&lt;dct:format&gt;</pre> 	
+      </td>
+    </tr>
     </tbody>
 </table>
 

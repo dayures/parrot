@@ -1,7 +1,13 @@
     <div class="distribution"> 
-    <h4>Distribution $distribution.Label #if($distribution.Description) ($distribution.Description)#end</h4> 
+    <h4>Distribution $distribution.Label #if($distribution.Description) ($distribution.Description)#end</h4>
+     
     <dl> 
-		
+
+		#if($distribution.Uri)
+		<dt>Uri</dt>
+		<dd><code>$distribution.Uri</code></dd>
+		#end
+
 		#if($distribution.ModifiedDate)
 		<dt>Last modified</dt>
 		<dd class="metadata-icon date">$distribution.ModifiedDate</dd>

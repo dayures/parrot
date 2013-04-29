@@ -1,6 +1,7 @@
 #parse("html/version-control-check.vm")
 
-#if ( ($element.Homepage) || 
+#if ( ($element.Uri) || 
+	  ($element.Homepage) || 
   	  (!$element.Datasets.isEmpty()) ||
   	  ($element.Spatial) )
   #set( $ti = true )
@@ -28,6 +29,11 @@
   #if ($ti)
     <div class="ti"> 
     <h4>Definition</h4> 
+
+	#if($element.Uri)
+		<p>The <strong>URI</strong> of this catalog is <span><code>$element.Uri</code></span></p>
+		<hr />
+	#end
     	
 	#if($element.Homepage)
 		<p>The <strong>home page</strong> is <span><a href="$element.Homepage"  class="external-link"><code>$element.Homepage</code></a></span></p>

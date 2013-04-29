@@ -52,7 +52,6 @@ public class OntResourceAnnotationStrategy {
 	private static final String RCLN_RULE = "http://lipn.univ-paris13.fr/RCLN/schema#Rule";
 	private static final String RCLN_RULE_TEXT = "http://lipn.univ-paris13.fr/RCLN/schema#ruleText";
 
-
 	private static final String SKOS_XL_PREF_LABEL = "http://www.w3.org/2008/05/skos-xl#prefLabel";
 	private static final String SKOS_XL_ALT_LABEL = "http://www.w3.org/2008/05/skos-xl#altLabel";
 	private static final String SKOS_XL_LITERAL_FORM = "http://www.w3.org/2008/05/skos-xl#literalForm";
@@ -71,6 +70,7 @@ public class OntResourceAnnotationStrategy {
 	private static final String DC_DESCRIPTION = "http://purl.org/dc/elements/1.1/description";
 	private static final String DC_RIGHTS = "http://purl.org/dc/elements/1.1/rights";
 	private static final String DC_IDENTIFIER = "http://purl.org/dc/elements/1.1/identifier";
+	private static final String DC_LANGUAGE = "http://purl.org/dc/elements/1.1/language";
 
 	private static final String DCT_DESCRIPTION = "http://purl.org/dc/terms/description";
 	private static final String DCT_SOURCE = "http://purl.org/dc/terms/source";
@@ -86,6 +86,7 @@ public class OntResourceAnnotationStrategy {
 	private static final String DCT_IDENTIFIER = "http://purl.org/dc/terms/identifier";
 	private static final String DCT_SPATIAL = "http://purl.org/dc/terms/spatial";
 	private static final String DCT_FORMAT = "http://purl.org/dc/terms/format";
+	private static final String DCT_LANGUAGE = "http://purl.org/dc/terms/language";
 
 	
 	private static final String FOAF_DEPICTION = "http://xmlns.com/foaf/0.1/depiction";
@@ -1479,6 +1480,19 @@ public class OntResourceAnnotationStrategy {
 			}
 		}
 		return format;
+	}
+	
+	/**
+	 * Returns the language.  
+	 * @param resource the resource.
+	 * @return the language of a resource.
+	 */
+	public String getLanguage(Resource resource) {
+		String language = getObjectPropertyURI(resource, DCT_LANGUAGE);
+		if (language == null){
+			language = getLiteralPropertyValue(resource, DC_LANGUAGE);
+		}
+		return language;
 	}
 }
 

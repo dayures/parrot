@@ -72,7 +72,9 @@ public class CatalogJenaImpl extends AbstractJenaDocumentableObject implements C
 	public String getSpatial(){
 		return getAnnotationStrategy().getSpatial(getOntResource());
 	}
-
 	
+	public String getLanguage(){
+		return getAnnotationStrategy().getLanguage(getOntResource());
+	}
 	
 }

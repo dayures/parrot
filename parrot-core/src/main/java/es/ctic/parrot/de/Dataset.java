@@ -64,4 +64,11 @@ public interface Dataset extends DocumentableObject, Versionable{
 	 * @return the distributions.
 	 */	
 	public abstract Collection<Distribution> getDistributions();
+
+	/**
+	 * Returns the language.
+	 * @return the language.
+	 */
+	public abstract String getLanguage();
+
 }

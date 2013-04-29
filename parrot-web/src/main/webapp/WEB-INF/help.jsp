@@ -27,6 +27,7 @@ title="go to parrot home page">Parrot </a></h1>
 
 <h2>Table of contents</h2>
 <ul>
+<li><a href="#elements">Supported elements</a></li>
 <li><a href="#metadata">Supported metadata</a></li>
 <!-- 
 <li><a href="#ontologies">Metadata for Ontologies</a></li>
@@ -48,9 +49,60 @@ title="go to parrot home page">Parrot </a></h1>
 </ul>
 <br/>
 
+<h2 id="elements">Supported elements</h2>
+<table id="metadata-support-all">
+  <tbody>
+    <tr>
+      <th>Element</th>
+      <th>rdf:type</th>
+    </tr>
+      <tr>
+        <td>Ontology</td>
+        <td><code>owl:Ontology</code></td>
+      </tr>
+      <tr>
+        <td>Class</td>
+        <td>
+        	<code>owl:Class</code><br />
+        	<code>rdfs:Class</code>
+        </td>
+      </tr>
+      <tr>
+      	<td>Property</td>
+      	<td>
+      	  <code>rdf:Property</code><br />
+      	  <code>owl:AnnotationProperty</code><br />
+      	  <code>owl:ObjectProperty</code><br />
+      	  <code>owl:DatatypeProperty</code><br />
+      	  <code>owl:OntologyProperty</code><br />
+      	  <code>owl:DeprecatedProperty</code><br />
+      </tr>
+      <tr>
+        <td>Rule Set</td>
+        <td>RIF group</td>
+      </tr>
+      <tr>
+        <td>Rule</td>
+        <td>RIF rule</td>
+      </tr>
+      <tr>
+        <td>Vocabulary</td>
+        <td><code>voaf#Vocabulary</code></td>
+      </tr>
+      <tr>
+        <td>Dataset</td>
+        <td>
+        	<code>void:Dataset</code><br />
+            <code>dcat:Dataset</code><br />
+    		<code>dcat_deri:Dataset</code><br />
+        </td>
+      </tr>
+  </tbody>
+</table>
+
 <h2 id="metadata">Supported metadata</h2>
 
-<p>This table describes the annotates properties relevant for adding metadata.</p>
+<p>This table describes the annotated properties relevant for adding metadata.</p>
 
 <table id="metadata-support-all">
   <tbody>
@@ -531,24 +583,6 @@ title="go to parrot home page">Parrot </a></h1>
       </td>
     </tr>
     <tr>
-      <td><a href="http://rdfs.org/ns/void#dataDump"><em>void:dataDump</em></a></td>
-      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
-      <td>
-      	<p>An RDF dump, partial or complete, of the dataset.</p>
-      	<p>For example: <code>&lt;void:dataDump rdf:resource="http://ec.europa.eu/eurostat/ramon/rdfdata/migs.rdf" /&gt;</code></p>
-      </td>
-    </tr>
-    <tr>
-      <td><a href="http://vocab.deri.ie/void#sparqlEndpoint"><em>void:sparqlEndpoint</em></a></td>
-      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
-      <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
-      <td>
-      	<p>The SPARQL endpoint of the dataset.</p>
-      	<p>For example: <code>&lt;void:sparqlEndpoint rdf:resource="http://risp.asturias.es/sparql" /&gt;</code></p>      	
-      </td>
-    </tr>    
-    <tr>
       <td><a href="http://vocab.deri.ie/void#vocabulary"><em>void:vocabulary</em></a></td>
       <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
       <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
@@ -592,7 +626,131 @@ title="go to parrot home page">Parrot </a></h1>
       	<p>Indicates that a given ontology is incompatible with another ontology.</p>
 	  	<p>For example: <code>&lt;owl:priorVersion rdf:resource="http://www.lingvoj.org/ontology_v1.3.rdf" /&gt;</code></p>
       </td>
-    </tr>  
+    </tr>
+    <tr>
+      <th rowspan="2">Property</th>
+      <th colspan="8">Scope</th>
+      <th colspan="4">Place</th>
+      <th rowspan="2">Description</th>
+    </tr>
+    <tr>
+      <th>Ontology</th>
+      <th>Class</th>
+      <th>Property</th>
+      <th>Individual</th>
+      <th>Rule Set</th>
+      <th>Rule</th>
+      <th>Vocabulary</th>
+      <th>Dataset</th>
+      <th><abbr title="Version Control Information">VC</abbr></th>
+      <th>Definition</th><!-- TI -->
+      <th>In use</th>
+      <th>Documentation</th> <!-- Other information -->
+    </tr>
+	<tr>
+      <td><a href="http://rdfs.org/ns/void#dataDump"><em>void:dataDump</em></a></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
+      <td>
+      	<p>An RDF dump, partial or complete, of the dataset.</p>
+      	<p>For example: <code>&lt;void:dataDump rdf:resource="http://ec.europa.eu/eurostat/ramon/rdfdata/migs.rdf" /&gt;</code></p>
+      </td>
+    </tr>
+    <tr>
+      <td><a href="http://vocab.deri.ie/void#sparqlEndpoint"><em>void:sparqlEndpoint</em></a></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
+      <td>
+      	<p>The SPARQL endpoint of the dataset.</p>
+      	<p>For example: <code>&lt;void:sparqlEndpoint rdf:resource="http://risp.asturias.es/sparql" /&gt;</code></p>      	
+      </td>
+    </tr>    
+    <tr>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/#terms-identifier"><em>dct:identifier</em></a></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
+      <td>
+      	<p>A unique identifier of the dataset.</p>
+      	<p>For example: <code>&lt;dct:identifier&gt;dataset-1314&lt;/dct:identifier&gt;</code></p>      	
+      </td>
+    </tr>    
+    <tr>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/#terms-language"><em>dct:language</em></a></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
+      <td>
+      	<p>This refers to the language used in the textual metadata describing titles, descriptions, etc. of the element.</p>
+      	<p>For example: <code>&lt;dct:language rdf:resource="http://id.loc.gov/vocabulary/iso639-1/es" /&gt;</code></p>      	
+      </td>
+    </tr>    
+    <tr>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/#elements-language"><em>dc:language</em></a></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
+      <td>
+      	<p>The language used in the textual metadata describing titles, descriptions, etc. of the element (Recommended best practice is to use a controlled vocabulary such as RFC 4646).</p>
+      	<p>For example: <code>&lt;dc:language&gt;es&lt;/dc:language&gt;</code></p>      	
+      </td>
+    </tr>
+    <tr>
+      <td><a href="http://dublincore.org/documents/dcmi-terms/#terms-spatial"><em>dct:spatial</em></a></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
+      <td>
+      	<p>The geographical area covered by the element.</p>
+      	<p>For example: <code>&lt;dct:spatial rdf:resource="http://datos.gob.es/recurso/sector-publico/territorio/provincia/33" /&gt;</code></p>      	
+      </td>
+    </tr>
+    <tr>
+      <td><a href="http://www.w3.org/TR/vocab-dcat/#Property:dataset_keyword"><em>dcat:keyword</em></a></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
+      <td>
+      	<p>A keyword or tag describing the element.</p>
+      	<p>For example: <code>&lt;dcat:keyword&gt;Astronomy&lt;/dcat:keyword&gt;</code></p>      	
+      </td>
+    </tr>
+    <tr>
+      <td><a href="http://vocab.deri.ie/dcat"><em>dcat_deri:keyword</em></a></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
+      <td>
+      	<p>A keyword or tag describing the element.</p>
+      	<p>For example: <code>&lt;dcat_deri:keyword&gt;Astronomy&lt;/dcat_deri:keyword&gt;</code></p>      	
+      </td>
+    </tr>
+    <tr>
+      <td><a href="http://www.w3.org/TR/vocab-dcat/#Property:dataset_landingpage"><em>dcat:landingPage</em></a></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
+      <td>
+      	<p>A Web page that can be navigated to in a Web browser to gain access to the element.</p>
+      	<p>For example: <code>&lt;dcat:landingPage rdf:resource="http://example.org/dataset3_1.html" /&gt;</code></p>      	
+      </td>
+    </tr>
+    <tr>
+      <td><a href="http://vocab.deri.ie/dcat"><em>dcat_deri:landingPage</em></a></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
+      <td>
+      	<p>A Web page that can be navigated to in a Web browser to gain access to the element.</p>
+      	<p>For example: <code>&lt;dcat_deri:landingPage rdf:resource="http://example.org/dataset3_1.html" /&gt;</code></p>      	
+      </td>
+    </tr>
+     <tr>
+      <td><a href="http://www.w3.org/TR/vocab-dcat/#Property:dataset_distribution"><em>dcat:distribution</em></a></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td>
+      <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
+      <td>
+      	<p>Connects a element to its available distributions.</p>
+      	<p>For example: <code>&lt;dcat:distribution rdf:resource="http://example.org/distribution4_13" /&gt;</code></p>      	
+      </td>
+    </tr>
+    
+    
+
+    
+     
     </tbody>
 </table>
 
@@ -658,6 +816,14 @@ title="go to parrot home page">Parrot </a></h1>
     <tr>
       <td>vs</td>
       <td>http://www.w3.org/2003/06/sw-vocab-status/ns#</td>
+    </tr>
+    <tr>
+      <td>dcat</td>
+      <td>http://www.w3.org/ns/dcat#</td>
+    </tr>
+    <tr>
+      <td>dcat_deri</td>
+      <td>http://vocab.deri.ie/dcat#</td>
     </tr>
   </tbody>
 </table>

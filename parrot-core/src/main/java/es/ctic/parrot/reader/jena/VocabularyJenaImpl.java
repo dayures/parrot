@@ -8,8 +8,6 @@ import es.ctic.parrot.transformers.DocumentableObjectVisitor;
 import es.ctic.parrot.transformers.TransformerException;
 
 public class VocabularyJenaImpl extends AbstractJenaDocumentableObject implements Vocabulary {
-
-    public static final String VOAF_NS = "http://labs.mondeca.com/vocab/voaf#";
     
     public VocabularyJenaImpl(OntResource resource, DocumentableObjectRegister register, OntResourceAnnotationStrategy annotationStrategy) {
         super(resource, register, annotationStrategy);

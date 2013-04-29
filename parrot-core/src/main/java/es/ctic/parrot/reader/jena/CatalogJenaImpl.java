@@ -20,13 +20,8 @@ import es.ctic.parrot.transformers.TransformerException;
 
 public class CatalogJenaImpl extends AbstractJenaDocumentableObject implements Catalog {
 
-    public static final String VOID_NS = "http://rdfs.org/ns/void#";
-    public static final String DCAT_NS = "http://www.w3.org/ns/dcat#";
-    public static final String DCAT_DERI_NS = "http://vocab.deri.ie/dcat#";
-    
-	private static final String DCAT_DATASET_PROPERTY = "http://www.w3.org/ns/dcat#dataset";
-	private static final String DCAT_DERI_DATASET_PROPERTY = "http://vocab.deri.ie/dcat#dataset";
-	
+   
+
     private Collection<DocumentableObject> datasets;
 
     public CatalogJenaImpl(OntResource resource, DocumentableObjectRegister register, OntResourceAnnotationStrategy annotationStrategy) {
@@ -57,13 +52,13 @@ public class CatalogJenaImpl extends AbstractJenaDocumentableObject implements C
 		
 		if(datasets == null){
 			
-			StmtIterator listStatements = ontModel.listStatements(getOntResource(), ResourceFactory.createProperty(DCAT_DATASET_PROPERTY), (RDFNode) null);
+			StmtIterator listStatements = ontModel.listStatements(getOntResource(), ResourceFactory.createProperty(OntResourceAnnotationStrategy.DCAT_DATASET_PROPERTY), (RDFNode) null);
 			while (listStatements.hasNext()){
 				Statement statement = listStatements.next();
 				ds.add(ontModel.getOntResource(statement.getObject().asResource()));
 			}
 			
-			listStatements = ontModel.listStatements(getOntResource(), ResourceFactory.createProperty(DCAT_DERI_DATASET_PROPERTY), (RDFNode) null);
+			listStatements = ontModel.listStatements(getOntResource(), ResourceFactory.createProperty(OntResourceAnnotationStrategy.DCAT_DERI_DATASET_PROPERTY), (RDFNode) null);
 			while (listStatements.hasNext()){
 				Statement statement = listStatements.next();
 				ds.add(ontModel.getOntResource(statement.getObject().asResource()));

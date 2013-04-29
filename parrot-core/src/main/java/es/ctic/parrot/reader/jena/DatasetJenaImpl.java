@@ -23,15 +23,6 @@ import es.ctic.parrot.transformers.TransformerException;
 
 public class DatasetJenaImpl extends AbstractJenaDocumentableObject implements Dataset {
 
-    public static final String VOID_NS = "http://rdfs.org/ns/void#";
-    public static final String DCAT_NS = "http://www.w3.org/ns/dcat#";
-    public static final String DCAT_DERI_NS = "http://vocab.deri.ie/dcat#";
-    
-	private static final String DCAT_DATASET_PROPERTY = "http://www.w3.org/ns/dcat#dataset";
-	private static final String DCAT_DERI_DATASET_PROPERTY = "http://vocab.deri.ie/dcat#dataset";
-
-	private static final String DCAT_DISTRIBUTION_PROPERTY = "http://www.w3.org/ns/dcat#distribution";
-	private static final String DCAT_DERI_DISTRIBUTION_PROPERTY = "http://vocab.deri.ie/dcat#distribution";
 
     private static final Logger logger = Logger.getLogger(DatasetJenaImpl.class);
 
@@ -93,13 +84,13 @@ public class DatasetJenaImpl extends AbstractJenaDocumentableObject implements D
 		
 		if(catalogs == null){
 			
-			StmtIterator listStatements = ontModel.listStatements(null, ResourceFactory.createProperty(DCAT_DATASET_PROPERTY), getOntResource());
+			StmtIterator listStatements = ontModel.listStatements(null, ResourceFactory.createProperty(OntResourceAnnotationStrategy.DCAT_DATASET_PROPERTY), getOntResource());
 			while (listStatements.hasNext()){
 				Statement statement = listStatements.next();
 				cs.add(ontModel.getOntResource(statement.getSubject().asResource()));
 			}
 			
-			listStatements = ontModel.listStatements(null, ResourceFactory.createProperty(DCAT_DERI_DATASET_PROPERTY), getOntResource());
+			listStatements = ontModel.listStatements(null, ResourceFactory.createProperty(OntResourceAnnotationStrategy.DCAT_DERI_DATASET_PROPERTY), getOntResource());
 			while (listStatements.hasNext()){
 				Statement statement = listStatements.next();
 				cs.add(ontModel.getOntResource(statement.getSubject().asResource()));
@@ -126,13 +117,13 @@ public class DatasetJenaImpl extends AbstractJenaDocumentableObject implements D
 		OntModel ontModel = getOntResource().getOntModel();
 		Collection <OntResource> cs = new HashSet<OntResource>();
 	
-		StmtIterator listStatements = ontModel.listStatements(getOntResource(), ResourceFactory.createProperty(DCAT_DISTRIBUTION_PROPERTY), (RDFNode) null);
+		StmtIterator listStatements = ontModel.listStatements(getOntResource(), ResourceFactory.createProperty(OntResourceAnnotationStrategy.DCAT_DISTRIBUTION_PROPERTY), (RDFNode) null);
 		while (listStatements.hasNext()){
 			Statement statement = listStatements.next();
 			cs.add(ontModel.getOntResource(statement.getObject().asResource()));
 		}
 		
-		listStatements = ontModel.listStatements(getOntResource(), ResourceFactory.createProperty(DCAT_DERI_DISTRIBUTION_PROPERTY), (RDFNode) null);
+		listStatements = ontModel.listStatements(getOntResource(), ResourceFactory.createProperty(OntResourceAnnotationStrategy.DCAT_DERI_DISTRIBUTION_PROPERTY), (RDFNode) null);
 		while (listStatements.hasNext()){
 			Statement statement = listStatements.next();
 			cs.add(ontModel.getOntResource(statement.getObject().asResource()));

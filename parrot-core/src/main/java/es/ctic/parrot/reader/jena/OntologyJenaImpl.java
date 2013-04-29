@@ -14,6 +14,7 @@ import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.shared.JenaException;
+import com.hp.hpl.jena.vocabulary.RDFS;
 
 import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.DocumentableObjectRegister;
@@ -31,8 +32,6 @@ import es.ctic.parrot.transformers.TransformerException;
 public class OntologyJenaImpl extends AbstractJenaDocumentableObject implements es.ctic.parrot.de.Ontology {
 
 	private static final Logger logger = Logger.getLogger(OntologyJenaImpl.class);
-
-	private static final String RDF_SCHEMA_IS_DEFINED_BY = "http://www.w3.org/2000/01/rdf-schema#isDefinedBy";
 
 	private Collection<DocumentableObject> defines;
 	private Collection<DocumentableObject> imports;
@@ -90,7 +89,7 @@ public class OntologyJenaImpl extends AbstractJenaDocumentableObject implements 
 		
 		if(defines == null){
 			
-			StmtIterator listStatements = ontModel.listStatements(null, ResourceFactory.createProperty(RDF_SCHEMA_IS_DEFINED_BY) ,getOntResource());
+			StmtIterator listStatements = ontModel.listStatements(null, ResourceFactory.createProperty(RDFS.isDefinedBy.getURI()) ,getOntResource());
 			while (listStatements.hasNext()){
 				Statement statement = listStatements.next();
 				df.add(ontModel.getOntResource(statement.getSubject().asResource()));

@@ -44,6 +44,15 @@ public class JenaOWLReader implements DocumentReader {
     private OntModel ontModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM); // by default it is OntModelSpec.OWL_DL_MEM_RDFS_INF
     private OntResourceAnnotationStrategy annotationStrategy = new OntResourceAnnotationStrategy();
     
+    public static final String VOID_DATASET = "http://rdfs.org/ns/void#Dataset";
+    public static final String DCAT_DATASET = "http://www.w3.org/ns/dcat#Dataset";
+    public static final String DCAT_DERI_DATASET = "http://vocab.deri.ie/dcat#Dataset";
+
+    public static final String DCAT_CATALOG = "http://www.w3.org/ns/dcat#Catalog";
+    public static final String DCAT_DERI_CATALOG = "http://vocab.deri.ie/dcat#Catalog";
+
+    public static final String VOAF_VOCABULARY = "http://labs.mondeca.com/vocab/voaf#Vocabulary";
+
     /**
      * Constructs a reader.
      */
@@ -220,7 +229,7 @@ public class JenaOWLReader implements DocumentReader {
 	}
 	
 	private void loadVocabularies(OntModel model, DocumentableObjectRegister register) {
-		ExtendedIterator<Individual> vocabularyIterator = model.listIndividuals(ResourceFactory.createResource(VocabularyJenaImpl.VOAF_NS + "Vocabulary"));
+		ExtendedIterator<Individual> vocabularyIterator = model.listIndividuals(ResourceFactory.createResource(VOAF_VOCABULARY));
 		while (vocabularyIterator.hasNext()) {
 	        OntResource vocabularyInstance = vocabularyIterator.next();
 	        register.registerDocumentableObject(new VocabularyJenaImpl(vocabularyInstance, register, getAnnotationStrategy()));
@@ -228,19 +237,19 @@ public class JenaOWLReader implements DocumentReader {
 	}
 	
 	private void loadDatasets(OntModel model, DocumentableObjectRegister register) {
-		ExtendedIterator<Individual> datasetIterator = model.listIndividuals(ResourceFactory.createResource(DatasetJenaImpl.VOID_NS + "Dataset"));
+		ExtendedIterator<Individual> datasetIterator = model.listIndividuals(ResourceFactory.createResource(VOID_DATASET));
 		while (datasetIterator.hasNext()) {
 	        OntResource datasetInstance = datasetIterator.next();
 	        register.registerDocumentableObject(new DatasetJenaImpl(datasetInstance, register, getAnnotationStrategy()));
 	    }
 
-		ExtendedIterator<Individual> datasetDcatIterator = model.listIndividuals(ResourceFactory.createResource(DatasetJenaImpl.DCAT_NS + "Dataset"));
+		ExtendedIterator<Individual> datasetDcatIterator = model.listIndividuals(ResourceFactory.createResource(DCAT_DATASET));
 		while (datasetDcatIterator.hasNext()) {
 	        OntResource datasetInstance = datasetDcatIterator.next();
 	        register.registerDocumentableObject(new DatasetJenaImpl(datasetInstance, register, getAnnotationStrategy()));
 	    }
 		
-		ExtendedIterator<Individual> datasetDcatDeriIterator = model.listIndividuals(ResourceFactory.createResource(DatasetJenaImpl.DCAT_DERI_NS + "Dataset"));
+		ExtendedIterator<Individual> datasetDcatDeriIterator = model.listIndividuals(ResourceFactory.createResource(DCAT_DERI_DATASET));
 		while (datasetDcatDeriIterator.hasNext()) {
 	        OntResource datasetInstance = datasetDcatDeriIterator.next();
 	        register.registerDocumentableObject(new DatasetJenaImpl(datasetInstance, register, getAnnotationStrategy()));
@@ -250,13 +259,13 @@ public class JenaOWLReader implements DocumentReader {
 	
 	private void loadCatalogs(OntModel model, DocumentableObjectRegister register) {
 
-		ExtendedIterator<Individual> catalogDcatIterator = model.listIndividuals(ResourceFactory.createResource(CatalogJenaImpl.DCAT_NS + "Catalog"));
+		ExtendedIterator<Individual> catalogDcatIterator = model.listIndividuals(ResourceFactory.createResource(DCAT_CATALOG));
 		while (catalogDcatIterator.hasNext()) {
 	        OntResource catalogInstance = catalogDcatIterator.next();
 	        register.registerDocumentableObject(new CatalogJenaImpl(catalogInstance, register, getAnnotationStrategy()));
 	    }
 		
-		ExtendedIterator<Individual> catalogDcatDeriIterator = model.listIndividuals(ResourceFactory.createResource(CatalogJenaImpl.DCAT_DERI_NS + "Catalog"));
+		ExtendedIterator<Individual> catalogDcatDeriIterator = model.listIndividuals(ResourceFactory.createResource(DCAT_DERI_CATALOG));
 		while (catalogDcatDeriIterator.hasNext()) {
 	        OntResource catalogInstance = catalogDcatDeriIterator.next();
 	        register.registerDocumentableObject(new CatalogJenaImpl(catalogInstance, register, getAnnotationStrategy()));

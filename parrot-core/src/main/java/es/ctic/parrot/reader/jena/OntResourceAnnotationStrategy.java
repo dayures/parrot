@@ -47,21 +47,18 @@ public class OntResourceAnnotationStrategy {
 
 	private static final String TRUE = "true";
 
-	private static final String RDF_SCHEMA_IS_DEFINED_BY = "http://www.w3.org/2000/01/rdf-schema#isDefinedBy";
 	private static final String CC_LICENSE_DEPRECATED = "http://web.resource.org/cc/license";
 	private static final String CC_LICENSE = "http://creativecommons.org/ns#license";
 	private static final String RCLN_RULE = "http://lipn.univ-paris13.fr/RCLN/schema#Rule";
 	private static final String RCLN_RULE_TEXT = "http://lipn.univ-paris13.fr/RCLN/schema#ruleText";
 
 
-	private static final String RDF_SCHEMA_LABEL = "http://www.w3.org/2000/01/rdf-schema#label";
-	private static final String RDFS_COMMENT = "http://www.w3.org/2000/01/rdf-schema#comment";
 	private static final String SKOS_XL_PREF_LABEL = "http://www.w3.org/2008/05/skos-xl#prefLabel";
 	private static final String SKOS_XL_ALT_LABEL = "http://www.w3.org/2008/05/skos-xl#altLabel";
+	private static final String SKOS_XL_LITERAL_FORM = "http://www.w3.org/2008/05/skos-xl#literalForm";
 	private static final String SKOS_CORE_PREF_LABEL = "http://www.w3.org/2004/02/skos/core#prefLabel";
 	private static final String SKOS_CORE_ALT_LABEL = "http://www.w3.org/2004/02/skos/core#altLabel";
 	private static final String OG_VIDEO = "http://ogp.me/ns#video";
-	private static final String SKOS_XL_LITERAL_FORM = "http://www.w3.org/2008/05/skos-xl#literalForm";
 	private static final String LINGKNOW_VALUE = "http://idi.fundacionctic.org/lingknow/value";
 	private static final String LINGKNOW_OCCURS = "http://idi.fundacionctic.org/lingknow/occurs";
 	private static final String TELIX_REALIZES = "http://ontorule-project.eu/telix#realizes";
@@ -73,7 +70,8 @@ public class OntResourceAnnotationStrategy {
 	private static final String DC_DATE = "http://purl.org/dc/elements/1.1/date";
 	private static final String DC_DESCRIPTION = "http://purl.org/dc/elements/1.1/description";
 	private static final String DC_RIGHTS = "http://purl.org/dc/elements/1.1/rights";
-	
+	private static final String DC_IDENTIFIER = "http://purl.org/dc/elements/1.1/identifier";
+
 	private static final String DCT_DESCRIPTION = "http://purl.org/dc/terms/description";
 	private static final String DCT_SOURCE = "http://purl.org/dc/terms/source";
 	private static final String DCT_LICENSE = "http://purl.org/dc/terms/license";
@@ -85,6 +83,9 @@ public class OntResourceAnnotationStrategy {
 	private static final String DCT_IS_PART_OF = "http://purl.org/dc/terms/isPartOf";
 	private static final String DCT_MODIFIED = "http://purl.org/dc/terms/modified";
 	private static final String DCT_ISSUED = "http://purl.org/dc/terms/issued";
+	private static final String DCT_IDENTIFIER = "http://purl.org/dc/terms/identifier";
+	private static final String DCT_SPATIAL = "http://purl.org/dc/terms/spatial";
+	private static final String DCT_FORMAT = "http://purl.org/dc/terms/format";
 
 	
 	private static final String FOAF_DEPICTION = "http://xmlns.com/foaf/0.1/depiction";
@@ -93,10 +94,11 @@ public class OntResourceAnnotationStrategy {
 	private static final String FOAF_MAKER = "http://xmlns.com/foaf/0.1/maker";
 
 	private static final String DC_DCMITYPE_TEXT = "http://purl.org/dc/dcmitype/Text";
-	
+
+	private static final String VS_TERM_STATUS ="http://www.w3.org/2003/06/sw-vocab-status/ns#term_status";
+
 	private static final String VANN_PREFERRED_PREFIX = "http://purl.org/vocab/vann/preferredNamespacePrefix";
 	private static final String VANN_PREFERRED_NAMESPACE = "http://purl.org/vocab/vann/preferredNamespaceUri";
-
 
 	private static final String VOAF_CLASSNUMBER = "http://labs.mondeca.com/vocab/voaf#classNumber";
 	private static final String VOAF_PROPERTYNUMBER = "http://labs.mondeca.com/vocab/voaf#propertyNumber";
@@ -104,23 +106,25 @@ public class OntResourceAnnotationStrategy {
 	private static final String VOID_DATADUMP = "http://rdfs.org/ns/void#dataDump";
 	private static final String VOID_SPARQLENDPOINT = "http://rdfs.org/ns/void#sparqlEndpoint";
 	private static final String VOID_VOCABULARY = "http://rdfs.org/ns/void#vocabulary";
-	private static final String VS_TERM_STATUS ="http://www.w3.org/2003/06/sw-vocab-status/ns#term_status";
-	private static final String DCT_IDENTIFIER = "http://purl.org/dc/terms/identifier";
-	private static final String DC_IDENTIFIER = "http://purl.org/dc/elements/1.1/identifier";
-	private static final String DCAT_LANDINGPAGE = "http://www.w3.org/ns/dcat#landingPage";
-	private static final String DCAT_DERI_LANDINGPAGE = "http://vocab.deri.ie/dcat#landingPage";
-	private static final String DCAT_KEYWORD = "http://www.w3.org/ns/dcat#keyword";
-	private static final String DCAT_DERI_KEYWORD = "http://vocab.deri.ie/dcat#keyword";
-	private static final String DCT_SPATIAL = "http://purl.org/dc/terms/spatial";
-	private static final String DCAT_ACCESSURL = "http://www.w3.org/ns/dcat#accessURL";
-	private static final String DCAT_DERI_ACCESSURL = "http://vocab.deri.ie/dcat#accessURL";
+		
+	public static final String DCAT_DATASET_PROPERTY = "http://www.w3.org/ns/dcat#dataset";
+	public static final String DCAT_DISTRIBUTION_PROPERTY = "http://www.w3.org/ns/dcat#distribution";
 	private static final String DCAT_DOWNLOADURL = "http://www.w3.org/ns/dcat#downloadURL";
-	private static final String DCAT_DERI_DOWNLOADURL = "http://vocab.deri.ie/dcat#downloadURL";
+	private static final String DCAT_LANDINGPAGE = "http://www.w3.org/ns/dcat#landingPage";
+	private static final String DCAT_ACCESSURL = "http://www.w3.org/ns/dcat#accessURL";
 	private static final String DCAT_BYTESIZE = "http://www.w3.org/ns/dcat#byteSize";
+	private static final String DCAT_DERI_KEYWORD = "http://vocab.deri.ie/dcat#keyword";
+			
+	public static final String DCAT_DERI_DATASET_PROPERTY = "http://vocab.deri.ie/dcat#dataset";
+	public static final String DCAT_DERI_DISTRIBUTION_PROPERTY = "http://vocab.deri.ie/dcat#distribution";
+	private static final String DCAT_DERI_DOWNLOADURL = "http://vocab.deri.ie/dcat#downloadURL";
+	private static final String DCAT_DERI_LANDINGPAGE = "http://vocab.deri.ie/dcat#landingPage";
+	private static final String DCAT_DERI_ACCESSURL = "http://vocab.deri.ie/dcat#accessURL";
 	private static final String DCAT_DERI_BYTESIZE = "http://vocab.deri.ie/dcat#byteSize";
-	private static final String DCT_FORMAT = "http://purl.org/dc/terms/format";
-
+	private static final String DCAT_KEYWORD = "http://www.w3.org/ns/dcat#keyword";
 	
+ 
+
 	
 	
 	/**
@@ -184,7 +188,7 @@ public class OntResourceAnnotationStrategy {
             labels.addAll(dcTitleLabels);
         }
 
-        Collection<Label> rdfsLabels = getLiteralLabels(ontResource, RDF_SCHEMA_LABEL, locale);
+        Collection<Label> rdfsLabels = getLiteralLabels(ontResource, RDFS.label.getURI(), locale);
         if (rdfsLabels.isEmpty() == false){
             labels.addAll(rdfsLabels);
         }
@@ -235,12 +239,12 @@ public class OntResourceAnnotationStrategy {
     		return description;
 		}
 		
-		description = getLiteralPropertyValue(resource, RDFS_COMMENT, locale);
+		description = getLiteralPropertyValue(resource, RDFS.comment.getURI(), locale);
 		if (description != null){
     		return description;
 		}
 
-		return getLiteralPropertyValue(resource, RDFS_COMMENT); //not language selected
+		return getLiteralPropertyValue(resource, RDFS.comment.getURI()); //not language selected
 
 	}
 	
@@ -291,7 +295,7 @@ public class OntResourceAnnotationStrategy {
         }
         
         for (Label label : labels){
-            if (label.getQualifier().equals(RDF_SCHEMA_LABEL)) {
+            if (label.getQualifier().equals(RDFS.label.getURI())) {
                 return label.getText();
             }
         }
@@ -826,7 +830,7 @@ public class OntResourceAnnotationStrategy {
 	 * @return the reference where this resource is defined.
 	 */
 	public String getIsDefinedBy(Resource resource) {
-		return getObjectPropertyURI(resource, RDF_SCHEMA_IS_DEFINED_BY);
+		return getObjectPropertyURI(resource, RDFS.isDefinedBy.getURI());
 	}
 	
 	/**
@@ -1228,9 +1232,9 @@ public class OntResourceAnnotationStrategy {
 			 || predicate.equals(DCT_LICENSE)
 			 || predicate.equals(FOAF_DEPICTION)
 			 || predicate.equals(OG_VIDEO)
-			 || predicate.equals(RDF_SCHEMA_IS_DEFINED_BY)
-			 || predicate.equals(RDF_SCHEMA_LABEL)
-			 || predicate.equals(RDFS_COMMENT)
+			 || predicate.equals(RDFS.isDefinedBy.getURI())
+			 || predicate.equals(RDFS.label.getURI())
+			 || predicate.equals(RDFS.comment.getURI())
 			 || predicate.equals(OWL.versionInfo.getURI())			 
 			 || predicate.equals(RDF.type.getURI())) {
 			return true;

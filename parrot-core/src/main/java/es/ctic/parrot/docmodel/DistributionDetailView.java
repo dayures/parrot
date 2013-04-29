@@ -106,6 +106,7 @@ public class DistributionDetailView extends AbstractVersionableDetailView{
     public static DistributionDetailView createFromDistribution(Distribution object, Locale locale) {
     	
 	    DistributionDetailView details = new DistributionDetailView();
+		details.setUri(object.getURI());
 		details.setLabel(object.getLabel(locale));
 		details.setDescription(object.getDescription(locale));		
 		details.setLexicalInformation(LexicalInformation.createFromLabels(object.getLabels(), details.getLabel(), locale));
@@ -126,10 +127,7 @@ public class DistributionDetailView extends AbstractVersionableDetailView{
 		details.setLicenseLabel(object.getLicenseLabel());
 		details.setAccessURL(object.getAccessURL());
 		details.setDownloadURL(object.getDownloadURL());
-		
-		// Not used
-//		details.setVersion(object.getVersion());
-		
+				
 		details.setByteSize(object.getByteSize());
 		details.setMimetype(object.getMIMEType());
 

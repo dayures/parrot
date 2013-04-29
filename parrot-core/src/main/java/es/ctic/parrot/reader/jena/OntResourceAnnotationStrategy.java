@@ -118,10 +118,8 @@ public class OntResourceAnnotationStrategy {
 			
 	public static final String DCAT_DERI_DATASET_PROPERTY = "http://vocab.deri.ie/dcat#dataset";
 	public static final String DCAT_DERI_DISTRIBUTION_PROPERTY = "http://vocab.deri.ie/dcat#distribution";
-	private static final String DCAT_DERI_DOWNLOADURL = "http://vocab.deri.ie/dcat#downloadURL";
-	private static final String DCAT_DERI_LANDINGPAGE = "http://vocab.deri.ie/dcat#landingPage";
 	private static final String DCAT_DERI_ACCESSURL = "http://vocab.deri.ie/dcat#accessURL";
-	private static final String DCAT_DERI_BYTESIZE = "http://vocab.deri.ie/dcat#byteSize";
+	private static final String DCAT_DERI_BYTES = "http://vocab.deri.ie/dcat#bytes";
 	private static final String DCAT_KEYWORD = "http://www.w3.org/ns/dcat#keyword";
 	
  
@@ -1373,11 +1371,7 @@ public class OntResourceAnnotationStrategy {
 	 * @return the landing page.
 	 */
 	public String getLandingPage(Resource resource) {
-		String landingPage = getObjectPropertyURI(resource, DCAT_LANDINGPAGE);
-		if (landingPage == null){
-			landingPage = getObjectPropertyURI(resource, DCAT_DERI_LANDINGPAGE);
-		}
-		return landingPage;
+		return getObjectPropertyURI(resource, DCAT_LANDINGPAGE);
 	}
 	
 	/**
@@ -1420,11 +1414,7 @@ public class OntResourceAnnotationStrategy {
 	 * @return the download URL.
 	 */
 	public String getDownloadURL(Resource resource) {
-		String downloadURL = getObjectPropertyURI(resource, DCAT_DOWNLOADURL);
-		if (downloadURL == null){
-			downloadURL = getObjectPropertyURI(resource, DCAT_DERI_DOWNLOADURL);
-		}
-		return downloadURL;
+		return getObjectPropertyURI(resource, DCAT_DOWNLOADURL);
 	}
 	
 	/**
@@ -1435,7 +1425,7 @@ public class OntResourceAnnotationStrategy {
 	public String getByteSize(Resource resource) {		
 		String byteSize = getLiteralPropertyValue(resource, DCAT_BYTESIZE);
 		if (byteSize == null){
-			byteSize = getLiteralPropertyValue(resource, DCAT_DERI_BYTESIZE);
+			byteSize = getLiteralPropertyValue(resource, DCAT_DERI_BYTES);
 		}
 		return byteSize;
 	}

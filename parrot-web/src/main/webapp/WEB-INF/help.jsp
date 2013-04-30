@@ -87,7 +87,10 @@ title="go to parrot home page">Parrot </a></h1>
       </tr>
       <tr>
         <td>Vocabulary</td>
-        <td><code>voaf#Vocabulary</code></td>
+        <td>
+          <code>voaf#Vocabulary</code><br />
+          <code>voaf_old#Vocabulary</code>
+        </td>
       </tr>
       <tr>
         <td>Dataset</td>
@@ -569,21 +572,39 @@ title="go to parrot home page">Parrot </a></h1>
       </td>
     </tr>
     <tr>
-      <td><a href="http://labs.mondeca.com/vocab/voaf/#classNumber"><em>voaf:classNumber</em></a></td>
+      <td><a href="http://purl.org/vocommons/voaf#classNumber"><em>voaf:classNumber</em></a></td>
       <td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td><td></td>
       <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
       <td>
       	<p>The number of classes defined in the vocabulary.</p>
       	<p>For example: <code>&lt;voaf:classNumber&gt;42&lt;/voaf:classNumber&gt;</code></p>
       </td>
+    </tr>
+    <tr>
+      <td><a href="http://lov.okfn.org/vocab/voaf/v1.1#classNumber"><em>voaf_old:classNumber</em></a></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td><td></td>
+      <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
+      <td>
+      	<p>The number of classes defined in the vocabulary.</p>
+      	<p>For example: <code>&lt;voaf_old:classNumber&gt;42&lt;/voaf_old:classNumber&gt;</code></p>
+      </td>
     </tr>    
     <tr>
-      <td><a href="http://labs.mondeca.com/vocab/voaf/#propertyNumber"><em>voaf:propertyNumber</em></a></td>
+      <td><a href="http://purl.org/vocommons/voaf#propertyNumber"><em>voaf:propertyNumber</em></a></td>
       <td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td><td></td>
       <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
       <td>
       	<p>The number of properties defined in the vocabulary.</p>
       	<p>For example: <code>&lt;voaf:propertyNumber&gt;55&lt;/voaf:propertyNumber&gt;</code></p>
+      </td>
+    </tr>   
+    <tr>
+      <td><a href="http://lov.okfn.org/vocab/voaf/v1.1#propertyNumber"><em>voaf_old:propertyNumber</em></a></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td><td></td>
+      <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
+      <td>
+      	<p>The number of properties defined in the vocabulary.</p>
+      	<p>For example: <code>&lt;voaf_old:propertyNumber&gt;55&lt;/voaf_old:propertyNumber&gt;</code></p>
       </td>
     </tr>   
     <tr>
@@ -894,6 +915,10 @@ title="go to parrot home page">Parrot </a></h1>
     </tr>
     <tr>
       <td>voaf</td>
+      <td>http://purl.org/vocommons/voaf#</td>
+    </tr>
+    <tr>
+      <td>voaf_old</td>
       <td>http://labs.mondeca.com/vocab/voaf#</td>
     </tr>
     <tr>

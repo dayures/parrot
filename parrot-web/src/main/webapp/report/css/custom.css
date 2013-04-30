@@ -146,6 +146,14 @@ dt{
 	background-image: url("../images/icon-dataset-16.png");
 }
 
+.parrot-vocabulary-title {
+	background-image: url("../images/icon-vocabulary-24.png");
+}
+
+.parrot-vocabulary-ref {
+	background-image: url("../images/icon-vocabulary-16.png");
+}
+
 .parrot-label-locale {
 	color: green;
 }

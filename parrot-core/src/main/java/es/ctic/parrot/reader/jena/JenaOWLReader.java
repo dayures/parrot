@@ -51,7 +51,9 @@ public class JenaOWLReader implements DocumentReader {
     public static final String DCAT_CATALOG = "http://www.w3.org/ns/dcat#Catalog";
     public static final String DCAT_DERI_CATALOG = "http://vocab.deri.ie/dcat#Catalog";
 
-    public static final String VOAF_VOCABULARY = "http://labs.mondeca.com/vocab/voaf#Vocabulary";
+    public static final String VOAF_VOCABULARY_OLD = "http://labs.mondeca.com/vocab/voaf#Vocabulary";
+    public static final String VOAF_VOCABULARY = "http://purl.org/vocommons/voaf#Vocabulary";
+    
 
     /**
      * Constructs a reader.
@@ -234,6 +236,13 @@ public class JenaOWLReader implements DocumentReader {
 	        OntResource vocabularyInstance = vocabularyIterator.next();
 	        register.registerDocumentableObject(new VocabularyJenaImpl(vocabularyInstance, register, getAnnotationStrategy()));
 	    }
+
+		vocabularyIterator = model.listIndividuals(ResourceFactory.createResource(VOAF_VOCABULARY_OLD));
+		while (vocabularyIterator.hasNext()) {
+	        OntResource vocabularyInstance = vocabularyIterator.next();
+	        register.registerDocumentableObject(new VocabularyJenaImpl(vocabularyInstance, register, getAnnotationStrategy()));
+	    }
+		
 	}
 	
 	private void loadDatasets(OntModel model, DocumentableObjectRegister register) {

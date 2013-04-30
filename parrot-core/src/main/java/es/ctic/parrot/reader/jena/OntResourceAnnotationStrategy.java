@@ -101,8 +101,10 @@ public class OntResourceAnnotationStrategy {
 	private static final String VANN_PREFERRED_PREFIX = "http://purl.org/vocab/vann/preferredNamespacePrefix";
 	private static final String VANN_PREFERRED_NAMESPACE = "http://purl.org/vocab/vann/preferredNamespaceUri";
 
-	private static final String VOAF_CLASSNUMBER = "http://labs.mondeca.com/vocab/voaf#classNumber";
-	private static final String VOAF_PROPERTYNUMBER = "http://labs.mondeca.com/vocab/voaf#propertyNumber";
+	private static final String VOAF_CLASSNUMBER_OLD = "http://labs.mondeca.com/vocab/voaf#classNumber";
+	private static final String VOAF_PROPERTYNUMBER_OLD = "http://labs.mondeca.com/vocab/voaf#propertyNumber";
+	private static final String VOAF_CLASSNUMBER = "http://purl.org/vocommons/voaf#classNumber";
+	private static final String VOAF_PROPERTYNUMBER = "http://purl.org/vocommons/voaf#propertyNumber";
 
 	private static final String VOID_DATADUMP = "http://rdfs.org/ns/void#dataDump";
 	private static final String VOID_SPARQLENDPOINT = "http://rdfs.org/ns/void#sparqlEndpoint";
@@ -1267,7 +1269,12 @@ public class OntResourceAnnotationStrategy {
 	 * @return the number of classes defined in the vocabulary namespace.
 	 */
 	public String getClassNumber(Resource resource) {
-		return getLiteralPropertyValue(resource, VOAF_CLASSNUMBER);
+		String classNumber = getLiteralPropertyValue(resource, VOAF_CLASSNUMBER);
+		if (classNumber == null){
+			classNumber = getLiteralPropertyValue(resource, VOAF_CLASSNUMBER_OLD);
+		}
+		return classNumber;
+
 	}
 
 	/**
@@ -1276,7 +1283,12 @@ public class OntResourceAnnotationStrategy {
 	 * @return the number of properties defined in the vocabulary namespace.
 	 */
 	public String getPropertyNumber(Resource resource) {
-		return getLiteralPropertyValue(resource, VOAF_PROPERTYNUMBER);
+		String propertyNumber = getLiteralPropertyValue(resource, VOAF_PROPERTYNUMBER);
+		if (propertyNumber == null){
+			propertyNumber = getLiteralPropertyValue(resource, VOAF_PROPERTYNUMBER_OLD);
+		}
+		return propertyNumber;
+
 	}
 
 	/**

@@ -142,6 +142,10 @@ public class DatasetJenaImpl extends AbstractJenaDocumentableObject implements D
 	public String getLanguage(){
 		return getAnnotationStrategy().getLanguage(getOntResource());
 	}
+	
+	public Collection<String> getPages() {
+		return getAnnotationStrategy().getPages(getOntResource());
+	}
 
 
 }

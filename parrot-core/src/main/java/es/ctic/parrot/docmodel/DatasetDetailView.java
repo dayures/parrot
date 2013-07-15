@@ -32,6 +32,7 @@ public class DatasetDetailView extends AbstractVersionableDetailView{
 	private String spatial;
     private Collection<DistributionDetailView> distributionDetailViews = new HashSet<DistributionDetailView>();
     private String language;
+	private Collection<String> pages;
 
 	/**
 	 * Constructs a dataset detail view (Suppress default constructor for noninstantiability).
@@ -220,6 +221,19 @@ public class DatasetDetailView extends AbstractVersionableDetailView{
 		this.language = language;
 	}
 
+	/**
+	 * @return the pages
+	 */
+	public Collection<String> getPages() {
+		return pages;
+	}
+
+	/**
+	 * @param pages the pages to set
+	 */
+	private void setPages(Collection<String> pages) {
+		this.pages = pages;
+	}
     
 	/**
 	 * Returns a detailed view for the dataset given.
@@ -268,9 +282,12 @@ public class DatasetDetailView extends AbstractVersionableDetailView{
         details.setCatalogs(DocumentableObjectReference.createReferences(object.getCatalogs(),locale));
 		details.setSpatial(object.getSpatial());
         details.setLanguage(object.getLanguage());
+		details.setPages(object.getPages());
 
 		return details;
     }
+
+
 
 
     

@@ -70,5 +70,11 @@ public interface Dataset extends DocumentableObject, Versionable{
 	 * @return the language.
 	 */
 	public abstract String getLanguage();
+	
+	/**
+	 * Returns the collection of pages of the dataset.
+	 * @return the collection of pages of the dataset.
+	 */
+	public abstract Collection<String> getPages();
 
 }

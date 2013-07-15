@@ -11,6 +11,7 @@
 	  (!$element.keywords.isEmpty()) ||
 	  (!$element.Catalogs.isEmpty()) ||
 	  (!$element.Distributions.isEmpty()) ||
+	  (!$element.pages.isEmpty()) ||
 	  ($element.Spatial) ||
 	  ($element.Language) )
   #set( $ti = true )
@@ -86,6 +87,14 @@
 		#foreach($keyword in $element.keywords) 
 		<span class="parrot-keyword">$keyword</span>
 		#if ($foreach.hasNext), #end
+		#end
+		</p>
+	#end
+	
+	#if(!$element.pages.isEmpty())
+		<p>This dataset is linked to 
+		#foreach($page in $element.pages) 
+		<a href="$page" class="external-link">$page</a>#if ($foreach.hasNext), #end
 		#end
 		</p>
 	#end

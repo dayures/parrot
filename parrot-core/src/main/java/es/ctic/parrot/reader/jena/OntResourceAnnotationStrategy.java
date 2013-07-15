@@ -93,6 +93,7 @@ public class OntResourceAnnotationStrategy {
 	private static final String FOAF_NAME = "http://xmlns.com/foaf/0.1/name";
 	private static final String FOAF_HOMEPAGE = "http://xmlns.com/foaf/0.1/homepage";
 	private static final String FOAF_MAKER = "http://xmlns.com/foaf/0.1/maker";
+	private static final String FOAF_PAGE = "http://xmlns.com/foaf/0.1/page";
 
 	private static final String DC_DCMITYPE_TEXT = "http://purl.org/dc/dcmitype/Text";
 
@@ -1495,6 +1496,17 @@ public class OntResourceAnnotationStrategy {
 			language = getLiteralPropertyValue(resource, DC_LANGUAGE);
 		}
 		return language;
+	}
+
+	/**
+	 * Returns the foaf:pages
+	 * @param ontResource the resource
+	 * @return a collection of foaf:pages
+	 */
+	public Collection<String> getPages(Resource resource) {
+		Collection<String> pages = new HashSet<String>();
+		pages.addAll(getObjectPropertyCollectionURI(resource, FOAF_PAGE));
+		return pages;
 	}
 }
 

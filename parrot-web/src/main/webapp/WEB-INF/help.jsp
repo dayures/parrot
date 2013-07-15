@@ -738,6 +738,15 @@ title="go to parrot home page">Parrot </a></h1>
       </td>
     </tr>
     <tr>
+      <td><a href="http://xmlns.com/foaf/spec/#term_page"><em>foaf:page</em></a></td>
+      <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td>
+      <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>
+      <td>
+      	<p>A page or document about the element.</p>
+      	<p>For example: <code>&lt;foaf:page rdf:resource="http://example.org/related-page" /&gt;</code></p>      	
+      </td>
+    </tr>
+    <tr>
       <td><a href="http://www.w3.org/TR/vocab-dcat/#Property:dataset_keyword"><em>dcat:keyword</em></a></td>
       <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><img alt="supported" src="images/tick.png"/></td><td></td><td></td>
       <td></td><td><img alt="place" src="images/page.png"/></td><td></td><td></td>

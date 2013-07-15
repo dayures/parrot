@@ -1025,7 +1025,7 @@ public class OntResourceAnnotationStrategy {
     	} else {		
 
 			StmtIterator it = resource.listProperties(ResourceFactory.createProperty(property));
-			if (it.hasNext()){
+			while (it.hasNext()){
 				Statement statement = it.nextStatement();
 				try{
 					uris.add(statement.getObject().asResource().getURI());

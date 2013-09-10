@@ -97,6 +97,14 @@
             <url>dav:http://devit.fundacionctic.org:8081/nexus/content/repositories/snapshots</url>
         </snapshotRepository>
     </distributionManagement>
+	
+    <repositories>		
+	<repository>
+          <id>repositorio-ctic</id>
+          <name>CTIC public</name>
+          <url>http://repository.fundacionctic.org/content/groups/public/</url>
+      </repository>
+    </repositories>
 
 </project>
 

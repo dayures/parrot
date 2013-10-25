@@ -492,7 +492,7 @@
               </elementProp>
               <elementProp name="mimetype" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">application/owl+xml</stringProp>
+                <stringProp name="Argument.value">application/rdf+xml</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">mimetype</stringProp>
@@ -1878,7 +1878,7 @@
               </elementProp>
               <elementProp name="mimetype" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">application/owl+xml</stringProp>
+                <stringProp name="Argument.value">application/rdf+xml</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">mimetype</stringProp>
@@ -2634,7 +2634,7 @@
               </elementProp>
               <elementProp name="mimetype" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">application/owl+xml</stringProp>
+                <stringProp name="Argument.value">application/rdf+xml</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">mimetype</stringProp>
@@ -2949,7 +2949,7 @@
               </elementProp>
               <elementProp name="mimetype" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">application/owl+xml</stringProp>
+                <stringProp name="Argument.value">application/rdf+xml</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">mimetype</stringProp>
@@ -3768,7 +3768,7 @@
               </elementProp>
               <elementProp name="mimetype" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">application/owl+xml</stringProp>
+                <stringProp name="Argument.value">application/rdf+xml</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">mimetype</stringProp>
@@ -4965,7 +4965,7 @@
               </elementProp>
               <elementProp name="mimetype" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">application/owl+xml</stringProp>
+                <stringProp name="Argument.value">application/rdf+xml</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">mimetype</stringProp>
@@ -5028,7 +5028,7 @@
               </elementProp>
               <elementProp name="mimetype" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">application/owl+xml</stringProp>
+                <stringProp name="Argument.value">application/rdf+xml</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">mimetype</stringProp>
@@ -6414,7 +6414,7 @@
               </elementProp>
               <elementProp name="mimetype" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">application/owl+xml</stringProp>
+                <stringProp name="Argument.value">application/rdf+xml</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">mimetype</stringProp>
@@ -7359,7 +7359,7 @@
               </elementProp>
               <elementProp name="mimetype" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">application/owl+xml</stringProp>
+                <stringProp name="Argument.value">application/rdf+xml</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">mimetype</stringProp>
@@ -7737,7 +7737,7 @@
               </elementProp>
               <elementProp name="mimetype" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">application/owl+xml</stringProp>
+                <stringProp name="Argument.value">application/rdf+xml</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">mimetype</stringProp>
@@ -8304,7 +8304,7 @@
               </elementProp>
               <elementProp name="mimetype" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">application/owl+xml</stringProp>
+                <stringProp name="Argument.value">application/rdf+xml</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">mimetype</stringProp>
@@ -8682,7 +8682,7 @@
               </elementProp>
               <elementProp name="mimetype" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">application/owl+xml</stringProp>
+                <stringProp name="Argument.value">application/rdf+xml</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">mimetype</stringProp>
@@ -10068,7 +10068,7 @@
               </elementProp>
               <elementProp name="mimetype" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">application/owl+xml</stringProp>
+                <stringProp name="Argument.value">application/rdf+xml</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">mimetype</stringProp>
@@ -10950,7 +10950,7 @@
               </elementProp>
               <elementProp name="mimetype" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">application/owl+xml</stringProp>
+                <stringProp name="Argument.value">application/rdf+xml</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">mimetype</stringProp>
@@ -13407,7 +13407,7 @@
               </elementProp>
               <elementProp name="mimetype" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">application/owl+xml</stringProp>
+                <stringProp name="Argument.value">application/rdf+xml</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">mimetype</stringProp>
@@ -14289,7 +14289,7 @@
               </elementProp>
               <elementProp name="mimetype" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">application/owl+xml</stringProp>
+                <stringProp name="Argument.value">application/rdf+xml</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">mimetype</stringProp>
@@ -14919,7 +14919,7 @@
               </elementProp>
               <elementProp name="mimetype" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">application/owl+xml</stringProp>
+                <stringProp name="Argument.value">application/rdf+xml</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">mimetype</stringProp>
@@ -15234,7 +15234,7 @@
               </elementProp>
               <elementProp name="mimetype" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">application/owl+xml</stringProp>
+                <stringProp name="Argument.value">application/rdf+xml</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">mimetype</stringProp>
@@ -16179,7 +16179,7 @@
               </elementProp>
               <elementProp name="mimetype" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">application/owl+xml</stringProp>
+                <stringProp name="Argument.value">application/rdf+xml</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">mimetype</stringProp>
@@ -16305,7 +16305,7 @@
               </elementProp>
               <elementProp name="mimetype" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">application/owl+xml</stringProp>
+                <stringProp name="Argument.value">application/rdf+xml</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">mimetype</stringProp>
@@ -21674,7 +21674,7 @@
               </elementProp>
               <elementProp name="mimetype" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">application/owl+xml</stringProp>
+                <stringProp name="Argument.value">application/rdf+xml</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">mimetype</stringProp>
@@ -21863,7 +21863,7 @@
               </elementProp>
               <elementProp name="mimetype" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">application/owl+xml</stringProp>
+                <stringProp name="Argument.value">application/rdf+xml</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">mimetype</stringProp>
@@ -22052,7 +22052,7 @@
               </elementProp>
               <elementProp name="mimetype" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">application/owl+xml</stringProp>
+                <stringProp name="Argument.value">application/rdf+xml</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">mimetype</stringProp>

@@ -1027,8 +1027,10 @@ title="go to parrot home page">Parrot </a></h1>
     <tr><td>mimetype</td><td>Mimetype of the input document. Supported values are
     							<ul>
     								<li><tt>default</tt> Allow content negotiation</li> 
-    								<li><tt>application/owl+xml</tt> OWL ontology</li> 
+    								<li><tt>application/rdf+xml</tt> OWL ontology</li> 
     								<li><tt>text/n3</tt> N3 ontology</li> 
+    								<li><tt>text/turtle</tt> Turtle ontology</li> 
+    								<li><tt>application/n-triples</tt> N-triples ontology</li> 
     								<li><tt>application/xhtml+xml</tt> XHTML+RDFa document</li> 
     								<li><tt>text/html</tt> HTML+RDFa documentn</li> 
     								<li><tt>application/rif+xml</tt> RIF XML document</li> 
@@ -1063,8 +1065,11 @@ You can send multiple <tt>documentUri</tt> parameter values. In that case, each 
     <tr><td rowspan="5">Request Body</td><td>documentText</td><td>The input source text.</td></tr> 
     <tr><td>mimetypeText</td><td>Mimetype of the input source text. Supported values are
     							<ul>
-    								<li><tt>application/owl+xml</tt> OWL ontology</li> 
+    								<li><tt>default</tt> Allow content negotiation</li> 
+    								<li><tt>application/rdf+xml</tt> OWL ontology</li> 
     								<li><tt>text/n3</tt> N3 ontology</li> 
+    								<li><tt>text/turtle</tt> Turtle ontology</li> 
+    								<li><tt>application/n-triples</tt> N-triples ontology</li> 
     								<li><tt>application/xhtml+xml</tt> XHTML+RDFa document</li> 
     								<li><tt>text/html</tt> HTML+RDFa documentn</li> 
     								<li><tt>application/rif+xml</tt> RIF XML document</li> 
@@ -1094,7 +1099,7 @@ You can send multiple <tt>documentUri</tt> parameter values. In that case, each 
                               &lt;rdfs:label xml:lang=&quot;en&quot;&gt;Steel Ontology&lt;/rdfs:label&gt;
                          &lt;/owl:Ontology&gt;
                       &lt;/rdf:RDF&gt;
-         mimetypeText=application/owl+xml
+         mimetypeText=application/rdf+xml
          profile=business
          language=en
          customizeCssUrl=http://example.org/style.css</p>

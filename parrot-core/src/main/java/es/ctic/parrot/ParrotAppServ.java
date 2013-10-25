@@ -50,14 +50,17 @@ public class ParrotAppServ {
 	 * <ul>
 	 * 	<li><code>application/rdf+xml</code></li>
 	 * 	<li><code>application/xml</code></li>
-	 *  <li><code>application/owl+xml</code></li>
+	 *
+	 *  <li><code>text/n3</code></li>
+	 *  <li><code>text/rdf+n3</code></li>
+	 *  <li><code>text/turtle</code></li>
+  	 * 	<li><code>application/n-triples</code></li>
+	 *
 	 *  <li><code>application/xhtml+xml</code></li>
 	 *  <li><code>text/html</code></li>
-	 *  <li><code>text/n3</code></li>
-	 *  <li><code>text/turtle</code></li>
-	 *  <li><code>text/rdf+n3</code></li>
-  	 * 	<li><code>text/x-rif-ps</code></li>
+	 *
 	 * 	<li><code>application/rif+xml</code></li>
+  	 * 	<li><code>text/x-rif-ps</code></li>
 	 * </ul>
 	 * 
      */
@@ -208,14 +211,15 @@ public class ParrotAppServ {
 	 * Returns true if the MIME type could be read by an Ontology Reader.
 	 * Nowadays, the supported MIME types are:
 	 * <ul>
-	 * 	<li>application/rdf+xml</li>
-	 * 	<li>application/xml</li>
-	 *  <li>application/owl+xml</li>
-	 *  <li>application/xhtml+xml</li>
-	 *  <li>text/html</li>
-	 *  <li>text/n3</li>
-	 *  <li>text/rdf+n3</li>
+	 * 	<li><code>application/rdf+xml</code></li>
+	 * 	<li><code>application/xml</code></li>
 	 *  <li><code>text/n3</code></li>
+	 *  <li><code>text/rdf+n3</code></li>
+	 *  <li><code>text/turtle</code></li>
+  	 * 	<li><code>application/n-triples</code></li>
+	 *  <li><code>application/xhtml+xml</code></li>
+	 *  <li><code>text/html</code></li>
+	 *  
 	 * </ul>
 	 * @param mimetype the MIME type.
 	 * @return true if the MIME type is supported.
@@ -223,12 +227,12 @@ public class ParrotAppServ {
 	private boolean isOntologyReadable(String mimetype){
 		if ("application/rdf+xml".equals(mimetype)
     	 || "application/xml".equals(mimetype)
-    	 || "application/owl+xml".equals(mimetype)
-    	 || "application/xhtml+xml".equals(mimetype)
-    	 || "text/html".equals(mimetype)
-     	 || "text/turtle".equals(mimetype)
      	 || "text/n3".equals(mimetype)
-    	 || "text/rdf+n3".equals(mimetype)){
+    	 || "text/rdf+n3".equals(mimetype)
+     	 || "text/turtle".equals(mimetype)
+    	 || "application/n-triples".equals(mimetype)
+    	 || "application/xhtml+xml".equals(mimetype)
+    	 || "text/html".equals(mimetype)){
 			return true;
 		} else {
 			return false;
@@ -239,7 +243,7 @@ public class ParrotAppServ {
 	 * Returns true if the MIME type could be read by an RIF XML Reader.
 	 * Nowadays, the supported MIME type is:
 	 * <ul>
-	 * 	<li>application/rif+xml</li>
+	 * 	<li><code>application/rif+xml</code></li>
 	 * </ul 
 	 * @param mimetype the MIME type.
 	 * @return true if the mimetype is supported.
@@ -252,7 +256,7 @@ public class ParrotAppServ {
 	 * Returns true if the MIME type could be read by an RIF PS Reader.
 	 * Nowadays, the supported MIME type is:
 	 * <ul>
-	 * 	<li>text/x-rif-ps</li>
+	 * 	<li><code>text/x-rif-ps</code></li>
 	 * </ul>
 	 * @param mimetype the MIME type.
 	 * @return true if the MIME type is supported.

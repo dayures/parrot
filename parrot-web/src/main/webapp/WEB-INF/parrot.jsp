@@ -57,12 +57,10 @@
 				        		<input <c:if test='${uriStatus.first}'>id="documentUri"</c:if> name="documentUri" value="<c:out value="${uri}" escapeXml="true"/>" type="text" size="100" />
 							<select name="mimetype">
 								<option value="default" <c:if test="${paramValues.mimetype[uriStatus.index] eq 'default'}">selected="selected"</c:if>>Allow content negotiation</option>
-								<option value="application/rdf+xml" <c:if test="${paramValues.mimetype[uriStatus.index] eq 'application/rdf+xml'}">selected="selected"</c:if>>It is a OWL ontology</option>
-								<option value="text/n3" <c:if test="${paramValues.mimetype[uriStatus.index] eq 'text/n3'}">selected="selected"</c:if>>It is a N3/Turtle/N-triples ontology</option>
-								<option value="application/xhtml+xml" <c:if test="${paramValues.mimetype[uriStatus.index] eq 'application/xhtml+xml'}">selected="selected"</c:if>>It is a XHTML+RDFa document</option>
-								<option value="text/html" <c:if test="${paramValues.mimetype[uriStatus.index] eq 'text/html'}">selected="selected"</c:if>>It is a HTML+RDFa document</option>
-								<option value="application/rif+xml" <c:if test="${paramValues.mimetype[uriStatus.index] eq 'application/rif+xml'}">selected="selected"</c:if>>It is a RIF XML document</option>
-								<option value="text/x-rif-ps" <c:if test="${paramValues.mimetype[uriStatus.index] eq 'text/x-rif-ps'}">selected="selected"</c:if>>It is a RIF PS document</option>
+								<jsp:include page="mimetypes.jsp">
+									<jsp:param name="mimetypeSimple" value="false"/>
+									<jsp:param name="mimetypeObtained" value="${paramValues.mimetype[uriStatus.index]}" />
+								</jsp:include>
 							</select>							 
 							<span class="removeURI">remove</span>
 							<c:if test='${uriStatus.first}'>
@@ -80,12 +78,9 @@
 							for="documentUri" class="uri">URI: </label><input id="documentUri" name="documentUri" value="http://" type="text" size="100" />
 							<select name="mimetype">
 								<option value="default" selected="selected">Allow content negotiation</option>
-								<option value="application/rdf+xml">It is a OWL ontology</option>
-								<option value="text/n3">It is a N3/Turtle/N-triples ontology</option>
-								<option value="application/xhtml+xml">It is a XHTML+RDFa document</option>
-								<option value="text/html">It is a HTML+RDFa document</option>
-								<option value="application/rif+xml">It is a RIF XML document</option>
-								<option value="text/x-rif-ps">It is a RIF PS document</option>
+								<jsp:include page="mimetypes.jsp">
+									<jsp:param name="mimetypeSimple" value="true"/>  
+								</jsp:include> 
 							</select>
 							<span class="removeURI">remove</span>
 							<span class="uriHint">(for example: <tt id="example">http://ontorule-project.eu/resources/steel-30.owl</tt>)</span>
@@ -116,12 +111,10 @@
 		      				
 								<p><span class="direct-input">This is an : 
 								<select name="mimetypeText">
-									<option value="application/rdf+xml" <c:if test="${paramValues.mimetypeText[textStatus.index] eq 'application/rdf+xml'}">selected="selected"</c:if>>It is a OWL ontology</option>
-									<option value="text/n3" <c:if test="${paramValues.mimetypeText[textStatus.index] eq 'text/n3'}">selected="selected"</c:if>>It is a N3/Turtle/N-triples ontology</option>
-									<option value="application/xhtml+xml" <c:if test="${paramValues.mimetypeText[textStatus.index] eq 'application/xhtml+xml'}">selected="selected"</c:if>>It is a XHTML+RDFa document</option>
-									<option value="text/html" <c:if test="${paramValues.mimetypeText[textStatus.index] eq 'text/html'}">selected="selected"</c:if>>It is a HTML+RDFa document</option>
-									<option value="application/rif+xml" <c:if test="${paramValues.mimetypeText[textStatus.index] eq 'application/rif+xml'}">selected="selected"</c:if>>It is a RIF XML document</option>
-									<option value="text/x-rif-ps" <c:if test="${paramValues.mimetypeText[textStatus.index] eq 'text/x-rif-ps'}">selected="selected"</c:if>>It is a RIF PS document</option>
+									<jsp:include page="mimetypes.jsp">
+										<jsp:param name="mimetypeSimple" value="false"/>
+										<jsp:param name="mimetypeObtained" value="${paramValues.mimetypeText[textStatus.index]}" />
+									</jsp:include>
 								</select>
 						    	</span>							 
 						    	<span class="removeText">remove</span>
@@ -136,12 +129,9 @@
 				        	
 							<p><span class="direct-input">This is an : 
 							  <select name="mimetypeText">
-							    <option value="application/rdf+xml">OWL ontology</option>
-							    <option value="text/n3">N3/Turtle/N-triples ontology</option>
-							    <option value="application/xhtml+xml">XHTML+RDFa document</option>
-							    <option value="text/html">HTML+RDFa document</option>
-							    <option value="application/rif+xml">RIF XML document</option>
-							    <option value="text/x-rif-ps">RIF PS document</option>
+								<jsp:include page="mimetypes.jsp">
+									<jsp:param name="mimetypeSimple" value="true"/>
+								</jsp:include> 
 						      </select>
 						    </span>
 						    <span class="removeText">remove</span></p>
@@ -167,12 +157,9 @@
 						This file is a: 
 						<select name="mimetypeFile">
 							<option value="default" selected="selected">Autodetect (if possible)</option>
-						    <option value="application/rdf+xml">OWL ontology</option>
-						    <option value="text/n3">N3/Turtle/N-triples ontology</option>
-						    <option value="application/xhtml+xml">XHTML+RDFa document</option>
-						    <option value="text/html">HTML+RDFa document</option>
-						    <option value="application/rif+xml">RIF XML document</option>
-						    <option value="text/x-rif-ps">RIF PS document</option>
+							<jsp:include page="mimetypes.jsp">
+								<jsp:param name="mimetypeSimple" value="true"/>  
+							</jsp:include> 
 						</select>
 					    </p>
 					    <p><button id="addFile">add another file</button></p>

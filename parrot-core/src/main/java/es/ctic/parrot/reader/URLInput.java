@@ -33,23 +33,22 @@ public class URLInput implements Input {
 
     // application/rdf+xml, application/xml : http://www.w3.org/TR/owl-ref/#MIMEType
     // application/rif+xml : http://www.w3.org/TR/rif-core/#Appendix:_RIF_Media_Type_Registration
-    // application/owl+xml : http://www.w3.org/TR/2009/REC-owl2-xml-serialization-20091027/#Appendix:_Internet_Media_Type.2C_File_Extension.2C_and_Macintosh_File_Type
 
-    //private static final String ACCEPT_HEADER_VALUES = "application/rdf+xml,application/xml,application/rif+xml,application/owl+xml,text/x-rif-ps,application/xhtml+xml,text/n3,text/rdf+n3,text/html,*/*"; // FIXME: add other mimetypes
-    private static final String ACCEPT_HEADER_VALUES = "application/rdf+xml,application/xml,application/rif+xml,application/owl+xml,text/x-rif-ps,application/xhtml+xml;q=0.8,text/n3,text/rdf+n3,text/turtle,text/html;q=0.8,*/*;q=0.1"; // FIXME: add other mimetypes
-    private static final Set<String> STRICT_MIMETYPES = new HashSet<String>(Arrays.asList("application/rdf+xml","application/xml","application/rif+xml","application/owl+xml","text/x-rif-ps", "application/xhtml+xml", "text/n3", "text/rdf+n3", "text/turtle", "text/html"));
+    private static final String ACCEPT_HEADER_VALUES = "application/rdf+xml,application/xml,application/rif+xml,text/x-rif-ps,application/xhtml+xml;q=0.8,text/n3,text/rdf+n3,text/turtle,application/n-triples,text/html;q=0.8,*/*;q=0.1"; // FIXME: add other mimetypes
+    private static final Set<String> STRICT_MIMETYPES = new HashSet<String>(Arrays.asList("application/rdf+xml","application/xml","application/rif+xml","text/x-rif-ps", "application/xhtml+xml", "text/n3", "text/rdf+n3", "text/turtle", "application/n-triples", "text/html"));
 
     private static final Map<String,String> MAP_EXTENSION_MIMETYPE = createMapExtensionMimeytpe();
     private static Map<String, String> createMapExtensionMimeytpe() {
         Map<String, String> result = new HashMap<String, String>();
-        result.put("rdf","application/rdf+xml");
+        result.put("rdf", "application/rdf+xml");
+        result.put("owl", "application/rdf+xml");
         result.put("xml", "application/xml");
         result.put("rif", "application/rif+xml");
-        result.put("owl", "application/owl+xml");
         result.put("rifps", "text/x-rif-ps");
         result.put("xhtml", "application/xhtml+xml");
         result.put("n3", "text/n3");
         result.put("ttl", "text/turtle");
+        result.put("nt", "application/n-triples");
         result.put("html", "text/html");
         return Collections.unmodifiableMap(result);
     }

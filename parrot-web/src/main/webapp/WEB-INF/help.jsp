@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> 
 <head>
-  <title>Parrot, RIF and OWL documentation service</title>
+  <title>Help page of Parrot, RIF and OWL documentation service</title>
   <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
   <link rel="shortcut icon" href="images/favicon.ico" type="image/png" />
   <meta name="description" content="parrot" />

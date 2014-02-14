@@ -83,6 +83,20 @@
         <rdfs:isDefinedBy rdf:resource="http://vocab.ctic.es/parrot" />
     </owl:ObjectProperty>
 
+    <owl:ObjectProperty rdf:about="http://vocab.ctic.es/parrot#readAsTurtleOWLOntology">
+        <rdfs:subPropertyOf rdf:resource="http://vocab.ctic.es/parrot#readAs"/>
+        <skos:prefLabel xml:lang="en">read as Turtle OWL ontology</skos:prefLabel>
+	    <dct:description xml:lang="en" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Indicates to read the resource as a Turtle (TTL) OWL ontology</dct:description>
+        <rdfs:isDefinedBy rdf:resource="http://vocab.ctic.es/parrot" />
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://vocab.ctic.es/parrot#readAsN-TriplesOWLOntology">
+        <rdfs:subPropertyOf rdf:resource="http://vocab.ctic.es/parrot#readAs"/>
+        <skos:prefLabel xml:lang="en">read as N-Triples OWL ontology</skos:prefLabel>
+	    <dct:description xml:lang="en" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Indicates to read the resource as an N-Triples OWL ontology</dct:description>
+        <rdfs:isDefinedBy rdf:resource="http://vocab.ctic.es/parrot" />
+    </owl:ObjectProperty>
+
     <owl:ObjectProperty rdf:about="http://vocab.ctic.es/parrot#readAsN3OWLOntology">
         <rdfs:subPropertyOf rdf:resource="http://vocab.ctic.es/parrot#readAs"/>
         <skos:prefLabel xml:lang="en">read as N3 OWL ontology</skos:prefLabel>

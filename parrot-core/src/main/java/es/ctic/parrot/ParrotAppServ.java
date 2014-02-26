@@ -41,8 +41,8 @@ public class ParrotAppServ {
     private static final Logger logger = Logger.getLogger(ParrotAppServ.class);
 
     final private JenaOWLReader ontologyReader;
-    final private DocumentReader ruleXmlReader;
-    final private DocumentReader rifPSReader;
+    final private RifleXmlReader ruleXmlReader;
+    final private RiflePSReader rifPSReader;
     
     /**
      * Constructs a parrot service.
@@ -80,6 +80,7 @@ public class ParrotAppServ {
 	 * @throws ReaderException if a input is malformed or not valid (usually, markup issues).
 	 */
 	public void createDocumentation(DocumentaryProject dp, OutputGenerator outputGenerator, Profile profile) throws IOException, ReaderException, TransformerException {
+		logger.debug("Start to create a document");
 		DocumentableObjectRegister register = new DocumentableObjectRegister();
 		readAndRegisterDocumentableObjects(dp.getInputs(), register);
 		resolveInternalReferences(register);
@@ -195,7 +196,7 @@ public class ParrotAppServ {
 	 * Returns the RIF XML Reader.
 	 * @return the RIF XML Reader.
 	 */
-	private DocumentReader getRuleXmlReader() {
+	private RifleXmlReader getRuleXmlReader() {
 		return ruleXmlReader;
 	}
 
@@ -203,7 +204,7 @@ public class ParrotAppServ {
 	 * Returns the RIF Presentation Syntax (PS) Reader.
 	 * @return the RIF Presentation Syntax (PS) Reader.
 	 */
-	private DocumentReader getRifPSReader() {
+	private RiflePSReader getRifPSReader() {
 		return rifPSReader;
 	}
 

@@ -9,7 +9,6 @@ import net.sourceforge.rifle.ast.Import;
 import org.apache.log4j.Logger;
 
 import es.ctic.parrot.de.DocumentableObjectRegister;
-import es.ctic.parrot.reader.DocumentReader;
 import es.ctic.parrot.reader.Input;
 import es.ctic.parrot.reader.ReaderException;
 import es.ctic.parrot.reader.URLInput;
@@ -28,7 +27,7 @@ public class ImportResolver {
     private static final Logger logger = Logger.getLogger(ImportResolver.class);
     
     private JenaOWLReader ontologyReader;
-    private DocumentReader rifXmlReader;
+    private RifleXmlReader rifXmlReader;
     
     /**
      * Constructs an import resolver using a given ontology reader.
@@ -43,17 +42,25 @@ public class ImportResolver {
      * @param ontologyReader the ontology reader.
      * @param rifXmlReader the RIF XML reader.
      */
-    public ImportResolver(JenaOWLReader ontologyReader, DocumentReader rifXmlReader) {
+    public ImportResolver(JenaOWLReader ontologyReader, RifleXmlReader rifXmlReader) {
         this.setOntologyReader(ontologyReader);
         this.setRifXmlReader(rifXmlReader);
     }
 
     /**
-     * Resolver the import documents (<code>rif:Import</code>) of the document given.
+     * Resolve the RIF import directive (<code>rif:Import</code>) of the document given.
+     * An RIF import directive consists of:
+     * <ul>
+     * <li>the locator, an IRI that identifies and locates the document to be imported</li>
+     * <li>the profile, an <b>optional</b> second IRI that identifies the profile of the import.</li>
+     * </ul>
+     * If only the locator is present, the document to be imported is treated as a RIF/XML document. 
+     * If the profile is present also, the document to be imported is treated as an OWL ontology.
      * @param document the document.
      * @param register the register.
 	 * @throws IOException if a failed or interrupted I/O operation occurs, usually during the initial reading of inputs.
 	 * @throws ReaderException if a input is malformed or not valid (usually, markup issues).
+     * @see <a href="http://www.w3.org/TR/2013/REC-rif-prd-20130205/#Import_directive">Import directive in RIF-PRD</a>
      */
     protected void resolveImports(Document document, DocumentableObjectRegister register) throws IOException, ReaderException {
         for (Import imp : document.getImports()) {
@@ -67,7 +74,7 @@ public class ImportResolver {
                     getOntologyReader().readDocumentableObjects(additionalInput, register);
                 }
             } else {
-                // unary import
+                // unary import, see http://www.w3.org/TR/2013/REC-rif-prd-20130205/#Import_directive
                 if (getRifXmlReader() == null) {
                     logger.error("Discarding unary import " + url + " because there is no RIF XML reader configured");
                 } else {
@@ -82,7 +89,7 @@ public class ImportResolver {
      * Sets RIF XML reader.
      * @param rifXmlReader the RIF XML reader.
      */
-    public void setRifXmlReader(DocumentReader rifXmlReader) {
+    public void setRifXmlReader(RifleXmlReader rifXmlReader) {
         this.rifXmlReader = rifXmlReader;
     }
 
@@ -90,7 +97,7 @@ public class ImportResolver {
      * Returns the RIF XML reader.
      * @return the RIF XML reader. 
      */
-    public DocumentReader getRifXmlReader() {
+    public RifleXmlReader getRifXmlReader() {
         return rifXmlReader;
     }
 

@@ -36,7 +36,7 @@ public class RiflePSReader extends ImportResolver implements DocumentReader {
      * @param ontologyReader the ontology reader.
      * @param rifXmlReader the RIF XML reader.
      */
-    public RiflePSReader(JenaOWLReader ontologyReader, DocumentReader rifXmlReader) {
+    public RiflePSReader(JenaOWLReader ontologyReader, RifleXmlReader rifXmlReader) {
         super(ontologyReader, rifXmlReader);
     }
     

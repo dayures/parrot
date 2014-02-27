@@ -22,9 +22,9 @@ import es.ctic.parrot.reader.jena.JenaOWLReader;
  * @since 1.0
  *
  */
-public class ImportResolver {
+public class RIFImportResolver {
     
-    private static final Logger logger = Logger.getLogger(ImportResolver.class);
+    private static final Logger logger = Logger.getLogger(RIFImportResolver.class);
     
     private JenaOWLReader ontologyReader;
     private RifleXMLReader rifXmlReader;
@@ -33,7 +33,7 @@ public class ImportResolver {
      * Constructs an import resolver using a given ontology reader.
      * @param ontologyReader the ontology reader.
      */
-    public ImportResolver(JenaOWLReader ontologyReader) {
+    public RIFImportResolver(JenaOWLReader ontologyReader) {
         this.setOntologyReader(ontologyReader);
     }
     
@@ -42,7 +42,7 @@ public class ImportResolver {
      * @param ontologyReader the ontology reader.
      * @param rifXmlReader the RIF XML reader.
      */
-    public ImportResolver(JenaOWLReader ontologyReader, RifleXMLReader rifXmlReader) {
+    public RIFImportResolver(JenaOWLReader ontologyReader, RifleXMLReader rifXmlReader) {
         this.setOntologyReader(ontologyReader);
         this.setRifXmlReader(rifXmlReader);
     }

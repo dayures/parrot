@@ -27,7 +27,7 @@ import es.ctic.parrot.reader.jena.JenaOWLReader;
  * @since 1.0
  * 
  */
-public class RiflePSReader extends ImportResolver implements DocumentReader {
+public class RiflePSReader extends RIFImportResolver implements DocumentReader {
 
     private static final Logger logger = Logger.getLogger(RiflePSReader.class);
     

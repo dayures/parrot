@@ -22,7 +22,7 @@ import es.ctic.parrot.reader.jena.JenaOWLReader;
  * @since 1.0
  * 
  */
-public class RifleXMLReader extends ImportResolver implements DocumentReader {
+public class RifleXMLReader extends RIFImportResolver implements DocumentReader {
 
     /**
      * Constructs a RIF XML reader.

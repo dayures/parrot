@@ -1210,17 +1210,7 @@ under <a href="http://creativecommons.org/licenses/by/2.5/">CreativeCommons-by
 <script type="text/javascript" src="report/js/jquery.corner.js"></script>
 <script type="text/javascript" src="javascript/help-scripts.js"></script>
 
-<script type="text/javascript">//<![CDATA[ 
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-8820144-1']);
-_gaq.push(['_trackPageview']);
+<jsp:include page="google-analytics.jsp" />
 
-(function() {
-  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();
-//]]>         
-</script>
 </body>
 </html>

@@ -19,12 +19,7 @@
 
 <div class="all">
 
-<div id="header">
-<h1><a href="/parrot"
-title="go to parrot home page">Parrot </a></h1>
-
-<h2>a RIF and OWL documentation service</h2>
-</div>
+<jsp:include page="header.jsp" />
 
 <c:set var="req" value="${pageContext.request}" />
 <c:set var="baseURL" value="${fn:replace(req.requestURL, fn:substring(req.requestURI, 0, fn:length(req.requestURI)), req.contextPath)}" />
@@ -100,24 +95,8 @@ title="go to parrot home page">Parrot </a></h1>
 <li><a href="examples/previous-report-metadata.html">Previous Report generated (just metadata)</a></li>
 </ul> 
 
-<div id="footer">
-<p id="logo"><a href="http://www.fundacionctic.org/"><img src="images/ctic.png"
-alt="Fundacion CTIC"/></a> <a href="http://ontorule-project.eu"><img
-src="images/ontorule.png" alt="ONTORULE Project"/></a> </p>
+<jsp:include page="footer.jsp" />
 
-<p><a href="http://ontorule-project.eu/parrot">Parrot</a> is a RIF and OWL
-documentation service developed <a href="http://ct.ctic.es">Fundación
-CTIC</a>. <a href="https://bitbucket.org/fundacionctic/parrot">Source code is available</a>.</p>
-
-<p>This work has been partially funded by <a href="http://ontorule-project.eu"
-title="ONTORULE Web site">ONTORULE Project (FP7-ICT-2008-3, project reference
-231875)</a>.</p>
-
-<p>Some icons has been created by <a
-href="http://www.famfamfam.com/about/">Mark James</a> and there are distributed
-under <a href="http://creativecommons.org/licenses/by/2.5/">CreativeCommons-by
-2.5</a> license.</p>
-</div>
 </div>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="report/js/jquery.corner.js"></script>

@@ -1,0 +1,15 @@
+Document (
+  Prefix( am <http://ontorule-project.eu/resources/steel-30#> )
+  Prefix( rdf <http://www.w3.org/1999/02/22-rdf-syntax-ns#> )
+
+  Group (
+
+    Group ()
+    Forall ?coil ?lengthchain
+      such that ?coil [rdf:type -> am:Coil ]
+      (
+        If Not (?coil [am:lengthYieldStrengthDefects -> ?lengthchain] )
+        Then Do( Assert ( ?coil [am:lengthYieldStrengthDefects -> 0] ) )
+      )
+  )
+)

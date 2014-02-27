@@ -1,0 +1,135 @@
+<!DOCTYPE Document [
+  <!ENTITY rif  "http://www.w3.org/2007/rif#">
+  <!ENTITY func "http://www.w3.org/2007/rif-builtin-function#">
+  <!ENTITY pred "http://www.w3.org/2007/rif-builtin-predicate#">
+  <!ENTITY xs   "http://www.w3.org/2001/XMLSchema#">
+  <!ENTITY am   "http://www.ontorule-project.eu/wp5/miniusecase#">
+  <!ENTITY rdf	"http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <!ENTITY dc	"http://purl.org/dc/terms/">
+  <!ENTITY rdfs	"http://www.w3.org/2000/01/rdf-schema#">
+]>
+
+<Document
+    xmlns="http://www.w3.org/2007/rif#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+    xmlns:am="http://www.ontorule-project.eu/wp5/miniusecase#">
+  <payload>
+    <Group>
+    <sentence><Group></Group></sentence>
+
+    <sentence>
+	<Forall>
+	  <declare><Var>point</Var></declare>
+	  <declare><Var>product</Var></declare>
+	  <declare><Var>order</Var></declare>
+	  <declare><Var>yieldstrength</Var></declare>
+	  <declare><Var>ystarget</Var></declare>
+	  <declare><Var>ysuppertolerance</Var></declare>
+	  <declare><Var>ysupperbound</Var></declare>
+	    <formula>
+	      <Implies>
+		<if>
+		  <And>
+		    <formula>
+		      <Frame>
+			<object>
+			  <Var>point</Var>
+			</object>
+			<slot ordered="yes">
+			  <Const type="&rif;iri">&rdf;type</Const>
+			  <Const type="&rif;iri">&am;CoilSamplingPoint</Const>
+			</slot>
+			<slot ordered="yes">
+			  <Const type="&rif;iri">&am;product</Const>
+			  <Var>product</Var>
+			</slot>
+			<slot ordered="yes">
+			  <Const type="&rif;iri">&am;yieldStrength</Const>
+			  <Var>yieldstrength</Var>
+			</slot>
+		      </Frame>
+		    </formula>
+		    <formula>
+		      <Frame>
+			<object>
+			  <Const type="&rif;iri">&am;yieldStrengthDefect</Const>
+			</object>
+			<slot ordered="yes">
+			  <Const type="&rif;iri">&am;locatedIn</Const>
+			  <Var>point</Var>
+			</slot>
+		      </Frame>
+		    </formula>
+		    <formula>
+		      <Frame>
+			<object>
+			  <Var>order</Var>
+			</object>
+			<slot ordered="yes">
+			  <Const type="&rif;iri">&am;yieldStrengthTarget</Const>
+			  <Var>ystarget</Var>
+			</slot>
+			<slot ordered="yes">
+			  <Const type="&rif;iri">&am;yieldStrengthUpperTolerance</Const>
+			  <Var>ysuppertolerance</Var>
+			</slot>
+		      </Frame>
+		    </formula>
+		    <formula>
+		      <Equal>
+			<left>
+			  <Var>ysupperbound</Var>
+			</left>
+			<right>
+			  <External>
+			   <content>
+			     <Expr>
+			      <op>
+				<Const type="rif:iri">&func;numeric-add</Const>
+			      </op>
+			      <args ordered="yes">
+				<Var>ystarget</Var>
+				<Var>ysuppertolerance</Var>
+			      </args>
+			     </Expr>
+			    </content>
+			  </External>
+			</right>
+		      </Equal>
+		    </formula>
+		    <formula>
+		      <External>
+			<content>
+			  <Atom>
+			    <op>
+			      <Const type="&rif;iri">&pred;numeric-greater-than</Const>
+			    </op>
+			    <args ordered="yes">
+			      <Var>yieldstrength</Var>
+			      <Var>ysupperbound</Var>
+			    </args>
+			  </Atom>
+			</content>
+		      </External>
+		    </formula>
+		  </And>
+		</if>
+		<then>
+		  <Frame>
+		    <object>
+		      <Var>product</Var>
+		    </object>
+		      <slot ordered="yes">
+			<Const type="&rif;iri">&am;order</Const>
+			<Var>order</Var>
+		    </slot>
+		  </Frame>
+		</then>
+	      </Implies>
+	    </formula>
+	</Forall>
+      </sentence>
+    </Group>
+  </payload>
+</Document>

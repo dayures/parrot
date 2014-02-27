@@ -1,0 +1,39 @@
+Document (
+
+  Prefix( audi <http://lipn.univ-paris13.fr/RCLN/terminae/Audi#> )
+  Prefix( rdf <http://www.w3.org/1999/02/22-rdf-syntax-ns#> )
+  Prefix( pred <http://www.w3.org/2007/rif-builtin-predicate#> )
+  Prefix( rdfs <http://www.w3.org/2000/01/rdf-schema#> )
+  Prefix( rif <http://www.w3.org/2007/rif#> )
+  Prefix( dc <http://purl.org/dc/elements/1.1/> )
+  Prefix( dct <http://purl.org/dc/terms/> )
+  Prefix( foaf <http://xmlns.com/foaf/0.1/> )
+  Prefix( og <http://ogp.me/ns#> )
+
+  Import ( <http://ontorule-project.eu/resources/2nd-review-b/review_ontology.owl> <http://www.w3.org/ns/entailment/RDF>) 
+ 
+  (* audi:defects-group audi:defects-group [rdfs:label -> "Audi rules"@en
+                                              rdfs:comment -> "RIF ruleset for managing car defects"
+                                              dc:creator ->  "Luis Polo"
+                                              dc:contributor -> "Carlos Tejo"
+                                              dc:date -> "2011-02-14" ] *)
+  
+  Group rif:forwardChaining 100 (
+
+     (* audi:rule2 audi:rule2 [rdfs:label -> "Micro Slip Test rule"@en
+                                dc:creator ->  "Luis Polo"
+                                dc:contributor -> "Carlos Tejo"
+                                dct:source -> <http://lipn.univ-paris13.fr/RCLN/ontorule/Audi/rules#R16>
+                                dc:date -> "2011-02-14" ] *)  
+   Forall ?temp 
+   such that ?temp [<http://www.w3.org/1999/02/22-rdf-syntax-ns#type> -> audi:Temperature ] 
+   ( Do ( 
+        Assert(audi:MicroSlipTest [audi:Temperature -> ?temp])
+        Assert (?temp[audi:temp -> External(pred:numeric-greater-than(?temp 15))])
+     )
+   )
+
+  )
+
+)
+

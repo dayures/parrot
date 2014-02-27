@@ -1201,8 +1201,7 @@ under <a href="http://creativecommons.org/licenses/by/2.5/">CreativeCommons-by
 2.5</a> license.</p>
 </div>
 </div>
-<script type="text/javascript">
-<![CDATA[ 
+<script type="text/javascript">//<![CDATA[ 
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-8820144-1']);
 _gaq.push(['_trackPageview']);
@@ -1212,7 +1211,7 @@ _gaq.push(['_trackPageview']);
   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
-]]>         
+//]]>         
 </script>
 </body>
 </html>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Document [
+  <!ENTITY rif  "http://www.w3.org/2007/rif#">
+  <!ENTITY func "http://www.w3.org/2007/rif-builtin-function#">
+  <!ENTITY pred "http://www.w3.org/2007/rif-builtin-predicate#">
+  <!ENTITY xs   "http://www.w3.org/2001/XMLSchema#">
+  <!ENTITY am   "http://example.org/">
+  <!ENTITY rdf	"http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <!ENTITY dct	"http://purl.org/dc/terms/">
+  <!ENTITY dc	"http://purl.org/dc/elements/1.1/">
+  <!ENTITY rdfs	"http://www.w3.org/2000/01/rdf-schema#">
+  <!ENTITY foaf	"http://xmlns.com/foaf/0.1/">
+  <!ENTITY owl	"http://www.w3.org/2002/07/owl#">
+]>
+
+<Document
+    xmlns="http://www.w3.org/2007/rif#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+    xmlns:am="http://ontorule-project.eu/resources/steel#"
+    xml:lang="en">
+
+  <payload>
+    <Group>
+        <id><Const type="http://www.w3.org/2007/rif#iri">&am;age-ruleset</Const></id>
+	    <meta>
+	      <Frame>
+	        <object>
+	          <Const type="&rif;iri">&am;age-ruleset</Const>
+	        </object>
+	        <slot ordered="yes">
+	          <Const type="&rif;iri">&rdfs;label</Const>
+	          <Const type="&xs;string">Age Ruleset</Const>
+	        </slot>
+	        <slot ordered="yes">
+	          <Const type="&rif;iri">&rdfs;comment</Const>
+	          <Const type="&xs;string">Ruleset for managing age issues</Const>
+	        </slot>
+	        <slot ordered="yes">
+	          <Const type="&rif;iri">&dc;creator</Const>
+	          <Const type="&xs;string">Carlos Tejo</Const>
+	        </slot>
+	        <slot ordered="yes">
+	          <Const type="&rif;iri">&dc;contributor</Const>
+	          <Const type="&xs;string">David Guetta</Const>
+	        </slot>
+	        <slot ordered="yes">
+	          <Const type="&rif;iri">&dc;date</Const>
+	          <Const type="&xs;string">2011-08-31</Const>
+	        </slot>
+	      </Frame>
+	    </meta>
+        <behavior>
+            <Priority>100</Priority>
+        </behavior>
+      <sentence>
+	<Forall>
+        <id><Const type="http://www.w3.org/2007/rif#iri">&am;under18-rule</Const></id>
+	    <meta>
+	      <Frame>
+	        <object>
+	          <Const type="&rif;iri">&am;under18-rule</Const>
+	        </object>
+	        <slot ordered="yes">
+	          <Const type="&rif;iri">&rdfs;label</Const>
+	          <Const type="&xs;string">Under 18 years rule</Const>
+	        </slot>
+	        <slot ordered="yes">
+	          <Const type="&rif;iri">&rdfs;comment</Const>
+	          <Const type="&xs;string">This rule check is a person is under 18 years old</Const>
+	        </slot>
+	        <slot ordered="yes">
+	          <Const type="&rif;iri">&dc;creator</Const>
+	          <Const type="&xs;string">Carlos Tejo</Const>
+	        </slot>
+	        <slot ordered="yes">
+	          <Const type="&rif;iri">&dc;contributor</Const>
+	          <Const type="&xs;string">Malina</Const>
+	        </slot>
+	        <slot ordered="yes">
+	          <Const type="&rif;iri">&dc;date</Const>
+	          <Const type="&xs;string">2011-08-29</Const>
+	        </slot>
+
+	        <slot ordered="yes">
+	          <Const type="&rif;iri">&owl;versionInfo</Const>
+	          <Const type="&xs;string">1.0-intial draft</Const>
+	        </slot>
+	        <slot ordered="yes">
+	          <Const type="&rif;iri">&dc;rights</Const>
+	          <Const type="&xs;string">CTIC Foundation, some rights reserved</Const>
+	        </slot>
+	        <slot ordered="yes">
+	          <Const type="&rif;iri">&dct;license</Const>
+	          <Const type="&rif;iri">http://creativecommons.org/licenses/by/3.0/</Const>
+	        </slot>
+	        <slot ordered="yes">
+	          <Const type="&rif;iri">&foaf;depiction</Const>
+	          <Const type="&rif;iri">http://farm1.static.flickr.com/178/401764350_3d0d310f5f.jpg</Const>
+	        </slot>
+
+	      </Frame>
+	    </meta>
+
+	  <declare><Var>person</Var></declare>
+	  <declare><Var>age</Var></declare>
+	    <formula>
+	      <Implies>
+		    <if>
+             <And>
+              <formula>
+              <Frame>
+			    <object>
+			      <Var>person</Var>
+			    </object>
+			    <slot ordered="yes">
+			      <Const type="&rif;iri">&rdf;type</Const>
+			      <Const type="&rif;iri">&foaf;Person</Const>
+			    </slot>
+	          </Frame>
+              </formula>
+              <formula>
+              <Frame>
+			    <object>
+			      <Var>person</Var>
+			    </object>
+			    <slot ordered="yes">
+			      <Const type="&rif;iri">&foaf;age</Const>
+                  <Var>age</Var>
+			    </slot>
+	          </Frame>
+              </formula>
+
+                <formula>
+                <External>
+                 <content>
+                  <Atom>
+                      <op><Const type="&rif;iri">http://www.w3.org/2007/rif-builtin-predicate#numeric-less-than</Const></op>
+                        <args ordered="yes">
+                          <Var>age</Var>
+                          <Const type="&xs;integer">18</Const>
+                        </args>
+                  </Atom>
+                 </content>
+                </External>
+                </formula>
+             </And>
+		    </if>
+		    <then>
+                <Do>
+                  <actions ordered="yes">
+                    <Assert>
+                      <target>
+                        <Frame>
+                          <object><Var>person</Var></object>
+                          <slot ordered="yes">
+                            <Const type="http://www.w3.org/2007/rif#iri">http://www.w3.org/1999/02/22-rdf-syntax-ns#type</Const>
+                            <Const type="http://www.w3.org/2007/rif#iri">http://example.org/Under18Person</Const>
+                          </slot>
+                        </Frame>
+                      </target>
+                    </Assert>
+                  </actions>
+                </Do>
+		    </then>
+	      </Implies>
+	    </formula>
+	   </Forall>
+      </sentence>
+    </Group>
+  </payload>
+</Document>

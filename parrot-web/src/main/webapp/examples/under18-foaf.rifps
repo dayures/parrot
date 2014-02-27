@@ -1,0 +1,36 @@
+Document(
+  Prefix( ex   <http://example.com/>)
+  Prefix( foaf <http://xmlns.com/foaf/0.1/>)
+  Prefix( rdf  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> )
+  Prefix( pred <http://www.w3.org/2007/rif-builtin-predicate#> )
+  Prefix( rdfs <http://www.w3.org/2000/01/rdf-schema#> )
+  Prefix( rif  <http://www.w3.org/2007/rif#> )
+  Prefix( dc   <http://purl.org/dc/elements/1.1/> )
+  Prefix( dct  <http://purl.org/dc/terms/> )
+  Prefix( owl  <http://www.w3.org/2002/07/owl#> )
+
+  Import ( <http://xmlns.com/foaf/0.1/> <http://www.w3.org/ns/entailment/RDF>) 
+
+  (* ex:age-ruleset ex:age-ruleset [ rdfs:label -> "Age Ruleset"@en
+                                     rdfs:comment -> "Ruleset for managing age issues"@en
+                                     dc:creator ->  "Carlos Tejo"
+                                     dc:contributor -> "David Guetta"
+                                     dc:date -> "2011-08-31" ] *)
+  Group rif:forwardChaining 100 (
+   (* ex:under18-rule ex:under18-rule [ rdfs:label -> "Under 18 years rule"@en
+                                        rdfs:comment -> "This rule check is a person is under 18 years old"@en
+                                        dc:creator ->  "Carlos Tejo"
+                                        dc:contributor -> "Malina"
+                                        dc:date -> "2011-08-29"
+                                        owl:versionInfo -> "1.0-intial draft"
+                                        dc:rights -> "CTIC Foundation, some rights reserved"
+                                        dct:license -> <http://creativecommons.org/licenses/by/3.0/>
+                                        foaf:depiction -> <http://farm1.static.flickr.com/178/401764350_3d0d310f5f.jpg> ] *)  
+    Forall ?person ?age (
+      If And( ?person#foaf:Person
+              ?person[foaf:age -> ?age]
+              External(pred:numeric-less-than(?age 18)))
+      Then Do( Assert(?person#ex:Under18Person) ) 
+    )
+  )
+)

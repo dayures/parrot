@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://ontorule-project.eu/resources/steel#"
+     xml:base="http://ontorule-project.eu/resources/steel"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+
+    <owl:Ontology>
+        <rdfs:label xml:lang="en">Ontology label</rdfs:label>
+    </owl:Ontology>
+
+    <owl:Class>
+        <rdfs:label xml:lang="en">Class label</rdfs:label>
+    </owl:Class>
+
+    <owl:ObjectProperty>
+        <rdfs:label xml:lang="en">Object property label</rdfs:label>
+    </owl:ObjectProperty>
+
+    <owl:DatatypeProperty>
+        <rdfs:label xml:lang="en">Datatype property label</rdfs:label>
+    </owl:DatatypeProperty>
+
+    <owl:AnnotationProperty>
+        <rdfs:label xml:lang="en">Annotation property label</rdfs:label>
+    </owl:AnnotationProperty>
+
+    <rdf:Property>
+        <rdfs:label xml:lang="en">Property label</rdfs:label>
+    </rdf:Property>
+
+    <owl:Class about="http://example.org/#class"/>
+
+    <owl:AnonymousIndividual>
+        <rdfs:label xml:lang="en">Anonymous Individual label</rdfs:label>
+        <rdf:type resource="http://example.org/#class"/>
+    </owl:AnonymousIndividual>
+
+</rdf:RDF>
+

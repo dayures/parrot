@@ -14,6 +14,11 @@
         <servlet-name>ServletHelp</servlet-name>
 		<servlet-class>es.ctic.parrot.web.ServletHelp</servlet-class>
     </servlet>
+   
+   <servlet>
+        <servlet-name>ServletExamples</servlet-name>
+		<servlet-class>es.ctic.parrot.web.ServletExamples</servlet-class>
+    </servlet>
 
     <servlet-mapping>
 	    <servlet-name>ServletParrot</servlet-name>
@@ -23,6 +28,11 @@
     <servlet-mapping>
 	    <servlet-name>ServletHelp</servlet-name>
 	    <url-pattern>/help</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+	    <servlet-name>ServletExamples</servlet-name>
+	    <url-pattern>/examples</url-pattern>
     </servlet-mapping>
 
     <filter>

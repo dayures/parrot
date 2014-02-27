@@ -1201,6 +1201,10 @@ under <a href="http://creativecommons.org/licenses/by/2.5/">CreativeCommons-by
 2.5</a> license.</p>
 </div>
 </div>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="report/js/jquery.corner.js"></script>
+<script type="text/javascript" src="javascript/help-scripts.js"></script>
+
 <script type="text/javascript">//<![CDATA[ 
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-8820144-1']);

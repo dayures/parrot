@@ -27,7 +27,7 @@ public class ImportResolver {
     private static final Logger logger = Logger.getLogger(ImportResolver.class);
     
     private JenaOWLReader ontologyReader;
-    private RifleXmlReader rifXmlReader;
+    private RifleXMLReader rifXmlReader;
     
     /**
      * Constructs an import resolver using a given ontology reader.
@@ -42,7 +42,7 @@ public class ImportResolver {
      * @param ontologyReader the ontology reader.
      * @param rifXmlReader the RIF XML reader.
      */
-    public ImportResolver(JenaOWLReader ontologyReader, RifleXmlReader rifXmlReader) {
+    public ImportResolver(JenaOWLReader ontologyReader, RifleXMLReader rifXmlReader) {
         this.setOntologyReader(ontologyReader);
         this.setRifXmlReader(rifXmlReader);
     }
@@ -89,7 +89,7 @@ public class ImportResolver {
      * Sets RIF XML reader.
      * @param rifXmlReader the RIF XML reader.
      */
-    public void setRifXmlReader(RifleXmlReader rifXmlReader) {
+    public void setRifXmlReader(RifleXMLReader rifXmlReader) {
         this.rifXmlReader = rifXmlReader;
     }
 
@@ -97,7 +97,7 @@ public class ImportResolver {
      * Returns the RIF XML reader.
      * @return the RIF XML reader. 
      */
-    public RifleXmlReader getRifXmlReader() {
+    public RifleXMLReader getRifXmlReader() {
         return rifXmlReader;
     }
 

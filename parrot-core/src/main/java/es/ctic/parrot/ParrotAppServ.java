@@ -20,7 +20,7 @@ import es.ctic.parrot.reader.Input;
 import es.ctic.parrot.reader.ReaderException;
 import es.ctic.parrot.reader.jena.JenaOWLReader;
 import es.ctic.parrot.reader.rifle.RiflePSReader;
-import es.ctic.parrot.reader.rifle.RifleXmlReader;
+import es.ctic.parrot.reader.rifle.RifleXMLReader;
 import es.ctic.parrot.transformers.DetailsVisitor;
 import es.ctic.parrot.transformers.DocumentableObjectVisitor;
 import es.ctic.parrot.transformers.GlossaryVisitor;
@@ -41,7 +41,7 @@ public class ParrotAppServ {
     private static final Logger logger = Logger.getLogger(ParrotAppServ.class);
 
     final private JenaOWLReader ontologyReader;
-    final private RifleXmlReader ruleXmlReader;
+    final private RifleXMLReader ruleXmlReader;
     final private RiflePSReader rifPSReader;
     
     /**
@@ -66,7 +66,7 @@ public class ParrotAppServ {
      */
     public ParrotAppServ() {
     	ontologyReader = new JenaOWLReader();
-    	ruleXmlReader = new RifleXmlReader(getOntologyReader());
+    	ruleXmlReader = new RifleXMLReader(getOntologyReader());
     	rifPSReader = new RiflePSReader(getOntologyReader(), getRuleXmlReader());
     }
 
@@ -196,7 +196,7 @@ public class ParrotAppServ {
 	 * Returns the RIF XML Reader.
 	 * @return the RIF XML Reader.
 	 */
-	private RifleXmlReader getRuleXmlReader() {
+	private RifleXMLReader getRuleXmlReader() {
 		return ruleXmlReader;
 	}
 

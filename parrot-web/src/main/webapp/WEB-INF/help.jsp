@@ -40,6 +40,8 @@ title="go to parrot home page">Parrot </a></h1>
 <li><a href="#rest">Use as a REST service</a></li>
 <li><a href="#tips">Tips</a>
 	<ul>
+	
+	<li><a href="#tip-examples">PARROT example compilation</a></li>
 	<li><a href="#tip-label">Label order</a></li>
 	<li><a href="#tip-description">Description order</a></li>
 	<li><a href="#tip-button-rdfa">Button RDFa</a></li>
@@ -1129,6 +1131,9 @@ You can send multiple <tt>documentText</tt> parameter values. In that case, each
 <p class="code">GET /parrot?reportURL=http://ontorule-project.eu/resources/parrot/examples/previous-report-metadata.html&amp;profile=business&amp;language=en</p>
 
 <h2 id="tips">Tips</h2>
+
+<h3 id="tip-examples">PARROT example compilation</h3>
+<p>In the <a href="examples">PARROT example compilation</a> there are available multiple examples of usage of PARROT with ontologies, rules, datasets, vocabularies and more.</p>
 
 <h3 id="tip-label">Label order</h3>
 <p>If you want to add a <strong>label</strong> to an element, the preferred property order to set it is:</p>

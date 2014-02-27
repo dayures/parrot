@@ -5,11 +5,12 @@ import java.io.IOException;
 import javax.xml.transform.Source;
 import javax.xml.transform.stream.StreamSource;
 
+import org.apache.log4j.Logger;
+
 import net.sourceforge.rifle.ast.Document;
 import net.sourceforge.rifle.prd.xml.Parser;
 import net.sourceforge.rifle.prd.xml.ParserException;
 import es.ctic.parrot.de.DocumentableObjectRegister;
-import es.ctic.parrot.reader.DocumentReader;
 import es.ctic.parrot.reader.Input;
 import es.ctic.parrot.reader.ReaderException;
 import es.ctic.parrot.reader.jena.JenaOWLReader;
@@ -22,15 +23,17 @@ import es.ctic.parrot.reader.jena.JenaOWLReader;
  * @since 1.0
  * 
  */
-public class RifleXMLReader extends RIFImportResolver implements DocumentReader {
+public class RifleXMLReader extends AbstractRifleReader {
+
+    private static final Logger logger = Logger.getLogger(RifleXMLReader.class);
 
     /**
      * Constructs a RIF XML reader.
      * @param ontologyReader the ontology reader.
      */
     public RifleXMLReader(JenaOWLReader ontologyReader) {
-        super(ontologyReader);
-        setRifXmlReader(this);
+        setOntologyReader(ontologyReader);
+    	setRIFImportResolver(new RIFImportResolver(ontologyReader,this));
     }
     
     public void readDocumentableObjects(Input input,
@@ -41,12 +44,13 @@ public class RifleXMLReader extends RIFImportResolver implements DocumentReader 
         Document document = null;
         try {
             document = parser.parse(source);
+			logger.trace("RIF XML document parsed without errors");            
         } catch (ParserException e) {
             throw new ReaderException("A problem occurred when parsing the RIF/XML document: " + e.getMessage(), e);
         }
         
         try {
-            resolveImports(document, register);
+        	getRIFImportResolver().resolveImports(document, register);
             RifleASTVisitor visitor = new RifleASTVisitor(register, getOntologyReader().getAnnotationStrategy(), getOntologyReader().getOntModel());
             document.accept(visitor);
         } catch (Exception e) {

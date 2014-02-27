@@ -27,7 +27,40 @@ public class RIFImportResolver {
     private static final Logger logger = Logger.getLogger(RIFImportResolver.class);
     
     private JenaOWLReader ontologyReader;
-    private RifleXMLReader rifXmlReader;
+    private RifleXMLReader rifXMLReader;
+    
+    /**
+     * Sets RIF XML reader.
+     * @param rifXmlReader the RIF XML reader.
+     */
+    private void setRifXmlReader(RifleXMLReader rifXmlReader) {
+        this.rifXMLReader = rifXmlReader;
+    }
+
+    /**
+     * Returns the RIF XML reader.
+     * @return the RIF XML reader. 
+     */
+    private RifleXMLReader getRifXmlReader() {
+        return rifXMLReader;
+    }
+
+    /**
+     * Sets ontology reader.
+     * @param ontologyReader the ontology reader.
+     */
+    private void setOntologyReader(JenaOWLReader ontologyReader) {
+        this.ontologyReader = ontologyReader;
+    }
+
+    /**
+     * Returns the ontology reader.
+     * @return the ontology reader.
+     */
+    private JenaOWLReader getOntologyReader() {
+        return ontologyReader;
+    }
+
     
     /**
      * Constructs an import resolver using a given ontology reader.
@@ -67,6 +100,7 @@ public class RIFImportResolver {
             URL url = new URL(imp.getLocator());
             if (imp.getProfile() != null) {
                 // binary import, see http://www.w3.org/TR/rif-rdf-owl/#Importing_RDF_and_OWL_in_RIF
+                logger.trace("Reading import with URL <"+url+"> and profile <"+imp.getProfile()+">");
                 if (getOntologyReader() == null) {
                     logger.error("Discarding binary import " + url + " because there is no ontology reader is configured");
                 } else {
@@ -75,6 +109,7 @@ public class RIFImportResolver {
                 }
             } else {
                 // unary import, see http://www.w3.org/TR/2013/REC-rif-prd-20130205/#Import_directive
+                logger.trace("Reading import with URL <"+url+"> and without profile");            	
                 if (getRifXmlReader() == null) {
                     logger.error("Discarding unary import " + url + " because there is no RIF XML reader configured");
                 } else {
@@ -85,36 +120,5 @@ public class RIFImportResolver {
         }        
     }
 
-    /**
-     * Sets RIF XML reader.
-     * @param rifXmlReader the RIF XML reader.
-     */
-    public void setRifXmlReader(RifleXMLReader rifXmlReader) {
-        this.rifXmlReader = rifXmlReader;
-    }
-
-    /**
-     * Returns the RIF XML reader.
-     * @return the RIF XML reader. 
-     */
-    public RifleXMLReader getRifXmlReader() {
-        return rifXmlReader;
-    }
-
-    /**
-     * Sets ontology reader.
-     * @param ontologyReader the ontology reader.
-     */
-    public void setOntologyReader(JenaOWLReader ontologyReader) {
-        this.ontologyReader = ontologyReader;
-    }
-
-    /**
-     * Returns the ontology reader.
-     * @return the ontology reader.
-     */
-    public JenaOWLReader getOntologyReader() {
-        return ontologyReader;
-    }
 
 }

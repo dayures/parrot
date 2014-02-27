@@ -14,7 +14,6 @@ import org.antlr.runtime.RecognitionException;
 import org.apache.log4j.Logger;
 
 import es.ctic.parrot.de.DocumentableObjectRegister;
-import es.ctic.parrot.reader.DocumentReader;
 import es.ctic.parrot.reader.Input;
 import es.ctic.parrot.reader.ReaderException;
 import es.ctic.parrot.reader.jena.JenaOWLReader;
@@ -27,17 +26,18 @@ import es.ctic.parrot.reader.jena.JenaOWLReader;
  * @since 1.0
  * 
  */
-public class RiflePSReader extends RIFImportResolver implements DocumentReader {
+public class RiflePSReader extends AbstractRifleReader {
 
     private static final Logger logger = Logger.getLogger(RiflePSReader.class);
-    
+
     /**
      * Constructs a RIF PS reader.
      * @param ontologyReader the ontology reader.
-     * @param rifXmlReader the RIF XML reader.
+     * @param rifXmlReader the RIF XML reader for the import resolver.
      */
     public RiflePSReader(JenaOWLReader ontologyReader, RifleXMLReader rifXmlReader) {
-        super(ontologyReader, rifXmlReader);
+        setOntologyReader(ontologyReader);	
+        setRIFImportResolver(new RIFImportResolver(ontologyReader, rifXmlReader));
     }
     
 	public void readDocumentableObjects(Input input,
@@ -53,8 +53,9 @@ public class RiflePSReader extends RIFImportResolver implements DocumentReader {
 			RIFPRDParser.document_return document_return = parser.document();
 			
 			if (parser.getNumberOfSyntaxErrors() == 0) {
+				  logger.trace("RIF PS document read without errors");
 			      Document document = document_return.ret_document;
-                  resolveImports(document, register);
+			      getRIFImportResolver().resolveImports(document, register);
 			      RifleASTVisitor visitor = new RifleASTVisitor(register, getOntologyReader().getAnnotationStrategy(), getOntologyReader().getOntModel());
 			      document.accept(visitor);
 			} else {

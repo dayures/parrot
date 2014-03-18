@@ -1,4 +1,4 @@
-package es.ctic.parrot;
+package es.ctic.parrot.project;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -19,7 +19,7 @@ import es.ctic.parrot.reader.URLInput;
 
 
 /**
- * A factory for creating {@link  es.ctic.parrot.DocumentaryProject Documentary Projects}.
+ * A factory for creating {@link  es.ctic.parrot.project.DocumentaryProject Documentary Projects}.
  * 
  * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
  * @version 1.0

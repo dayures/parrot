@@ -1,4 +1,4 @@
-package es.ctic.parrot;
+package es.ctic.parrot.project;
 
 import java.util.Collection;
 import java.util.Collections;

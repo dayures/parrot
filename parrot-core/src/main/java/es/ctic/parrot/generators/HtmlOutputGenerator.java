@@ -12,6 +12,7 @@ import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
 
 import es.ctic.parrot.docmodel.Document;
+import es.ctic.parrot.project.Profile;
 
 /**
  * Generates <code>HTML</code> content from a documentary model.

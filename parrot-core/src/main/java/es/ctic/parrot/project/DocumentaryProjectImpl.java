@@ -18,12 +18,12 @@ import es.ctic.parrot.reader.Input;
  */
 public class DocumentaryProjectImpl implements DocumentaryProject {
 
-	private final Collection<Input> inputs = new HashSet<Input>();;
+	private final Collection<Input> inputs = new HashSet<Input>();
 	private final Locale locale;
 	private final String prologueURL;
 	private final String appendixURL;
-	private final String generatedReportUrl;
-	private final String customizeCssUrl;
+	private final String generatedReportURL;
+	private final String customizeCssURL;
 	private final Profile profile;
 
 	public static class Builder {
@@ -32,8 +32,8 @@ public class DocumentaryProjectImpl implements DocumentaryProject {
 		private Locale locale = Locale.ENGLISH;
 		private String prologueURL;
 		private String appendixURL;
-		private String generatedReportUrl;
-		private String customizeCssUrl;
+		private String generatedReportURL;
+		private String customizeCssURL;
 		private Profile profile = Profile.TECHNICAL;
 
 		public Builder() {
@@ -55,13 +55,13 @@ public class DocumentaryProjectImpl implements DocumentaryProject {
 			return this;
 		}
 
-		public Builder generatedReportUrl(String val){
-			generatedReportUrl = val;
+		public Builder generatedReportURL(String val){
+			generatedReportURL = val;
 			return this;
 		}
 
-		public Builder customizeCssUrl(String val){
-			customizeCssUrl = val;
+		public Builder customizeCssURL(String val){
+			customizeCssURL = val;
 			return this;
 		}
 		
@@ -82,8 +82,8 @@ public class DocumentaryProjectImpl implements DocumentaryProject {
 		locale = builder.locale;
 		prologueURL = builder.prologueURL;
 		appendixURL = builder.appendixURL;
-		generatedReportUrl = builder.generatedReportUrl;
-		customizeCssUrl = builder.customizeCssUrl;
+		generatedReportURL = builder.generatedReportURL;
+		customizeCssURL = builder.customizeCssURL;
 		profile = builder.profile;
 	}
 
@@ -134,14 +134,14 @@ public class DocumentaryProjectImpl implements DocumentaryProject {
 	 * @see es.ctic.parrot.DocumentaryProject#getReportURL()
 	 */
 	public String getGeneratedReportURL() {
-		return generatedReportUrl;
+		return generatedReportURL;
 	}
 
 	/* (non-Javadoc)
-	 * @see es.ctic.parrot.DocumentaryProject#getCustomizeCssUrl()
+	 * @see es.ctic.parrot.DocumentaryProject#getCustomizeCssURL()
 	 */
-	public String getCustomizeCssUrl() {
-		return customizeCssUrl;
+	public String getCustomizeCssURL() {
+		return customizeCssURL;
 	}
 
 	public Profile getProfile() {

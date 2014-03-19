@@ -42,38 +42,38 @@ public class DocumentaryProjectFactory {
 	 * Creates a documentary project.
 	 * @param locale the locale.
 	 * @param profile the profile
-	 * @param customizeCssUrl the customize CSS URL.
+	 * @param customizeCssURL the customize CSS URL.
 	 * @return a Documentary Project.
 	 */
-	static public DocumentaryProject createDocumentaryProject(Locale locale, Profile profile, String customizeCssUrl){
-		return new DocumentaryProjectImpl.Builder().locale(locale).profile(profile).customizeCssUrl(customizeCssUrl).build();
+	static public DocumentaryProject createDocumentaryProject(Locale locale, Profile profile, String customizeCssURL){
+		return new DocumentaryProjectImpl.Builder().locale(locale).profile(profile).customizeCssURL(customizeCssURL).build();
 	} 
 	
 	/**
 	 * Creates a documentary project.
 	 * @param locale the locale.
-	 * @param customizeCssUrl the customize CSS URL.
+	 * @param customizeCssURL the customize CSS URL.
 	 * @param profile the profile
-	 * @param generatedReportUrl the generated report URL.
+	 * @param generatedReportURL the generated report URL.
 	 * @return a Documentary Project.
 	 */
-	static public DocumentaryProject createDocumentaryProject(Locale locale, Profile profile, String customizeCssUrl, String generatedReportUrl){
-		return new DocumentaryProjectImpl.Builder().locale(locale).profile(profile).customizeCssUrl(customizeCssUrl).generatedReportUrl(generatedReportUrl).build();
+	static public DocumentaryProject createDocumentaryProject(Locale locale, Profile profile, String customizeCssURL, String generatedReportURL){
+		return new DocumentaryProjectImpl.Builder().locale(locale).profile(profile).customizeCssURL(customizeCssURL).generatedReportURL(generatedReportURL).build();
 	} 
 
 	/**
 	 * Creates a documentary project from an existing report.
 	 * The profile is not read from the previous report, as it is not present in the RDFa.
 	 * @param locale the locale.
-	 * @param previousReportUrl the previous report URL.
-	 * @param customizeCssUrl the customize CSS URL.
-	 * @param generatedReportUrl the generated report URL.
+	 * @param previousReportURL the previous report URL.
+	 * @param customizeCssURL the customize CSS URL.
+	 * @param generatedReportURL the generated report URL.
 	 * @throws MalformedURLException
 	 * @throws IOException
 	 * @throws ReaderException
 	 * @return a Documentary Project.
 	 */
-	static public DocumentaryProject createDocumentaryProjectFromExistingReport(Locale locale, String customizeCssUrl, String generatedReportUrl, String previousReportUrl) throws MalformedURLException, IOException, ReaderException {
+	static public DocumentaryProject createDocumentaryProjectFromExistingReport(Locale locale, String customizeCssURL, String generatedReportURL, String previousReportURL) throws MalformedURLException, IOException, ReaderException {
 
 		Model model = ModelFactory.createDefaultModel();
 	    
@@ -84,7 +84,7 @@ public class DocumentaryProjectFactory {
 			throw new RuntimeException(e);
 		}
 
-		Input input = new URLInput(new URL(previousReportUrl), "application/xhtml+xml");
+		Input input = new URLInput(new URL(previousReportURL), "application/xhtml+xml");
 		String base = input.getBase();
 		try {
 			model.read(input.openReader(), base == null ? "http://example.org/base#" : base, "XHTML");
@@ -93,10 +93,10 @@ public class DocumentaryProjectFactory {
 			throw new ReaderException(e);
 		}
 
-		String prologueUrl = getPrologueURLFromExistingReport(model);
-		String appendixUrl = getAppendixURLFromExistingReport(model);
+		String prologueURL = getPrologueURLFromExistingReport(model);
+		String appendixURL = getAppendixURLFromExistingReport(model);
 
-		DocumentaryProject dp = new DocumentaryProjectImpl.Builder().locale(locale).generatedReportUrl(generatedReportUrl).customizeCssUrl(customizeCssUrl).prologueURL(prologueUrl).appendixURL(appendixUrl).build();
+		DocumentaryProject dp = new DocumentaryProjectImpl.Builder().locale(locale).generatedReportURL(generatedReportURL).customizeCssURL(customizeCssURL).prologueURL(prologueURL).appendixURL(appendixURL).build();
 		
         dp.addAllInput(getInputsFromExistingReport(model));
         

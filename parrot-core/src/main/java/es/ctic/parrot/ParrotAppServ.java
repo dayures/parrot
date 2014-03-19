@@ -84,7 +84,7 @@ public class ParrotAppServ {
 		readAndRegisterDocumentableObjects(dp.getInputs(), register);
 		resolveInternalReferences(register);
 		resolveCrossReferences(register);
-		Document document = transformToDocument(register.getAllRegisteredDocumentableObjects(), dp.getLocale(), dp.getInputs(), dp.getPrologueURL(), dp.getAppendixURL(), dp.getGeneratedReportURL(), getLanguagesInModel(), dp.getCustomizeCssUrl());
+		Document document = transformToDocument(register.getAllRegisteredDocumentableObjects(), dp.getLocale(), dp.getInputs(), dp.getPrologueURL(), dp.getAppendixURL(), dp.getGeneratedReportURL(), getLanguagesInModel(), dp.getCustomizeCssURL());
 		outputGenerator.generateOutput(document, dp.getProfile());
 	}
 
@@ -164,14 +164,14 @@ public class ParrotAppServ {
      * @return a document to be presented by an output generator.
      * @throws TransformerException if a failed transformation operation occurs.
      */
-    private Document transformToDocument(Collection<DocumentableObject> documentableObjects, Locale locale, Collection<Input> inputs, String prologueURL, String appendixURL, String reportURL, Collection<String> languages, String customizeCssUrl) throws TransformerException {
+    private Document transformToDocument(Collection<DocumentableObject> documentableObjects, Locale locale, Collection<Input> inputs, String prologueURL, String appendixURL, String reportURL, Collection<String> languages, String customizeCssURL) throws TransformerException {
         Document document = new Document(locale);
 		document.setInputs(inputs);
 		document.setPrologueURL(prologueURL);
 		document.setAppendixURL(appendixURL);
 		document.setReportURL(reportURL);
 		document.setLanguages(languages);
-		document.setCustomizeCssUrl(customizeCssUrl);
+		document.setCustomizeCssURL(customizeCssURL);
         DetailsVisitor detailVisitor = new DetailsVisitor(document, locale);
         GlossaryVisitor glossaryVisitor = new GlossaryVisitor(document, locale);
 		for (DocumentableObject documentableObject : documentableObjects) {

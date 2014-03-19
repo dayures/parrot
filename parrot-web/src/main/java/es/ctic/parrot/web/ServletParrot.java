@@ -79,8 +79,7 @@ public class ServletParrot extends HttpServlet {
 			} else {
 				ByteArrayOutputStream out = new ByteArrayOutputStream();
 				HtmlOutputGenerator outputGenerator = new HtmlOutputGenerator.Builder().out(out).build();
-				Profile profile = getProfile(req);
-				getParrotAppServ().createDocumentation(dp, outputGenerator, profile);
+				getParrotAppServ().createDocumentation(dp, outputGenerator);
 				res.setContentType("text/html");
 				res.getOutputStream().write(out.toByteArray());
 			}
@@ -304,8 +303,10 @@ public class ServletParrot extends HttpServlet {
 		
 		String generatedReportUrl = getGeneratedReportUrl(req);
 		
-		DocumentaryProject dp = DocumentaryProjectFactory.createDocumentaryProject(locale, customizeCssUrl, generatedReportUrl);
+		Profile profile = getProfile(req);
 		
+		DocumentaryProject dp = DocumentaryProjectFactory.createDocumentaryProject(locale, profile, customizeCssUrl, generatedReportUrl);
+
 		// Read a previous report
 		String previousReportUrl = req.getParameter("reportURL");
 		if (checkURI(previousReportUrl)){

@@ -13,6 +13,7 @@ import com.hp.hpl.jena.rdf.model.NodeIterator;
 import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.ResourceFactory;
 
+import es.ctic.parrot.generators.OutputGenerator.Profile;
 import es.ctic.parrot.reader.Input;
 import es.ctic.parrot.reader.ReaderException;
 import es.ctic.parrot.reader.URLInput;
@@ -36,30 +37,33 @@ public class DocumentaryProjectFactory {
 	static public DocumentaryProject createDocumentaryProject(Locale locale){
 		return new DocumentaryProjectImpl.Builder().locale(locale).build();
 	} 
-	
+
 	/**
 	 * Creates a documentary project.
 	 * @param locale the locale.
+	 * @param profile the profile
 	 * @param customizeCssUrl the customize CSS URL.
 	 * @return a Documentary Project.
 	 */
-	static public DocumentaryProject createDocumentaryProject(Locale locale, String customizeCssUrl){
-		return new DocumentaryProjectImpl.Builder().locale(locale).customizeCssUrl(customizeCssUrl).build();
+	static public DocumentaryProject createDocumentaryProject(Locale locale, Profile profile, String customizeCssUrl){
+		return new DocumentaryProjectImpl.Builder().locale(locale).profile(profile).customizeCssUrl(customizeCssUrl).build();
 	} 
 	
 	/**
 	 * Creates a documentary project.
 	 * @param locale the locale.
 	 * @param customizeCssUrl the customize CSS URL.
+	 * @param profile the profile
 	 * @param generatedReportUrl the generated report URL.
 	 * @return a Documentary Project.
 	 */
-	static public DocumentaryProject createDocumentaryProject(Locale locale, String customizeCssUrl, String generatedReportUrl){
-		return new DocumentaryProjectImpl.Builder().locale(locale).customizeCssUrl(customizeCssUrl).generatedReportUrl(generatedReportUrl).build();
+	static public DocumentaryProject createDocumentaryProject(Locale locale, Profile profile, String customizeCssUrl, String generatedReportUrl){
+		return new DocumentaryProjectImpl.Builder().locale(locale).profile(profile).customizeCssUrl(customizeCssUrl).generatedReportUrl(generatedReportUrl).build();
 	} 
 
 	/**
 	 * Creates a documentary project from an existing report.
+	 * The profile is not read from the previous report, as it is not present in the RDFa.
 	 * @param locale the locale.
 	 * @param previousReportUrl the previous report URL.
 	 * @param customizeCssUrl the customize CSS URL.

@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Locale;
 
+import es.ctic.parrot.generators.OutputGenerator.Profile;
 import es.ctic.parrot.reader.Input;
 
 /**
@@ -24,6 +25,7 @@ public class DocumentaryProjectImpl implements DocumentaryProject {
 	private final String appendixURL;
 	private final String generatedReportUrl;
 	private final String customizeCssUrl;
+	private final Profile profile;
 
 	public static class Builder {
 		// Required parameters
@@ -33,6 +35,7 @@ public class DocumentaryProjectImpl implements DocumentaryProject {
 		private String appendixURL;
 		private String generatedReportUrl;
 		private String customizeCssUrl;
+		private Profile profile = Profile.TECHNICAL;
 
 		public Builder() {
 			// Required parameters
@@ -62,6 +65,12 @@ public class DocumentaryProjectImpl implements DocumentaryProject {
 			customizeCssUrl = val;
 			return this;
 		}
+		
+		public Builder profile(Profile val) { 
+			profile = val; 	
+			return this;
+		}
+
 
 		public DocumentaryProject build() {
 			return new DocumentaryProjectImpl(this);
@@ -76,6 +85,7 @@ public class DocumentaryProjectImpl implements DocumentaryProject {
 		appendixURL = builder.appendixURL;
 		generatedReportUrl = builder.generatedReportUrl;
 		customizeCssUrl = builder.customizeCssUrl;
+		profile = builder.profile;
 	}
 
 	/* (non-Javadoc)
@@ -133,6 +143,10 @@ public class DocumentaryProjectImpl implements DocumentaryProject {
 	 */
 	public String getCustomizeCssUrl() {
 		return customizeCssUrl;
+	}
+
+	public Profile getProfile() {
+		return profile;
 	}
 
 

@@ -22,12 +22,12 @@ public interface OutputGenerator {
     public enum Profile {
     	
         /**
-         * an ontology.
+         * a business profile.
          */
         BUSINESS("business"),
         
         /**
-         * an ontology class.
+         * an technical profile.
          */
         TECHNICAL("technical");
         

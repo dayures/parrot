@@ -14,7 +14,6 @@ import es.ctic.parrot.de.DocumentableObject;
 import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.docmodel.Document;
 import es.ctic.parrot.generators.OutputGenerator;
-import es.ctic.parrot.generators.OutputGenerator.Profile;
 import es.ctic.parrot.project.DocumentaryProject;
 import es.ctic.parrot.reader.DocumentReader;
 import es.ctic.parrot.reader.Input;

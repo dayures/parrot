@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Locale;
 
-import es.ctic.parrot.generators.OutputGenerator.Profile;
 import es.ctic.parrot.reader.Input;
 
 /**

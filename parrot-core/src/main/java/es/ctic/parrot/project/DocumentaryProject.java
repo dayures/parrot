@@ -3,11 +3,9 @@ package es.ctic.parrot.project;
 import java.util.Collection;
 import java.util.Locale;
 
-import es.ctic.parrot.generators.OutputGenerator.Profile;
 import es.ctic.parrot.reader.Input;
 
-public interface DocumentaryProject {
-
+public interface DocumentaryProject { 
 	/**
 	 * Adds the specified input to this set if it is not already present (optional operation).
 	 * @param input input to be added.

@@ -27,8 +27,8 @@
 	    <link rel="stylesheet" type="text/css" media="screen,projection" href="${uri_base}report/css/${profile}.css" /> 
   	#end
   
-	#if($document.customizeCssUrl)
-    	<link rel="stylesheet" type="text/css" href="$document.customizeCssUrl" />
+	#if($document.customizeCssURL)
+    	<link rel="stylesheet" type="text/css" href="$document.customizeCssURL" />
     #end
         
   </head>

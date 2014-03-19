@@ -62,7 +62,7 @@ public class Document {
     private String appendixURL;
     private String reportURL;
     private Collection<String> languages;
-    private String customizeCssUrl;
+    private String customizeCssURL;
     
 	private static final org.apache.log4j.Logger logger = Logger.getLogger(Document.class);
 
@@ -444,13 +444,13 @@ public class Document {
 	}
 
 	/**
-	 * @param customizeCssUrl the customizeCssUrl to set
+	 * @param customizeCssURL the customize CSS URL to set
 	 */
-	public void setCustomizeCssUrl(String customizeCssUrl) {
+	public void setCustomizeCssURL(String customizeCssURL) {
 
 		// TODO  validate URL ??
 //		try {
-//		    URL url = new URL("customizeCssUrl");
+//		    URL url = new URL("customizeCssURL");
 //		    URLConnection conn = url.openConnection();
 //		    conn.connect();
 //		} catch (MalformedURLException e) {
@@ -459,14 +459,15 @@ public class Document {
 //		    // the connection couldn't be established
 //		}
 		
-		this.customizeCssUrl = customizeCssUrl;
+		this.customizeCssURL = customizeCssURL;
 	}
 
 	/**
-	 * @return the customizeCssUrl
+	 * Returns the customize CSS URL
+	 * @return the customizeCssURL
 	 */
-	public String getCustomizeCssUrl() {
-		return customizeCssUrl;
+	public String getCustomizeCssURL() {
+		return customizeCssURL;
 	}
 	
 	/**

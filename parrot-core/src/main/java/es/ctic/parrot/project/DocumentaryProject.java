@@ -54,7 +54,7 @@ public interface DocumentaryProject {
 	 * Returns the customize CSS URL.
 	 * @return the customize CSS URL.
 	 */
-	public abstract String getCustomizeCssUrl();
+	public abstract String getCustomizeCssURL();
 	
 	/**
 	 * Returns the profile.

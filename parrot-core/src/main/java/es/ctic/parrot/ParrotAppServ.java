@@ -76,18 +76,17 @@ public class ParrotAppServ {
 	 * 
 	 * @param dp the documentary Project to be fulfilled.
 	 * @param outputGenerator the output generator.
-	 * @param profile the end user profile.
 	 * @throws IOException if a failed or interrupted I/O operation occurs, usually during the initial reading of inputs.
 	 * @throws ReaderException if a input is malformed or not valid (usually, markup issues).
 	 */
-	public void createDocumentation(DocumentaryProject dp, OutputGenerator outputGenerator, Profile profile) throws IOException, ReaderException, TransformerException {
+	public void createDocumentation(DocumentaryProject dp, OutputGenerator outputGenerator) throws IOException, ReaderException, TransformerException {
 		logger.debug("Start to create a document");
 		DocumentableObjectRegister register = new DocumentableObjectRegister();
 		readAndRegisterDocumentableObjects(dp.getInputs(), register);
 		resolveInternalReferences(register);
 		resolveCrossReferences(register);
 		Document document = transformToDocument(register.getAllRegisteredDocumentableObjects(), dp.getLocale(), dp.getInputs(), dp.getPrologueURL(), dp.getAppendixURL(), dp.getGeneratedReportURL(), getLanguagesInModel(), dp.getCustomizeCssUrl());
-		outputGenerator.generateOutput(document, profile);
+		outputGenerator.generateOutput(document, dp.getProfile());
 	}
 
 	private Set<String> getLanguagesInModel() {

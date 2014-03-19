@@ -6,8 +6,8 @@ import java.io.IOException;
 import java.util.Locale;
 import java.util.Map;
 
-import es.ctic.parrot.DocumentaryProject;
-import es.ctic.parrot.DocumentaryProjectFactory;
+import es.ctic.parrot.project.DocumentaryProject;
+import es.ctic.parrot.project.DocumentaryProjectFactory;
 import es.ctic.parrot.ParrotAppServ;
 import es.ctic.parrot.generators.HtmlOutputGenerator;
 import es.ctic.parrot.generators.OutputGenerator.Profile;
@@ -24,6 +24,7 @@ public class ParrotCoreWrapper {
 	private static final String DEFAULT_URI_BASE = "http://ontorule-project.eu/parrot/";
 
 	private static final Locale DEFAULT_LOCALE = Locale.ENGLISH;
+	private static final Profile DEFAULT_PROFILE = Profile.TECHNICAL;
 	private ParrotAppServ app;
 	
 	public ParrotCoreWrapper() {
@@ -45,13 +46,13 @@ public class ParrotCoreWrapper {
 		}
 
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
-		DocumentaryProject dp = DocumentaryProjectFactory.createDocumentaryProject(DEFAULT_LOCALE, CUSTOMIZE_CSS_URL);
+		DocumentaryProject dp = DocumentaryProjectFactory.createDocumentaryProject(DEFAULT_LOCALE, DEFAULT_PROFILE, CUSTOMIZE_CSS_URL);
 		HtmlOutputGenerator generator = new HtmlOutputGenerator.Builder().out(out).uriBase(DEFAULT_URI_BASE).build();
 		try {
 			for (File file : mapFileContentType.keySet()){
 				dp.addInput(new FileInput(file, mapFileContentType.get(file)));
 			}
-			app.createDocumentation(dp, generator, Profile.TECHNICAL); // FIXME this should be customize
+			app.createDocumentation(dp, generator);
 		} catch (ReaderException e) {
 			throw new RuntimeException(e);
 		} catch (IOException e) {

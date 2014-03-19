@@ -3,6 +3,7 @@ package es.ctic.parrot.project;
 import java.util.Collection;
 import java.util.Locale;
 
+import es.ctic.parrot.generators.OutputGenerator.Profile;
 import es.ctic.parrot.reader.Input;
 
 public interface DocumentaryProject {
@@ -56,5 +57,12 @@ public interface DocumentaryProject {
 	 * @return the customize CSS URL.
 	 */
 	public abstract String getCustomizeCssUrl();
+	
+	/**
+	 * Returns the profile.
+	 * @return the profile.
+	 */
+	public abstract Profile getProfile();
+
 
 }

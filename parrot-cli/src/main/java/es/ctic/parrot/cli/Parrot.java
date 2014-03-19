@@ -19,8 +19,8 @@ import org.apache.commons.cli.ParseException;
 import org.apache.commons.cli.PosixParser;
 import org.apache.log4j.Logger;
 
-import es.ctic.parrot.DocumentaryProject;
-import es.ctic.parrot.DocumentaryProjectFactory;
+import es.ctic.parrot.project.DocumentaryProject;
+import es.ctic.parrot.project.DocumentaryProjectFactory;
 import es.ctic.parrot.ParrotAppServ;
 import es.ctic.parrot.generators.HtmlOutputGenerator;
 import es.ctic.parrot.generators.OutputGenerator;
@@ -112,7 +112,7 @@ public class Parrot {
         ParrotAppServ app = new ParrotAppServ();
 
         InputStream templateInputStream = openTemplateInputStream(template);
-        DocumentaryProject dp = DocumentaryProjectFactory.createDocumentaryProject(locale, customizeCssUrl);
+        DocumentaryProject dp = DocumentaryProjectFactory.createDocumentaryProject(locale, profile, customizeCssUrl);
         for ( String inputFilename : cmd.getOptionValues('i') ) {
             if (inputFilename.startsWith("http:")) {
                 dp.addInput(new URLInput(new URL(inputFilename)));
@@ -125,7 +125,7 @@ public class Parrot {
         } else {
             OutputGenerator outputGenerator = new HtmlOutputGenerator.Builder().out(out).template(templateInputStream).uriBase(base).build();
         	logger.info("Generating the report for ...");
-            app.createDocumentation(dp, outputGenerator, profile);
+            app.createDocumentation(dp, outputGenerator);
             logger.info("Finished to generate the report...");
         }
       } catch (Exception e) {

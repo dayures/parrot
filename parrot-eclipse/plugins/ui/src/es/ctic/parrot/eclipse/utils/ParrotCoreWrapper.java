@@ -8,9 +8,9 @@ import java.util.Map;
 
 import es.ctic.parrot.project.DocumentaryProject;
 import es.ctic.parrot.project.DocumentaryProjectFactory;
+import es.ctic.parrot.project.Profile;
 import es.ctic.parrot.ParrotAppServ;
 import es.ctic.parrot.generators.HtmlOutputGenerator;
-import es.ctic.parrot.generators.OutputGenerator.Profile;
 import es.ctic.parrot.reader.FileInput;
 import es.ctic.parrot.reader.ReaderException;
 import es.ctic.parrot.transformers.TransformerException;

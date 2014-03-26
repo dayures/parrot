@@ -7,7 +7,7 @@ import java.io.Reader;
 
 import org.apache.log4j.Logger;
 /**
- * An input document provided as input stream of bytes.
+ * An input document provided as input stream of bytes (usually an uploaded file).
  * 
  * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
  * @version 1.0

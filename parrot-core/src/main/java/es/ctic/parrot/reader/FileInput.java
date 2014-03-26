@@ -11,7 +11,7 @@ import javax.activation.MimetypesFileTypeMap;
 import org.apache.log4j.Logger;
 
 /**
- * An input document stored in a filesystem.
+ * An input document stored in the current filesystem.
  * 
  * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
  * @version 1.0

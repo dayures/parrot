@@ -3,7 +3,7 @@ package es.ctic.parrot.de;
 import es.ctic.parrot.utils.CurieUtils;
 
 /**
- * A triple.
+ * A RDF triple.
  * 
  * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
  * @version 1.0
@@ -18,21 +18,22 @@ public class Triple {
 	private String object;
 	private String objectLang="";
 	private boolean isObjectResource = false;
+
 	private boolean isObjectBlank = false;
 
 	public String getObjectLang() {
 		return objectLang;
 	}
 
-	public void setObjectLang(String objectLang) {
+	private void setObjectLang(String objectLang) {
 		this.objectLang = objectLang;
 	}
 
 	
 	public static Triple createTripleOR (String subject, String predicate, String object, boolean isObjectBlank) {
 		Triple triple = new Triple(subject, predicate, object);
-		triple.isObjectResource = true;
-		triple.isObjectBlank = isObjectBlank;
+		triple.setObjectResource(true);
+		triple.setObjectBlank(isObjectBlank);
 		return triple;
 	}
 	
@@ -54,6 +55,7 @@ public class Triple {
 	 * @param subject a subject to set.
 	 * @param predicate as predicate to set.
 	 * @param object a object to set.
+	 * @param objectLang the language of the literal object to set.
 	 */
 	public Triple(String subject, String predicate, String object, String objectLang) {
 		super();
@@ -118,6 +120,10 @@ public class Triple {
 	
 	public boolean isObjectResource(){
 		return this.isObjectResource;
+	}
+
+	private void setObjectResource(boolean isObjectResource) {
+		this.isObjectResource = isObjectResource;
 	}
 
 	public boolean isObjectBlank() {

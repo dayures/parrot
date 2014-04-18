@@ -46,7 +46,7 @@ public class RifleXMLReader extends AbstractRifleReader {
             document = parser.parse(source);
 			logger.trace("RIF XML document parsed without errors");            
         } catch (ParserException e) {
-            throw new ReaderException("A problem occurred when parsing the RIF/XML document: " + e.getMessage(), e);
+            throw new ReaderException("A problem occurred when parsing the RIF XML document: " + e.getMessage(), e);
         }
         
         try {
@@ -54,7 +54,7 @@ public class RifleXMLReader extends AbstractRifleReader {
             RifleASTVisitor visitor = new RifleASTVisitor(register, getOntologyReader().getAnnotationStrategy(), getOntologyReader().getOntModel());
             document.accept(visitor);
         } catch (Exception e) {
-            throw new ReaderException("While extracting information from RIF/XML document", e);
+            throw new ReaderException("While extracting information from RIF XML document", e);
         }
     }
 

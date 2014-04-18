@@ -87,7 +87,7 @@ public class RIFImportResolver {
      * <li>the locator, an IRI that identifies and locates the document to be imported</li>
      * <li>the profile, an <b>optional</b> second IRI that identifies the profile of the import.</li>
      * </ul>
-     * If only the locator is present, the document to be imported is treated as a RIF/XML document. 
+     * If only the locator is present, the document to be imported is treated as a RIF XML document. 
      * If the profile is present also, the document to be imported is treated as an OWL ontology.
      * @param document the document.
      * @param register the register.

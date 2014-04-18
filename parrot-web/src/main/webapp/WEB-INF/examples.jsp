@@ -86,9 +86,9 @@
 <li><a href="examples/anonymous.rifps">Anonymous rule and rule set (RIF PS)</a></li>
 <li><a href="examples/import-owl-ontology.rifps">Rules (RIF PS) (with import directive (OWL))</a>
 <li><a href="examples/import-rif-rules.rifps">Rules (RIF PS) (with import directive (RIF XML))</a>
-<li><a href="examples/under18.rif">Under 18 rule (RIF/XML)</a></li>
+<li><a href="examples/under18.rif">Under 18 rule (RIF XML)</a></li>
 <li><a href="examples/under18.rifps">Under 18 rule (RIF PS)</a></li>
-<li><a href="examples/under18-foaf.rif">Under 18 rule (RIF/XML) (with import directive (OWL))</a></li>
+<li><a href="examples/under18-foaf.rif">Under 18 rule (RIF XML) (with import directive (OWL))</a></li>
 <li><a href="examples/under18-foaf.rifps">Under 18 rule (RIF PS) (with import directive (OWL))</a></li>
 <li><a href="examples/dcat.rdf">Synthetic DCAT example file (RDF/XML)</a></li>
 <li><a href="examples/previous-report.html">Previous Report generated</a></li>

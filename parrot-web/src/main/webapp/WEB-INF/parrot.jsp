@@ -37,20 +37,20 @@
 		<div class="inputData"> 
 		<div id="tabs"> 
 		    <ul> 
-		        <li><a href="#tabs-1">by URI</a></li> 
+		        <li><a href="#tabs-1">by URL</a></li> 
 		        <li><a href="#tabs-2">by direct input</a></li> 
 		        <li><a href="#tabs-3">by file upload</a></li>
 		        <li><a href="#tabs-4">by existing report</a></li>  
 		    </ul>            
 		        <div id="tabs-1"> 
-		        	<h2>by URI</h2> 
+		        	<h2>by URL</h2> 
 					<form method="get" action="">
 		        	<c:choose>
     					<c:when test='${not empty paramValues.documentUri}'>
 				        	<%-- For every String[] item of paramValues... --%>
 		      				<c:forEach var='uri' items='${paramValues.documentUri}' varStatus='uriStatus'> 
 				        	<p class="uri-input<c:if test="${fn:contains(errorsUri, uri)}"> error</c:if>">
-								<label <c:if test='${uriStatus.first}'>for="documentUri"</c:if> title="URL of the page containing the OWL/RIF document" class="uri">URI: </label>
+								<label <c:if test='${uriStatus.first}'>for="documentUri"</c:if> title="URL of the page containing the OWL/RIF document" class="uri">URL: </label>
 				        		<input <c:if test='${uriStatus.first}'>id="documentUri"</c:if> name="documentUri" value="<c:out value="${uri}" escapeXml="true"/>" type="text" size="100" />
 							<select name="mimetype">
 								<option value="default" <c:if test="${paramValues.mimetype[uriStatus.index] eq 'default'}">selected="selected"</c:if>>Allow content negotiation</option>
@@ -72,7 +72,7 @@
 					    </c:when>
 					    <c:otherwise>
 				        	<p class="uri-input"><label title="URL of the page containing the OWL/RIF document"
-							for="documentUri" class="uri">URI: </label><input id="documentUri" name="documentUri" value="http://" type="text" size="100" />
+							for="documentUri" class="uri">URL: </label><input id="documentUri" name="documentUri" value="http://" type="text" size="100" />
 							<select name="mimetype">
 								<option value="default" selected="selected">Allow content negotiation</option>
 								<jsp:include page="mimetypes.jsp">
@@ -85,7 +85,7 @@
 						</c:otherwise>
 					</c:choose>
 
-					<p id="addURI"><span id="addURILink">add another URI</span></p>
+					<p id="addURI"><span id="addURILink">add another URL</span></p>
 					<jsp:include page="more-options.jsp"/>
 					<div class="buttons">
 						<button type="submit" class="generate">Generate documentation</button>

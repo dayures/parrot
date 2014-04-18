@@ -1017,11 +1017,11 @@
 
 <h2 id="rest">Use as a REST service</h2>
 
-<h3>Generate report from URI/s</h3> 
+<h3>Generate report from URL/s</h3> 
 <table> 
     <tr><td>URL</td><td colspan="2">/parrot</td></tr> 
     <tr><td>Method</td><td colspan="2">GET</td></tr> 
-    <tr><td rowspan="5">Querystring</td><td>documentUri</td><td>URI of an input document</td></tr> 
+    <tr><td rowspan="5">Querystring</td><td>documentUri</td><td>URL of an input document</td></tr> 
     <tr><td>mimetype</td><td>Mimetype of the input document. Supported values are
     							<ul>
     								<li><tt>default</tt> Allow content negotiation</li> 

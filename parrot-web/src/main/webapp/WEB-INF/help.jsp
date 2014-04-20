@@ -287,7 +287,7 @@
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td><img alt="place" src="images/page.png"/></td><td></td><td></td><td></td>
       <td>
-      	<p>An entity responsible for making the element: a person, an organization or a service. Recommended best practice is to use a FOAF profile to describe a contributor.</p>
+      	<p>An entity responsible for making contributions to the resource: a person, an organization or a service. Recommended best practice is to use a FOAF profile to describe a contributor.</p>
 	  	<p>For example: <code>&lt;dct:contributor rdf:resource="http://berrueta.net/foaf.rdf#me" /&gt;</code></p>
       </td>
     </tr>
@@ -296,7 +296,7 @@
       <td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td><td><img alt="supported" src="images/tick.png"/></td>
       <td><img alt="place" src="images/page.png"/></td><td></td><td></td><td></td>
       <td>
-      	<p>An entity responsible for making the element: a person, an organization or a service. Typically, the name of a contributor should be used to indicate the entity.</p>
+      	<p>An entity responsible for making contributions to the resource: a person, an organization or a service. Typically, the name of a contributor should be used to indicate the entity.</p>
       	<p>For example: <code>&lt;dc:contributor&gt;Diego Berrueta&lt;/dc:contributor&gt;</code></p>
       </td>
     </tr>

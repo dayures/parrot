@@ -656,7 +656,7 @@
       <td><img alt="place" src="images/page.png"/></td><td></td><td></td><td></td>
       <td>
       	<p>Indicates that a given ontology is incompatible with another ontology.</p>
-	  	<p>For example: <code>&lt;owl:priorVersion rdf:resource="http://www.lingvoj.org/ontology_v1.3.rdf" /&gt;</code></p>
+	  	<p>For example: <code>&lt;owl:incompatibleWith rdf:resource="http://www.lingvoj.org/ontology_v1.3.rdf" /&gt;</code></p>
       </td>
     </tr>
     <tr>

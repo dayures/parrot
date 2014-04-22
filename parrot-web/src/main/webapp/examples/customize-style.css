@@ -1,0 +1,34 @@
+div#header {
+    background-color: #E17000;
+}
+
+h1, h2, h3 {
+    background-color: #FFE5CC;
+}
+
+div.toc, div#prologue, div#appendix {
+    border: solid #E17000;
+    background-color: #FFE5CC;
+}
+
+.jx-bar {
+    background-color: #E17000;
+    border: 1px solid #E17000;
+}
+
+.jx-bar span {
+    background-color: #E17000;
+}
+
+.jx-bar-button li {
+    border: 1px solid #E17000;
+}
+
+.jx-bar-button li a:link, .jx-bar-button li a:visited {
+    color: white;
+}
+
+.jx-show {
+    background-color: #E17000;
+    border: 1px solid #E17000;
+}

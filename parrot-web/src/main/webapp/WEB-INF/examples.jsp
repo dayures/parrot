@@ -37,6 +37,9 @@
 <li><a href="parrot?documentUri=http://ontorule-project.eu/resources/steel-30.owl&mimetype=default&profile=technical">Steel ontology [external resource] (Technical profile)</a></li> 
 <li><a href="parrot?documentUri=foaf&mimetype=default&showform=true">FOAF ontology report (from prefix.cc) [external resource] (show form)</a></li> 
 <li><a href="parrot?documentUri=${baseURL}/examples/anonymous.owl&profile=technical">Anonymous ontological elements (RDF/XML)</a></li> 
+<li><a href="parrot?documentUri=${baseURL}/examples/ontology-with-import.owl&profile=business">OWL Ontology with <tt>imports</tt> directive (the linked ontology is not processed) (Business profile)</a></li> 
+<li><a href="parrot?documentUri=${baseURL}/examples/ontology-languages.owl&profile=business">OWL Ontology with metadata in multiple languages (Business profile)</a></li> 
+<li><a href="parrot?documentUri=${baseURL}/examples/ontology-languages.owl&mimetype=default&customizeCssUrl=${baseURL}/examples/customize-style.css">OWL Ontology with metadata in multiple languages with customize CSS</a></li> 
 
 </ul>
 
@@ -61,14 +64,14 @@
 
 <h2>Vocabularies</h2> 
 <ul> 
-<li><a href="parrot?documentUri=http%3A%2F%2Flabs.mondeca.com%2Fdataset%2Flov%2Frdf%2Fvocabulary_gr.rdf&mimetype=default&profile=business&language=en&customizeCssUrl=&showform=true">Good Relations Vocabulary [external resource] (show form)</a></li> 
-<li><a href="parrot?documentUri=http%3A%2F%2Flabs.mondeca.com%2Fdataset%2Flov%2Flov.rdf&mimetype=default&profile=business&language=en&customizeCssUrl=&showform=true">Linked Open Vocabularies (LOV). All vocabularies [external resource] (show form)</a></li> 
+<li><a href="parrot?documentUri=http%3A%2F%2Flabs.mondeca.com%2Fdataset%2Flov%2Frdf%2Fvocabulary_gr.rdf&mimetype=default&profile=business&language=en&showform=true">Good Relations Vocabulary [external resource] (show form)</a></li> 
+<li><a href="parrot?documentUri=http%3A%2F%2Flabs.mondeca.com%2Fdataset%2Flov%2Flov.rdf&mimetype=default&profile=business&language=en&showform=true">Linked Open Vocabularies (LOV). All vocabularies [external resource] (show form)</a></li> 
 </ul>
 
 <h2>Datasets</h2> 
 <ul> 
-<li><a href="parrot?documentUri=http%3A%2F%2Fec.europa.eu%2Feurostat%2Framon%2Frdfdata%2Fvoid.rdf&mimetype=default&profile=business&language=en&customizeCssUrl=&showform=true">Eurostat's Metadata Server RAMON [external resource] (show form)</a></li> 
-<li><a href="parrot?documentUri=http%3A%2F%2Frisp.asturias.es%2Fcatalogo%2Fcultura-turismo%2Fturismo.rdf&mimetype=default&documentUri=http%3A%2F%2Frisp.asturias.es%2Fcatalogo%2Fsi%2Finversiones.rdf&mimetype=default&documentUri=http%3A%2F%2Frisp.asturias.es%2Fcatalogo%2Fsi%2Festadisticas.rdf&mimetype=default&documentUri=http%3A%2F%2Frisp.asturias.es%2Fcatalogo%2Fempleo%2Foferta-formativa.rdf&mimetype=default&documentUri=http%3A%2F%2Frisp.asturias.es%2Fcatalogo%2Fcomun%2Fgobierno.rdf&mimetype=default&documentUri=http%3A%2F%2Frisp.asturias.es%2Fcatalogo%2Fcomun%2Flocalizacion.rdf&mimetype=default&profile=business&language=en&customizeCssUrl=&showform=true
+<li><a href="parrot?documentUri=http%3A%2F%2Fec.europa.eu%2Feurostat%2Framon%2Frdfdata%2Fvoid.rdf&mimetype=default&profile=business&language=en&showform=true">Eurostat's Metadata Server RAMON [external resource] (show form)</a></li> 
+<li><a href="parrot?documentUri=http%3A%2F%2Frisp.asturias.es%2Fcatalogo%2Fcultura-turismo%2Fturismo.rdf&mimetype=default&documentUri=http%3A%2F%2Frisp.asturias.es%2Fcatalogo%2Fsi%2Finversiones.rdf&mimetype=default&documentUri=http%3A%2F%2Frisp.asturias.es%2Fcatalogo%2Fsi%2Festadisticas.rdf&mimetype=default&documentUri=http%3A%2F%2Frisp.asturias.es%2Fcatalogo%2Fempleo%2Foferta-formativa.rdf&mimetype=default&documentUri=http%3A%2F%2Frisp.asturias.es%2Fcatalogo%2Fcomun%2Fgobierno.rdf&mimetype=default&documentUri=http%3A%2F%2Frisp.asturias.es%2Fcatalogo%2Fcomun%2Flocalizacion.rdf&mimetype=default&profile=business&language=en&showform=true
 ">Datasets del Principado de Asturias (show form)</a></li> 
 <li><a href="parrot?documentUri=${baseURL}/examples/dcat.rdf&mimetype=default&showform=true">Synthetic DCAT example (show form)</a></li> 
 </ul> 
@@ -82,6 +85,8 @@
 <h2>Internal resources</h2> 
 <ul> 
 <li><a href="examples/anonymous.owl">Anonymous ontological elements (RDF/XML)</a></li>
+<li><a href="examples/ontology-with-import.owl">OWL Ontology with <tt>imports</tt> directive</a></li>
+<li><a href="examples/ontology-languages.owl">OWL Ontology with metadata in multiple languages</a></li>
 <li><a href="examples/anonymous.rif">Anonymous rule and rule set (RIF XML)</a></li>
 <li><a href="examples/anonymous.rifps">Anonymous rule and rule set (RIF PS)</a></li>
 <li><a href="examples/import-owl-ontology.rifps">Rules (RIF PS) (with import directive (OWL))</a>

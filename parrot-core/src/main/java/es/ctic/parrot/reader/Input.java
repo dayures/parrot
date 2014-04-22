@@ -16,8 +16,8 @@ import java.io.Reader;
 public interface Input {
     
 	/**
-     * Returns <code>true</code> if the input has a Reader to read the contents of this input document, otherwise <code>false</code>. For example, a <code>URL</code> or a <code>string</code> is a reader proof input and a <code>file</code> is NOT a reader proof input. 
-     * @returns <code>true</code> if the input has a Reader to read the contents of this input document, otherwise <code>false</code>. For example, a <code>URL</code> or a <code>string</code> is a reader proof input and a <code>file</code> is NOT a reader proof input.
+     * Returns <code>true</code> if the input has a java.io.Reader to read the contents of this input document, otherwise <code>false</code>. For example, a <code>URL</code> or a <code>string</code> is a reader proof input and a <code>file</code> is NOT a reader proof input. 
+     * @returns <code>true</code> if the input has a java.io.Reader to read the contents of this input document, otherwise <code>false</code>. For example, a <code>URL</code> or a <code>string</code> is a reader proof input and a <code>file</code> is NOT a reader proof input.
      */
     public abstract boolean isReaderProof();
 

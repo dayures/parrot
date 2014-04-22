@@ -225,7 +225,7 @@ public class URLInput implements Input {
 
 
 	public boolean isReaderProof() {
-		return false;
+		return true;
 	}
 
 

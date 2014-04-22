@@ -30,11 +30,11 @@
         <rdfs:label xml:lang="en">Property label</rdfs:label>
     </rdf:Property>
 
-    <owl:Class about="http://example.org/#class"/>
+    <owl:Class rdf:about="http://example.org/#class"/>
 
     <owl:AnonymousIndividual>
         <rdfs:label xml:lang="en">Anonymous Individual label</rdfs:label>
-        <rdf:type resource="http://example.org/#class"/>
+        <rdf:type rdf:resource="http://example.org/#class"/>
     </owl:AnonymousIndividual>
 
 </rdf:RDF>

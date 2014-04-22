@@ -1,13 +1,16 @@
     <link rel="parrot:hasPrologue" href="#prologue" /> 
-    <link rel="parrot:hasAppendix" href="#appendix"/> 
-    #foreach($input in $document.inputs)
-	    #if ($input.getMimeType() == "application/rdf+xml")<link rel="parrot:readAsRDFOWLOntology" href="$input.getBase()" />#end
-	    #if ($input.getMimeType() == "application/xml")<link rel="parrot:readAsRDFOWLOntology" href="$input.getBase()" />#end
-	    #if ($input.getMimeType() == "text/n3")<link rel="parrot:readAsN3OWLOntology" href="$input.getBase()" />#end
-	    #if ($input.getMimeType() == "text/turtle")<link rel="parrot:readAsN3OWLOntology" href="$input.getBase()" />#end
-	    #if ($input.getMimeType() == "application/n-triples")<link rel="parrot:readAsN3OWLOntology" href="$input.getBase()" />#end
-	    #if ($input.getMimeType() == "application/xhtml+xml")<link rel="parrot:readAsXHTMLRDFaOntology" href="$input.getBase()" />#end
-	    #if ($input.getMimeType() == "text/html")<link rel="parrot:readAsHTMLRDFaOntology" href="$input.getBase()" />#end
-	    #if ($input.getMimeType() == "application/rif+xml")<link rel="parrot:readAsRIFXMLDocument" href="$input.getBase()" />#end
-	    #if ($input.getMimeType() == "text/x-rif-ps")<link rel="parrot:readAsRIFPSDocument" href="$input.getBase()" />#end
+    <link rel="parrot:hasAppendix" href="#appendix"/>
+    #if ($document.isReloadable()) 
+	    #foreach($input in $document.inputs)
+		    #if ($input.getMimeType() == "application/rdf+xml")<link rel="parrot:readAsRDFOWLOntology" href="$input.getBase()" />#end
+	    	#if ($input.getMimeType() == "application/xml")<link rel="parrot:readAsRDFOWLOntology" href="$input.getBase()" />#end
+	    	#if ($input.getMimeType() == "text/n3")<link rel="parrot:readAsN3OWLOntology" href="$input.getBase()" />#end
+		    #if ($input.getMimeType() == "text/turtle")<link rel="parrot:readAsN3OWLOntology" href="$input.getBase()" />#end
+		    #if ($input.getMimeType() == "application/n-triples")<link rel="parrot:readAsN3OWLOntology" href="$input.getBase()" />#end
+	    	#if ($input.getMimeType() == "application/xhtml+xml")<link rel="parrot:readAsXHTMLRDFaOntology" href="$input.getBase()" />#end
+		    #if ($input.getMimeType() == "text/html")<link rel="parrot:readAsHTMLRDFaOntology" href="$input.getBase()" />#end
+		    #if ($input.getMimeType() == "application/rif+xml")<link rel="parrot:readAsRIFXMLDocument" href="$input.getBase()" />#end
+	    	#if ($input.getMimeType() == "text/x-rif-ps")<link rel="parrot:readAsRIFPSDocument" href="$input.getBase()" />#end
+		#end
 	#end
+	

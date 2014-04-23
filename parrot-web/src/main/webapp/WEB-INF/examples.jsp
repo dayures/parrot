@@ -39,6 +39,7 @@
 <li><a href="parrot?documentUri=${baseURL}/examples/anonymous.owl&profile=technical">Anonymous ontological elements (RDF/XML)</a></li> 
 <li><a href="parrot?documentUri=${baseURL}/examples/ontology-with-import.owl&profile=business">OWL Ontology with <tt>imports</tt> directive (the linked ontology is not processed) (Business profile)</a></li> 
 <li><a href="parrot?documentUri=${baseURL}/examples/ontology-languages.owl&profile=business">OWL Ontology with metadata in multiple languages (Business profile)</a></li> 
+<li><a href="parrot?documentUri=${baseURL}/examples/ontology-languages-utf-8.owl&mimetype=default">OWL Ontology with metadata in multiple languages (UTF-8) </a></li> 
 <li><a href="parrot?documentUri=${baseURL}/examples/ontology-languages.owl&mimetype=default&customizeCssUrl=${baseURL}/examples/customize-style.css">OWL Ontology with metadata in multiple languages with customize CSS</a></li> 
 
 </ul>
@@ -87,14 +88,15 @@
 <li><a href="examples/anonymous.owl">Anonymous ontological elements (RDF/XML)</a></li>
 <li><a href="examples/ontology-with-import.owl">OWL Ontology with <tt>imports</tt> directive</a></li>
 <li><a href="examples/ontology-languages.owl">OWL Ontology with metadata in multiple languages</a></li>
+<li><a href="examples/ontology-languages-utf-8.owl">OWL Ontology with metadata in multiple languages (UTF-8)</a></li>
 <li><a href="examples/anonymous.rif">Anonymous rule and rule set (RIF XML)</a></li>
 <li><a href="examples/anonymous.rifps">Anonymous rule and rule set (RIF PS)</a></li>
-<li><a href="examples/import-owl-ontology.rifps">Rules (RIF PS) (with import directive (OWL))</a>
-<li><a href="examples/import-rif-rules.rifps">Rules (RIF PS) (with import directive (RIF XML))</a>
+<li><a href="examples/import-owl-ontology.rifps">Rules (RIF PS) (with <tt>Import</tt> directive (OWL))</a>
+<li><a href="examples/import-rif-rules.rifps">Rules (RIF PS) (with <tt>Import</tt> directive (RIF XML))</a>
 <li><a href="examples/under18.rif">Under 18 rule (RIF XML)</a></li>
 <li><a href="examples/under18.rifps">Under 18 rule (RIF PS)</a></li>
-<li><a href="examples/under18-foaf.rif">Under 18 rule (RIF XML) (with import directive (OWL))</a></li>
-<li><a href="examples/under18-foaf.rifps">Under 18 rule (RIF PS) (with import directive (OWL))</a></li>
+<li><a href="examples/under18-foaf.rif">Under 18 rule (RIF XML) (with <tt>Import</tt> directive (OWL))</a></li>
+<li><a href="examples/under18-foaf.rifps">Under 18 rule (RIF PS) (with <tt>Import</tt> directive (OWL))</a></li>
 <li><a href="examples/dcat.rdf">Synthetic DCAT example file (RDF/XML)</a></li>
 <li><a href="examples/previous-report.html">Previous Report generated</a></li>
 <li><a href="examples/previous-report-metadata.html">Previous Report generated (just metadata)</a></li>

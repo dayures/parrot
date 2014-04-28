@@ -214,22 +214,18 @@ public class JenaOWLReader implements DocumentReader {
 	    	if (isClassDomainSpecific(individual) == false) {
 	    		logger.debug("Not included individual: " + individual.getURI() +" because is not class domain specific.");
 	    	} else {
-		    	if (individual.isAnon()){ // is anonymous
+	        	OntologyIndividualJenaImpl docObject = new OntologyIndividualJenaImpl(individual, register, getAnnotationStrategy());
+		        register.registerDocumentableObject(docObject);
+
+	    		if (individual.isAnon()){ // is anonymous
 	        		logger.debug("Included anonymous individual: " + individual.getId().toString());
-	        		OntologyIndividualJenaImpl docObject = new OntologyIndividualJenaImpl(individual, register, getAnnotationStrategy());
-		        	register.registerDocumentableObject(docObject);
 		    	} else { // has URI (not anonymous)
-			    	if (isClassDomainSpecific(individual) == false) {
-			    		logger.debug("Not included individual: " + individual.getURI() +" because is not class domain specific.");		    		
-			    	} else {
-			        	OntologyIndividualJenaImpl docObject = new OntologyIndividualJenaImpl(individual, register, getAnnotationStrategy());
-			        	register.registerDocumentableObject(docObject);
-		        	}
-		        }
+	        		logger.debug("Included individual: " + individual.getId().toString());
+		    	}
 	    	}
 	    }
 	}
-	
+
 	private void loadVocabularies(OntModel model, DocumentableObjectRegister register) {
 		ExtendedIterator<Individual> vocabularyIterator = model.listIndividuals(ResourceFactory.createResource(VOAF_VOCABULARY));
 		while (vocabularyIterator.hasNext()) {

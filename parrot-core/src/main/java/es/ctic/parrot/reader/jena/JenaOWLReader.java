@@ -220,7 +220,7 @@ public class JenaOWLReader implements DocumentReader {
 	    		if (individual.isAnon()){ // is anonymous
 	        		logger.debug("Included anonymous individual: " + individual.getId().toString());
 		    	} else { // has URI (not anonymous)
-	        		logger.debug("Included individual: " + individual.getId().toString());
+	        		logger.debug("Included individual: " + individual.getURI());
 		    	}
 	    	}
 	    }

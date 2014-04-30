@@ -119,7 +119,7 @@ public class JenaOWLReader implements DocumentReader {
 	private static String getJenaFormat(Input input) {
 	    if ("application/rdf+xml".equals(input.getMimeType())) {
 	        return "RDF/XML";
-	    } else if ("text/turtle".equals(input.getMimeType())) {
+	    } else if ("text/turtle".equals(input.getMimeType()) || "application/x-turtle".equals(input.getMimeType())) {
 	        return "TURTLE";
 	    } else if ("text/n3".equals(input.getMimeType()) || "text/rdf+n3".equals(input.getMimeType())) {
 	        return "N3";

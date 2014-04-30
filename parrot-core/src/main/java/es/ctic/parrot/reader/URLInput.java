@@ -34,8 +34,8 @@ public class URLInput implements Input {
     // application/rdf+xml, application/xml : http://www.w3.org/TR/owl-ref/#MIMEType
     // application/rif+xml : http://www.w3.org/TR/rif-core/#Appendix:_RIF_Media_Type_Registration
 
-    private static final String ACCEPT_HEADER_VALUES = "application/rdf+xml,application/xml,application/rif+xml,text/x-rif-ps,application/xhtml+xml;q=0.8,text/n3,text/rdf+n3,text/turtle,application/n-triples,text/html;q=0.8,*/*;q=0.1"; // FIXME: add other mimetypes
-    private static final Set<String> STRICT_MIMETYPES = new HashSet<String>(Arrays.asList("application/rdf+xml","application/xml","application/rif+xml","text/x-rif-ps", "application/xhtml+xml", "text/n3", "text/rdf+n3", "text/turtle", "application/n-triples", "text/html"));
+    private static final String ACCEPT_HEADER_VALUES = "application/rdf+xml,application/xml,application/rif+xml,text/x-rif-ps,application/xhtml+xml;q=0.8,text/n3,text/rdf+n3,text/turtle,application/x-turtle,application/n-triples,text/html;q=0.8,*/*;q=0.1"; // FIXME: add other mimetypes
+    private static final Set<String> STRICT_MIMETYPES = new HashSet<String>(Arrays.asList("application/rdf+xml","application/xml","application/rif+xml","text/x-rif-ps", "application/xhtml+xml", "text/n3", "text/rdf+n3", "text/turtle", "application/x-turtle", "application/n-triples", "text/html"));
 
     private static final Map<String,String> MAP_EXTENSION_MIMETYPE = createMapExtensionMimeytpe();
     private static Map<String, String> createMapExtensionMimeytpe() {

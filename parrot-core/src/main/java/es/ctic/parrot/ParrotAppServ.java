@@ -53,6 +53,7 @@ public class ParrotAppServ {
 	 *
 	 *  <li><code>text/n3</code></li>
 	 *  <li><code>text/rdf+n3</code></li>
+	 *  <li><code>application/x-turtle</code></li>
 	 *  <li><code>text/turtle</code></li>
   	 * 	<li><code>application/n-triples</code></li>
 	 *
@@ -216,6 +217,7 @@ public class ParrotAppServ {
 	 *  <li><code>text/n3</code></li>
 	 *  <li><code>text/rdf+n3</code></li>
 	 *  <li><code>text/turtle</code></li>
+	 *  <li><code>application/x-turtle</code></li>
   	 * 	<li><code>application/n-triples</code></li>
 	 *  <li><code>application/xhtml+xml</code></li>
 	 *  <li><code>text/html</code></li>
@@ -230,6 +232,7 @@ public class ParrotAppServ {
      	 || "text/n3".equals(mimetype)
     	 || "text/rdf+n3".equals(mimetype)
      	 || "text/turtle".equals(mimetype)
+     	 || "application/x-turtle".equals(mimetype)
     	 || "application/n-triples".equals(mimetype)
     	 || "application/xhtml+xml".equals(mimetype)
     	 || "text/html".equals(mimetype)){

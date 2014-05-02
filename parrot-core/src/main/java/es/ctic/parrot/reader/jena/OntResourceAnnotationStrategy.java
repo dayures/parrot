@@ -800,22 +800,19 @@ public class OntResourceAnnotationStrategy {
 				
 				try { 
 					
-					String homepage = getObjectPropertyURI(object, FOAF_HOMEPAGE);
-					if (homepage == null) {
-						homepage= object.getURI();
-					}
-
 					String name = getLiteralPropertyValue(object, FOAF_NAME);
 					if (name == null){
 						name = object.getURI();
 					}
 
-					String mbox = getLiteralPropertyValue(object, FOAF_MBOX);
-					if (mbox == null){
-						mbox = object.getURI();
+					String homepage = getObjectPropertyURI(object, FOAF_HOMEPAGE);
+					if (homepage == null) {
+						homepage= object.getURI();
 					}
 
-					if (name == null && homepage == null && mbox == null ){
+					String mbox = getLiteralPropertyValue(object, FOAF_MBOX);
+
+					if (name == null){
 						logger.debug("not added "+property +" Agent for "+resource+" because it doesn't have neither name, homepage or mbox");
 					} else {
 						agents.add(new Agent(name, homepage, mbox));

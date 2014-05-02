@@ -12,11 +12,13 @@ public class Agent {
 	
 	private String name;
 	private String homepage;
+	private String mbox;
 
-	public Agent(String name, String homepage) {
+	public Agent(String name, String homepage, String mbox) {
 		super();
 		this.name = name;
 		this.homepage = homepage;
+		this.setMbox(mbox);
 	}
 
 	/**
@@ -80,5 +82,19 @@ public class Agent {
 		} else if (!name.equals(other.name))
 			return false;
 		return true;
+	}
+
+	/**
+	 * @return the mbox
+	 */
+	public String getMbox() {
+		return mbox;
+	}
+
+	/**
+	 * @param mbox the mbox to set
+	 */
+	public void setMbox(String mbox) {
+		this.mbox = mbox;
 	}	
 }

@@ -48,11 +48,7 @@
 		#end
 		#foreach($agent in $element.creatorAgents)
 		  <dd class="metadata-icon creator">
-		  	#if($agent.homepage)
-		  		<a href="$agent.homepage" class="external-link">$agent.name</a>
-		  	#else
-		  		$agent.name
-		  	#end
+		  #generateAgent(${agent})
 		  </dd>
 		#end
 		#end
@@ -65,11 +61,7 @@
 
 		#foreach($agent in $element.contributorAgents)
 		  <dd class="metadata-icon contributor">
-		  	#if($agent.homepage)
-		  		<a href="$agent.homepage" class="external-link">$agent.name</a>
-		  	#else
-		  		$agent.name
-		  	#end
+		  #generateAgent(${agent})
 		  </dd>
 		#end
 		#end
@@ -82,11 +74,7 @@
 		
 		#foreach($agent in $element.publisherAgents)
 		  <dd class="metadata-icon publisher">
-		  	#if($agent.homepage)
-		  		<a href="$agent.homepage" class="external-link">$agent.name</a>
-		  	#else
-		  		$agent.name
-		  	#end
+		  #generateAgent(${agent})
 		  </dd>
 		#end
 		#end

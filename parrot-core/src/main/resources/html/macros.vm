@@ -31,3 +31,12 @@
 #macro( generateToParrotLinkWithIcon $uri)
       <a href="${uri_base}?documentUri=${uri}"><img src="${uri_base}report/images/parrot.png" alt="Parrot" /></a>
 #end
+
+
+#macro( generateAgent $agent)
+	#if($agent.homepage)
+		<a href="$agent.homepage" class="external-link">$agent.name #if($agent.mbox)($agent.mbox)#end</a>
+	#else
+		$agent.name #if($agent.mbox)($agent.mbox)#end
+	#end
+#end

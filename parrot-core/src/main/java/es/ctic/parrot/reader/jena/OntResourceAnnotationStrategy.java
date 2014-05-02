@@ -94,6 +94,7 @@ public class OntResourceAnnotationStrategy {
 	private static final String FOAF_HOMEPAGE = "http://xmlns.com/foaf/0.1/homepage";
 	private static final String FOAF_MAKER = "http://xmlns.com/foaf/0.1/maker";
 	private static final String FOAF_PAGE = "http://xmlns.com/foaf/0.1/page";
+	private static final String FOAF_MBOX = "http://xmlns.com/foaf/0.1/mbox";
 
 	private static final String DC_DCMITYPE_TEXT = "http://purl.org/dc/dcmitype/Text";
 
@@ -117,13 +118,13 @@ public class OntResourceAnnotationStrategy {
 	private static final String DCAT_LANDINGPAGE = "http://www.w3.org/ns/dcat#landingPage";
 	private static final String DCAT_ACCESSURL = "http://www.w3.org/ns/dcat#accessURL";
 	private static final String DCAT_BYTESIZE = "http://www.w3.org/ns/dcat#byteSize";
-	private static final String DCAT_DERI_KEYWORD = "http://vocab.deri.ie/dcat#keyword";
+	private static final String DCAT_KEYWORD = "http://www.w3.org/ns/dcat#keyword";
 			
 	public static final String DCAT_DERI_DATASET_PROPERTY = "http://vocab.deri.ie/dcat#dataset";
 	public static final String DCAT_DERI_DISTRIBUTION_PROPERTY = "http://vocab.deri.ie/dcat#distribution";
 	private static final String DCAT_DERI_ACCESSURL = "http://vocab.deri.ie/dcat#accessURL";
 	private static final String DCAT_DERI_BYTES = "http://vocab.deri.ie/dcat#bytes";
-	private static final String DCAT_KEYWORD = "http://www.w3.org/ns/dcat#keyword";
+	private static final String DCAT_DERI_KEYWORD = "http://vocab.deri.ie/dcat#keyword";
 	
  
 
@@ -809,10 +810,15 @@ public class OntResourceAnnotationStrategy {
 						name = object.getURI();
 					}
 
-					if (name != null && homepage != null){
-						agents.add(new Agent(name, homepage));
+					String mbox = getLiteralPropertyValue(object, FOAF_MBOX);
+					if (mbox == null){
+						mbox = object.getURI();
+					}
+
+					if (name == null && homepage == null && mbox == null ){
+						logger.debug("not added "+property +" Agent for "+resource+" because it doesn't have neither name, homepage or mbox");
 					} else {
-						logger.debug("not added "+property +" Agent for "+resource+" because it doen't have neither name or homepage");
+						agents.add(new Agent(name, homepage, mbox));
 					}
 				} catch (ResourceRequiredException e)  {
 					logger.warn("A resource is required. Object="+object);

@@ -9,9 +9,6 @@
   <link rel="shortcut icon" href="images/favicon.ico" type="image/png" />
   <meta name="description" content="parrot" />
   <meta name="keywords" content="parrot, documentation, tool, rif, rdf" />
-  <!-- standalone --> 
-  <!-- <link rel="stylesheet" type="text/css" href="standalone/yui.yahooapis.com/2.8.0r4/build/fonts/fonts-min.css" /> -->  
-  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.8.0r4/build/fonts/fonts-min.css" />
   <link type="text/css" rel="stylesheet" href="css/style.css" media="screen,projection,print" />
 </head>
 

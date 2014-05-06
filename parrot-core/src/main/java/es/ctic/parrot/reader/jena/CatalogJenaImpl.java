@@ -18,11 +18,17 @@ import es.ctic.parrot.de.DocumentableObjectRegister;
 import es.ctic.parrot.transformers.DocumentableObjectVisitor;
 import es.ctic.parrot.transformers.TransformerException;
 
+/**
+ * An implementation of {@link es.ctic.parrot.de.Catalog} coupled to <a href="http://openjena.org/">Jena</a>.
+ * 
+ * @author Carlos Tejo Alonso (<a href="http://www.fundacionctic.org">Fundación CTIC</a>)
+ * @version 1.0
+ * @since 1.0
+ *
+ */
 public class CatalogJenaImpl extends AbstractJenaDocumentableObject implements Catalog {
 
-   
-
-    private Collection<DocumentableObject> datasets;
+	private Collection<DocumentableObject> datasets;
 
     public CatalogJenaImpl(OntResource resource, DocumentableObjectRegister register, OntResourceAnnotationStrategy annotationStrategy) {
         super(resource, register, annotationStrategy);

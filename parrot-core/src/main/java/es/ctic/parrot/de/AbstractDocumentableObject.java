@@ -5,9 +5,9 @@ import java.util.Collections;
 import java.util.HashSet;
 
 /**
- * An implementation of the DocumentableObject interface to serve as a basis for implementing various kinds of documentable elements.
+ * An implementation of {@link es.ctic.parrot.de.DocumentableObject} to serve as a basis for implementing various kinds of documentable elements.
  * 
- * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @author Carlos Tejo Alonso (<a href="http://www.fundacionctic.org">Fundación CTIC</a>)
  * @version 1.0
  * @since 1.0
  *

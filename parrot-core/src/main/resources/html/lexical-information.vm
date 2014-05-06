@@ -1,3 +1,7 @@
+#*
+	author: Carlos Tejo Alonso (Fundación CTIC - www.fundacionctic.org)
+*#
+
 #foreach($locale in $element.lexicalInformation.getLocales())
 <p><span class="parrot-label-locale">[$locale.getDisplayLanguage($document.getLocale())]</span>
 	#foreach($label in $element.lexicalInformation.findLabelsByLocale($locale))

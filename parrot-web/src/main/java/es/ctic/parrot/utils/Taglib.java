@@ -2,6 +2,14 @@ package es.ctic.parrot.utils;
 
 import java.util.Map;
 
+/**
+ * Taglibs.
+ * 
+ * @author Carlos Tejo Alonso (<a href="http://www.fundacionctic.org">Fundación CTIC</a>)
+ * @version 1.0
+ * @since 1.0
+ *
+ */
 public class Taglib {
    @SuppressWarnings("rawtypes")
 public static boolean contains(Map map, Object o) {

@@ -27,9 +27,9 @@ import es.ctic.parrot.transformers.DocumentableObjectVisitor;
 import es.ctic.parrot.transformers.TransformerException;
 
 /**
- * An implementation of the OntologyProperty (documentable element) interface coupled to <a href="http://openjena.org/">Jena</a>.
+ * An implementation of {@link es.ctic.parrot.de.OntologyProperty} coupled to <a href="http://openjena.org/">Jena</a>.
  * 
- * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @author Carlos Tejo Alonso (<a href="http://www.fundacionctic.org">Fundación CTIC</a>)
  * @version 1.0
  * @since 1.0
  *

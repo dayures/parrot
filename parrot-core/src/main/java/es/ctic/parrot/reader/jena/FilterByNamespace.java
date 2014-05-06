@@ -3,6 +3,14 @@ package es.ctic.parrot.reader.jena;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.util.iterator.Filter;
 
+/**
+ * Filter by namespace.
+ * 
+ * @author Carlos Tejo Alonso (<a href="http://www.fundacionctic.org">Fundación CTIC</a>)
+ * @version 1.0
+ * @since 1.0
+ *
+ */
 class FilterByNamespace extends Filter<OntClass> {
 	
 	private String namespace;

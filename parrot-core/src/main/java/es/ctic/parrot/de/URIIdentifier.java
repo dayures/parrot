@@ -3,7 +3,7 @@ package es.ctic.parrot.de;
 /**
  * An URI identifier.
  * 
- * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @author Carlos Tejo Alonso (<a href="http://www.fundacionctic.org">Fundación CTIC</a>)
  * @version 1.0
  * @since 1.0
  * 

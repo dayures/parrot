@@ -2,7 +2,14 @@ package es.ctic.parrot.de;
 
 import java.util.Collection;
 
-
+/**
+ * A dataset. 
+ * 
+ * @author Carlos Tejo Alonso (<a href="http://www.fundacionctic.org">Fundación CTIC</a>)
+ * @version 1.0
+ * @since 1.0
+ * 
+ */
 public interface Dataset extends DocumentableObject, Versionable{
 	
 	/**

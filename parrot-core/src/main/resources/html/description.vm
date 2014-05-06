@@ -1,3 +1,7 @@
+#*
+	author: Carlos Tejo Alonso (Fundación CTIC - www.fundacionctic.org)
+*#
+
   #if($element.Description)
     <p class="description">$element.Description</p>
   #else

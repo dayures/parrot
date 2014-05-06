@@ -1,3 +1,7 @@
+#*
+	author: Carlos Tejo Alonso (Fundación CTIC - www.fundacionctic.org)
+*#
+
 #if($element.Uri)
 	<div class="term" id="$element.getAnchorFromUriMD5()" about="$element.Uri">
 #else

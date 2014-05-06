@@ -18,7 +18,7 @@ import es.ctic.parrot.de.OntologyProperty;
  * <code>OntologyInternalReferenceResolver</code> is an implementation of the Visitor pattern.
  * Please refer to the Gang of Four book of Design Patterns for more details on the Visitor pattern.
  * 
- * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @author Carlos Tejo Alonso (<a href="http://www.fundacionctic.org">Fundación CTIC</a>)
  * @version 1.0
  * @since 1.0
  *

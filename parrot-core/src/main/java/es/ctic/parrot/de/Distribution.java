@@ -1,6 +1,14 @@
 package es.ctic.parrot.de;
 
 
+/**
+ * A distribution of a dataset. 
+ * 
+ * @author Carlos Tejo Alonso (<a href="http://www.fundacionctic.org">Fundación CTIC</a>)
+ * @version 1.0
+ * @since 1.0
+ * 
+ */
 public interface Distribution extends DocumentableObject, Versionable{
   
 	

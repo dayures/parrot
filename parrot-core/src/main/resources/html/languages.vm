@@ -1,3 +1,7 @@
+#*
+	author: Carlos Tejo Alonso (Fundación CTIC - www.fundacionctic.org)
+*#
+
 #if ($document.isReloadable())
   	#if ( ($document.getLanguages().size() >1) &&
   		  (!$document.ontologyDetailViews.isEmpty() 

@@ -4,8 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * A namespace manager than can provide compact URIs for URIs (this class is NOT used yet). 
- * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * A namespace manager than can provide compact URIs for URIs (this class is NOT used yet).
+ *  
+ * @author Carlos Tejo Alonso (<a href="http://www.fundacionctic.org">Fundación CTIC</a>)
  * @version 1.0
  * @since 1.0
  *

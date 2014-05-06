@@ -2,6 +2,14 @@ package es.ctic.parrot.de;
 
 import java.util.Collection;
 
+/**
+ * A catalog. 
+ * 
+ * @author Carlos Tejo Alonso (<a href="http://www.fundacionctic.org">Fundación CTIC</a>)
+ * @version 1.0
+ * @since 1.0
+ * 
+ */
 public interface Catalog extends DocumentableObject, Versionable{
 	
 	/**

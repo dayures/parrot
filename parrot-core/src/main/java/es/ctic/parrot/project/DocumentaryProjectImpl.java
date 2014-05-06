@@ -8,10 +8,9 @@ import java.util.Locale;
 import es.ctic.parrot.reader.Input;
 
 /**
- * A documentary project represents a unit of work executed by Parrot. It
- * contains the information required by Parrot to generate a document.
+ * An implementation of {@link  es.ctic.parrot.project.DocumentaryProject}.
  * 
- * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @author Carlos Tejo Alonso (<a href="http://www.fundacionctic.org">Fundación CTIC</a>)
  * @version 1.0
  * @since 1.0
  *

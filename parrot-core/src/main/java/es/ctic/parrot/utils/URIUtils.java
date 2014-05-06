@@ -4,7 +4,7 @@ package es.ctic.parrot.utils;
  * 
  * The class <code>URIUtils</code> includes methods for extracting information from URIs.
  * 
- * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @author Carlos Tejo Alonso (<a href="http://www.fundacionctic.org">Fundación CTIC</a>)
  * @version 1.0
  * @since 1.0
  *

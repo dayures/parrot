@@ -1,3 +1,7 @@
+#*
+	author: Carlos Tejo Alonso (Fundación CTIC - www.fundacionctic.org)
+*#
+
 #set ($glossary = $document.glossary )
 
 #if ( ! $glossary.isEmpty() )

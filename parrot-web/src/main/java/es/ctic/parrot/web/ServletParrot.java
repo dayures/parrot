@@ -38,6 +38,14 @@ import es.ctic.parrot.utils.ErrorBuffer;
 import es.ctic.parrot.utils.HttpUtils;
 
 
+/**
+ * Servlet for main page.
+ * 
+ * @author Carlos Tejo Alonso (<a href="http://www.fundacionctic.org">Fundación CTIC</a>)
+ * @version 1.0
+ * @since 1.0
+ *
+ */
 public class ServletParrot extends HttpServlet {
 
 	private static final String AUTODETECT_MIMETYPE = "default";

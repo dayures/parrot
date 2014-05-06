@@ -17,7 +17,7 @@ import es.ctic.parrot.project.Profile;
 /**
  * Generates <code>HTML</code> content from a documentary model.
  * 
- * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @author Carlos Tejo Alonso (<a href="http://www.fundacionctic.org">Fundación CTIC</a>)
  * @version 1.0
  * @since 1.0
  *

@@ -31,7 +31,7 @@ import es.ctic.parrot.reader.ReaderException;
 /**
  * A reader for OWL, RDF and RDFa input documents that uses <a href="http://www.openjena.org/">Jena</a>. 
  * 
- * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @author Carlos Tejo Alonso (<a href="http://www.fundacionctic.org">Fundación CTIC</a>)
  * @version 1.0
  * @since 1.0
  * 

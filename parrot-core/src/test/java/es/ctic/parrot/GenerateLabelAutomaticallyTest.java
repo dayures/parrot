@@ -10,7 +10,13 @@ import es.ctic.parrot.reader.ReaderException;
 import es.ctic.parrot.reader.jena.OntResourceAnnotationStrategy;
 
 /**
- * Unit test for testing the generating of labels automatically App.
+ * 
+ * Unit test for testing the generating of labels automatically.
+ * 
+ * @author Carlos Tejo Alonso (<a href="http://www.fundacionctic.org">Fundación CTIC</a>)
+ * @version 1.0
+ * @since 1.0
+ *
  */
 public class GenerateLabelAutomaticallyTest 
     extends TestCase

@@ -6,7 +6,7 @@ import java.util.Collection;
  * An ontological element to be documented by Parrot. This interface encapsulates
  * different ontological documentable elements.
  * 
- * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @author Carlos Tejo Alonso (<a href="http://www.fundacionctic.org">Fundación CTIC</a>)
  * @version 1.0
  * @since 1.0
  * 

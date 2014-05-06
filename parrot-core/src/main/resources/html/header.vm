@@ -1,3 +1,7 @@
+#*
+	author: Carlos Tejo Alonso (Fundación CTIC - www.fundacionctic.org)
+*#
+
 <div id="header"> 
 <h1>$document.Title</h1>
 <h2>

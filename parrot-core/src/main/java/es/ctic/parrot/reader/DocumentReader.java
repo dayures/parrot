@@ -9,7 +9,7 @@ import es.ctic.parrot.de.DocumentableObjectRegister;
  * A reader to read input document by Parrot. This interface encapsulates
  * different readers for input documents.
  * 
- * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @author Carlos Tejo Alonso (<a href="http://www.fundacionctic.org">Fundación CTIC</a>)
  * @version 1.0
  * @since 1.0
  *

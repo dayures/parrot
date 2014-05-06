@@ -6,6 +6,14 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
+/**
+ * Utils for HTTP requests. 
+ * 
+ * @author Carlos Tejo Alonso (<a href="http://www.fundacionctic.org">Fundación CTIC</a>)
+ * @version 1.0
+ * @since 1.0
+ *
+ */
 public class HttpUtils {
 	
 	private static final org.apache.log4j.Logger logger = Logger.getLogger(HttpUtils.class);

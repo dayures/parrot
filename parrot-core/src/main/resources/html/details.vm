@@ -1,3 +1,7 @@
+#*
+	author: Carlos Tejo Alonso (Fundación CTIC - www.fundacionctic.org)
+*#
+
 
 #if(!$document.ontologyDetailViews.isEmpty())
 	<div class="toc" id="ontologies"> 

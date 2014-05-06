@@ -14,7 +14,7 @@ import com.sun.jersey.api.client.WebResource;
  * 
  * The class <code>CurieUtils</code> includes methods to obtain CURIEs from URIs.
  * 
- * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @author Carlos Tejo Alonso (<a href="http://www.fundacionctic.org">Fundación CTIC</a>)
  * @version 1.0
  * @since 1.0
  *

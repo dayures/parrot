@@ -1,3 +1,7 @@
+#*
+	author: Carlos Tejo Alonso (Fundación CTIC - www.fundacionctic.org)
+*#
+
 	<!-- Feedback -->
 	<div>
 	<img id="feedback" src="${uri_base}images/feedback.png" width="30" height="100" alt="feedback" /> 

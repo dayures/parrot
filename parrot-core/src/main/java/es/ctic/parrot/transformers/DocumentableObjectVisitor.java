@@ -18,7 +18,7 @@ import es.ctic.parrot.de.Vocabulary;
  * An object of this interface can be passed to a Node which will then call its typesafe methods. 
  * Please refer to the Gang of Four book of Design Patterns for more details on the Visitor pattern.
  * 
- * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @author Carlos Tejo Alonso (<a href="http://www.fundacionctic.org">Fundación CTIC</a>)
  * @version 1.0
  * @since 1.0
  *

@@ -36,7 +36,7 @@ import es.ctic.parrot.utils.URIUtils;
  * It is used to implement the Strategy pattern.
  * Please refer to the Gang of Four book of Design Patterns for more details on the Strategy pattern.
  * 
- * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @author Carlos Tejo Alonso (<a href="http://www.fundacionctic.org">Fundación CTIC</a>)
  * @version 1.0
  * @since 1.0
  * 

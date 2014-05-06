@@ -12,7 +12,7 @@ import es.ctic.parrot.transformers.TransformerException;
 /**
  * A datatype to be used as referenced by Parrot. 
  * 
- * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @author Carlos Tejo Alonso (<a href="http://www.fundacionctic.org">Fundación CTIC</a>)
  * @version 1.0
  * @since 1.0
  * 

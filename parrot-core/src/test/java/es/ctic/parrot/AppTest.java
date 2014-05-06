@@ -17,7 +17,13 @@ import es.ctic.parrot.reader.URLInput;
 import es.ctic.parrot.reader.jena.JenaOWLReader;
 
 /**
- * Unit test for simple App.
+ * 
+ * Unit tests.
+ * 
+ * @author Carlos Tejo Alonso (<a href="http://www.fundacionctic.org">Fundación CTIC</a>)
+ * @version 1.0
+ * @since 1.0
+ *
  */
 public class AppTest 
     extends TestCase

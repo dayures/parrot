@@ -1,3 +1,7 @@
+#*
+	author: Carlos Tejo Alonso (Fundación CTIC - www.fundacionctic.org)
+*#
+
 #parse("html/version-control-check.vm")
 
 

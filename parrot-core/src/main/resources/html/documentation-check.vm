@@ -1,3 +1,7 @@
+#*
+	author: Carlos Tejo Alonso (Fundación CTIC - www.fundacionctic.org)
+*#
+
 #if ( (!$element.lexicalInformation.getLocales().isEmpty()) ||
   	  (!$element.relatedDocuments.isEmpty()) )
   #set( $otherinfo = true )

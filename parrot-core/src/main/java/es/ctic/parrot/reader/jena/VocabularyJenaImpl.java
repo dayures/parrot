@@ -7,6 +7,14 @@ import es.ctic.parrot.de.Vocabulary;
 import es.ctic.parrot.transformers.DocumentableObjectVisitor;
 import es.ctic.parrot.transformers.TransformerException;
 
+/**
+ * An implementation of {@link es.ctic.parrot.de.Vocabulary} coupled to <a href="http://openjena.org/">Jena</a>.
+ * 
+ * @author Carlos Tejo Alonso (<a href="http://www.fundacionctic.org">Fundación CTIC</a>)
+ * @version 1.0
+ * @since 1.0
+ *
+ */
 public class VocabularyJenaImpl extends AbstractJenaDocumentableObject implements Vocabulary {
     
     public VocabularyJenaImpl(OntResource resource, DocumentableObjectRegister register, OntResourceAnnotationStrategy annotationStrategy) {

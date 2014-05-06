@@ -1,3 +1,7 @@
+#*
+	author: Carlos Tejo Alonso (Fundación CTIC - www.fundacionctic.org)
+*#
+
 #foreach($label in $element.labels)
 <span class="parrot-label">
 <span class="parrot-label-text #if($label.isPrefLabel()) parrot-label-text-pref #end">$label.text</span>

@@ -16,9 +16,9 @@ import es.ctic.parrot.reader.ReaderException;
 import es.ctic.parrot.reader.jena.JenaOWLReader;
 
 /**
- * A reader for RIF XML input documents that uses <a href="http://rifle.sourceforge.net/">rifle</a>. 
+ * A reader for RIF XML input documents coupled to <a href="https://bitbucket.org/fundacionctic/rifle">RIFLE</a>. 
  * 
- * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @author Carlos Tejo Alonso (<a href="http://www.fundacionctic.org">Fundación CTIC</a>)
  * @version 1.0
  * @since 1.0
  * 

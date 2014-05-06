@@ -21,7 +21,7 @@ import es.ctic.parrot.utils.HTTPUtils;
 /**
  * A web input document, anything that can be referenced by a URL.
  * 
- * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @author Carlos Tejo Alonso (<a href="http://www.fundacionctic.org">Fundación CTIC</a>)
  * @version 1.0
  * @since 1.0
  *

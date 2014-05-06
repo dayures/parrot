@@ -1,3 +1,7 @@
+#*
+	author: Carlos Tejo Alonso (Fundación CTIC - www.fundacionctic.org)
+*#
+
 <div id="bottom-bar"> 
         <ul> 
             <li title="Go to top"><a href="#"><img src="${uri_base}report/images/top.png" alt="Go to top" /></a></li> 

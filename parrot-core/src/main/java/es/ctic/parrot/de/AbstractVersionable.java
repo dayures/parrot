@@ -8,9 +8,9 @@ import com.hp.hpl.jena.rdf.model.ModelFactory;
 import es.ctic.parrot.reader.jena.OntResourceAnnotationStrategy;
 
 /**
- * An implementation of the Versionable interface..
+ * An implementation of {@link es.ctic.parrot.de.Versionable}.
  * 
- * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @author Carlos Tejo Alonso (<a href="http://www.fundacionctic.org">Fundación CTIC</a>)
  * @version 1.0
  * @since 1.0
  *

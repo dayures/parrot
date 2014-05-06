@@ -1,3 +1,7 @@
+#*
+	author: Carlos Tejo Alonso (Fundación CTIC - www.fundacionctic.org)
+*#
+
     <link rel="parrot:hasPrologue" href="#prologue" /> 
     <link rel="parrot:hasAppendix" href="#appendix"/>
     #if ($document.isReloadable()) 

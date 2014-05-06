@@ -10,6 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import es.ctic.parrot.utils.HttpUtils;
 
+/**
+ * Servlet for help page.
+ * 
+ * @author Carlos Tejo Alonso (<a href="http://www.fundacionctic.org">Fundación CTIC</a>)
+ * @version 1.0
+ * @since 1.0
+ *
+ */
 public class ServletHelp extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;

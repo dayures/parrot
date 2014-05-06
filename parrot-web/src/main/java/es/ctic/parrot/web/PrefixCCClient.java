@@ -9,6 +9,14 @@ import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 
+/**
+ * Client to use <a href="http://prefix.cc">prefix.cc</a> service.
+ * 
+ * @author Carlos Tejo Alonso (<a href="http://www.fundacionctic.org">Fundación CTIC</a>)
+ * @version 1.0
+ * @since 1.0
+ *
+ */
 public class PrefixCCClient {
     
     private static final String SERVICE_REQUEST_URL_SUFFIX = ".file.txt";

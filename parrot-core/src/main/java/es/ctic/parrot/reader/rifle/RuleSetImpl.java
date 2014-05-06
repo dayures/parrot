@@ -33,9 +33,9 @@ import es.ctic.parrot.transformers.DocumentableObjectVisitor;
 import es.ctic.parrot.transformers.TransformerException;
 
 /**
- * An implementation of the Rule set (documentable element) interface.
+ * An implementation of {@link es.ctic.parrot.de.RuleSet} coupled to <a href="https://bitbucket.org/fundacionctic/rifle">RIFLE</a>. 
  * 
- * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @author Carlos Tejo Alonso (<a href="http://www.fundacionctic.org">Fundación CTIC</a>)
  * @version 1.0
  * @since 1.0
  *

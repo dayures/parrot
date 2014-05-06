@@ -31,9 +31,9 @@ import es.ctic.parrot.de.ExternalDocumentableObject;
 
 
 /**
- * An implementation of the DocumentableOntologicalObject interface to serve as a basis for implementing various kinds of ontology documentable elements.
+ * An implementation of the {@link es.ctic.parrot.de.DocumentableOntologicalObject} to serve as a basis for implementing various kinds of ontology documentable elements.
  * 
- * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+ * @author Carlos Tejo Alonso (<a href="http://www.fundacionctic.org">Fundación CTIC</a>)
  * @version 1.0
  * @since 1.0
  *

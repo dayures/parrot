@@ -1,3 +1,7 @@
+#*
+	author: Carlos Tejo Alonso (Fundación CTIC - www.fundacionctic.org)
+*#
+
     <span class="menu"> 
 	  #if ($vci)<span class="vci-menu">VC</span> #end 
 	  #if ($ti)<span class="ti-menu">Definition</span> #end

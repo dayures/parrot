@@ -376,3 +376,10 @@ p.code {
 span.optional{
 	color:grey;
 }
+
+.tip-compilation{
+	font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+	font-size: larger;
+	padding-left: 1em;
+	font-style: italic;
+}

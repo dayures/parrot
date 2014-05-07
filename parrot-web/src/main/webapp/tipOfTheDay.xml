@@ -1,7 +1,8 @@
 <parrot>
-	<tip>you can generate reports from ontologies expressed in multiple formats (RDF/XML, N3, RDFa).</tip>
+	<tip>you can generate reports from ontologies expressed in multiple formats (RDF/XML, Turtle, N-Triples, N3, RDFa).</tip>
 	<tip>you can generate reports from rule documents expressed in multiple formats (RIF XML and RIF PS).</tip>
 	<tip>there is a &lt;a href=&quot;help&quot;&gt;help page&lt;/a&gt; that describes which meta-data properties are supported by Parrot.</tip>
+	<tip>you can read all tips in  &lt;a href=&quot;help#tip-do-you-know&quot;&gt;compilation&lt;/a&gt;</tip>
 	<tip>with Parrot you can generate a report uploading a file.</tip>
 	<tip>you can simply paste your OWL or RIF document into the 'Direct input' tab.</tip>
 	<tip>there is RDFa embedded into the Parrot reports.</tip>
@@ -15,5 +16,4 @@
 	<tip>you can generate a PDF version of the report by printing it to a PDF file.</tip>
 	<tip>there is a Parrot plugin for Eclipse. Just add the &lt;a href=&quot;http://ontorule-project.eu/resources/parrot/eclipse/&quot;&gt;eclipse update site&lt;/a&gt;</tip>
 <!-- <tip>you can add arbitrary content to the prologue and appendix of a Parrot report.</tip> -->
-	
 </parrot>

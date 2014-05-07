@@ -38,7 +38,7 @@
 	<li><a href="#tip-label">Label order</a></li>
 	<li><a href="#tip-description">Description order</a></li>
 	<li><a href="#tip-button-rdfa">Button RDFa</a></li>
-	<li><a href="#tip-do-you-know">Do you know...?</a></li>
+	<li><a href="#tip-did-you-know">Compilation of tips</a></li>
 	<li><a href="#tip-features">Other features</a></li>
 	</ul>
 </li>
@@ -1166,9 +1166,10 @@ You can send multiple <tt>documentText</tt> parameter values. In that case, each
     &lt;/p&gt;
   </pre> 
 
-<h3 id="tip-do-you-know">Do you know...</h3>
-This is a compilation of the messages shown in the "Do you know..." section
-<div id="alltips"></div>
+<h3 id="tip-did-you-know">Compilation of tips</h3>
+<p>This is a compilation of the tip of the day feature</p>
+<span class="tip-compilation-title">Did you know ...</span>
+<ul id="alltips"></ul>
 
 <h3 id="tip-features">Other features</h3>
 

@@ -9,7 +9,7 @@ jQuery(document).ready(function(){
 		});
 
 		for(i in alltips){
-			$('#alltips').append("<p class='tip-compilation'>"+alltips[i]+"</p>")
+			$('#alltips').append("<li class='tip-compilation'>... "+alltips[i]+"</li>")
 		}
 	});
 	

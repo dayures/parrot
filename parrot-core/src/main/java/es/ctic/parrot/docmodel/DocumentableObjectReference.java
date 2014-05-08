@@ -30,6 +30,7 @@ public class DocumentableObjectReference implements Comparable<DocumentableObjec
     private String kindString;
     private String uri;
     private boolean externalLink;
+    private String uriFragment;
     
     /**
      * Constructs a reference to a documentable element. 
@@ -44,6 +45,7 @@ public class DocumentableObjectReference implements Comparable<DocumentableObjec
         this.localName = documentableObject.getLocalName();
         this.kindString = documentableObject.getKindString();
         this.uri = documentableObject.getURI();
+        setUriFragmentFromDO(documentableObject);
     }
     
     /**
@@ -155,6 +157,23 @@ public class DocumentableObjectReference implements Comparable<DocumentableObjec
     		this.label = documentableObject.getLabel(locale);
     	}
     }
+
+	/**
+	 * @return the uriFragment
+	 */
+	public String getUriFragment() {
+		return uriFragment;
+	}
+
+	/**
+	 * @param uriFragment the uriFragment to set
+	 */
+	public void setUriFragmentFromDO(DocumentableObject documentableObject) {
+		if (this.isExternalLink() == false){
+			this.uriFragment = documentableObject.getUriFragment();
+		} 
+
+	}
 
 
 }

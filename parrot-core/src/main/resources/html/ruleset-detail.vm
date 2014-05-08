@@ -69,23 +69,23 @@
   
     #if(!$element.rules.isEmpty())
       <p>This ruleset contains rules such as...
-      #foreach($v in $element.rules)
-	    <span class="parrot-element-ref parrot-rule-ref"><a href="#$v.LocalName">$v.Label</a></span>
+      #foreach($reference in $element.rules)
+	    <span class="parrot-element-ref parrot-rule-ref">#generateLink(${reference})</span>
       #end
       </p>
     #end
    
     #if(!$element.ruleSets.isEmpty())
       <p>This ruleset contains rulesets such as...
-      #foreach($v in $element.ruleSets)
-	    <span class="parrot-element-ref parrot-ruleset-ref"><a href="#$v.LocalName">$v.Label</a></span>
+      #foreach($reference in $element.ruleSets)
+	    <span class="parrot-element-ref parrot-ruleset-ref">#generateLink(${reference})</span>
       #end
       </p>
     #end
    
     #if($element.Parent)
       <p>This ruleset is inside 
-	  <span class="parrot-element-ref parrot-${element.Parent.kindString}-ref"><a href="#$element.Parent.localName">$element.Parent.label</a></span>
+	  <span class="parrot-element-ref parrot-${element.Parent.kindString}-ref">#generateLink(${element.Parent})</span>
 	  </p>
     #end
   </div>

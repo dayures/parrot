@@ -27,7 +27,7 @@
 
    <h3 id="$element.Anchor">#if ($element.uriFragment && (!$element.uriFragment.length()==0)) <a id="$element.uriFragment"></a>#end<span class="parrot-element-title parrot-ontology-title">$element.Label</span>
    <span rel="rdf:type" href="http://www.w3.org/2002/07/owl#Ontology">(Ontology)</span>
-  #if($element.isDeprecated())<span class="deprecated">(Deprecated)</span>#end
+  #deprecated($element)
   #parse("html/detail-menu.vm")
   </h3>
   

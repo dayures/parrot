@@ -8,7 +8,7 @@
 	<h2>Ontologies</h2>
 	<p>
 	  #foreach($element in $document.ontologyDetailViews)
-	    <a href="#$element.Anchor">$element.Label</a>#if($element.isDeprecated())<span class="deprecated">(Deprecated)</span>#end#if ($foreach.hasNext), #end
+	    #generateInternalLink(${element})#deprecated($element)#if ($foreach.hasNext), #end
       #end
     </p>
 	</div>
@@ -24,7 +24,7 @@
 	<h2>Classes</h2>
 	<p>
 	  #foreach($element in $document.ontologyClassDetailViews)
-	    <a href="#$element.Anchor">$element.Label</a>#if($element.isDeprecated())<span class="deprecated">(Deprecated)</span>#end#if ($foreach.hasNext), #end
+	    #generateInternalLink(${element})#deprecated($element)#if ($foreach.hasNext), #end
 	  #end
 	</p>
 	</div>
@@ -39,7 +39,7 @@
 	<h2>Properties</h2>
 	<p>
 	  #foreach($element in $document.ontologyPropertyDetailViews)
-		<a href="#$element.Anchor">$element.Label</a>#if($element.isDeprecated())<span class="deprecated">(Deprecated)</span>#end#if ($foreach.hasNext), #end
+		#generateInternalLink(${element})#deprecated($element)#if ($foreach.hasNext), #end
 	  #end
 	</p>
 	</div>
@@ -54,7 +54,7 @@
 	<h2>Individuals</h2>
 	<p>
 	#foreach($element in $document.ontologyIndividualDetailViews)
-	  <a href="#$element.Anchor">$element.Label</a>#if($element.isDeprecated())<span class="deprecated">(Deprecated)</span>#end#if ($foreach.hasNext), #end
+	  #generateInternalLink(${element})#deprecated($element)#if ($foreach.hasNext), #end
 	#end
 	</p>
 	</div>	
@@ -69,7 +69,7 @@
 	<h2>RuleSets</h2>
 	<p>
 	#foreach($element in $document.ruleSetDetailViews)
-	  <a href="#$element.Anchor">$element.Label</a>#if ($foreach.hasNext), #end
+	  #generateInternalLink(${element})#if ($foreach.hasNext), #end
 	#end
 	</p>
 	</div>
@@ -85,7 +85,7 @@
 	<h2>Rules</h2>
 	<p>
 	  #foreach($element in $document.ruleDetailViews)
-		<a href="#$element.Anchor">$element.Label</a>#if ($foreach.hasNext), #end
+		#generateInternalLink(${element})#if ($foreach.hasNext), #end
 	  #end
 	</p>
 	</div>
@@ -100,7 +100,7 @@
 	<h2>Vocabularies</h2>
 	<p>
 	  #foreach($element in $document.vocabularyDetailViews)
-		<a href="#$element.Anchor">$element.Label</a>#if ($foreach.hasNext), #end
+		#generateInternalLink(${element})#if ($foreach.hasNext), #end
 	  #end
 	</p>
 	</div>
@@ -115,7 +115,7 @@
 	<h2>Catalogs</h2>
 	<p>
 	  #foreach($element in $document.catalogDetailViews)
-		<a href="#$element.Anchor">$element.Label</a>#if ($foreach.hasNext), #end
+		#generateInternalLink(${element})#if ($foreach.hasNext), #end
 	  #end
 	</p>
 	</div>
@@ -130,7 +130,7 @@
 	<h2>Datasets</h2>
 	<p>
 	  #foreach($element in $document.datasetDetailViews)
-		<a href="#$element.Anchor">$element.Label</a>#if ($foreach.hasNext), #end
+		#generateInternalLink(${element})#if ($foreach.hasNext), #end
 	  #end
 	</p>
 	</div>

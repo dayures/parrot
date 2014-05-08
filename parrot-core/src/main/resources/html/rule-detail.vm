@@ -60,7 +60,7 @@
 
     #if($element.Parent)
       <p>This rule is inside 
-	  <span class="parrot-element-ref parrot-${element.Parent.kindString}-ref"><a href="#$element.Parent.localName">$element.Parent.label</a></span>
+	  <span class="parrot-element-ref parrot-${element.Parent.kindString}-ref">#generateLink(${element.Parent})</span>
 	  </p>
     #end
     

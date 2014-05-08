@@ -34,7 +34,7 @@
 #parse("html/md5.vm")
 
   <h3 id="$element.Anchor">#if ($element.uriFragment) <a id="$element.uriFragment"></a>#end<span class="parrot-element-title parrot-property-title">$element.Label</span> (Property)
-  	#if($element.isDeprecated())<span class="deprecated">(Deprecated)</span>#end
+  	#deprecated($element)
   	
 	#if($element.isDatatypeProperty())<span rel="rdf:type" href="http://www.w3.org/2002/07/owl#DatatypeProperty"></span><img class="datatype-property-icon icon" src="${uri_base}report/images/datatype-property-24.png" alt="datatype property"/>#end
 	#if($element.isObjectProperty())<span rel="rdf:type" href="http://www.w3.org/2002/07/owl#ObjectProperty"></span><img class="object-property-icon icon" src="${uri_base}report/images/object-property-24.png" alt="object property"/>#end
@@ -207,7 +207,7 @@
     #if(!$element.inverseRuleReferences.isEmpty())
       <p>This property is referenced in rules such as 
       #foreach($reference in $element.inverseRuleReferences)
-		<span class="parrot-element-ref parrot-rule-ref"><a href="#$reference.LocalName">$reference.Label</a></span>#if ($foreach.hasNext), #end 
+		<span class="parrot-element-ref parrot-rule-ref">#generateLink(${reference})</span>#if ($foreach.hasNext), #end 
       #end
       </p>
     #end

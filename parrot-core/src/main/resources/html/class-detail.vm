@@ -38,7 +38,7 @@
 		<span>(Class)</span> 		
 	#end
 
-  #if($element.isDeprecated())<span class="deprecated">(Deprecated)</span>#end
+  #deprecated($element)
 
   #parse("html/detail-menu.vm")
 
@@ -126,7 +126,7 @@
 		  <td>This class is used in</td>
 		  <td> 	  
 		  #foreach($reference in $element.InverseReferences)
-		  <span class="parrot-element-ref parrot-property-ref"><a href="#$reference.LocalName">$reference.Label</a></span>
+		  <span class="parrot-element-ref parrot-property-ref">#generateLink(${reference})</span>
 		  #end
 		  </td>
 		  </tr>
@@ -137,7 +137,7 @@
 		  <td>This class has individuals such as</td>
 		  <td>	  
 		  #foreach($individual in $element.individuals)
-		  <span class="parrot-element-ref parrot-individual-ref"><a href="#$individual.LocalName">$individual.Label</a></span>
+		  <span class="parrot-element-ref parrot-individual-ref">#generateLink(${individual})</span>
 		  #end
 		  </td>
 		  </tr>
@@ -148,7 +148,7 @@
 		  <td>This class is referenced in rules such as</td>
 		  <td>
 		  #foreach($reference in $element.inverseRuleReferences)
-		  <span class="parrot-element-ref parrot-rule-ref"><a href="#$reference.LocalName">$reference.Label</a></span>
+		  <span class="parrot-element-ref parrot-rule-ref">#generateLink(${reference})</span>
 		  #end
 		  </td>
 		  </tr>

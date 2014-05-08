@@ -25,7 +25,7 @@
 #parse("html/md5.vm")
 
    <h3 id="$element.Anchor">#if ($element.uriFragment) <a id="$element.uriFragment"></a>#end<span class="parrot-element-title parrot-individual-title">$element.Label</span> (Individual)
-    #if($element.isDeprecated())<span class="deprecated">(Deprecated)</span>#end
+    #deprecated($element)
     #parse("html/detail-menu.vm")
   </h3>
   
@@ -102,7 +102,7 @@
   	  #if(!$element.inverseRuleReferences.isEmpty())
 	    <dt>Referenced rules</dt>
 	    #foreach($reference in $element.inverseRuleReferences)
-	    <dd><span class="parrot-element-ref parrot-rule-ref"><a href="#$reference.LocalName">$reference.Label</a></span></dd>
+	    <dd><span class="parrot-element-ref parrot-rule-ref">#generateLink(${reference})</span></dd>
 	    #end
 	  #end
 	  

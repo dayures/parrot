@@ -10,7 +10,7 @@
 <p><span class="parrot-element-ref parrot-ontology-ref">Ontologies (${document.ontologyDetailViews.size()}):</span></p> 
 <p>
 #foreach($element in $document.ontologyDetailViews)
-	<a href="#$element.Anchor">$element.Label</a>#if($element.isDeprecated())<span class="deprecated"> (Deprecated)</span>#end#if ($foreach.hasNext), #end
+	#generateInternalLink(${element})#deprecated($element)#if ($foreach.hasNext), #end
 #end
 </p>
 #end
@@ -20,7 +20,7 @@
 <p><span class="parrot-element-ref parrot-class-ref">Classes (${document.ontologyClassDetailViews.size()}):</span></p>
 <p>
 #foreach($element in $document.ontologyClassDetailViews)
-	<a href="#$element.Anchor">$element.Label</a>#if($element.isDeprecated())<span class="deprecated"> (Deprecated)</span>#end#if ($foreach.hasNext), #end
+	#generateInternalLink(${element})#deprecated($element)#if ($foreach.hasNext), #end
 #end
 </p>
 #end
@@ -30,7 +30,7 @@
 <p><span class="parrot-element-ref parrot-property-ref">Properties (${document.ontologyPropertyDetailViews.size()}):</span></p>
 <p>
 #foreach($element in $document.ontologyPropertyDetailViews)
-	<a href="#$element.Anchor">$element.Label</a>#if($element.isDeprecated())<span class="deprecated"> (Deprecated)</span>#end#if ($foreach.hasNext), #end
+	#generateInternalLink(${element})#deprecated($element)#if ($foreach.hasNext), #end
 #end
 </p>
 #end
@@ -40,7 +40,7 @@
 <p><span class="parrot-element-ref parrot-individual-ref">Individuals (${document.ontologyIndividualDetailViews.size()}):</span></p>
 <p>
 #foreach($element in $document.ontologyIndividualDetailViews)
-	<a href="#$element.Anchor">$element.Label</a>#if($element.isDeprecated())<span class="deprecated"> (Deprecated)</span>#end#if ($foreach.hasNext), #end
+	#generateInternalLink(${element})#deprecated($element)#if ($foreach.hasNext), #end
 #end
 </p>
 #end
@@ -50,7 +50,7 @@
 <p><span class="parrot-element-ref parrot-ruleset-ref">RuleSets (${document.ruleSetDetailViews.size()}):</span></p>
 <p>
 #foreach($element in $document.ruleSetDetailViews)
-	<a href="#$element.Anchor">$element.Label</a>#if ($foreach.hasNext), #end
+	#generateInternalLink(${element})#if ($foreach.hasNext), #end
 #end
 </p>
 #end
@@ -60,7 +60,7 @@
 <p><span class="parrot-element-ref parrot-rule-ref">Rules (${document.ruleDetailViews.size()}):</span></p>
 <p>
 #foreach($element in $document.ruleDetailViews)
-	<a href="#$element.Anchor">$element.Label</a>#if ($foreach.hasNext), #end
+	#generateInternalLink(${element})#if ($foreach.hasNext), #end
 #end
 </p>
 #end
@@ -69,7 +69,7 @@
 <p><span class="parrot-element-ref parrot-vocabulary-ref">Vocabularies (${document.vocabularyDetailViews.size()}):</span></p>
 <p>
 #foreach($element in $document.vocabularyDetailViews)
-	<a href="#$element.Anchor">$element.Label</a>#if ($foreach.hasNext), #end
+	#generateInternalLink(${element})#if ($foreach.hasNext), #end
 #end
 </p>
 #end
@@ -78,7 +78,7 @@
 <p><span class="parrot-element-ref parrot-catalog-ref">Catalogs (${document.catalogDetailViews.size()}):</span></p>
 <p>
 #foreach($element in $document.catalogDetailViews)
-	<a href="#$element.Anchor">$element.Label</a>#if ($foreach.hasNext), #end
+	#generateInternalLink(${element})#if ($foreach.hasNext), #end
 #end
 </p>
 #end
@@ -87,7 +87,7 @@
 <p><span class="parrot-element-ref parrot-dataset-ref">Datasets (${document.datasetDetailViews.size()}):</span></p>
 <p>
 #foreach($element in $document.datasetDetailViews)
-	<a href="#$element.Anchor">$element.Label</a>#if ($foreach.hasNext), #end
+	#generateInternalLink(${element})#if ($foreach.hasNext), #end
 #end
 </p>
 #end

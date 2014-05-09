@@ -139,7 +139,7 @@
       #end
 	  <td>
       #foreach($reference in $element.Domains)
-      <td><span class="parrot-element-ref parrot-class-ref" rel="rdfs:domain" href="${reference.getUri()}">#generateLink(${reference})</span></td>
+      <span class="parrot-element-ref parrot-class-ref" rel="rdfs:domain" href="${reference.getUri()}">#generateLink(${reference})</span>
       #end
 	  </td>
       </tr>
@@ -166,7 +166,7 @@
       #end
 	  <td>
       #foreach($reference in $element.Ranges)
-      <td><span class="parrot-element-ref parrot-class-ref" rel="rdfs:range" href="${reference.getUri()}">#generateLink(${reference})</span></td>
+      <span class="parrot-element-ref parrot-class-ref" rel="rdfs:range" href="${reference.getUri()}">#generateLink(${reference})</span>
       #end
 	  </td>
       </tr>

@@ -305,5 +305,30 @@ public class ExternalDocumentableObject extends AbstractDocumentableObject imple
 		throw new UnsupportedOperationException("Method not implemented yet.");
 	}
 
+	public Collection<DocumentableObject> getComplexDomain() {
+		throw new UnsupportedOperationException("Method not implemented yet.");
+	}
+	
+	public void setComplexDomain(Collection<DocumentableObject> complexDomain) {
+		throw new UnsupportedOperationException("Method not implemented yet.");
+	}
+
+	public String getComplexDomainType() {
+		throw new UnsupportedOperationException("Method not implemented yet.");
+	}
+
+	public Collection<DocumentableObject> getComplexRange() {
+		throw new UnsupportedOperationException("Method not implemented yet.");
+	}
+
+	public void setComplexRange(Collection<DocumentableObject> complexDomain) {
+		throw new UnsupportedOperationException("Method not implemented yet.");
+	}
+
+
+	public String getComplexRangeType() {
+		throw new UnsupportedOperationException("Method not implemented yet.");
+	}
+
     
 }

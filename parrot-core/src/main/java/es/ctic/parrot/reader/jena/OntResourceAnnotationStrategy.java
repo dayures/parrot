@@ -214,7 +214,7 @@ public class OntResourceAnnotationStrategy {
 	 * @param locale the locale.
 	 * @return the description or <code>null</code> if there is the resource has no description for that locale.
 	 */
-	public String getDescription(Resource resource, Locale locale) {
+	public String getDescription(OntResource resource, Locale locale) {
 
     	if (resource == null){
     		return null;

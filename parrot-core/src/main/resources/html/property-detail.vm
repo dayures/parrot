@@ -9,7 +9,9 @@
   	  ($element.hasAnyAxiom()) ||
   	  ($element.InverseOf) ||
   	  ($element.Domain) ||
+  	  (!$element.ComplexDomain.isEmpty()) ||
   	  ($element.Range) ||
+  	  (!$element.ComplexRange.isEmpty()) ||
       (!$element.SuperProperties.isEmpty()) ||
       (!$element.SubProperties.isEmpty()) ||
       (!$element.EquivalentProperties.isEmpty()) ||
@@ -112,7 +114,9 @@
 
     #if ( ($element.InverseOf) ||
     	  ($element.Domain) ||
+    	  (!$element.ComplexDomain.isEmpty()) ||
     	  ($element.Range) ||
+		  (!$element.ComplexRange.isEmpty()) ||
     	  (!$element.SuperProperties.isEmpty()) ||
     	  (!$element.SubProperties.isEmpty()) ||
     	  (!$element.EquivalentProperties.isEmpty()) ||
@@ -132,12 +136,35 @@
       </tr>
     #end
 
+    #if(!$element.ComplexDomain.isEmpty())
+      <tr>
+      <td>The complex domain of this property is the <strong>$element.ComplexDomainType</strong></td>
+	  <td>
+      #foreach($reference in $element.ComplexDomain)
+      <span class="parrot-element-ref parrot-class-ref">#generateLink(${reference})</span>
+      #end
+	  </td>
+      </tr>
+    #end
+
     #if($element.Range)
       <tr>
       <td>The range of this property is</td>
       <td><span class="parrot-element-ref parrot-class-ref" rel="rdfs:range" href="${element.Range.getUri()}">#generateLink(${element.Range})</span></td>
       </tr>
     #end
+    
+    #if(!$element.ComplexRange.isEmpty())
+      <tr>
+      <td>The complex range of this property is the <strong>$element.ComplexRangeType</strong></td>
+	  <td>
+      #foreach($reference in $element.ComplexRange)
+      <span class="parrot-element-ref parrot-class-ref">#generateLink(${reference})</span>
+      #end
+	  </td>
+      </tr>
+    #end
+    
    
     #if(!$element.SuperProperties.isEmpty())
       <tr>

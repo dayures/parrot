@@ -24,7 +24,14 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
 
 	private DocumentableObjectReference domain;
 	private DocumentableObjectReference range;
-    private Collection<DocumentableObjectReference> superProperties;
+	
+	private Collection<DocumentableObjectReference> complexDomain;
+	private String complexDomainType;
+	
+	private Collection<DocumentableObjectReference> complexRange;
+	private String complexRangeType;
+
+	private Collection<DocumentableObjectReference> superProperties;
     private Collection<DocumentableObjectReference> subProperties;
     private Collection<DocumentableObjectReference> inverseReferences;
 	private Collection<DocumentableObjectReference> equivalentProperties;
@@ -341,6 +348,70 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
 
 		details.setStatus(object.getStatus());
 		
+		
+		details.setComplexDomain(DocumentableObjectReference.createReferences(object.getComplexDomain(), locale));
+		details.setComplexDomainType(object.getComplexDomainType());
+
+		details.setComplexRange(DocumentableObjectReference.createReferences(object.getComplexRange(), locale));
+		details.setComplexRangeType(object.getComplexRangeType());
+
 		return details;
     }
+
+	/**
+	 * @return the complexDomain
+	 */
+	public Collection<DocumentableObjectReference> getComplexDomain() {
+		return complexDomain;
+	}
+
+	/**
+	 * @param complexDomain the complexDomain to set
+	 */
+	private void setComplexDomain(Collection<DocumentableObjectReference> complexDomain) {
+		this.complexDomain = complexDomain;
+	}
+
+	/**
+	 * @return the complexDomainType
+	 */
+	public String getComplexDomainType() {
+		return complexDomainType;
+	}
+
+	/**
+	 * @param complexDomainType the complexDomainType to set
+	 */
+	private void setComplexDomainType(String complexDomainType) {
+		this.complexDomainType = complexDomainType;
+	}
+
+	/**
+	 * @return the complex range
+	 */
+	public Collection<DocumentableObjectReference> getComplexRange() {
+		return complexRange;
+	}
+
+	/**
+	 * @param complexRange the complexRange to set
+	 */
+	private void setComplexRange(Collection<DocumentableObjectReference> complexRange) {
+		this.complexRange = complexRange;
+	}
+
+	/**
+	 * @return the complexDomainType
+	 */
+	public String getComplexRangeType() {
+		return complexRangeType;
+	}
+
+	/**
+	 * @param complexDomainType the complexDomainType to set
+	 */
+	private void setComplexRangeType(String complexRangeType) {
+		this.complexRangeType = complexRangeType;
+	}
+
 }

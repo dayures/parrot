@@ -23,6 +23,25 @@ public interface OntologyProperty extends DocumentableOntologicalObject {
 	 * @param range the range class of this property.
 	 */
 	public abstract void setRange(DocumentableObject range);
+
+	/**
+	 * Returns the collection of elements in the complex range.
+	 * @return the collection of in the complex range of this property.
+	 */
+	public abstract Collection<DocumentableObject> getComplexRange();
+	
+	/**
+	 * Set the complex range
+	 * @param complexDomain the complex range to set.
+	 */
+	public abstract void setComplexRange(Collection<DocumentableObject> complexDomain);
+	
+	/**
+	 * Returns the type of complex range.
+	 * @return the type of complex range of this property.
+	 */
+	public abstract String getComplexRangeType();
+
 	
 	/**
 	 * Returns the reference to the domain class of this property or <code>null</code> if not exists.
@@ -35,6 +54,24 @@ public interface OntologyProperty extends DocumentableOntologicalObject {
 	 * @param domain the domain class of this property.
 	 */
 	public abstract void setDomain(DocumentableObject domain);
+	
+	/**
+	 * Returns the collection of elements in the complex domain.
+	 * @return the collection of in the complex domain of this property.
+	 */
+	public abstract Collection<DocumentableObject> getComplexDomain();
+	
+	/**
+	 * Set the complex domain
+	 * @param complexDomain the complex domain to set.
+	 */
+	public abstract void setComplexDomain(Collection<DocumentableObject> complexDomain);
+	
+	/**
+	 * Returns the type of complex domain.
+	 * @return the type of complex domain of this property.
+	 */
+	public abstract String getComplexDomainType();
 	
 	/**
 	 * Returns the number of times that this property is used.

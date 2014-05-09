@@ -7,6 +7,7 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
+import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.ontology.OntProperty;
 import com.hp.hpl.jena.ontology.OntResource;
@@ -16,6 +17,7 @@ import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
 import com.hp.hpl.jena.shared.JenaException;
+import com.hp.hpl.jena.util.iterator.ExtendedIterator;
 import com.hp.hpl.jena.vocabulary.OWL2;
 import com.hp.hpl.jena.vocabulary.RDF;
 
@@ -41,6 +43,86 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 	private DocumentableObject domain;
     private DocumentableObject range;
     
+    private Collection<DocumentableObject> complexDomain;
+
+    /**
+	 * Kinds of complex domains
+	 * 
+	 * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+	 * @version 1.0
+	 * @since 1.0
+     */
+    public enum complexDomainType {
+    	
+    	/**
+    	 * an union.
+    	 */
+        UNION("union of"),
+       
+        /**
+         * an intersection.
+         */
+        INTERSECTION("intersection of"),
+        
+        /**
+         * a complement.
+         */
+        COMPLEMENT("complement of"),
+ 
+        /**
+         * a restriction.
+         */
+        UNDEFINED("undefined");
+
+        private final String name;
+        private complexDomainType(String name) { 
+            this.name = name;
+        }
+        public String toString() {
+            return name;
+        }
+    };
+
+    private Collection<DocumentableObject> complexRange;
+
+    /**
+	 * Kinds of complex domains
+	 * 
+	 * @author <a href="http://www.fundacionctic.org">CTIC Foundation</a>
+	 * @version 1.0
+	 * @since 1.0
+     */
+    public enum complexRangeType {
+    	
+    	/**
+    	 * an union.
+    	 */
+        UNION("union of"),
+       
+        /**
+         * an intersection.
+         */
+        INTERSECTION("intersection of"),
+        
+        /**
+         * a complement.
+         */
+        COMPLEMENT("complement of"),
+ 
+        /**
+         * a restriction.
+         */
+        UNDEFINED("undefined");
+
+        private final String name;
+        private complexRangeType(String name) { 
+            this.name = name;
+        }
+        public String toString() {
+            return name;
+        }
+    };
+
 	private Collection<DocumentableObject> superProperties;
 	private Collection<DocumentableObject> subProperties;
 	private Collection<DocumentableObject> equivalentProperties;
@@ -313,5 +395,131 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
     public String getKindString() {
         return Kind.ONTOLOGY_PROPERTY.toString();
     }
-    
+
+	public Collection<DocumentableObject> getComplexDomain() {
+
+		if(complexDomain == null){
+			complexDomain = new HashSet<DocumentableObject>();
+			OntResource _domain = getOntProperty().getDomain();
+			if(_domain != null && _domain.isClass() && isComplexClass(_domain) == true){
+				if (_domain.asClass().isUnionClass()){
+					ExtendedIterator<? extends OntClass> it = _domain.asClass().asUnionClass().listOperands();
+					complexDomain = resourceIteratorToDocumentableObjectList(it);
+				}
+				if (_domain.asClass().isIntersectionClass()){
+					ExtendedIterator<? extends OntClass> it = _domain.asClass().asIntersectionClass().listOperands();
+					complexDomain = resourceIteratorToDocumentableObjectList(it);
+				}
+				if (_domain.asClass().isComplementClass()){
+					ExtendedIterator<? extends OntClass> it = _domain.asClass().asComplementClass().listOperands();
+					complexDomain = resourceIteratorToDocumentableObjectList(it);
+				}
+			}
+		}
+
+		return Collections.unmodifiableCollection(complexDomain);		
+	}
+	
+	public void setComplexDomain(Collection<DocumentableObject> complexDomain) {
+		this.complexRange = complexDomain;
+	}
+
+	/**
+	 * @return the complexDomainType
+	 */
+	public String getComplexDomainType() {
+		OntResource _domain = getOntProperty().getDomain();
+		if(_domain != null && _domain.isClass() && isComplexClass(_domain) == true){
+			if (_domain.asClass().isUnionClass()){
+				return complexDomainType.UNION.toString();
+			}
+			if (_domain.asClass().isIntersectionClass()){
+				return complexDomainType.INTERSECTION.toString();
+			}
+			if (_domain.asClass().isComplementClass()){
+				return complexDomainType.COMPLEMENT.toString();
+			}
+			/*
+			if (_domain.asClass().isEnumeratedClass()){
+				return complexDomainType.ENUMERATED.toString();
+			}
+			if (_domain.asClass().isRestriction()){
+				return complexDomainType.RESTRICTION.toString();
+			}
+			*/
+		}
+		return complexDomainType.UNDEFINED.toString();
+	}
+
+	public Collection<DocumentableObject> getComplexRange() {
+
+		if(complexRange == null){
+			complexRange = new HashSet<DocumentableObject>();
+			OntResource _range = getOntProperty().getRange();
+			if(_range != null && _range.isClass() && isComplexClass(_range) == true){
+				if (_range.asClass().isUnionClass()){
+					ExtendedIterator<? extends OntClass> it = _range.asClass().asUnionClass().listOperands();
+					complexRange = resourceIteratorToDocumentableObjectList(it);
+				}
+				if (_range.asClass().isIntersectionClass()){
+					ExtendedIterator<? extends OntClass> it = _range.asClass().asIntersectionClass().listOperands();
+					complexRange = resourceIteratorToDocumentableObjectList(it);
+				}
+				if (_range.asClass().isComplementClass()){
+					ExtendedIterator<? extends OntClass> it = _range.asClass().asComplementClass().listOperands();
+					complexRange = resourceIteratorToDocumentableObjectList(it);
+				}
+			}
+		}
+
+		return Collections.unmodifiableCollection(complexRange);		
+	}
+	
+	public void setComplexRange(Collection<DocumentableObject> complexRange) {
+		this.complexRange = complexRange;
+	}
+
+	/**
+	 * @return the complexDomainType
+	 */
+	public String getComplexRangeType() {
+		OntResource _range = getOntProperty().getRange();
+		if(_range != null && _range.isClass() && isComplexClass(_range) == true){
+			if (_range.asClass().isUnionClass()){
+				return complexRangeType.UNION.toString();
+			}
+			if (_range.asClass().isIntersectionClass()){
+				return complexRangeType.INTERSECTION.toString();
+			}
+			if (_range.asClass().isComplementClass()){
+				return complexRangeType.COMPLEMENT.toString();
+			}
+			/*
+			if (_domain.asClass().isEnumeratedClass()){
+				return complexRangeType.ENUMERATED.toString();
+			}
+			if (_domain.asClass().isRestriction()){
+				return complexRangeType.RESTRICTION.toString();
+			}
+			*/
+		}
+		return complexDomainType.UNDEFINED.toString();
+	}
+
+	private boolean isComplexClass(OntResource ontResource){
+		OntClass ontclass = ontResource.asClass();
+		if (ontclass.isUnionClass() || 
+			ontclass.isIntersectionClass() || 
+			ontclass.isComplementClass()) {
+			/* 
+			 * TODO add future support for
+			 * ontclass.isEnumeratedClass() 
+			 * ontclass.isRestriction()
+			*/
+			return true;
+		} else { 
+			return false;
+		}
+	}
+
 }

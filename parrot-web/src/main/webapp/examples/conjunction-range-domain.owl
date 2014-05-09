@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.ontorule-project.eu/process.owl#"
+     xml:base="http://www.ontorule-project.eu/process.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+
+     <owl:Class rdf:about="http://purl.org/NET/rulz#Rule"/>
+
+     <owl:ObjectProperty rdf:about="http://www.ontorule-project.eu/process.owl#conjunction-domain">
+         <rdfs:domain rdf:resource="http://purl.org/NET/rulz#Rule"/>
+         <rdfs:domain rdf:resource="http://purl.org/NET/rulz#Ruleset"/>
+     </owl:ObjectProperty>
+	 
+     <owl:ObjectProperty rdf:about="http://www.ontorule-project.eu/process.owl#conjunction-range">
+         <rdfs:range rdf:resource="http://purl.org/NET/rulz#Rule"/>
+         <rdfs:range rdf:resource="http://purl.org/NET/rulz#Ruleset"/>
+     </owl:ObjectProperty>
+	 
+     <owl:ObjectProperty rdf:about="http://www.ontorule-project.eu/process.owl#one-domain">
+         <rdfs:domain rdf:resource="http://purl.org/NET/rulz#Ruleset"/>
+     </owl:ObjectProperty>
+	 
+     <owl:ObjectProperty rdf:about="http://www.ontorule-project.eu/process.owl#one-range">
+         <rdfs:range rdf:resource="http://purl.org/NET/rulz#Ruleset"/>
+     </owl:ObjectProperty>
+</rdf:RDF>
+

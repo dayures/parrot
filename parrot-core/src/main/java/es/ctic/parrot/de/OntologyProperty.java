@@ -13,17 +13,18 @@ import java.util.Collection;
 public interface OntologyProperty extends DocumentableOntologicalObject {
 	
 	/**
-	 * Returns the reference to the range class of this property or <code>null</code> if not exists.
-	 * @return the reference to the range class of this property or <code>null</code> if not exists.
+	 * Returns the collection of range classes of this property or <code>null</code> if not exists.
+	 * @return the collection of range classes of this property or <code>null</code> if not exists.
 	 */
-	public abstract DocumentableObject getRange();
+	public abstract Collection<DocumentableObject> getRanges();
 	
 	/**
-	 * Set the range class of this property.
-	 * @param range the range class of this property.
+	 * Set the collection of range classes of this property.
+	 * @param domain the collection of range classes of this property.
 	 */
-	public abstract void setRange(DocumentableObject range);
+	public abstract void setRanges(Collection<DocumentableObject> ranges);
 
+	
 	/**
 	 * Returns the collection of elements in the complex range.
 	 * @return the collection of in the complex range of this property.
@@ -44,17 +45,17 @@ public interface OntologyProperty extends DocumentableOntologicalObject {
 
 	
 	/**
-	 * Returns the reference to the domain class of this property or <code>null</code> if not exists.
-	 * @return the reference to the domain class of this property or <code>null</code> if not exists.
+	 * Returns the collection of domain classes of this property or <code>null</code> if not exists.
+	 * @return the collection of domain classes of this property or <code>null</code> if not exists.
 	 */
-	public abstract DocumentableObject getDomain();
+	public abstract Collection<DocumentableObject> getDomains();
 	
 	/**
-	 * Set the domain class of this property.
-	 * @param domain the domain class of this property.
+	 * Set the collection of domain classes of this property.
+	 * @param domain the collection of domain classes of this property.
 	 */
-	public abstract void setDomain(DocumentableObject domain);
-	
+	public abstract void setDomains(Collection<DocumentableObject> domains);
+
 	/**
 	 * Returns the collection of elements in the complex domain.
 	 * @return the collection of in the complex domain of this property.

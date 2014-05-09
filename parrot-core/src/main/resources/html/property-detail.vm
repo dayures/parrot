@@ -8,9 +8,9 @@
 #if ( ($element.Uri) || 
   	  ($element.hasAnyAxiom()) ||
   	  ($element.InverseOf) ||
-  	  ($element.Domain) ||
+      (!$element.Domains.isEmpty()) ||
   	  (!$element.ComplexDomain.isEmpty()) ||
-  	  ($element.Range) ||
+      (!$element.Ranges.isEmpty()) ||
   	  (!$element.ComplexRange.isEmpty()) ||
       (!$element.SuperProperties.isEmpty()) ||
       (!$element.SubProperties.isEmpty()) ||
@@ -113,9 +113,9 @@
     #end
 
     #if ( ($element.InverseOf) ||
-    	  ($element.Domain) ||
+    	  (!$element.Domains.isEmpty()) ||
     	  (!$element.ComplexDomain.isEmpty()) ||
-    	  ($element.Range) ||
+    	  (!$element.Ranges.isEmpty()) ||
 		  (!$element.ComplexRange.isEmpty()) ||
     	  (!$element.SuperProperties.isEmpty()) ||
     	  (!$element.SubProperties.isEmpty()) ||
@@ -129,12 +129,22 @@
       </tr>
     #end
 
-    #if($element.Domain)
+ 
+     #if(!$element.Domains.isEmpty())
       <tr>
+      #if($element.getDomains().size() == 1)
       <td>The domain of this property is</td>
-      <td><span class="parrot-element-ref parrot-class-ref" rel="rdfs:domain" href="${element.Domain.getUri()}">#generateLink(${element.Domain})</span></td>
+      #else
+      <td>The domain of this property is the conjunction of the classes</td>
+      #end
+	  <td>
+      #foreach($reference in $element.Domains)
+      <td><span class="parrot-element-ref parrot-class-ref" rel="rdfs:domain" href="${reference.getUri()}">#generateLink(${reference})</span></td>
+      #end
+	  </td>
       </tr>
     #end
+ 
 
     #if(!$element.ComplexDomain.isEmpty())
       <tr>
@@ -147,10 +157,18 @@
       </tr>
     #end
 
-    #if($element.Range)
+    #if(!$element.Ranges.isEmpty())
       <tr>
+       #if($element.getRanges().size() == 1)
       <td>The range of this property is</td>
-      <td><span class="parrot-element-ref parrot-class-ref" rel="rdfs:range" href="${element.Range.getUri()}">#generateLink(${element.Range})</span></td>
+      #else
+      <td>The range of this property is the conjunction of the classes</td>
+      #end
+	  <td>
+      #foreach($reference in $element.Ranges)
+      <td><span class="parrot-element-ref parrot-class-ref" rel="rdfs:range" href="${reference.getUri()}">#generateLink(${reference})</span></td>
+      #end
+	  </td>
       </tr>
     #end
     

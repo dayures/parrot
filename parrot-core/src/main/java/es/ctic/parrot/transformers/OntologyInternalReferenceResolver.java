@@ -55,23 +55,25 @@ public class OntologyInternalReferenceResolver extends AbstractDocumentableObjec
 		logger.debug("Resolving internal references of property "+property);
 
 	    // link domain to the registered documentable object (and create the inverse reference)
-	    DocumentableObject domain = property.getDomain();
-	    if ( (domain != null) && (register.containsIdentifier(domain.getIdentifier())) ){
-	    	DocumentableObject domainInRegister = register.findDocumentableObject(domain.getIdentifier());
-        	property.setDomain(domainInRegister); // link to a register Documentable Object
-        	domainInRegister.addReference(property);
-	    }
+		Collection<DocumentableObject> domains = property.getDomains();
+	    for (DocumentableObject domain: domains){
+	    	if ( (domain != null) && (register.containsIdentifier(domain.getIdentifier())) ){
+	    		DocumentableObject domainInRegister = register.findDocumentableObject(domain.getIdentifier());
+	    		// TODO: is necessary to link to a register Documentable Object ?
+	    		domainInRegister.addReference(property);
+	    	}
+		}
 	    
-	    
-	    // link range to the registered documentable object (and create the inverse reference)
-	    DocumentableObject range = property.getRange();
-	    if ( (range != null) && (register.containsIdentifier(range.getIdentifier())) ){
-	    	DocumentableObject rangeInRegister = register.findDocumentableObject(range.getIdentifier());
-        	property.setRange(rangeInRegister); // link to a register Documentable Object
-        	rangeInRegister.addReference(property);
-	    }
-	    
-	    
+	    // link domain to the registered documentable object (and create the inverse reference)
+		Collection<DocumentableObject> ranges = property.getRanges();
+	    for (DocumentableObject range: ranges){
+	    	if ( (range != null) && (register.containsIdentifier(range.getIdentifier())) ){
+	    		DocumentableObject rangeInRegister = register.findDocumentableObject(range.getIdentifier());
+	    		// TODO: is necessary to link to a register Documentable Object ?
+	    		rangeInRegister.addReference(property);
+	    	}
+		}
+
 	    //set superproperties
 	    Collection<DocumentableObject> superProperties = property.getSuperProperties();
 	    Collection<DocumentableObject> cleanSuperProperties = new HashSet<DocumentableObject>();

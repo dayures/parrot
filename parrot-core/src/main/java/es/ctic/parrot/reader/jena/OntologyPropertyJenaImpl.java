@@ -40,8 +40,8 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
     
 	private static final Logger logger = Logger.getLogger(OntologyPropertyJenaImpl.class);
 	
-	private DocumentableObject domain;
-    private DocumentableObject range;
+	private Collection<DocumentableObject> domains;
+    private Collection<DocumentableObject> ranges;
     
     private Collection<DocumentableObject> complexDomain;
 
@@ -142,8 +142,8 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
 	 */
     public OntologyPropertyJenaImpl(OntProperty ontProperty, DocumentableObjectRegister register, OntResourceAnnotationStrategy annotationStrategy) {
     	super(ontProperty, register, annotationStrategy);
-    	this.setDomain(retrieveDomain());
-    	this.setRange(retrieveRange());
+    	this.setDomains(retrieveDomains());
+    	this.setRanges(retrieveRanges());
     }
 
 	public Object accept(DocumentableObjectVisitor visitor) throws TransformerException {
@@ -154,51 +154,58 @@ public class OntologyPropertyJenaImpl extends AbstractJenaDocumentableObject imp
         }
     }
 
-	public DocumentableObject getDomain() {
-    	return domain;
-
+	public Collection<DocumentableObject> getDomains() {
+    	return domains;
 	}
 	
-	public void setDomain(DocumentableObject domain){
-		this.domain=domain;
+	public void setDomains(Collection<DocumentableObject> domains){
+		this.domains=domains;
 	}
 	
-	private DocumentableObject retrieveDomain() {
-		DocumentableObject retrievedDomain = null;
+	private Collection<DocumentableObject> retrieveDomains() {
+		Collection<DocumentableObject> retrievedDomains = new HashSet<DocumentableObject>();
 		
-		OntResource _domain = getOntProperty().getDomain();
-		if(_domain != null && _domain.isClass() && _domain.isAnon() == false){
-			retrievedDomain = new OntologyClassJenaImpl(_domain.asClass(), this.getRegister(), getAnnotationStrategy());
+		ExtendedIterator<? extends OntResource> it = getOntProperty().listDomain();
+		
+		while (it.hasNext()){
+			OntResource potentialDomain = it.next();
+			if(potentialDomain != null && potentialDomain.isClass() && potentialDomain.isAnon() == false){
+				retrievedDomains.add(new OntologyClassJenaImpl(potentialDomain.asClass(), this.getRegister(), getAnnotationStrategy()));
+			}
 		}
 		
-		return retrievedDomain;
+		return retrievedDomains;
 	}
 	
 
 
-	public DocumentableObject getRange() {
-		return range;
+	public Collection<DocumentableObject> getRanges() {
+		return ranges;
 	}
 	
-	public void setRange(DocumentableObject range) {
-		this.range=range;
+	public void setRanges(Collection<DocumentableObject> ranges) {
+		this.ranges=ranges;
 	}
 
-	private DocumentableObject retrieveRange() {
-		DocumentableObject retrievedRange = null;
-
-		OntResource _range = getOntProperty().getRange();
-		if(_range != null && _range.isAnon() == false) {
-    		if (getOntProperty().isDatatypeProperty()){
-    			retrievedRange = new DataType(_range.getURI());	
-    		} else {
-    			retrievedRange = new OntologyClassJenaImpl(_range.asClass(), this.getRegister(), getAnnotationStrategy());
-    		}
+	private Collection<DocumentableObject> retrieveRanges() {
+		Collection<DocumentableObject> retrievedRanges = new HashSet<DocumentableObject>();
+		
+		ExtendedIterator<? extends OntResource> it = getOntProperty().listRange();
+		
+		while (it.hasNext()){
+			OntResource potentialRange = it.next();
+			if(potentialRange != null && potentialRange.isAnon() == false){
+	    		if (getOntProperty().isDatatypeProperty()){
+	    			retrievedRanges.add(new DataType(potentialRange.getURI()));	
+	    		} else {
+	    			retrievedRanges.add(new OntologyClassJenaImpl(potentialRange.asClass(), this.getRegister(), getAnnotationStrategy()));
+	    		}
+			}
 		}
 		
-		return retrievedRange;
-	}
+		return retrievedRanges;
 
+	}
 
 
 	public int getOccurrences() {

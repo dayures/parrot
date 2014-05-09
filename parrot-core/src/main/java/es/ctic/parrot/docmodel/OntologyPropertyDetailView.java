@@ -22,8 +22,8 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
     
     private OntologyProperty ontologyProperty;
 
-	private DocumentableObjectReference domain;
-	private DocumentableObjectReference range;
+	private Collection<DocumentableObjectReference> domains;
+	private Collection<DocumentableObjectReference> ranges;
 	
 	private Collection<DocumentableObjectReference> complexDomain;
 	private String complexDomainType;
@@ -47,35 +47,35 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
 	}
 	
 	/**
-	 * Returns the reference to the domain class of this property.
-	 * @return the reference to the domain class of this property.
+	 * Returns the references to the domain classes of this property.
+	 * @return the references to the domain classes of this property.
 	 */
-	public DocumentableObjectReference getDomain() {
-		return this.domain;
+	public Collection<DocumentableObjectReference> getDomains() {
+		return Collections.unmodifiableCollection(domains);
 	}
 
 	/**
-	 * Set the domain class of this property.
-	 * @param domain the domain class of this property.
+	 * Set the reference to domain classes of this property.
+	 * @param domain the references to the domain classes of this property.
 	 */
-	private void setDomain(DocumentableObjectReference domain) {
-		this.domain = domain;
+	private void setDomains(Collection<DocumentableObjectReference> domains) {
+		this.domains = domains;
 	}
 
 	/**
 	 * Returns the reference to the range class of this property.
 	 * @return the reference to the range class of this property.
 	 */
-	public DocumentableObjectReference getRange() {
-		return this.range;
+	public Collection<DocumentableObjectReference> getRanges() {
+		return Collections.unmodifiableCollection(ranges);
 	}
 
 	/**
 	 * Set the range class of this property.
 	 * @param range the range class of this property.
 	 */
-	private void setRange(DocumentableObjectReference range) {
-		this.range = range;
+	private void setRanges(Collection<DocumentableObjectReference> ranges) {
+		this.ranges = ranges;
 	}
 
 	/**
@@ -327,8 +327,8 @@ public class OntologyPropertyDetailView extends AbstractOntologicalObjectDetailV
 		details.setRights(object.getRights());
 		details.setLicenseLabel(object.getLicenseLabel());
 		
-		details.setDomain(DocumentableObjectReference.createReference(object.getDomain(), locale));
-		details.setRange(DocumentableObjectReference.createReference(object.getRange(), locale));
+		details.setDomains(DocumentableObjectReference.createReferences(object.getDomains(), locale));
+		details.setRanges(DocumentableObjectReference.createReferences(object.getRanges(), locale));
 		details.setSuperProperties(DocumentableObjectReference.createReferences(object.getSuperProperties(), locale));
 		details.setSubProperties(DocumentableObjectReference.createReferences(object.getSubProperties(), locale));
 		details.setEquivalentProperties(DocumentableObjectReference.createReferences(object.getEquivalentProperties(), locale));

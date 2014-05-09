@@ -27,17 +27,6 @@
 		</rdfs:domain>
     </owl:ObjectProperty>
 
-    <owl:ObjectProperty rdf:about="http://www.ontorule-project.eu/process.owl#intersection-Domain">
-        <rdfs:domain>
-			<owl:Class>
-			  <owl:intersectionOf rdf:parseType="Collection">
-  			    <owl:Class rdf:about="#Wine" />
-			    <owl:Class rdf:about="#AnotherWine" />
-			  </owl:intersectionOf>
-			</owl:Class>
-		</rdfs:domain>
-    </owl:ObjectProperty>
-
     <owl:ObjectProperty rdf:about="http://www.ontorule-project.eu/process.owl#complement-Domain">
         <rdfs:domain>
 			<owl:Class>

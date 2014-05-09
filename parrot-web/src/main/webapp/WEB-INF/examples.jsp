@@ -38,8 +38,8 @@
 <li><a href="parrot?documentUri=${baseURL}/examples/ontology-languages.owl&profile=business">OWL Ontology with metadata in multiple languages (Business profile)</a></li> 
 <li><a href="parrot?documentUri=${baseURL}/examples/ontology-languages-utf-8.owl&mimetype=default">OWL Ontology with metadata in multiple languages (UTF-8) </a></li> 
 <li><a href="parrot?documentUri=${baseURL}/examples/ontology-languages.owl&mimetype=default&customizeCssUrl=${baseURL}/examples/customize-style.css">OWL Ontology with metadata in multiple languages with customize CSS</a></li> 
-<li><a href="parrot?documentUri=${baseURL}/examples/complex-domains.owl">Synthetic complex domain (RDF/XML)</a></li> 
-
+<li><a href="parrot?documentUri=${baseURL}/examples/complex-domains.owl">Synthetic complex domains (RDF/XML)</a></li> 
+<li><a href="parrot?documentUri=${baseURL}/examples/complex-ranges.owl">Synthetic complex range (RDF/XML)</a></li> 
 </ul>
 
 <h2>Rules</h2>
@@ -98,7 +98,8 @@
 <li><a href="examples/dcat.rdf">Synthetic DCAT example file (RDF/XML)</a></li>
 <li><a href="examples/previous-report.html">Previous Report generated</a></li>
 <li><a href="examples/previous-report-metadata.html">Previous Report generated (just metadata)</a></li>
-<li><a href="examples/complex-domains.owl">Synthetic complex domain (RDF/XML)</a></li>
+<li><a href="examples/complex-domains.owl">Synthetic complex domains (RDF/XML)</a></li>
+<li><a href="examples/complex-ranges.owl">Synthetic complex ranges (RDF/XML)</a></li>
 </ul> 
 
 <jsp:include page="footer.jsp" />

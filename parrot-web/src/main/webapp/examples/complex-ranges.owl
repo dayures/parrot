@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.ontorule-project.eu/process.owl#"
+     xml:base="http://www.ontorule-project.eu/process.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+
+    <owl:ObjectProperty rdf:about="http://www.ontorule-project.eu/process.owl#union-Domain">
+      <rdfs:range>
+        <owl:Class>    
+          <owl:unionOf rdf:parseType="Collection">
+            <owl:Class rdf:about="http://purl.org/NET/rulz#Rule"/>
+            <owl:Class rdf:about="http://purl.org/NET/rulz#Ruleset"/>
+          </owl:unionOf>
+        </owl:Class>    
+      </rdfs:range>
+    </owl:ObjectProperty>
+	
+    <owl:ObjectProperty rdf:about="http://www.ontorule-project.eu/process.owl#intersection-Domain">
+        <rdfs:range>
+			<owl:Class>
+			  <owl:intersectionOf rdf:parseType="Collection">
+  			    <owl:Class rdf:about="#Wine" />
+			    <owl:Class rdf:about="#AnotherWine" />
+			  </owl:intersectionOf>
+			</owl:Class>
+		</rdfs:range>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://www.ontorule-project.eu/process.owl#complement-Domain">
+        <rdfs:range>
+			<owl:Class>
+			  <owl:complementOf>
+			    <owl:Class rdf:about="#Meat"/>
+			  </owl:complementOf>
+			</owl:Class>
+		</rdfs:range>	
+    </owl:ObjectProperty>
+		
+</rdf:RDF>
+

@@ -11,13 +11,24 @@
     </servlet>
 
    <servlet>
+        <servlet-name>ServletExamples</servlet-name>
+		<servlet-class>es.ctic.parrot.web.ServletExamples</servlet-class>
+    </servlet>
+
+   <servlet>
+        <servlet-name>ServletAbout</servlet-name>
+		<servlet-class>es.ctic.parrot.web.ServletAbout</servlet-class>
+    </servlet>
+
+   <servlet>
         <servlet-name>ServletHelp</servlet-name>
 		<servlet-class>es.ctic.parrot.web.ServletHelp</servlet-class>
     </servlet>
    
+
    <servlet>
-        <servlet-name>ServletExamples</servlet-name>
-		<servlet-class>es.ctic.parrot.web.ServletExamples</servlet-class>
+        <servlet-name>ServletContact</servlet-name>
+		<servlet-class>es.ctic.parrot.web.ServletContact</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -26,13 +37,23 @@
     </servlet-mapping>
 
     <servlet-mapping>
+	    <servlet-name>ServletExamples</servlet-name>
+	    <url-pattern>/examples</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+	    <servlet-name>ServletAbout</servlet-name>
+	    <url-pattern>/about</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
 	    <servlet-name>ServletHelp</servlet-name>
 	    <url-pattern>/help</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
-	    <servlet-name>ServletExamples</servlet-name>
-	    <url-pattern>/examples</url-pattern>
+	    <servlet-name>ServletContact</servlet-name>
+	    <url-pattern>/contact</url-pattern>
     </servlet-mapping>
 
     <filter>

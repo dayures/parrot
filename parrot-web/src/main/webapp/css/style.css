@@ -136,10 +136,8 @@ div#footer {
 }
 
 div#footer p {
-  font-size: 0.7em;
   color: #888888;
   text-align: left;
-  padding-top: 1em;
 }
 
 div#footer p#logo {
@@ -386,5 +384,22 @@ span.optional{
 .tip-compilation-title{
 	font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
 	font-size: medium;
+	font-style: italic;
+}
+
+p.publication-title{
+	color: darkorange;
+	font-family: "Lucida Grande",Arial,Verdana,"Bitstream Vera Sans",sans-serif;
+	font-size: larger;
+}
+
+p.publication-authors{
+	color: firebrick;
+	font-family: "Lucida Grande",Arial,Verdana,"Bitstream Vera Sans",sans-serif;
+	font-size: small;
+}
+
+
+blockquote.publication-abstract{
 	font-style: italic;
 }

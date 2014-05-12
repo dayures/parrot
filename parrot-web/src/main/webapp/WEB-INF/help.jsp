@@ -2,14 +2,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> 
-<head>
-  <title>Help page of Parrot, RIF and OWL documentation service</title>
-  <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
-  <link rel="shortcut icon" href="images/favicon.ico" type="image/png" />
-  <meta name="description" content="parrot" />
-  <meta name="keywords" content="parrot, documentation, tool, rif, rdf" />
-  <link type="text/css" rel="stylesheet" href="css/style.css" media="screen,projection,print" />
-</head>
+
+<jsp:include page="head.jsp">
+	<jsp:param name="title" value="Help page of Parrot, RIF and OWL documentation service" />
+</jsp:include>
 
 <body>
 
@@ -42,6 +38,7 @@
 	<li><a href="#tip-features">Other features</a></li>
 	</ul>
 </li>
+<li><a href="#third-party">License of third-party elements used</a></li>
 </ul>
 <br/>
 
@@ -1185,6 +1182,9 @@ You can send multiple <tt>documentText</tt> parameter values. In that case, each
 </code></pre>
 
 <p>The documentation for the resource <em>http://example.org/resource</em> will only appears once (like an ontology or like a dataset).</p>
+
+<h2 id="third-party">License of third-party elements used</h2>
+<p> Some icons has been created by <a href="http://www.famfamfam.com/about/">Mark James</a> and there are distributed under <a href="http://creativecommons.org/licenses/by/2.5/">CreativeCommons-by 2.5</a> license.</p> 
 
 
 <jsp:include page="footer.jsp" />

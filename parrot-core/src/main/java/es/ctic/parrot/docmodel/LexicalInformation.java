@@ -80,7 +80,7 @@ public class LexicalInformation {
 			return false;
 			
 		} else {
-			logger.debug("label="+label.getText()+" not added because it has not a locale");
+			logger.debug("Not added label="+label.getText()+" because it has not a locale");
 			return false;
 		}
 	}

@@ -89,12 +89,17 @@ public class ParrotAppServ {
 		outputGenerator.generateOutput(document, dp.getProfile());
 	}
 
+	/**
+	 * Returns a set containing the languages present in the model (including region subtag)
+	 * 
+	 * @return a set languages
+	 */
 	private Set<String> getLanguagesInModel() {
 		Set<String> languages = new HashSet<String>();
 		for(RDFNode rdfNode: getOntologyReader().getOntModel().listObjects().toSet()){
 			if (rdfNode.isLiteral()){
 				if (rdfNode.asLiteral().getLanguage().length() != 0){
-					languages.add(rdfNode.asLiteral().getLanguage().split("-")[0]);
+					languages.add(rdfNode.asLiteral().getLanguage());
 				}
 			}
 		}

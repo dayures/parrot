@@ -339,10 +339,22 @@ public class ServletParrot extends HttpServlet {
 
 	private Locale getLocale(HttpServletRequest req) {
 		Locale locale = Locale.ENGLISH; // default Locale
-		String language = req.getParameter("language");
-		if ( language != null && language.trim().length() != 0){
-			locale = new Locale(language);
+
+		String languageParameter = req.getParameter("language");
+
+		if ( languageParameter != null && languageParameter.trim().length() != 0){
+			
+			if (languageParameter.contains(Character.toString('-'))){
+				// contains a region subtag
+				String language = languageParameter.split("-")[0];
+				String region = languageParameter.split("-")[1];
+				locale = new Locale(language, region);
+			} else {
+				locale = new Locale(languageParameter);
+			}
+			
 		}
+
 		return locale;
 	}
 

@@ -8,6 +8,7 @@ import java.util.Locale;
 import org.apache.log4j.Logger;
 
 import com.hp.hpl.jena.datatypes.xsd.XSDDatatype;
+import com.hp.hpl.jena.graph.Node;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.ontology.OntResource;
 import com.hp.hpl.jena.rdf.model.Literal;
@@ -18,6 +19,7 @@ import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.rdf.model.ResourceRequiredException;
 import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.StmtIterator;
+import com.hp.hpl.jena.rdf.model.impl.LiteralImpl;
 import com.hp.hpl.jena.vocabulary.OWL;
 import com.hp.hpl.jena.vocabulary.OWL2;
 import com.hp.hpl.jena.vocabulary.RDF;
@@ -265,6 +267,14 @@ public class OntResourceAnnotationStrategy {
 	 *  <li>automatically generated</li>
 	 * </ol>
 	 * 
+	 * The strategy to obtain the label, taken into account the locale is:
+	 * <ol>
+	 * 	<li>compare language and region in the locale (obtained by getLabels)</li>
+	 * 	<li>compare just language in the locale (obtained by getLabels)</li>
+	 * 	<li>try literals without lang tag</li>
+	 * 	<li>generate label</li>
+	 * </ol>
+
 	 * @param ontResource the ontology resource.
 	 * @param locale the locale.
 	 * @return the best label associated (using the locale element if it is provided) or <code>null</code> if the resource is an anonymous resource.
@@ -304,7 +314,7 @@ public class OntResourceAnnotationStrategy {
         }
         
         if (locale != null) { // if I have asked for a locale
-        	// give a change without locale
+        	// give a chance without locale
         	return getLabel(ontResource, null);
         } else {
         	// no more chances. do your best.
@@ -318,7 +328,7 @@ public class OntResourceAnnotationStrategy {
     }
     
 	/**
-	 * Returns a collection of literal labels for the URI.
+	 * Returns a collection of literal labels for the ontResource, given a URI property and a locale.
 	 * @param ontResource the ontResource.
 	 * @param uri the URI of the property used to annotate.
 	 * @param locale the locale.
@@ -344,31 +354,49 @@ public class OntResourceAnnotationStrategy {
 			
 			//It cannot applied skosLabel.setUri()
 			try{
+				// set the text
 				literalLabel.setText(statement.getObject().asLiteral().getLexicalForm());
 
+				// set the language tag (and region)
 				String LanguageTag = statement.getObject().asLiteral().getLanguage(); 
 				if (LanguageTag.length() != 0){ //The literal has language tag
-					String language = LanguageTag.split("-")[0]; 
-					literalLabel.setLocale(new Locale(language)); // FIXME do it more specified using Locale(String language, String country, String variant)
+					if (LanguageTag.contains(Character.toString('-'))){
+						// contains a region subtag
+						String language = LanguageTag.split("-")[0];
+						String region = LanguageTag.split("-")[1];
+						literalLabel.setLocale(new Locale(language, region));
+					} else {
+						literalLabel.setLocale(new Locale(LanguageTag));
+					}
 				}
 				
 				// if there is not locale restriction
 				if (locale == null){
 					if (literalLabel.getLocale() == null){  //and there is not language tag for the literal
-						//logger.debug(literalLabel + " is " + uri + " for resource " + ontResource);
 						literalLabels.add(literalLabel);
+						logger.debug("Added \""+literalLabel + "\" is " + uri + " for resource " + ontResource);
 					} else {
-						//logger.debug("Not add label  " + literalLabel + " for resource " + getOntResource() + " because it has language tag=" + literalLabel.getLocale());
-						literalLabels.add(literalLabel);
+						logger.debug("Not added \""+literalLabel + "\" is " + uri + " for resource " + ontResource);
 					}
 				} else {
-					//compare locales
+					//compare locales (locale cannot be null)
 					if (locale.equals(literalLabel.getLocale())) {
-						//logger.debug(literalLabel + " is " + uri + " for resource " + getOntResource());
 						literalLabels.add(literalLabel);
+						logger.debug("\""+literalLabel + "\" is " + uri + " for resource " + ontResource);
 					} else{
-						//logger.debug("Not add label  " + literalLabel + " for resource " + getOntResource() + " because its locale " + literalLabel.getLocale() + " does not match with required locale " + locale);
+						// compare locales language, without region subtag
+						if (locale.getCountry().isEmpty() == true
+						&& literalLabel.getLocale() != null
+						&& "".equals(literalLabel.getLocale().getCountry()) == false
+						&& locale.getLanguage().equals(literalLabel.getLocale().getLanguage())) {
+							literalLabels.add(literalLabel);
+							logger.debug("Added (not taken into account the region subtag "+literalLabel.getLocale()+" compared to locale asked "+locale+") \""+ literalLabel + "\" is " + uri + " for resource " + ontResource);
+						}
+						else {
+							logger.trace("Not add label \"" + literalLabel + "\" for resource " + ontResource + " because its locale " + literalLabel.getLocale() + " does not match with required locale " + locale);
+						}
 					}
+					
 				}
 			} catch (LiteralRequiredException e) {
 				logger.warn("A literal is required. Label="+statement.getObject());
@@ -907,7 +935,7 @@ public class OntResourceAnnotationStrategy {
 	 * Returns a list of strings, the lexical values of the literal properties. 
 	 * @param resource the resource.
 	 * @param property the URI of the property.
-	 * @param locale the locale
+	 * @param locale the locale (could be null)
 	 * @return a list of strings, the lexical values of the literal properties.
 	 */
 	private Collection<String> getLiteralPropertyValues(Resource resource, String property, Locale locale) {
@@ -922,17 +950,23 @@ public class OntResourceAnnotationStrategy {
 			Statement st = it.nextStatement();
 			if (st.getObject().isLiteral()) {
 				String extractLiteral = extractLiteral(st.getObject().asLiteral(), locale);
-				if ( extractLiteral != null){				
+				if ( extractLiteral != null){	
+					logger.debug("Literal added (\""+extractLiteral+"\" from \""+st.getObject().asLiteral()+"\") taking into account language locale("+locale+")");
 					values.add(extractLiteral);
 				} else {
-					if (locale == null){
-						//logger.debug("Literal not added " + st.toString());
+					extractLiteral = extractLiteralWithoutRegionSubTag(st.getObject().asLiteral(), locale);
+					if ( extractLiteral != null){	
+						logger.debug("Literal added (\""+extractLiteral+"\" from \""+st.getObject().asLiteral()+"\") taking into account language locale("+locale+"), but not region subtag");
+						values.add(extractLiteral);
 					} else {
-						//logger.debug("Literal not added " + st.toString() + " due to language issue (locale="+locale.toString()+", literalLanguage="+st.getObject().asLiteral().getLanguage()+")");
+						if (locale == null){
+							logger.debug("Literal not added " + st.toString());
+						} else {
+							logger.debug("Literal not added " + st.toString() + " due to language issue (locale="+locale.toString()+", literalLanguage="+st.getObject().asLiteral().getLanguage()+")");
+						}
 					}
 				}
 			} else {
-				// TODO add into the log
 				logger.warn("A literal was expected but object=" + st.toString() );
 			}
 		}
@@ -940,9 +974,9 @@ public class OntResourceAnnotationStrategy {
 	}
 	
 	/**
-	 * Returns the string if the literal has the same locale (if presents)
+	 * Returns the string if the literal has the same locale than the one provided (if presents)
 	 * @param literal the literal.
-	 * @param locale the locale
+	 * @param locale the locale provided to compare (could be null).
 	 * @return the string if the literal has the same locale or <code>null</code> if it is not the same. If not locale is present, it returns the string of the literal. 
 	 */
 	private static String extractLiteral(Literal literal, Locale locale) {
@@ -953,14 +987,40 @@ public class OntResourceAnnotationStrategy {
 			}
 			return literal.getLexicalForm();
 		} else {
-			if (locale.toString().equals(literal.getLanguage())){
+			// Java 1.7, use literal.toLanguageTag()
+			if (locale.toString().equals(literal.getLanguage().replace("-", "_"))){
 				return literal.getLexicalForm();
 			} else { 
 				return null;
 			}
 		}
 	}
+	
+	
+	/**
+	 * Returns the string if the literal has the same locale than the one provided, not taken into account the region subtag
+	 * @param literal the literal.
+	 * @param locale the locale provided to compare.
+	 * @return the string if the literal has the same locale or <code>null</code> if it is not the same. If not locale is present, it returns <code>null</code> 
+	 */
+	private static String extractLiteralWithoutRegionSubTag(Literal literal, Locale locale) {
 
+		// literal without language tag
+		if ("".equals(literal.getLanguage())){
+			return null;
+		}
+
+		// literal with OLNY language tag
+		if (literal.getLanguage().split("-").length == 1){
+			return null;
+		}
+
+		// literal with region subtag. Only the language tag is taken into account
+		Literal literalGenerated = new LiteralImpl(Node.createLiteral( literal.getLexicalForm(), literal.getLanguage().split("-")[0], false), null);
+		return extractLiteral(literalGenerated,locale);
+		// ResourceFactory.createLangLiteral is available since Jena 2.10.0
+		// return extractLiteral(ResourceFactory.createLangLiteral(literal.getLexicalForm(), lang),locale);
+	}
 	/**
 	 * Returns the value of the literal or <code>null</code> if the resource has not this property associated
 	 * @param resource the resource.
@@ -975,19 +1035,18 @@ public class OntResourceAnnotationStrategy {
 	 * Returns the value of the literal or <code>null</code> if the resource has not this property associated
 	 * @param resource the resource.
 	 * @param property the URI of the property.
-	 * @param locale the locale.
+	 * @param locale the locale (could be <code>null</code>).
 	 * @return the value of the literal or <code>null</code> if the resource has not this property associated
 	 */
 	private String getLiteralPropertyValue(Resource resource, String property, Locale locale) {
         
 		Collection<String> literalPropertyValues = getLiteralPropertyValues(resource, property, locale);
 
-        if (literalPropertyValues.isEmpty()){
-        	return null;
-        } else {
+        if (literalPropertyValues.isEmpty() == false ){
         	return literalPropertyValues.iterator().next(); // Take the first one
         }
-
+        
+        return null;
 	}
 
 	/**

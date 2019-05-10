@@ -11,7 +11,7 @@
 <link rel="shortcut icon" type="image/png" href="images/favicon.ico"  />
 <!-- standalone -->
 <!-- <link rel="stylesheet" type="text/css" media="screen,projection" href="standalone/ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/themes/cupertino/jquery-ui.css" /> -->
-<link rel="stylesheet" type="text/css" media="screen,projection" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/themes/cupertino/jquery-ui.css" /> 
+<link rel="stylesheet" type="text/css" media="screen,projection" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/themes/cupertino/jquery-ui.css" /> 
 <link rel="stylesheet" type="text/css" href="css/style.css"	media="screen,projection,print" /> 
 </head> 
 

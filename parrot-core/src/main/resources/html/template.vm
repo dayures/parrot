@@ -20,7 +20,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="${uri_base}images/favicon.ico" />
     <!-- standalone --> 
     <!--  <link rel="stylesheet" type="text/css" media="screen,projection" href="${uri_base}standalone/ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/themes/cupertino/jquery-ui.css" />  -->
-    <link rel="stylesheet" type="text/css" media="screen,projection" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/themes/cupertino/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" media="screen,projection" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/themes/cupertino/jquery-ui.css" />
     <link rel="stylesheet" type="text/css" media="screen,projection" href="${uri_base}report/css/base.css" /> 
     <link rel="stylesheet" type="text/css" media="screen,projection" href="${uri_base}report/css/custom.css" /> 
     <link rel="stylesheet" type="text/css" media="screen,projection" href="${uri_base}report/css/SemEx.css" /> 

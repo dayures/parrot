@@ -6,11 +6,11 @@
 	<version>1.0-SNAPSHOT</version>
 	<name>Parrot</name>
 	<description>Parrot Project</description>
-    <url>https://bitbucket.org/fundacionctic/parrot</url>
+        <url>https://github.com/dayures/parrot</url>
 
 	<issueManagement>
 		<system>Tracker</system>
-		<url>https://bitbucket.org/fundacionctic/parrot/issues</url>
+		<url>https://github.com/dayures/parrot/issues</url>
 	</issueManagement>
 
 	<licenses>
@@ -28,16 +28,16 @@
 	</organization>
 
 	<scm>
-		<connection>scm:hg:https://bitbucket.org/fundacionctic/parrot</connection>
-		<developerConnection>scm:hg:https://bitbucket.org/fundacionctic/parrot</developerConnection>
-		<url>https://bitbucket.org/fundacionctic/parrot</url>
+		<connection>scm:git:https://github.com/dayures/parrot</connection>
+		<developerConnection>scm:git:https://github.com/dayures/parrot</developerConnection>
+		<url>https://github.com/dayures/parrot</url>
 	</scm>
 
 	<developers>
 		<developer>
 			<id>tejo</id>
 			<name>Carlos Tejo Alonso</name>
-			<email>carlos.tejo@fundacionctic.org</email>
+			<email>info@dayures.net</email>
 			<url>http://dayures.net</url>
 		</developer>
 		<developer>

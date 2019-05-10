@@ -34,7 +34,7 @@ annotations and produces reference documentation for combinations of ontologies
 and rules.</blockquote>
 
 <p>Carlos Tejo-Alonso, Diego Berrueta, Luis Polo and Sergio Fernández: Current practices and perspectives for metadata on web ontologies and rules. In: <a href="http://www.inderscience.com/info/inarticle.php?artid=50016">International Journal of Metadata, Semantics and Ontologies (IJMSO)</a>.
-<a href="https://bitbucket.org/fundacionctic/parrot/downloads/2012-Article%20PARROT-IJMSO.pdf">Download the article in PDF</a>.</p>
+<a href="http://dayures.net/docs/2012-Carlos-Tejo_Alonso-PARROT-IJMSO.pdf">Download the article in PDF</a>.</p>
 
 
 <h2>Team</h2>

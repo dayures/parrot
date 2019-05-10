@@ -207,9 +207,9 @@
 	<!-- Feedback -->
 	<img src="images/feedback.png" width="30" height="100" alt="feedback" id="feedback" /> 
 	<div id="feedback-dialog" title="Give us some feedback">
-		<p><img src="images/bug.png" alt="bug"></img> <a href="https://bitbucket.org/fundacionctic/parrot/issues/">Report a bug </a></p>
-		<p><img src="images/heart.png" alt="request"></img> <a href="https://bitbucket.org/fundacionctic/parrot/issues/">Request a feature</a></p>
-		<p><img src="images/contact.png" alt="contact"></img> <a href="https://bitbucket.org/fundacionctic/parrot/wiki/Home#!contact">Contact us</a></p>
+		<p><img src="images/bug.png" alt="bug"></img> <a href="https://github.com/dayures/parrot/issues">Report a bug </a></p>
+		<p><img src="images/heart.png" alt="request"></img> <a href="https://github.com/dayures/parrot/issues">Request a feature</a></p>
+		<p><img src="images/contact.png" alt="contact"></img> <a href="https://github.com/dayures/parrot/wiki#Contact">Contact us</a></p>
 	</div>
 	
 	<!-- Generating -->

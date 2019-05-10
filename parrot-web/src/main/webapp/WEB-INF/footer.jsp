@@ -5,7 +5,7 @@
     <a href="http://ontorule-project.eu"><img src="images/ontorule.png" alt="ONTORULE Project" /></a> 
   </p> 
   <p> 
-    <a href="https://bitbucket.org/fundacionctic/parrot">Parrot</a> is a RIF and OWL documentation service developed <a href="http://ct.ctic.es">Fundaci&oacute;n CTIC</a>.
+    <a href="https://github.com/dayures/parrot">Parrot</a> is a RIF and OWL documentation service developed initially by <a href="http://fundacionctic.org">Fundaci&oacute;n CTIC</a>.
   </p> 
   <p> This work has been partially funded by <a href="http://ontorule-project.eu" title="ONTORULE Web site">ONTORULE Project (FP7-ICT-2008-3, project reference 231875)</a>.</p>
   <p> 
